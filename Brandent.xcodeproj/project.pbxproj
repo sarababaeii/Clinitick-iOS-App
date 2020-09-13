@@ -17,6 +17,12 @@
 		03749EC2250E76D7003CBE49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03749EC0250E76D7003CBE49 /* LaunchScreen.storyboard */; };
 		03749ECD250E76D7003CBE49 /* BrandentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749ECC250E76D7003CBE49 /* BrandentTests.swift */; };
 		03749ED8250E76D7003CBE49 /* BrandentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749ED7250E76D7003CBE49 /* BrandentUITests.swift */; };
+		03749EF9250EA611003CBE49 /* Vazir-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03749EF4250EA611003CBE49 /* Vazir-Medium.ttf */; };
+		03749EFA250EA611003CBE49 /* Vazir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03749EF5250EA611003CBE49 /* Vazir.ttf */; };
+		03749EFB250EA611003CBE49 /* Vazir-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03749EF6250EA611003CBE49 /* Vazir-Bold.ttf */; };
+		03749EFC250EA611003CBE49 /* Vazir-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03749EF7250EA611003CBE49 /* Vazir-Thin.ttf */; };
+		03749EFD250EA611003CBE49 /* Vazir-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03749EF8250EA611003CBE49 /* Vazir-Light.ttf */; };
+		03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EFF250EA8AE003CBE49 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,12 @@
 		03749ED3250E76D7003CBE49 /* BrandentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrandentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03749ED7250E76D7003CBE49 /* BrandentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandentUITests.swift; sourceTree = "<group>"; };
 		03749ED9250E76D7003CBE49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03749EF4250EA611003CBE49 /* Vazir-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Medium.ttf"; sourceTree = "<group>"; };
+		03749EF5250EA611003CBE49 /* Vazir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Vazir.ttf; sourceTree = "<group>"; };
+		03749EF6250EA611003CBE49 /* Vazir-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Bold.ttf"; sourceTree = "<group>"; };
+		03749EF7250EA611003CBE49 /* Vazir-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Thin.ttf"; sourceTree = "<group>"; };
+		03749EF8250EA611003CBE49 /* Vazir-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Light.ttf"; sourceTree = "<group>"; };
+		03749EFF250EA8AE003CBE49 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +153,7 @@
 		03749EE6250E76F3003CBE49 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				03749EFE250EA893003CBE49 /* UIComponents */,
 				03749EB8250E76D6003CBE49 /* Main.storyboard */,
 			);
 			path = View;
@@ -156,6 +169,7 @@
 		03749EE8250E7720003CBE49 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				03749EE9250EA3C7003CBE49 /* Fonts */,
 				03749EB0250E76D6003CBE49 /* AppDelegate.swift */,
 				03749EB2250E76D6003CBE49 /* SceneDelegate.swift */,
 				03749EBE250E76D7003CBE49 /* Assets.xcassets */,
@@ -164,6 +178,26 @@
 				03749EBB250E76D6003CBE49 /* Brandent.xcdatamodeld */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		03749EE9250EA3C7003CBE49 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				03749EF6250EA611003CBE49 /* Vazir-Bold.ttf */,
+				03749EF8250EA611003CBE49 /* Vazir-Light.ttf */,
+				03749EF4250EA611003CBE49 /* Vazir-Medium.ttf */,
+				03749EF7250EA611003CBE49 /* Vazir-Thin.ttf */,
+				03749EF5250EA611003CBE49 /* Vazir.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		03749EFE250EA893003CBE49 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				03749EFF250EA8AE003CBE49 /* CustomTextField.swift */,
+			);
+			path = UIComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,8 +304,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03749EFA250EA611003CBE49 /* Vazir.ttf in Resources */,
 				03749EC2250E76D7003CBE49 /* LaunchScreen.storyboard in Resources */,
 				03749EBF250E76D7003CBE49 /* Assets.xcassets in Resources */,
+				03749EFC250EA611003CBE49 /* Vazir-Thin.ttf in Resources */,
+				03749EFD250EA611003CBE49 /* Vazir-Light.ttf in Resources */,
+				03749EF9250EA611003CBE49 /* Vazir-Medium.ttf in Resources */,
+				03749EFB250EA611003CBE49 /* Vazir-Bold.ttf in Resources */,
 				03749EBA250E76D6003CBE49 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +338,7 @@
 			files = (
 				03749EB7250E76D6003CBE49 /* SecondViewController.swift in Sources */,
 				03749EB5250E76D6003CBE49 /* FirstViewController.swift in Sources */,
+				03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */,
 				03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */,
 				03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */,
 				03749EBD250E76D6003CBE49 /* Brandent.xcdatamodeld in Sources */,
@@ -477,7 +517,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = 3QN7DG53LR;
-				INFOPLIST_FILE = Brandent/Info.plist;
+				INFOPLIST_FILE = Brandent/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -497,7 +537,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = 3QN7DG53LR;
-				INFOPLIST_FILE = Brandent/Info.plist;
+				INFOPLIST_FILE = Brandent/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
