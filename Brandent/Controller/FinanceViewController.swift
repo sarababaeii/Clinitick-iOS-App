@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SecondViewController.swift
 //  Brandent
 //
 //  Created by Sara Babaei on 9/13/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class FinanceViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

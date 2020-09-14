@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D2E250FE8BB00C7824A /* ProfileViewController.swift */; };
+		03036D31250FE8F500C7824A /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D30250FE8F500C7824A /* AddViewController.swift */; };
+		03036D33250FE92400C7824A /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D32250FE92400C7824A /* TasksViewController.swift */; };
+		0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0310F44F250FF577008B3E5B /* CustomUIView.swift */; };
 		03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB0250E76D6003CBE49 /* AppDelegate.swift */; };
 		03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB2250E76D6003CBE49 /* SceneDelegate.swift */; };
-		03749EB5250E76D6003CBE49 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB4250E76D6003CBE49 /* FirstViewController.swift */; };
-		03749EB7250E76D6003CBE49 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB6250E76D6003CBE49 /* SecondViewController.swift */; };
+		03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB4250E76D6003CBE49 /* HomeViewController.swift */; };
+		03749EB7250E76D6003CBE49 /* FinanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB6250E76D6003CBE49 /* FinanceViewController.swift */; };
 		03749EBA250E76D6003CBE49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03749EB8250E76D6003CBE49 /* Main.storyboard */; };
 		03749EBD250E76D6003CBE49 /* Brandent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03749EBB250E76D6003CBE49 /* Brandent.xcdatamodeld */; };
 		03749EBF250E76D7003CBE49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03749EBE250E76D7003CBE49 /* Assets.xcassets */; };
@@ -43,11 +47,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03036D2E250FE8BB00C7824A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		03036D30250FE8F500C7824A /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		03036D32250FE92400C7824A /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		0310F44F250FF577008B3E5B /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		03749EAD250E76D6003CBE49 /* Brandent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brandent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03749EB0250E76D6003CBE49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03749EB2250E76D6003CBE49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		03749EB4250E76D6003CBE49 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		03749EB6250E76D6003CBE49 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		03749EB4250E76D6003CBE49 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		03749EB6250E76D6003CBE49 /* FinanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceViewController.swift; sourceTree = "<group>"; };
 		03749EB9250E76D6003CBE49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03749EBC250E76D6003CBE49 /* Brandent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Brandent.xcdatamodel; sourceTree = "<group>"; };
 		03749EBE250E76D7003CBE49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -144,8 +152,11 @@
 		03749EE5250E76EA003CBE49 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				03749EB4250E76D6003CBE49 /* FirstViewController.swift */,
-				03749EB6250E76D6003CBE49 /* SecondViewController.swift */,
+				03749EB4250E76D6003CBE49 /* HomeViewController.swift */,
+				03749EB6250E76D6003CBE49 /* FinanceViewController.swift */,
+				03036D2E250FE8BB00C7824A /* ProfileViewController.swift */,
+				03036D30250FE8F500C7824A /* AddViewController.swift */,
+				03036D32250FE92400C7824A /* TasksViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -196,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				03749EFF250EA8AE003CBE49 /* CustomTextField.swift */,
+				0310F44F250FF577008B3E5B /* CustomUIView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -336,12 +348,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03749EB7250E76D6003CBE49 /* SecondViewController.swift in Sources */,
-				03749EB5250E76D6003CBE49 /* FirstViewController.swift in Sources */,
+				03749EB7250E76D6003CBE49 /* FinanceViewController.swift in Sources */,
+				0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */,
+				03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */,
+				03036D31250FE8F500C7824A /* AddViewController.swift in Sources */,
 				03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */,
 				03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */,
+				03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */,
 				03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */,
 				03749EBD250E76D6003CBE49 /* Brandent.xcdatamodeld in Sources */,
+				03036D33250FE92400C7824A /* TasksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
