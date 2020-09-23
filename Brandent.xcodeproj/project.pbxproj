@@ -11,6 +11,9 @@
 		03036D31250FE8F500C7824A /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D30250FE8F500C7824A /* AddViewController.swift */; };
 		03036D33250FE92400C7824A /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D32250FE92400C7824A /* TasksViewController.swift */; };
 		0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0310F44F250FF577008B3E5B /* CustomUIView.swift */; };
+		035540E4251624A8003B9638 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E3251624A8003B9638 /* CustomImageView.swift */; };
+		035540E625162725003B9638 /* CustmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E525162725003B9638 /* CustmButton.swift */; };
+		035D7BAE251BEBC3001DFFD9 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035D7BAD251BEBC3001DFFD9 /* CustomLabel.swift */; };
 		03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB0250E76D6003CBE49 /* AppDelegate.swift */; };
 		03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB2250E76D6003CBE49 /* SceneDelegate.swift */; };
 		03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB4250E76D6003CBE49 /* HomeViewController.swift */; };
@@ -27,6 +30,11 @@
 		03749EFC250EA611003CBE49 /* Vazir-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03749EF7250EA611003CBE49 /* Vazir-Thin.ttf */; };
 		03749EFD250EA611003CBE49 /* Vazir-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03749EF8250EA611003CBE49 /* Vazir-Light.ttf */; };
 		03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EFF250EA8AE003CBE49 /* CustomTextField.swift */; };
+		03AF9395251653BA008DD4A0 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF9394251653BA008DD4A0 /* DataController.swift */; };
+		03AF9397251656C0008DD4A0 /* Dentist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF9396251656C0008DD4A0 /* Dentist.swift */; };
+		03AF9399251657F4008DD4A0 /* Clinic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF9398251657F4008DD4A0 /* Clinic.swift */; };
+		03AF939B251658C5008DD4A0 /* Speciality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF939A251658C5008DD4A0 /* Speciality.swift */; };
+		03AF939D25165900008DD4A0 /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF939C25165900008DD4A0 /* Disease.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +59,9 @@
 		03036D30250FE8F500C7824A /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		03036D32250FE92400C7824A /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		0310F44F250FF577008B3E5B /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
+		035540E3251624A8003B9638 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		035540E525162725003B9638 /* CustmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustmButton.swift; sourceTree = "<group>"; };
+		035D7BAD251BEBC3001DFFD9 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		03749EAD250E76D6003CBE49 /* Brandent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brandent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03749EB0250E76D6003CBE49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03749EB2250E76D6003CBE49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +84,11 @@
 		03749EF7250EA611003CBE49 /* Vazir-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Thin.ttf"; sourceTree = "<group>"; };
 		03749EF8250EA611003CBE49 /* Vazir-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Light.ttf"; sourceTree = "<group>"; };
 		03749EFF250EA8AE003CBE49 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		03AF9394251653BA008DD4A0 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		03AF9396251656C0008DD4A0 /* Dentist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dentist.swift; sourceTree = "<group>"; };
+		03AF9398251657F4008DD4A0 /* Clinic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clinic.swift; sourceTree = "<group>"; };
+		03AF939A251658C5008DD4A0 /* Speciality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speciality.swift; sourceTree = "<group>"; };
+		03AF939C25165900008DD4A0 /* Disease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +173,7 @@
 				03036D2E250FE8BB00C7824A /* ProfileViewController.swift */,
 				03036D30250FE8F500C7824A /* AddViewController.swift */,
 				03036D32250FE92400C7824A /* TasksViewController.swift */,
+				03AF9394251653BA008DD4A0 /* DataController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -173,6 +190,10 @@
 		03749EE7250E76F9003CBE49 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				03AF9396251656C0008DD4A0 /* Dentist.swift */,
+				03AF9398251657F4008DD4A0 /* Clinic.swift */,
+				03AF939A251658C5008DD4A0 /* Speciality.swift */,
+				03AF939C25165900008DD4A0 /* Disease.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +229,9 @@
 			children = (
 				03749EFF250EA8AE003CBE49 /* CustomTextField.swift */,
 				0310F44F250FF577008B3E5B /* CustomUIView.swift */,
+				035540E3251624A8003B9638 /* CustomImageView.swift */,
+				035540E525162725003B9638 /* CustmButton.swift */,
+				035D7BAD251BEBC3001DFFD9 /* CustomLabel.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -348,16 +372,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03AF9399251657F4008DD4A0 /* Clinic.swift in Sources */,
+				035D7BAE251BEBC3001DFFD9 /* CustomLabel.swift in Sources */,
 				03749EB7250E76D6003CBE49 /* FinanceViewController.swift in Sources */,
+				03AF939B251658C5008DD4A0 /* Speciality.swift in Sources */,
 				0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */,
 				03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */,
+				03AF939D25165900008DD4A0 /* Disease.swift in Sources */,
 				03036D31250FE8F500C7824A /* AddViewController.swift in Sources */,
+				035540E625162725003B9638 /* CustmButton.swift in Sources */,
 				03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */,
 				03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */,
 				03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */,
+				035540E4251624A8003B9638 /* CustomImageView.swift in Sources */,
 				03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */,
 				03749EBD250E76D6003CBE49 /* Brandent.xcdatamodeld in Sources */,
+				03AF9395251653BA008DD4A0 /* DataController.swift in Sources */,
 				03036D33250FE92400C7824A /* TasksViewController.swift in Sources */,
+				03AF9397251656C0008DD4A0 /* Dentist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,4 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="true" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Appointment" representedClassName="Appointment" syncable="YES" codeGenerationType="class">
+        <attribute name="alergies" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="clinic" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="disease" optional="YES" attributeType="Transformable"/>
+        <attribute name="images" optional="YES" attributeType="Binary"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="phone" attributeType="Float" minValueString="11" maxValueString="11" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="price" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="state" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="visit_time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Clinic" representedClassName="Clinic" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Dentist" representedClassName="Dentist" syncable="YES" codeGenerationType="class">
+        <attribute name="disease" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="name" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="speciality" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="DentistFinanceAppointment" representedClassName="DentistFinanceAppointment" syncable="YES" codeGenerationType="class"/>
+    <entity name="DentistFinanceUnknown" representedClassName="DentistFinanceUnknown" syncable="YES" codeGenerationType="class"/>
+    <entity name="Disease" representedClassName="Disease" syncable="YES" codeGenerationType="class">
+        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Patient" representedClassName="Patient" syncable="YES" codeGenerationType="class">
+        <attribute name="alergies" optional="YES" attributeType="String"/>
+        <attribute name="appointments" optional="YES" attributeType="Transformable"/>
+        <attribute name="name" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="phone" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Speciality" representedClassName="Speciality" syncable="YES" codeGenerationType="class">
+        <attribute name="disease" optional="YES" attributeType="Transformable"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Appointment" positionX="-54" positionY="27" width="128" height="193"/>
+        <element name="Clinic" positionX="-18" positionY="108" width="128" height="73"/>
+        <element name="Dentist" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="DentistFinanceAppointment" positionX="-9" positionY="81" width="128" height="43"/>
+        <element name="DentistFinanceUnknown" positionX="36" positionY="135" width="128" height="43"/>
+        <element name="Disease" positionX="0" positionY="117" width="128" height="73"/>
+        <element name="Patient" positionX="-36" positionY="99" width="128" height="103"/>
+        <element name="Speciality" positionX="18" positionY="126" width="128" height="73"/>
+    </elements>
 </model>
