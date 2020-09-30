@@ -31,10 +31,18 @@
 		03749EFD250EA611003CBE49 /* Vazir-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03749EF8250EA611003CBE49 /* Vazir-Light.ttf */; };
 		03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EFF250EA8AE003CBE49 /* CustomTextField.swift */; };
 		03AF9395251653BA008DD4A0 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF9394251653BA008DD4A0 /* DataController.swift */; };
-		03AF9397251656C0008DD4A0 /* Dentist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF9396251656C0008DD4A0 /* Dentist.swift */; };
-		03AF9399251657F4008DD4A0 /* Clinic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF9398251657F4008DD4A0 /* Clinic.swift */; };
-		03AF939B251658C5008DD4A0 /* Speciality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF939A251658C5008DD4A0 /* Speciality.swift */; };
-		03AF939D25165900008DD4A0 /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF939C25165900008DD4A0 /* Disease.swift */; };
+		03BC1F8825251658009749C0 /* Appointment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */; };
+		03BC1F8925251658009749C0 /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F7D25251658009749C0 /* Appointment+CoreDataProperties.swift */; };
+		03BC1F8A25251658009749C0 /* Dentist+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F7E25251658009749C0 /* Dentist+CoreDataClass.swift */; };
+		03BC1F8B25251658009749C0 /* Dentist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F7F25251658009749C0 /* Dentist+CoreDataProperties.swift */; };
+		03BC1F8C25251658009749C0 /* Patient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8025251658009749C0 /* Patient+CoreDataClass.swift */; };
+		03BC1F8D25251658009749C0 /* Patient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8125251658009749C0 /* Patient+CoreDataProperties.swift */; };
+		03BC1F8E25251658009749C0 /* Clinic+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */; };
+		03BC1F8F25251658009749C0 /* Clinic+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8325251658009749C0 /* Clinic+CoreDataProperties.swift */; };
+		03BC1F9025251658009749C0 /* Speciality+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */; };
+		03BC1F9125251658009749C0 /* Speciality+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8525251658009749C0 /* Speciality+CoreDataProperties.swift */; };
+		03BC1F9225251658009749C0 /* Disease+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */; };
+		03BC1F9325251658009749C0 /* Disease+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8725251658009749C0 /* Disease+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,10 +93,18 @@
 		03749EF8250EA611003CBE49 /* Vazir-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Light.ttf"; sourceTree = "<group>"; };
 		03749EFF250EA8AE003CBE49 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		03AF9394251653BA008DD4A0 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		03AF9396251656C0008DD4A0 /* Dentist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dentist.swift; sourceTree = "<group>"; };
-		03AF9398251657F4008DD4A0 /* Clinic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clinic.swift; sourceTree = "<group>"; };
-		03AF939A251658C5008DD4A0 /* Speciality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speciality.swift; sourceTree = "<group>"; };
-		03AF939C25165900008DD4A0 /* Disease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
+		03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		03BC1F7D25251658009749C0 /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03BC1F7E25251658009749C0 /* Dentist+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dentist+CoreDataClass.swift"; sourceTree = "<group>"; };
+		03BC1F7F25251658009749C0 /* Dentist+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dentist+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03BC1F8025251658009749C0 /* Patient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataClass.swift"; sourceTree = "<group>"; };
+		03BC1F8125251658009749C0 /* Patient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clinic+CoreDataClass.swift"; sourceTree = "<group>"; };
+		03BC1F8325251658009749C0 /* Clinic+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clinic+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Speciality+CoreDataClass.swift"; sourceTree = "<group>"; };
+		03BC1F8525251658009749C0 /* Speciality+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Speciality+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disease+CoreDataClass.swift"; sourceTree = "<group>"; };
+		03BC1F8725251658009749C0 /* Disease+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disease+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,10 +206,18 @@
 		03749EE7250E76F9003CBE49 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				03AF9396251656C0008DD4A0 /* Dentist.swift */,
-				03AF9398251657F4008DD4A0 /* Clinic.swift */,
-				03AF939A251658C5008DD4A0 /* Speciality.swift */,
-				03AF939C25165900008DD4A0 /* Disease.swift */,
+				03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */,
+				03BC1F7D25251658009749C0 /* Appointment+CoreDataProperties.swift */,
+				03BC1F7E25251658009749C0 /* Dentist+CoreDataClass.swift */,
+				03BC1F7F25251658009749C0 /* Dentist+CoreDataProperties.swift */,
+				03BC1F8025251658009749C0 /* Patient+CoreDataClass.swift */,
+				03BC1F8125251658009749C0 /* Patient+CoreDataProperties.swift */,
+				03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */,
+				03BC1F8325251658009749C0 /* Clinic+CoreDataProperties.swift */,
+				03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */,
+				03BC1F8525251658009749C0 /* Speciality+CoreDataProperties.swift */,
+				03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */,
+				03BC1F8725251658009749C0 /* Disease+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -372,24 +396,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03AF9399251657F4008DD4A0 /* Clinic.swift in Sources */,
+				03BC1F8B25251658009749C0 /* Dentist+CoreDataProperties.swift in Sources */,
 				035D7BAE251BEBC3001DFFD9 /* CustomLabel.swift in Sources */,
 				03749EB7250E76D6003CBE49 /* FinanceViewController.swift in Sources */,
-				03AF939B251658C5008DD4A0 /* Speciality.swift in Sources */,
 				0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */,
 				03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */,
-				03AF939D25165900008DD4A0 /* Disease.swift in Sources */,
+				03BC1F8A25251658009749C0 /* Dentist+CoreDataClass.swift in Sources */,
+				03BC1F8D25251658009749C0 /* Patient+CoreDataProperties.swift in Sources */,
+				03BC1F8F25251658009749C0 /* Clinic+CoreDataProperties.swift in Sources */,
 				03036D31250FE8F500C7824A /* AddViewController.swift in Sources */,
+				03BC1F9025251658009749C0 /* Speciality+CoreDataClass.swift in Sources */,
 				035540E625162725003B9638 /* CustmButton.swift in Sources */,
 				03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */,
 				03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */,
+				03BC1F9225251658009749C0 /* Disease+CoreDataClass.swift in Sources */,
 				03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */,
+				03BC1F8C25251658009749C0 /* Patient+CoreDataClass.swift in Sources */,
+				03BC1F9325251658009749C0 /* Disease+CoreDataProperties.swift in Sources */,
+				03BC1F8925251658009749C0 /* Appointment+CoreDataProperties.swift in Sources */,
+				03BC1F9125251658009749C0 /* Speciality+CoreDataProperties.swift in Sources */,
+				03BC1F8825251658009749C0 /* Appointment+CoreDataClass.swift in Sources */,
 				035540E4251624A8003B9638 /* CustomImageView.swift in Sources */,
 				03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */,
 				03749EBD250E76D6003CBE49 /* Brandent.xcdatamodeld in Sources */,
+				03BC1F8E25251658009749C0 /* Clinic+CoreDataClass.swift in Sources */,
 				03AF9395251653BA008DD4A0 /* DataController.swift in Sources */,
 				03036D33250FE92400C7824A /* TasksViewController.swift in Sources */,
-				03AF9397251656C0008DD4A0 /* Dentist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
