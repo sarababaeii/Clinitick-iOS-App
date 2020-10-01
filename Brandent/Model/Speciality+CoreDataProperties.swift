@@ -2,7 +2,7 @@
 //  Speciality+CoreDataProperties.swift
 //  Brandent
 //
-//  Created by Sara Babaei on 9/30/20.
+//  Created by Sara Babaei on 10/1/20.
 //  Copyright © 2020 Sara Babaei. All rights reserved.
 //
 //
@@ -17,9 +17,26 @@ extension Speciality {
         return NSFetchRequest<Speciality>(entityName: "Speciality")
     }
 
-    @NSManaged public var title: String?
     @NSManaged public var id: NSDecimalNumber?
+    @NSManaged public var title: String?
     @NSManaged public var dentist: Dentist?
-    @NSManaged public var diseases: Disease?
+    @NSManaged public var diseases: NSSet?
+
+}
+
+// MARK: Generated accessors for diseases
+extension Speciality {
+
+    @objc(addDiseasesObject:)
+    @NSManaged public func addToDiseases(_ value: Disease)
+
+    @objc(removeDiseasesObject:)
+    @NSManaged public func removeFromDiseases(_ value: Disease)
+
+    @objc(addDiseases:)
+    @NSManaged public func addToDiseases(_ values: NSSet)
+
+    @objc(removeDiseases:)
+    @NSManaged public func removeFromDiseases(_ values: NSSet)
 
 }

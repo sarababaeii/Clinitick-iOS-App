@@ -14,15 +14,15 @@
     <entity name="Clinic" representedClassName="Clinic" syncable="YES">
         <attribute name="id" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="appointments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Appointment" inverseName="clinic" inverseEntity="Appointment"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="clinic" inverseEntity="Appointment"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="clinics" inverseEntity="Dentist"/>
     </entity>
     <entity name="Dentist" representedClassName="Dentist" syncable="YES">
         <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="name" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="clinics" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Clinic" inverseName="dentist" inverseEntity="Clinic"/>
-        <relationship name="diseases" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disease" inverseName="dentist" inverseEntity="Disease"/>
-        <relationship name="specialities" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Speciality" inverseName="dentist" inverseEntity="Speciality"/>
+        <relationship name="clinics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clinic" inverseName="dentist" inverseEntity="Clinic"/>
+        <relationship name="diseases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disease" inverseName="dentist" inverseEntity="Disease"/>
+        <relationship name="specialities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Speciality" inverseName="dentist" inverseEntity="Speciality"/>
     </entity>
     <entity name="DentistFinanceAppointment" representedClassName="DentistFinanceAppointment" syncable="YES" codeGenerationType="class"/>
     <entity name="DentistFinanceUnknown" representedClassName="DentistFinanceUnknown" syncable="YES" codeGenerationType="class"/>
@@ -30,22 +30,22 @@
         <attribute name="id" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="title" attributeType="String" defaultValueString="toothace"/>
-        <relationship name="appointments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Appointment" inverseName="disease" inverseEntity="Appointment"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="disease" inverseEntity="Appointment"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="diseases" inverseEntity="Dentist"/>
-        <relationship name="specialities" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Speciality" inverseName="diseases" inverseEntity="Speciality"/>
+        <relationship name="specialities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Speciality" inverseName="diseases" inverseEntity="Speciality"/>
     </entity>
     <entity name="Patient" representedClassName="Patient" syncable="YES">
         <attribute name="alergies" optional="YES" attributeType="String"/>
         <attribute name="id" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="name" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="phone" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="history" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Appointment" inverseName="patient" inverseEntity="Appointment"/>
+        <attribute name="name" attributeType="String" defaultValueString="بیمار"/>
+        <attribute name="phone" attributeType="String" minValueString="11" maxValueString="11" defaultValueString="00000000000"/>
+        <relationship name="history" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="patient" inverseEntity="Appointment"/>
     </entity>
     <entity name="Speciality" representedClassName="Speciality" syncable="YES">
         <attribute name="id" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="specialities" inverseEntity="Dentist"/>
-        <relationship name="diseases" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disease" inverseName="specialities" inverseEntity="Disease"/>
+        <relationship name="diseases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disease" inverseName="specialities" inverseEntity="Disease"/>
     </entity>
     <elements>
         <element name="Appointment" positionX="-60.80078125" positionY="-254.6015625" width="128" height="178"/>

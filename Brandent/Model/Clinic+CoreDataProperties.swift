@@ -2,7 +2,7 @@
 //  Clinic+CoreDataProperties.swift
 //  Brandent
 //
-//  Created by Sara Babaei on 9/30/20.
+//  Created by Sara Babaei on 10/1/20.
 //  Copyright © 2020 Sara Babaei. All rights reserved.
 //
 //
@@ -19,7 +19,24 @@ extension Clinic {
 
     @NSManaged public var id: NSDecimalNumber?
     @NSManaged public var name: String?
-    @NSManaged public var appointments: Appointment?
+    @NSManaged public var appointments: NSSet?
     @NSManaged public var dentist: Dentist?
+
+}
+
+// MARK: Generated accessors for appointments
+extension Clinic {
+
+    @objc(addAppointmentsObject:)
+    @NSManaged public func addToAppointments(_ value: Appointment)
+
+    @objc(removeAppointmentsObject:)
+    @NSManaged public func removeFromAppointments(_ value: Appointment)
+
+    @objc(addAppointments:)
+    @NSManaged public func addToAppointments(_ values: NSSet)
+
+    @objc(removeAppointments:)
+    @NSManaged public func removeFromAppointments(_ values: NSSet)
 
 }

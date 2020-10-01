@@ -12,5 +12,9 @@ import CoreData
 
 @objc(Patient)
 public class Patient: NSManagedObject {
-
+//    init(name: Float, phone: Float) {
+//        super.init()
+//        self.name = name
+//        self.phone = phone
+//    }
 }

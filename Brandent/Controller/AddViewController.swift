@@ -11,6 +11,12 @@ import UIKit
 
 class AddViewController: UIViewController {
 
+    @IBOutlet weak var patientName: CustomTextField!
+    @IBOutlet weak var patientPhoneNumber: CustomTextField!
+    @IBOutlet weak var disease: CustomTextField!
+    @IBOutlet weak var price: CustomTextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
