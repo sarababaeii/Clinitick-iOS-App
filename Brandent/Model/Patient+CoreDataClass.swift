@@ -12,6 +12,14 @@ import CoreData
 
 @objc(Patient)
 public class Patient: NSManagedObject {
+    
+    @available(iOS 13.0, *)
+    static func getPatient(phone: String, name: String, alergies: String?) -> Patient {
+        if let patient = Info.dataController.fetchPatient(phone: phone) {
+            return patient as! Patient
+        }
+        return Info.dataController.createPatient(name: name, phone: phone, alergies: alergies)
+    }
 //    init(name: Float, phone: Float) {
 //        super.init()
 //        self.name = name

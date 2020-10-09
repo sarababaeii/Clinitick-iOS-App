@@ -24,8 +24,6 @@
         <relationship name="diseases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disease" inverseName="dentist" inverseEntity="Disease"/>
         <relationship name="specialities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Speciality" inverseName="dentist" inverseEntity="Speciality"/>
     </entity>
-    <entity name="DentistFinanceAppointment" representedClassName="DentistFinanceAppointment" syncable="YES" codeGenerationType="class"/>
-    <entity name="DentistFinanceUnknown" representedClassName="DentistFinanceUnknown" syncable="YES" codeGenerationType="class"/>
     <entity name="Disease" representedClassName="Disease" syncable="YES">
         <attribute name="id" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
@@ -36,7 +34,7 @@
     </entity>
     <entity name="Patient" representedClassName="Patient" syncable="YES">
         <attribute name="alergies" optional="YES" attributeType="String"/>
-        <attribute name="id" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="id" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="name" attributeType="String" defaultValueString="بیمار"/>
         <attribute name="phone" attributeType="String" minValueString="11" maxValueString="11" defaultValueString="00000000000"/>
         <relationship name="history" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="patient" inverseEntity="Appointment"/>
@@ -51,8 +49,6 @@
         <element name="Appointment" positionX="-60.80078125" positionY="-254.6015625" width="128" height="178"/>
         <element name="Clinic" positionX="-88.50390625" positionY="-444.4140625" width="128" height="103"/>
         <element name="Dentist" positionX="-415.96484375" positionY="-429.25390625" width="128" height="118"/>
-        <element name="DentistFinanceAppointment" positionX="-717.48046875" positionY="-391.71875" width="128" height="43"/>
-        <element name="DentistFinanceUnknown" positionX="-716.578125" positionY="-315.23046875" width="128" height="43"/>
         <element name="Disease" positionX="-251.5390625" positionY="-259.546875" width="128" height="133"/>
         <element name="Patient" positionX="-54.2265625" positionY="-23.95703125" width="128" height="118"/>
         <element name="Speciality" positionX="-484.1875" positionY="-229.58203125" width="128" height="103"/>

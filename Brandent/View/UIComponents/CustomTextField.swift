@@ -10,6 +10,16 @@ import Foundation
 import UIKit
 
 @IBDesignable class CustomTextField: UITextField {
+    @IBInspectable var placeHolderColor: UIColor = UIColor(red: 202, green: 202, blue: 202, alpha: 1) {
+        didSet {
+            self.setPlaceHolderColor(string: self.placeholder!, color: self.placeHolderColor)
+        }
+    }
+    
+    func setPlaceHolderColor(string: String, color: UIColor) {
+        self.attributedPlaceholder = NSAttributedString(string: string, attributes:[NSAttributedString.Key.foregroundColor: color])
+    }
+    
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             self.layer.cornerRadius = self.cornerRadius

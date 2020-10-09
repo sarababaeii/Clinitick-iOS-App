@@ -13,7 +13,6 @@
 		0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0310F44F250FF577008B3E5B /* CustomUIView.swift */; };
 		035540E4251624A8003B9638 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E3251624A8003B9638 /* CustomImageView.swift */; };
 		035540E625162725003B9638 /* CustmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E525162725003B9638 /* CustmButton.swift */; };
-		035D7BAE251BEBC3001DFFD9 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035D7BAD251BEBC3001DFFD9 /* CustomLabel.swift */; };
 		03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB0250E76D6003CBE49 /* AppDelegate.swift */; };
 		03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB2250E76D6003CBE49 /* SceneDelegate.swift */; };
 		03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB4250E76D6003CBE49 /* HomeViewController.swift */; };
@@ -31,6 +30,7 @@
 		03749EFD250EA611003CBE49 /* Vazir-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03749EF8250EA611003CBE49 /* Vazir-Light.ttf */; };
 		03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EFF250EA8AE003CBE49 /* CustomTextField.swift */; };
 		03AF9395251653BA008DD4A0 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF9394251653BA008DD4A0 /* DataController.swift */; };
+		03B032E22530D78800CF1075 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B032E12530D78800CF1075 /* Info.swift */; };
 		03BC1F8825251658009749C0 /* Appointment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */; };
 		03BC1F8925251658009749C0 /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F7D25251658009749C0 /* Appointment+CoreDataProperties.swift */; };
 		03BC1F8A25251658009749C0 /* Dentist+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F7E25251658009749C0 /* Dentist+CoreDataClass.swift */; };
@@ -69,7 +69,6 @@
 		0310F44F250FF577008B3E5B /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		035540E3251624A8003B9638 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		035540E525162725003B9638 /* CustmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustmButton.swift; sourceTree = "<group>"; };
-		035D7BAD251BEBC3001DFFD9 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		03749EAD250E76D6003CBE49 /* Brandent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brandent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03749EB0250E76D6003CBE49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03749EB2250E76D6003CBE49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +92,7 @@
 		03749EF8250EA611003CBE49 /* Vazir-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Light.ttf"; sourceTree = "<group>"; };
 		03749EFF250EA8AE003CBE49 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		03AF9394251653BA008DD4A0 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		03B032E12530D78800CF1075 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03BC1F7D25251658009749C0 /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		03BC1F7E25251658009749C0 /* Dentist+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dentist+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -218,6 +218,7 @@
 				03BC1F8525251658009749C0 /* Speciality+CoreDataProperties.swift */,
 				03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */,
 				03BC1F8725251658009749C0 /* Disease+CoreDataProperties.swift */,
+				03B032E12530D78800CF1075 /* Info.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,7 +256,6 @@
 				0310F44F250FF577008B3E5B /* CustomUIView.swift */,
 				035540E3251624A8003B9638 /* CustomImageView.swift */,
 				035540E525162725003B9638 /* CustmButton.swift */,
-				035D7BAD251BEBC3001DFFD9 /* CustomLabel.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -397,9 +397,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				03BC1F8B25251658009749C0 /* Dentist+CoreDataProperties.swift in Sources */,
-				035D7BAE251BEBC3001DFFD9 /* CustomLabel.swift in Sources */,
 				03749EB7250E76D6003CBE49 /* FinanceViewController.swift in Sources */,
 				0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */,
+				03B032E22530D78800CF1075 /* Info.swift in Sources */,
 				03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */,
 				03BC1F8A25251658009749C0 /* Dentist+CoreDataClass.swift in Sources */,
 				03BC1F8D25251658009749C0 /* Patient+CoreDataProperties.swift in Sources */,
