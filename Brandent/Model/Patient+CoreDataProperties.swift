@@ -20,7 +20,7 @@ extension Patient {
     @NSManaged public var alergies: String?
     @NSManaged public var id: NSDecimalNumber?
     @NSManaged public var name: String?
-    @NSManaged public var phone: String?
+    @NSManaged public var phone: String
     @NSManaged public var history: NSSet?
 
 }

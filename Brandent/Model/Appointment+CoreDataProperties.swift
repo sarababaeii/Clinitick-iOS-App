@@ -21,10 +21,10 @@ extension Appointment {
     @NSManaged public var images: Data?
     @NSManaged public var notes: String?
     @NSManaged public var price: NSDecimalNumber?
-    @NSManaged public var state: String?
-    @NSManaged public var visit_time: Date?
+    @NSManaged public var state: String
+    @NSManaged public var visit_time: Date
     @NSManaged public var clinic: Clinic?
     @NSManaged public var disease: Disease?
-    @NSManaged public var patient: Patient?
+    @NSManaged public var patient: Patient
 
 }

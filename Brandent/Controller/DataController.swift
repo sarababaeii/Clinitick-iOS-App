@@ -50,8 +50,7 @@ class DataController {
     
     func createAppointment(patient: Patient, disease: Disease, price: Int, visit_time: Date, notes: String?) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
-        appointment.patient = patient
-        appointment.disease = disease
+        
         if let price = price as? NSDecimalNumber {
             appointment.price = price
         }
@@ -59,25 +58,41 @@ class DataController {
         if let notes = notes {
             appointment.notes = notes
         }
+        appointment.setState()
+        appointment.setID()
+        appointment.setPatient(patient: patient)
+        appointment.setDisease(disease: disease)
+        
+        //TODO: set image
+        //TODO: set clinic
+        
         saveContext()
         return appointment
     }
     
     func createPatient(name: String, phone: String, alergies: String?) -> Patient {
         let patient = Patient(entity: patientEntity, insertInto: context)
+        
         patient.name = name
         patient.phone = phone
         if let alergies = alergies {
             patient.alergies = alergies
         }
+        
+        //TODO: set id
+        
         saveContext()
         return patient
     }
     
     func createDisease(title: String, price: Int) -> Disease {
         let disease = Disease(entity: diseaseEntity, insertInto: context)
+        
         disease.title = title
         disease.price = price as? NSDecimalNumber
+        
+        //TODO: set for drntist?
+        
         saveContext()
         return disease
     }
@@ -97,7 +112,6 @@ class DataController {
     func fetchPatient(phone: String) -> NSManagedObject? { //English and Persian
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.patient.rawValue)
         request.predicate = NSPredicate(format: "phone = %@", phone)
-//        request.predicate = NSPredicate(format: "createdAt = %@", startOfDay(for: date) as NSDate)
         request.returnsObjectsAsFaults = false
         do{
             let result = try context.fetch(request) as! [NSManagedObject]
@@ -111,7 +125,6 @@ class DataController {
     func fetchDisease(title: String) -> NSManagedObject? { //English and Persian
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.disease.rawValue)
         request.predicate = NSPredicate(format: "title = %@", title)
-//        request.predicate = NSPredicate(format: "createdAt = %@", startOfDay(for: date) as NSDate)
         request.returnsObjectsAsFaults = false
         do{
             let result = try context.fetch(request) as! [NSManagedObject]
@@ -123,7 +136,15 @@ class DataController {
     }
     
     func loadData() {
-        print(fetchAppointments()!)
+        guard let appointments = fetchAppointments() as? [Appointment] else {
+            return
+        }
+        for appointment in appointments {
+            print(appointment)
+            print(appointment.patient.name as Any)
+            print(appointment.patient.phone as Any)
+            print("***\n")
+        }
     }
 }
 

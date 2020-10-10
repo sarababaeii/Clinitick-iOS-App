@@ -13,6 +13,8 @@
 		0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0310F44F250FF577008B3E5B /* CustomUIView.swift */; };
 		035540E4251624A8003B9638 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E3251624A8003B9638 /* CustomImageView.swift */; };
 		035540E625162725003B9638 /* CustmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E525162725003B9638 /* CustmButton.swift */; };
+		0363E686253235980095AF7C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363E685253235980095AF7C /* Color.swift */; };
+		0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */; };
 		03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB0250E76D6003CBE49 /* AppDelegate.swift */; };
 		03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB2250E76D6003CBE49 /* SceneDelegate.swift */; };
 		03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB4250E76D6003CBE49 /* HomeViewController.swift */; };
@@ -69,6 +71,8 @@
 		0310F44F250FF577008B3E5B /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		035540E3251624A8003B9638 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		035540E525162725003B9638 /* CustmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustmButton.swift; sourceTree = "<group>"; };
+		0363E685253235980095AF7C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		03749EAD250E76D6003CBE49 /* Brandent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brandent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03749EB0250E76D6003CBE49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03749EB2250E76D6003CBE49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 			children = (
 				03749EFE250EA893003CBE49 /* UIComponents */,
 				03749EB8250E76D6003CBE49 /* Main.storyboard */,
+				0363E685253235980095AF7C /* Color.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 				0310F44F250FF577008B3E5B /* CustomUIView.swift */,
 				035540E3251624A8003B9638 /* CustomImageView.swift */,
 				035540E525162725003B9638 /* CustmButton.swift */,
+				0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -411,8 +417,10 @@
 				03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */,
 				03BC1F9225251658009749C0 /* Disease+CoreDataClass.swift in Sources */,
 				03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */,
+				0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */,
 				03BC1F8C25251658009749C0 /* Patient+CoreDataClass.swift in Sources */,
 				03BC1F9325251658009749C0 /* Disease+CoreDataProperties.swift in Sources */,
+				0363E686253235980095AF7C /* Color.swift in Sources */,
 				03BC1F8925251658009749C0 /* Appointment+CoreDataProperties.swift in Sources */,
 				03BC1F9125251658009749C0 /* Speciality+CoreDataProperties.swift in Sources */,
 				03BC1F8825251658009749C0 /* Appointment+CoreDataClass.swift in Sources */,
