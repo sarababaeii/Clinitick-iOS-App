@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 enum State: String {
-    case todo = "todo"
+    case todo = "unknown"
     case done = "done"
     case canceled = "canceled"
 }
