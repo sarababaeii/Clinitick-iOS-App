@@ -28,7 +28,7 @@
         <!--Home View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="HomeViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9pv-A4-QxB" customClass="HomeViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,7 +166,7 @@
         <!--Finance View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="FinanceViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FinanceViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" customClass="FinanceViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -394,7 +394,7 @@
         <!--Add View Controller-->
         <scene sceneID="Skb-cg-C0L">
             <objects>
-                <viewController id="m7O-Q4-yfr" customClass="AddViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddViewController" modalPresentationStyle="currentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m7O-Q4-yfr" customClass="AddViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i9K-7I-lEo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -415,6 +415,9 @@
                                         <state key="normal" title="بازگشت" image="chevron.left" catalog="system">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="returnBack:" destination="m7O-Q4-yfr" eventType="touchUpInside" id="H5J-Jd-exm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -434,8 +437,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KI9-9V-1z9" userLabel="View1">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1170"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="نام کامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcQ-hK-vC7" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="نام کامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcQ-hK-vC7" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="16" width="350" height="54"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="CfE-IB-8FT"/>
                                                 </constraints>
@@ -451,13 +455,21 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" red="0.52941176470588236" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="editingStarted:" destination="m7O-Q4-yfr" eventType="editingDidBegin" id="tn4-bD-bcG"/>
+                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="nIz-x0-0aX"/>
+                                                </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="شماره موبایل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NDV-wb-NMp" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="شماره موبایل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NDV-wb-NMp" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="86" width="350" height="54"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="aPq-3Q-HpC"/>
                                                 </constraints>
@@ -474,12 +486,17 @@
                                                         <color key="value" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="editingStarted:" destination="m7O-Q4-yfr" eventType="editingDidBegin" id="R87-rY-LyR"/>
+                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="7lD-tG-ZBE"/>
+                                                </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="دلیل ویزیت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qfi-eJ-0Mu" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="دلیل ویزیت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qfi-eJ-0Mu" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="156" width="350" height="54"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="tSe-4I-JzD"/>
                                                 </constraints>
@@ -496,12 +513,17 @@
                                                         <color key="value" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="editingStarted:" destination="m7O-Q4-yfr" eventType="editingDidBegin" id="bI3-Ja-Zjh"/>
+                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="Zsb-cl-rW7"/>
+                                                </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="۲۰۰.۰۰۰ تومان" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LLZ-vj-4ku" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه‌ی درمان" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LLZ-vj-4ku" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="226" width="350" height="54"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="bzI-6d-cdU"/>
                                                 </constraints>
@@ -518,13 +540,21 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                        <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="editingStarted:" destination="m7O-Q4-yfr" eventType="editingDidBegin" id="QbA-jt-2g2"/>
+                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="8mK-Q8-dX9"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9MN-ZI-A23" userLabel="View0.0">
                                                 <rect key="frame" x="40" y="296" width="350" height="54"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="آلرژی و حساسیت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="761-b2-eWl" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="آلرژی و حساسیت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="761-b2-eWl" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                                         <rect key="frame" x="115" y="0.0" width="235" height="54"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                         <userDefinedRuntimeAttributes>
@@ -538,9 +568,13 @@
                                                                 <color key="value" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="editingStarted:" destination="m7O-Q4-yfr" eventType="editingDidBegin" id="sGB-3k-aLL"/>
+                                                            <action selector="next:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="Pso-bJ-eqi"/>
+                                                        </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgD-gM-ucX" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
                                                         <rect key="frame" x="50" y="7" width="40" height="40"/>
@@ -603,8 +637,9 @@
                                                     <constraint firstAttribute="bottom" secondItem="761-b2-eWl" secondAttribute="bottom" id="Zrj-WC-fAT"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="تاریخ و ساعت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2vj-oN-8gQ" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2vj-oN-8gQ" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="366" width="350" height="54"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="4MQ-nB-Kco"/>
                                                 </constraints>
@@ -622,10 +657,13 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="calendar"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="iconPadding">
-                                                        <real key="value" value="5"/>
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="sidePadding">
+                                                        <real key="value" value="45"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
@@ -635,8 +673,9 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="اطلاعات تکمیلی" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mib-xi-f17" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="اطلاعات تکمیلی" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mib-xi-f17" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="436" width="350" height="54"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="bdP-j5-rId"/>
                                                 </constraints>
@@ -653,15 +692,49 @@
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="editingStarted:" destination="m7O-Q4-yfr" eventType="editingDidBegin" id="ncm-4W-NGl"/>
+                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="G0A-9H-k0p"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="ibz-CJ-WJb" userLabel="View1.1" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="506" width="350" height="96"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieH-m4-scf">
+                                                        <rect key="frame" x="157" y="16" width="36" height="33"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="36" id="QTg-2h-EOP"/>
+                                                            <constraint firstAttribute="height" constant="33" id="xVN-Xp-gjy"/>
+                                                        </constraints>
+                                                        <state key="normal" image="addPhoto"/>
+                                                        <connections>
+                                                            <action selector="addPhoto:" destination="m7O-Q4-yfr" eventType="touchUpInside" id="Cp3-bX-dLf"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHf-ln-tlr">
+                                                        <rect key="frame" x="137.66666666666666" y="55" width="75" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="25" id="ckv-fR-6BR"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="14"/>
+                                                        <state key="normal" title="افزودن تصویر">
+                                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="addPhoto:" destination="m7O-Q4-yfr" eventType="touchUpInside" id="8kB-N7-UEf"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
+                                                    <constraint firstItem="HHf-ln-tlr" firstAttribute="centerX" secondItem="ibz-CJ-WJb" secondAttribute="centerX" id="AUg-ib-oty"/>
                                                     <constraint firstAttribute="height" constant="96" id="D2o-cK-Q0i"/>
+                                                    <constraint firstAttribute="bottom" secondItem="HHf-ln-tlr" secondAttribute="bottom" constant="16" id="ZXB-5v-WRb"/>
+                                                    <constraint firstItem="ieH-m4-scf" firstAttribute="centerX" secondItem="ibz-CJ-WJb" secondAttribute="centerX" id="eg3-h1-HQj"/>
+                                                    <constraint firstItem="ieH-m4-scf" firstAttribute="top" secondItem="ibz-CJ-WJb" secondAttribute="top" constant="16" id="laZ-nP-huB"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaX-YR-SEb" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
@@ -801,7 +874,7 @@
         <!--Tasks View Controller-->
         <scene sceneID="kQe-B6-BC8">
             <objects>
-                <viewController id="yHm-mx-6B1" customClass="TasksViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TasksViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yHm-mx-6B1" customClass="TasksViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uio-We-SF2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -818,7 +891,7 @@
         <!--Profile View Controller-->
         <scene sceneID="m5Q-mC-NEQ">
             <objects>
-                <viewController id="JyJ-pc-ew0" customClass="ProfileViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JyJ-pc-ew0" customClass="ProfileViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QTj-CC-oNf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1065,6 +1138,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addPhoto" width="36" height="33"/>
         <image name="black_close" width="10" height="10"/>
         <image name="black_tick" width="14" height="10"/>
         <image name="calendar" width="18" height="18"/>

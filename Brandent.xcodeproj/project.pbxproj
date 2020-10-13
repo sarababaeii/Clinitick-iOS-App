@@ -31,6 +31,7 @@
 		03749EFC250EA611003CBE49 /* Vazir-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03749EF7250EA611003CBE49 /* Vazir-Thin.ttf */; };
 		03749EFD250EA611003CBE49 /* Vazir-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03749EF8250EA611003CBE49 /* Vazir-Light.ttf */; };
 		03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EFF250EA8AE003CBE49 /* CustomTextField.swift */; };
+		039E2E3325359EDC00F6D5EE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039E2E3225359EDC00F6D5EE /* StringExtension.swift */; };
 		03AF9395251653BA008DD4A0 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF9394251653BA008DD4A0 /* DataController.swift */; };
 		03B032E22530D78800CF1075 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B032E12530D78800CF1075 /* Info.swift */; };
 		03BC1F8825251658009749C0 /* Appointment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */; };
@@ -95,6 +96,7 @@
 		03749EF7250EA611003CBE49 /* Vazir-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Thin.ttf"; sourceTree = "<group>"; };
 		03749EF8250EA611003CBE49 /* Vazir-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Light.ttf"; sourceTree = "<group>"; };
 		03749EFF250EA8AE003CBE49 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		039E2E3225359EDC00F6D5EE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		03AF9394251653BA008DD4A0 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		03B032E12530D78800CF1075 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -211,18 +213,8 @@
 		03749EE7250E76F9003CBE49 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */,
-				03BC1F7D25251658009749C0 /* Appointment+CoreDataProperties.swift */,
-				03BC1F7E25251658009749C0 /* Dentist+CoreDataClass.swift */,
-				03BC1F7F25251658009749C0 /* Dentist+CoreDataProperties.swift */,
-				03BC1F8025251658009749C0 /* Patient+CoreDataClass.swift */,
-				03BC1F8125251658009749C0 /* Patient+CoreDataProperties.swift */,
-				03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */,
-				03BC1F8325251658009749C0 /* Clinic+CoreDataProperties.swift */,
-				03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */,
-				03BC1F8525251658009749C0 /* Speciality+CoreDataProperties.swift */,
-				03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */,
-				03BC1F8725251658009749C0 /* Disease+CoreDataProperties.swift */,
+				039E2E372535C79D00F6D5EE /* DatabaseModels */,
+				039E2E362535C78E00F6D5EE /* Extensions */,
 				03B032E12530D78800CF1075 /* Info.swift */,
 			);
 			path = Model;
@@ -264,6 +256,49 @@
 				0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */,
 			);
 			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		039E2E362535C78E00F6D5EE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				039E2E3225359EDC00F6D5EE /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		039E2E372535C79D00F6D5EE /* DatabaseModels */ = {
+			isa = PBXGroup;
+			children = (
+				039E2E392535C7EA00F6D5EE /* Extensions */,
+				039E2E382535C7BE00F6D5EE /* Classes */,
+			);
+			path = DatabaseModels;
+			sourceTree = "<group>";
+		};
+		039E2E382535C7BE00F6D5EE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */,
+				03BC1F7E25251658009749C0 /* Dentist+CoreDataClass.swift */,
+				03BC1F8025251658009749C0 /* Patient+CoreDataClass.swift */,
+				03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */,
+				03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */,
+				03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		039E2E392535C7EA00F6D5EE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				03BC1F7D25251658009749C0 /* Appointment+CoreDataProperties.swift */,
+				03BC1F7F25251658009749C0 /* Dentist+CoreDataProperties.swift */,
+				03BC1F8125251658009749C0 /* Patient+CoreDataProperties.swift */,
+				03BC1F8325251658009749C0 /* Clinic+CoreDataProperties.swift */,
+				03BC1F8525251658009749C0 /* Speciality+CoreDataProperties.swift */,
+				03BC1F8725251658009749C0 /* Disease+CoreDataProperties.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +449,7 @@
 				03BC1F9025251658009749C0 /* Speciality+CoreDataClass.swift in Sources */,
 				035540E625162725003B9638 /* CustmButton.swift in Sources */,
 				03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */,
+				039E2E3325359EDC00F6D5EE /* StringExtension.swift in Sources */,
 				03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */,
 				03BC1F9225251658009749C0 /* Disease+CoreDataClass.swift in Sources */,
 				03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */,

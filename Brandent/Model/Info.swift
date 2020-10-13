@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 class Info {
     static var sharedInstance = Info()
     
     @available(iOS 13.0, *)
     static var dataController = DataController()
+    
+    var lastViewController: UIViewController?
 }

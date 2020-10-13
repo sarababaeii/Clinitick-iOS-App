@@ -29,15 +29,14 @@ class AddViewController: UIViewController {
     let selectedAlergyButtonImages = [UIImage(named: "white_close"), UIImage(named: "white_tick")]
     let unselectedAlergyButtonImages = [UIImage(named: "black_close"), UIImage(named: "black_tick")]
     
+    var currentTextField: UITextField?
+    
     //MARK: Logical Variables:
-    var patientName: String?
-    var patientPhoneNumber: String?
-    var disease: String?
-    var price: Int?
     var hasAlergy: Bool = false
-    var alergy: String?
     var date: Date?
-    var notes: String?
+    var appointmentData = ["", "", "", -1, "", ""] as [Any]
+    //0: name, 1: phone, 2: disease, 3: price, 4: alergy, 5: notes
+    
     
     func creatDatePicker() {
         datePicker.calendar = Calendar(identifier: .persian)
@@ -110,33 +109,46 @@ class AddViewController: UIViewController {
         return nil
     }
     
+    @IBAction func editingStarted(_ sender: Any) {
+        if let textField = sender as? UITextField {
+            currentTextField = textField
+        }
+    }
+    
+    @IBAction func next(_ sender: Any) {
+        if let textField = sender as? UITextField, let text = textField.fetchInput() {
+            if textField.tag == 3 {
+                if let price = Int(text) {
+                    appointmentData[textField.tag] = price
+                    print("&& \(price)")
+                    textField.text = "\(String(price).convertEnglishNumToPersianNum()) تومان"
+                }
+            } else {
+                appointmentData[textField.tag] = text
+            }
+            print("$$ \(text)")
+        }
+    }
+    
+    @IBAction func addPhoto(_ sender: Any) {
+        
+    }
+    
     func mustComplete() -> CustomTextField? {
-        if let text = patientNameTextField.fetchInput() {
-            patientName = text
-        } else {
+        if appointmentData[0] as? String == "" {
             return patientNameTextField
         }
-        if let text = patientPhoneNumberTextField.fetchInput() {
-            patientPhoneNumber = text
-        } else {
+        if appointmentData[1] as? String == "" {
             return patientPhoneNumberTextField
         }
-        if let text = diseaseTextField.fetchInput() {
-            disease = text
-        } else {
+        if appointmentData[2] as? String == "" {
             return diseaseTextField
         }
-        if let _ = priceTextField.fetchInput() { //TODO: get price
-            price = 200000
-        } else {
+        if appointmentData[3] as? Int == -1 {
             return priceTextField
         }
-        if hasAlergy {
-            if let text = alergyTextField.fetchInput() {
-                alergy = text
-            } else {
-                return alergyTextField
-            }
+        if hasAlergy && appointmentData[4] as? String == "" {
+            return alergyTextField
         }
         guard let _ = dateTextField.fetchInput() else {
             return dateTextField
@@ -146,13 +158,16 @@ class AddViewController: UIViewController {
     
     @available(iOS 13.0, *)
     @IBAction func submit(_ sender: Any) {
+        next(currentTextField as Any)
+        currentTextField = nil
         if let requiredTextField = mustComplete() {
             submitionError(for: requiredTextField)
             return
         }
-        let _ = Appointment.createAppointment(name: patientName!, phone: patientPhoneNumber!, diseaseTitle: disease!, price: price!, alergies: alergy, visit_time: date!, notes: notes)
+        let _ = Appointment.createAppointment(name: appointmentData[0] as! String, phone: appointmentData[1] as! String, diseaseTitle: appointmentData[2] as! String, price: appointmentData[3] as! Int, alergies: appointmentData[4] as? String, visit_time: date!, notes: appointmentData[5] as? String)
 
         Info.dataController.loadData()
+        back()
     }
     
     func submitionError(for textField: CustomTextField) {
@@ -163,6 +178,14 @@ class AddViewController: UIViewController {
         self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
     }
     
+    @IBAction func returnBack(_ sender: Any) {
+        back()
+    }
+    
+    func back() {
+        tabBarController?.selectedViewController = Info.sharedInstance.lastViewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -171,11 +194,14 @@ class AddViewController: UIViewController {
 }
 
 
-//TODO: set price
 //TODO: get images
-//TODO: cleaning
-//TODO: iOS availability
-//TODO: return and done
 //TODO: next button
 //TODO: hide keyboard
+//TODO: notes limit
+
+//alergy typed then canceled?
+
+//TODO: cleaning
+//TODO: iOS availability
+
 //TODO: auto complete for patient
