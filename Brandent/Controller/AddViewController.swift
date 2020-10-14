@@ -8,8 +8,10 @@
 
 import Foundation
 import UIKit
+import Photos
+import AVFoundation
 
-class AddViewController: UIViewController {
+class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     //MARK: UI Variables:
     @IBOutlet weak var patientNameTextField: CustomTextField!
     @IBOutlet weak var patientPhoneNumberTextField: CustomTextField!
@@ -25,9 +27,12 @@ class AddViewController: UIViewController {
     @IBOutlet weak var submitButton: CustomButton!
     @IBOutlet weak var errorView: CustomUIView!
     
+    var textFields = [UITextField]()
+    
     let datePicker = UIDatePicker()
     let selectedAlergyButtonImages = [UIImage(named: "white_close"), UIImage(named: "white_tick")]
     let unselectedAlergyButtonImages = [UIImage(named: "black_close"), UIImage(named: "black_tick")]
+    var imagePickerDelegate: ImagePickerDelegate?
     
     var currentTextField: UITextField?
     
@@ -36,7 +41,6 @@ class AddViewController: UIViewController {
     var date: Date?
     var appointmentData = ["", "", "", -1, "", ""] as [Any]
     //0: name, 1: phone, 2: disease, 3: price, 4: alergy, 5: notes
-    
     
     func creatDatePicker() {
         datePicker.calendar = Calendar(identifier: .persian)
@@ -115,7 +119,7 @@ class AddViewController: UIViewController {
         }
     }
     
-    @IBAction func next(_ sender: Any) {
+    @IBAction func editingEnded(_ sender: Any) {
         if let textField = sender as? UITextField, let text = textField.fetchInput() {
             if textField.tag == 3 {
                 if let price = Int(text) {
@@ -130,8 +134,14 @@ class AddViewController: UIViewController {
         }
     }
     
+    @IBAction func next(_ sender: Any) {
+        if let textField = sender as? UITextField {
+            textFields[textField.tag + 1].becomeFirstResponder()
+        }
+    }
+    
     @IBAction func addPhoto(_ sender: Any) {
-        
+        imagePickerDelegate?.displayImagePickingOptions()
     }
     
     func mustComplete() -> CustomTextField? {
@@ -158,7 +168,7 @@ class AddViewController: UIViewController {
     
     @available(iOS 13.0, *)
     @IBAction func submit(_ sender: Any) {
-        next(currentTextField as Any)
+        editingEnded(currentTextField as Any)
         currentTextField = nil
         if let requiredTextField = mustComplete() {
             submitionError(for: requiredTextField)
@@ -186,10 +196,16 @@ class AddViewController: UIViewController {
         tabBarController?.selectedViewController = Info.sharedInstance.lastViewController
     }
     
+    func configure() {
+        creatDatePicker()
+        imagePickerDelegate = ImagePickerDelegate(from: self)
+        textFields = [patientNameTextField, patientPhoneNumberTextField, diseaseTextField, priceTextField, alergyTextField, dateTextField, notesTextField]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        creatDatePicker()
+        configure()
     }
 }
 

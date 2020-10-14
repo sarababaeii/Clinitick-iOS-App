@@ -463,8 +463,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="editingEnded:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="nIz-x0-0aX"/>
                                                     <action selector="editingStarted:" destination="m7O-Q4-yfr" eventType="editingDidBegin" id="tn4-bD-bcG"/>
-                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="nIz-x0-0aX"/>
+                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="primaryActionTriggered" id="TQK-BD-tuW"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="شماره موبایل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NDV-wb-NMp" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
@@ -474,7 +475,7 @@
                                                     <constraint firstAttribute="height" constant="54" id="aPq-3Q-HpC"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="ASCIICapableNumberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
@@ -490,8 +491,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="editingEnded:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="7lD-tG-ZBE"/>
                                                     <action selector="editingStarted:" destination="m7O-Q4-yfr" eventType="editingDidBegin" id="R87-rY-LyR"/>
-                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="7lD-tG-ZBE"/>
+                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="primaryActionTriggered" id="4Qv-aM-f0J"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="دلیل ویزیت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qfi-eJ-0Mu" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
@@ -517,8 +519,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="editingEnded:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="Zsb-cl-rW7"/>
                                                     <action selector="editingStarted:" destination="m7O-Q4-yfr" eventType="editingDidBegin" id="bI3-Ja-Zjh"/>
-                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="Zsb-cl-rW7"/>
+                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="primaryActionTriggered" id="MEO-ls-iTK"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" tag="3" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه‌ی درمان" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LLZ-vj-4ku" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
@@ -529,7 +532,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.52941176470588236" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
@@ -545,8 +548,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="editingEnded:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="8mK-Q8-dX9"/>
                                                     <action selector="editingStarted:" destination="m7O-Q4-yfr" eventType="editingDidBegin" id="QbA-jt-2g2"/>
-                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="8mK-Q8-dX9"/>
+                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="primaryActionTriggered" id="rJd-bN-LPX"/>
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9MN-ZI-A23" userLabel="View0.0">
@@ -572,8 +576,9 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
+                                                            <action selector="editingEnded:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="Pso-bJ-eqi"/>
                                                             <action selector="editingStarted:" destination="m7O-Q4-yfr" eventType="editingDidBegin" id="sGB-3k-aLL"/>
-                                                            <action selector="next:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="Pso-bJ-eqi"/>
+                                                            <action selector="next:" destination="m7O-Q4-yfr" eventType="primaryActionTriggered" id="6TV-SH-iyH"/>
                                                         </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgD-gM-ucX" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
@@ -640,6 +645,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2vj-oN-8gQ" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="366" width="350" height="54"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" red="0.396078431372549" green="0.50980392156862742" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="4MQ-nB-Kco"/>
                                                 </constraints>
@@ -696,8 +702,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="editingEnded:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="G0A-9H-k0p"/>
                                                     <action selector="editingStarted:" destination="m7O-Q4-yfr" eventType="editingDidBegin" id="ncm-4W-NGl"/>
-                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="G0A-9H-k0p"/>
+                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="primaryActionTriggered" id="VZz-1A-N5M"/>
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="ibz-CJ-WJb" userLabel="View1.1" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
