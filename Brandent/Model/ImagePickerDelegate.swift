@@ -11,6 +11,34 @@ import AVFoundation
 import UIKit
 import Photos
 
+enum message {
+    case camera
+    case photos
+    
+    var noPermission: String {
+        let firstSentence = "Looks like Brandent doesn't have access to your"
+        let secondSentence = ". Please use Settings App on your device to permit Brandent accessing your"
+        
+        switch self {
+        case .camera:
+            return "\(firstSentence) camera\(secondSentence) camera."
+        case .photos:
+            return "\(firstSentence) photos\(secondSentence) photos."
+        }
+    }
+    
+    var trouble: String {
+        let firstPhrase = "Sincere apologies, it looks like we can't access your"
+        let secondPhrase = "at this time."
+        
+        switch self {
+        case .camera:
+            return "\(firstPhrase) camera \(secondPhrase)"
+        case .photos:
+            return "\(firstPhrase) photos \(secondPhrase)"
+        }
+    }
+}
 
 class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var viewController: UIViewController
@@ -36,7 +64,6 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){
             (action) in
-            print("Canceling image picking - doing nothing in fact :)")
         }
         alertController.addAction(cancelAction)
         
@@ -47,7 +74,7 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
         let sourceType = UIImagePickerController.SourceType.camera
         if UIImagePickerController.isSourceTypeAvailable(sourceType) {
             let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-            let noPermissionMessage = "Looks like Brandent doesn't have access to your camera:( Please use Settings App on your device to permit Brandent accessing your camera"
+            let noPermissionMessage = message.camera.noPermission
 
             switch status{
             case .notDetermined:
@@ -59,7 +86,6 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
                         self.troubleAlert(message: noPermissionMessage)
                     }
                 })
-
             case .authorized:
                 self.presentImagePicker(sourceType: sourceType)
             case .denied, .restricted:
@@ -69,7 +95,7 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
             }
         }
         else{
-            troubleAlert(message: "Sincere apologies, it looks like we can't access your camera library at this time")
+            troubleAlert(message: message.camera.trouble)
         }
     }
         
@@ -77,7 +103,7 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
         let sourceType = UIImagePickerController.SourceType.photoLibrary
         if UIImagePickerController.isSourceTypeAvailable(sourceType) {
             let status = PHPhotoLibrary.authorizationStatus()
-            let noPermissionMessage = "Looks like Brandent have access to your photos:( Please use Settings App on your device to permit Brandent accessing your library"
+            let noPermissionMessage = message.photos.noPermission
          
             switch status {
             case .notDetermined:
@@ -98,7 +124,7 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
             }
         }
         else{
-            troubleAlert(message: "Sincere apologies, it looks like we can't access your photo library at this time")
+            troubleAlert(message: message.photos.trouble)
         }
     }
         

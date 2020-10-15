@@ -47,6 +47,7 @@
 		03BC1F9125251658009749C0 /* Speciality+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8525251658009749C0 /* Speciality+CoreDataProperties.swift */; };
 		03BC1F9225251658009749C0 /* Disease+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */; };
 		03BC1F9325251658009749C0 /* Disease+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8725251658009749C0 /* Disease+CoreDataProperties.swift */; };
+		03FA823D2538AF2000EAA8A5 /* CheckAlergyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FA823C2538AF2000EAA8A5 /* CheckAlergyButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		03BC1F8525251658009749C0 /* Speciality+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Speciality+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disease+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03BC1F8725251658009749C0 /* Disease+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disease+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03FA823C2538AF2000EAA8A5 /* CheckAlergyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAlergyButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +259,7 @@
 				035540E3251624A8003B9638 /* CustomImageView.swift */,
 				035540E525162725003B9638 /* CustmButton.swift */,
 				0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */,
+				03FA823C2538AF2000EAA8A5 /* CheckAlergyButton.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				03BC1F8F25251658009749C0 /* Clinic+CoreDataProperties.swift in Sources */,
 				03036D31250FE8F500C7824A /* AddViewController.swift in Sources */,
 				03BC1F9025251658009749C0 /* Speciality+CoreDataClass.swift in Sources */,
+				03FA823D2538AF2000EAA8A5 /* CheckAlergyButton.swift in Sources */,
 				035540E625162725003B9638 /* CustmButton.swift in Sources */,
 				03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */,
 				039E2E3325359EDC00F6D5EE /* StringExtension.swift in Sources */,

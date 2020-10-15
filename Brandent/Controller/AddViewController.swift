@@ -18,8 +18,8 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBOutlet weak var diseaseTextField: CustomTextField!
     @IBOutlet weak var priceTextField: CustomTextField!
     @IBOutlet weak var alergyTextField: CustomTextField!
-    @IBOutlet weak var noAlergyButton: CustomButton!
-    @IBOutlet weak var hasAlergyButton: CustomButton!
+    @IBOutlet weak var noAlergyButton: CheckAlergyButton!
+    @IBOutlet weak var hasAlergyButton: CheckAlergyButton!
     @IBOutlet weak var dateTextField: CustomTextField!
     @IBOutlet weak var notesTextField: CustomTextField!
     @IBOutlet weak var wordLimitLabel: UILabel!
@@ -42,10 +42,12 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     var appointmentData = ["", "", "", -1, "", ""] as [Any]
     //0: name, 1: phone, 2: disease, 3: price, 4: alergy, 5: notes
     
+    //MARK: DatePicker Functions
     func creatDatePicker() {
         datePicker.calendar = Calendar(identifier: .persian)
         datePicker.locale = Locale(identifier: "fa_IR")
         datePicker.datePickerMode = .dateAndTime
+//        datePicker.backgroundColor = UIColor.red
         dateTextField.inputView = datePicker
         
         let toolbar = UIToolbar()
@@ -68,51 +70,20 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         date = datePicker.date
     }
     
+    //MARK: Alergy Buttons Functions
     @IBAction func checkAlergySelected(_ sender: Any) {
-        setHasAlergy(by: sender as! UIButton)
-        visibleSelection(selected: sender as! UIButton)
+        if let button = sender as? CheckAlergyButton {
+            setHasAlergy(by: button)
+            button.visibleSelection()
+        }
     }
     
-    func setHasAlergy(by button: UIButton) {
-        if button.tag == 0 {
-            hasAlergy = false
-        } else {
-            hasAlergy = true
-        }
+    func setHasAlergy(by button: CheckAlergyButton) {
+        hasAlergy = button.hasAlergy()
         alergyTextField.isEnabled = hasAlergy
     }
     
-    func visibleSelection(selected button: UIButton) {
-        selectAlergyButton(button: button)
-        if let otherButton = getOtherButton(from: button) {
-            unselectAlergyButton(button: otherButton)
-        }
-    }
-    
-    func selectAlergyButton(button: UIButton) {
-        button.backgroundColor = Color.orange.componentColor
-        button.setImage(selectedAlergyButtonImages[button.tag], for: .normal)
-    }
-    
-    func unselectAlergyButton(button: UIButton) {
-        button.backgroundColor = UIColor.white
-        button.setImage(unselectedAlergyButtonImages[button.tag], for: .normal)
-    }
-    
-    func getOtherButton(from button: UIButton) -> UIButton? {
-        guard let siblings = button.superview?.subviews else {
-            return nil
-        }
-        for view in siblings {
-            if let btn = view as? UIButton {
-                if btn.tag != button.tag {
-                    return btn
-                }
-            }
-        }
-        return nil
-    }
-    
+    //MARK: TextFields Functions
     @IBAction func editingStarted(_ sender: Any) {
         if let textField = sender as? UITextField {
             currentTextField = textField
@@ -124,13 +95,11 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
             if textField.tag == 3 {
                 if let price = Int(text) {
                     appointmentData[textField.tag] = price
-                    print("&& \(price)")
                     textField.text = "\(String(price).convertEnglishNumToPersianNum()) تومان"
                 }
             } else {
                 appointmentData[textField.tag] = text
             }
-            print("$$ \(text)")
         }
     }
     
@@ -140,10 +109,17 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         }
     }
     
+    @IBAction func hideKeyboard(_ sender: Any) {
+        if let textField = currentTextField {
+            textField.resignFirstResponder()
+        }
+    }
+    
     @IBAction func addPhoto(_ sender: Any) {
         imagePickerDelegate?.displayImagePickingOptions()
     }
     
+    //MARK: Submission
     func mustComplete() -> CustomTextField? {
         if appointmentData[0] as? String == "" {
             return patientNameTextField
@@ -211,8 +187,6 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
 
 
 //TODO: get images
-//TODO: next button
-//TODO: hide keyboard
 //TODO: notes limit
 
 //alergy typed then canceled?

@@ -530,7 +530,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="bzI-6d-cdU"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.52941176470588236" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                 <userDefinedRuntimeAttributes>
@@ -581,7 +581,7 @@
                                                             <action selector="next:" destination="m7O-Q4-yfr" eventType="primaryActionTriggered" id="6TV-SH-iyH"/>
                                                         </connections>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgD-gM-ucX" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgD-gM-ucX" customClass="CheckAlergyButton" customModule="Brandent" customModuleProvider="target">
                                                         <rect key="frame" x="50" y="7" width="40" height="40"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -604,7 +604,7 @@
                                                             <action selector="checkAlergySelected:" destination="m7O-Q4-yfr" eventType="touchUpInside" id="Qdo-4n-Nvo"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhF-b1-lk1" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhF-b1-lk1" customClass="CheckAlergyButton" customModule="Brandent" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="7" width="40" height="40"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -799,6 +799,7 @@
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96509641410000002" green="0.9720847011" blue="0.98953872919999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="ibz-CJ-WJb" firstAttribute="top" secondItem="mib-xi-f17" secondAttribute="bottom" constant="16" id="01z-1q-649"/>
                                             <constraint firstItem="Qfi-eJ-0Mu" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="0Ic-wz-cLi"/>
@@ -833,6 +834,9 @@
                                             <constraint firstItem="iaX-YR-SEb" firstAttribute="top" secondItem="ibz-CJ-WJb" secondAttribute="bottom" constant="24" id="zdI-Bs-GIB"/>
                                             <constraint firstItem="53m-hJ-fzV" firstAttribute="leading" secondItem="KI9-9V-1z9" secondAttribute="leading" constant="8" id="zos-Ph-a4j"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="xjp-Ci-79m" appends="YES" id="1gp-R9-zQu"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -875,6 +879,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jYX-t1-7Xa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="xjp-Ci-79m">
+                    <connections>
+                        <action selector="hideKeyboard:" destination="m7O-Q4-yfr" id="tWi-CN-pkZ"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1197.1014492753625" y="248.4375"/>
         </scene>
