@@ -11,7 +11,7 @@ import UIKit
 import Photos
 import AVFoundation
 
-class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     //MARK: UI Variables:
     @IBOutlet weak var patientNameTextField: CustomTextField!
     @IBOutlet weak var patientPhoneNumberTextField: CustomTextField!
@@ -21,7 +21,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     @IBOutlet weak var noAlergyButton: CheckAlergyButton!
     @IBOutlet weak var hasAlergyButton: CheckAlergyButton!
     @IBOutlet weak var dateTextField: CustomTextField!
-    @IBOutlet weak var notesTextField: CustomTextField!
+    @IBOutlet weak var notesTextView: CustomTextView!
     @IBOutlet weak var wordLimitLabel: UILabel!
     
     @IBOutlet weak var submitButton: CustomButton!
@@ -109,10 +109,50 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         }
     }
     
-    @IBAction func hideKeyboard(_ sender: Any) {
-        if let textField = currentTextField {
-            textField.resignFirstResponder()
+//    @IBAction func hideKeyboard(_ sender: Any) {
+//        if let textField = currentTextField {
+//            textField.resignFirstResponder()
+//        }
+//    }
+    
+    func textViewDidChange(_ textView: UITextView) { //Handle the text changes here
+        guard let text = notesTextView.fetchInput() else {
+            return
         }
+        let remain = calculateRemainigCharacters(string: text)
+        if remain <= 20 {
+            setWordLimit(amount: remain)
+        } else {
+            wordLimitLabel.isHidden = true
+        }
+    }
+//
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+//        let numberOfChars = newText.count
+//        return numberOfChars < 10    // 10 Limit Value
+//    }
+    
+//    @IBAction func typingNotes(_ sender: Any) {
+//        guard let text = notesTextField.fetchInput() else {
+//            return
+//        }
+//        let remain = calculateRemainigCharacters(string: text)
+//        if remain <= 20 {
+//            setWordLimit(amount: remain)
+//        } else {
+//            wordLimitLabel.isHidden = true
+//        }
+//    }
+//
+    func calculateRemainigCharacters(string: String) -> Int {
+        return notesTextView.maxLength - string.count
+    }
+    
+    func setWordLimit(amount: Int) {
+        let amountString = String(amount).convertEnglishNumToPersianNum()
+        wordLimitLabel.text = "+\(amountString)"
+        wordLimitLabel.isHidden = false
     }
     
     @IBAction func addPhoto(_ sender: Any) {
@@ -175,7 +215,9 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     func configure() {
         creatDatePicker()
         imagePickerDelegate = ImagePickerDelegate(from: self)
-        textFields = [patientNameTextField, patientPhoneNumberTextField, diseaseTextField, priceTextField, alergyTextField, dateTextField, notesTextField]
+        notesTextView.delegate = self
+        
+        textFields = [patientNameTextField, patientPhoneNumberTextField, diseaseTextField, priceTextField, alergyTextField, dateTextField]
     }
     
     override func viewDidLoad() {

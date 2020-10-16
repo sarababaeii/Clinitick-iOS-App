@@ -3,6 +3,7 @@
     <entity name="Appointment" representedClassName="Appointment" syncable="YES">
         <attribute name="id" attributeType="String" defaultValueString="0"/>
         <attribute name="images" optional="YES" attributeType="Binary"/>
+        <attribute name="modifiedAt" attributeType="Date" defaultDateTimeInterval="624539640" usesScalarValueType="NO"/>
         <attribute name="notes" optional="YES" attributeType="String" maxValueString="250"/>
         <attribute name="price" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="state" attributeType="String" defaultValueString="todo"/>
@@ -21,6 +22,7 @@
     <entity name="Dentist" representedClassName="Dentist" syncable="YES">
         <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="name" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" minValueString="11" maxValueString="11" defaultValueString="00000000000"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="dentist" inverseEntity="Appointment"/>
         <relationship name="clinics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clinic" inverseName="dentist" inverseEntity="Clinic"/>
         <relationship name="diseases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disease" inverseName="dentist" inverseEntity="Disease"/>
@@ -48,9 +50,9 @@
         <relationship name="diseases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disease" inverseName="specialities" inverseEntity="Disease"/>
     </entity>
     <elements>
-        <element name="Appointment" positionX="-60.80078125" positionY="-254.6015625" width="128" height="193"/>
+        <element name="Appointment" positionX="-60.80078125" positionY="-254.6015625" width="128" height="208"/>
         <element name="Clinic" positionX="-88.50390625" positionY="-444.4140625" width="128" height="103"/>
-        <element name="Dentist" positionX="-415.96484375" positionY="-429.25390625" width="128" height="133"/>
+        <element name="Dentist" positionX="-415.96484375" positionY="-429.25390625" width="128" height="148"/>
         <element name="Disease" positionX="-251.5390625" positionY="-259.546875" width="128" height="133"/>
         <element name="Patient" positionX="-54.2265625" positionY="-23.95703125" width="128" height="118"/>
         <element name="Speciality" positionX="-484.1875" positionY="-229.58203125" width="128" height="103"/>

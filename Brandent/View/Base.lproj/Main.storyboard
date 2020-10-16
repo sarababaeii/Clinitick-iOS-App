@@ -496,8 +496,31 @@
                                                     <action selector="next:" destination="m7O-Q4-yfr" eventType="primaryActionTriggered" id="4Qv-aM-f0J"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="دلیل ویزیت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qfi-eJ-0Mu" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="مطب" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dNm-3s-o5d" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="156" width="350" height="54"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="54" id="aWg-BB-OVd"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                        <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="دلیل ویزیت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qfi-eJ-0Mu" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                                <rect key="frame" x="40" y="226" width="350" height="54"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="tSe-4I-JzD"/>
@@ -525,7 +548,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" tag="3" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه‌ی درمان" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LLZ-vj-4ku" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="226" width="350" height="54"/>
+                                                <rect key="frame" x="40" y="296" width="350" height="54"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="54" id="bzI-6d-cdU"/>
@@ -554,7 +577,7 @@
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9MN-ZI-A23" userLabel="View0.0">
-                                                <rect key="frame" x="40" y="296" width="350" height="54"/>
+                                                <rect key="frame" x="40" y="366" width="350" height="54"/>
                                                 <subviews>
                                                     <textField opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="آلرژی و حساسیت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="761-b2-eWl" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                                         <rect key="frame" x="115" y="0.0" width="235" height="54"/>
@@ -643,7 +666,7 @@
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2vj-oN-8gQ" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="366" width="350" height="54"/>
+                                                <rect key="frame" x="40" y="436" width="350" height="54"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.396078431372549" green="0.50980392156862742" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -673,42 +696,35 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+۲۰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53m-hJ-fzV">
-                                                <rect key="frame" x="7.9999999999999982" y="453.66666666666663" width="18.333333333333329" height="19"/>
-                                                <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="اطلاعات تکمیلی" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mib-xi-f17" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="436" width="350" height="54"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" keyboardDismissMode="onDrag" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="cOC-9U-pxV" customClass="CustomTextView" customModule="Brandent" customModuleProvider="target">
+                                                <rect key="frame" x="40" y="506" width="350" height="54"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="54" id="bdP-j5-rId"/>
+                                                    <constraint firstAttribute="height" constant="54" id="Sow-rt-g83"/>
                                                 </constraints>
+                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                        <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="editingEnded:" destination="m7O-Q4-yfr" eventType="editingDidEnd" id="G0A-9H-k0p"/>
-                                                    <action selector="editingStarted:" destination="m7O-Q4-yfr" eventType="editingDidBegin" id="ncm-4W-NGl"/>
-                                                    <action selector="next:" destination="m7O-Q4-yfr" eventType="primaryActionTriggered" id="VZz-1A-N5M"/>
-                                                </connections>
-                                            </textField>
+                                            </textView>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+۲۰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53m-hJ-fzV">
+                                                <rect key="frame" x="7.9999999999999982" y="523.66666666666663" width="19.333333333333329" height="19"/>
+                                                <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="ibz-CJ-WJb" userLabel="View1.1" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="506" width="350" height="96"/>
+                                                <rect key="frame" x="40" y="576" width="350" height="96"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieH-m4-scf">
                                                         <rect key="frame" x="157" y="16" width="36" height="33"/>
@@ -745,7 +761,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaX-YR-SEb" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
-                                                <rect key="frame" x="257" y="626" width="133" height="41"/>
+                                                <rect key="frame" x="257" y="696" width="133" height="41"/>
                                                 <color key="backgroundColor" red="1" green="0.46026253700000003" blue="0.044820412990000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="133" id="X9V-w4-Gsk"/>
@@ -765,7 +781,7 @@
                                                 </connections>
                                             </button>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEk-78-3no" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
-                                                <rect key="frame" x="80" y="683" width="310" height="41"/>
+                                                <rect key="frame" x="80" y="753" width="310" height="41"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="خطا: همه‌ی موارد ضروری وارد نشده است." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynt-HZ-tNh">
                                                         <rect key="frame" x="0.0" y="8" width="310" height="25"/>
@@ -801,42 +817,43 @@
                                         <color key="backgroundColor" red="0.96509641410000002" green="0.9720847011" blue="0.98953872919999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstItem="ibz-CJ-WJb" firstAttribute="top" secondItem="mib-xi-f17" secondAttribute="bottom" constant="16" id="01z-1q-649"/>
                                             <constraint firstItem="Qfi-eJ-0Mu" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="0Ic-wz-cLi"/>
+                                            <constraint firstItem="dNm-3s-o5d" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="11U-XQ-ieX"/>
                                             <constraint firstItem="9MN-ZI-A23" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="1yC-Fo-ih6"/>
                                             <constraint firstItem="rcQ-hK-vC7" firstAttribute="leading" secondItem="KI9-9V-1z9" secondAttribute="leading" constant="40" id="3Xc-kh-ItV"/>
+                                            <constraint firstItem="cOC-9U-pxV" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="3b8-Ug-pxh"/>
                                             <constraint firstItem="2vj-oN-8gQ" firstAttribute="top" secondItem="9MN-ZI-A23" secondAttribute="bottom" constant="16" id="62Q-25-3Uj"/>
                                             <constraint firstItem="iaX-YR-SEb" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="651-Mo-xbQ"/>
                                             <constraint firstItem="2vj-oN-8gQ" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="6Wd-e6-h6h"/>
                                             <constraint firstItem="LLZ-vj-4ku" firstAttribute="top" secondItem="Qfi-eJ-0Mu" secondAttribute="bottom" constant="16" id="9du-zJ-XI8"/>
                                             <constraint firstItem="NDV-wb-NMp" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="Bf0-pq-dC6"/>
-                                            <constraint firstItem="53m-hJ-fzV" firstAttribute="centerY" secondItem="mib-xi-f17" secondAttribute="centerY" id="BhE-hF-s15"/>
+                                            <constraint firstItem="53m-hJ-fzV" firstAttribute="centerY" secondItem="cOC-9U-pxV" secondAttribute="centerY" id="BhE-hF-s15"/>
+                                            <constraint firstItem="dNm-3s-o5d" firstAttribute="top" secondItem="NDV-wb-NMp" secondAttribute="bottom" constant="16" id="C25-2t-sSi"/>
                                             <constraint firstItem="iaX-YR-SEb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KI9-9V-1z9" secondAttribute="leading" constant="20" symbolic="YES" id="EJZ-UN-mSg"/>
                                             <constraint firstItem="TEk-78-3no" firstAttribute="top" secondItem="iaX-YR-SEb" secondAttribute="bottom" constant="16" id="Ii8-Wj-va6"/>
                                             <constraint firstItem="ibz-CJ-WJb" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="LvR-Jw-sEg"/>
-                                            <constraint firstItem="Qfi-eJ-0Mu" firstAttribute="top" secondItem="NDV-wb-NMp" secondAttribute="bottom" constant="16" id="OHl-mK-FbK"/>
+                                            <constraint firstItem="Qfi-eJ-0Mu" firstAttribute="top" secondItem="dNm-3s-o5d" secondAttribute="bottom" constant="16" id="OHl-mK-FbK"/>
+                                            <constraint firstItem="cOC-9U-pxV" firstAttribute="bottom" secondItem="ibz-CJ-WJb" secondAttribute="top" constant="-16" id="QeF-hk-3Pt"/>
+                                            <constraint firstItem="dNm-3s-o5d" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="RQW-RP-iHL"/>
                                             <constraint firstItem="LLZ-vj-4ku" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="RXN-IO-vWE"/>
                                             <constraint firstItem="ibz-CJ-WJb" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="SgV-CK-PfM"/>
                                             <constraint firstItem="2vj-oN-8gQ" firstAttribute="trailing" secondItem="9MN-ZI-A23" secondAttribute="trailing" id="Spi-5A-dd7"/>
                                             <constraint firstItem="9MN-ZI-A23" firstAttribute="top" secondItem="LLZ-vj-4ku" secondAttribute="bottom" constant="16" id="VOx-Fe-fj3"/>
-                                            <constraint firstItem="mib-xi-f17" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="aZk-nd-o8s"/>
+                                            <constraint firstItem="cOC-9U-pxV" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="WKO-FB-I0Y"/>
                                             <constraint firstItem="TEk-78-3no" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="d8U-CO-UOU"/>
                                             <constraint firstItem="LLZ-vj-4ku" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="gc7-7n-uLY"/>
                                             <constraint firstItem="9MN-ZI-A23" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="h9z-Br-Dkm"/>
-                                            <constraint firstItem="mib-xi-f17" firstAttribute="top" secondItem="2vj-oN-8gQ" secondAttribute="bottom" constant="16" id="hdp-sz-hv7"/>
+                                            <constraint firstItem="cOC-9U-pxV" firstAttribute="top" secondItem="2vj-oN-8gQ" secondAttribute="bottom" constant="16" id="hdp-sz-hv7"/>
                                             <constraint firstItem="rcQ-hK-vC7" firstAttribute="top" secondItem="KI9-9V-1z9" secondAttribute="top" constant="16" id="knw-58-Ztx"/>
-                                            <constraint firstItem="2vj-oN-8gQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="53m-hJ-fzV" secondAttribute="trailing" constant="4" id="mhE-1K-lE9"/>
+                                            <constraint firstItem="cOC-9U-pxV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="53m-hJ-fzV" secondAttribute="trailing" constant="4" id="mhE-1K-lE9"/>
+                                            <constraint firstItem="53m-hJ-fzV" firstAttribute="centerY" secondItem="cOC-9U-pxV" secondAttribute="centerY" id="ocl-MJ-u4e"/>
                                             <constraint firstItem="Qfi-eJ-0Mu" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="rNx-HP-A35"/>
                                             <constraint firstItem="NDV-wb-NMp" firstAttribute="top" secondItem="rcQ-hK-vC7" secondAttribute="bottom" constant="16" id="sZj-PH-7E3"/>
                                             <constraint firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" constant="24" id="vDk-d9-rgP"/>
                                             <constraint firstItem="NDV-wb-NMp" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="wQH-yP-fMf"/>
-                                            <constraint firstItem="mib-xi-f17" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="yLN-B5-XY2"/>
                                             <constraint firstItem="iaX-YR-SEb" firstAttribute="top" secondItem="ibz-CJ-WJb" secondAttribute="bottom" constant="24" id="zdI-Bs-GIB"/>
                                             <constraint firstItem="53m-hJ-fzV" firstAttribute="leading" secondItem="KI9-9V-1z9" secondAttribute="leading" constant="8" id="zos-Ph-a4j"/>
                                         </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="xjp-Ci-79m" appends="YES" id="1gp-R9-zQu"/>
-                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -870,7 +887,7 @@
                         <outlet property="errorView" destination="TEk-78-3no" id="Fdr-rR-CkD"/>
                         <outlet property="hasAlergyButton" destination="IhF-b1-lk1" id="MvN-Js-W5e"/>
                         <outlet property="noAlergyButton" destination="EgD-gM-ucX" id="rxy-mH-aGk"/>
-                        <outlet property="notesTextField" destination="mib-xi-f17" id="2rm-FO-F1k"/>
+                        <outlet property="notesTextView" destination="cOC-9U-pxV" id="E8f-wt-0hZ"/>
                         <outlet property="patientNameTextField" destination="rcQ-hK-vC7" id="yP3-Qn-Iv7"/>
                         <outlet property="patientPhoneNumberTextField" destination="NDV-wb-NMp" id="qeg-1z-pnp"/>
                         <outlet property="priceTextField" destination="LLZ-vj-4ku" id="Vqf-fY-gT2"/>
@@ -879,11 +896,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jYX-t1-7Xa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="xjp-Ci-79m">
-                    <connections>
-                        <action selector="hideKeyboard:" destination="m7O-Q4-yfr" id="tWi-CN-pkZ"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1197.1014492753625" y="248.4375"/>
         </scene>

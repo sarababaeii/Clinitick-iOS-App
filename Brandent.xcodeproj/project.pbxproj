@@ -14,6 +14,8 @@
 		0344D47E253756F00031122F /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344D47D253756F00031122F /* ImagePickerDelegate.swift */; };
 		035540E4251624A8003B9638 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E3251624A8003B9638 /* CustomImageView.swift */; };
 		035540E625162725003B9638 /* CustmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E525162725003B9638 /* CustmButton.swift */; };
+		0361A868253A1579001840EC /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361A867253A1579001840EC /* CustomTextView.swift */; };
+		0361A86A253A1FCF001840EC /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361A869253A1FCF001840EC /* TextViewDelegate.swift */; };
 		0363E686253235980095AF7C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363E685253235980095AF7C /* Color.swift */; };
 		0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */; };
 		03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB0250E76D6003CBE49 /* AppDelegate.swift */; };
@@ -75,6 +77,8 @@
 		0344D47D253756F00031122F /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
 		035540E3251624A8003B9638 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		035540E525162725003B9638 /* CustmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustmButton.swift; sourceTree = "<group>"; };
+		0361A867253A1579001840EC /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		0361A869253A1FCF001840EC /* TextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
 		0363E685253235980095AF7C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		03749EAD250E76D6003CBE49 /* Brandent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brandent.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,6 +264,8 @@
 				035540E525162725003B9638 /* CustmButton.swift */,
 				0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */,
 				03FA823C2538AF2000EAA8A5 /* CheckAlergyButton.swift */,
+				0361A867253A1579001840EC /* CustomTextView.swift */,
+				0361A869253A1FCF001840EC /* TextViewDelegate.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -453,6 +459,7 @@
 				0344D47E253756F00031122F /* ImagePickerDelegate.swift in Sources */,
 				03BC1F8F25251658009749C0 /* Clinic+CoreDataProperties.swift in Sources */,
 				03036D31250FE8F500C7824A /* AddViewController.swift in Sources */,
+				0361A868253A1579001840EC /* CustomTextView.swift in Sources */,
 				03BC1F9025251658009749C0 /* Speciality+CoreDataClass.swift in Sources */,
 				03FA823D2538AF2000EAA8A5 /* CheckAlergyButton.swift in Sources */,
 				035540E625162725003B9638 /* CustmButton.swift in Sources */,
@@ -460,6 +467,7 @@
 				039E2E3325359EDC00F6D5EE /* StringExtension.swift in Sources */,
 				03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */,
 				03BC1F9225251658009749C0 /* Disease+CoreDataClass.swift in Sources */,
+				0361A86A253A1FCF001840EC /* TextViewDelegate.swift in Sources */,
 				03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */,
 				0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */,
 				03BC1F8C25251658009749C0 /* Patient+CoreDataClass.swift in Sources */,
