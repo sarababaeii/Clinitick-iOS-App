@@ -696,7 +696,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" keyboardDismissMode="onDrag" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="cOC-9U-pxV" customClass="CustomTextView" customModule="Brandent" customModuleProvider="target">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="5" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" keyboardDismissMode="onDrag" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="cOC-9U-pxV" customClass="CustomTextView" customModule="Brandent" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="506" width="350" height="54"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -704,7 +704,7 @@
                                                 </constraints>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
@@ -714,6 +714,10 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="اطلاعات تکمیلی"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
@@ -854,6 +858,9 @@
                                             <constraint firstItem="iaX-YR-SEb" firstAttribute="top" secondItem="ibz-CJ-WJb" secondAttribute="bottom" constant="24" id="zdI-Bs-GIB"/>
                                             <constraint firstItem="53m-hJ-fzV" firstAttribute="leading" secondItem="KI9-9V-1z9" secondAttribute="leading" constant="8" id="zos-Ph-a4j"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="pNi-9d-WuY" appends="YES" id="3et-9p-DJt"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -896,6 +903,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jYX-t1-7Xa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="pNi-9d-WuY">
+                    <connections>
+                        <action selector="hideKeyboard:" destination="m7O-Q4-yfr" id="qGt-25-fXx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1197.1014492753625" y="248.4375"/>
         </scene>

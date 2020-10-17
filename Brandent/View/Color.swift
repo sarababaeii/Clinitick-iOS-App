@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum Color {
-//    case gray
+    case gray
     case red
     case orange
     
@@ -21,6 +21,8 @@ enum Color {
             return UIColor(red: 224/255, green: 32/255, blue: 32/255, alpha: 1)
         case .orange:
             return UIColor(red: 255/255, green: 118/255, blue: 3/255, alpha: 1)
+        case .gray:
+            return UIColor(red: 135/255, green: 135/255, blue: 135/255, alpha: 1)
         }
     }
 }

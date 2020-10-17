@@ -12,7 +12,7 @@ import Photos
 import AVFoundation
 
 class AddViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    //MARK: UI Variables:
+    
     @IBOutlet weak var patientNameTextField: CustomTextField!
     @IBOutlet weak var patientPhoneNumberTextField: CustomTextField!
     @IBOutlet weak var diseaseTextField: CustomTextField!
@@ -23,31 +23,24 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
     @IBOutlet weak var dateTextField: CustomTextField!
     @IBOutlet weak var notesTextView: CustomTextView!
     @IBOutlet weak var wordLimitLabel: UILabel!
-    
     @IBOutlet weak var submitButton: CustomButton!
     @IBOutlet weak var errorView: CustomUIView!
     
-    var textFields = [UITextField]()
-    
     let datePicker = UIDatePicker()
-    let selectedAlergyButtonImages = [UIImage(named: "white_close"), UIImage(named: "white_tick")]
-    let unselectedAlergyButtonImages = [UIImage(named: "black_close"), UIImage(named: "black_tick")]
+    var textViewDelegate: TextViewDelegate?
     var imagePickerDelegate: ImagePickerDelegate?
-    
+    var textFields = [UITextField]()
     var currentTextField: UITextField?
     
-    //MARK: Logical Variables:
     var hasAlergy: Bool = false
     var date: Date?
-    var appointmentData = ["", "", "", -1, "", ""] as [Any]
-    //0: name, 1: phone, 2: disease, 3: price, 4: alergy, 5: notes
+    var appointmentData = ["", "", "", -1, "", ""] as [Any] //0: name, 1: phone, 2: disease, 3: price, 4: alergy, 5: notes
     
     //MARK: DatePicker Functions
     func creatDatePicker() {
         datePicker.calendar = Calendar(identifier: .persian)
         datePicker.locale = Locale(identifier: "fa_IR")
         datePicker.datePickerMode = .dateAndTime
-//        datePicker.backgroundColor = UIColor.red
         dateTextField.inputView = datePicker
         
         let toolbar = UIToolbar()
@@ -100,6 +93,8 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
             } else {
                 appointmentData[textField.tag] = text
             }
+        } else if let textView = sender as? UITextView, let text = textView.fetchInput() {
+            appointmentData[textView.tag] = text
         }
     }
     
@@ -109,50 +104,12 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
         }
     }
     
-//    @IBAction func hideKeyboard(_ sender: Any) {
-//        if let textField = currentTextField {
-//            textField.resignFirstResponder()
-//        }
-//    }
-    
-    func textViewDidChange(_ textView: UITextView) { //Handle the text changes here
-        guard let text = notesTextView.fetchInput() else {
-            return
-        }
-        let remain = calculateRemainigCharacters(string: text)
-        if remain <= 20 {
-            setWordLimit(amount: remain)
+    @IBAction func hideKeyboard(_ sender: Any) {
+        if let textField = currentTextField {
+            textField.resignFirstResponder()
         } else {
-            wordLimitLabel.isHidden = true
+            notesTextView.resignFirstResponder()
         }
-    }
-//
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-//        let numberOfChars = newText.count
-//        return numberOfChars < 10    // 10 Limit Value
-//    }
-    
-//    @IBAction func typingNotes(_ sender: Any) {
-//        guard let text = notesTextField.fetchInput() else {
-//            return
-//        }
-//        let remain = calculateRemainigCharacters(string: text)
-//        if remain <= 20 {
-//            setWordLimit(amount: remain)
-//        } else {
-//            wordLimitLabel.isHidden = true
-//        }
-//    }
-//
-    func calculateRemainigCharacters(string: String) -> Int {
-        return notesTextView.maxLength - string.count
-    }
-    
-    func setWordLimit(amount: Int) {
-        let amountString = String(amount).convertEnglishNumToPersianNum()
-        wordLimitLabel.text = "+\(amountString)"
-        wordLimitLabel.isHidden = false
     }
     
     @IBAction func addPhoto(_ sender: Any) {
@@ -186,19 +143,23 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
     @IBAction func submit(_ sender: Any) {
         editingEnded(currentTextField as Any)
         currentTextField = nil
+        editingEnded(notesTextView as Any)
+        
         if let requiredTextField = mustComplete() {
             submitionError(for: requiredTextField)
             return
         }
+        
         let _ = Appointment.createAppointment(name: appointmentData[0] as! String, phone: appointmentData[1] as! String, diseaseTitle: appointmentData[2] as! String, price: appointmentData[3] as! Int, alergies: appointmentData[4] as? String, visit_time: date!, notes: appointmentData[5] as? String)
 
         Info.dataController.loadData()
+        
         back()
     }
     
     func submitionError(for textField: CustomTextField) {
         if textField.placeHolderColor != Color.red.componentColor {
-            textField.setPlaceHolderColor(string: "*\(textField.placeholder!)", color: Color.red.componentColor)
+            textField.placeholder = "*\(textField.placeholder!)"
             textField.placeHolderColor = Color.red.componentColor
         }
         self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
@@ -212,11 +173,17 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
         tabBarController?.selectedViewController = Info.sharedInstance.lastViewController
     }
     
-    func configure() {
-        creatDatePicker()
+    func setDelegates() {
         imagePickerDelegate = ImagePickerDelegate(from: self)
-        notesTextView.delegate = self
         
+        textViewDelegate = TextViewDelegate(label: wordLimitLabel)
+        notesTextView.delegate = textViewDelegate
+    }
+    
+    func configure() {
+        notesTextView.textColor = Color.gray.componentColor
+        creatDatePicker()
+        setDelegates()
         textFields = [patientNameTextField, patientPhoneNumberTextField, diseaseTextField, priceTextField, alergyTextField, dateTextField]
     }
     
@@ -229,11 +196,9 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
 
 
 //TODO: get images
-//TODO: notes limit
 
 //alergy typed then canceled?
 
-//TODO: cleaning
 //TODO: iOS availability
 
 //TODO: auto complete for patient

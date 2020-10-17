@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Appointment" representedClassName="Appointment" syncable="YES">
+        <attribute name="deleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="String" defaultValueString="0"/>
         <attribute name="images" optional="YES" attributeType="Binary"/>
         <attribute name="modifiedAt" attributeType="Date" defaultDateTimeInterval="624539640" usesScalarValueType="NO"/>
@@ -50,7 +51,7 @@
         <relationship name="diseases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disease" inverseName="specialities" inverseEntity="Disease"/>
     </entity>
     <elements>
-        <element name="Appointment" positionX="-60.80078125" positionY="-254.6015625" width="128" height="208"/>
+        <element name="Appointment" positionX="-60.80078125" positionY="-254.6015625" width="128" height="223"/>
         <element name="Clinic" positionX="-88.50390625" positionY="-444.4140625" width="128" height="103"/>
         <element name="Dentist" positionX="-415.96484375" positionY="-429.25390625" width="128" height="148"/>
         <element name="Disease" positionX="-251.5390625" positionY="-259.546875" width="128" height="133"/>
