@@ -146,6 +146,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		030AEE83253C55EC00E29CE1 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				0344D47D253756F00031122F /* ImagePickerDelegate.swift */,
+				03ADFDF3253B4D8B00A6827B /* TextViewDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		03749EA4250E76D6003CBE49 = {
 			isa = PBXGroup;
 			children = (
@@ -221,11 +230,10 @@
 		03749EE7250E76F9003CBE49 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				030AEE83253C55EC00E29CE1 /* Delegates */,
 				039E2E372535C79D00F6D5EE /* DatabaseModels */,
 				039E2E362535C78E00F6D5EE /* Extensions */,
 				03B032E12530D78800CF1075 /* Info.swift */,
-				0344D47D253756F00031122F /* ImagePickerDelegate.swift */,
-				03ADFDF3253B4D8B00A6827B /* TextViewDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -259,12 +267,12 @@
 		03749EFE250EA893003CBE49 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				03749EFF250EA8AE003CBE49 /* CustomTextField.swift */,
+				0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */,
 				0310F44F250FF577008B3E5B /* CustomUIView.swift */,
 				035540E3251624A8003B9638 /* CustomImageView.swift */,
 				035540E525162725003B9638 /* CustmButton.swift */,
-				0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */,
 				03FA823C2538AF2000EAA8A5 /* CheckAlergyButton.swift */,
+				03749EFF250EA8AE003CBE49 /* CustomTextField.swift */,
 				0361A867253A1579001840EC /* CustomTextView.swift */,
 			);
 			path = UIComponents;

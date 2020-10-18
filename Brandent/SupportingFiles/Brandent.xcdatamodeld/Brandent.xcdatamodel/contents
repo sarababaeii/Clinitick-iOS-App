@@ -21,9 +21,9 @@
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="clinics" inverseEntity="Dentist"/>
     </entity>
     <entity name="Dentist" representedClassName="Dentist" syncable="YES">
-        <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="name" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" minValueString="11" maxValueString="11" defaultValueString="00000000000"/>
+        <attribute name="photo" optional="YES" attributeType="Binary"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="dentist" inverseEntity="Appointment"/>
         <relationship name="clinics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clinic" inverseName="dentist" inverseEntity="Clinic"/>
         <relationship name="diseases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disease" inverseName="dentist" inverseEntity="Disease"/>
