@@ -62,10 +62,10 @@ class DataController {
         appointment.setID()
         appointment.setPatient(patient: patient)
         appointment.setDisease(disease: disease)
-        
+        appointment.setModifiedTime()
         //TODO: set image
         //TODO: set clinic
-        
+
         saveContext()
         return appointment
     }

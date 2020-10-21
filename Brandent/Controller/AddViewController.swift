@@ -150,8 +150,8 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
             return
         }
         
-        let _ = Appointment.createAppointment(name: appointmentData[0] as! String, phone: appointmentData[1] as! String, diseaseTitle: appointmentData[2] as! String, price: appointmentData[3] as! Int, alergies: appointmentData[4] as? String, visit_time: date!, notes: appointmentData[5] as? String)
-
+        let appointment = Appointment.createAppointment(name: appointmentData[0] as! String, phone: appointmentData[1] as! String, diseaseTitle: appointmentData[2] as! String, price: appointmentData[3] as! Int, alergies: appointmentData[4] as? String, visit_time: date!, notes: appointmentData[5] as? String)
+        RestAPIManagr.sharedInstance.addAppointment(appointment: appointment)
         Info.dataController.loadData()
         
         back()

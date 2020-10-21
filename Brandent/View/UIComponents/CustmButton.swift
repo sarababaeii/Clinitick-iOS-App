@@ -10,6 +10,18 @@ import Foundation
 import UIKit
 
 @IBDesignable class CustomButton: UIButton {
+    @IBInspectable var titlePadding: CGFloat = 0 {
+            didSet {
+                self.titleEdgeInsets = UIEdgeInsets(top: 0, left: titlePadding, bottom: 0, right: titlePadding)
+            }
+        }
+    
+    @IBInspectable var imagePadding: CGFloat = 0 {
+        didSet {
+            self.imageEdgeInsets = UIEdgeInsets(top: 0, left: imagePadding, bottom: 0, right: imagePadding)
+        }
+    }
+    
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             self.layer.cornerRadius = self.cornerRadius

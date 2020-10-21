@@ -32,11 +32,11 @@ import UIKit
         }
     }
     
-    @IBInspectable var vertical: Bool = true {
-        didSet {
-            updateGradientDirection()
-        }
-    }
+//    @IBInspectable var vertical: Bool = true {
+//        didSet {
+//            updateGradientDirection()
+//        }
+//    }
     
     private func setGradient() {
         let gradientLayer = CAGradientLayer()

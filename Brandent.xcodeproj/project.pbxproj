@@ -11,6 +11,9 @@
 		03036D31250FE8F500C7824A /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D30250FE8F500C7824A /* AddViewController.swift */; };
 		03036D33250FE92400C7824A /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D32250FE92400C7824A /* TasksViewController.swift */; };
 		0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0310F44F250FF577008B3E5B /* CustomUIView.swift */; };
+		0323B3C52540745900EB34CD /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323B3C42540745900EB34CD /* RestAPIManager.swift */; };
+		0323B3C72540A83F00EB34CD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323B3C62540A83F00EB34CD /* DateExtension.swift */; };
+		033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033C7661253D9EC900D25F4E /* CustomTabBar.swift */; };
 		0344D47E253756F00031122F /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344D47D253756F00031122F /* ImagePickerDelegate.swift */; };
 		035540E4251624A8003B9638 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E3251624A8003B9638 /* CustomImageView.swift */; };
 		035540E625162725003B9638 /* CustmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E525162725003B9638 /* CustmButton.swift */; };
@@ -74,6 +77,9 @@
 		03036D30250FE8F500C7824A /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		03036D32250FE92400C7824A /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		0310F44F250FF577008B3E5B /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
+		0323B3C42540745900EB34CD /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
+		0323B3C62540A83F00EB34CD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		033C7661253D9EC900D25F4E /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		0344D47D253756F00031122F /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
 		035540E3251624A8003B9638 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		035540E525162725003B9638 /* CustmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustmButton.swift; sourceTree = "<group>"; };
@@ -234,6 +240,7 @@
 				039E2E372535C79D00F6D5EE /* DatabaseModels */,
 				039E2E362535C78E00F6D5EE /* Extensions */,
 				03B032E12530D78800CF1075 /* Info.swift */,
+				0323B3C42540745900EB34CD /* RestAPIManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,6 +281,7 @@
 				03FA823C2538AF2000EAA8A5 /* CheckAlergyButton.swift */,
 				03749EFF250EA8AE003CBE49 /* CustomTextField.swift */,
 				0361A867253A1579001840EC /* CustomTextView.swift */,
+				033C7661253D9EC900D25F4E /* CustomTabBar.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -282,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				039E2E3225359EDC00F6D5EE /* StringExtension.swift */,
+				0323B3C62540A83F00EB34CD /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -465,10 +474,12 @@
 				03BC1F8A25251658009749C0 /* Dentist+CoreDataClass.swift in Sources */,
 				03BC1F8D25251658009749C0 /* Patient+CoreDataProperties.swift in Sources */,
 				0344D47E253756F00031122F /* ImagePickerDelegate.swift in Sources */,
+				033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */,
 				03BC1F8F25251658009749C0 /* Clinic+CoreDataProperties.swift in Sources */,
 				03036D31250FE8F500C7824A /* AddViewController.swift in Sources */,
 				0361A868253A1579001840EC /* CustomTextView.swift in Sources */,
 				03BC1F9025251658009749C0 /* Speciality+CoreDataClass.swift in Sources */,
+				0323B3C72540A83F00EB34CD /* DateExtension.swift in Sources */,
 				03FA823D2538AF2000EAA8A5 /* CheckAlergyButton.swift in Sources */,
 				035540E625162725003B9638 /* CustmButton.swift in Sources */,
 				03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */,
@@ -481,6 +492,7 @@
 				03BC1F8C25251658009749C0 /* Patient+CoreDataClass.swift in Sources */,
 				03BC1F9325251658009749C0 /* Disease+CoreDataProperties.swift in Sources */,
 				0363E686253235980095AF7C /* Color.swift in Sources */,
+				0323B3C52540745900EB34CD /* RestAPIManager.swift in Sources */,
 				03BC1F8925251658009749C0 /* Appointment+CoreDataProperties.swift in Sources */,
 				03BC1F9125251658009749C0 /* Speciality+CoreDataProperties.swift in Sources */,
 				03BC1F8825251658009749C0 /* Appointment+CoreDataClass.swift in Sources */,
