@@ -11,6 +11,9 @@ import UIKit
 
 class TasksViewController: UIViewController {
 
+    @IBOutlet weak var tasksTableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

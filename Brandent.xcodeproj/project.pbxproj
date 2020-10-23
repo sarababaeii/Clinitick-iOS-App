@@ -10,6 +10,8 @@
 		03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D2E250FE8BB00C7824A /* ProfileViewController.swift */; };
 		03036D31250FE8F500C7824A /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D30250FE8F500C7824A /* AddViewController.swift */; };
 		03036D33250FE92400C7824A /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D32250FE92400C7824A /* TasksViewController.swift */; };
+		030BE2F92543454600AA642C /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030BE2F82543454600AA642C /* TaskTableViewCell.swift */; };
+		030BE2FB25434A5000AA642C /* TasksTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030BE2FA25434A5000AA642C /* TasksTableViewDelegate.swift */; };
 		0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0310F44F250FF577008B3E5B /* CustomUIView.swift */; };
 		0323B3C52540745900EB34CD /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323B3C42540745900EB34CD /* RestAPIManager.swift */; };
 		0323B3C72540A83F00EB34CD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323B3C62540A83F00EB34CD /* DateExtension.swift */; };
@@ -76,6 +78,8 @@
 		03036D2E250FE8BB00C7824A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		03036D30250FE8F500C7824A /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		03036D32250FE92400C7824A /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		030BE2F82543454600AA642C /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		030BE2FA25434A5000AA642C /* TasksTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewDelegate.swift; sourceTree = "<group>"; };
 		0310F44F250FF577008B3E5B /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		0323B3C42540745900EB34CD /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
 		0323B3C62540A83F00EB34CD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -157,8 +161,17 @@
 			children = (
 				0344D47D253756F00031122F /* ImagePickerDelegate.swift */,
 				03ADFDF3253B4D8B00A6827B /* TextViewDelegate.swift */,
+				030BE2FA25434A5000AA642C /* TasksTableViewDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		030BE2F5254342AD00AA642C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				030BE2F82543454600AA642C /* TaskTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		03749EA4250E76D6003CBE49 = {
@@ -226,6 +239,7 @@
 		03749EE6250E76F3003CBE49 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				030BE2F5254342AD00AA642C /* Cells */,
 				03749EFE250EA893003CBE49 /* UIComponents */,
 				03749EB8250E76D6003CBE49 /* Main.storyboard */,
 				0363E685253235980095AF7C /* Color.swift */,
@@ -467,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03BC1F8B25251658009749C0 /* Dentist+CoreDataProperties.swift in Sources */,
+				030BE2FB25434A5000AA642C /* TasksTableViewDelegate.swift in Sources */,
 				03749EB7250E76D6003CBE49 /* FinanceViewController.swift in Sources */,
 				0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */,
 				03B032E22530D78800CF1075 /* Info.swift in Sources */,
@@ -501,6 +516,7 @@
 				03749EBD250E76D6003CBE49 /* Brandent.xcdatamodeld in Sources */,
 				03BC1F8E25251658009749C0 /* Clinic+CoreDataClass.swift in Sources */,
 				03AF9395251653BA008DD4A0 /* DataController.swift in Sources */,
+				030BE2F92543454600AA642C /* TaskTableViewCell.swift in Sources */,
 				03036D33250FE92400C7824A /* TasksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

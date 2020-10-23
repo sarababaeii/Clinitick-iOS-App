@@ -109,6 +109,29 @@ class DataController {
         return nil
     }
     
+    func fetchAppointments(visitTime: Date) -> [NSManagedObject]? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.appointment.rawValue)
+        var predicate: NSPredicate?
+        
+        let from = visitTime.startOfDate()
+        if let to = visitTime.nextDay()?.startOfDate() {
+            predicate = NSPredicate(format: "visit_time >= %@ AND visit_time <= %@", from as NSDate, to as NSDate)
+        }
+        
+        request.predicate = predicate
+        
+        let sectionSortDescriptor = NSSortDescriptor(key: "visit_time", ascending: false)
+        request.sortDescriptors = [sectionSortDescriptor]
+        
+        request.returnsObjectsAsFaults = false
+        do{
+            let result = try context.fetch(request) as! [NSManagedObject]
+            return result
+        } catch{
+        }
+        return [NSManagedObject]()
+    }
+    
     func fetchPatient(phone: String) -> NSManagedObject? { //English and Persian
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.patient.rawValue)
         request.predicate = NSPredicate(format: "phone = %@", phone)
