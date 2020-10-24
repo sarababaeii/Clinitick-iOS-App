@@ -14,17 +14,27 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var patientNameLabel: UILabel!
     @IBOutlet weak var diseaseLabel: UILabel!
     @IBOutlet weak var visitTimeLabel: UILabel!
-    @IBOutlet weak var doneButton: CustomButton!
-    @IBOutlet weak var canceledButton: CustomButton!
+    @IBOutlet weak var doneButton: CheckButton!
+    @IBOutlet weak var canceledButton: CheckButton!
+    
+    var appointment: Appointment?
     
     func setAttributes(appointment: Appointment){
+        self.appointment = appointment
         patientNameLabel.text = appointment.patient.name
         diseaseLabel.text = appointment.disease?.title
-//        visitTimeLabel.text
+        visitTimeLabel.text = appointment.visit_time.toTaskTableFormatString()
+        
         if appointment.state == State.done.rawValue {
-//            doneButton.select()
+            changeAppointmentState(doneButton as Any)
         } else if appointment.state == State.canceled.rawValue {
-//            canceledButton.select()
+            changeAppointmentState(canceledButton as Any)
+        }
+    }
+    @IBAction func changeAppointmentState(_ sender: Any) {
+        if let button = sender as? CheckButton {
+            appointment?.setState(tag: button.tag)
+            button.visibleSelection()
         }
     }
     

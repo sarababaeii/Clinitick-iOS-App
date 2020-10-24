@@ -10,31 +10,43 @@ import Foundation
 import UIKit
 
 @available(iOS 13.0, *)
-class TasksTableViewDelegates: NSObject, UITableViewDelegate, UITableViewDataSource {
+class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
    
     var tasksTableView: UITableView
-    var date: Date {
-        didSet {
-            if let tasks = Info.dataController.fetchAppointments(visitTime: date) as? [Appointment] {
-                self.tasks = tasks
-            }
-        }
-    }
-    
+    var date: Date = Date()
+    //{
+//        didSet {
+//            print("Yuhu")
+//            if let tasks = Info.dataController.fetchAppointments(visitTime: date) as? [Appointment] {
+//                self.tasks = tasks
+//                print("# \(tasks.count)")
+//            }
+//        }
+//        willSet {
+//            print("Hey")
+//        }
+//
+//}
     var tasks = [Appointment]()
     
     //MARK: Initializer
     init(tasksTableView: UITableView, date: Date) {
         self.tasksTableView = tasksTableView
         self.date = date
+        if let tasks = Info.dataController.fetchAppointments(visitTime: date) as? [Appointment] {
+            self.tasks = tasks
+            print("# \(tasks.count)")
+        }
     }
     
     //MARK: Protocol Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("$ \(tasks.count)")
         return tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("asked for cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCellID", for: indexPath) as! TaskTableViewCell
         if let appointment = taskDataSource(indexPath: indexPath) {
             cell.setAttributes(appointment: appointment)
@@ -49,3 +61,5 @@ class TasksTableViewDelegates: NSObject, UITableViewDelegate, UITableViewDataSou
         return nil
     }
 }
+
+//TODO: sort by time

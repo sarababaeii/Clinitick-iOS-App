@@ -18,8 +18,8 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
     @IBOutlet weak var diseaseTextField: CustomTextField!
     @IBOutlet weak var priceTextField: CustomTextField!
     @IBOutlet weak var alergyTextField: CustomTextField!
-    @IBOutlet weak var noAlergyButton: CheckAlergyButton!
-    @IBOutlet weak var hasAlergyButton: CheckAlergyButton!
+    @IBOutlet weak var noAlergyButton: CheckButton!
+    @IBOutlet weak var hasAlergyButton: CheckButton!
     @IBOutlet weak var dateTextField: CustomTextField!
     @IBOutlet weak var notesTextView: CustomTextView!
     @IBOutlet weak var wordLimitLabel: UILabel!
@@ -65,13 +65,13 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
     
     //MARK: Alergy Buttons Functions
     @IBAction func checkAlergySelected(_ sender: Any) {
-        if let button = sender as? CheckAlergyButton {
+        if let button = sender as? CheckButton {
             setHasAlergy(by: button)
             button.visibleSelection()
         }
     }
     
-    func setHasAlergy(by button: CheckAlergyButton) {
+    func setHasAlergy(by button: CheckButton) {
         hasAlergy = button.hasAlergy()
         alergyTextField.isEnabled = hasAlergy
     }

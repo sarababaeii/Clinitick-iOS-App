@@ -10,8 +10,6 @@ import Foundation
 
 extension Date {
     func startOfDate() -> Date {
-//        formatter.calendar = Calendar(identifier: .persian)
-//        formatter.locale = Locale(identifier: "fa_IR")
         var calendar = Calendar.current
         calendar.timeZone = TimeZone.current
         return calendar.startOfDay(for: self) //eg. yyyy-mm-dd 00:00:00
@@ -28,9 +26,21 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
-    func toTaskTableFormatString() -> String {
+    func getHourString() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
+        formatter.dateFormat = "HH"
         return formatter.string(from: self)
-    } //TODO: Test
+    }
+    
+    func getMinString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "mm"
+        return formatter.string(from: self)
+    }
+    
+    func toTaskTableFormatString() -> String {
+        let hour = self.getHourString().convertEnglishNumToPersianNum()
+        let min = self.getMinString().convertEnglishNumToPersianNum()
+        return "\(hour):\(min)"
+    }
 }

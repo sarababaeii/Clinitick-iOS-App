@@ -27,13 +27,18 @@ public class Appointment: NSManagedObject {
         return Info.dataController.createAppointment(patient: patient, disease: disease, price: price, visit_time: visit_time, notes: notes)
     }
     
-    func setState() {
-        if self.visit_time > Date() {
-            self.state = State.todo.rawValue
-        } else {
+    func setState(tag: Int) {
+        if tag == 1 {
             self.state = State.done.rawValue
+        } else if tag == 0 {
+            self.state = State.canceled.rawValue
         }
-    }
+//        if self.visit_time > Date() {
+//            self.state = State.todo.rawValue
+//        } else {
+//            self.state = State.done.rawValue
+//        }
+    } //yes?
     
     func setID() {
         let uuid = UUID()

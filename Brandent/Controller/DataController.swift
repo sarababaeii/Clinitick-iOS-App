@@ -58,7 +58,7 @@ class DataController {
         if let notes = notes {
             appointment.notes = notes
         }
-        appointment.setState()
+        appointment.state = State.todo.rawValue
         appointment.setID()
         appointment.setPatient(patient: patient)
         appointment.setDisease(disease: disease)
@@ -115,6 +115,7 @@ class DataController {
         
         let from = visitTime.startOfDate()
         if let to = visitTime.nextDay()?.startOfDate() {
+            print("@ from \(from) to \(to)")
             predicate = NSPredicate(format: "visit_time >= %@ AND visit_time <= %@", from as NSDate, to as NSDate)
         }
         
@@ -126,10 +127,13 @@ class DataController {
         request.returnsObjectsAsFaults = false
         do{
             let result = try context.fetch(request) as! [NSManagedObject]
+            print("***")
+            print(result)
+            print("***")
             return result
         } catch{
         }
-        return [NSManagedObject]()
+        return nil
     }
     
     func fetchPatient(phone: String) -> NSManagedObject? { //English and Persian
