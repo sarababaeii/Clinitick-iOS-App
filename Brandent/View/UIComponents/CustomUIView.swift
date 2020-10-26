@@ -20,6 +20,18 @@ import UIKit
         }
     }
     
+    @IBInspectable var borderColor: UIColor = UIColor.white {
+        didSet {
+            self.layer.borderColor = borderColor.cgColor
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat = 0 {
+        didSet {
+            self.layer.borderWidth = borderWidth
+        }
+    }
+    
     @IBInspectable var lightGradientColor: UIColor = UIColor.white {
         didSet{
             self.setGradient()

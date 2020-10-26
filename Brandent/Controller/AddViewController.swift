@@ -11,7 +11,7 @@ import UIKit
 import Photos
 import AVFoundation
 
-class AddViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var patientNameTextField: CustomTextField!
     @IBOutlet weak var patientPhoneNumberTextField: CustomTextField!
@@ -23,6 +23,7 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
     @IBOutlet weak var dateTextField: CustomTextField!
     @IBOutlet weak var notesTextView: CustomTextView!
     @IBOutlet weak var wordLimitLabel: UILabel!
+    @IBOutlet weak var imagesCollectionView: UICollectionView!
     @IBOutlet weak var submitButton: CustomButton!
     @IBOutlet weak var errorView: CustomUIView!
     
@@ -98,6 +99,7 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
         }
     }
     
+    //MARK: Keboard Management
     @IBAction func next(_ sender: Any) {
         if let textField = sender as? UITextField {
             textFields[textField.tag + 1].becomeFirstResponder()
@@ -108,13 +110,44 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
         if let textField = currentTextField {
             textField.resignFirstResponder()
         } else {
-            notesTextView.resignFirstResponder()
+            notesTextView.resignFirstResponder() //TODO: bug
         }
     }
     
+    //MARK: Image Picking
     @IBAction func addPhoto(_ sender: Any) {
         imagePickerDelegate?.displayImagePickingOptions()
     }
+    
+    
+    
+    var images = [UIImage(named: "profile"), UIImage(named: "white_tick"), UIImage(named: "diseases")]
+    
+    //MARK: Protocol Functions
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("Count: \(images.count)")
+        return images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCellID", for: indexPath) as! ImageCollectionViewCell
+        
+        print("Cell generated for \(indexPath.row), \(indexPath.item)")
+        if let image = imageDataSource(indexPath: indexPath) {
+            cell.setAttributes(image: image)
+        }
+        return cell
+    }
+    
+    func imageDataSource(indexPath: IndexPath) -> UIImage? {
+        print("Wants image in \(indexPath.row)")
+        if indexPath.row < images.count {
+            return images[indexPath.row]
+        }
+        return nil
+    }
+    
+    
     
     //MARK: Submission
     func mustComplete() -> CustomTextField? {
@@ -165,6 +198,7 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
         self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
     }
     
+    //MARK: Exit
     @IBAction func returnBack(_ sender: Any) {
         back()
     }
@@ -173,8 +207,14 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
         tabBarController?.selectedViewController = Info.sharedInstance.lastViewController
     }
     
+    //MARK: Initialization
     func setDelegates() {
         imagePickerDelegate = ImagePickerDelegate(from: self)
+        
+        let imageCollectionViewDelegate = ImageCollectionViewDelegate(imagesCollectionView: imagesCollectionView)
+        imagesCollectionView.delegate = self
+        imagesCollectionView.dataSource = self
+        print("Delegates sat")
         
         textViewDelegate = TextViewDelegate(label: wordLimitLabel)
         notesTextView.delegate = textViewDelegate
@@ -190,6 +230,10 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+//        configure()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         configure()
     }
 }
@@ -200,5 +244,3 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
 //alergy typed then canceled?
 
 //TODO: iOS availability
-
-//TODO: auto complete for patient
