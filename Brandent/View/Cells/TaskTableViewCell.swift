@@ -24,13 +24,17 @@ class TaskTableViewCell: UITableViewCell {
         patientNameLabel.text = appointment.patient.name
         diseaseLabel.text = appointment.disease?.title
         visitTimeLabel.text = appointment.visit_time.toTaskTableFormatString()
-        
+        setState(appointment: appointment)
+    }
+    
+    func setState(appointment: Appointment) {
         if appointment.state == State.done.rawValue {
             changeAppointmentState(doneButton as Any)
         } else if appointment.state == State.canceled.rawValue {
             changeAppointmentState(canceledButton as Any)
         }
     }
+    
     @IBAction func changeAppointmentState(_ sender: Any) {
         if let button = sender as? CheckButton {
             appointment?.setState(tag: button.tag)

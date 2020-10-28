@@ -16,16 +16,10 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     var date: Date = Date()
     //{
 //        didSet {
-//            print("Yuhu")
 //            if let tasks = Info.dataController.fetchAppointments(visitTime: date) as? [Appointment] {
 //                self.tasks = tasks
-//                print("# \(tasks.count)")
 //            }
-//        }
-//        willSet {
-//            print("Hey")
-//        }
-//
+//        }        
 //}
     var tasks = [Appointment]()
     

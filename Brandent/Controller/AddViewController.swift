@@ -11,7 +11,7 @@ import UIKit
 import Photos
 import AVFoundation
 
-class AddViewController: UIViewController, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class AddViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var patientNameTextField: CustomTextField!
     @IBOutlet weak var patientPhoneNumberTextField: CustomTextField!
@@ -24,13 +24,16 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
     @IBOutlet weak var notesTextView: CustomTextView!
     @IBOutlet weak var wordLimitLabel: UILabel!
     @IBOutlet weak var imagesCollectionView: UICollectionView!
+    @IBOutlet weak var addImageButton: UIButton!
+    @IBOutlet weak var addImageLabel: UIButton!
     @IBOutlet weak var submitButton: CustomButton!
     @IBOutlet weak var errorView: CustomUIView!
     
     let datePicker = UIDatePicker()
     var textViewDelegate: TextViewDelegate?
     var imagePickerDelegate: ImagePickerDelegate?
-    var textFields = [UITextField]()
+    var imageCollectionViewDelegate: ImagesCollectionViewDelegate?
+    var textFields = [CustomTextField]()
     var currentTextField: UITextField?
     
     var hasAlergy: Bool = false
@@ -119,46 +122,22 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
         imagePickerDelegate?.displayImagePickingOptions()
     }
     
-    
-    
-    var images = [UIImage(named: "profile"), UIImage(named: "white_tick"), UIImage(named: "diseases")]
-    
-    //MARK: Protocol Functions
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("Count: \(images.count)")
-        return images.count
+    func showButtons() {
+        addImageButton.isHidden = false
+        addImageLabel.isHidden = false
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCellID", for: indexPath) as! ImageCollectionViewCell
-        
-        print("Cell generated for \(indexPath.row), \(indexPath.item)")
-        if let image = imageDataSource(indexPath: indexPath) {
-            cell.setAttributes(image: image)
-        }
-        return cell
+    func hideButtons() {
+        addImageButton.isHidden = true
+        addImageLabel.isHidden = true
     }
-    
-    func imageDataSource(indexPath: IndexPath) -> UIImage? {
-        print("Wants image in \(indexPath.row)")
-        if indexPath.row < images.count {
-            return images[indexPath.row]
-        }
-        return nil
-    }
-    
-    
     
     //MARK: Submission
     func mustComplete() -> CustomTextField? {
-        if appointmentData[0] as? String == "" {
-            return patientNameTextField
-        }
-        if appointmentData[1] as? String == "" {
-            return patientPhoneNumberTextField
-        }
-        if appointmentData[2] as? String == "" {
-            return diseaseTextField
+        for i in 0 ..< 3 {
+            if appointmentData[i] as? String == "" {
+                return textFields[i]
+            }
         }
         if appointmentData[3] as? Int == -1 {
             return priceTextField
@@ -209,13 +188,10 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
     
     //MARK: Initialization
     func setDelegates() {
-        imagePickerDelegate = ImagePickerDelegate(from: self)
-        
-        let imageCollectionViewDelegate = ImageCollectionViewDelegate(imagesCollectionView: imagesCollectionView)
-        imagesCollectionView.delegate = self
-        imagesCollectionView.dataSource = self
-        print("Delegates sat")
-        
+        imageCollectionViewDelegate = ImagesCollectionViewDelegate(imagesCollectionView:imagesCollectionView, viewController: self)
+        imagesCollectionView.delegate = imageCollectionViewDelegate
+        imagesCollectionView.dataSource = imageCollectionViewDelegate
+        imagePickerDelegate = ImagePickerDelegate(from: self, imagesCollectionViewDelegate: imageCollectionViewDelegate)
         textViewDelegate = TextViewDelegate(label: wordLimitLabel)
         notesTextView.delegate = textViewDelegate
     }
@@ -238,9 +214,6 @@ class AddViewController: UIViewController, UITextViewDelegate, UINavigationContr
     }
 }
 
-
-//TODO: get images
-
 //alergy typed then canceled?
-
+//TODO: clinic
 //TODO: iOS availability
