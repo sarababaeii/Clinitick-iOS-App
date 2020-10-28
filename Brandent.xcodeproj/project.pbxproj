@@ -14,6 +14,10 @@
 		030BE2FB25434A5000AA642C /* TasksTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030BE2FA25434A5000AA642C /* TasksTableViewDelegate.swift */; };
 		030C67FC2549BAD400CECCC2 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C67FB2549BAD400CECCC2 /* AlertMessage.swift */; };
 		030C67FE2549D2C800CECCC2 /* ImagesCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C67FD2549D2C800CECCC2 /* ImagesCollectionViewHeader.swift */; };
+		030C68002549E65E00CECCC2 /* PatientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C67FF2549E65E00CECCC2 /* PatientsViewController.swift */; };
+		030C68022549EB1400CECCC2 /* PatientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C68012549EB1400CECCC2 /* PatientTableViewCell.swift */; };
+		030C68042549EC6C00CECCC2 /* DiseaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C68032549EC6C00CECCC2 /* DiseaseTableViewCell.swift */; };
+		030C68062549ECB200CECCC2 /* DiseasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C68052549ECB200CECCC2 /* DiseasesViewController.swift */; };
 		0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0310F44F250FF577008B3E5B /* CustomUIView.swift */; };
 		0323B3C52540745900EB34CD /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323B3C42540745900EB34CD /* RestAPIManager.swift */; };
 		0323B3C72540A83F00EB34CD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323B3C62540A83F00EB34CD /* DateExtension.swift */; };
@@ -89,6 +93,10 @@
 		030BE2FA25434A5000AA642C /* TasksTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewDelegate.swift; sourceTree = "<group>"; };
 		030C67FB2549BAD400CECCC2 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
 		030C67FD2549D2C800CECCC2 /* ImagesCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewHeader.swift; sourceTree = "<group>"; };
+		030C67FF2549E65E00CECCC2 /* PatientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsViewController.swift; sourceTree = "<group>"; };
+		030C68012549EB1400CECCC2 /* PatientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientTableViewCell.swift; sourceTree = "<group>"; };
+		030C68032549EC6C00CECCC2 /* DiseaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseTableViewCell.swift; sourceTree = "<group>"; };
+		030C68052549ECB200CECCC2 /* DiseasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesViewController.swift; sourceTree = "<group>"; };
 		0310F44F250FF577008B3E5B /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		0323B3C42540745900EB34CD /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
 		0323B3C62540A83F00EB34CD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -195,6 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				030BE2F82543454600AA642C /* TaskTableViewCell.swift */,
+				030C68012549EB1400CECCC2 /* PatientTableViewCell.swift */,
+				030C68032549EC6C00CECCC2 /* DiseaseTableViewCell.swift */,
 				0368107825473FA80016C1D6 /* ImageCollectionViewCell.swift */,
 				030C67FD2549D2C800CECCC2 /* ImagesCollectionViewHeader.swift */,
 			);
@@ -261,6 +271,8 @@
 				03036D30250FE8F500C7824A /* AddViewController.swift */,
 				03036D32250FE92400C7824A /* TasksViewController.swift */,
 				03AF9394251653BA008DD4A0 /* DataController.swift */,
+				030C67FF2549E65E00CECCC2 /* PatientsViewController.swift */,
+				030C68052549ECB200CECCC2 /* DiseasesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -641,7 +653,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				03BC1F8B25251658009749C0 /* Dentist+CoreDataProperties.swift in Sources */,
+				030C68022549EB1400CECCC2 /* PatientTableViewCell.swift in Sources */,
 				030BE2FB25434A5000AA642C /* TasksTableViewDelegate.swift in Sources */,
+				030C68042549EC6C00CECCC2 /* DiseaseTableViewCell.swift in Sources */,
 				035D4AD62544B566007D8395 /* CheckButton.swift in Sources */,
 				03749EB7250E76D6003CBE49 /* FinanceViewController.swift in Sources */,
 				0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */,
@@ -653,6 +667,7 @@
 				033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */,
 				03BC1F8F25251658009749C0 /* Clinic+CoreDataProperties.swift in Sources */,
 				03036D31250FE8F500C7824A /* AddViewController.swift in Sources */,
+				030C68062549ECB200CECCC2 /* DiseasesViewController.swift in Sources */,
 				0361A868253A1579001840EC /* CustomTextView.swift in Sources */,
 				03BC1F9025251658009749C0 /* Speciality+CoreDataClass.swift in Sources */,
 				0368107925473FA80016C1D6 /* ImageCollectionViewCell.swift in Sources */,
@@ -672,6 +687,7 @@
 				0363E686253235980095AF7C /* Color.swift in Sources */,
 				0323B3C52540745900EB34CD /* RestAPIManager.swift in Sources */,
 				030C67FC2549BAD400CECCC2 /* AlertMessage.swift in Sources */,
+				030C68002549E65E00CECCC2 /* PatientsViewController.swift in Sources */,
 				03BC1F8925251658009749C0 /* Appointment+CoreDataProperties.swift in Sources */,
 				03BC1F9125251658009749C0 /* Speciality+CoreDataProperties.swift in Sources */,
 				03BC1F8825251658009749C0 /* Appointment+CoreDataClass.swift in Sources */,

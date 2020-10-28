@@ -217,3 +217,5 @@ class AddViewController: UIViewController, UITextViewDelegate {
 //alergy typed then canceled?
 //TODO: clinic
 //TODO: iOS availability
+
+//hide clinic by defining a top anchor

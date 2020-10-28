@@ -1337,7 +1337,7 @@
         <!--Profile View Controller-->
         <scene sceneID="m5Q-mC-NEQ">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JyJ-pc-ew0" customClass="ProfileViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JyJ-pc-ew0" customClass="ProfileViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QTj-CC-oNf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1440,6 +1440,9 @@
                                                 <real key="value" value="16"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="rGo-g0-WsQ" kind="presentation" id="h0K-IB-2K5"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKl-vo-QP2" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="65" width="319" height="51"/>
@@ -1468,6 +1471,9 @@
                                                 <real key="value" value="16"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="2Dv-gK-Jpk" kind="presentation" id="pID-tu-1Sf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sA4-G6-9SE" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="132" width="319" height="51"/>
@@ -1592,10 +1598,10 @@
             </objects>
             <point key="canvasLocation" x="3088" y="249"/>
         </scene>
-        <!--View Controller-->
+        <!--Patients View Controller-->
         <scene sceneID="TuJ-jO-J8U">
             <objects>
-                <viewController id="rGo-g0-WsQ" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="rGo-g0-WsQ" customClass="PatientsViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zuj-4g-egl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1616,6 +1622,9 @@
                                         <state key="normal" title="بازگشت" image="chevron.left" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="JyJ-pc-ew0" kind="presentation" id="QWz-be-2hS"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1628,24 +1637,76 @@
                                     <constraint firstItem="VGD-Sb-Saf" firstAttribute="centerY" secondItem="sfi-jL-b9N" secondAttribute="centerY" id="yfq-FP-NYx"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8YL-nZ-b5G">
+                                <rect key="frame" x="33" y="90" width="318" height="559"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PatientCellID" rowHeight="72" id="FSv-UP-wyv" customClass="PatientTableViewCell" customModule="Brandent" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="318" height="72"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FSv-UP-wyv" id="N0z-6C-feF">
+                                            <rect key="frame" x="0.0" y="0.0" width="318" height="72"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W87-pf-YRx">
+                                                    <rect key="frame" x="0.0" y="6" width="318" height="60"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="علی اکبری نژاد" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfU-qo-p4K">
+                                                            <rect key="frame" x="223" y="19" width="79" height="22"/>
+                                                            <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="wfU-qo-p4K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="W87-pf-YRx" secondAttribute="leading" constant="20" symbolic="YES" id="ASq-y3-naC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wfU-qo-p4K" secondAttribute="trailing" constant="16" id="hLG-Gv-O2u"/>
+                                                        <constraint firstItem="wfU-qo-p4K" firstAttribute="centerY" secondItem="W87-pf-YRx" secondAttribute="centerY" id="pX3-jL-Jii"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="W87-pf-YRx" firstAttribute="top" secondItem="N0z-6C-feF" secondAttribute="top" constant="6" id="20t-l4-LCY"/>
+                                                <constraint firstAttribute="trailing" secondItem="W87-pf-YRx" secondAttribute="trailing" id="4c2-cm-Ses"/>
+                                                <constraint firstItem="W87-pf-YRx" firstAttribute="leading" secondItem="N0z-6C-feF" secondAttribute="leading" id="C5L-8c-Lbj"/>
+                                                <constraint firstAttribute="bottom" secondItem="W87-pf-YRx" secondAttribute="bottom" constant="6" id="nWM-hB-8dP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="wfU-qo-p4K" id="2W3-4s-Lne"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="4F0-o3-pEk" firstAttribute="trailing" secondItem="8YL-nZ-b5G" secondAttribute="trailing" constant="24" id="0xA-4J-iKP"/>
+                            <constraint firstItem="4F0-o3-pEk" firstAttribute="bottom" secondItem="8YL-nZ-b5G" secondAttribute="bottom" constant="18" id="1Cc-Qt-U9r"/>
+                            <constraint firstItem="8YL-nZ-b5G" firstAttribute="leading" secondItem="4F0-o3-pEk" secondAttribute="leading" constant="33" id="BiX-fJ-pRV"/>
                             <constraint firstItem="4F0-o3-pEk" firstAttribute="trailing" secondItem="sfi-jL-b9N" secondAttribute="trailing" id="Qkn-ji-MIj"/>
+                            <constraint firstItem="8YL-nZ-b5G" firstAttribute="top" secondItem="sfi-jL-b9N" secondAttribute="bottom" constant="18" id="bnz-D8-bYi"/>
                             <constraint firstItem="sfi-jL-b9N" firstAttribute="leading" secondItem="4F0-o3-pEk" secondAttribute="leading" id="iXQ-re-Xt2"/>
                             <constraint firstItem="sfi-jL-b9N" firstAttribute="top" secondItem="4F0-o3-pEk" secondAttribute="top" id="xjI-rn-pzG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4F0-o3-pEk"/>
                     </view>
+                    <connections>
+                        <outlet property="patientsTableView" destination="8YL-nZ-b5G" id="IwZ-ej-dgL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fyf-2J-cjv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2336" y="978"/>
+            <point key="canvasLocation" x="2134" y="1017"/>
         </scene>
-        <!--View Controller-->
+        <!--Disease View Controller-->
         <scene sceneID="Imx-de-IKA">
             <objects>
-                <viewController id="2Dv-gK-Jpk" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="2Dv-gK-Jpk" customClass="DiseaseViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t4r-E3-Xb2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1666,6 +1727,9 @@
                                         <state key="normal" title="بازگشت" image="chevron.left" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="JyJ-pc-ew0" kind="presentation" id="1Dz-do-KkQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1694,10 +1758,54 @@
                                         <real key="value" value="24"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="wFk-Sd-vpy" kind="presentation" id="Wti-dz-1Sj"/>
+                                </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kMg-tm-hOQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kMg-tm-hOQ">
                                 <rect key="frame" x="32" y="96" width="319" height="502"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DiseaseCellID" rowHeight="72" id="TVu-xZ-u95" customClass="DiseaseTableViewCell" customModule="Brandent" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="319" height="72"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TVu-xZ-u95" id="WQz-Rx-9RB">
+                                            <rect key="frame" x="0.0" y="0.0" width="319" height="72"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDP-s6-0jy">
+                                                    <rect key="frame" x="48" y="-18" width="240" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ویزیت" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuO-O6-Sfd">
+                                                            <rect key="frame" x="102" y="53" width="35" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="۵۰۰۰۰" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmZ-3e-MbV">
+                                                            <rect key="frame" x="103" y="53" width="34" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Vazir-Thin" family="Vazir" pointSize="14"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تومان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hek-OQ-cJK">
+                                                            <rect key="frame" x="104" y="53" width="32" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Vazir-Thin" family="Vazir" pointSize="14"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1717,12 +1825,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zxY-6E-aaC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3087" y="977"/>
+            <point key="canvasLocation" x="3087" y="1017"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="7Y9-v7-2FX">
             <objects>
-                <viewController id="wFk-Sd-vpy" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="wFk-Sd-vpy" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eLZ-H7-MgE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1743,6 +1851,9 @@
                                         <state key="normal" title="بازگشت" image="chevron.left" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="2Dv-gK-Jpk" kind="presentation" id="x7y-UF-cbd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1834,7 +1945,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he5-RZ-mxL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3087" y="1707"/>
+            <point key="canvasLocation" x="3087" y="1780"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1890,4 +2001,8 @@
         <image name="tasks" width="26" height="24"/>
         <image name="xmark.circle" catalog="system" width="64" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pID-tu-1Sf"/>
+        <segue reference="1Dz-do-KkQ"/>
+    </inferredMetricsTieBreakers>
 </document>
