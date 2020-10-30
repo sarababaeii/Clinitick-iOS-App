@@ -97,7 +97,7 @@ class DataController {
         return disease
     }
     
-    func fetchAppointments() -> [NSManagedObject]? {
+    func fetchAllAppointments() -> [NSManagedObject]? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.appointment.rawValue)
         request.returnsObjectsAsFaults = false
         do{
@@ -136,6 +136,18 @@ class DataController {
         return nil
     }
     
+    func fetchAllPatients() -> [NSManagedObject]? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.patient.rawValue)
+        request.returnsObjectsAsFaults = false
+        do{
+            let result = try context.fetch(request) as! [NSManagedObject]
+            return result
+        } catch{
+            print("Error in fetching patient")
+        }
+        return nil
+    }
+    
     func fetchPatient(phone: String) -> NSManagedObject? { //English and Persian
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.patient.rawValue)
         request.predicate = NSPredicate(format: "phone = %@", phone)
@@ -143,6 +155,18 @@ class DataController {
         do{
             let result = try context.fetch(request) as! [NSManagedObject]
             return result.first
+        } catch{
+            print("Error in fetching patient")
+        }
+        return nil
+    }
+    
+    func fetchAllDiseases() -> [NSManagedObject]? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.disease.rawValue)
+        request.returnsObjectsAsFaults = false
+        do{
+            let result = try context.fetch(request) as! [NSManagedObject]
+            return result
         } catch{
             print("Error in fetching patient")
         }
@@ -163,7 +187,7 @@ class DataController {
     }
     
     func loadData() {
-        guard let appointments = fetchAppointments() as? [Appointment] else {
+        guard let appointments = fetchAllAppointments() as? [Appointment] else {
             return
         }
         for appointment in appointments {
@@ -193,3 +217,6 @@ class DataController {
 //
 //        return dateFormatter.string(from: date)
 //    }
+
+
+//insert and replace

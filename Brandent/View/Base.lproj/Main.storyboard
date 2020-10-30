@@ -1337,7 +1337,7 @@
         <!--Profile View Controller-->
         <scene sceneID="m5Q-mC-NEQ">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JyJ-pc-ew0" customClass="ProfileViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" definesPresentationContext="YES" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JyJ-pc-ew0" customClass="ProfileViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QTj-CC-oNf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1502,6 +1502,9 @@
                                                 <real key="value" value="40"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="yFf-aF-4vU" kind="presentation" id="JJU-O2-KdT"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tb6-bx-vqh" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="197" width="319" height="51"/>
@@ -1601,7 +1604,7 @@
         <!--Patients View Controller-->
         <scene sceneID="TuJ-jO-J8U">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="rGo-g0-WsQ" customClass="PatientsViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" modalPresentationStyle="overCurrentContext" id="rGo-g0-WsQ" customClass="PatientsViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zuj-4g-egl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1637,7 +1640,7 @@
                                     <constraint firstItem="VGD-Sb-Saf" firstAttribute="centerY" secondItem="sfi-jL-b9N" secondAttribute="centerY" id="yfq-FP-NYx"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8YL-nZ-b5G">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8YL-nZ-b5G">
                                 <rect key="frame" x="33" y="90" width="318" height="559"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1695,6 +1698,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4F0-o3-pEk"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JCV-fL-rQZ"/>
                     <connections>
                         <outlet property="patientsTableView" destination="8YL-nZ-b5G" id="IwZ-ej-dgL"/>
                     </connections>
@@ -1706,7 +1710,7 @@
         <!--Disease View Controller-->
         <scene sceneID="Imx-de-IKA">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="2Dv-gK-Jpk" customClass="DiseaseViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="2Dv-gK-Jpk" customClass="DiseaseViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t4r-E3-Xb2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1762,7 +1766,7 @@
                                     <segue destination="wFk-Sd-vpy" kind="presentation" id="Wti-dz-1Sj"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kMg-tm-hOQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kMg-tm-hOQ">
                                 <rect key="frame" x="32" y="96" width="319" height="502"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1774,36 +1778,51 @@
                                             <rect key="frame" x="0.0" y="0.0" width="319" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDP-s6-0jy">
-                                                    <rect key="frame" x="48" y="-18" width="240" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDP-s6-0jy">
+                                                    <rect key="frame" x="0.0" y="6" width="319" height="60"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ویزیت" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuO-O6-Sfd">
-                                                            <rect key="frame" x="102" y="53" width="35" height="22"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ویزیت" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuO-O6-Sfd">
+                                                            <rect key="frame" x="268" y="19" width="35" height="22"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="۵۰۰۰۰" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmZ-3e-MbV">
-                                                            <rect key="frame" x="103" y="53" width="34" height="22"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۵۰۰۰۰" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmZ-3e-MbV">
+                                                            <rect key="frame" x="50" y="19" width="34" height="22"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Thin" family="Vazir" pointSize="14"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تومان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hek-OQ-cJK">
-                                                            <rect key="frame" x="104" y="53" width="32" height="22"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hek-OQ-cJK">
+                                                            <rect key="frame" x="16" y="19" width="32" height="22"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Thin" family="Vazir" pointSize="14"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="Hek-OQ-cJK" firstAttribute="leading" secondItem="YDP-s6-0jy" secondAttribute="leading" constant="16" id="6ZJ-ob-EZC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="GuO-O6-Sfd" secondAttribute="trailing" constant="16" id="9qL-da-eSN"/>
+                                                        <constraint firstItem="pmZ-3e-MbV" firstAttribute="leading" secondItem="Hek-OQ-cJK" secondAttribute="trailing" constant="2" id="9sY-sa-AXU"/>
+                                                        <constraint firstItem="pmZ-3e-MbV" firstAttribute="centerY" secondItem="YDP-s6-0jy" secondAttribute="centerY" id="AR0-Ib-M2Y"/>
+                                                        <constraint firstItem="GuO-O6-Sfd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pmZ-3e-MbV" secondAttribute="trailing" constant="8" symbolic="YES" id="BKd-J7-u8Z"/>
+                                                        <constraint firstItem="Hek-OQ-cJK" firstAttribute="centerY" secondItem="YDP-s6-0jy" secondAttribute="centerY" id="oyN-Nt-qkl"/>
+                                                        <constraint firstItem="GuO-O6-Sfd" firstAttribute="centerY" secondItem="YDP-s6-0jy" secondAttribute="centerY" id="ycc-bN-nXm"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="YDP-s6-0jy" firstAttribute="leading" secondItem="WQz-Rx-9RB" secondAttribute="leading" id="Hts-wb-yh3"/>
+                                                <constraint firstItem="YDP-s6-0jy" firstAttribute="top" secondItem="WQz-Rx-9RB" secondAttribute="top" constant="6" id="i2v-7x-hZz"/>
+                                                <constraint firstAttribute="bottom" secondItem="YDP-s6-0jy" secondAttribute="bottom" constant="6" id="r22-9n-dkh"/>
+                                                <constraint firstAttribute="trailing" secondItem="YDP-s6-0jy" secondAttribute="trailing" id="tVe-2E-r2K"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="pmZ-3e-MbV" id="Bi7-tE-bZu"/>
+                                            <outlet property="titleLabel" destination="GuO-O6-Sfd" id="U05-CW-KqG"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1822,15 +1841,265 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S1b-c7-3dJ"/>
                     </view>
+                    <connections>
+                        <outlet property="diseasesTableView" destination="kMg-tm-hOQ" id="6sV-Af-6zS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zxY-6E-aaC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3087" y="1017"/>
         </scene>
-        <!--View Controller-->
+        <!--Clinics View Controller-->
+        <scene sceneID="0uw-wI-zag">
+            <objects>
+                <viewController definesPresentationContext="YES" modalPresentationStyle="fullScreen" id="yFf-aF-4vU" customClass="ClinicsViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xxg-b1-DWT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M9s-Sk-glD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مطب‌ها" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nj0-CS-wEV">
+                                        <rect key="frame" x="272" y="15.5" width="79" height="41"/>
+                                        <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="26"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tI1-Lv-qA1">
+                                        <rect key="frame" x="24" y="21.5" width="67.5" height="29"/>
+                                        <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="18"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="بازگشت" image="chevron.left" catalog="system">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Nj0-CS-wEV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tI1-Lv-qA1" secondAttribute="trailing" constant="8" symbolic="YES" id="I1M-hh-aKP"/>
+                                    <constraint firstAttribute="height" constant="72" id="K06-eQ-YkY"/>
+                                    <constraint firstItem="tI1-Lv-qA1" firstAttribute="centerY" secondItem="M9s-Sk-glD" secondAttribute="centerY" id="T9s-7P-cek"/>
+                                    <constraint firstItem="tI1-Lv-qA1" firstAttribute="leading" secondItem="M9s-Sk-glD" secondAttribute="leading" constant="24" id="br5-uI-l88"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nj0-CS-wEV" secondAttribute="trailing" constant="24" id="gzl-6S-Nzc"/>
+                                    <constraint firstItem="Nj0-CS-wEV" firstAttribute="centerY" secondItem="M9s-Sk-glD" secondAttribute="centerY" id="sO7-cG-L0c"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkf-yX-Wk4" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
+                                <rect key="frame" x="95.5" y="610" width="184" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.46274509800000002" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Jf9-K0-Y5u"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="184" id="yoP-Ll-vH6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
+                                <state key="normal" title="افزودن مطب">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dtP-o8-PKy">
+                                <rect key="frame" x="32" y="96" width="319" height="502"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ClinicCellID" rowHeight="72" id="N0i-zx-sf1" customClass="ClinicTableViewCell" customModule="Brandent" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="319" height="72"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N0i-zx-sf1" id="JwC-jP-hoa">
+                                            <rect key="frame" x="0.0" y="0.0" width="319" height="72"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7W-CF-khz">
+                                                    <rect key="frame" x="0.0" y="6" width="319" height="60"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLM-M4-94p" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
+                                                            <rect key="frame" x="295" y="26" width="8" height="8"/>
+                                                            <color key="backgroundColor" red="1" green="0.46274509800000002" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="8" id="4Ih-4O-yiR"/>
+                                                                <constraint firstAttribute="height" constant="8" id="se5-7i-DDk"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مطب ۱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIa-0u-aPO">
+                                                            <rect key="frame" x="245" y="19" width="38" height="22"/>
+                                                            <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="bLM-M4-94p" firstAttribute="centerY" secondItem="Z7W-CF-khz" secondAttribute="centerY" id="5J5-a7-E5G"/>
+                                                        <constraint firstItem="GIa-0u-aPO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Z7W-CF-khz" secondAttribute="leading" constant="20" symbolic="YES" id="Xel-dZ-PkJ"/>
+                                                        <constraint firstItem="GIa-0u-aPO" firstAttribute="centerY" secondItem="Z7W-CF-khz" secondAttribute="centerY" id="fJG-n4-YQW"/>
+                                                        <constraint firstAttribute="trailing" secondItem="bLM-M4-94p" secondAttribute="trailing" constant="16" id="kBt-B2-x1q"/>
+                                                        <constraint firstItem="bLM-M4-94p" firstAttribute="leading" secondItem="GIa-0u-aPO" secondAttribute="trailing" constant="12" id="r2k-kE-pWO"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Z7W-CF-khz" secondAttribute="bottom" constant="6" id="5gp-cA-m7l"/>
+                                                <constraint firstAttribute="trailing" secondItem="Z7W-CF-khz" secondAttribute="trailing" id="939-ta-AvY"/>
+                                                <constraint firstItem="Z7W-CF-khz" firstAttribute="leading" secondItem="JwC-jP-hoa" secondAttribute="leading" id="Tme-x5-SjV"/>
+                                                <constraint firstItem="Z7W-CF-khz" firstAttribute="top" secondItem="JwC-jP-hoa" secondAttribute="top" constant="6" id="bqr-Il-C92"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="colorView" destination="bLM-M4-94p" id="9ru-jg-FVX"/>
+                                            <outlet property="titleLabel" destination="GIa-0u-aPO" id="4km-ty-95W"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="lJo-mk-Z1B" firstAttribute="trailing" secondItem="M9s-Sk-glD" secondAttribute="trailing" id="3rp-tb-9Nc"/>
+                            <constraint firstItem="dtP-o8-PKy" firstAttribute="leading" secondItem="lJo-mk-Z1B" secondAttribute="leading" constant="32" id="4Sg-kO-tLJ"/>
+                            <constraint firstItem="dtP-o8-PKy" firstAttribute="top" secondItem="M9s-Sk-glD" secondAttribute="bottom" constant="24" id="7oy-A1-9TV"/>
+                            <constraint firstItem="lJo-mk-Z1B" firstAttribute="bottom" secondItem="Vkf-yX-Wk4" secondAttribute="bottom" constant="12" id="Af0-HM-aPT"/>
+                            <constraint firstItem="M9s-Sk-glD" firstAttribute="leading" secondItem="lJo-mk-Z1B" secondAttribute="leading" id="W3G-Sh-GDF"/>
+                            <constraint firstItem="Vkf-yX-Wk4" firstAttribute="centerX" secondItem="Xxg-b1-DWT" secondAttribute="centerX" id="XIt-La-pSX"/>
+                            <constraint firstItem="M9s-Sk-glD" firstAttribute="top" secondItem="lJo-mk-Z1B" secondAttribute="top" id="heo-OZ-cFV"/>
+                            <constraint firstItem="Vkf-yX-Wk4" firstAttribute="top" secondItem="dtP-o8-PKy" secondAttribute="bottom" constant="12" id="lj2-bP-LAW"/>
+                            <constraint firstItem="lJo-mk-Z1B" firstAttribute="trailing" secondItem="dtP-o8-PKy" secondAttribute="trailing" constant="24" id="tHK-E7-6KL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lJo-mk-Z1B"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="14g-8P-RLM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4070" y="1017"/>
+        </scene>
+        <!--Add Clinic View Controller-->
+        <scene sceneID="uWJ-t0-B84">
+            <objects>
+                <viewController id="i9X-Ut-Yb2" customClass="AddClinicViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tkT-5o-syM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmg-7Y-q71">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="افزودن مطب" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVv-Z2-9EV">
+                                        <rect key="frame" x="219" y="15.5" width="132" height="41"/>
+                                        <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="26"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fH3-2J-Fgh">
+                                        <rect key="frame" x="24" y="21.5" width="68" height="29"/>
+                                        <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="18"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="بازگشت" image="chevron.left" catalog="system">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="WVv-Z2-9EV" secondAttribute="trailing" constant="24" id="EZH-cT-Z1l"/>
+                                    <constraint firstItem="fH3-2J-Fgh" firstAttribute="centerY" secondItem="cmg-7Y-q71" secondAttribute="centerY" id="EbD-aE-cv9"/>
+                                    <constraint firstItem="fH3-2J-Fgh" firstAttribute="leading" secondItem="cmg-7Y-q71" secondAttribute="leading" constant="24" id="Sia-9Y-rv0"/>
+                                    <constraint firstItem="WVv-Z2-9EV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fH3-2J-Fgh" secondAttribute="trailing" constant="8" symbolic="YES" id="TYi-M0-97B"/>
+                                    <constraint firstItem="WVv-Z2-9EV" firstAttribute="centerY" secondItem="cmg-7Y-q71" secondAttribute="centerY" id="ah4-cM-nXG"/>
+                                    <constraint firstAttribute="height" constant="72" id="s5D-wf-Aen"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="نام مطب" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vuz-GL-Jmh" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                <rect key="frame" x="48" y="88" width="303" height="50.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vuz-GL-Jmh" secondAttribute="height" multiplier="324:54" id="f5X-VT-jB6"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="آدرس (اختیاری)" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Irs-Dw-ee9" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                <rect key="frame" x="48" y="154.5" width="303" height="50.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Irs-Dw-ee9" secondAttribute="height" multiplier="324:54" id="PhT-Vb-llq"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpd-6a-Zfi" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
+                                <rect key="frame" x="234" y="237" width="117" height="37"/>
+                                <color key="backgroundColor" red="1" green="0.46274509800000002" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fpd-6a-Zfi" secondAttribute="height" multiplier="133:42" id="xjg-Bw-nff"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="16"/>
+                                <state key="normal" title="ثبت">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="A45-WT-fz4" firstAttribute="trailing" secondItem="Irs-Dw-ee9" secondAttribute="trailing" constant="24" id="6Ap-lP-sVU"/>
+                            <constraint firstItem="A45-WT-fz4" firstAttribute="trailing" secondItem="cmg-7Y-q71" secondAttribute="trailing" id="APA-2c-Rtq"/>
+                            <constraint firstItem="fpd-6a-Zfi" firstAttribute="top" secondItem="Irs-Dw-ee9" secondAttribute="bottom" constant="32" id="EDK-09-930"/>
+                            <constraint firstItem="Irs-Dw-ee9" firstAttribute="top" secondItem="vuz-GL-Jmh" secondAttribute="bottom" constant="16" id="HbY-kD-ojE"/>
+                            <constraint firstItem="cmg-7Y-q71" firstAttribute="leading" secondItem="A45-WT-fz4" secondAttribute="leading" id="Jmc-On-XiV"/>
+                            <constraint firstItem="fpd-6a-Zfi" firstAttribute="trailing" secondItem="Irs-Dw-ee9" secondAttribute="trailing" id="M58-1t-Pge"/>
+                            <constraint firstItem="vuz-GL-Jmh" firstAttribute="top" secondItem="cmg-7Y-q71" secondAttribute="bottom" constant="16" id="S0H-cf-AWr"/>
+                            <constraint firstItem="A45-WT-fz4" firstAttribute="trailing" secondItem="vuz-GL-Jmh" secondAttribute="trailing" constant="24" id="X6N-wH-3bQ"/>
+                            <constraint firstItem="Irs-Dw-ee9" firstAttribute="leading" secondItem="A45-WT-fz4" secondAttribute="leading" constant="48" id="kgm-v7-Ol0"/>
+                            <constraint firstItem="cmg-7Y-q71" firstAttribute="top" secondItem="A45-WT-fz4" secondAttribute="top" id="pVa-QU-25W"/>
+                            <constraint firstItem="vuz-GL-Jmh" firstAttribute="leading" secondItem="A45-WT-fz4" secondAttribute="leading" constant="48" id="s9Z-vT-bqc"/>
+                            <constraint firstItem="fpd-6a-Zfi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="A45-WT-fz4" secondAttribute="leading" symbolic="YES" id="uDF-ff-28h"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="A45-WT-fz4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vAW-Vw-4Nf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4070" y="1780"/>
+        </scene>
+        <!--Add Disease View Controller-->
         <scene sceneID="7Y9-v7-2FX">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="wFk-Sd-vpy" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" modalPresentationStyle="overCurrentContext" id="wFk-Sd-vpy" customClass="AddDiseaseViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eLZ-H7-MgE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1866,7 +2135,7 @@
                                     <constraint firstItem="4f5-I2-Eo3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ijb-4c-Az5" secondAttribute="trailing" constant="8" symbolic="YES" id="o3V-DF-t8c"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" placeholder="تیتر" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vmu-ta-OVx" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" placeholder="نام بیماری/عمل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vmu-ta-OVx" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="48" y="88" width="303" height="48"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1887,7 +2156,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQj-8m-6hB" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه‌ی پیش‌فرض" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQj-8m-6hB" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="48" y="152" width="303" height="47.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1923,6 +2192,9 @@
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submit:" destination="wFk-Sd-vpy" eventType="touchUpInside" id="5Hl-Gs-7qc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1942,6 +2214,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r0f-L3-bxA"/>
                     </view>
+                    <connections>
+                        <outlet property="priceLabel" destination="AQj-8m-6hB" id="uC1-2L-h0o"/>
+                        <outlet property="titleLabel" destination="vmu-ta-OVx" id="33R-Fs-mld"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he5-RZ-mxL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

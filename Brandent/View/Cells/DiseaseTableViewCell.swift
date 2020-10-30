@@ -11,4 +11,13 @@ import UIKit
 
 class DiseaseTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
+    func setAttributes(disease: Disease) {
+        titleLabel.text = disease.title
+        if let price = disease.price as? Int {
+            priceLabel.text = String(price).convertEnglishNumToPersianNum()
+        }
+    }
 }

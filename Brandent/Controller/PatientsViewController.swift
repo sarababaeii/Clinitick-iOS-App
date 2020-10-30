@@ -9,11 +9,26 @@
 import Foundation
 import UIKit
 
+@available(iOS 13.0, *)
 class PatientsViewController: UIViewController {
     
     @IBOutlet weak var patientsTableView: UITableView!
     
+    var patientsTableViewDelegate: PatientsTableViewDelegate?
+    
+    let testPatients = [Patient]()
+    
+    func setDelegates() {
+        patientsTableViewDelegate = PatientsTableViewDelegate()
+        patientsTableView.delegate = patientsTableViewDelegate
+        patientsTableView.dataSource = patientsTableViewDelegate
+    }
+    
+    func configure() {
+        setDelegates()
+    }
+    
     override func viewDidLoad() {
-        
+        configure()
     }
 }
