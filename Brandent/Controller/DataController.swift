@@ -78,8 +78,7 @@ class DataController {
         if let alergies = alergies {
             patient.alergies = alergies
         }
-        
-        //TODO: set id
+        patient.setID()
         
         saveContext()
         return patient
@@ -89,7 +88,10 @@ class DataController {
         let disease = Disease(entity: diseaseEntity, insertInto: context)
         
         disease.title = title
-        disease.price = price as? NSDecimalNumber
+        if let price =  price as? NSDecimalNumber{
+            disease.price = price
+        }
+        disease.setID()
         
         //TODO: set for drntist?
         

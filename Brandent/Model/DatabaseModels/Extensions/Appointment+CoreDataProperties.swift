@@ -2,7 +2,7 @@
 //  Appointment+CoreDataProperties.swift
 //  Brandent
 //
-//  Created by Sara Babaei on 10/1/20.
+//  Created by Sara Babaei on 10/31/20.
 //  Copyright © 2020 Sara Babaei. All rights reserved.
 //
 //
@@ -17,16 +17,17 @@ extension Appointment {
         return NSFetchRequest<Appointment>(entityName: "Appointment")
     }
 
-//    @NSManaged public var isDeleted: Bool
+//    @NSManaged public var deleted: Bool
     @NSManaged public var id: UUID
     @NSManaged public var images: Data?
     @NSManaged public var modifiedAt: Date
     @NSManaged public var notes: String?
-    @NSManaged public var price: NSDecimalNumber?
+    @NSManaged public var price: NSDecimalNumber
     @NSManaged public var state: String
     @NSManaged public var visit_time: Date
     @NSManaged public var clinic: Clinic?
-    @NSManaged public var disease: Disease?
+    @NSManaged public var dentist: Dentist?
+    @NSManaged public var disease: Disease
     @NSManaged public var patient: Patient
 
 }

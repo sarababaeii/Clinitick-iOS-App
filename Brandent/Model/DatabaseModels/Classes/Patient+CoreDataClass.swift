@@ -20,6 +20,11 @@ public class Patient: NSManagedObject {
         }
         return Info.dataController.createPatient(name: name, phone: phone, alergies: alergies)
     }
+    
+    func setID() {
+        let uuid = UUID()
+        self.id = uuid
+    }
 //    init(name: Float, phone: Float) {
 //        super.init()
 //        self.name = name

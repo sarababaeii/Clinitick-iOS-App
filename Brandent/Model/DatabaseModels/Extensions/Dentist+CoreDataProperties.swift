@@ -2,7 +2,7 @@
 //  Dentist+CoreDataProperties.swift
 //  Brandent
 //
-//  Created by Sara Babaei on 10/1/20.
+//  Created by Sara Babaei on 10/31/20.
 //  Copyright © 2020 Sara Babaei. All rights reserved.
 //
 //
@@ -17,11 +17,30 @@ extension Dentist {
         return NSFetchRequest<Dentist>(entityName: "Dentist")
     }
 
-    @NSManaged public var image: Data?
     @NSManaged public var name: Float
+    @NSManaged public var phone: String?
+    @NSManaged public var photo: Data?
+    @NSManaged public var appointments: NSSet?
     @NSManaged public var clinics: NSSet?
     @NSManaged public var diseases: NSSet?
     @NSManaged public var specialities: NSSet?
+
+}
+
+// MARK: Generated accessors for appointments
+extension Dentist {
+
+    @objc(addAppointmentsObject:)
+    @NSManaged public func addToAppointments(_ value: Appointment)
+
+    @objc(removeAppointmentsObject:)
+    @NSManaged public func removeFromAppointments(_ value: Appointment)
+
+    @objc(addAppointments:)
+    @NSManaged public func addToAppointments(_ values: NSSet)
+
+    @objc(removeAppointments:)
+    @NSManaged public func removeFromAppointments(_ values: NSSet)
 
 }
 

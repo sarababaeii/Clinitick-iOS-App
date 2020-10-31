@@ -15,8 +15,10 @@
         <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="history" inverseEntity="Patient"/>
     </entity>
     <entity name="Clinic" representedClassName="Clinic" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="color" attributeType="String" defaultValueString="Green"/>
         <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String" defaultValueString="مطب ۱"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="clinic" inverseEntity="Appointment"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="clinics" inverseEntity="Dentist"/>
     </entity>
@@ -30,7 +32,7 @@
         <relationship name="specialities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Speciality" inverseName="dentist" inverseEntity="Speciality"/>
     </entity>
     <entity name="Disease" representedClassName="Disease" syncable="YES">
-        <attribute name="id" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
         <attribute name="price" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="title" attributeType="String" defaultValueString="toothace"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="disease" inverseEntity="Appointment"/>
@@ -39,20 +41,20 @@
     </entity>
     <entity name="Patient" representedClassName="Patient" syncable="YES">
         <attribute name="alergies" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString="بیمار"/>
         <attribute name="phone" attributeType="String" minValueString="11" maxValueString="11" defaultValueString="00000000000"/>
         <relationship name="history" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="patient" inverseEntity="Appointment"/>
     </entity>
     <entity name="Speciality" representedClassName="Speciality" syncable="YES">
-        <attribute name="id" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="specialities" inverseEntity="Dentist"/>
         <relationship name="diseases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disease" inverseName="specialities" inverseEntity="Disease"/>
     </entity>
     <elements>
         <element name="Appointment" positionX="-60.80078125" positionY="-254.6015625" width="128" height="223"/>
-        <element name="Clinic" positionX="-88.50390625" positionY="-444.4140625" width="128" height="103"/>
+        <element name="Clinic" positionX="-88.50390625" positionY="-444.4140625" width="128" height="133"/>
         <element name="Dentist" positionX="-415.96484375" positionY="-429.25390625" width="128" height="148"/>
         <element name="Disease" positionX="-251.5390625" positionY="-259.546875" width="128" height="133"/>
         <element name="Patient" positionX="-54.2265625" positionY="-23.95703125" width="128" height="118"/>

@@ -2,7 +2,7 @@
 //  Speciality+CoreDataProperties.swift
 //  Brandent
 //
-//  Created by Sara Babaei on 10/1/20.
+//  Created by Sara Babaei on 10/31/20.
 //  Copyright © 2020 Sara Babaei. All rights reserved.
 //
 //
@@ -17,8 +17,8 @@ extension Speciality {
         return NSFetchRequest<Speciality>(entityName: "Speciality")
     }
 
-    @NSManaged public var id: NSDecimalNumber?
-    @NSManaged public var title: String?
+    @NSManaged public var id: UUID
+    @NSManaged public var title: String
     @NSManaged public var dentist: Dentist?
     @NSManaged public var diseases: NSSet?
 

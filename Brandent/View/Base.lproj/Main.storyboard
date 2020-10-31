@@ -1337,7 +1337,7 @@
         <!--Profile View Controller-->
         <scene sceneID="m5Q-mC-NEQ">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" definesPresentationContext="YES" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JyJ-pc-ew0" customClass="ProfileViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JyJ-pc-ew0" customClass="ProfileViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QTj-CC-oNf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1604,7 +1604,7 @@
         <!--Patients View Controller-->
         <scene sceneID="TuJ-jO-J8U">
             <objects>
-                <viewController definesPresentationContext="YES" modalPresentationStyle="overCurrentContext" id="rGo-g0-WsQ" customClass="PatientsViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" id="rGo-g0-WsQ" customClass="PatientsViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zuj-4g-egl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1710,7 +1710,7 @@
         <!--Disease View Controller-->
         <scene sceneID="Imx-de-IKA">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="2Dv-gK-Jpk" customClass="DiseaseViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" id="2Dv-gK-Jpk" customClass="DiseaseViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t4r-E3-Xb2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1852,7 +1852,7 @@
         <!--Clinics View Controller-->
         <scene sceneID="0uw-wI-zag">
             <objects>
-                <viewController definesPresentationContext="YES" modalPresentationStyle="fullScreen" id="yFf-aF-4vU" customClass="ClinicsViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" id="yFf-aF-4vU" customClass="ClinicsViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xxg-b1-DWT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1873,6 +1873,9 @@
                                         <state key="normal" title="بازگشت" image="chevron.left" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="JyJ-pc-ew0" kind="presentation" id="WzA-83-OGe"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1901,6 +1904,9 @@
                                         <real key="value" value="24"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="i9X-Ut-Yb2" kind="presentation" id="u9w-lA-Wkc"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dtP-o8-PKy">
                                 <rect key="frame" x="32" y="96" width="319" height="502"/>
@@ -1975,6 +1981,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lJo-mk-Z1B"/>
                     </view>
+                    <connections>
+                        <outlet property="clinicsTableView" destination="dtP-o8-PKy" id="shu-Fo-GIO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14g-8P-RLM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1983,7 +1992,7 @@
         <!--Add Clinic View Controller-->
         <scene sceneID="uWJ-t0-B84">
             <objects>
-                <viewController id="i9X-Ut-Yb2" customClass="AddClinicViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" id="i9X-Ut-Yb2" customClass="AddClinicViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tkT-5o-syM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2004,6 +2013,9 @@
                                         <state key="normal" title="بازگشت" image="chevron.left" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="yFf-aF-4vU" kind="presentation" id="zsY-WW-6mJ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2024,7 +2036,7 @@
                                 </constraints>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="10"/>
@@ -2036,15 +2048,21 @@
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="editingEnded:" destination="i9X-Ut-Yb2" eventType="editingDidEnd" id="Qed-xo-e1Y"/>
+                                    <action selector="editingStarted:" destination="i9X-Ut-Yb2" eventType="editingDidBegin" id="u1j-ub-805"/>
+                                    <action selector="next:" destination="i9X-Ut-Yb2" eventType="primaryActionTriggered" id="afd-O3-buR"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="آدرس (اختیاری)" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Irs-Dw-ee9" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="آدرس (اختیاری)" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Irs-Dw-ee9" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="48" y="154.5" width="303" height="50.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Irs-Dw-ee9" secondAttribute="height" multiplier="324:54" id="PhT-Vb-llq"/>
                                 </constraints>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="10"/>
@@ -2056,6 +2074,11 @@
                                         <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="editingEnded:" destination="i9X-Ut-Yb2" eventType="editingDidEnd" id="TQI-qW-Y50"/>
+                                    <action selector="editingStarted:" destination="i9X-Ut-Yb2" eventType="editingDidBegin" id="i3v-9b-HwD"/>
+                                    <action selector="next:" destination="i9X-Ut-Yb2" eventType="primaryActionTriggered" id="f4x-Es-8g5"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpd-6a-Zfi" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="234" y="237" width="117" height="37"/>
@@ -2072,9 +2095,13 @@
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submit:" destination="i9X-Ut-Yb2" eventType="touchUpInside" id="pCf-8S-ekr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="A45-WT-fz4" firstAttribute="trailing" secondItem="Irs-Dw-ee9" secondAttribute="trailing" constant="24" id="6Ap-lP-sVU"/>
                             <constraint firstItem="A45-WT-fz4" firstAttribute="trailing" secondItem="cmg-7Y-q71" secondAttribute="trailing" id="APA-2c-Rtq"/>
@@ -2090,16 +2117,28 @@
                             <constraint firstItem="fpd-6a-Zfi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="A45-WT-fz4" secondAttribute="leading" symbolic="YES" id="uDF-ff-28h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A45-WT-fz4"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="gEp-8m-Zz9" appends="YES" id="P1S-WE-Jua"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="Irs-Dw-ee9" id="s3I-BT-KUr"/>
+                        <outlet property="titleTextField" destination="vuz-GL-Jmh" id="ZM0-7a-XgW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vAW-Vw-4Nf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="gEp-8m-Zz9">
+                    <connections>
+                        <action selector="hideKeyboard:" destination="i9X-Ut-Yb2" id="CDL-b4-3t6"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4070" y="1780"/>
         </scene>
         <!--Add Disease View Controller-->
         <scene sceneID="7Y9-v7-2FX">
             <objects>
-                <viewController definesPresentationContext="YES" modalPresentationStyle="overCurrentContext" id="wFk-Sd-vpy" customClass="AddDiseaseViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" id="wFk-Sd-vpy" customClass="AddDiseaseViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eLZ-H7-MgE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2114,7 +2153,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijb-4c-Az5">
-                                        <rect key="frame" x="24" y="21.5" width="68" height="29"/>
+                                        <rect key="frame" x="24" y="21.5" width="67.5" height="29"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="18"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="بازگشت" image="chevron.left" catalog="system">
@@ -2155,8 +2194,13 @@
                                         <color key="value" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="editingEnded:" destination="wFk-Sd-vpy" eventType="editingDidEnd" id="mGd-JU-d7P"/>
+                                    <action selector="editingStarted:" destination="wFk-Sd-vpy" eventType="editingDidBegin" id="nyk-a7-CqL"/>
+                                    <action selector="next:" destination="wFk-Sd-vpy" eventType="primaryActionTriggered" id="eaC-T5-HiV"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه‌ی پیش‌فرض" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQj-8m-6hB" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه‌ی پیش‌فرض" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQj-8m-6hB" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="48" y="152" width="303" height="47.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2176,6 +2220,11 @@
                                         <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="editingEnded:" destination="wFk-Sd-vpy" eventType="editingDidEnd" id="Suy-Qj-1AY"/>
+                                    <action selector="editingStarted:" destination="wFk-Sd-vpy" eventType="editingDidBegin" id="j7W-cK-FJ4"/>
+                                    <action selector="next:" destination="wFk-Sd-vpy" eventType="primaryActionTriggered" id="piB-Qd-wdt"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-z0-fon" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="234" y="231.5" width="117" height="37"/>
@@ -2198,6 +2247,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="AQj-8m-6hB" firstAttribute="top" secondItem="vmu-ta-OVx" secondAttribute="bottom" constant="16" id="0ix-WI-o1g"/>
                             <constraint firstItem="AQj-8m-6hB" firstAttribute="leading" secondItem="vmu-ta-OVx" secondAttribute="leading" id="4j6-Hp-2rV"/>
@@ -2213,13 +2263,21 @@
                             <constraint firstItem="r0f-L3-bxA" firstAttribute="trailing" secondItem="5aU-Pk-Ocz" secondAttribute="trailing" id="zYd-Mj-V3L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r0f-L3-bxA"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="fsn-9b-bqJ" appends="YES" id="4SD-PA-yMH"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="priceLabel" destination="AQj-8m-6hB" id="uC1-2L-h0o"/>
-                        <outlet property="titleLabel" destination="vmu-ta-OVx" id="33R-Fs-mld"/>
+                        <outlet property="priceTextField" destination="AQj-8m-6hB" id="z3K-ik-aPk"/>
+                        <outlet property="titleTextField" destination="vmu-ta-OVx" id="IUQ-nZ-K7R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he5-RZ-mxL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="fsn-9b-bqJ">
+                    <connections>
+                        <action selector="hideKeyboard:" destination="wFk-Sd-vpy" id="gKm-I1-vvr"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3087" y="1780"/>
         </scene>
@@ -2278,7 +2336,8 @@
         <image name="xmark.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pID-tu-1Sf"/>
+        <segue reference="zsY-WW-6mJ"/>
+        <segue reference="x7y-UF-cbd"/>
         <segue reference="1Dz-do-KkQ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -22,7 +22,7 @@ class TaskTableViewCell: UITableViewCell {
     func setAttributes(appointment: Appointment){
         self.appointment = appointment
         patientNameLabel.text = appointment.patient.name
-        diseaseLabel.text = appointment.disease?.title
+        diseaseLabel.text = appointment.disease.title
         visitTimeLabel.text = appointment.visit_time.toTaskTableFormatString()
         setState(appointment: appointment)
     }

@@ -20,4 +20,9 @@ public class Disease: NSManagedObject {
         }
         return Info.dataController.createDisease(title: title, price: price)
     }
+    
+    func setID() {
+        let uuid = UUID()
+        self.id = uuid
+    }
 }

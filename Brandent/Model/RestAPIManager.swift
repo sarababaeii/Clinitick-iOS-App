@@ -45,7 +45,7 @@ class RestAPIManagr {
             "price": appointment.price as Any,
             "state": appointment.state,
             "visit_time": appointment.visit_time.toDBFormatString(),
-            "disease": appointment.disease?.title as Any,
+            "disease": appointment.disease.title as Any,
             "is_deleted": false,
 //            "clinic_id": appointment.clinic?.id as Any,
             "clinic_id": "890a32fe-12e6-11eb-adc1-0242ac120002",

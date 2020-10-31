@@ -13,4 +13,8 @@ import CoreData
 @objc(Clinic)
 public class Clinic: NSManagedObject {
 
+    func setID() {
+        let uuid = UUID()
+        self.id = uuid
+    }
 }
