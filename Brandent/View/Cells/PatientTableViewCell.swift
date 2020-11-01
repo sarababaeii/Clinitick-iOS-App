@@ -12,8 +12,10 @@ import UIKit
 class PatientTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
     
     func setAttributes(patient: Patient) {
         nameLabel.text = patient.name
+        phoneLabel.text = patient.phone
     }
 }

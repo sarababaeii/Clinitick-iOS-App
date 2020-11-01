@@ -16,8 +16,6 @@ class DiseaseViewController: UIViewController {
     
     var diseasesTableViewDelegate: DiseasesTableViewDelegate?
     
-    let array = [1, 2, 3]
-    
     func setDelegates() {
         diseasesTableViewDelegate = DiseasesTableViewDelegate()
         diseasesTableView.delegate = diseasesTableViewDelegate

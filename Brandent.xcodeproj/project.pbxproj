@@ -21,6 +21,7 @@
 		0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0310F44F250FF577008B3E5B /* CustomUIView.swift */; };
 		0323B3C52540745900EB34CD /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323B3C42540745900EB34CD /* RestAPIManager.swift */; };
 		0323B3C72540A83F00EB34CD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323B3C62540A83F00EB34CD /* DateExtension.swift */; };
+		0328877E254F63B700AF1A9F /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0328877D254F63B700AF1A9F /* ColorCollectionViewCell.swift */; };
 		033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033C7661253D9EC900D25F4E /* CustomTabBar.swift */; };
 		0344D47E253756F00031122F /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344D47D253756F00031122F /* ImagePickerDelegate.swift */; };
 		035540E4251624A8003B9638 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E3251624A8003B9638 /* CustomImageView.swift */; };
@@ -30,6 +31,7 @@
 		0363E686253235980095AF7C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363E685253235980095AF7C /* Color.swift */; };
 		0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */; };
 		0368107925473FA80016C1D6 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0368107825473FA80016C1D6 /* ImageCollectionViewCell.swift */; };
+		036A4E12254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A4E11254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift */; };
 		03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB0250E76D6003CBE49 /* AppDelegate.swift */; };
 		03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB2250E76D6003CBE49 /* SceneDelegate.swift */; };
 		03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB4250E76D6003CBE49 /* HomeViewController.swift */; };
@@ -107,6 +109,7 @@
 		0310F44F250FF577008B3E5B /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		0323B3C42540745900EB34CD /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
 		0323B3C62540A83F00EB34CD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		0328877D254F63B700AF1A9F /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		033C7661253D9EC900D25F4E /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		0344D47D253756F00031122F /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
 		035540E3251624A8003B9638 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
@@ -116,6 +119,7 @@
 		0363E685253235980095AF7C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		0368107825473FA80016C1D6 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		036A4E11254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		03749EAD250E76D6003CBE49 /* Brandent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brandent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03749EB0250E76D6003CBE49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03749EB2250E76D6003CBE49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 				03E7F932254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift */,
 				03E7F934254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift */,
 				03E7F943254C8A98000EDDD0 /* ClinicsTableViewDelegate.swift */,
+				036A4E11254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -222,9 +227,10 @@
 				030BE2F82543454600AA642C /* TaskTableViewCell.swift */,
 				030C68012549EB1400CECCC2 /* PatientTableViewCell.swift */,
 				030C68032549EC6C00CECCC2 /* DiseaseTableViewCell.swift */,
+				03E7F93A254C84D5000EDDD0 /* ClinicTableViewCell.swift */,
 				0368107825473FA80016C1D6 /* ImageCollectionViewCell.swift */,
 				030C67FD2549D2C800CECCC2 /* ImagesCollectionViewHeader.swift */,
-				03E7F93A254C84D5000EDDD0 /* ClinicTableViewCell.swift */,
+				0328877D254F63B700AF1A9F /* ColorCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -684,6 +690,7 @@
 				03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */,
 				03E7F935254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift in Sources */,
 				03BC1F8A25251658009749C0 /* Dentist+CoreDataClass.swift in Sources */,
+				036A4E12254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift in Sources */,
 				03E7F933254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift in Sources */,
 				0344D47E253756F00031122F /* ImagePickerDelegate.swift in Sources */,
 				033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */,
@@ -715,6 +722,7 @@
 				030C67FC2549BAD400CECCC2 /* AlertMessage.swift in Sources */,
 				030C68002549E65E00CECCC2 /* PatientsViewController.swift in Sources */,
 				03E7F944254C8A98000EDDD0 /* ClinicsTableViewDelegate.swift in Sources */,
+				0328877E254F63B700AF1A9F /* ColorCollectionViewCell.swift in Sources */,
 				03BC1F8825251658009749C0 /* Appointment+CoreDataClass.swift in Sources */,
 				035540E4251624A8003B9638 /* CustomImageView.swift in Sources */,
 				03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */,

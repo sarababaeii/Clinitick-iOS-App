@@ -14,6 +14,7 @@ class ClinicTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     func setAttributes(clinic: Clinic) {
-        
+        titleLabel.text = clinic.title
+//        colorView.backgroundColor = clinic.color
     }
 }

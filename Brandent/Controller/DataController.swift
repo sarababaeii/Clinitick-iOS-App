@@ -48,6 +48,32 @@ class DataController {
         }
     }
     
+    func fetch(object entityName: EntityNames , by attribute: String, value: String) -> NSManagedObject? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName.rawValue)
+        request.predicate = NSPredicate(format: "\(attribute) = %@", value)
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request) as! [NSManagedObject]
+            return result.first
+        } catch {
+            print("Error in fetching patient")
+        }
+        return nil
+    }
+    
+    func fetchAll(object entityName: EntityNames) -> [NSManagedObject]? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName.rawValue)
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request) as! [NSManagedObject]
+            return result
+        } catch{
+            print("Error in fetching patient")
+        }
+        return nil
+    }
+    
+    //MARK: Appointment
     func createAppointment(patient: Patient, disease: Disease, price: Int, visit_time: Date, notes: String?) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
         
@@ -70,45 +96,8 @@ class DataController {
         return appointment
     }
     
-    func createPatient(name: String, phone: String, alergies: String?) -> Patient {
-        let patient = Patient(entity: patientEntity, insertInto: context)
-        
-        patient.name = name
-        patient.phone = phone
-        if let alergies = alergies {
-            patient.alergies = alergies
-        }
-        patient.setID()
-        
-        saveContext()
-        return patient
-    }
-    
-    func createDisease(title: String, price: Int) -> Disease {
-        let disease = Disease(entity: diseaseEntity, insertInto: context)
-        
-        disease.title = title
-        if let price =  price as? NSDecimalNumber{
-            disease.price = price
-        }
-        disease.setID()
-        
-        //TODO: set for drntist?
-        
-        saveContext()
-        return disease
-    }
-    
     func fetchAllAppointments() -> [NSManagedObject]? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.appointment.rawValue)
-        request.returnsObjectsAsFaults = false
-        do{
-            let result = try context.fetch(request) as! [NSManagedObject]
-            return result
-        } catch{
-            print("Error in fetching patient")
-        }
-        return nil
+        return fetchAll(object: .appointment)
     }
     
     func fetchAppointments(visitTime: Date) -> [NSManagedObject]? {
@@ -138,54 +127,72 @@ class DataController {
         return nil
     }
     
-    func fetchAllPatients() -> [NSManagedObject]? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.patient.rawValue)
-        request.returnsObjectsAsFaults = false
-        do{
-            let result = try context.fetch(request) as! [NSManagedObject]
-            return result
-        } catch{
-            print("Error in fetching patient")
+    //MARK: Patient
+    func createPatient(name: String, phone: String, alergies: String?) -> Patient {
+        let patient = Patient(entity: patientEntity, insertInto: context)
+        
+        patient.name = name
+        patient.phone = phone
+        if let alergies = alergies {
+            patient.alergies = alergies
         }
-        return nil
+        patient.setID()
+        
+        saveContext()
+        return patient
     }
     
     func fetchPatient(phone: String) -> NSManagedObject? { //English and Persian
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.patient.rawValue)
-        request.predicate = NSPredicate(format: "phone = %@", phone)
-        request.returnsObjectsAsFaults = false
-        do{
-            let result = try context.fetch(request) as! [NSManagedObject]
-            return result.first
-        } catch{
-            print("Error in fetching patient")
-        }
-        return nil
+        return fetch(object: .patient, by: "phone", value: phone)
+    }
+    
+    func fetchAllPatients() -> [NSManagedObject]? {
+        return fetchAll(object: .patient)
+    }
+    
+    //MARK: Disease
+    func createDisease(title: String, price: Int) -> Disease {
+        let disease = Disease(entity: diseaseEntity, insertInto: context)
+        
+        disease.title = title
+        disease.price = NSDecimalNumber(value: price)
+        disease.setID()
+        
+        //TODO: set for drntist?
+        
+        saveContext()
+        return disease
+    }
+    
+    func fetchDisease(title: String) -> NSManagedObject? {
+        return fetch(object: .disease, by: "title", value: title)
     }
     
     func fetchAllDiseases() -> [NSManagedObject]? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.disease.rawValue)
-        request.returnsObjectsAsFaults = false
-        do{
-            let result = try context.fetch(request) as! [NSManagedObject]
-            return result
-        } catch{
-            print("Error in fetching patient")
-        }
-        return nil
+        return fetchAll(object: .disease)
     }
     
-    func fetchDisease(title: String) -> NSManagedObject? { //English and Persian
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.disease.rawValue)
-        request.predicate = NSPredicate(format: "title = %@", title)
-        request.returnsObjectsAsFaults = false
-        do{
-            let result = try context.fetch(request) as! [NSManagedObject]
-            return result.first
-        } catch{
-            print("Error in fetching disease")
+    //MARK: Clinic
+    func createClinic(title: String, address: String?, color: String) -> Clinic {
+        let clinic = Clinic(entity: clinicEntity, insertInto: context)
+        
+        clinic.title = title
+        if let address = address {
+            clinic.address = address
         }
-        return nil
+        clinic.color = color
+        clinic.setID()
+        
+        saveContext()
+        return clinic
+    }
+    
+    func fetchClinic(title: String) -> NSManagedObject? {
+        return fetch(object: .clinic, by: "title", value: title)
+    }
+    
+    func fetchAllClinics() -> [NSManagedObject]? {
+            return fetchAll(object: .clinic)
     }
     
     func loadData() {

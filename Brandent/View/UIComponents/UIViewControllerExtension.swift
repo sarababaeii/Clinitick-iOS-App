@@ -10,6 +10,13 @@ import Foundation
 import UIKit
 
 extension UIViewController {
+    //MARK: Showing Next ViewController
+    func showNextPage(identifier: String) {
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier) as UIViewController
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    //MARK: Toast
     func showToast(message : String) {
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 124, y: self.view.frame.size.height-130, width: 310, height: 41)) //TODO: set size
         toastLabel.backgroundColor = Color.red.componentColor

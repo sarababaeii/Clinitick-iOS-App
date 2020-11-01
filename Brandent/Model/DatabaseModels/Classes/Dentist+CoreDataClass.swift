@@ -13,8 +13,8 @@ import CoreData
 @objc(Dentist)
 public class Dentist: NSManagedObject {
 
-    func setID() {
-        let uuid = UUID()
-        self.id = uuid
-    }
+//    func setID() {
+//        let uuid = UUID()
+//        self.id = uuid
+//    }
 }

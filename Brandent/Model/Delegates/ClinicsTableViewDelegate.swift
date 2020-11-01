@@ -16,9 +16,9 @@ class ClinicsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSo
     
     //MARK: Initializer
     override init() {
-//        if let clinics = Info.dataController.fetchAllClinics() as? [Clinic] {
-//            self.clinics = clinics
-//        }
+        if let clinics = Info.dataController.fetchAllClinics() as? [Clinic] {
+            self.clinics = clinics
+        }
     }
     
     //MARK: Protocol Functions

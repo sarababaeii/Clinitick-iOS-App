@@ -81,9 +81,23 @@ class AddDiseaseViewController: UIViewController {
             return
         }
 
-        let disease = Disease.getDisease(title: diseaseData[0] as! String, price: diseaseData[3] as! Int)
+        let disease = Disease.getDisease(title: diseaseData[0] as! String, price: diseaseData[1] as! Int)
 //        RestAPIManagr.sharedInstance.createDisease(disease: disease)
 
-//        back()
+        back()
+    }
+    
+    func back() {
+        self.showNextPage(identifier: "DiseaseViewController")
+    }
+    
+    func configure() {
+        textFields = [titleTextField, priceTextField]
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        configure()
     }
 }

@@ -45,14 +45,21 @@ class AddClinicViewController: UIViewController {
     
     //MARK: Submission
     func mustComplete() -> CustomTextField? {
-        for i in 0 ..< 2 {
-            if clinicData[i] == "" {
-                return textFields[i]
-            }
+        if clinicData[0] == "" {
+            return textFields[0]
         }
         return nil
     }
     
+    func submitionError(for textField: CustomTextField) {
+        if textField.placeHolderColor != Color.red.componentColor {
+            textField.placeholder = "*\(textField.placeholder!)"
+            textField.placeHolderColor = Color.red.componentColor
+        }
+        self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
+    }
+    
+    @available(iOS 13.0, *)
     @IBAction func submit(_ sender: Any) {
         editingEnded(currentTextField as Any)
         currentTextField = nil
@@ -62,17 +69,23 @@ class AddClinicViewController: UIViewController {
             return
         }
         
-//        let clinic = Clinic.getClinic(title: clinicData[0], address: clinicData[1])
+        let clinic = Clinic.getClinic(title: clinicData[0], address: clinicData[1], color: "lightGreen")
 //        RestAPIManagr.sharedInstance.addClinic(clinic: clinic)
 //        
-//        back()
+        back()
     }
     
-    func submitionError(for textField: CustomTextField) {
-        if textField.placeHolderColor != Color.red.componentColor {
-            textField.placeholder = "*\(textField.placeholder!)"
-            textField.placeHolderColor = Color.red.componentColor
-        }
-        self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
+    func back() {
+        self.showNextPage(identifier: "ClinicsViewController")
+    }
+    
+    func configure() {
+        textFields = [titleTextField, addressTextField]
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        configure()
     }
 }
