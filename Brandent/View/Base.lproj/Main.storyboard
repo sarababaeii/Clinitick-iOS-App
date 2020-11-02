@@ -1365,13 +1365,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مسعود جعفری" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hua-Ii-PBI">
-                                        <rect key="frame" x="137" y="140" width="101.5" height="23.5"/>
+                                        <rect key="frame" x="129" y="136" width="117.5" height="31.5"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ارتودنتیست" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPd-OZ-BQp">
-                                        <rect key="frame" x="156.5" y="163.5" width="62.5" height="19"/>
+                                        <rect key="frame" x="151.5" y="167.5" width="72.5" height="25"/>
                                         <fontDescription key="fontDescription" name="Vazir-Thin" family="Vazir" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2145,7 +2145,7 @@
                                     <constraint firstAttribute="height" constant="35" id="oBW-TK-Sfm"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GeN-Ix-sag">
-                                    <size key="itemSize" width="35" height="35"/>
+                                    <size key="itemSize" width="44" height="35"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -2173,12 +2173,12 @@
                                                                 <action selector="colorPicked:" destination="oZW-o9-Pml" eventType="touchUpInside" id="74W-J1-5ZS"/>
                                                             </connections>
                                                         </button>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f7a-8Z-WS7" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f7a-8Z-WS7" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
                                                             <rect key="frame" x="4" y="4" width="27" height="27"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="8"/>
+                                                                    <real key="value" value="6"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
@@ -2207,6 +2207,7 @@
                                         <size key="customSize" width="44" height="35"/>
                                         <connections>
                                             <outlet property="colorButton" destination="tD7-3J-bwb" id="cfu-ep-XP5"/>
+                                            <outlet property="selectedView" destination="f7a-8Z-WS7" id="Efr-x8-RtT"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -2261,6 +2262,7 @@
                     </view>
                     <connections>
                         <outlet property="addressTextField" destination="Irs-Dw-ee9" id="s3I-BT-KUr"/>
+                        <outlet property="colorsCollectionView" destination="TM3-sN-OAQ" id="oOn-Ez-Yf0"/>
                         <outlet property="titleTextField" destination="vuz-GL-Jmh" id="ZM0-7a-XgW"/>
                     </connections>
                 </viewController>

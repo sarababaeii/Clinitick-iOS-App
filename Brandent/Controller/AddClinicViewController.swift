@@ -13,9 +13,11 @@ class AddClinicViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: CustomTextField!
     @IBOutlet weak var addressTextField: CustomTextField!
+    @IBOutlet weak var colorsCollectionView: UICollectionView!
     
     var textFields = [CustomTextField]()
     var currentTextField: UITextField?
+    var colorsCollectionViewDelegate: ColorsCollectionViewDelegate?
     
     var clinicData = ["", ""] //0: title, 1: address
     
@@ -68,8 +70,8 @@ class AddClinicViewController: UIViewController {
             submitionError(for: requiredTextField)
             return
         }
-        
-        let clinic = Clinic.getClinic(title: clinicData[0], address: clinicData[1], color: "lightGreen")
+        let color = colorsCollectionViewDelegate?.selectedColorCell?.color ?? Color.lightGreen
+        let clinic = Clinic.getClinic(title: clinicData[0], address: clinicData[1], color: color.clinicColor.toHexString())
 //        RestAPIManagr.sharedInstance.addClinic(clinic: clinic)
 //        
         back()
@@ -79,8 +81,16 @@ class AddClinicViewController: UIViewController {
         self.showNextPage(identifier: "ClinicsViewController")
     }
     
+    func setDelegates() {
+        let colors = [Color.lightGreen, Color.darkGreen, Color.indigo, Color.lightBlue, Color.darkBlue, Color.purple, Color.pink, Color.red]
+        colorsCollectionViewDelegate = ColorsCollectionViewDelegate(colors: colors)
+        colorsCollectionView.delegate = colorsCollectionViewDelegate
+        colorsCollectionView.dataSource = colorsCollectionViewDelegate
+    }
+    
     func configure() {
         textFields = [titleTextField, addressTextField]
+        setDelegates()
     }
     
     override func viewDidLoad() {
