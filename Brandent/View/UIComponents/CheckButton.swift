@@ -33,20 +33,20 @@ class CheckButton: CustomButton {
         return nil
     }
     
-    func selectAlergyButton() {
+    func selectCheckButton() {
         self.backgroundColor = selectedColor
         self.setImage(selectedAlergyButtonImages[self.tag], for: .normal)
     }
     
-    func unselectAlergyButton() {
+    func unselectCheckButton() {
         self.backgroundColor = UIColor.white
         self.setImage(unselectedAlergyButtonImages[self.tag], for: .normal)
     }
     
     func visibleSelection() {
-        self.selectAlergyButton()
+        self.selectCheckButton()
         if let otherButton = self.getOtherButton() {
-            otherButton.unselectAlergyButton()
+            otherButton.unselectCheckButton()
         }
     }
     

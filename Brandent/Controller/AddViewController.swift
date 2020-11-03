@@ -55,15 +55,8 @@ class AddViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func donePressed() {
-        let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .persian)
-        formatter.locale = Locale(identifier: "fa_IR")
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        
-        dateTextField.text = formatter.string(from: datePicker.date)
+        dateTextField.text = datePicker.date.toCompletePersianString()
         dateTextField.endEditing(true)
-        
         date = datePicker.date
     }
     

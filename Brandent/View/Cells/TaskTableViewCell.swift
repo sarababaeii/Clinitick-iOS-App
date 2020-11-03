@@ -23,7 +23,7 @@ class TaskTableViewCell: UITableViewCell {
         self.appointment = appointment
         patientNameLabel.text = appointment.patient.name
         diseaseLabel.text = appointment.disease.title
-        visitTimeLabel.text = appointment.visit_time.toTaskTableFormatString()
+        visitTimeLabel.text = appointment.visit_time.toPersianTimeString()
         setState(appointment: appointment)
     }
     

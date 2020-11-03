@@ -38,9 +38,27 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    func toTaskTableFormatString() -> String {
+    func toPersianTimeString() -> String {
         let hour = self.getHourString().convertEnglishNumToPersianNum()
         let min = self.getMinString().convertEnglishNumToPersianNum()
         return "\(hour):\(min)"
+    }
+    
+    func toPersianDateString() -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .persian)
+        formatter.locale = Locale(identifier: "fa_IR")
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter.string(from: self)
+    } //TODO: test
+    
+    func toCompletePersianString() -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .persian)
+        formatter.locale = Locale(identifier: "fa_IR")
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter.string(from: self)
     }
 }
