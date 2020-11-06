@@ -56,6 +56,6 @@ public class Appointment: NSManagedObject {
     }
     
     func setModifiedTime() {
-        self.modifiedAt = Date()
+        self.modified_at = Date()
     }
 }

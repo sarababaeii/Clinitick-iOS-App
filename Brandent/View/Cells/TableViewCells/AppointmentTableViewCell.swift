@@ -18,7 +18,7 @@ class AppointmentTableViewCell: UITableViewCell {
     
     func setAttributes(appointment: Appointment) {
         diseaseTitleLabel.text = appointment.disease.title
-        visitTimeLabel.text = appointment.visit_time.toPersianDateString()
+        visitTimeLabel.text = appointment.visit_time.toPersianDMonthYString()
         setState(state: appointment.state)
     }
     

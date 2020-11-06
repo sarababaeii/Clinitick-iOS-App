@@ -2,7 +2,7 @@
 //  Patient+CoreDataProperties.swift
 //  Brandent
 //
-//  Created by Sara Babaei on 10/31/20.
+//  Created by Sara Babaei on 11/5/20.
 //  Copyright © 2020 Sara Babaei. All rights reserved.
 //
 //
@@ -21,7 +21,9 @@ extension Patient {
     @NSManaged public var id: UUID
     @NSManaged public var name: String
     @NSManaged public var phone: String
+    @NSManaged public var modified_at: Date
     @NSManaged public var history: NSSet?
+    @NSManaged public var dentist: Dentist?
 
 }
 

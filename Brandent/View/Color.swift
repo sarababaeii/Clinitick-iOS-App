@@ -13,6 +13,7 @@ enum Color {
     case gray
     case red
     case orange
+    case green
     case pink
     case purple
     case darkBlue
@@ -56,8 +57,17 @@ enum Color {
         default:
             return UIColor(red: 126/255, green: 198/255, blue: 48/255, alpha: 1)
         }
-        
-        
+    }
+    
+    var menuItemColor: UIColor {
+        switch self {
+        case .green:
+            return UIColor(red: 0, green: 198/255, blue: 118/255, alpha: 1)
+        case .pink:
+            return UIColor(red: 255/255, green: 111/255, blue: 107/255, alpha: 1)
+        default:
+            return UIColor.white
+        }
     }
     
 }

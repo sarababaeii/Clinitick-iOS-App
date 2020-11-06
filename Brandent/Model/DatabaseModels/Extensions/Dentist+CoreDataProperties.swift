@@ -2,7 +2,7 @@
 //  Dentist+CoreDataProperties.swift
 //  Brandent
 //
-//  Created by Sara Babaei on 10/31/20.
+//  Created by Sara Babaei on 11/5/20.
 //  Copyright © 2020 Sara Babaei. All rights reserved.
 //
 //
@@ -24,6 +24,8 @@ extension Dentist {
     @NSManaged public var clinics: NSSet?
     @NSManaged public var diseases: NSSet?
     @NSManaged public var specialities: NSSet?
+    @NSManaged public var finances: NSSet?
+    @NSManaged public var patients: NSSet?
 
 }
 
@@ -92,5 +94,39 @@ extension Dentist {
 
     @objc(removeSpecialities:)
     @NSManaged public func removeFromSpecialities(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for finances
+extension Dentist {
+
+    @objc(addFinancesObject:)
+    @NSManaged public func addToFinances(_ value: Finance)
+
+    @objc(removeFinancesObject:)
+    @NSManaged public func removeFromFinances(_ value: Finance)
+
+    @objc(addFinances:)
+    @NSManaged public func addToFinances(_ values: NSSet)
+
+    @objc(removeFinances:)
+    @NSManaged public func removeFromFinances(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for patients
+extension Dentist {
+
+    @objc(addPatientsObject:)
+    @NSManaged public func addToPatients(_ value: Patient)
+
+    @objc(removePatientsObject:)
+    @NSManaged public func removeFromPatients(_ value: Patient)
+
+    @objc(addPatients:)
+    @NSManaged public func addToPatients(_ values: NSSet)
+
+    @objc(removePatients:)
+    @NSManaged public func removeFromPatients(_ values: NSSet)
 
 }

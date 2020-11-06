@@ -38,27 +38,61 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    func toPersianTimeString() -> String {
+    func toPersianTimeString() -> String { //13:10
         let hour = self.getHourString().convertEnglishNumToPersianNum()
         let min = self.getMinString().convertEnglishNumToPersianNum()
         return "\(hour):\(min)"
     }
     
-    func toPersianDateString() -> String {
+    func getPersianDateFormatter() -> DateFormatter {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .persian)
         formatter.locale = Locale(identifier: "fa_IR")
+        return formatter
+    }
+    
+    func getPersianDateFormatterWith(format: String) -> DateFormatter {
+        let formatter = getPersianDateFormatter()
+        formatter.dateFormat = format
+        return formatter
+    }
+    
+    func toPersianWeekDayString() -> String { //shanbe
+        let formatter = getPersianDateFormatterWith(format: "EEEE")
+        return formatter.string(from: self)
+    }
+    
+    func toPersianDayString() -> String { //15
+        let formatter = getPersianDateFormatterWith(format: "dd")
+        return formatter.string(from: self)
+    }
+    
+    func toPersianMonthString() -> String { //aban
+        let formatter = getPersianDateFormatterWith(format: "MM")
+        let monthNumber = formatter.string(from: self).convertPersianNumToEnglishNum()
+        return formatter.monthSymbols[Int(monthNumber)! - 1]
+    }
+    
+    func toCompletePersianString() -> String {
+        let formatter = getPersianDateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter.string(from: self)
+    }
+    
+    func toPersianDMonthYString() -> String { //15 aban 1399
+        let formatter = getPersianDateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         return formatter.string(from: self)
-    } //TODO: test
+    }
     
-    func toCompletePersianString() -> String {
-        let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .persian)
-        formatter.locale = Locale(identifier: "fa_IR")
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
+    func toPersianWeekDMonth() -> String { //panjshanbe 15 aban
+        return toPersianWeekDayString() + " " + toPersianDayString() + " " + toPersianMonthString()
+    }
+    
+    func toPersianShortString() -> String {
+        let formatter = getPersianDateFormatterWith(format: "yy/MM/dd")
         return formatter.string(from: self)
     }
 }

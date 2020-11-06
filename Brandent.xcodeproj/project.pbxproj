@@ -52,12 +52,6 @@
 		03749EFD250EA611003CBE49 /* Vazir-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03749EF8250EA611003CBE49 /* Vazir-Light.ttf */; };
 		03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EFF250EA8AE003CBE49 /* CustomTextField.swift */; };
 		0384E4F62550A74000197CD9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384E4F52550A74000197CD9 /* UIColorExtension.swift */; };
-		03871473254DD675000FBA1B /* Clinic+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03871471254DD675000FBA1B /* Clinic+CoreDataProperties.swift */; };
-		0387147F254DD6AF000FBA1B /* Speciality+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03871475254DD6AF000FBA1B /* Speciality+CoreDataProperties.swift */; };
-		03871481254DD6AF000FBA1B /* Dentist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03871477254DD6AF000FBA1B /* Dentist+CoreDataProperties.swift */; };
-		03871483254DD6AF000FBA1B /* Disease+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03871479254DD6AF000FBA1B /* Disease+CoreDataProperties.swift */; };
-		03871485254DD6AF000FBA1B /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0387147B254DD6AF000FBA1B /* Appointment+CoreDataProperties.swift */; };
-		03871487254DD6AF000FBA1B /* Patient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0387147D254DD6AF000FBA1B /* Patient+CoreDataProperties.swift */; };
 		039DC3FD254895FE00D542E6 /* ImagesCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039DC3FC254895FE00D542E6 /* ImagesCollectionViewDelegate.swift */; };
 		039E2E3325359EDC00F6D5EE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039E2E3225359EDC00F6D5EE /* StringExtension.swift */; };
 		03ADFDF4253B4D8B00A6827B /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ADFDF3253B4D8B00A6827B /* TextViewDelegate.swift */; };
@@ -69,6 +63,8 @@
 		03BC1F8E25251658009749C0 /* Clinic+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */; };
 		03BC1F9025251658009749C0 /* Speciality+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */; };
 		03BC1F9225251658009749C0 /* Disease+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */; };
+		03D41BBA25530EE7005BB942 /* UIDatePickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */; };
+		03D41BBC2553145A005BB942 /* PickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */; };
 		03E7F933254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F932254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift */; };
 		03E7F935254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F934254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift */; };
 		03E7F939254C61C8000EDDD0 /* AddDiseaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F938254C61C8000EDDD0 /* AddDiseaseViewController.swift */; };
@@ -76,10 +72,25 @@
 		03E7F93D254C88DC000EDDD0 /* AddClinicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F93C254C88DC000EDDD0 /* AddClinicViewController.swift */; };
 		03E7F93F254C8940000EDDD0 /* ClinicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F93E254C8940000EDDD0 /* ClinicsViewController.swift */; };
 		03E7F944254C8A98000EDDD0 /* ClinicsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F943254C8A98000EDDD0 /* ClinicsTableViewDelegate.swift */; };
+		03EE136E25542E4900363EA0 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE136D25542E4900363EA0 /* MenuCollectionViewCell.swift */; };
+		03EE137025542F5500363EA0 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE136F25542F5500363EA0 /* MenuItem.swift */; };
+		03EE13722554322400363EA0 /* MenuCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE13712554322400363EA0 /* MenuCollectionViewDelegate.swift */; };
+		03EE13742554480E00363EA0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE13732554480E00363EA0 /* UIViewExtension.swift */; };
+		03EE13762554492300363EA0 /* LightningUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE13752554492300363EA0 /* LightningUIView.swift */; };
+		03EE13782554498A00363EA0 /* ShadowyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE13772554498A00363EA0 /* ShadowyUIView.swift */; };
 		03F4A5C52551951F00D7E1C6 /* AddFinanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */; };
-		03F4A5C72551D00100D7E1C6 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5C62551D00100D7E1C6 /* MenuCollectionViewCell.swift */; };
 		03F4A5C92551D01A00D7E1C6 /* FinanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5C82551D01A00D7E1C6 /* FinanceTableViewCell.swift */; };
 		03F4A5CB2551D03300D7E1C6 /* NearTasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5CA2551D03300D7E1C6 /* NearTasksTableViewCell.swift */; };
+		03FBE6702554704800FEFF63 /* SeeFinanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE66F2554704800FEFF63 /* SeeFinanceViewController.swift */; };
+		03FBE6742554784A00FEFF63 /* Clinic+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE6722554784A00FEFF63 /* Clinic+CoreDataProperties.swift */; };
+		03FBE6842554786E00FEFF63 /* Disease+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE6782554786E00FEFF63 /* Disease+CoreDataProperties.swift */; };
+		03FBE6862554786E00FEFF63 /* Patient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE67A2554786E00FEFF63 /* Patient+CoreDataProperties.swift */; };
+		03FBE6882554786E00FEFF63 /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE67C2554786E00FEFF63 /* Appointment+CoreDataProperties.swift */; };
+		03FBE68A2554786E00FEFF63 /* Dentist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE67E2554786E00FEFF63 /* Dentist+CoreDataProperties.swift */; };
+		03FBE68C2554786E00FEFF63 /* Speciality+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE6802554786E00FEFF63 /* Speciality+CoreDataProperties.swift */; };
+		03FBE69B255495BC00FEFF63 /* Finance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE699255495BC00FEFF63 /* Finance+CoreDataClass.swift */; };
+		03FBE69C255495BC00FEFF63 /* Finance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE69A255495BC00FEFF63 /* Finance+CoreDataProperties.swift */; };
+		03FBE69E255499CD00FEFF63 /* FinanceTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE69D255499CD00FEFF63 /* FinanceTableViewDelegate.swift */; };
 		5CAA8AEB605AAA7DC0706826 /* Pods_Brandent_BrandentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D2CD05EFC05EAD1BFC35E5 /* Pods_Brandent_BrandentUITests.framework */; };
 		9336429C0989FEEDA6EF2004 /* Pods_BrandentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9239F480706E1BC3CDEB9580 /* Pods_BrandentTests.framework */; };
 		F2754A17035560B560A4F44B /* Pods_Brandent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7504DE1330C89E208DCFEA30 /* Pods_Brandent.framework */; };
@@ -154,12 +165,6 @@
 		03749EF8250EA611003CBE49 /* Vazir-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Light.ttf"; sourceTree = "<group>"; };
 		03749EFF250EA8AE003CBE49 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		0384E4F52550A74000197CD9 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		03871471254DD675000FBA1B /* Clinic+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clinic+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		03871475254DD6AF000FBA1B /* Speciality+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Speciality+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		03871477254DD6AF000FBA1B /* Dentist+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dentist+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		03871479254DD6AF000FBA1B /* Disease+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disease+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		0387147B254DD6AF000FBA1B /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		0387147D254DD6AF000FBA1B /* Patient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		039DC3FC254895FE00D542E6 /* ImagesCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		039E2E3225359EDC00F6D5EE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		03ADFDF3253B4D8B00A6827B /* TextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +176,8 @@
 		03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clinic+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Speciality+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disease+CoreDataClass.swift"; sourceTree = "<group>"; };
+		03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDatePickerExtension.swift; sourceTree = "<group>"; };
+		03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDelegate.swift; sourceTree = "<group>"; };
 		03E7F932254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsTableViewDelegate.swift; sourceTree = "<group>"; };
 		03E7F934254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesTableViewDelegate.swift; sourceTree = "<group>"; };
 		03E7F938254C61C8000EDDD0 /* AddDiseaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDiseaseViewController.swift; sourceTree = "<group>"; };
@@ -178,10 +185,25 @@
 		03E7F93C254C88DC000EDDD0 /* AddClinicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClinicViewController.swift; sourceTree = "<group>"; };
 		03E7F93E254C8940000EDDD0 /* ClinicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsViewController.swift; sourceTree = "<group>"; };
 		03E7F943254C8A98000EDDD0 /* ClinicsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsTableViewDelegate.swift; sourceTree = "<group>"; };
+		03EE136D25542E4900363EA0 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		03EE136F25542F5500363EA0 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		03EE13712554322400363EA0 /* MenuCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		03EE13732554480E00363EA0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		03EE13752554492300363EA0 /* LightningUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningUIView.swift; sourceTree = "<group>"; };
+		03EE13772554498A00363EA0 /* ShadowyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowyUIView.swift; sourceTree = "<group>"; };
 		03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFinanceViewController.swift; sourceTree = "<group>"; };
-		03F4A5C62551D00100D7E1C6 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		03F4A5C82551D01A00D7E1C6 /* FinanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceTableViewCell.swift; sourceTree = "<group>"; };
 		03F4A5CA2551D03300D7E1C6 /* NearTasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearTasksTableViewCell.swift; sourceTree = "<group>"; };
+		03FBE66F2554704800FEFF63 /* SeeFinanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeFinanceViewController.swift; sourceTree = "<group>"; };
+		03FBE6722554784A00FEFF63 /* Clinic+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clinic+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03FBE6782554786E00FEFF63 /* Disease+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disease+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03FBE67A2554786E00FEFF63 /* Patient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03FBE67C2554786E00FEFF63 /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03FBE67E2554786E00FEFF63 /* Dentist+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dentist+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03FBE6802554786E00FEFF63 /* Speciality+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Speciality+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03FBE699255495BC00FEFF63 /* Finance+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Finance+CoreDataClass.swift"; sourceTree = "<group>"; };
+		03FBE69A255495BC00FEFF63 /* Finance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Finance+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		03FBE69D255499CD00FEFF63 /* FinanceTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceTableViewDelegate.swift; sourceTree = "<group>"; };
 		216269F4DF31CF4CC6893648 /* Pods-Brandent-BrandentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brandent-BrandentUITests.debug.xcconfig"; path = "Target Support Files/Pods-Brandent-BrandentUITests/Pods-Brandent-BrandentUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		410E939D1927C00CF8997A5A /* Pods-BrandentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrandentTests.release.xcconfig"; path = "Target Support Files/Pods-BrandentTests/Pods-BrandentTests.release.xcconfig"; sourceTree = "<group>"; };
 		5568F071E6C478FF512D5771 /* Pods-Brandent-BrandentUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brandent-BrandentUITests.release.xcconfig"; path = "Target Support Files/Pods-Brandent-BrandentUITests/Pods-Brandent-BrandentUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -224,16 +246,9 @@
 		030AEE83253C55EC00E29CE1 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				03ADFDF3253B4D8B00A6827B /* TextViewDelegate.swift */,
-				0344D47D253756F00031122F /* ImagePickerDelegate.swift */,
-				030C67FB2549BAD400CECCC2 /* AlertMessage.swift */,
-				039DC3FC254895FE00D542E6 /* ImagesCollectionViewDelegate.swift */,
-				030BE2FA25434A5000AA642C /* TasksTableViewDelegate.swift */,
-				03E7F932254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift */,
-				0360D8612551665500C36AE4 /* AppointmentsTableViewDelegate.swift */,
-				03E7F934254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift */,
-				03E7F943254C8A98000EDDD0 /* ClinicsTableViewDelegate.swift */,
-				036A4E11254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift */,
+				03EE136825542B8F00363EA0 /* TableViewDelegates */,
+				03EE136925542BB600363EA0 /* CollectionViewDelegates */,
+				03EE136A25542BD500363EA0 /* ComponentDelegates */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -241,17 +256,9 @@
 		030BE2F5254342AD00AA642C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				030BE2F82543454600AA642C /* TaskTableViewCell.swift */,
-				030C68012549EB1400CECCC2 /* PatientTableViewCell.swift */,
-				0360D85D2551654500C36AE4 /* AppointmentTableViewCell.swift */,
-				030C68032549EC6C00CECCC2 /* DiseaseTableViewCell.swift */,
-				03E7F93A254C84D5000EDDD0 /* ClinicTableViewCell.swift */,
-				0368107825473FA80016C1D6 /* ImageCollectionViewCell.swift */,
+				03EE136C25542C5F00363EA0 /* CollectionViewCells */,
+				03EE136B25542C2A00363EA0 /* TableViewCells */,
 				030C67FD2549D2C800CECCC2 /* ImagesCollectionViewHeader.swift */,
-				0328877D254F63B700AF1A9F /* ColorCollectionViewCell.swift */,
-				03F4A5C62551D00100D7E1C6 /* MenuCollectionViewCell.swift */,
-				03F4A5C82551D01A00D7E1C6 /* FinanceTableViewCell.swift */,
-				03F4A5CA2551D03300D7E1C6 /* NearTasksTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -312,6 +319,7 @@
 			children = (
 				03749EB4250E76D6003CBE49 /* HomeViewController.swift */,
 				03749EB6250E76D6003CBE49 /* FinanceViewController.swift */,
+				03FBE66F2554704800FEFF63 /* SeeFinanceViewController.swift */,
 				03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */,
 				03036D30250FE8F500C7824A /* AddViewController.swift */,
 				03036D32250FE92400C7824A /* TasksViewController.swift */,
@@ -330,8 +338,8 @@
 		03749EE6250E76F3003CBE49 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				030BE2F5254342AD00AA642C /* Cells */,
 				03749EFE250EA893003CBE49 /* UIComponents */,
+				030BE2F5254342AD00AA642C /* Cells */,
 				03749EB8250E76D6003CBE49 /* Main.storyboard */,
 				0363E685253235980095AF7C /* Color.swift */,
 			);
@@ -341,11 +349,13 @@
 		03749EE7250E76F9003CBE49 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				030AEE83253C55EC00E29CE1 /* Delegates */,
 				039E2E372535C79D00F6D5EE /* DatabaseModels */,
+				030AEE83253C55EC00E29CE1 /* Delegates */,
 				039E2E362535C78E00F6D5EE /* Extensions */,
 				03B032E12530D78800CF1075 /* Info.swift */,
 				0323B3C42540745900EB34CD /* RestAPIManager.swift */,
+				030C67FB2549BAD400CECCC2 /* AlertMessage.swift */,
+				03EE136F25542F5500363EA0 /* MenuItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -380,7 +390,10 @@
 			isa = PBXGroup;
 			children = (
 				0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */,
+				03EE13732554480E00363EA0 /* UIViewExtension.swift */,
 				0310F44F250FF577008B3E5B /* CustomUIView.swift */,
+				03EE13752554492300363EA0 /* LightningUIView.swift */,
+				03EE13772554498A00363EA0 /* ShadowyUIView.swift */,
 				035540E3251624A8003B9638 /* CustomImageView.swift */,
 				035540E525162725003B9638 /* CustmButton.swift */,
 				035D4AD52544B566007D8395 /* CheckButton.swift */,
@@ -397,6 +410,7 @@
 				039E2E3225359EDC00F6D5EE /* StringExtension.swift */,
 				0323B3C62540A83F00EB34CD /* DateExtension.swift */,
 				0384E4F52550A74000197CD9 /* UIColorExtension.swift */,
+				03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -417,6 +431,7 @@
 				03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */,
 				03BC1F7E25251658009749C0 /* Dentist+CoreDataClass.swift */,
 				03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */,
+				03FBE699255495BC00FEFF63 /* Finance+CoreDataClass.swift */,
 				03BC1F8025251658009749C0 /* Patient+CoreDataClass.swift */,
 				03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */,
 			);
@@ -426,14 +441,72 @@
 		039E2E392535C7EA00F6D5EE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0387147B254DD6AF000FBA1B /* Appointment+CoreDataProperties.swift */,
-				03871471254DD675000FBA1B /* Clinic+CoreDataProperties.swift */,
-				03871477254DD6AF000FBA1B /* Dentist+CoreDataProperties.swift */,
-				03871479254DD6AF000FBA1B /* Disease+CoreDataProperties.swift */,
-				0387147D254DD6AF000FBA1B /* Patient+CoreDataProperties.swift */,
-				03871475254DD6AF000FBA1B /* Speciality+CoreDataProperties.swift */,
+				03FBE67C2554786E00FEFF63 /* Appointment+CoreDataProperties.swift */,
+				03FBE6722554784A00FEFF63 /* Clinic+CoreDataProperties.swift */,
+				03FBE67E2554786E00FEFF63 /* Dentist+CoreDataProperties.swift */,
+				03FBE6782554786E00FEFF63 /* Disease+CoreDataProperties.swift */,
+				03FBE69A255495BC00FEFF63 /* Finance+CoreDataProperties.swift */,
+				03FBE67A2554786E00FEFF63 /* Patient+CoreDataProperties.swift */,
+				03FBE6802554786E00FEFF63 /* Speciality+CoreDataProperties.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		03EE136825542B8F00363EA0 /* TableViewDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				030BE2FA25434A5000AA642C /* TasksTableViewDelegate.swift */,
+				03E7F932254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift */,
+				0360D8612551665500C36AE4 /* AppointmentsTableViewDelegate.swift */,
+				03E7F934254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift */,
+				03E7F943254C8A98000EDDD0 /* ClinicsTableViewDelegate.swift */,
+				03FBE69D255499CD00FEFF63 /* FinanceTableViewDelegate.swift */,
+			);
+			path = TableViewDelegates;
+			sourceTree = "<group>";
+		};
+		03EE136925542BB600363EA0 /* CollectionViewDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				039DC3FC254895FE00D542E6 /* ImagesCollectionViewDelegate.swift */,
+				036A4E11254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift */,
+				03EE13712554322400363EA0 /* MenuCollectionViewDelegate.swift */,
+			);
+			path = CollectionViewDelegates;
+			sourceTree = "<group>";
+		};
+		03EE136A25542BD500363EA0 /* ComponentDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				03ADFDF3253B4D8B00A6827B /* TextViewDelegate.swift */,
+				03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */,
+				0344D47D253756F00031122F /* ImagePickerDelegate.swift */,
+			);
+			path = ComponentDelegates;
+			sourceTree = "<group>";
+		};
+		03EE136B25542C2A00363EA0 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				030BE2F82543454600AA642C /* TaskTableViewCell.swift */,
+				030C68012549EB1400CECCC2 /* PatientTableViewCell.swift */,
+				0360D85D2551654500C36AE4 /* AppointmentTableViewCell.swift */,
+				030C68032549EC6C00CECCC2 /* DiseaseTableViewCell.swift */,
+				03E7F93A254C84D5000EDDD0 /* ClinicTableViewCell.swift */,
+				03F4A5C82551D01A00D7E1C6 /* FinanceTableViewCell.swift */,
+				03F4A5CA2551D03300D7E1C6 /* NearTasksTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		03EE136C25542C5F00363EA0 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				0368107825473FA80016C1D6 /* ImageCollectionViewCell.swift */,
+				0328877D254F63B700AF1A9F /* ColorCollectionViewCell.swift */,
+				03EE136D25542E4900363EA0 /* MenuCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
 		28060D19B90315782123DBA5 /* Frameworks */ = {
@@ -707,9 +780,12 @@
 				03E7F93F254C8940000EDDD0 /* ClinicsViewController.swift in Sources */,
 				030BE2FB25434A5000AA642C /* TasksTableViewDelegate.swift in Sources */,
 				030C68042549EC6C00CECCC2 /* DiseaseTableViewCell.swift in Sources */,
+				03EE136E25542E4900363EA0 /* MenuCollectionViewCell.swift in Sources */,
 				035D4AD62544B566007D8395 /* CheckButton.swift in Sources */,
+				03FBE69B255495BC00FEFF63 /* Finance+CoreDataClass.swift in Sources */,
 				03749EB7250E76D6003CBE49 /* FinanceViewController.swift in Sources */,
 				0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */,
+				03D41BBC2553145A005BB942 /* PickerViewDelegate.swift in Sources */,
 				03B032E22530D78800CF1075 /* Info.swift in Sources */,
 				03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */,
 				03E7F935254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift in Sources */,
@@ -720,9 +796,11 @@
 				033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */,
 				03036D31250FE8F500C7824A /* AddViewController.swift in Sources */,
 				030C68062549ECB200CECCC2 /* DiseasesViewController.swift in Sources */,
-				0387147F254DD6AF000FBA1B /* Speciality+CoreDataProperties.swift in Sources */,
 				0360D860255165AA00C36AE4 /* PatientProfileViewController.swift in Sources */,
+				03FBE68A2554786E00FEFF63 /* Dentist+CoreDataProperties.swift in Sources */,
 				0361A868253A1579001840EC /* CustomTextView.swift in Sources */,
+				03FBE6862554786E00FEFF63 /* Patient+CoreDataProperties.swift in Sources */,
+				03EE13722554322400363EA0 /* MenuCollectionViewDelegate.swift in Sources */,
 				03BC1F9025251658009749C0 /* Speciality+CoreDataClass.swift in Sources */,
 				0368107925473FA80016C1D6 /* ImageCollectionViewCell.swift in Sources */,
 				0323B3C72540A83F00EB34CD /* DateExtension.swift in Sources */,
@@ -730,26 +808,32 @@
 				03E7F93B254C84D5000EDDD0 /* ClinicTableViewCell.swift in Sources */,
 				03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */,
 				039E2E3325359EDC00F6D5EE /* StringExtension.swift in Sources */,
+				03FBE6882554786E00FEFF63 /* Appointment+CoreDataProperties.swift in Sources */,
+				03FBE6742554784A00FEFF63 /* Clinic+CoreDataProperties.swift in Sources */,
 				030C67FE2549D2C800CECCC2 /* ImagesCollectionViewHeader.swift in Sources */,
-				03871483254DD6AF000FBA1B /* Disease+CoreDataProperties.swift in Sources */,
+				03EE13782554498A00363EA0 /* ShadowyUIView.swift in Sources */,
 				03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */,
 				039DC3FD254895FE00D542E6 /* ImagesCollectionViewDelegate.swift in Sources */,
+				03EE13762554492300363EA0 /* LightningUIView.swift in Sources */,
 				03BC1F9225251658009749C0 /* Disease+CoreDataClass.swift in Sources */,
-				03871485254DD6AF000FBA1B /* Appointment+CoreDataProperties.swift in Sources */,
 				03ADFDF4253B4D8B00A6827B /* TextViewDelegate.swift in Sources */,
-				03871473254DD675000FBA1B /* Clinic+CoreDataProperties.swift in Sources */,
 				03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */,
 				0360D85E2551654500C36AE4 /* AppointmentTableViewCell.swift in Sources */,
+				03FBE6702554704800FEFF63 /* SeeFinanceViewController.swift in Sources */,
 				0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */,
 				03BC1F8C25251658009749C0 /* Patient+CoreDataClass.swift in Sources */,
+				03EE13742554480E00363EA0 /* UIViewExtension.swift in Sources */,
 				03E7F93D254C88DC000EDDD0 /* AddClinicViewController.swift in Sources */,
 				0363E686253235980095AF7C /* Color.swift in Sources */,
 				0323B3C52540745900EB34CD /* RestAPIManager.swift in Sources */,
+				03FBE6842554786E00FEFF63 /* Disease+CoreDataProperties.swift in Sources */,
 				030C67FC2549BAD400CECCC2 /* AlertMessage.swift in Sources */,
 				030C68002549E65E00CECCC2 /* PatientsViewController.swift in Sources */,
+				03FBE68C2554786E00FEFF63 /* Speciality+CoreDataProperties.swift in Sources */,
 				03E7F944254C8A98000EDDD0 /* ClinicsTableViewDelegate.swift in Sources */,
+				03D41BBA25530EE7005BB942 /* UIDatePickerExtension.swift in Sources */,
+				03FBE69C255495BC00FEFF63 /* Finance+CoreDataProperties.swift in Sources */,
 				0384E4F62550A74000197CD9 /* UIColorExtension.swift in Sources */,
-				03F4A5C72551D00100D7E1C6 /* MenuCollectionViewCell.swift in Sources */,
 				0328877E254F63B700AF1A9F /* ColorCollectionViewCell.swift in Sources */,
 				03BC1F8825251658009749C0 /* Appointment+CoreDataClass.swift in Sources */,
 				03F4A5CB2551D03300D7E1C6 /* NearTasksTableViewCell.swift in Sources */,
@@ -757,14 +841,14 @@
 				03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */,
 				03749EBD250E76D6003CBE49 /* Brandent.xcdatamodeld in Sources */,
 				03F4A5C92551D01A00D7E1C6 /* FinanceTableViewCell.swift in Sources */,
-				03871481254DD6AF000FBA1B /* Dentist+CoreDataProperties.swift in Sources */,
 				0360D8622551665500C36AE4 /* AppointmentsTableViewDelegate.swift in Sources */,
 				03F4A5C52551951F00D7E1C6 /* AddFinanceViewController.swift in Sources */,
 				03BC1F8E25251658009749C0 /* Clinic+CoreDataClass.swift in Sources */,
 				03AF9395251653BA008DD4A0 /* DataController.swift in Sources */,
 				030BE2F92543454600AA642C /* TaskTableViewCell.swift in Sources */,
 				03E7F939254C61C8000EDDD0 /* AddDiseaseViewController.swift in Sources */,
-				03871487254DD6AF000FBA1B /* Patient+CoreDataProperties.swift in Sources */,
+				03FBE69E255499CD00FEFF63 /* FinanceTableViewDelegate.swift in Sources */,
+				03EE137025542F5500363EA0 /* MenuItem.swift in Sources */,
 				03036D33250FE92400C7824A /* TasksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

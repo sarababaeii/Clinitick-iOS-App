@@ -2,7 +2,7 @@
 //  Disease+CoreDataProperties.swift
 //  Brandent
 //
-//  Created by Sara Babaei on 10/31/20.
+//  Created by Sara Babaei on 11/5/20.
 //  Copyright © 2020 Sara Babaei. All rights reserved.
 //
 //
@@ -20,6 +20,7 @@ extension Disease {
     @NSManaged public var id: UUID
     @NSManaged public var price: NSDecimalNumber
     @NSManaged public var title: String
+    @NSManaged public var modified_at: Date
     @NSManaged public var appointments: NSSet?
     @NSManaged public var dentist: Dentist?
     @NSManaged public var specialities: NSSet?

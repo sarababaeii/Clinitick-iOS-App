@@ -2,7 +2,7 @@
 //  Clinic+CoreDataProperties.swift
 //  Brandent
 //
-//  Created by Sara Babaei on 10/31/20.
+//  Created by Sara Babaei on 11/5/20.
 //  Copyright © 2020 Sara Babaei. All rights reserved.
 //
 //
@@ -17,10 +17,11 @@ extension Clinic {
         return NSFetchRequest<Clinic>(entityName: "Clinic")
     }
 
-    @NSManaged public var id: UUID
-    @NSManaged public var title: String
     @NSManaged public var address: String?
     @NSManaged public var color: String
+    @NSManaged public var id: UUID
+    @NSManaged public var title: String
+    @NSManaged public var modified_at: Date
     @NSManaged public var appointments: NSSet?
     @NSManaged public var dentist: Dentist?
 

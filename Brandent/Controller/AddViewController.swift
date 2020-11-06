@@ -42,9 +42,7 @@ class AddViewController: UIViewController, UITextViewDelegate {
     
     //MARK: DatePicker Functions
     func creatDatePicker() {
-        datePicker.calendar = Calendar(identifier: .persian)
-        datePicker.locale = Locale(identifier: "fa_IR")
-        datePicker.datePickerMode = .dateAndTime
+        datePicker.createPersianDatePicker()
         dateTextField.inputView = datePicker
         
         let toolbar = UIToolbar()
