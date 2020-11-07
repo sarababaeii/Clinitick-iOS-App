@@ -17,6 +17,7 @@ enum EntityNames: String {
     case clinic = "Clinic"
     case speciality = "Speciality"
     case disease = "Disease"
+    case finance = "Finance"
 }
 
 class DataController {
@@ -27,6 +28,7 @@ class DataController {
     var clinicEntity: NSEntityDescription
     var specialityEntity: NSEntityDescription
     var diseaseEntity: NSEntityDescription
+    var financeEntity: NSEntityDescription
     
     @available(iOS 13.0, *)
     init() {
@@ -39,6 +41,7 @@ class DataController {
         clinicEntity = NSEntityDescription.entity(forEntityName: EntityNames.clinic.rawValue, in: context)!
         specialityEntity = NSEntityDescription.entity(forEntityName: EntityNames.speciality.rawValue, in: context)!
         diseaseEntity = NSEntityDescription.entity(forEntityName: EntityNames.disease.rawValue, in: context)!
+        financeEntity = NSEntityDescription.entity(forEntityName: EntityNames.finance.rawValue, in: context)!
     }
     
     func saveContext(){
@@ -48,29 +51,32 @@ class DataController {
         }
     }
     
-    func fetch(object entityName: EntityNames , by attribute: String, value: String) -> NSManagedObject? {
+    func fetchRequest(object entityName: EntityNames, predicate: NSPredicate?, sortBy key: String?) -> [NSManagedObject]? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName.rawValue)
-        request.predicate = NSPredicate(format: "\(attribute) = %@", value)
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request) as! [NSManagedObject]
-            return result.first
-        } catch {
-            print("Error in fetching patient")
+        if let predicate = predicate {
+            request.predicate = predicate
         }
-        return nil
-    }
-    
-    func fetchAll(object entityName: EntityNames) -> [NSManagedObject]? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName.rawValue)
+        if let key = key { //Sorting
+            let sectionSortDescriptor = NSSortDescriptor(key: key, ascending: false)
+            request.sortDescriptors = [sectionSortDescriptor]
+        }
         request.returnsObjectsAsFaults = false
         do {
             let result = try context.fetch(request) as! [NSManagedObject]
             return result
-        } catch{
-            print("Error in fetching patient")
+        } catch {
+            print("Error in fetching \(entityName.rawValue)")
         }
         return nil
+    }
+    
+    func fetchAll(object entityName: EntityNames, sortBy key: String?) -> [NSManagedObject]? {
+        return fetchRequest(object: entityName, predicate: nil, sortBy: key)
+    }
+    
+    func fetch(object entityName: EntityNames, by attribute: String, value: String) -> NSManagedObject? {
+        let predicate = NSPredicate(format: "\(attribute) = %@", value)
+        return fetchRequest(object: entityName, predicate: predicate, sortBy: nil)?.first
     }
     
     //MARK: Appointment
@@ -97,34 +103,22 @@ class DataController {
     }
     
     func fetchAllAppointments() -> [NSManagedObject]? {
-        return fetchAll(object: .appointment)
+        return fetchAll(object: .appointment, sortBy: nil)
     }
     
-    func fetchAppointments(visitTime: Date) -> [NSManagedObject]? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: EntityNames.appointment.rawValue)
-        var predicate: NSPredicate?
-        
-        let from = visitTime.startOfDate()
-        if let to = visitTime.nextDay()?.startOfDate() {
-            print("@ from \(from) to \(to)")
-            predicate = NSPredicate(format: "visit_time >= %@ AND visit_time <= %@", from as NSDate, to as NSDate)
+    func fetchAppointmentsInDay(in date: Date) -> [NSManagedObject]? {
+        guard let to = date.nextDay()?.startOfDate() else {
+            return nil
         }
-        
-        request.predicate = predicate
-        
-        let sectionSortDescriptor = NSSortDescriptor(key: "visit_time", ascending: false)
-        request.sortDescriptors = [sectionSortDescriptor]
-        
-        request.returnsObjectsAsFaults = false
-        do{
-            let result = try context.fetch(request) as! [NSManagedObject]
-            print("***")
-            print(result)
-            print("***")
-            return result
-        } catch{
-        }
-        return nil
+        let dateAttribute = AppointmentAttributes.date.rawValue
+        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) <= %@", date.startOfDate() as NSDate, to as NSDate)
+        return fetchRequest(object: .appointment, predicate: predicate, sortBy: dateAttribute)
+    }
+    
+    func fetchAppointmentsInMonth(in date: Date) -> [NSManagedObject]? {
+        let dateAttribute = AppointmentAttributes.date.rawValue
+        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) <= %@", date.startOfMonth() as NSDate, date.endOfMonth() as NSDate)
+        return fetchRequest(object: .appointment, predicate: predicate, sortBy: dateAttribute)
     }
     
     //MARK: Patient
@@ -137,17 +131,18 @@ class DataController {
             patient.alergies = alergies
         }
         patient.setID()
+        patient.setModifiedTime()
         
         saveContext()
         return patient
     }
     
     func fetchPatient(phone: String) -> NSManagedObject? { //English and Persian
-        return fetch(object: .patient, by: "phone", value: phone)
+        return fetch(object: .patient, by: PatientAttributes.phone.rawValue, value: phone)
     }
     
     func fetchAllPatients() -> [NSManagedObject]? {
-        return fetchAll(object: .patient)
+        return fetchAll(object: .patient, sortBy: PatientAttributes.name.rawValue)
     }
     
     //MARK: Disease
@@ -157,7 +152,7 @@ class DataController {
         disease.title = title
         disease.price = NSDecimalNumber(value: price)
         disease.setID()
-        
+        disease.setModifiedTime()
         //TODO: set for drntist?
         
         saveContext()
@@ -165,11 +160,11 @@ class DataController {
     }
     
     func fetchDisease(title: String) -> NSManagedObject? {
-        return fetch(object: .disease, by: "title", value: title)
+        return fetch(object: .disease, by: DiseaseAttributes.title.rawValue, value: title)
     }
     
     func fetchAllDiseases() -> [NSManagedObject]? {
-        return fetchAll(object: .disease)
+        return fetchAll(object: .disease, sortBy: DiseaseAttributes.title.rawValue)
     }
     
     //MARK: Clinic
@@ -182,17 +177,53 @@ class DataController {
         }
         clinic.color = color
         clinic.setID()
+        clinic.setModifiedTime()
         
         saveContext()
         return clinic
     }
     
     func fetchClinic(title: String) -> NSManagedObject? {
-        return fetch(object: .clinic, by: "title", value: title)
+        return fetch(object: .clinic, by: ClinicAttributes.title.rawValue, value: title)
     }
     
     func fetchAllClinics() -> [NSManagedObject]? {
-            return fetchAll(object: .clinic)
+        return fetchAll(object: .clinic, sortBy: ClinicAttributes.title.rawValue)
+    }
+    
+    //MARK: Finance
+    func createFinance(title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
+        let finance = Finance(entity: financeEntity, insertInto: context)
+        
+        finance.title = title
+        finance.amount = NSDecimalNumber(value: amount)
+        finance.is_cost = isCost
+        finance.date = date
+        finance.setID()
+        finance.setModifiedTime()
+        
+        saveContext()
+        return finance
+    }
+    
+    func fetchAllFinances(in month: Date) -> [NSManagedObject]? {
+        return nil
+    } //TODO
+    
+    func fetchSpecificFinance(in month: Date, isCost: Bool) -> [NSManagedObject]? {
+        let dateAttribute = FinanceAttributes.date.rawValue
+        let isCostAttribute = FinanceAttributes.isCost.rawValue
+        print(NSNumber(value: isCost))
+        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) <= %@ AND \(isCostAttribute) = %d", month.startOfMonth() as NSDate, month.endOfMonth() as NSDate, isCost)
+        return fetchRequest(object: .finance, predicate: predicate, sortBy: dateAttribute)
+    }
+    
+    func fetchFinanceExternalIncomes(in month: Date) -> [NSManagedObject]? {
+        return fetchSpecificFinance(in: month, isCost: false)
+    }
+    
+    func fetchFinanceCosts(in month: Date) -> [NSManagedObject]? {
+        return fetchSpecificFinance(in: month, isCost: true)
     }
     
     func loadData() {
@@ -229,3 +260,5 @@ class DataController {
 
 
 //insert and replace
+
+//TODO: fetch both appointments and finances

@@ -17,7 +17,7 @@ class DiseaseTableViewCell: UITableViewCell {
     func setAttributes(disease: Disease) {
         titleLabel.text = disease.title
         if let price = disease.price as? Int {
-            priceLabel.text = String(price).convertEnglishNumToPersianNum()
+            priceLabel.text = String.toPersianPriceString(price: price)
         }
     }
 }

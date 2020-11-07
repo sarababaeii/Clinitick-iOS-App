@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@IBDesignable class ShadowyUIView: CustomUIView {
+@IBDesignable class ShadowyUIView: LightningUIView {
     
     @IBInspectable var shadowColor: UIColor = UIColor.white {
         didSet {

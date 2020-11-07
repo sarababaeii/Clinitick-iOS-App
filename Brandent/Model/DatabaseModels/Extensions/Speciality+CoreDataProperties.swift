@@ -40,3 +40,10 @@ extension Speciality {
     @NSManaged public func removeFromDiseases(_ values: NSSet)
 
 }
+
+enum SpecialityAttributes: String {
+    case id = "id"
+    case title = "title"
+    case diseases = "diseases"
+    case dentist = "dentist"
+}

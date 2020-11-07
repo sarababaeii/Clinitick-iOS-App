@@ -81,6 +81,9 @@ class AddFinanceViewConrtoller: UIViewController {
     @IBAction func editingStarted(_ sender: Any) {
         if let textField = sender as? UITextField {
             currentTextField = textField
+//            if textField.tag == 1 {
+//                textField.text = nil
+//            }
         }
     }
     
@@ -89,7 +92,7 @@ class AddFinanceViewConrtoller: UIViewController {
             if textField.tag == 1 {
                 if let price = Int(text) {
                     financeData[textField.tag] = price
-                    textField.text = "\(String(price).convertEnglishNumToPersianNum()) تومان"
+                    textField.text = "\(String.toPersianPriceString(price: price)) تومان"
                 }
             } else {
                 financeData[textField.tag] = text
@@ -134,6 +137,7 @@ class AddFinanceViewConrtoller: UIViewController {
         self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
     }
     
+    @available(iOS 13.0, *)
     @IBAction func submit(_ sender: Any) {
         editingEnded(currentTextField as Any)
         currentTextField = nil
@@ -143,14 +147,14 @@ class AddFinanceViewConrtoller: UIViewController {
             return
         }
 
-//        let finance = Finance.getFinance(title: financeeData[0] as! String, price: financeeData[1] as! Int, isIncome: , date: date)
+        let finance = Finance.getFinance(title: financeData[0] as! String, amount: financeData[1] as! Int, isCost: true, date: date!)
 //        RestAPIManagr.sharedInstance.createDisease(disease: disease)
 
         back()
     }
     
     func back() {
-        self.showNextPage(identifier: "FinanceeViewController")
+        self.navigationController?.popViewController(animated: true)
     }
     
     func configure() {
@@ -165,3 +169,5 @@ class AddFinanceViewConrtoller: UIViewController {
         configure()
     }
 }
+
+//TODO: set isCost

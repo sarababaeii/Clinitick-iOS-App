@@ -55,34 +55,4 @@ import UIKit
 //    func updateGradientDirection() {
 //        gradientLayer.endPoint = vertical ? CGPoint(x: 0, y: 1) : CGPoint(x: 1, y: 0)
 //    }
-    
-//    @IBInspectable var shadowColor: UIColor = UIColor.white {
-//        didSet {
-//            self.layer.shadowColor = self.shadowColor.cgColor
-//        }
-//    }
-//    
-//    @IBInspectable var shadowAlpha: Float = 1 {
-//        didSet {
-//            self.layer.shadowOpacity = self.shadowAlpha
-//        }
-//    }
-//    
-//    @IBInspectable var shadowSize: CGSize = .zero {
-//        didSet {
-//            self.layer.shadowOffset = self.shadowSize
-//        }
-//    }
-//    
-//    @IBInspectable var shadowBlur: CGFloat = 0 {
-//        didSet {
-//            self.layer.shadowRadius = self.shadowBlur
-//        }
-//    }
-//    
-//    @IBInspectable var maskToBounds: Bool = false {
-//        didSet {
-//            self.layer.masksToBounds = self.maskToBounds
-//        }
-//    }
 }

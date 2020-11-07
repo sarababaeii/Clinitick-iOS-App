@@ -28,12 +28,14 @@ class FinanceTableViewCell: UITableViewCell {
     
     func setFinanceAttributes(finance: Finance) {
         nameLabel.text = finance.title
+        diseaseLabel.isHidden = true
         setPriceLabel(price: finance.amount)
         if finance.is_cost {
             priceLabel.textColor = Color.red.componentColor
             tomanLabel.textColor = Color.red.componentColor
         }
         dateLabel.text = finance.date.toPersianShortString()
+        print(finance.is_cost)
     }
     
     func setAppointmentAttributes(appointment: Appointment) {
@@ -45,7 +47,7 @@ class FinanceTableViewCell: UITableViewCell {
     
     func setPriceLabel(price: NSDecimalNumber) {
         if let price = price as? Int {
-            priceLabel.text = String(price).convertEnglishNumToPersianNum()
+            priceLabel.text = (String.toPersianPriceString(price: price))
         }
     }
 }

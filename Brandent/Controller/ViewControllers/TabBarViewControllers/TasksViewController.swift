@@ -13,18 +13,24 @@ import UIKit
 class TasksViewController: UIViewController {
 
     @IBOutlet weak var tasksTableView: UITableView!
+    
     var taskTableViewDelegate: TasksTableViewDelegate?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        Info.sharedInstance.lastViewController = self
+    func setDelegates() {
         taskTableViewDelegate = TasksTableViewDelegate(tasksTableView: tasksTableView, date: Date())
         tasksTableView.delegate = taskTableViewDelegate
         tasksTableView.dataSource = taskTableViewDelegate
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        Info.sharedInstance.lastViewController = self
+        setDelegates()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
 }
+
+//TODO: Calendar

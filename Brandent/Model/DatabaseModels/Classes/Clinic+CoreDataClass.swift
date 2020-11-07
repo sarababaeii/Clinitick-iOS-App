@@ -25,4 +25,8 @@ public class Clinic: NSManagedObject {
         let uuid = UUID()
         self.id = uuid
     }
+    
+    func setModifiedTime() {
+        self.modified_at = Date()
+    }
 }

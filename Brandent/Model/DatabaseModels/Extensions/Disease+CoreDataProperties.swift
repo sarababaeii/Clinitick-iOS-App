@@ -60,3 +60,13 @@ extension Disease {
     @NSManaged public func removeFromSpecialities(_ values: NSSet)
 
 }
+
+enum DiseaseAttributes: String {
+    case id = "id"
+    case title = "title"
+    case price = "price"
+    case appointments = "appointments"
+    case specialities = "specialities"
+    case dentist = "dentist"
+    case modifiedAt = "modified_at"
+}

@@ -27,7 +27,7 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     init(tasksTableView: UITableView, date: Date) {
         self.tasksTableView = tasksTableView
         self.date = date
-        if let tasks = Info.dataController.fetchAppointments(visitTime: date) as? [Appointment] {
+        if let tasks = Info.dataController.fetchAppointmentsInDay(in: date) as? [Appointment] {
             self.tasks = tasks
             print("# \(tasks.count)")
         }

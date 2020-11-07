@@ -8,14 +8,17 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class FinanceTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
    
-    var finances = [Any]()
+    var finances = [NSManagedObject]()
     
     //MARK: Initializer
     init(finances: [Any]) {
-        self.finances = finances
+        if let finances = finances as? [NSManagedObject] {
+            self.finances = finances
+        }
     }
     
     //MARK: Protocol Functions

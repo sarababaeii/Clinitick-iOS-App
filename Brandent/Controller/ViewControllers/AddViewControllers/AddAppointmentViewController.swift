@@ -75,6 +75,9 @@ class AddViewController: UIViewController, UITextViewDelegate {
     @IBAction func editingStarted(_ sender: Any) {
         if let textField = sender as? UITextField {
             currentTextField = textField
+//            if textField.tag == 3 {
+//                textField.text = nil
+//            }
         }
     }
     
@@ -83,7 +86,7 @@ class AddViewController: UIViewController, UITextViewDelegate {
             if textField.tag == 3 {
                 if let price = Int(text) {
                     appointmentData[textField.tag] = price
-                    textField.text = "\(String(price).convertEnglishNumToPersianNum()) تومان"
+                    textField.text = "\(String.toPersianPriceString(price: price)) تومان"
                 }
             } else {
                 appointmentData[textField.tag] = text

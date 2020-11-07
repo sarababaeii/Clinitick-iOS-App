@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D2E250FE8BB00C7824A /* ProfileViewController.swift */; };
-		03036D31250FE8F500C7824A /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D30250FE8F500C7824A /* AddViewController.swift */; };
+		03036D31250FE8F500C7824A /* AddAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D30250FE8F500C7824A /* AddAppointmentViewController.swift */; };
 		03036D33250FE92400C7824A /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D32250FE92400C7824A /* TasksViewController.swift */; };
 		030BE2F92543454600AA642C /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030BE2F82543454600AA642C /* TaskTableViewCell.swift */; };
 		030BE2FB25434A5000AA642C /* TasksTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030BE2FA25434A5000AA642C /* TasksTableViewDelegate.swift */; };
@@ -65,6 +65,7 @@
 		03BC1F9225251658009749C0 /* Disease+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */; };
 		03D41BBA25530EE7005BB942 /* UIDatePickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */; };
 		03D41BBC2553145A005BB942 /* PickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */; };
+		03D8573525558CA000304B00 /* CustomNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D8573425558CA000304B00 /* CustomNavigationViewController.swift */; };
 		03E7F933254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F932254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift */; };
 		03E7F935254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F934254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift */; };
 		03E7F939254C61C8000EDDD0 /* AddDiseaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F938254C61C8000EDDD0 /* AddDiseaseViewController.swift */; };
@@ -115,7 +116,7 @@
 
 /* Begin PBXFileReference section */
 		03036D2E250FE8BB00C7824A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		03036D30250FE8F500C7824A /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		03036D30250FE8F500C7824A /* AddAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentViewController.swift; sourceTree = "<group>"; };
 		03036D32250FE92400C7824A /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		030BE2F82543454600AA642C /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		030BE2FA25434A5000AA642C /* TasksTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +179,7 @@
 		03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disease+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDatePickerExtension.swift; sourceTree = "<group>"; };
 		03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDelegate.swift; sourceTree = "<group>"; };
+		03D8573425558CA000304B00 /* CustomNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationViewController.swift; sourceTree = "<group>"; };
 		03E7F932254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsTableViewDelegate.swift; sourceTree = "<group>"; };
 		03E7F934254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesTableViewDelegate.swift; sourceTree = "<group>"; };
 		03E7F938254C61C8000EDDD0 /* AddDiseaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDiseaseViewController.swift; sourceTree = "<group>"; };
@@ -317,19 +319,7 @@
 		03749EE5250E76EA003CBE49 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				03749EB4250E76D6003CBE49 /* HomeViewController.swift */,
-				03749EB6250E76D6003CBE49 /* FinanceViewController.swift */,
-				03FBE66F2554704800FEFF63 /* SeeFinanceViewController.swift */,
-				03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */,
-				03036D30250FE8F500C7824A /* AddViewController.swift */,
-				03036D32250FE92400C7824A /* TasksViewController.swift */,
-				03036D2E250FE8BB00C7824A /* ProfileViewController.swift */,
-				030C67FF2549E65E00CECCC2 /* PatientsViewController.swift */,
-				0360D85F255165AA00C36AE4 /* PatientProfileViewController.swift */,
-				030C68052549ECB200CECCC2 /* DiseasesViewController.swift */,
-				03E7F938254C61C8000EDDD0 /* AddDiseaseViewController.swift */,
-				03E7F93E254C8940000EDDD0 /* ClinicsViewController.swift */,
-				03E7F93C254C88DC000EDDD0 /* AddClinicViewController.swift */,
+				03D857362555A17100304B00 /* ViewControllers */,
 				03AF9394251653BA008DD4A0 /* DataController.swift */,
 			);
 			path = Controller;
@@ -400,6 +390,7 @@
 				03749EFF250EA8AE003CBE49 /* CustomTextField.swift */,
 				0361A867253A1579001840EC /* CustomTextView.swift */,
 				033C7661253D9EC900D25F4E /* CustomTabBar.swift */,
+				03D8573425558CA000304B00 /* CustomNavigationViewController.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -450,6 +441,50 @@
 				03FBE6802554786E00FEFF63 /* Speciality+CoreDataProperties.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		03D857362555A17100304B00 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				03D857372555A17D00304B00 /* TabBarViewControllers */,
+				03D857382555A19C00304B00 /* AddViewControllers */,
+				03D857392555A1BC00304B00 /* SeeViewControllers */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		03D857372555A17D00304B00 /* TabBarViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				03749EB4250E76D6003CBE49 /* HomeViewController.swift */,
+				03749EB6250E76D6003CBE49 /* FinanceViewController.swift */,
+				03036D32250FE92400C7824A /* TasksViewController.swift */,
+				03036D2E250FE8BB00C7824A /* ProfileViewController.swift */,
+			);
+			path = TabBarViewControllers;
+			sourceTree = "<group>";
+		};
+		03D857382555A19C00304B00 /* AddViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				03036D30250FE8F500C7824A /* AddAppointmentViewController.swift */,
+				03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */,
+				03E7F938254C61C8000EDDD0 /* AddDiseaseViewController.swift */,
+				03E7F93C254C88DC000EDDD0 /* AddClinicViewController.swift */,
+			);
+			path = AddViewControllers;
+			sourceTree = "<group>";
+		};
+		03D857392555A1BC00304B00 /* SeeViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				03FBE66F2554704800FEFF63 /* SeeFinanceViewController.swift */,
+				030C67FF2549E65E00CECCC2 /* PatientsViewController.swift */,
+				0360D85F255165AA00C36AE4 /* PatientProfileViewController.swift */,
+				030C68052549ECB200CECCC2 /* DiseasesViewController.swift */,
+				03E7F93E254C8940000EDDD0 /* ClinicsViewController.swift */,
+			);
+			path = SeeViewControllers;
 			sourceTree = "<group>";
 		};
 		03EE136825542B8F00363EA0 /* TableViewDelegates */ = {
@@ -794,7 +829,7 @@
 				03E7F933254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift in Sources */,
 				0344D47E253756F00031122F /* ImagePickerDelegate.swift in Sources */,
 				033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */,
-				03036D31250FE8F500C7824A /* AddViewController.swift in Sources */,
+				03036D31250FE8F500C7824A /* AddAppointmentViewController.swift in Sources */,
 				030C68062549ECB200CECCC2 /* DiseasesViewController.swift in Sources */,
 				0360D860255165AA00C36AE4 /* PatientProfileViewController.swift in Sources */,
 				03FBE68A2554786E00FEFF63 /* Dentist+CoreDataProperties.swift in Sources */,
@@ -837,6 +872,7 @@
 				0328877E254F63B700AF1A9F /* ColorCollectionViewCell.swift in Sources */,
 				03BC1F8825251658009749C0 /* Appointment+CoreDataClass.swift in Sources */,
 				03F4A5CB2551D03300D7E1C6 /* NearTasksTableViewCell.swift in Sources */,
+				03D8573525558CA000304B00 /* CustomNavigationViewController.swift in Sources */,
 				035540E4251624A8003B9638 /* CustomImageView.swift in Sources */,
 				03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */,
 				03749EBD250E76D6003CBE49 /* Brandent.xcdatamodeld in Sources */,

@@ -25,6 +25,10 @@ public class Patient: NSManagedObject {
         let uuid = UUID()
         self.id = uuid
     }
+    
+    func setModifiedTime() {
+        self.modified_at = Date()
+    }
 //    init(name: Float, phone: Float) {
 //        super.init()
 //        self.name = name

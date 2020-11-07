@@ -26,7 +26,7 @@ class ClinicsViewController: UIViewController {
         setDelegates()
     }
     
-    override func viewDidLoad() {
+    override func viewDidAppear(_ animated: Bool) {
         configure()
     }
 }

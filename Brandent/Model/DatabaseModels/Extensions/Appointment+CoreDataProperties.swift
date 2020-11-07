@@ -31,3 +31,17 @@ extension Appointment {
     @NSManaged public var patient: Patient
 
 }
+
+enum AppointmentAttributes: String {
+    case id = "id"
+    case patient = "patient"
+    case clinic = "clinic"
+    case disease = "disease"
+    case price = "price"
+    case date = "visit_time"
+    case notes = "notes"
+    case images = "images"
+    case state = "state"
+    case dentist = "dentist"
+    case modifiedAt = "modified_at"
+}

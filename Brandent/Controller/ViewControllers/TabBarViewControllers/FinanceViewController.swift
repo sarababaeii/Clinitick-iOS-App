@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 class FinanceViewController: UIViewController {
 
     @IBOutlet weak var totalIncomeLabel: UILabel!
@@ -40,6 +41,15 @@ class FinanceViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SeeFinanceSegue",
+            let gesture = sender as? UITapGestureRecognizer,
+            let view = gesture.view,
+            let viewController = segue.destination as? SeeFinanceViewController {
+            viewController.senderTag = view.tag
+        }
+    }
+    
     func configure() {
         numberLabels = [totalIncomeLabel, appointmentsIncomeLabel, otherIncomeLabel, expensesLabel]
     }
@@ -53,4 +63,16 @@ class FinanceViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         Info.sharedInstance.lastViewController = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 }
+
+//TODO: get numbers

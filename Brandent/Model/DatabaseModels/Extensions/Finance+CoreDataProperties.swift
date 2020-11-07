@@ -26,3 +26,13 @@ extension Finance {
     @NSManaged public var dentist: Dentist?
 
 }
+
+enum FinanceAttributes: String {
+    case id = "id"
+    case title = "title"
+    case price = "amount"
+    case date = "date"
+    case isCost = "is_cost"
+    case dentist = "dentist"
+    case modifiedAt = "modified_at"
+}

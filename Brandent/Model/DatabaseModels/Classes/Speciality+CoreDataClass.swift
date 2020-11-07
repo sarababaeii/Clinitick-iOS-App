@@ -12,7 +12,6 @@ import CoreData
 
 @objc(Speciality)
 public class Speciality: NSManagedObject {
-
     func setID() {
         let uuid = UUID()
         self.id = uuid

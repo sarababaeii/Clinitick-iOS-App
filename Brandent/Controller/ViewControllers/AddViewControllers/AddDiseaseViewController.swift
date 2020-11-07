@@ -1,5 +1,5 @@
 //
-//  AddClinicViewController.swift
+//  AddDiseaseViewController.swift
 //  Brandent
 //
 //  Created by Sara Babaei on 10/30/20.
@@ -9,27 +9,36 @@
 import Foundation
 import UIKit
 
-class AddClinicViewController: UIViewController {
+class AddDiseaseViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: CustomTextField!
-    @IBOutlet weak var addressTextField: CustomTextField!
-    @IBOutlet weak var colorsCollectionView: UICollectionView!
+    @IBOutlet weak var priceTextField: CustomTextField!
     
     var textFields = [CustomTextField]()
     var currentTextField: UITextField?
-    var colorsCollectionViewDelegate: ColorsCollectionViewDelegate?
     
-    var clinicData = ["", ""] //0: title, 1: address
+    var diseaseData = ["", -1] as [Any] //0: title, 1: price
+    
     
     @IBAction func editingStarted(_ sender: Any) {
         if let textField = sender as? UITextField {
             currentTextField = textField
+//            if textField.tag == 1 {
+//                textField.text = nil
+//            }
         }
     }
     
     @IBAction func editingEnded(_ sender: Any) {
         if let textField = sender as? UITextField, let text = textField.fetchInput() {
-            clinicData[textField.tag] = text
+            if textField.tag == 1 {
+                if let price = Int(text) {
+                    diseaseData[textField.tag] = price
+                    textField.text = "\(String.toPersianPriceString(price: price)) تومان"
+                }
+            } else {
+                diseaseData[textField.tag] = text
+            }
         }
     }
     
@@ -47,11 +56,15 @@ class AddClinicViewController: UIViewController {
     
     //MARK: Submission
     func mustComplete() -> CustomTextField? {
-        if clinicData[0] == "" {
+        if diseaseData[0] as! String == "" {
             return textFields[0]
+        }
+        if diseaseData[1] as! Int == -1 {
+            return textFields[1]
         }
         return nil
     }
+    
     
     func submitionError(for textField: CustomTextField) {
         if textField.placeHolderColor != Color.red.componentColor {
@@ -65,32 +78,24 @@ class AddClinicViewController: UIViewController {
     @IBAction func submit(_ sender: Any) {
         editingEnded(currentTextField as Any)
         currentTextField = nil
-        
+
         if let requiredTextField = mustComplete() {
             submitionError(for: requiredTextField)
             return
         }
-        let color = colorsCollectionViewDelegate?.selectedColorCell?.color ?? Color.lightGreen
-        let clinic = Clinic.getClinic(title: clinicData[0], address: clinicData[1], color: color.clinicColor.toHexString())
-//        RestAPIManagr.sharedInstance.addClinic(clinic: clinic)
-//        
+
+        let disease = Disease.getDisease(title: diseaseData[0] as! String, price: diseaseData[1] as! Int)
+//        RestAPIManagr.sharedInstance.createDisease(disease: disease)
+
         back()
     }
     
     func back() {
-        self.showNextPage(identifier: "ClinicsViewController")
-    }
-    
-    func setDelegates() {
-        let colors = [Color.lightGreen, Color.darkGreen, Color.indigo, Color.lightBlue, Color.darkBlue, Color.purple, Color.pink, Color.red]
-        colorsCollectionViewDelegate = ColorsCollectionViewDelegate(colors: colors)
-        colorsCollectionView.delegate = colorsCollectionViewDelegate
-        colorsCollectionView.dataSource = colorsCollectionViewDelegate
+        self.navigationController?.popViewController(animated: true)
     }
     
     func configure() {
-        textFields = [titleTextField, addressTextField]
-        setDelegates()
+        textFields = [titleTextField, priceTextField]
     }
     
     override func viewDidLoad() {

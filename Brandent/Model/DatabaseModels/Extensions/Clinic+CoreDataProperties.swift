@@ -43,3 +43,13 @@ extension Clinic {
     @NSManaged public func removeFromAppointments(_ values: NSSet)
 
 }
+
+enum ClinicAttributes: String {
+    case id = "id"
+    case title = "title"
+    case address = "address"
+    case color = "color"
+    case appointments = "appointments"
+    case dentist = "dentist"
+    case modifiedAt = "modified_at"
+}

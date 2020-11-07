@@ -43,3 +43,13 @@ extension Patient {
     @NSManaged public func removeFromHistory(_ values: NSSet)
 
 }
+
+enum PatientAttributes: String {
+    case id = "id"
+    case name = "name"
+    case phone = "phone"
+    case alergies = "alergies"
+    case history = "history"
+    case dentist = "dentist"
+    case modifiedAt = "modified_at"
+}

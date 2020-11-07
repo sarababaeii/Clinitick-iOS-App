@@ -9,6 +9,19 @@
 import Foundation
 
 extension Date {
+    func startOfMonth() -> Date {
+        let calendar = Calendar(identifier: .persian)
+        let components = calendar.dateComponents([.year, .month], from: self)
+        return  calendar.date(from: components)!
+    }
+    
+    func endOfMonth() -> Date {
+        var components = DateComponents()
+        components.month = 1
+        components.second = -1
+        return Calendar(identifier: .persian).date(byAdding: components, to: startOfMonth())!
+    }
+    
     func startOfDate() -> Date {
         var calendar = Calendar.current
         calendar.timeZone = TimeZone.current

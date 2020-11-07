@@ -12,7 +12,6 @@ import UIKit
 @available(iOS 13.0, *)
 class PatientProfileViewController: UIViewController {
     
-    @IBOutlet weak var patientNameLabel: UILabel!
     @IBOutlet weak var appointmentsTableView: UITableView!
     
     var patient: Patient?
