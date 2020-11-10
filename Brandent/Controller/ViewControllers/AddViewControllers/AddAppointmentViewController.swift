@@ -158,7 +158,7 @@ class AddViewController: UIViewController, UITextViewDelegate {
         
         let appointment = Appointment.createAppointment(name: appointmentData[0] as! String, phone: appointmentData[1] as! String, diseaseTitle: appointmentData[2] as! String, price: appointmentData[3] as! Int, alergies: appointmentData[4] as? String, visit_time: date!, notes: appointmentData[5] as? String)
         RestAPIManagr.sharedInstance.addAppointment(appointment: appointment)
-        Info.dataController.loadData()
+//        Info.dataController.loadData()
         
         back()
     }
@@ -191,6 +191,7 @@ class AddViewController: UIViewController, UITextViewDelegate {
     }
     
     func configure() {
+        
         notesTextView.textColor = Color.gray.componentColor
         creatDatePicker()
         setDelegates()

@@ -33,9 +33,15 @@ extension Date {
         return calendar.date(byAdding: .day, value: 1, to: self)
     }
     
-    func toDBFormatString() -> String {
+    func toDBFormatDateAndTimeString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.string(from: self)
+    }
+    
+    func toDBFormatDateString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: self)
     }
     

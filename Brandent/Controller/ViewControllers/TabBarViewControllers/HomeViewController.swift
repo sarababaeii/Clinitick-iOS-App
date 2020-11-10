@@ -50,6 +50,7 @@ class HomeViewController: UIViewController {
     func setDelegates() {
         setMenuDelegates()
         setTodayDelegates()
+        setTextViewDelegates()
     }
     
     func setMenuDelegates() {
@@ -62,6 +63,13 @@ class HomeViewController: UIViewController {
 //        todayCollectionViewDelegate = TodayCollectionViewDelegate()
 //        todayTableView.delegate = todayCollectionViewDelegate
 //        todayTableView.dataSource = todayCollectionViewDelegate
+    }
+    
+    func setTextViewDelegates() {
+        quoteTextView.isEditable = true
+        quoteTextView.text = "\"آینده از آن کسانی است که به استقبال آن می‌روند.\""
+        quoteTextView.font = UIFont(name: "Vazir-Bold", size: 14)
+        quoteTextView.isEditable = false
     }
     
     func configure() {

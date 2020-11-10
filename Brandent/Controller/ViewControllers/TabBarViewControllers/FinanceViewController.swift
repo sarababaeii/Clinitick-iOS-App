@@ -17,7 +17,7 @@ class FinanceViewController: UIViewController {
     @IBOutlet weak var expensesLabel: UILabel!
     
     var numberLabels = [UILabel]()
-    var numbers = [String]()
+    var numbers = [36000000, 30000000, 10000000, 4000000]
     var isHidden = false
     
     @IBAction func changeNumbersVisiblity(_ sender: Any) {
@@ -37,7 +37,7 @@ class FinanceViewController: UIViewController {
     
     func showNumbers() {
         for label in numberLabels {
-            label.text = numbers[label.tag]
+            label.text = String.toPersianPriceString(price: numbers[label.tag])
         }
     }
     

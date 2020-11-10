@@ -13,6 +13,10 @@ import CoreData
 @objc(Finance)
 public class Finance: NSManagedObject {
 
+//    required convenience public init(from decoder: Decoder) throws {
+//        self.init()
+//    }
+    
     @available(iOS 13.0, *)
     static func getFinance(title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
         //is repeated?

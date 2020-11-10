@@ -148,7 +148,7 @@ class AddFinanceViewConrtoller: UIViewController {
         }
 
         let finance = Finance.getFinance(title: financeData[0] as! String, amount: financeData[1] as! Int, isCost: true, date: date!)
-//        RestAPIManagr.sharedInstance.createDisease(disease: disease)
+        RestAPIManagr.sharedInstance.addFinance(finance: finance)
 
         back()
     }

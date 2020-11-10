@@ -25,6 +25,7 @@ class PatientsViewController: UIViewController {
     }
     
     func configure() {
+//        Info.sharedInstance.lastViewController = self
         setDelegates()
     }
     
