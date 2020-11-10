@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Appointment" representedClassName="Appointment" syncable="YES">
+        <attribute name="alergies" optional="YES" attributeType="String"/>
         <attribute name="deleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
         <attribute name="images" optional="YES" attributeType="Binary"/>
@@ -68,7 +69,7 @@
         <relationship name="diseases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disease" inverseName="specialities" inverseEntity="Disease"/>
     </entity>
     <elements>
-        <element name="Appointment" positionX="-34.1796875" positionY="-261.04296875" width="128" height="223"/>
+        <element name="Appointment" positionX="-34.1796875" positionY="-261.04296875" width="128" height="238"/>
         <element name="Clinic" positionX="-203.81640625" positionY="-447.2578125" width="128" height="148"/>
         <element name="Dentist" positionX="-376.40625" positionY="-302.43359375" width="128" height="178"/>
         <element name="Disease" positionX="-621.47265625" positionY="-36.9453125" width="128" height="148"/>

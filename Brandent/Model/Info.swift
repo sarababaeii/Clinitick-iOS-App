@@ -14,6 +14,6 @@ class Info {
     
     @available(iOS 13.0, *)
     static var dataController = DataController()
-    var lastUpdate = Date() //is it ok?
+    var lastUpdate = Date() //is it ok? shared prefences
     var lastViewController: UIViewController?
 }

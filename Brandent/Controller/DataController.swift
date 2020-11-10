@@ -80,13 +80,16 @@ class DataController {
     }
     
     //MARK: Appointment
-    func createAppointment(patient: Patient, disease: Disease, price: Int, visit_time: Date, notes: String?) -> Appointment {
+    func createAppointment(patient: Patient, disease: Disease, price: Int, visit_time: Date, alergies: String?, notes: String?) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
         
         if let price = price as? NSDecimalNumber {
             appointment.price = price
         }
         appointment.visit_time = visit_time
+        if let alergies = alergies {
+            appointment.alergies = alergies
+        }
         if let notes = notes {
             appointment.notes = notes
         }

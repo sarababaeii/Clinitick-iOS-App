@@ -31,4 +31,36 @@ public class Finance: NSManagedObject {
     func setModifiedTime() {
         self.modified_at = Date()
     }
+    
+    func toDictionary() -> [String: String] {
+        let params: [String: String] = [
+            APIKey.finance.id!: self.id.uuidString,
+            APIKey.dentist.id!: "1",
+            APIKey.finance.title!: self.title,
+            APIKey.finance.isCost!: String(self.is_cost),
+            APIKey.finance.price!: String(Int(truncating: self.amount)),
+            APIKey.finance.date!: self.date.toDBFormatDateString(),
+            APIKey.finance.isDeleted!: String(self.isDeleted)
+        ]
+        return params
+    }
+    
+    static func toDictionaryArray(finances: [Finance]) -> [[String: String]] {
+        var params = [[String: String]]()
+        for finance in finances {
+            params.append(finance.toDictionary())
+        }
+        return params
+    }
 }
+
+//"finances": [
+//  {
+//    "id": "890a32fe-12e6-11eb-adc1-0242ac120002",
+//    "dentist_id": 1,
+//    "title": "Ligma",
+//    "is_cost": false,
+//    "amount": 95000000,
+//    "date": "2020-10-9"
+//  }
+//],

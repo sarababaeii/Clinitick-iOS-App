@@ -29,9 +29,29 @@ public class Patient: NSManagedObject {
     func setModifiedTime() {
         self.modified_at = Date()
     }
-//    init(name: Float, phone: Float) {
-//        super.init()
-//        self.name = name
-//        self.phone = phone
-//    }
+    
+    func toDictionary() -> [String: String] {
+        let params: [String: String] = [
+            APIKey.patient.id!: self.id.uuidString,
+            APIKey.patient.name!: self.name,
+            APIKey.patient.phone!: self.phone
+        ]
+        return params
+    }
+    
+    static func toDictionaryArray(patients: [Patient]) -> [[String: String]] {
+        var params = [[String: String]]()
+        for patient in patients {
+            params.append(patient.toDictionary())
+        }
+        return params
+    }
 }
+
+//"patients": [
+//  {
+//    "id": "890a32fe-12e6-11eb-adc1-0242ac120002",
+//    "full_name": "Mary J. Blige",
+//    "phone": "09203012037"
+//  }
+//],

@@ -25,6 +25,7 @@ extension Appointment {
     @NSManaged public var price: NSDecimalNumber
     @NSManaged public var state: String
     @NSManaged public var visit_time: Date
+    @NSManaged public var alergies: String?
     @NSManaged public var clinic: Clinic?
     @NSManaged public var dentist: Dentist
     @NSManaged public var disease: Disease
@@ -39,6 +40,7 @@ enum AppointmentAttributes: String {
     case disease = "disease"
     case price = "price"
     case date = "visit_time"
+    case alergies = "alergies"
     case notes = "notes"
     case images = "images"
     case state = "state"

@@ -20,12 +20,12 @@ class RestAPIManagr {
         
         static let addAppointmentURL = URL(string: API.add)!
         static let addImageURL = URL(string: API.images)!
-        static let addFinance = URL(string: API.finance)!
+        static let addFinanceURL = URL(string: API.finance)!
         static let syncURL = URL(string: API.sync)!
         //TODO: Get finances are remained
     }
     
-    enum contentType: String {
+    enum ContentType: String {
         case json = "application/json"
         case multipart = "multipart/form-data"
     }
@@ -42,7 +42,7 @@ class RestAPIManagr {
         let task = session.dataTask(with: request) { (data, response, error) in
 //            self.setToken(data: data)
             let responseString = String(data: data!, encoding: .utf8)
-            print("My data --> \(String(describing: responseString))")
+            print("My response --> \(String(describing: responseString))")
             code = self.checkResponse(response: response as? HTTPURLResponse, error: error)
         }
         task.resume()
@@ -55,7 +55,7 @@ class RestAPIManagr {
     }
     
     //MARK: Creating A Request
-    func createRequest(url: URL, params: [String: Any], contentType: contentType) -> URLRequest {
+    func createRequest(url: URL, params: [String: Any], contentType: ContentType) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
@@ -72,38 +72,56 @@ class RestAPIManagr {
     
     func createAddAppointmentRequest(appointment: Appointment) -> URLRequest {
         let params: [String: Any] = [
-            "appointment": [
-                "id": appointment.id.uuidString,
-                "notes": appointment.notes as Any,
-                "price": String(Int(truncating: appointment.price)),
-                "state": appointment.state,
-                "visit_time": appointment.visit_time.toDBFormatDateAndTimeString(),
-                "disease": appointment.disease.title as Any,
-                "is_deleted": "false",
-//            "clinic_id": appointment.clinic?.id as Any,
-                "clinic_id": "890a32fe-12e6-11eb-adc1-0242ac120002",
-                "allergies": appointment.patient.alergies as Any],
+            "appointment": appointment.toDictionary(),
             "patient": [
                 "id": appointment.patient.id.uuidString,
                 "full_name": appointment.patient.name as Any,
                 "phone": appointment.patient.phone],
             "dentist_id": "1"]
+//        let params: [String: Any] = [
+//            "appointment": [
+//                "id": appointment.id.uuidString,
+//                "notes": appointment.notes as Any,
+//                "price": String(Int(truncating: appointment.price)),
+//                "state": appointment.state,
+//                "visit_time": appointment.visit_time.toDBFormatDateAndTimeString(),
+//                "disease": appointment.disease.title as Any,
+//                "is_deleted": "false",
+////            "clinic_id": appointment.clinic?.id as Any,
+//                "clinic_id": "890a32fe-12e6-11eb-adc1-0242ac120002",
+//                "allergies": appointment.patient.alergies as Any],
+//            "patient": [
+//                "id": appointment.patient.id.uuidString,
+//                "full_name": appointment.patient.name as Any,
+//                "phone": appointment.patient.phone],
+//            "dentist_id": "1"]
         print("params: \(params)")
         return createRequest(url: API.addAppointmentURL, params: params as [String : Any], contentType: .json)
     }
     
     func createAddFinanceRequest(finance: Finance) -> URLRequest {
         let params: [String: Any] = [
-        "dentist_id": "1",
-        "finance": [
-            "id": finance.id.uuidString,
             "dentist_id": "1",
-            "title": finance.title as String,
-            "is_cost": String(finance.is_cost),
-            "amount": String(Int(truncating: finance.amount)),
-            "date": finance.date.toDBFormatDateString()]]
-        return createRequest(url: API.addFinance, params: params, contentType: .json)
-    }//TODO: is_deleted?
+            "finance": finance.toDictionary()]
+        return createRequest(url: API.addFinanceURL, params: params, contentType: .json)
+    }
+    
+//    func createAddClinicRequest(clinic: Clinic) -> URLRequest {
+//        let params: [String: Any] =[]
+//        return createRequest(url: API.addClinic, params: params, contentType: .json)
+//    }
+    
+    func createSyncRequest(clinics: [Clinic], patients: [Patient], finances: [Finance], diseases: [Disease], appointments: [Appointment]) -> URLRequest {
+        let params: [String: Any] = [
+            "last_updated": Info.sharedInstance.lastUpdate.toDBFormatDateAndTimeString(),
+            "clinics": Clinic.toDictionaryArray(clinics: clinics),
+            "patients": Patient.toDictionaryArray(patients: patients),
+            "finances": Finance.toDictionaryArray(finances: finances),
+            "diseases": Disease.toDictionaryArray(diseases: diseases),
+            "appointments": Appointment.toDictionaryArray(appointments: appointments)
+        ]
+        return createRequest(url: API.syncURL, params: params, contentType: .json)
+    }
     
     //MARK: Processing Response
 //    func setToken(data: Data?) {
@@ -139,16 +157,6 @@ class RestAPIManagr {
 //        } else {
 //            UIApplication.topViewController()?.showToast(message: "Error \(response)")
 //        }
-    }
-    
-    func dataToJSON() {
-       let dic = ["2": "B", "1": "A", "3": "C"]
-       let encoder = JSONEncoder()
-       if let jsonData = try? encoder.encode(dic) {
-           if let jsonString = String(data: jsonData, encoding: .utf8) {
-               print(jsonString)
-           }
-       }
     }
     
     //MARK: Functions

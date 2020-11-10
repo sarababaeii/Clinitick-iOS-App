@@ -1409,7 +1409,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CaN-LQ-8Vi">
-                                        <rect key="frame" x="24" y="22" width="63" height="29"/>
+                                        <rect key="frame" x="24" y="22" width="71" height="29"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="18"/>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="بازگشت" image="back_arrow">

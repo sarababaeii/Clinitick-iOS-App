@@ -29,4 +29,29 @@ public class Disease: NSManagedObject {
     func setModifiedTime() {
         self.modified_at = Date()
     }
+    
+    func toDictionary() -> [String: String] {
+        let params: [String: String] = [
+            APIKey.disease.id!: self.id.uuidString,
+            APIKey.disease.title!: self.title,
+            APIKey.disease.price!: String(Int(truncating: self.price))
+        ]
+        return params
+    }
+    
+    static func toDictionaryArray(diseases: [Disease]) -> [[String: String]] {
+        var params = [[String: String]]()
+        for disease in diseases {
+            params.append(disease.toDictionary())
+        }
+        return params
+    }
 }
+
+//"diseases": [
+//  {
+//    "id": "890a32fe-12e6-11eb-adc1-0242ac120002",
+//    "title": "sine saratan",
+//    "price": 50000000
+//  }
+//],

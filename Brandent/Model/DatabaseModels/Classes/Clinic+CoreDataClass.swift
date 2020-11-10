@@ -29,4 +29,31 @@ public class Clinic: NSManagedObject {
     func setModifiedTime() {
         self.modified_at = Date()
     }
+    
+    func toDictionary() -> [String: String] {
+        var params: [String: String] = [
+            APIKey.clinic.id!: self.id.uuidString,
+            APIKey.clinic.title!: self.title
+        ] //TODO: color
+        if let address = self.address {
+            params[APIKey.clinic.address!] = address
+        }
+        return params
+    }
+    
+    static func toDictionaryArray(clinics: [Clinic]) -> [[String: String]] {
+        var params = [[String: String]]()
+        for clinic in clinics {
+            params.append(clinic.toDictionary())
+        }
+        return params
+    }
 }
+
+//"clinics": [
+//  {
+//    "id": "890a32fe-12e6-11eb-adc1-0242ac120002",
+//    "title": "khooneye madarbozorg",
+//    "address": "Tehran iran shahre tehran"
+//  }
+//],
