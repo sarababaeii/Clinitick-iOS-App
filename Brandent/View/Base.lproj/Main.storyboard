@@ -790,7 +790,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjq-s9-Gh2">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjq-s9-Gh2">
                                                 <rect key="frame" x="10" y="14.5" width="36" height="25"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="16"/>
                                                 <color key="textColor" red="0.41960784313725491" green="0.81176470588235294" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -834,7 +834,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKd-dk-beP">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKd-dk-beP">
                                                 <rect key="frame" x="10" y="14" width="36" height="25"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="16"/>
                                                 <color key="textColor" red="0.41960784313725491" green="0.81176470588235294" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -878,7 +878,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fh-sb-z30">
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fh-sb-z30">
                                                 <rect key="frame" x="10" y="14.5" width="36" height="25"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="16"/>
                                                 <color key="textColor" red="0.8784313725490196" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -986,9 +986,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="appointmentsIncomeLabel" destination="jyE-2r-Fer" id="K1f-9d-KSm"/>
+                        <outlet property="appointmentsIncomeTomanLabel" destination="fjq-s9-Gh2" id="QbZ-dP-Hsl"/>
                         <outlet property="expensesLabel" destination="TKu-rQ-KJr" id="mN8-g4-j9U"/>
+                        <outlet property="expensesTomanLabel" destination="1Fh-sb-z30" id="gA4-nM-LdH"/>
                         <outlet property="otherIncomeLabel" destination="XDQ-3L-yBb" id="b7g-0V-BXP"/>
+                        <outlet property="otherIncomeTomanLabel" destination="kKd-dk-beP" id="x0u-YE-Bhj"/>
                         <outlet property="totalIncomeLabel" destination="IWp-Xg-tfe" id="kyW-Cy-CHg"/>
+                        <outlet property="totalIncomeTomanLabel" destination="X9J-Dr-N9N" id="fLk-jY-uip"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -1203,46 +1207,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1fY-pB-CZ0" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                            <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="Qfk-65-wZz" customClass="SwiftyMenu" customModule="SwiftyMenu">
                                 <rect key="frame" x="231" y="64" width="120" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="224-fW-bFS"/>
-                                    <constraint firstAttribute="height" constant="54" id="XIt-if-Trh"/>
-                                    <constraint firstAttribute="width" secondItem="1fY-pB-CZ0" secondAttribute="height" multiplier="120:54" id="aEt-Wa-PCf"/>
+                                    <constraint firstAttribute="width" constant="120" id="9lI-Xe-crl"/>
+                                    <constraint firstAttribute="height" constant="54" id="wz7-YH-FJC"/>
                                 </constraints>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isMultiSelect" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="scrollingEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
+                                        <real key="value" value="54"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="menuHeaderBackgroundColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rowBackgroundColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="optionColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedRowColor">
+                                        <color key="value" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="تاریخ"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="arrow" value="downArrow"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleLeftInset">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="listHeight">
+                                        <integer key="value" value="200"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                            </textField>
+                                <connections>
+                                    <outlet property="heightConstraint" destination="wz7-YH-FJC" id="2bA-gm-jzN"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veA-jO-cuQ" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="24" y="64" width="191" height="54"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="جمع" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEm-cP-bgn">
-                                        <rect key="frame" x="146.5" y="14.5" width="28.5" height="25"/>
+                                        <rect key="frame" x="150.5" y="17.5" width="24.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7b-OE-BNb">
-                                        <rect key="frame" x="16" y="14.5" width="36" height="25"/>
+                                        <rect key="frame" x="16" y="17.5" width="30.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="16"/>
                                         <color key="textColor" red="0.41960784313725491" green="0.81176470588235294" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۱۰۰.۰۰۰.۰۰۰" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59y-HX-qgq">
-                                        <rect key="frame" x="54" y="14.5" width="71" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۰" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59y-HX-qgq">
+                                        <rect key="frame" x="48.5" y="17.5" width="7.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="16"/>
                                         <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1286,31 +1317,31 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="327" height="72"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="علی اکبری نژاد" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvP-Oh-j0c">
-                                                            <rect key="frame" x="232.5" y="12" width="78.5" height="22"/>
+                                                            <rect key="frame" x="235" y="12" width="76" height="16.5"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="چک‌آپ ماهانه" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qeq-Jx-OPp">
-                                                            <rect key="frame" x="234.5" y="38" width="76.5" height="22"/>
+                                                            <rect key="frame" x="247" y="43.5" width="64" height="16.5"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Thin" family="Vazir" pointSize="14"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4Y-w4-fbi">
-                                                            <rect key="frame" x="16" y="10.5" width="36" height="25"/>
+                                                            <rect key="frame" x="16" y="11" width="30.5" height="19"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Medium" family="Vazir" pointSize="16"/>
                                                             <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۵۰۰۰۰" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUc-Cd-WrG">
-                                                            <rect key="frame" x="54" y="10.5" width="38" height="25"/>
+                                                            <rect key="frame" x="48.5" y="11" width="38" height="19"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Medium" family="Vazir" pointSize="16"/>
                                                             <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۹۹/۰۷/۳۰" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxu-QB-jhz">
-                                                            <rect key="frame" x="16" y="39.5" width="47" height="19"/>
+                                                            <rect key="frame" x="16" y="45" width="44.5" height="14"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="12"/>
                                                             <color key="textColor" red="0.52156862745098043" green="0.52156862745098043" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1360,16 +1391,16 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1fY-pB-CZ0" firstAttribute="top" secondItem="veA-jO-cuQ" secondAttribute="top" id="2yu-WC-bf7"/>
-                            <constraint firstItem="veA-jO-cuQ" firstAttribute="trailing" secondItem="1fY-pB-CZ0" secondAttribute="leading" constant="-16" id="7Bk-2x-D2f"/>
-                            <constraint firstItem="1fY-pB-CZ0" firstAttribute="bottom" secondItem="veA-jO-cuQ" secondAttribute="bottom" id="WbK-KB-poe"/>
+                            <constraint firstItem="veA-jO-cuQ" firstAttribute="trailing" secondItem="Qfk-65-wZz" secondAttribute="leading" constant="-16" id="7Bk-2x-D2f"/>
+                            <constraint firstItem="Qfk-65-wZz" firstAttribute="top" secondItem="veA-jO-cuQ" secondAttribute="top" id="8Jj-dg-yml"/>
+                            <constraint firstItem="LgD-Ap-OlH" firstAttribute="trailing" secondItem="Qfk-65-wZz" secondAttribute="trailing" constant="24" id="JfA-Qi-HF5"/>
                             <constraint firstItem="LgD-Ap-OlH" firstAttribute="trailing" secondItem="3on-oU-FMS" secondAttribute="trailing" constant="24" id="baT-7K-hjc"/>
+                            <constraint firstItem="3on-oU-FMS" firstAttribute="top" secondItem="Qfk-65-wZz" secondAttribute="bottom" constant="16" id="gJM-ve-Vwo"/>
+                            <constraint firstItem="Qfk-65-wZz" firstAttribute="bottom" secondItem="veA-jO-cuQ" secondAttribute="bottom" id="iHb-w2-50C"/>
                             <constraint firstItem="LgD-Ap-OlH" firstAttribute="bottom" secondItem="3on-oU-FMS" secondAttribute="bottom" constant="16" id="lHU-gd-YW8"/>
                             <constraint firstItem="3on-oU-FMS" firstAttribute="leading" secondItem="LgD-Ap-OlH" secondAttribute="leading" constant="24" id="oHE-Eg-jGN"/>
                             <constraint firstItem="veA-jO-cuQ" firstAttribute="top" secondItem="LgD-Ap-OlH" secondAttribute="top" constant="20" id="pdg-zy-NaV"/>
                             <constraint firstItem="veA-jO-cuQ" firstAttribute="leading" secondItem="LgD-Ap-OlH" secondAttribute="leading" constant="24" id="v6k-RL-Eh4"/>
-                            <constraint firstItem="LgD-Ap-OlH" firstAttribute="trailing" secondItem="1fY-pB-CZ0" secondAttribute="trailing" constant="24" id="xP7-f0-T8u"/>
-                            <constraint firstItem="3on-oU-FMS" firstAttribute="top" secondItem="1fY-pB-CZ0" secondAttribute="bottom" constant="16" id="zEY-xG-kNd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LgD-Ap-OlH"/>
                     </view>
@@ -1382,8 +1413,9 @@
                         </userDefinedRuntimeAttributes>
                     </navigationItem>
                     <connections>
-                        <outlet property="dateTextField" destination="1fY-pB-CZ0" id="68u-c6-CXr"/>
+                        <outlet property="dateMenu" destination="Qfk-65-wZz" id="neZ-qh-rdB"/>
                         <outlet property="financeTableView" destination="3on-oU-FMS" id="61j-E1-D3z"/>
+                        <outlet property="tomanLabel" destination="i7b-OE-BNb" id="cok-Tv-PcT"/>
                         <outlet property="totalAmountLabel" destination="59y-HX-qgq" id="s6O-8H-UCB"/>
                     </connections>
                 </viewController>
@@ -1409,7 +1441,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CaN-LQ-8Vi">
-                                        <rect key="frame" x="24" y="22" width="71" height="29"/>
+                                        <rect key="frame" x="24" y="22" width="63" height="29"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="18"/>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="بازگشت" image="back_arrow">
@@ -3484,6 +3516,7 @@
         <image name="black_tick" width="14" height="10"/>
         <image name="calendar" width="18" height="18"/>
         <image name="diseases" width="18" height="14"/>
+        <image name="downArrow" width="9" height="6"/>
         <image name="finance" width="34" height="24"/>
         <image name="hide" width="26" height="19"/>
         <image name="home" width="26" height="22"/>

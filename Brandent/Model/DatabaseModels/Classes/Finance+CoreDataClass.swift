@@ -10,13 +10,10 @@
 import Foundation
 import CoreData
 
+@available(iOS 13.0, *)
 @objc(Finance)
 public class Finance: NSManagedObject {
-
-//    required convenience public init(from decoder: Decoder) throws {
-//        self.init()
-//    }
-    
+    //MARK: Creating object
     @available(iOS 13.0, *)
     static func getFinance(title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
         //is repeated?
@@ -32,6 +29,40 @@ public class Finance: NSManagedObject {
         self.modified_at = Date()
     }
     
+    //MARK: Other Functions
+    static func getFinancesArray(tag: Int, date: Date) -> [Any]? {
+        switch tag {
+        case 0:
+            return Info.dataController.fetchAllFinances(in: date)
+        case 1:
+            return Info.dataController.fetchAppointmentsInMonth(in: date)
+        case 2:
+            return Info.dataController.fetchFinanceExternalIncomes(in: date)
+        case 3:
+            return Info.dataController.fetchFinanceCosts(in: date)
+        default:
+            return Info.dataController.fetchAllFinances(in: date)
+        }
+    }
+    
+    static func calculateSum(finances: [Any]) -> Int {
+        var sum = 0
+        for finance in finances {
+            if let item = finance as? Finance {
+                if item.is_cost {
+                    sum -= Int(truncating: item.amount)
+                } else {
+                    sum += Int(truncating: item.amount)
+                }
+            }
+            else if let item = finance as? Appointment {
+                sum += Int(truncating: item.price)
+            }
+        }
+        return sum
+    }
+    
+    //MARK: Create Dictionary From Object
     func toDictionary() -> [String: String] {
         let params: [String: String] = [
             APIKey.finance.id!: self.id.uuidString,

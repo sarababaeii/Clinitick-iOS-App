@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@available(iOS 13.0, *)
 class FinanceTableViewCell: UITableViewCell {
    
     @IBOutlet weak var nameLabel: UILabel!

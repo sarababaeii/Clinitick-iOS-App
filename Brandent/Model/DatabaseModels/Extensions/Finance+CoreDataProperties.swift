@@ -11,6 +11,7 @@ import Foundation
 import CoreData
 
 
+@available(iOS 13.0, *)
 extension Finance {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Finance> {

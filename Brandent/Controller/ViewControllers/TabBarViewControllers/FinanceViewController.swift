@@ -12,21 +12,27 @@ import UIKit
 class FinanceViewController: UIViewController {
 
     @IBOutlet weak var totalIncomeLabel: UILabel!
+    @IBOutlet weak var totalIncomeTomanLabel: UILabel!
+    @IBOutlet weak var appointmentsIncomeTomanLabel: UILabel!
     @IBOutlet weak var appointmentsIncomeLabel: UILabel!
     @IBOutlet weak var otherIncomeLabel: UILabel!
+    @IBOutlet weak var otherIncomeTomanLabel: UILabel!
     @IBOutlet weak var expensesLabel: UILabel!
+    @IBOutlet weak var expensesTomanLabel: UILabel!
     
     var numberLabels = [UILabel]()
-    var numbers = [36000000, 30000000, 10000000, 4000000]
-    var isHidden = false
+    var tomanLabels = [UILabel]()
+    var numbers = [0, 0, 0, 0]
+    var numbersAreHidden = false
     
+    //MARK: Numbers Visibility
     @IBAction func changeNumbersVisiblity(_ sender: Any) {
-        if isHidden {
+        if numbersAreHidden {
             showNumbers()
         } else {
             hideNumbers()
         }
-        isHidden = !isHidden
+        numbersAreHidden = !numbersAreHidden
     }
     
     func hideNumbers() {
@@ -41,6 +47,7 @@ class FinanceViewController: UIViewController {
         }
     }
     
+    //MARK: Sending Sender to SeeFinances
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SeeFinanceSegue",
             let gesture = sender as? UITapGestureRecognizer,
@@ -50,8 +57,38 @@ class FinanceViewController: UIViewController {
         }
     }
     
+    func setNumbers() {
+        numbers[0] = 0
+        for i in 1 ..< 4 {
+            if let array = Finance.getFinancesArray(tag: i, date: Date()) {
+                numbers[i] = Finance.calculateSum(finances: array)
+                numbers[0] += numbers[i]
+            }
+        }
+    }
+    
+    func setNumberLabels() {
+        for i in 0 ..< 4 {
+            if numbers[i] < 0 {
+                numbers[i] *= -1
+                setLabelColor(tag: i, color: .red)
+            } else {
+                setLabelColor(tag: i, color: .green)
+            }
+            numberLabels[i].text = String.toPersianPriceString(price: numbers[i])
+        }
+    }
+    
+    func setLabelColor(tag: Int, color: Color) {
+        numberLabels[tag].textColor = color.componentColor
+        tomanLabels[tag].textColor = color.componentColor
+    }
+    
     func configure() {
         numberLabels = [totalIncomeLabel, appointmentsIncomeLabel, otherIncomeLabel, expensesLabel]
+        tomanLabels = [totalIncomeTomanLabel, appointmentsIncomeTomanLabel, otherIncomeTomanLabel, expensesTomanLabel]
+        setNumbers()
+        setNumberLabels()
     }
     
     override func viewDidLoad() {
@@ -64,6 +101,7 @@ class FinanceViewController: UIViewController {
         Info.sharedInstance.lastViewController = self
     }
     
+    //MARK: Hiding NavigationBar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -74,5 +112,3 @@ class FinanceViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
-
-//TODO: get numbers

@@ -7,7 +7,17 @@
 //
 
 import Foundation
-extension String {
+import SwiftyMenu
+
+extension String: SwiftMenuDisplayable {
+    
+    public var displayValue: String {
+        return self
+    }
+    
+    public var valueToRetrive: Any {
+        return self
+    }
     
     subscript (i: Int) -> String {
         return self[i ..< i + 1]
@@ -76,5 +86,4 @@ extension String {
             return 0
         }
     }
-    
 }

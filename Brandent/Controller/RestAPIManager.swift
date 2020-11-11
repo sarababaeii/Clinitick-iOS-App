@@ -25,7 +25,7 @@ class RestAPIManagr {
         //TODO: Get finances are remained
     }
     
-    enum ContentType: String {
+    private enum ContentType: String {
         case json = "application/json"
         case multipart = "multipart/form-data"
     }
@@ -35,7 +35,7 @@ class RestAPIManagr {
 //    var refreshToken: String?
     
     //MARK: Posting A Request
-    func postRequest(request: URLRequest) {
+    private func postRequest(request: URLRequest) {
         let session = URLSession(configuration: .default)
         var code = 0
         
@@ -55,7 +55,7 @@ class RestAPIManagr {
     }
     
     //MARK: Creating A Request
-    func createRequest(url: URL, params: [String: Any], contentType: ContentType) -> URLRequest {
+    private func createRequest(url: URL, params: [String: Any], contentType: ContentType) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
@@ -70,13 +70,11 @@ class RestAPIManagr {
         return request
     }
     
-    func createAddAppointmentRequest(appointment: Appointment) -> URLRequest {
+    //MARK: Creating Specific Request
+    private func createAddAppointmentRequest(appointment: Appointment) -> URLRequest {
         let params: [String: Any] = [
             "appointment": appointment.toDictionary(),
-            "patient": [
-                "id": appointment.patient.id.uuidString,
-                "full_name": appointment.patient.name as Any,
-                "phone": appointment.patient.phone],
+            "patient": appointment.patient.toDictionary(),
             "dentist_id": "1"]
 //        let params: [String: Any] = [
 //            "appointment": [
@@ -99,19 +97,20 @@ class RestAPIManagr {
         return createRequest(url: API.addAppointmentURL, params: params as [String : Any], contentType: .json)
     }
     
-    func createAddFinanceRequest(finance: Finance) -> URLRequest {
+    @available(iOS 13.0, *)
+    private func createAddFinanceRequest(finance: Finance) -> URLRequest {
         let params: [String: Any] = [
             "dentist_id": "1",
             "finance": finance.toDictionary()]
         return createRequest(url: API.addFinanceURL, params: params, contentType: .json)
     }
     
-//    func createAddClinicRequest(clinic: Clinic) -> URLRequest {
+//    private func createAddClinicRequest(clinic: Clinic) -> URLRequest {
 //        let params: [String: Any] =[]
 //        return createRequest(url: API.addClinic, params: params, contentType: .json)
 //    }
     
-    func createSyncRequest(clinics: [Clinic], patients: [Patient], finances: [Finance], diseases: [Disease], appointments: [Appointment]) -> URLRequest {
+    private func createSyncRequest(clinics: [Clinic], patients: [Patient], finances: [Finance], diseases: [Disease], appointments: [Appointment]) -> URLRequest {
         let params: [String: Any] = [
             "last_updated": Info.sharedInstance.lastUpdate.toDBFormatDateAndTimeString(),
             "clinics": Clinic.toDictionaryArray(clinics: clinics),
@@ -137,7 +136,7 @@ class RestAPIManagr {
 //        }
 //    }
     
-    func checkResponse(response: HTTPURLResponse?, error: Error?) -> Int {
+    private func checkResponse(response: HTTPURLResponse?, error: Error?) -> Int {
         if error == nil, let response = response {
             print("@@ response: \(response.debugDescription) @")
             return response.statusCode
@@ -146,7 +145,7 @@ class RestAPIManagr {
         return 1
     }
     
-    func action(response: Int) {
+    private func action(response: Int) {
         print("$$ response: \(response) $")
 //        if response == 200 {
 //            UIApplication.topViewController()?.showNextPage(identifier: "HomeViewController")

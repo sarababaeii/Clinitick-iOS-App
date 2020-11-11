@@ -9,6 +9,19 @@
 import Foundation
 
 extension Date {
+    static func getDate(date: String) -> Date? {
+        let dateFormatter = getPersianDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: date)
+    }
+    
+    static private func getPersianDateFormatter() -> DateFormatter {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .persian)
+        formatter.locale = Locale(identifier: "fa_IR")
+        return formatter
+    }
+    
     func startOfMonth() -> Date {
         let calendar = Calendar(identifier: .persian)
         let components = calendar.dateComponents([.year, .month], from: self)
@@ -33,6 +46,7 @@ extension Date {
         return calendar.date(byAdding: .day, value: 1, to: self)
     }
     
+    //MARK: To Strings
     func toDBFormatDateAndTimeString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -63,15 +77,8 @@ extension Date {
         return "\(hour):\(min)"
     }
     
-    func getPersianDateFormatter() -> DateFormatter {
-        let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .persian)
-        formatter.locale = Locale(identifier: "fa_IR")
-        return formatter
-    }
-    
     func getPersianDateFormatterWith(format: String) -> DateFormatter {
-        let formatter = getPersianDateFormatter()
+        let formatter = Date.getPersianDateFormatter()
         formatter.dateFormat = format
         return formatter
     }
@@ -93,14 +100,14 @@ extension Date {
     }
     
     func toCompletePersianString() -> String {
-        let formatter = getPersianDateFormatter()
+        let formatter = Date.getPersianDateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
         return formatter.string(from: self)
     }
     
     func toPersianDMonthYString() -> String { //15 aban 1399
-        let formatter = getPersianDateFormatter()
+        let formatter = Date.getPersianDateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         return formatter.string(from: self)

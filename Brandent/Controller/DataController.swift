@@ -195,6 +195,7 @@ class DataController {
     }
     
     //MARK: Finance
+    @available(iOS 13.0, *)
     func createFinance(title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
         let finance = Finance(entity: financeEntity, insertInto: context)
         
