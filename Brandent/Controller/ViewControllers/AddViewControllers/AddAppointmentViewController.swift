@@ -30,18 +30,58 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     @IBOutlet weak var addImageLabel: UIButton!
     @IBOutlet weak var submitButton: CustomButton!
     @IBOutlet weak var errorView: CustomUIView!
+    @IBOutlet weak var diseaseTextFieldTopAnchor: NSLayoutConstraint!
     
+    var clinicOptions = [String]()
     let datePicker = UIDatePicker()
     var textViewDelegate: TextViewDelegate?
     var imagePickerDelegate: ImagePickerDelegate?
     var imageCollectionViewDelegate: ImagesCollectionViewDelegate?
+    
     var textFields = [CustomTextField]()
     var currentTextField: UITextField?
-    
+    var appointmentData = ["", "", "", -1, "", ""] as [Any] //0: name, 1: phone, 2: disease, 3: price, 4: alergy, 5: notes
+    var clinicTitle: String?
     var hasAlergy: Bool = false
     var date: Date?
-    var appointmentData = ["", "", "", -1, "", ""] as [Any] //0: name, 1: phone, 2: disease, 3: price, 4: alergy, 5: notes
-    let clinicOptions = ["مطب ۱", "مطب ۲"]
+    
+    //MARK: Clinic Functions
+    func prepareClinicMenu() {
+        getClinics()
+        if clinicOptions.count > 0 {
+            setClinicMenuDelegates()
+        } else {
+            hideClinicMenu()
+        }
+    }
+    
+    func getClinics() {
+        clinicOptions.removeAll()
+        if let clinics = Info.dataController.fetchAllClinics() as? [Clinic] {
+            for clinic in clinics {
+                clinicOptions.append(clinic.title)
+            }
+        }
+    }
+    
+    func hideClinicMenu() {
+        clinicMenu.isHidden = true
+        diseaseTextFieldTopAnchor.constant = -54
+    }
+    
+    func setClinicMenuDelegates() {
+        clinicMenu.isHidden = false
+        diseaseTextFieldTopAnchor.constant = 16
+        
+        clinicMenu.delegate = self
+        clinicMenu.options = clinicOptions
+        clinicMenu.collapsingAnimationStyle = .spring(level: .low)
+    }
+    
+    func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
+        clinicTitle = selectedOption.displayValue
+        print("^^ \(clinicTitle!)")
+    }
     
     //MARK: DatePicker Functions
     func creatDatePicker() {
@@ -130,11 +170,32 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     }
     
     //MARK: Submission
-    func mustComplete() -> CustomTextField? {
+    @available(iOS 13.0, *)
+    @IBAction func submit(_ sender: Any) {
+        editingEnded(currentTextField as Any)
+        currentTextField = nil
+        editingEnded(notesTextView as Any)
+        
+        if let requiredItem = mustComplete() {
+            submitionError(for: requiredItem)
+            return
+        }
+        
+        let appointment = Appointment.createAppointment(name: appointmentData[0] as! String, phone: appointmentData[1] as! String, diseaseTitle: appointmentData[2] as! String, price: appointmentData[3] as! Int, clinicTitle: clinicTitle, alergies: appointmentData[4] as? String, visit_time: date!, notes: appointmentData[5] as? String)
+        RestAPIManagr.sharedInstance.addAppointment(appointment: appointment)
+//        Info.dataController.loadData()
+        
+        back()
+    }
+    
+    func mustComplete() -> Any? {
         for i in 0 ..< 3 {
             if appointmentData[i] as? String == "" {
                 return textFields[i]
             }
+        }
+        if clinicOptions.count > 0 && clinicTitle == nil {
+            return clinicMenu
         }
         if appointmentData[3] as? Int == -1 {
             return priceTextField
@@ -148,28 +209,12 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
         return nil
     }
     
-    @available(iOS 13.0, *)
-    @IBAction func submit(_ sender: Any) {
-        editingEnded(currentTextField as Any)
-        currentTextField = nil
-        editingEnded(notesTextView as Any)
-        
-        if let requiredTextField = mustComplete() {
-            submitionError(for: requiredTextField)
-            return
+    func submitionError(for requiredItem: Any) {
+        if let textField = requiredItem as? CustomTextField {
+            textField.showError()
         }
-        
-        let appointment = Appointment.createAppointment(name: appointmentData[0] as! String, phone: appointmentData[1] as! String, diseaseTitle: appointmentData[2] as! String, price: appointmentData[3] as! Int, alergies: appointmentData[4] as? String, visit_time: date!, notes: appointmentData[5] as? String)
-        RestAPIManagr.sharedInstance.addAppointment(appointment: appointment)
-//        Info.dataController.loadData()
-        
-        back()
-    }
-    
-    func submitionError(for textField: CustomTextField) {
-        if textField.placeHolderColor != Color.red.componentColor {
-            textField.placeholder = "*\(textField.placeholder!)"
-            textField.placeHolderColor = Color.red.componentColor
+        else if let menu = requiredItem as? SwiftyMenu {
+            menu.showError()
         }
         self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
     }
@@ -184,17 +229,6 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     }
     
     //MARK: Initialization
-    func setClinicMenuDelegates() {
-        clinicMenu.delegate = self
-        clinicMenu.options = clinicOptions
-        print("hey")
-    }
-    
-    func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
-        print("^^ Selected option: \(selectedOption), at index: \(index)")
-        print("hi")
-    }
-    
     func setImagesDelegates() {
         imageCollectionViewDelegate = ImagesCollectionViewDelegate(imagesCollectionView:imagesCollectionView, viewController: self)
         imagesCollectionView.delegate = imageCollectionViewDelegate
@@ -208,7 +242,7 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     }
     
     func setDelegates() {
-        setClinicMenuDelegates()
+        prepareClinicMenu()
         setImagesDelegates()
         setNotesDelegates()
     }
@@ -226,13 +260,10 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
 //        configure()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillLayoutSubviews() {
         configure()
     }
 }
 
 //alergy typed then canceled?
-//TODO: clinic
-//TODO: iOS availability
-
-//hide clinic by defining a top anchor
+//hiding keyboard

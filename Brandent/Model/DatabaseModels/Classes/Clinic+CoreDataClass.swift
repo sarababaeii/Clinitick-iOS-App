@@ -14,7 +14,7 @@ import CoreData
 public class Clinic: NSManagedObject {
 
     @available(iOS 13.0, *)
-    static func getClinic(title: String, address: String?, color: String) -> Clinic {
+    static func getClinic(title: String, address: String?, color: String?) -> Clinic {
         if let clinic = Info.dataController.fetchClinic(title: title) {
             return clinic as! Clinic
         }

@@ -24,6 +24,7 @@
 		0328877E254F63B700AF1A9F /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0328877D254F63B700AF1A9F /* ColorCollectionViewCell.swift */; };
 		033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033C7661253D9EC900D25F4E /* CustomTabBar.swift */; };
 		0344D47E253756F00031122F /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344D47D253756F00031122F /* ImagePickerDelegate.swift */; };
+		034F5468255DB020005145C6 /* SwiftyMenuExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F5467255DB020005145C6 /* SwiftyMenuExtension.swift */; };
 		035540E4251624A8003B9638 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E3251624A8003B9638 /* CustomImageView.swift */; };
 		035540E625162725003B9638 /* CustmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E525162725003B9638 /* CustmButton.swift */; };
 		035D4AD62544B566007D8395 /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035D4AD52544B566007D8395 /* CheckButton.swift */; };
@@ -133,6 +134,7 @@
 		0328877D254F63B700AF1A9F /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		033C7661253D9EC900D25F4E /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		0344D47D253756F00031122F /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
+		034F5467255DB020005145C6 /* SwiftyMenuExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMenuExtension.swift; sourceTree = "<group>"; };
 		035540E3251624A8003B9638 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		035540E525162725003B9638 /* CustmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustmButton.swift; sourceTree = "<group>"; };
 		035D4AD52544B566007D8395 /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				0361A867253A1579001840EC /* CustomTextView.swift */,
 				033C7661253D9EC900D25F4E /* CustomTabBar.swift */,
 				03D8573425558CA000304B00 /* CustomNavigationItem.swift */,
+				034F5467255DB020005145C6 /* SwiftyMenuExtension.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -858,6 +861,7 @@
 				03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */,
 				0360D85E2551654500C36AE4 /* AppointmentTableViewCell.swift in Sources */,
 				03FBE6702554704800FEFF63 /* SeeFinanceViewController.swift in Sources */,
+				034F5468255DB020005145C6 /* SwiftyMenuExtension.swift in Sources */,
 				0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */,
 				03BC1F8C25251658009749C0 /* Patient+CoreDataClass.swift in Sources */,
 				03EE13742554480E00363EA0 /* UIViewExtension.swift in Sources */,

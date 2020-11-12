@@ -1078,6 +1078,49 @@
                                     <action selector="next:" destination="TAQ-km-2To" eventType="primaryActionTriggered" id="3e3-eY-VTh"/>
                                 </connections>
                             </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCP-QY-uv9" customClass="SwiftyMenu" customModule="SwiftyMenu">
+                                <rect key="frame" x="24" y="200" width="327" height="54"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="ZEf-C8-oDB"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="listHeight">
+                                        <integer key="value" value="162"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="نوع"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="menuHeaderBackgroundColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isMultiSelect" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideOptionsWhenSelect" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="scrollingEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
+                                        <real key="value" value="54"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rowBackgroundColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedRowColor">
+                                        <color key="value" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="optionColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="heightConstraint" destination="ZEf-C8-oDB" id="vYy-WS-rCu"/>
+                                </connections>
+                            </view>
                             <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YGS-T1-nBL" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="24" y="270" width="327" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1130,49 +1173,6 @@
                                     <action selector="submit:" destination="TAQ-km-2To" eventType="touchUpInside" id="d0S-zA-l30"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCP-QY-uv9" customClass="SwiftyMenu" customModule="SwiftyMenu">
-                                <rect key="frame" x="24" y="200" width="327" height="54"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="ZEf-C8-oDB"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="listHeight">
-                                        <integer key="value" value="162"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="نوع"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="menuHeaderBackgroundColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isMultiSelect" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideOptionsWhenSelect" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="scrollingEnabled" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
-                                        <real key="value" value="54"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="rowBackgroundColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedRowColor">
-                                        <color key="value" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="optionColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="heightConstraint" destination="ZEf-C8-oDB" id="vYy-WS-rCu"/>
-                                </connections>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -1452,13 +1452,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مورد جدید" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rC9-Te-d55">
-                                        <rect key="frame" x="258.5" y="16" width="92.5" height="30.5"/>
+                                        <rect key="frame" x="247" y="16" width="104" height="41"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CaN-LQ-8Vi">
-                                        <rect key="frame" x="24" y="17.5" width="67" height="28"/>
+                                        <rect key="frame" x="24" y="22" width="63" height="29"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="18"/>
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="بازگشت" image="back_arrow">
@@ -1545,29 +1545,49 @@
                                                     <action selector="next:" destination="m7O-Q4-yfr" eventType="primaryActionTriggered" id="4Qv-aM-f0J"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="مطب" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dNm-3s-o5d" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTP-wG-aBx" customClass="SwiftyMenu" customModule="SwiftyMenu">
                                                 <rect key="frame" x="40" y="156" width="311" height="54"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="54" id="aWg-BB-OVd"/>
+                                                    <constraint firstAttribute="height" constant="54" id="IaQ-AN-RaX"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isMultiSelect" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideOptionsWhenSelect" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="scrollingEnabled" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
+                                                        <real key="value" value="54"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="menuHeaderBackgroundColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="rowBackgroundColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedRowColor">
+                                                        <color key="value" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="optionColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="مطب"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="listHeight">
+                                                        <integer key="value" value="110"/>
+                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                        <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                            </textField>
+                                                <connections>
+                                                    <outlet property="heightConstraint" destination="IaQ-AN-RaX" id="pxu-gJ-jKL"/>
+                                                </connections>
+                                            </view>
                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="دلیل ویزیت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qfi-eJ-0Mu" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="226" width="311" height="54"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1777,7 +1797,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+۲۰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53m-hJ-fzV">
-                                                <rect key="frame" x="8" y="526" width="19.5" height="14"/>
+                                                <rect key="frame" x="8" y="523.5" width="18.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1865,7 +1885,7 @@
                                                                             </connections>
                                                                         </button>
                                                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KDH-91-sR2">
-                                                                            <rect key="frame" x="13" y="67" width="69" height="25"/>
+                                                                            <rect key="frame" x="10" y="67" width="75" height="25"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="25" id="733-8O-egt"/>
                                                                             </constraints>
@@ -1912,7 +1932,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHf-ln-tlr">
-                                                        <rect key="frame" x="121" y="67" width="69" height="25"/>
+                                                        <rect key="frame" x="118" y="67" width="75" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="ckv-fR-6BR"/>
                                                         </constraints>
@@ -1973,7 +1993,7 @@
                                                 <rect key="frame" x="41" y="765" width="310" height="41"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="خطا: همه‌ی موارد ضروری وارد نشده است." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynt-HZ-tNh">
-                                                        <rect key="frame" x="0.0" y="11" width="310" height="19"/>
+                                                        <rect key="frame" x="0.0" y="8" width="310" height="25"/>
                                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="16"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2007,7 +2027,6 @@
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="Qfi-eJ-0Mu" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="0Ic-wz-cLi"/>
-                                            <constraint firstItem="dNm-3s-o5d" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="11U-XQ-ieX"/>
                                             <constraint firstItem="9MN-ZI-A23" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="1yC-Fo-ih6"/>
                                             <constraint firstItem="rcQ-hK-vC7" firstAttribute="leading" secondItem="KI9-9V-1z9" secondAttribute="leading" constant="40" id="3Xc-kh-ItV"/>
                                             <constraint firstItem="cOC-9U-pxV" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="3b8-Ug-pxh"/>
@@ -2017,18 +2036,19 @@
                                             <constraint firstItem="LLZ-vj-4ku" firstAttribute="top" secondItem="Qfi-eJ-0Mu" secondAttribute="bottom" constant="16" id="9du-zJ-XI8"/>
                                             <constraint firstItem="NDV-wb-NMp" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="Bf0-pq-dC6"/>
                                             <constraint firstItem="53m-hJ-fzV" firstAttribute="centerY" secondItem="cOC-9U-pxV" secondAttribute="centerY" id="BhE-hF-s15"/>
-                                            <constraint firstItem="dNm-3s-o5d" firstAttribute="top" secondItem="NDV-wb-NMp" secondAttribute="bottom" constant="16" id="C25-2t-sSi"/>
+                                            <constraint firstItem="sTP-wG-aBx" firstAttribute="top" secondItem="NDV-wb-NMp" secondAttribute="bottom" constant="16" id="C25-2t-sSi"/>
                                             <constraint firstItem="iaX-YR-SEb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KI9-9V-1z9" secondAttribute="leading" constant="20" symbolic="YES" id="EJZ-UN-mSg"/>
                                             <constraint firstItem="TEk-78-3no" firstAttribute="top" secondItem="iaX-YR-SEb" secondAttribute="bottom" constant="16" id="Ii8-Wj-va6"/>
                                             <constraint firstItem="ibz-CJ-WJb" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="LvR-Jw-sEg"/>
-                                            <constraint firstItem="Qfi-eJ-0Mu" firstAttribute="top" secondItem="dNm-3s-o5d" secondAttribute="bottom" constant="16" id="OHl-mK-FbK"/>
+                                            <constraint firstItem="sTP-wG-aBx" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="Lzr-Bu-3qf"/>
+                                            <constraint firstItem="Qfi-eJ-0Mu" firstAttribute="top" secondItem="sTP-wG-aBx" secondAttribute="bottom" constant="16" id="OHl-mK-FbK"/>
                                             <constraint firstItem="cOC-9U-pxV" firstAttribute="bottom" secondItem="ibz-CJ-WJb" secondAttribute="top" constant="-16" id="QeF-hk-3Pt"/>
-                                            <constraint firstItem="dNm-3s-o5d" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="RQW-RP-iHL"/>
                                             <constraint firstItem="LLZ-vj-4ku" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="RXN-IO-vWE"/>
                                             <constraint firstItem="ibz-CJ-WJb" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="SgV-CK-PfM"/>
                                             <constraint firstItem="2vj-oN-8gQ" firstAttribute="trailing" secondItem="9MN-ZI-A23" secondAttribute="trailing" id="Spi-5A-dd7"/>
                                             <constraint firstItem="9MN-ZI-A23" firstAttribute="top" secondItem="LLZ-vj-4ku" secondAttribute="bottom" constant="16" id="VOx-Fe-fj3"/>
                                             <constraint firstItem="cOC-9U-pxV" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="WKO-FB-I0Y"/>
+                                            <constraint firstItem="sTP-wG-aBx" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="Zy5-ZO-uZn"/>
                                             <constraint firstItem="TEk-78-3no" firstAttribute="trailing" secondItem="rcQ-hK-vC7" secondAttribute="trailing" id="d8U-CO-UOU"/>
                                             <constraint firstItem="LLZ-vj-4ku" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="gc7-7n-uLY"/>
                                             <constraint firstItem="9MN-ZI-A23" firstAttribute="leading" secondItem="rcQ-hK-vC7" secondAttribute="leading" id="h9z-Br-Dkm"/>
@@ -2043,9 +2063,6 @@
                                             <constraint firstItem="iaX-YR-SEb" firstAttribute="top" secondItem="ibz-CJ-WJb" secondAttribute="bottom" constant="24" id="zdI-Bs-GIB"/>
                                             <constraint firstItem="53m-hJ-fzV" firstAttribute="leading" secondItem="KI9-9V-1z9" secondAttribute="leading" constant="8" id="zos-Ph-a4j"/>
                                         </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="pNi-9d-WuY" appends="YES" id="3et-9p-DJt"/>
-                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -2071,16 +2088,19 @@
                         <viewLayoutGuide key="safeArea" id="cWN-Un-fkR"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" image="appointment" selectedImage="appointment" id="xbW-cr-c2T">
+                    <tabBarItem key="tabBarItem" title="" image="appointment" selectedImage="appointment" springLoaded="YES" id="xbW-cr-c2T">
                         <color key="badgeColor" red="1" green="0.46274509800000002" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addImageButton" destination="ieH-m4-scf" id="sQi-Ej-Hf8"/>
                         <outlet property="addImageLabel" destination="HHf-ln-tlr" id="bhl-Y6-bFi"/>
                         <outlet property="alergyTextField" destination="761-b2-eWl" id="FsS-Nh-ARE"/>
+                        <outlet property="clinicMenu" destination="sTP-wG-aBx" id="FkP-yL-TnU"/>
                         <outlet property="dateTextField" destination="2vj-oN-8gQ" id="Dbk-b2-fbK"/>
                         <outlet property="diseaseTextField" destination="Qfi-eJ-0Mu" id="YkK-OZ-WhI"/>
+                        <outlet property="diseaseTextFieldTopAnchor" destination="OHl-mK-FbK" id="dJK-L4-a9D"/>
                         <outlet property="errorView" destination="TEk-78-3no" id="Fdr-rR-CkD"/>
                         <outlet property="hasAlergyButton" destination="IhF-b1-lk1" id="MvN-Js-W5e"/>
                         <outlet property="imagesCollectionView" destination="6Is-B8-bH5" id="bPl-5x-1LW"/>
@@ -2094,11 +2114,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jYX-t1-7Xa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="pNi-9d-WuY">
-                    <connections>
-                        <action selector="hideKeyboard:" destination="m7O-Q4-yfr" id="qGt-25-fXx"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1199" y="248"/>
         </scene>

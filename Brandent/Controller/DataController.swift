@@ -80,26 +80,23 @@ class DataController {
     }
     
     //MARK: Appointment
-    func createAppointment(patient: Patient, disease: Disease, price: Int, visit_time: Date, alergies: String?, notes: String?) -> Appointment {
+    func createAppointment(patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic?, alergies: String?, notes: String?) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
         
         if let price = price as? NSDecimalNumber {
             appointment.price = price
         }
         appointment.visit_time = visit_time
-        if let alergies = alergies {
-            appointment.alergies = alergies
-        }
-        if let notes = notes {
-            appointment.notes = notes
-        }
+        appointment.clinic = clinic
+        appointment.alergies = alergies
+        appointment.notes = notes
+
         appointment.state = State.todo.rawValue
         appointment.setID()
         appointment.setPatient(patient: patient)
         appointment.setDisease(disease: disease)
         appointment.setModifiedTime()
         //TODO: set image
-        //TODO: set clinic
 
         saveContext()
         return appointment
@@ -156,7 +153,7 @@ class DataController {
         disease.price = NSDecimalNumber(value: price)
         disease.setID()
         disease.setModifiedTime()
-        //TODO: set for drntist?
+        //TODO: set for dentist?
         
         saveContext()
         return disease
@@ -171,14 +168,19 @@ class DataController {
     }
     
     //MARK: Clinic
-    func createClinic(title: String, address: String?, color: String) -> Clinic {
+    func createClinic(title: String, address: String?, color: String?) -> Clinic {
         let clinic = Clinic(entity: clinicEntity, insertInto: context)
         
         clinic.title = title
         if let address = address {
             clinic.address = address
         }
-        clinic.color = color
+        if let color = color {
+            clinic.color = color
+        } else {
+            clinic.color = Color.lightGreen.clinicColor.toHexString()
+        }
+        
         clinic.setID()
         clinic.setModifiedTime()
         
@@ -265,3 +267,4 @@ class DataController {
 //insert and replace
 
 //TODO: fetch both appointments and finances
+//TODO: iOS availability

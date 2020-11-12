@@ -110,6 +110,12 @@ import UIKit
         return self.textRect(forBounds: bounds)
     }
     
+    func showError() {
+        if self.placeHolderColor != Color.red.componentColor {
+            self.placeholder = "*\(self.placeholder!)"
+            self.placeHolderColor = Color.red.componentColor
+        }
+    }
 }
 
 extension UITextField {
