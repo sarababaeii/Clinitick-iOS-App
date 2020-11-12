@@ -217,7 +217,6 @@ class DataController {
     func fetchSpecificFinance(in month: Date, isCost: Bool) -> [NSManagedObject]? {
         let dateAttribute = FinanceAttributes.date.rawValue
         let isCostAttribute = FinanceAttributes.isCost.rawValue
-        print(NSNumber(value: isCost))
         let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) <= %@ AND \(isCostAttribute) = %d", month.startOfMonth() as NSDate, month.endOfMonth() as NSDate, isCost)
         return fetchRequest(object: .finance, predicate: predicate, sortBy: dateAttribute)
     }

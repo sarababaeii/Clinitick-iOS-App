@@ -99,7 +99,7 @@ extension Date {
         return formatter.monthSymbols[Int(monthNumber)! - 1]
     }
     
-    func toCompletePersianString() -> String {
+    func toCompletePersianString() -> String { //22 aban 1399, 20:14
         let formatter = Date.getPersianDateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .short

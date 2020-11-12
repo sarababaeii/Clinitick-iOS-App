@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 import Photos
 import AVFoundation
+import SwiftyMenu
 
-class AddViewController: UIViewController, UITextViewDelegate {
+class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegate {
     
     @IBOutlet weak var patientNameTextField: CustomTextField!
     @IBOutlet weak var patientPhoneNumberTextField: CustomTextField!
+    @IBOutlet weak var clinicMenu: SwiftyMenu!
     @IBOutlet weak var diseaseTextField: CustomTextField!
     @IBOutlet weak var priceTextField: CustomTextField!
     @IBOutlet weak var alergyTextField: CustomTextField!
@@ -39,10 +41,11 @@ class AddViewController: UIViewController, UITextViewDelegate {
     var hasAlergy: Bool = false
     var date: Date?
     var appointmentData = ["", "", "", -1, "", ""] as [Any] //0: name, 1: phone, 2: disease, 3: price, 4: alergy, 5: notes
+    let clinicOptions = ["مطب ۱", "مطب ۲"]
     
     //MARK: DatePicker Functions
     func creatDatePicker() {
-        datePicker.createPersianDatePicker()
+        datePicker.createPersianDatePicker(mode: .dateAndTime)
         dateTextField.inputView = datePicker
         
         let toolbar = UIToolbar()
@@ -181,17 +184,36 @@ class AddViewController: UIViewController, UITextViewDelegate {
     }
     
     //MARK: Initialization
-    func setDelegates() {
+    func setClinicMenuDelegates() {
+        clinicMenu.delegate = self
+        clinicMenu.options = clinicOptions
+        print("hey")
+    }
+    
+    func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
+        print("^^ Selected option: \(selectedOption), at index: \(index)")
+        print("hi")
+    }
+    
+    func setImagesDelegates() {
         imageCollectionViewDelegate = ImagesCollectionViewDelegate(imagesCollectionView:imagesCollectionView, viewController: self)
         imagesCollectionView.delegate = imageCollectionViewDelegate
         imagesCollectionView.dataSource = imageCollectionViewDelegate
         imagePickerDelegate = ImagePickerDelegate(from: self, imagesCollectionViewDelegate: imageCollectionViewDelegate)
+    }
+    
+    func setNotesDelegates() {
         textViewDelegate = TextViewDelegate(label: wordLimitLabel)
         notesTextView.delegate = textViewDelegate
     }
     
+    func setDelegates() {
+        setClinicMenuDelegates()
+        setImagesDelegates()
+        setNotesDelegates()
+    }
+    
     func configure() {
-        
         notesTextView.textColor = Color.gray.componentColor
         creatDatePicker()
         setDelegates()

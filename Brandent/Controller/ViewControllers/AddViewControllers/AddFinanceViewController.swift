@@ -8,26 +8,45 @@
 
 import Foundation
 import UIKit
+import SwiftyMenu
 
-class AddFinanceViewConrtoller: UIViewController {
+class AddFinanceViewConrtoller: UIViewController, SwiftyMenuDelegate {
     
     @IBOutlet weak var titleTextField: CustomTextField!
     @IBOutlet weak var priceTextField: CustomTextField!
-    @IBOutlet weak var kindTextField: CustomTextField!
+    @IBOutlet weak var kindMenu: SwiftyMenu!
     @IBOutlet weak var dateTextField: CustomTextField!
+    
+    let kindOptions = ["درآمد", "هزینه"]
+    let datePicker = UIDatePicker()
     
     var textFields = [CustomTextField]()
     var currentTextField: UITextField?
-    var pickerViewDelegate: PickerViewDelegate?
-    let datePicker = UIDatePicker()
-    
-    var financeData = ["", -1, -1, ""] as [Any] //0: title, 1: price, 2: isIncome, 3: date
-    var isIncome: Bool?
+    var financeData = ["", -1, ""] as [Any] //0: title, 1: price, 2: isIncome, 3: date
+    var isCost: Bool?
     var date: Date?
+    
+    //MARK: DropDownMenu Functions
+    func setKindMenuDelegates() {
+        kindMenu.delegate = self
+        kindMenu.options = kindOptions
+        kindMenu.collapsingAnimationStyle = .spring(level: .low)
+    }
+    
+    func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
+        switch index {
+        case 0:
+            isCost = false
+        case 1:
+            isCost = true
+        default:
+            isCost = nil
+        }
+    }
     
     //MARK: DatePicker Functions
     func creatDatePicker() {
-        datePicker.createPersianDatePicker()
+        datePicker.createPersianDatePicker(mode: .date)
         dateTextField.inputView = datePicker
         
         let toolbar = UIToolbar()
@@ -38,43 +57,9 @@ class AddFinanceViewConrtoller: UIViewController {
     }
     
     @objc func donePressed() {
-        dateTextField.text = datePicker.date.toCompletePersianString()
+        dateTextField.text = datePicker.date.toPersianDMonthYString()
         dateTextField.endEditing(true)
         date = datePicker.date
-    }
-    
-    //MARK: PickerView Functions
-    func createPickerView() {
-        let pickerView = UIPickerView()
-        pickerViewDelegate = PickerViewDelegate(textField: kindTextField)
-        pickerView.delegate = pickerViewDelegate
-        kindTextField.inputView = pickerView
-        dismissPickerView()
-    }
-    
-    func dismissPickerView() {
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
-        toolbar.setItems([button], animated: true)
-        toolbar.isUserInteractionEnabled = true
-        kindTextField.inputAccessoryView = toolbar
-    }
-    
-    @objc func action() {
-        guard let delegate = pickerViewDelegate else {
-            return
-        }
-        switch delegate.selectedRow {
-        case 0:
-            isIncome = true
-        case 1:
-            isIncome = false
-        default:
-            isIncome = nil
-        }
-        kindTextField.text = delegate.options[delegate.selectedRow]
-        next(kindTextField as Any)
     }
     
     //MARK: TextFields Functions
@@ -108,58 +93,75 @@ class AddFinanceViewConrtoller: UIViewController {
     
     @IBAction func hideKeyboard(_ sender: Any) {
         if let textField = currentTextField {
-            if textField.tag == 2 {
-//                action()
-            }
             textField.resignFirstResponder()
         }
     }
     
     //MARK: Submission
-    func mustComplete() -> CustomTextField? {
-        for i in 0 ..< 4 {
-            if (i == 0 || i == 3) && financeData[i] as! String == "" {
-                return textFields[i]
-            } else if i == 1 && financeData[i] as! Int == -1 {
-                return textFields[i]
-            } else if isIncome == nil {
-                return textFields[2]
-            }
-        }
-        return nil
-    }
-    
-    func submitionError(for textField: CustomTextField) {
-        if textField.placeHolderColor != Color.red.componentColor {
-            textField.placeholder = "*\(textField.placeholder!)"
-            textField.placeHolderColor = Color.red.componentColor
-        }
-        self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
-    }
-    
     @available(iOS 13.0, *)
     @IBAction func submit(_ sender: Any) {
         editingEnded(currentTextField as Any)
         currentTextField = nil
 
-        if let requiredTextField = mustComplete() {
-            submitionError(for: requiredTextField)
+        if let requiredItem = mustComplete() {
+            submitionError(for: requiredItem)
             return
         }
 
-        let finance = Finance.getFinance(title: financeData[0] as! String, amount: financeData[1] as! Int, isCost: true, date: date!)
+        let finance = Finance.getFinance(title: financeData[0] as! String, amount: financeData[1] as! Int, isCost: isCost!, date: date!)
         RestAPIManagr.sharedInstance.addFinance(finance: finance)
 
         back()
+    }
+    
+    func mustComplete() -> Any? {
+        for i in 0 ..< 3 {
+            if ((i == 0 || i == 2) && financeData[i] as! String == "") ||
+                (i == 1 && financeData[i] as! Int == -1) {
+                return textFields[i]
+            }
+        }
+        if isCost == nil {
+            return kindMenu
+        }
+        return nil
+    }
+    
+    //MARK: Showing Error
+    func submitionError(for field: Any) {
+        if let textField = field as? CustomTextField {
+            errorForTextField(textField: textField)
+        }
+        else if let menu = field as? SwiftyMenu {
+            errorForMenu(menu: menu)
+        }
+        self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
+    }
+    
+    func errorForTextField(textField: CustomTextField) {
+        if textField.placeHolderColor == Color.red.componentColor {
+            return
+        }
+        textField.placeholder = "*\(textField.placeholder!)"
+        textField.placeHolderColor = Color.red.componentColor
+    }
+    
+    func errorForMenu(menu: SwiftyMenu) {
+        if menu.placeHolderColor == Color.red.componentColor {
+            return
+        }
+        menu.placeHolderText = "*\(menu.placeHolderText!)"
+        menu.placeHolderColor = Color.red.componentColor
     }
     
     func back() {
         self.navigationController?.popViewController(animated: true)
     }
     
+    //MARK: Initialization
     func configure() {
-        textFields = [titleTextField, priceTextField, kindTextField, dateTextField]
-        createPickerView()
+        textFields = [titleTextField, priceTextField, dateTextField]
+        setKindMenuDelegates()
         creatDatePicker()
     }
     
@@ -170,4 +172,4 @@ class AddFinanceViewConrtoller: UIViewController {
     }
 }
 
-//TODO: set isCost
+//errors are not in order

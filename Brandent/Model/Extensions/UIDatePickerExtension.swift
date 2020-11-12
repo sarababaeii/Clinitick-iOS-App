@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 extension UIDatePicker {
-    func createPersianDatePicker() {
+    func createPersianDatePicker(mode: UIDatePicker.Mode) {
         self.calendar = Calendar(identifier: .persian)
         self.locale = Locale(identifier: "fa_IR")
-        self.datePickerMode = .dateAndTime
+        self.datePickerMode = mode
 //        datePicker.setValue(UIFont(name: "Vazir", size: 20), forKeyPath: "textFont")
     }
 }

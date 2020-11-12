@@ -94,11 +94,11 @@ class FinanceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        configure()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         Info.sharedInstance.lastViewController = self
+        configure()
     }
     
     //MARK: Hiding NavigationBar

@@ -57,7 +57,6 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
     func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
         print("^^ Selected option: \(selectedOption), at index: \(index)")
         setDate(monthNumber: index)
-        //TODO: hide options
         setTableViewDelegates()
     }
     
