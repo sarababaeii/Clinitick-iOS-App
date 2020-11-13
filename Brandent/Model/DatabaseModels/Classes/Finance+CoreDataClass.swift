@@ -33,7 +33,7 @@ public class Finance: NSManagedObject {
     static func getFinancesArray(tag: Int, date: Date) -> [Any]? {
         switch tag {
         case 0:
-            return Info.dataController.fetchAllFinances(in: date)
+            return Info.dataController.fetchFinancesAndAppointments(in: date)
         case 1:
             return Info.dataController.fetchAppointmentsInMonth(in: date)
         case 2:
@@ -41,7 +41,7 @@ public class Finance: NSManagedObject {
         case 3:
             return Info.dataController.fetchFinanceCosts(in: date)
         default:
-            return Info.dataController.fetchAllFinances(in: date)
+            return Info.dataController.fetchFinancesAndAppointments(in: date)
         }
     }
     

@@ -35,8 +35,7 @@ class FinanceTableViewCell: UITableViewCell {
             priceLabel.textColor = Color.red.componentColor
             tomanLabel.textColor = Color.red.componentColor
         }
-        dateLabel.text = finance.date.toPersianShortString()
-        print(finance.is_cost)
+        dateLabel.text = finance.date.toPersianShortString()  
     }
     
     func setAppointmentAttributes(appointment: Appointment) {

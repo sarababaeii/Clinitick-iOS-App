@@ -254,15 +254,13 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
         textFields = [patientNameTextField, patientPhoneNumberTextField, diseaseTextField, priceTextField, alergyTextField, dateTextField]
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-//        configure()
-    }
-    
-    override func viewWillLayoutSubviews() {
+    override func viewWillAppear(_ animated: Bool) {
         configure()
     }
+    
+//    override func viewWillLayoutSubviews() {
+//        configure()
+//    }
 }
 
 //alergy typed then canceled?

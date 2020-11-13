@@ -43,8 +43,10 @@ class HomeViewController: UIViewController {
     }
     
     func setNextAppointmentView() {
-//        patientNameLabel.text =
-//        diseaseLabel.text = 
+        if let appointment = Info.dataController.getNextAppointment() {
+            patientNameLabel.text = appointment.patient.name
+            diseaseLabel.text = appointment.disease.title
+        }
     }
     
     //MARK: Delegates

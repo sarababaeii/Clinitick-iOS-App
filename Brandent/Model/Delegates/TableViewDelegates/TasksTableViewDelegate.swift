@@ -48,7 +48,7 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     
     func taskDataSource(indexPath: IndexPath) -> Appointment? {
         if indexPath.row < tasks.count {
-            return tasks[tasks.count - indexPath.row - 1]
+            return tasks[indexPath.row]
         }
         return nil
     }

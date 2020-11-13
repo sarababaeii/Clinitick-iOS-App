@@ -38,7 +38,7 @@ class AppointmentsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewD
     
     func appointmentDataSource(indexPath: IndexPath) -> Appointment? {
         if indexPath.row < appointments.count {
-            return appointments[appointments.count - indexPath.row - 1]
+            return appointments[indexPath.row]
         }
         return nil
     }

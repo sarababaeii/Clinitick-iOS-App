@@ -36,7 +36,7 @@ class FinanceTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSo
     
     func financeDataSource(indexPath: IndexPath) -> Any? {
         if indexPath.row < finances.count {
-            return finances[finances.count - indexPath.row - 1]
+            return finances[indexPath.row]
         }
         return nil
     }

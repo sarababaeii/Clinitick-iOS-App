@@ -63,7 +63,6 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
     func setDate(monthNumber: Int) {
         let dateString = "1399-\(monthNumber + 1)-01"
         date = Date.getDate(date: dateString)!
-        print(date)
     }
     
     //MARK: TableView Functions

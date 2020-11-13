@@ -128,30 +128,14 @@ class AddFinanceViewConrtoller: UIViewController, SwiftyMenuDelegate {
     }
     
     //MARK: Showing Error
-    func submitionError(for field: Any) {
-        if let textField = field as? CustomTextField {
-            errorForTextField(textField: textField)
+    func submitionError(for requiredItem: Any) {
+        if let textField = requiredItem as? CustomTextField {
+            textField.showError()
         }
-        else if let menu = field as? SwiftyMenu {
-            errorForMenu(menu: menu)
+        else if let menu = requiredItem as? SwiftyMenu {
+            menu.showError()
         }
         self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
-    }
-    
-    func errorForTextField(textField: CustomTextField) {
-        if textField.placeHolderColor == Color.red.componentColor {
-            return
-        }
-        textField.placeholder = "*\(textField.placeholder!)"
-        textField.placeHolderColor = Color.red.componentColor
-    }
-    
-    func errorForMenu(menu: SwiftyMenu) {
-        if menu.placeHolderColor == Color.red.componentColor {
-            return
-        }
-        menu.placeHolderText = "*\(menu.placeHolderText!)"
-        menu.placeHolderColor = Color.red.componentColor
     }
     
     func back() {

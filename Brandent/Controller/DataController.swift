@@ -30,6 +30,10 @@ class DataController {
     var diseaseEntity: NSEntityDescription
     var financeEntity: NSEntityDescription
     
+//    var today: Date{
+//        return Date().startOfDate()
+//    }
+    
     //MARK: Initialization
     @available(iOS 13.0, *)
     init() {
@@ -59,7 +63,7 @@ class DataController {
             request.predicate = predicate
         }
         if let key = key { //Sorting
-            let sectionSortDescriptor = NSSortDescriptor(key: key, ascending: false)
+            let sectionSortDescriptor = NSSortDescriptor(key: key, ascending: true)
             request.sortDescriptors = [sectionSortDescriptor]
         }
         request.returnsObjectsAsFaults = false
@@ -85,9 +89,7 @@ class DataController {
     func createAppointment(patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic?, alergies: String?, notes: String?) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
         
-        if let price = price as? NSDecimalNumber {
-            appointment.price = price
-        }
+        appointment.price = NSDecimalNumber(value: price)
         appointment.visit_time = visit_time
         appointment.clinic = clinic
         appointment.alergies = alergies
@@ -144,6 +146,12 @@ class DataController {
             todayTasks.append(TodayTasks(number: appointments.count, clinic: nil))
         }
         return todayTasks
+    }
+    
+    func getNextAppointment() -> Appointment? {
+        let dateAttribute = AppointmentAttributes.date.rawValue
+        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) < %@", Date() as NSDate, Date().nextDay()! as NSDate)
+        return fetchRequest(object: .appointment, predicate: predicate, sortBy: dateAttribute)?.first as? Appointment
     }
     
     //MARK: Patient
@@ -237,24 +245,65 @@ class DataController {
         return finance
     }
     
-    func fetchAllFinances(in month: Date) -> [NSManagedObject]? {
-        return nil
-    } //TODO
-    
-    func fetchSpecificFinance(in month: Date, isCost: Bool) -> [NSManagedObject]? {
+    func financeFetchRequest(in month: Date, isCost: Bool?) -> [NSManagedObject]? {
         let dateAttribute = FinanceAttributes.date.rawValue
-        let isCostAttribute = FinanceAttributes.isCost.rawValue
-        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) <= %@ AND \(isCostAttribute) = %d", month.startOfMonth() as NSDate, month.endOfMonth() as NSDate, isCost)
+        let predicate: NSPredicate
+        let predicateFormat = "\(dateAttribute) >= %@ AND \(dateAttribute) <= %@"
+       
+        if let isCost = isCost {
+            let isCostAttribute = FinanceAttributes.isCost.rawValue
+            predicate = NSPredicate(format: "\(predicateFormat) AND \(isCostAttribute) == %d", month.startOfMonth() as NSDate, month.endOfMonth() as NSDate, isCost)
+        } else {
+            predicate = NSPredicate(format: predicateFormat, month.startOfMonth() as NSDate, month.endOfMonth() as NSDate)
+        }
         return fetchRequest(object: .finance, predicate: predicate, sortBy: dateAttribute)
     }
     
     func fetchFinanceExternalIncomes(in month: Date) -> [NSManagedObject]? {
-        return fetchSpecificFinance(in: month, isCost: false)
+        return financeFetchRequest(in: month, isCost: false)
     }
     
     func fetchFinanceCosts(in month: Date) -> [NSManagedObject]? {
-        return fetchSpecificFinance(in: month, isCost: true)
+        return financeFetchRequest(in: month, isCost: true)
     }
+    
+    func fetchFinances(in month: Date) -> [NSManagedObject]? {
+        return financeFetchRequest(in: month, isCost: nil)
+    }
+    
+    func fetchFinancesAndAppointments(in month: Date) -> [NSManagedObject]? {
+        let appointments = fetchAppointmentsInMonth(in: month) as? [Appointment]
+        let finances = fetchFinances(in: month) as? [Finance]
+        return sort(appointments: appointments, finances: finances)
+    }
+    
+    func sort(appointments: [Appointment]?, finances: [Finance]?) -> [NSManagedObject]? {
+        guard let appointments = appointments else {
+            return finances //could be nil
+        }
+        guard let finances = finances else {
+            return appointments
+        }
+        var mixture = [NSManagedObject]()
+        var appoinmentPointer = 0
+        var financePointer = 0
+        while mixture.count < appointments.count + finances.count {
+            if appoinmentPointer >= appointments.count {
+                mixture.append(finances[financePointer])
+                financePointer += 1
+            } else if financePointer >= finances.count {
+                mixture.append(appointments[appoinmentPointer])
+                appoinmentPointer += 1
+            } else if appointments[appoinmentPointer].visit_time < finances[financePointer].date {
+                mixture.append(appointments[appoinmentPointer])
+                appoinmentPointer += 1
+            } else {
+                mixture.append(finances[financePointer])
+                financePointer += 1
+            }
+        }
+        return mixture
+    } //should go to other class
     
     func loadData() {
         guard let appointments = fetchAllAppointments() as? [Appointment] else {
@@ -268,26 +317,6 @@ class DataController {
         }
     }
 }
-
-//    var today: Date{
-//        return startOfDay(for: Date())
-//    }
-//
-//    func startOfDay(for date: Date) -> Date {
-//        var calendar = Calendar.current
-//        calendar.timeZone = TimeZone.current
-//        return calendar.startOfDay(for: date) //eg. yyyy-mm-dd 00:00:00
-//    }
-//
-//    func dateCaption(for date: Date) -> String {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateStyle = .short
-//        dateFormatter.timeStyle = .none
-//        dateFormatter.timeZone = TimeZone.current
-//
-//        return dateFormatter.string(from: date)
-//    }
-
 
 //insert and replace
 
