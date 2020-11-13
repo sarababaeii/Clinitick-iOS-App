@@ -15,11 +15,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var menuCollectionView: UICollectionView!
     @IBOutlet weak var quoteTextView: UITextView!
-    @IBOutlet weak var todayTableView: UITableView!
+    @IBOutlet weak var todayTasksTableView: UITableView!
     @IBOutlet weak var patientNameLabel: UILabel!
     @IBOutlet weak var diseaseLabel: UILabel!
     
     var menuCollectionViewDelegate: MenuCollectionViewDelegate?
+    var todayTasksTableViewDelegate: TodayTasksTableViewDelegate?
     
     @IBAction func changeAppointmentState(_ sender: Any) {
     }
@@ -49,7 +50,7 @@ class HomeViewController: UIViewController {
     //MARK: Delegates
     func setDelegates() {
         setMenuDelegates()
-        setTodayDelegates()
+        setTodayTasksDelegates()
         setTextViewDelegates()
     }
     
@@ -59,10 +60,10 @@ class HomeViewController: UIViewController {
         menuCollectionView.dataSource = menuCollectionViewDelegate
     }
     
-    func setTodayDelegates() {
-//        todayCollectionViewDelegate = TodayCollectionViewDelegate()
-//        todayTableView.delegate = todayCollectionViewDelegate
-//        todayTableView.dataSource = todayCollectionViewDelegate
+    func setTodayTasksDelegates() {
+        todayTasksTableViewDelegate = TodayTasksTableViewDelegate()
+        todayTasksTableView.delegate = todayTasksTableViewDelegate
+        todayTasksTableView.dataSource = todayTasksTableViewDelegate
     }
     
     func setTextViewDelegates() {
@@ -80,11 +81,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        configure()
+//        configure()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         Info.sharedInstance.lastViewController = self
-//        configure()
+        configure()
     }
 }

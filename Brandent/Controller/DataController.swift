@@ -30,6 +30,7 @@ class DataController {
     var diseaseEntity: NSEntityDescription
     var financeEntity: NSEntityDescription
     
+    //MARK: Initialization
     @available(iOS 13.0, *)
     init() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -44,6 +45,7 @@ class DataController {
         financeEntity = NSEntityDescription.entity(forEntityName: EntityNames.finance.rawValue, in: context)!
     }
     
+    //MARK: DB Functions
     func saveContext(){
         do{
             try context.save()
@@ -106,6 +108,12 @@ class DataController {
         return fetchAll(object: .appointment, sortBy: nil)
     }
     
+    func fetchAppointmentsInMonth(in date: Date) -> [NSManagedObject]? {
+        let dateAttribute = AppointmentAttributes.date.rawValue
+        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) <= %@", date.startOfMonth() as NSDate, date.endOfMonth() as NSDate)
+        return fetchRequest(object: .appointment, predicate: predicate, sortBy: dateAttribute)
+    }
+    
     func fetchAppointmentsInDay(in date: Date) -> [NSManagedObject]? {
         guard let to = date.nextDay()?.startOfDate() else {
             return nil
@@ -115,11 +123,27 @@ class DataController {
         return fetchRequest(object: .appointment, predicate: predicate, sortBy: dateAttribute)
     }
     
-    func fetchAppointmentsInMonth(in date: Date) -> [NSManagedObject]? {
+    func fetchTodayAppointments(in clinic: Clinic) -> [NSManagedObject]? {
         let dateAttribute = AppointmentAttributes.date.rawValue
-        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) <= %@", date.startOfMonth() as NSDate, date.endOfMonth() as NSDate)
-        return fetchRequest(object: .appointment, predicate: predicate, sortBy: dateAttribute)
+        let clinicAttribute = AppointmentAttributes.clinic.rawValue
+        let titleAttribute = ClinicAttributes.title.rawValue
+        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) < %@ AND \(clinicAttribute).\(titleAttribute) == %@", Date().startOfDate() as NSDate, Date().nextDay()! as NSDate, clinic.title)
+        return fetchRequest(object: .appointment, predicate: predicate, sortBy: nil)
     }
+    
+    func getTodayTasks() -> [TodayTasks]? {
+        var todayTasks = [TodayTasks]()
+        if let clinics = fetchAllClinics() as? [Clinic] {
+            for clinic in clinics {
+                if let appointments = fetchTodayAppointments(in: clinic) as? [Appointment], appointments.count > 0 {
+                    todayTasks.append(TodayTasks(number: appointments.count, clinic: clinic))
+                }
+            }
+        } else if let appointments = fetchAppointmentsInDay(in: Date()) {
+            todayTasks.append(TodayTasks(number: appointments.count, clinic: nil))
+        }
+        return todayTasks
+    } //TODO: Sort
     
     //MARK: Patient
     func createPatient(name: String, phone: String, alergies: String?) -> Patient {
