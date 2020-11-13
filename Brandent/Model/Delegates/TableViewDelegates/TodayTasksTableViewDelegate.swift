@@ -34,7 +34,7 @@ class TodayTasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDat
     
     func todayTasksDataSource(indexPath: IndexPath) -> TodayTasks? {
         if indexPath.row < tasks.count {
-            return tasks[indexPath.row]
+            return tasks[tasks.count - indexPath.row - 1]
         }
         return nil
     }

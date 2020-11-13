@@ -87,7 +87,7 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
         setDelegates()
     }
     
-    override func viewDidLoad() {
+    override func viewWillLayoutSubviews() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         configure()

@@ -48,6 +48,17 @@ extension String: SwiftMenuDisplayable {
         return faNumber!
     }
     
+    func makeTwoDigitPersian() -> String {
+        switch self.count {
+        case 0:
+            return "۰۰"
+        case 1:
+            return "۰\(self)"
+        default:
+            return self
+        }
+    }
+    
     func convertPersianNumToEnglishNum() -> String {
         let format = NumberFormatter()
         format.locale = Locale(identifier: "En")

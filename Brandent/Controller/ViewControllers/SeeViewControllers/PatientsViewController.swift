@@ -29,7 +29,7 @@ class PatientsViewController: UIViewController {
         setDelegates()
     }
     
-    override func viewDidLoad() {
+    override func viewWillLayoutSubviews() {
         configure()
     }
 }

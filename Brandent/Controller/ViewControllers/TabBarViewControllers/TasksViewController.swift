@@ -22,7 +22,7 @@ class TasksViewController: UIViewController {
         tasksTableView.dataSource = taskTableViewDelegate
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         Info.sharedInstance.lastViewController = self
         setDelegates()
     }

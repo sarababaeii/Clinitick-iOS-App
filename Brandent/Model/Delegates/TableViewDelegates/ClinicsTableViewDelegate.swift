@@ -36,7 +36,7 @@ class ClinicsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSo
     
     func clinicDataSource(indexPath: IndexPath) -> Clinic? {
         if indexPath.row < clinics.count {
-            return clinics[indexPath.row]
+            return clinics[clinics.count - indexPath.row - 1]
         }
         return nil
     }

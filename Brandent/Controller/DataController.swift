@@ -133,17 +133,18 @@ class DataController {
     
     func getTodayTasks() -> [TodayTasks]? {
         var todayTasks = [TodayTasks]()
-        if let clinics = fetchAllClinics() as? [Clinic] {
+        if let clinics = fetchAllClinics() as? [Clinic], clinics.count > 0 {
             for clinic in clinics {
                 if let appointments = fetchTodayAppointments(in: clinic) as? [Appointment], appointments.count > 0 {
                     todayTasks.append(TodayTasks(number: appointments.count, clinic: clinic))
                 }
             }
         } else if let appointments = fetchAppointmentsInDay(in: Date()) {
+            print(appointments)
             todayTasks.append(TodayTasks(number: appointments.count, clinic: nil))
         }
         return todayTasks
-    } //TODO: Sort
+    }
     
     //MARK: Patient
     func createPatient(name: String, phone: String, alergies: String?) -> Patient {

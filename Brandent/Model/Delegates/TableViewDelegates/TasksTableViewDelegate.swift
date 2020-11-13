@@ -29,13 +29,11 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
         self.date = date
         if let tasks = Info.dataController.fetchAppointmentsInDay(in: date) as? [Appointment] {
             self.tasks = tasks
-            print("# \(tasks.count)")
         }
     }
     
     //MARK: Protocol Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("$ \(tasks.count)")
         return tasks.count
     }
     
@@ -50,7 +48,7 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     
     func taskDataSource(indexPath: IndexPath) -> Appointment? {
         if indexPath.row < tasks.count {
-            return tasks[indexPath.row]
+            return tasks[tasks.count - indexPath.row - 1]
         }
         return nil
     }

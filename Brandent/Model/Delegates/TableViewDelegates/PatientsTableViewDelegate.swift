@@ -36,7 +36,7 @@ class PatientsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataS
     
     func patientDataSource(indexPath: IndexPath) -> Patient? {
         if indexPath.row < patients.count {
-            return patients[indexPath.row]
+            return patients[patients.count - indexPath.row - 1]
         }
         return nil
     }

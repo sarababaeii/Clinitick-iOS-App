@@ -68,12 +68,13 @@ extension Date {
     func getMinString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "mm"
+        print("MIN IS \(formatter.string(from: self))")
         return formatter.string(from: self)
     }
     
     func toPersianTimeString() -> String { //13:10
-        let hour = self.getHourString().convertEnglishNumToPersianNum()
-        let min = self.getMinString().convertEnglishNumToPersianNum()
+        let hour = self.getHourString().convertEnglishNumToPersianNum().makeTwoDigitPersian()
+        let min = self.getMinString().convertEnglishNumToPersianNum().makeTwoDigitPersian()
         return "\(hour):\(min)"
     }
     
