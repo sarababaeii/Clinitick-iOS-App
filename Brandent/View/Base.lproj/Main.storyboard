@@ -513,8 +513,8 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J4N-5X-LzQ" customClass="ShadowyUIView" customModule="Brandent" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="38" width="281" height="77"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رضا باقری" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLC-Py-GqE">
-                                                                <rect key="frame" x="208" y="12" width="53" height="22"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLC-Py-GqE">
+                                                                <rect key="frame" x="208" y="12" width="53" height="0.0"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="53" id="XfZ-xz-XxM"/>
                                                                 </constraints>
@@ -522,8 +522,8 @@
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تراش دندان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gef-vv-Xk2">
-                                                                <rect key="frame" x="196.5" y="43" width="64.5" height="22"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gef-vv-Xk2">
+                                                                <rect key="frame" x="261" y="65" width="0.0" height="0.0"/>
                                                                 <fontDescription key="fontDescription" name="Vazir-Thin" family="Vazir" pointSize="14"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -2642,7 +2642,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8YL-nZ-b5G">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8YL-nZ-b5G">
                                 <rect key="frame" x="33" y="68" width="318" height="532"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2685,9 +2685,6 @@
                                                             <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="Igk-io-dDJ" appends="YES" id="g39-Xf-hWs"/>
-                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2703,6 +2700,8 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="wfU-qo-p4K" id="2W3-4s-Lne"/>
                                             <outlet property="phoneLabel" destination="e8e-J7-udp" id="F9Z-2t-5E2"/>
+                                            <segue destination="08X-YO-DMk" kind="show" identifier="SeePatientHistorySegue" id="FcU-yp-jcQ"/>
+                                            <segue destination="08X-YO-DMk" kind="show" trigger="accessoryAction" id="AaE-4j-BbY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2731,11 +2730,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fyf-2J-cjv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Igk-io-dDJ">
-                    <connections>
-                        <segue destination="08X-YO-DMk" kind="show" id="aPm-2H-5Sa"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2445" y="1815"/>
         </scene>
@@ -3184,7 +3178,7 @@
             </objects>
             <point key="canvasLocation" x="4580" y="2613"/>
         </scene>
-        <!--علی اکبری نژاد-->
+        <!--Patient Profile View Controller-->
         <scene sceneID="DCT-Tg-SsN">
             <objects>
                 <viewController storyboardIdentifier="PatientViewController" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="08X-YO-DMk" customClass="PatientProfileViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
@@ -3194,7 +3188,8 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="88" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VOt-KR-3iv">
                                 <rect key="frame" x="24" y="68" width="327" height="526"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppointmentCellID" rowHeight="88" id="uYR-2V-L4B" customClass="AppointmentTableViewCell" customModule="Brandent" customModuleProvider="target">
@@ -3314,7 +3309,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="beW-mH-EiT"/>
                     </view>
-                    <navigationItem key="navigationItem" title="علی اکبری نژاد" id="kij-uR-88O" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
+                    <navigationItem key="navigationItem" id="kij-uR-88O" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="backFontStyle" value="Vazir"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="backFontSize">
@@ -3891,6 +3886,7 @@ AAAAAAACAQAAAAAAAABtAAAAAAAAAAAAAAAAAABHkQ
         <image name="xmark.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="FcU-yp-jcQ"/>
         <segue reference="dmX-7u-kzd"/>
     </inferredMetricsTieBreakers>
 </document>

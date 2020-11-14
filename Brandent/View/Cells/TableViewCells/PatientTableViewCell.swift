@@ -14,7 +14,10 @@ class PatientTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     
+    var patient: Patient?
+    
     func setAttributes(patient: Patient) {
+        self.patient = patient
         nameLabel.text = patient.name
         phoneLabel.text = patient.phone
     }

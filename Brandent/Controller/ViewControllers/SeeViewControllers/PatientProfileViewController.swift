@@ -18,20 +18,25 @@ class PatientProfileViewController: UIViewController {
     
     var appointmentsTableViewDelegate: AppointmentsTableViewDelegate?
     
+    func setHeader() {
+        self.title = patient?.name
+    }
+    
     func setDelegates() {
-        guard let patient = self.patient else {
-            return
-        }
-        appointmentsTableViewDelegate = AppointmentsTableViewDelegate(patient: patient)
+        appointmentsTableViewDelegate = AppointmentsTableViewDelegate(patient: patient!)
         appointmentsTableView.delegate = appointmentsTableViewDelegate
         appointmentsTableView.dataSource = appointmentsTableViewDelegate
     }
     
     func configure() {
+        if patient == nil {
+            return
+        }
+        setHeader()
         setDelegates()
     }
     
-    override func viewWillLayoutSubviews() {
+    override func viewWillAppear(_ animated: Bool) {
         configure()
     }
 }
