@@ -1,0 +1,32 @@
+PODS:
+  - BSGridCollectionViewLayout (1.2.5)
+  - BSImagePicker (2.10.3):
+    - BSGridCollectionViewLayout (= 1.2.5)
+    - BSImageView (= 1.0.3)
+  - BSImageView (1.0.3)
+  - SnapKit (4.2.0)
+  - SwiftyMenu (0.4.9):
+    - SnapKit (~> 4.2.0)
+
+DEPENDENCIES:
+  - BSImagePicker (~> 2.8)
+  - SwiftyMenu (~> 0.4.8)
+
+SPEC REPOS:
+  trunk:
+    - BSGridCollectionViewLayout
+    - BSImagePicker
+    - BSImageView
+    - SnapKit
+    - SwiftyMenu
+
+SPEC CHECKSUMS:
+  BSGridCollectionViewLayout: 333dcb457a5a3bdd9212607ab5756553dcfe06cb
+  BSImagePicker: 07404254f2fcdaf5a2eb403c0f8c337267ce8738
+  BSImageView: a149459433a2687157d034c78e059d30ac7f2544
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SwiftyMenu: 01385bbe40a8ad19123f98bf3d463d9e36c2e710
+
+PODFILE CHECKSUM: cb61d8d79817b535c0917877f36edc8ac6928e1f
+
+COCOAPODS: 1.8.4

@@ -1,0 +1,6 @@
+framework module Pods_Brandent_BrandentUITests {
+  umbrella header "Pods-Brandent-BrandentUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -9,16 +9,22 @@
 import Foundation
 import UIKit
 
-class CheckAlergyButton: CustomButton {
+class CheckButton: CustomButton {
+    @IBInspectable var selectedColor: UIColor = UIColor.white {
+        didSet {
+            
+        }
+    }
+    
     let selectedAlergyButtonImages = [UIImage(named: "white_close"), UIImage(named: "white_tick")]
     let unselectedAlergyButtonImages = [UIImage(named: "black_close"), UIImage(named: "black_tick")]
     
-    func getOtherButton() -> CheckAlergyButton? {
+    func getOtherButton() -> CheckButton? {
         guard let siblings = self.superview?.subviews else {
             return nil
         }
         for view in siblings {
-            if let btn = view as? CheckAlergyButton {
+            if let btn = view as? CheckButton {
                 if btn.tag != self.tag {
                     return btn
                 }
@@ -28,12 +34,13 @@ class CheckAlergyButton: CustomButton {
     }
     
     func selectAlergyButton() {
-        self.backgroundColor = Color.orange.componentColor
+//        self.backgroundColor = Color.orange.componentColor
+        self.backgroundColor = selectedColor
         self.setImage(selectedAlergyButtonImages[self.tag], for: .normal)
     }
     
     func unselectAlergyButton() {
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = super.backgroundColor //UIColor.white
         self.setImage(unselectedAlergyButtonImages[self.tag], for: .normal)
     }
     
