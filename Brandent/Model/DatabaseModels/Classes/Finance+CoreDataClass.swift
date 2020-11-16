@@ -66,7 +66,6 @@ public class Finance: NSManagedObject {
     func toDictionary() -> [String: String] {
         let params: [String: String] = [
             APIKey.finance.id!: self.id.uuidString,
-            APIKey.dentist.id!: "1",
             APIKey.finance.title!: self.title,
             APIKey.finance.isCost!: String(self.is_cost),
             APIKey.finance.price!: String(Int(truncating: self.amount)),
@@ -85,13 +84,11 @@ public class Finance: NSManagedObject {
     }
 }
 
-//"finances": [
-//  {
-//    "id": "890a32fe-12e6-11eb-adc1-0242ac120002",
-//    "dentist_id": 1,
-//    "title": "Ligma",
-//    "is_cost": false,
-//    "amount": 95000000,
-//    "date": "2020-10-9"
-//  }
-//],
+//"finance": {
+//  "id": "890a32fe-12e6-11eb-adc1-0242ac120002",
+//  "title": "Ligma",
+//  "is_cost": false,
+//  "is_deleted": false,
+//  "amount": 95000000,
+//  "date": "2020-10-9"
+//}

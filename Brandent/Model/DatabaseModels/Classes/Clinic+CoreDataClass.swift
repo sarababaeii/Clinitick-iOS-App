@@ -33,8 +33,9 @@ public class Clinic: NSManagedObject {
     func toDictionary() -> [String: String] {
         var params: [String: String] = [
             APIKey.clinic.id!: self.id.uuidString,
-            APIKey.clinic.title!: self.title
-        ] //TODO: color
+            APIKey.clinic.title!: self.title,
+            APIKey.clinic.color! : self.color
+        ]
         if let address = self.address {
             params[APIKey.clinic.address!] = address
         }
@@ -50,10 +51,9 @@ public class Clinic: NSManagedObject {
     }
 }
 
-//"clinics": [
-//  {
-//    "id": "890a32fe-12e6-11eb-adc1-0242ac120002",
-//    "title": "khooneye madarbozorg",
-//    "address": "Tehran iran shahre tehran"
-//  }
-//],
+//"clinic": {
+//  "id": "3b155280-1a49-11eb-bd07-7d22de018431",
+//  "title": "khooneye madarbozorg",
+//  "address": "Tehran iran shahre tehran",
+//  "color": "#abcdef"
+//}

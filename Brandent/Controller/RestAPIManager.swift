@@ -13,13 +13,17 @@ class RestAPIManagr {
     private struct API {
         private static let base = "http://185.235.40.77:7000/api/"
         private static let sync = API.base + "sync"
-        private static let appointment = API.base + "appointments/"
-        private static let add = API.appointment + "add"
-        private static let images = API.add + "images"
+        private static let appointment = API.base + "appointments"
+        private static let add = "/add"
+        private static let addAppointment = API.appointment + API.add
+        private static let images = API.addAppointment + "/images"
+        private static let clinic = API.base + "clinics"
+        private static let addClinic = API.clinic + API.add
         private static let finance = API.base + "finances"
         
-        static let addAppointmentURL = URL(string: API.add)!
+        static let addAppointmentURL = URL(string: API.addAppointment)!
         static let addImageURL = URL(string: API.images)!
+        static let addClinicURL = URL(string: API.addClinic)!
         static let addFinanceURL = URL(string: API.finance)!
         static let syncURL = URL(string: API.sync)!
         //TODO: Get finances are remained
@@ -41,8 +45,10 @@ class RestAPIManagr {
         
         let task = session.dataTask(with: request) { (data, response, error) in
 //            self.setToken(data: data)
-            let responseString = String(data: data!, encoding: .utf8)
-            print("My response --> \(String(describing: responseString))")
+            if let data = data {
+                let responseString = String(data: data, encoding: .utf8)
+                print("My response --> \(String(describing: responseString))")
+            }
             code = self.checkResponse(response: response as? HTTPURLResponse, error: error)
         }
         task.resume()
@@ -66,7 +72,10 @@ class RestAPIManagr {
         print("body: \(bodyString) ^^")
 
         request.addValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
-        request.addValue("10", forHTTPHeaderField: "Authorization") //10 should be token
+//        request.addValue("10", forHTTPHeaderField: "Authorization") //10 should be token
+        request.addValue("1", forHTTPHeaderField: "dentist_id")
+        
+        print(url)
         return request
     }
     
@@ -74,25 +83,7 @@ class RestAPIManagr {
     private func createAddAppointmentRequest(appointment: Appointment) -> URLRequest {
         let params: [String: Any] = [
             "appointment": appointment.toDictionary(),
-            "patient": appointment.patient.toDictionary(),
-            "dentist_id": "1"]
-//        let params: [String: Any] = [
-//            "appointment": [
-//                "id": appointment.id.uuidString,
-//                "notes": appointment.notes as Any,
-//                "price": String(Int(truncating: appointment.price)),
-//                "state": appointment.state,
-//                "visit_time": appointment.visit_time.toDBFormatDateAndTimeString(),
-//                "disease": appointment.disease.title as Any,
-//                "is_deleted": "false",
-////            "clinic_id": appointment.clinic?.id as Any,
-//                "clinic_id": "890a32fe-12e6-11eb-adc1-0242ac120002",
-//                "allergies": appointment.patient.alergies as Any],
-//            "patient": [
-//                "id": appointment.patient.id.uuidString,
-//                "full_name": appointment.patient.name as Any,
-//                "phone": appointment.patient.phone],
-//            "dentist_id": "1"]
+            "patient": appointment.patient.toDictionary()]
         print("params: \(params)")
         return createRequest(url: API.addAppointmentURL, params: params as [String : Any], contentType: .json)
     }
@@ -105,20 +96,34 @@ class RestAPIManagr {
         return createRequest(url: API.addFinanceURL, params: params, contentType: .json)
     }
     
-//    private func createAddClinicRequest(clinic: Clinic) -> URLRequest {
-//        let params: [String: Any] =[]
-//        return createRequest(url: API.addClinic, params: params, contentType: .json)
-//    }
-    
-    private func createSyncRequest(clinics: [Clinic], patients: [Patient], finances: [Finance], diseases: [Disease], appointments: [Appointment]) -> URLRequest {
+    private func createAddClinicRequest(clinic: Clinic) -> URLRequest {
         let params: [String: Any] = [
-            "last_updated": Info.sharedInstance.lastUpdate.toDBFormatDateAndTimeString(),
-            "clinics": Clinic.toDictionaryArray(clinics: clinics),
-            "patients": Patient.toDictionaryArray(patients: patients),
-            "finances": Finance.toDictionaryArray(finances: finances),
-            "diseases": Disease.toDictionaryArray(diseases: diseases),
-            "appointments": Appointment.toDictionaryArray(appointments: appointments)
+            "clinic": clinic.toDictionary()
         ]
+        return createRequest(url: API.addClinicURL, params: params, contentType: .json)
+    }
+    
+    private func createSyncRequest(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, diseases: [Disease]?, appointments: [Appointment]?) -> URLRequest {
+        var params = [String: Any]()
+        if let lastUpdate = Info.sharedInstance.lastUpdate {
+            params["last_updated"] = lastUpdate
+        }
+        if let clinics = clinics {
+            params["clinics"] = Clinic.toDictionaryArray(clinics: clinics)
+        }
+        if let patients = patients {
+            params["patients"] = Patient.toDictionaryArray(patients: patients)
+        }
+        if let finances = finances {
+            params["finances"] = Finance.toDictionaryArray(finances: finances)
+        }
+        if let diseases = diseases {
+            params["diseases"] = Disease.toDictionaryArray(diseases: diseases)
+        }
+        if let appointments = appointments {
+            params["appointments"] = Appointment.toDictionaryArray(appointments: appointments)
+        }
+        print("^^ Sync Request Is Going To Be Created ^")
         return createRequest(url: API.syncURL, params: params, contentType: .json)
     }
     
@@ -165,5 +170,14 @@ class RestAPIManagr {
     
     func addFinance(finance: Finance) {
         postRequest(request: createAddFinanceRequest(finance: finance))
+    }
+    
+    func addClinic(clinic: Clinic) {
+        postRequest(request: createAddClinicRequest(clinic: clinic))
+    }
+    
+    func sync(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, diseases: [Disease]?, appointments: [Appointment]?) {
+        print("^^ Sync Called ^")
+        postRequest(request: createSyncRequest(clinics: clinics, patients: patients, finances: finances, diseases: diseases, appointments: appointments))
     }
 }

@@ -20,10 +20,7 @@ class TextViewDelegate: NSObject, UITextViewDelegate {
     
     //MARK: Placeholder
     func textViewDidBeginEditing(_ textView: UITextView) {
-        print(textView.text as Any)
-        print(textView.textColor!)
         if textView.textColor == Color.gray.componentColor {
-            print("yes")
             textView.text = nil
             textView.textColor = UIColor.black
         }

@@ -70,14 +70,13 @@ public class Appointment: NSManagedObject {
             APIKey.appointment.date!: self.visit_time.toDBFormatDateAndTimeString(),
             APIKey.appointment.disease!: self.disease.title,
             APIKey.appointment.isDeleted!: String(self.isDeleted), //test
-//            APIKey.appointment.clinic!: (self.clinic?.id.uuidString)!, //test
-            APIKey.appointment.clinic!: "890a32fe-12e6-11eb-adc1-0242ac120002", //should be changed
             APIKey.appointment.patient!: self.patient.id.uuidString,
-            APIKey.patient.name!: self.patient.name, //should be deleted
-            APIKey.patient.phone!: self.patient.phone //should be deleted
         ]
         if let notes = self.notes {
             params[APIKey.appointment.notes!] = notes
+        }
+        if let clinic = self.clinic {
+            params[APIKey.appointment.clinic!] = clinic.id.uuidString
         }
         if let alergies = self.alergies {
             params[APIKey.appointment.alergies!] = alergies
@@ -104,7 +103,5 @@ public class Appointment: NSManagedObject {
 //  "is_deleted": false,
 //  "clinic_id": "890a32fe-12e6-11eb-adc1-0242ac120002",
 //  "allergies": "peanut butter",
-//  "patient_id": "890a32fe-12e6-11eb-adc1-0242ac120002",
-//  "full_name": "John Smith",
-//  "phone": "09123456789"
-//}
+//  "patient_id": "890a32fe-12e6-11eb-adc1-0242ac120002"
+//},

@@ -80,7 +80,6 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     
     func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
         clinicTitle = selectedOption.displayValue
-        print("^^ \(clinicTitle!)")
     }
     
     //MARK: DatePicker Functions
@@ -182,6 +181,7 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
         }
         
         let appointment = Appointment.createAppointment(name: appointmentData[0] as! String, phone: appointmentData[1] as! String, diseaseTitle: appointmentData[2] as! String, price: appointmentData[3] as! Int, clinicTitle: clinicTitle, alergies: appointmentData[4] as? String, visit_time: date!, notes: appointmentData[5] as? String)
+        Info.sharedInstance.sync()
         RestAPIManagr.sharedInstance.addAppointment(appointment: appointment)
 //        Info.dataController.loadData()
         

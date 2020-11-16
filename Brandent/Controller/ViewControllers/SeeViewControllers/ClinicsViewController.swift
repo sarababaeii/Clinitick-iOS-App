@@ -26,7 +26,7 @@ class ClinicsViewController: UIViewController {
         setDelegates()
     }
     
-    override func viewWillLayoutSubviews() {
+    override func viewWillAppear(_ animated: Bool) {
         configure()
     }
 }

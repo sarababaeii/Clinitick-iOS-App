@@ -92,18 +92,11 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
             troubleAlert(message: AlertMessage.photos.trouble)
             return
         }
+        self.presentImagePicker()
         let status = PHPhotoLibrary.authorizationStatus()
         let noPermissionMessage = AlertMessage.photos.noPermission
         switch status {
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization({(newStatus) in
-                if newStatus == .authorized {
-                    self.presentImagePicker()
-                } else {
-                    self.troubleAlert(message: noPermissionMessage)
-                }
-            })
-        case .authorized:
+        case .notDetermined, .authorized:
             self.presentImagePicker()
         case .denied, .restricted:
             self.troubleAlert(message: noPermissionMessage)

@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         Info.sharedInstance.lastViewController = self
+        print(Info.sharedInstance.defaults.string(forKey: Info.sharedInstance.lastUpdatedDefaultsKey))
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -21,5 +21,4 @@ class MenuItem {
         self.title = title
         self.viewControllerIdentifier = viewControllerIdentifier
     }
-    
 }

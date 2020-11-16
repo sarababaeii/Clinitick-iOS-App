@@ -55,14 +55,13 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
     }
     
     func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
-        print("^^ Selected option: \(selectedOption), at index: \(index)")
         setDate(monthNumber: index)
         setTableViewDelegates()
     }
     
     func setDate(monthNumber: Int) {
         let dateString = "1399-\(monthNumber + 1)-01"
-        date = Date.getDate(date: dateString)!
+        date = Date.getPersianDate(from: dateString)!
     }
     
     //MARK: TableView Functions

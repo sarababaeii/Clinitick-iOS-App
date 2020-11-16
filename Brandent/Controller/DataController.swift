@@ -85,6 +85,11 @@ class DataController {
         return fetchRequest(object: entityName, predicate: predicate, sortBy: nil)?.first
     }
     
+    func fetchForSync(entityName: EntityNames, modifiedAttribute: String, lastUpdated date: Date) -> [NSManagedObject]? {
+        let predicate = NSPredicate(format: "\(modifiedAttribute) > %@", date as NSDate)
+        return fetchRequest(object: entityName, predicate: predicate, sortBy: nil)
+    }
+    
     //MARK: Appointment
     func createAppointment(patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic?, alergies: String?, notes: String?) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
@@ -105,9 +110,13 @@ class DataController {
         saveContext()
         return appointment
     }
-    
+
     func fetchAllAppointments() -> [NSManagedObject]? {
         return fetchAll(object: .appointment, sortBy: nil)
+    }
+    
+    func fetchAppointmentsForSync(lastUpdated date: Date) -> [NSManagedObject]? {
+        return fetchForSync(entityName: .appointment, modifiedAttribute: AppointmentAttributes.modifiedAt.rawValue, lastUpdated: date)
     }
     
     func fetchAppointmentsInMonth(in date: Date) -> [NSManagedObject]? {
@@ -142,7 +151,6 @@ class DataController {
                 }
             }
         } else if let appointments = fetchAppointmentsInDay(in: Date()) {
-            print(appointments)
             todayTasks.append(TodayTasks(number: appointments.count, clinic: nil))
         }
         return todayTasks
@@ -178,6 +186,10 @@ class DataController {
         return fetchAll(object: .patient, sortBy: PatientAttributes.name.rawValue)
     }
     
+    func fetchPatientsForSync(lastUpdated date: Date) -> [NSManagedObject]? {
+        return fetchForSync(entityName: .patient, modifiedAttribute: PatientAttributes.modifiedAt.rawValue, lastUpdated: date)
+    }
+    
     //MARK: Disease
     func createDisease(title: String, price: Int) -> Disease {
         let disease = Disease(entity: diseaseEntity, insertInto: context)
@@ -198,6 +210,10 @@ class DataController {
     
     func fetchAllDiseases() -> [NSManagedObject]? {
         return fetchAll(object: .disease, sortBy: DiseaseAttributes.title.rawValue)
+    }
+    
+    func fetchDiseasesForSync(lastUpdated date: Date) -> [NSManagedObject]? {
+        return fetchForSync(entityName: .disease, modifiedAttribute: DiseaseAttributes.modifiedAt.rawValue, lastUpdated: date)
     }
     
     //MARK: Clinic
@@ -229,6 +245,10 @@ class DataController {
         return fetchAll(object: .clinic, sortBy: ClinicAttributes.title.rawValue)
     }
     
+    func fetchClinicsForSync(lastUpdated date: Date) -> [NSManagedObject]? {
+        return fetchForSync(entityName: .clinic, modifiedAttribute: AppointmentAttributes.modifiedAt.rawValue, lastUpdated: date)
+    }
+    
     //MARK: Finance
     @available(iOS 13.0, *)
     func createFinance(title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
@@ -243,6 +263,10 @@ class DataController {
         
         saveContext()
         return finance
+    }
+    
+    func fetchFinancesForSync(lastUpdated date: Date) -> [NSManagedObject]? {
+        return fetchForSync(entityName: .finance, modifiedAttribute: FinanceAttributes.modifiedAt.rawValue, lastUpdated: date)
     }
     
     func financeFetchRequest(in month: Date, isCost: Bool?) -> [NSManagedObject]? {
@@ -319,6 +343,4 @@ class DataController {
 }
 
 //insert and replace
-
-//TODO: fetch both appointments and finances
 //TODO: iOS availability

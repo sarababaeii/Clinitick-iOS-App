@@ -38,7 +38,6 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("asked for cell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCellID", for: indexPath) as! TaskTableViewCell
         if let appointment = taskDataSource(indexPath: indexPath) {
             cell.setAttributes(appointment: appointment)
@@ -53,5 +52,3 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
         return nil
     }
 }
-
-//TODO: sort by time

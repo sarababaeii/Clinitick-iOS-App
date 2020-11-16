@@ -18,6 +18,7 @@ enum APIKey: String {
     
     case lastUpdate = "last_updated"
     
+    //MARK: ID
     var id: String? {
         switch self {
         case .dentist:
@@ -29,6 +30,7 @@ enum APIKey: String {
         }
     }
     
+    //MARK: IsDeleted
     var isDeleted: String? {
         switch self {
         case .appointment, .finance:
@@ -37,6 +39,8 @@ enum APIKey: String {
             return nil
         }
     }
+    
+    //MARK: Title
     var title: String? {
         switch self {
         case .clinic, .finance, .disease:
@@ -46,6 +50,7 @@ enum APIKey: String {
         }
     }
     
+    //MARK: Address
     var address: String? {
         switch self {
         case .clinic:
@@ -55,6 +60,16 @@ enum APIKey: String {
         }
     }
     
+    var color: String? {
+        switch self {
+        case .clinic:
+            return "color"
+        default:
+            return nil
+        }
+    }
+    
+    //MARK: Name
     var name: String? {
         switch self {
         case .patient:
@@ -64,6 +79,7 @@ enum APIKey: String {
         }
     }
     
+    //MARK: Phone
     var phone: String? {
         switch self {
         case .patient:
@@ -73,6 +89,7 @@ enum APIKey: String {
         }
     }
     
+    //MARK: IsCost
     var isCost: String? {
         switch self {
         case .finance:
@@ -82,6 +99,7 @@ enum APIKey: String {
         }
     }
     
+    //MARK: Price
     var price: String? {
         switch self {
         case .appointment, .disease:
@@ -93,6 +111,7 @@ enum APIKey: String {
         }
     }
     
+    //MARK: Date
     var date: String? {
         switch self {
         case .appointment:
@@ -104,6 +123,7 @@ enum APIKey: String {
         }
     }
     
+    //MARK: Notes
     var notes: String? {
         switch self {
         case .appointment:
@@ -113,6 +133,7 @@ enum APIKey: String {
         }
     }
     
+    //MARK: State
     var state: String? {
         switch self {
         case .appointment:
@@ -122,6 +143,7 @@ enum APIKey: String {
         }
     }
     
+    //MARK: Disease
     var disease: String? {
         switch self {
         case .appointment:
@@ -131,6 +153,7 @@ enum APIKey: String {
         }
     }
     
+    //MARK: Clinic
     var clinic: String? {
         switch self {
         case .appointment:
@@ -140,6 +163,7 @@ enum APIKey: String {
         }
     }
     
+    //MARK: Alergies
     var alergies: String? {
         switch self {
         case .appointment:
@@ -149,6 +173,7 @@ enum APIKey: String {
         }
     }
     
+    //MARK: Patient
     var patient: String? {
         switch self {
         case .appointment:
