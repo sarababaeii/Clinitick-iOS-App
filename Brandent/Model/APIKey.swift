@@ -15,6 +15,7 @@ enum APIKey: String {
     case clinic
     case finance
     case dentist
+    case images = "images[]"
     
     case lastUpdate = "last_updated"
     
@@ -25,6 +26,8 @@ enum APIKey: String {
             return "dentist_id"
         case .clinic, .disease, .appointment, .patient, .finance:
             return "id"
+        case .images:
+            return "apt_id"
         default:
             return nil
         }

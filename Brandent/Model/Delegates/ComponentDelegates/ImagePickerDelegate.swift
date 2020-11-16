@@ -19,8 +19,9 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
     
     var selectedAssets = [PHAsset]()
     var photoArray = [UIImage]()
+    var images = [Image]()
     
-    init(from viewController: AddViewController, imagesCollectionViewDelegate: ImagesCollectionViewDelegate?) {
+    init(from viewController: AddViewController, imagesCollectionViewDelegate: ImagesCollectionViewDelegate) {
         self.viewController = viewController
         self.imagesCollectionViewDelegate = imagesCollectionViewDelegate
     }
@@ -134,7 +135,9 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
             let data = thumbnail.jpegData(compressionQuality: 1)
             let newImage = UIImage(data: data!)
             self.photoArray.append(newImage! as UIImage)
+//            self.images.append(Image(img: data!))
         }
+//        RestAPIManagr.sharedInstance.addImage(appointmentID: viewController.appointmentID, images: images)
         processedPick()
     }
     

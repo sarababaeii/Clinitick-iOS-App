@@ -91,7 +91,7 @@ class DataController {
     }
     
     //MARK: Appointment
-    func createAppointment(patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic?, alergies: String?, notes: String?) -> Appointment {
+    func createAppointment(id: UUID, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic?, alergies: String?, notes: String?) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
         
         appointment.price = NSDecimalNumber(value: price)
@@ -101,7 +101,7 @@ class DataController {
         appointment.notes = notes
 
         appointment.state = State.todo.rawValue
-        appointment.setID()
+        appointment.setID(id: id)
         appointment.setPatient(patient: patient)
         appointment.setDisease(disease: disease)
         appointment.setModifiedTime()

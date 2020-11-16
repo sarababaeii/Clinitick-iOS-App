@@ -45,6 +45,8 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     var hasAlergy: Bool = false
     var date: Date?
     
+    let appointmentID = UUID()
+    
     //MARK: Clinic Functions
     func prepareClinicMenu() {
         getClinics()
@@ -180,7 +182,7 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
             return
         }
         
-        let appointment = Appointment.createAppointment(name: appointmentData[0] as! String, phone: appointmentData[1] as! String, diseaseTitle: appointmentData[2] as! String, price: appointmentData[3] as! Int, clinicTitle: clinicTitle, alergies: appointmentData[4] as? String, visit_time: date!, notes: appointmentData[5] as? String)
+        let appointment = Appointment.createAppointment(id: appointmentID, name: appointmentData[0] as! String, phone: appointmentData[1] as! String, diseaseTitle: appointmentData[2] as! String, price: appointmentData[3] as! Int, clinicTitle: clinicTitle, alergies: appointmentData[4] as? String, visit_time: date!, notes: appointmentData[5] as? String)
         Info.sharedInstance.sync()
         RestAPIManagr.sharedInstance.addAppointment(appointment: appointment)
 //        Info.dataController.loadData()
@@ -228,12 +230,18 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
         tabBarController?.selectedViewController = Info.sharedInstance.lastViewController
     }
     
+    //MARK: UI Handling
+    func setUIComponents() {
+        self.tabBarController?.tabBar.isHidden = true
+        notesTextView.textColor = Color.gray.componentColor
+    }
+    
     //MARK: Initialization
     func setImagesDelegates() {
         imageCollectionViewDelegate = ImagesCollectionViewDelegate(imagesCollectionView:imagesCollectionView, viewController: self)
         imagesCollectionView.delegate = imageCollectionViewDelegate
         imagesCollectionView.dataSource = imageCollectionViewDelegate
-        imagePickerDelegate = ImagePickerDelegate(from: self, imagesCollectionViewDelegate: imageCollectionViewDelegate)
+        imagePickerDelegate = ImagePickerDelegate(from: self, imagesCollectionViewDelegate: imageCollectionViewDelegate!)
     }
     
     func setNotesDelegates() {
@@ -248,14 +256,19 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     }
     
     func configure() {
-        notesTextView.textColor = Color.gray.componentColor
+        setUIComponents()
         creatDatePicker()
         setDelegates()
         textFields = [patientNameTextField, patientPhoneNumberTextField, diseaseTextField, priceTextField, alergyTextField, dateTextField]
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillLayoutSubviews() {
         configure()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
 //    override func viewWillLayoutSubviews() {

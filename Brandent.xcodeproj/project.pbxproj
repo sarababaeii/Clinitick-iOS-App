@@ -96,6 +96,8 @@
 		03FBE69B255495BC00FEFF63 /* Finance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE699255495BC00FEFF63 /* Finance+CoreDataClass.swift */; };
 		03FBE69C255495BC00FEFF63 /* Finance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE69A255495BC00FEFF63 /* Finance+CoreDataProperties.swift */; };
 		03FBE69E255499CD00FEFF63 /* FinanceTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE69D255499CD00FEFF63 /* FinanceTableViewDelegate.swift */; };
+		03FCCEB72562C7F6008A27B1 /* NSMutableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCCEB62562C7F6008A27B1 /* NSMutableData.swift */; };
+		03FCCEB92562CDB5008A27B1 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCCEB82562CDB5008A27B1 /* Image.swift */; };
 		0AE5F5DDA31BCCEF689E2306 /* Pods_Brandent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7A306D35B5F9E344BE7917 /* Pods_Brandent.framework */; };
 		49C5355A3016E9BA61654897 /* Pods_Brandent_BrandentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC81B90185B9803B7CAB3B67 /* Pods_Brandent_BrandentUITests.framework */; };
 		BF6BD9784EA5850EAB2C9157 /* Pods_BrandentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58894CE2B119176D9EA9E22E /* Pods_BrandentTests.framework */; };
@@ -214,6 +216,8 @@
 		03FBE699255495BC00FEFF63 /* Finance+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Finance+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03FBE69A255495BC00FEFF63 /* Finance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Finance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		03FBE69D255499CD00FEFF63 /* FinanceTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceTableViewDelegate.swift; sourceTree = "<group>"; };
+		03FCCEB62562C7F6008A27B1 /* NSMutableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableData.swift; sourceTree = "<group>"; };
+		03FCCEB82562CDB5008A27B1 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		08BE65CC6763EEEAE9428E14 /* Pods-Brandent-BrandentUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brandent-BrandentUITests.release.xcconfig"; path = "Target Support Files/Pods-Brandent-BrandentUITests/Pods-Brandent-BrandentUITests.release.xcconfig"; sourceTree = "<group>"; };
 		58894CE2B119176D9EA9E22E /* Pods_BrandentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrandentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DE1DF62B12D263C57AE79D5 /* Pods-BrandentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrandentTests.release.xcconfig"; path = "Target Support Files/Pods-BrandentTests/Pods-BrandentTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 				030C67FB2549BAD400CECCC2 /* AlertMessage.swift */,
 				03BDDF91255AF1160086DF25 /* APIKey.swift */,
 				03EE136F25542F5500363EA0 /* MenuItem.swift */,
+				03FCCEB82562CDB5008A27B1 /* Image.swift */,
 				03088770255EB11A00207D91 /* TodayTasks.swift */,
 			);
 			path = Model;
@@ -413,6 +418,7 @@
 				0323B3C62540A83F00EB34CD /* DateExtension.swift */,
 				0384E4F52550A74000197CD9 /* UIColorExtension.swift */,
 				03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */,
+				03FCCEB62562C7F6008A27B1 /* NSMutableData.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -851,6 +857,7 @@
 				03EE13722554322400363EA0 /* MenuCollectionViewDelegate.swift in Sources */,
 				03BC1F9025251658009749C0 /* Speciality+CoreDataClass.swift in Sources */,
 				0368107925473FA80016C1D6 /* ImageCollectionViewCell.swift in Sources */,
+				03FCCEB92562CDB5008A27B1 /* Image.swift in Sources */,
 				0323B3C72540A83F00EB34CD /* DateExtension.swift in Sources */,
 				035540E625162725003B9638 /* CustmButton.swift in Sources */,
 				03E7F93B254C84D5000EDDD0 /* ClinicTableViewCell.swift in Sources */,
@@ -890,6 +897,7 @@
 				03F4A5CB2551D03300D7E1C6 /* TodayTasksTableViewCell.swift in Sources */,
 				03D8573525558CA000304B00 /* CustomNavigationItem.swift in Sources */,
 				035540E4251624A8003B9638 /* CustomImageView.swift in Sources */,
+				03FCCEB72562C7F6008A27B1 /* NSMutableData.swift in Sources */,
 				03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */,
 				03749EBD250E76D6003CBE49 /* Brandent.xcdatamodeld in Sources */,
 				03F4A5C92551D01A00D7E1C6 /* FinanceTableViewCell.swift in Sources */,

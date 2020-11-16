@@ -127,6 +127,42 @@ class RestAPIManagr {
         return createRequest(url: API.syncURL, params: params, contentType: .json)
     }
     
+    //MARK: Images
+    private func createAddImagesRequest(appointmentID: UUID, images: [Image]) -> URLRequest {
+        let boundary = "Boundary-\(UUID().uuidString)"
+
+        var request = URLRequest(url: API.addImageURL)
+        request.httpMethod = "POST"
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        let httpBody = NSMutableData()
+        httpBody.appendString(convertFormField(key: APIKey.images.id!, value: appointmentID.uuidString, using: boundary))
+        for image in images {
+            httpBody.append(convertFileData(key: APIKey.images.rawValue, fileName: "\(image.name).jpeg", mimeType: "image/jpeg", fileData: image.data, using: boundary))
+        }
+        httpBody.appendString("--\(boundary)--")
+        request.httpBody = httpBody as Data
+        return request
+    }
+    
+    private func convertFormField(key: String, value: String, using boundary: String) -> String {
+        var fieldString = "--\(boundary)\r\n"
+        fieldString += "Content-Disposition: form-data; name=\"\(key)\"\r\n"
+        fieldString += "\r\n"
+        fieldString += "\(value)\r\n"
+        return fieldString
+    }
+    
+    private func convertFileData(key: String, fileName: String, mimeType: String, fileData: Data, using boundary: String) -> Data {
+        let data = NSMutableData()
+        data.appendString("--\(boundary)\r\n")
+        data.appendString("Content-Disposition: form-data; name=\"\(key)\"; filename=\"\(fileName)\"\r\n")
+        data.appendString("Content-Type: \(mimeType)\r\n\r\n")
+        data.append(fileData)
+        data.appendString("\r\n")
+        return data as Data
+    }
+    
     //MARK: Processing Response
 //    func setToken(data: Data?) {
 //        guard let data = data, let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
@@ -166,6 +202,10 @@ class RestAPIManagr {
     //MARK: Functions
     func addAppointment(appointment: Appointment) {
         postRequest(request: createAddAppointmentRequest(appointment: appointment))
+    }
+    
+    func addImage(appointmentID: UUID, images: [Image]) {
+        postRequest(request: createAddImagesRequest(appointmentID: appointmentID, images: images))
     }
     
     func addFinance(finance: Finance) {

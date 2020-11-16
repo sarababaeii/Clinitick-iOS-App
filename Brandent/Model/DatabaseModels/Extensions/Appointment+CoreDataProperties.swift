@@ -30,7 +30,6 @@ extension Appointment {
     @NSManaged public var dentist: Dentist
     @NSManaged public var disease: Disease
     @NSManaged public var patient: Patient
-
 }
 
 enum AppointmentAttributes: String {
