@@ -12,15 +12,17 @@ import UIKit
 class ImageCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
+    var image: Image?
     var imagesCollectionViewDelegate: ImagesCollectionViewDelegate?
     
-    func setAttributes(image: UIImage, delegate: ImagesCollectionViewDelegate) {
-        imageView.image = image
+    func setAttributes(image: Image, delegate: ImagesCollectionViewDelegate) {
+        self.image = image
+        imageView.image = image.img
         imagesCollectionViewDelegate = delegate
     }
     
     @IBAction func deleteImage(_ sender: Any) {
-        if let image = imageView.image {
+        if let image = image {
             imagesCollectionViewDelegate?.deleteImage(image)
         }
     }

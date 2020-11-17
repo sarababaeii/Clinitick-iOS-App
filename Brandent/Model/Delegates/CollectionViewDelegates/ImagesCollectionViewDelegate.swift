@@ -12,7 +12,7 @@ import UIKit
 class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var imagesCollectionView: UICollectionView
-    var images = [UIImage]()
+    var images = [Image]()
     
     var headerCell: ImagesCollectionViewHeader?
     var viewController: AddViewController
@@ -51,14 +51,14 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
         return cell
     }
     
-    func imageDataSource(indexPath: IndexPath) -> UIImage? {
+    func imageDataSource(indexPath: IndexPath) -> Image? {
         if indexPath.row < images.count {
             return images[indexPath.row]
         }
         return nil
     }
     
-    func insertImage(_ image: UIImage?, at indexPath: IndexPath?) {
+    func insertImage(_ image: Image?, at indexPath: IndexPath?) {
         if let image = image, let indexPath = indexPath {
             imagesCollectionView.performBatchUpdates({
                 images.insert(image, at: indexPath.item)
@@ -71,21 +71,21 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
         }
     }
     
-    func update(newImages: [UIImage]) {
+    func update(newImages: [Image]) {
         for img in newImages {
             let indexPath = IndexPath(item: images.count, section: 0)
             insertImage(img, at: indexPath)
         }
     }
     
-    func findIndexOfImage(_ image: UIImage) -> IndexPath? {
+    func findIndexOfImage(_ image: Image) -> IndexPath? {
         if let index =  images.firstIndex(of: image) {
             return IndexPath(item: index, section: 0)
         }
         return nil
     }
     
-    func deleteImage(_ image: UIImage) {
+    func deleteImage(_ image: Image) {
         if let indexPath = findIndexOfImage(image) {
             imagesCollectionView.performBatchUpdates({
                 images.remove(at: indexPath.item)

@@ -208,6 +208,10 @@ class RestAPIManagr {
         postRequest(request: createAddImagesRequest(appointmentID: appointmentID, images: images))
     }
     
+    func deleteImage(appointmentID: UUID, image: Image) {
+        
+    }
+    
     func addFinance(finance: Finance) {
         postRequest(request: createAddFinanceRequest(finance: finance))
     }

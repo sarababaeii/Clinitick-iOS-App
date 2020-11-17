@@ -9,12 +9,18 @@
 import Foundation
 import UIKit
 
-class Image {
+class Image: Equatable {
     var name: String
     var data: Data
+    var img: UIImage
     
     init(img: Data) {
+        self.name = UUID().uuidString
         self.data = img
-        name = UUID().uuidString
+        self.img = UIImage(data: data)!
     }
+    
+    static func == (lhs: Image, rhs: Image) -> Bool {
+        return lhs.name == rhs.name
+    } //TODO: Is it okay?
 }

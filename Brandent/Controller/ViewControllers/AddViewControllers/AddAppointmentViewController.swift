@@ -241,7 +241,7 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
         imageCollectionViewDelegate = ImagesCollectionViewDelegate(imagesCollectionView:imagesCollectionView, viewController: self)
         imagesCollectionView.delegate = imageCollectionViewDelegate
         imagesCollectionView.dataSource = imageCollectionViewDelegate
-        imagePickerDelegate = ImagePickerDelegate(from: self, imagesCollectionViewDelegate: imageCollectionViewDelegate!)
+        imagePickerDelegate = ImagePickerDelegate(from: self)
     }
     
     func setNotesDelegates() {
@@ -262,13 +262,15 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
         textFields = [patientNameTextField, patientPhoneNumberTextField, diseaseTextField, priceTextField, alergyTextField, dateTextField]
     }
     
-    override func viewWillLayoutSubviews() {
-        configure()
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        configure()
     }
     
 //    override func viewWillLayoutSubviews() {

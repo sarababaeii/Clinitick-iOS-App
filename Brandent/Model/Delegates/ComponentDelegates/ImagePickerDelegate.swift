@@ -15,15 +15,13 @@ import Photos
 class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     var viewController: AddViewController
-    var imagesCollectionViewDelegate: ImagesCollectionViewDelegate?
     
     var selectedAssets = [PHAsset]()
     var photoArray = [UIImage]()
     var images = [Image]()
     
-    init(from viewController: AddViewController, imagesCollectionViewDelegate: ImagesCollectionViewDelegate) {
+    init(from viewController: AddViewController) {
         self.viewController = viewController
-        self.imagesCollectionViewDelegate = imagesCollectionViewDelegate
     }
     
     func displayImagePickingOptions(){
@@ -117,6 +115,7 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
                 self.selectedAssets.append(assest[i])
             }
             self.convertAssetToImages()
+            self.sendImages()
         }, completion: nil)
     }
         
@@ -135,9 +134,8 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
             let data = thumbnail.jpegData(compressionQuality: 1)
             let newImage = UIImage(data: data!)
             self.photoArray.append(newImage! as UIImage)
-//            self.images.append(Image(img: data!))
+            self.images.append(Image(img: data!))
         }
-//        RestAPIManagr.sharedInstance.addImage(appointmentID: viewController.appointmentID, images: images)
         processedPick()
     }
     
@@ -153,13 +151,19 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
         picker.dismiss(animated: true, completion: nil)
     }
         
-    func processedPick(){
-        if let delegate = imagesCollectionViewDelegate {
+    func processedPick() {
+        if let delegate = viewController.imageCollectionViewDelegate {
             print(photoArray[0])
-            delegate.update(newImages: photoArray)
+//            delegate.update(newImages: photoArray)
+            delegate.update(newImages: images)
         }
         selectedAssets = [PHAsset]()
         photoArray = [UIImage]()
+    }
+    
+    func sendImages() {
+        RestAPIManagr.sharedInstance.addImage(appointmentID: viewController.appointmentID, images: images)
+        images = [Image]()
     }
 }
 
