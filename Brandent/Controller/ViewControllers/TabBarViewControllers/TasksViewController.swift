@@ -23,14 +23,13 @@ class TasksViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Info.sharedInstance.lastViewController = self
+        Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.tasks.rawValue
         setDelegates()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print(Info.sharedInstance.defaults.string(forKey: Info.sharedInstance.lastUpdatedDefaultsKey))
     }
 }
 

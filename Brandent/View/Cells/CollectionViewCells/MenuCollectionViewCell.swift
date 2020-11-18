@@ -15,9 +15,15 @@ class MenuCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var colorView: CustomUIView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    var item: MenuItem?
+    
     func setAttributes(item: MenuItem) {
+        self.item = item
         iconImageView.image = item.image
         colorView.backgroundColor = item.color.menuItemColor
         titleLabel.text = item.title
+    }
+    @IBAction func goToPage(_ sender: Any) {
+        item?.openPage()
     }
 }

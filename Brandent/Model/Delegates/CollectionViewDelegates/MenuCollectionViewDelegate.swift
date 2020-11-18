@@ -11,12 +11,14 @@ import UIKit
 
 class MenuCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    var viewController: HomeViewController
     var items = [MenuItem]()
     
     //MARK: Initializer
-    override init() {
-        items.append(MenuItem(color: Color.pink, image: UIImage(named: "patients_in_home")!, title: "لیست بیماران", viewControllerIdentifier: "PatientsViewController"))
-        items.append(MenuItem(color: Color.green, image: UIImage(named: "wallet")!, title: "درآمد این ماه", viewControllerIdentifier: "FinanceListsViewController"))
+    init(viewController: HomeViewController) {
+        self.viewController = viewController
+        items.append(MenuItem(color: Color.pink, image: UIImage(named: "patients_in_home")!, title: "لیست بیماران", parentViewController: viewController, viewControllerIdentifier: "PatientsViewController", tabBarItemIndex: TabBarItemIndex.profile.rawValue))
+        items.append(MenuItem(color: Color.green, image: UIImage(named: "wallet")!, title: "درآمد این ماه", parentViewController: viewController, viewControllerIdentifier: "SeeFinanceViewController", tabBarItemIndex: TabBarItemIndex.finance.rawValue))
     }
     
     //MARK: Protocol Functions

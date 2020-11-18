@@ -13,12 +13,21 @@ class MenuItem {
     var color: Color
     var image: UIImage
     var title: String
-    var viewControllerIdentifier: String
     
-    init(color: Color, image: UIImage, title: String, viewControllerIdentifier: String) {
+    var parentViewController: HomeViewController
+    var viewControllerIdentifier: String
+    var tabBarItemIndex: Int
+    
+    init(color: Color, image: UIImage, title: String, parentViewController: HomeViewController, viewControllerIdentifier: String, tabBarItemIndex: Int) {
         self.color = color
         self.image = image
         self.title = title
+        self.parentViewController = parentViewController
         self.viewControllerIdentifier = viewControllerIdentifier
+        self.tabBarItemIndex = tabBarItemIndex
+    }
+    
+    func openPage() {
+        parentViewController.openPage(item: self)
     }
 }

@@ -17,9 +17,9 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
     var viewController: AddViewController
     
     var selectedAssets = [PHAsset]()
-    var photoArray = [UIImage]()
     var images = [Image]()
     
+    //MARK: Initialization
     init(from viewController: AddViewController) {
         self.viewController = viewController
     }
@@ -42,7 +42,16 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
         viewController.present(alertController, animated: true)
     }
     
-    func displayCamera(){
+    //MARK: Trouble
+    func troubleAlert(message: String?){
+        let alertController = UIAlertController(title: "Oops...", message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "Got it", style: .cancel)
+        alertController.addAction(OKAction)
+        viewController.present(alertController, animated: true)
+    }
+    
+    //MARK: Camera
+    func displayCamera() {
         let sourceType = UIImagePickerController.SourceType.camera
         guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
             troubleAlert(message: AlertMessage.camera.trouble)
@@ -76,15 +85,7 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
         viewController.present(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        //got an image
-        picker.dismiss(animated: true, completion: nil)
-        if let newImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            photoArray.append(newImage)
-            processedPick()
-        }
-    }
-    
+    //MARK: Library
     func displayLibrary() {
         let sourceType = UIImagePickerController.SourceType.photoLibrary
         guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
@@ -104,6 +105,20 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
         }
     }
         
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        //got an image
+        picker.dismiss(animated: true, completion: nil)
+        if let newImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            images.append(Image(img: newImage))
+            processedPick()
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        //canceled
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
     func presentImagePicker(){
         let vc = BSImagePickerViewController()
         viewController.bs_presentImagePickerController(vc, animated: true, select: { (assest: PHAsset) -> Void in
@@ -115,10 +130,10 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
                 self.selectedAssets.append(assest[i])
             }
             self.convertAssetToImages()
-            self.sendImages()
         }, completion: nil)
     }
-        
+       
+    //MARK: Image Proccessing
     func convertAssetToImages() -> Void {
         if selectedAssets.count == 0 {
             return
@@ -132,39 +147,18 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
                 thumbnail = result!
             })
             let data = thumbnail.jpegData(compressionQuality: 1)
-            let newImage = UIImage(data: data!)
-            self.photoArray.append(newImage! as UIImage)
             self.images.append(Image(img: data!))
         }
         processedPick()
     }
-    
-    func troubleAlert(message: String?){
-        let alertController = UIAlertController(title: "Oops...", message: message, preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "Got it", style: .cancel)
-        alertController.addAction(OKAction)
-        viewController.present(alertController, animated: true)
-    }
-
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        //canceled
-        picker.dismiss(animated: true, completion: nil)
-    }
         
     func processedPick() {
         if let delegate = viewController.imageCollectionViewDelegate {
-            print(photoArray[0])
-//            delegate.update(newImages: photoArray)
             delegate.update(newImages: images)
         }
         selectedAssets = [PHAsset]()
-        photoArray = [UIImage]()
-    }
-    
-    func sendImages() {
-        RestAPIManagr.sharedInstance.addImage(appointmentID: viewController.appointmentID, images: images)
         images = [Image]()
     }
 }
 
-//TODO: Set Camera photos
+//TODO: Camera permission

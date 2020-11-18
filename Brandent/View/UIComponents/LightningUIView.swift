@@ -55,4 +55,10 @@ import UIKit
 //    func updateGradientDirection() {
 //        gradientLayer.endPoint = vertical ? CGPoint(x: 0, y: 1) : CGPoint(x: 1, y: 0)
 //    }
+    
+    func resizeGradientLayer() {
+        if let gradientLayer = self.getGradientLayer() {
+            gradientLayer.frame = self.bounds
+        }
+    }
 }

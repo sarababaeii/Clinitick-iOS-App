@@ -35,4 +35,29 @@ extension UIViewController {
             toastLabel.removeFromSuperview()
         })
     }
+    
+    //MARK: Setting Gradient Layers
+    func setGradientSizes() {
+        guard let subviews = getSubviews(view: self.view) else {
+            return
+        }
+        for subview in subviews {
+            if let view = subview as? LightningUIView {
+                view.resizeGradientLayer()
+            }
+        }
+    }
+    
+    private func getSubviews(view: UIView) -> [UIView]? {
+        if view.subviews.count == 0 {
+            return nil
+        }
+        var subviews = view.subviews
+        for subview in view.subviews {
+            if let subsubviews = getSubviews(view: subview) {
+                subviews.append(contentsOf: subsubviews)
+            }
+        }
+        return subviews
+    }
 }

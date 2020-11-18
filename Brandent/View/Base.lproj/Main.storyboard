@@ -149,13 +149,23 @@
                                                                             <color key="textColor" red="0.17254901959999999" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbD-zC-sV7">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="143" height="120"/>
+                                                                            <connections>
+                                                                                <action selector="goToPage:" destination="FFe-iU-kRh" eventType="touchUpInside" id="rSH-w6-gFL"/>
+                                                                            </connections>
+                                                                        </button>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstItem="ocr-iJ-2NR" firstAttribute="top" secondItem="zZg-nt-VgS" secondAttribute="top" constant="24" id="2HH-fG-Um6"/>
+                                                                        <constraint firstItem="dbD-zC-sV7" firstAttribute="bottom" secondItem="zZg-nt-VgS" secondAttribute="bottom" id="2iS-cr-WWc"/>
                                                                         <constraint firstItem="ocr-iJ-2NR" firstAttribute="centerX" secondItem="zZg-nt-VgS" secondAttribute="centerX" id="GdZ-hI-HWs"/>
                                                                         <constraint firstItem="IDS-vl-5Tw" firstAttribute="top" secondItem="ocr-iJ-2NR" secondAttribute="bottom" constant="10" id="PTP-Qz-XIp"/>
                                                                         <constraint firstItem="IDS-vl-5Tw" firstAttribute="centerX" secondItem="zZg-nt-VgS" secondAttribute="centerX" id="Pfd-k0-z6S"/>
+                                                                        <constraint firstItem="dbD-zC-sV7" firstAttribute="leading" secondItem="zZg-nt-VgS" secondAttribute="leading" id="aXT-eD-B17"/>
+                                                                        <constraint firstItem="dbD-zC-sV7" firstAttribute="top" secondItem="zZg-nt-VgS" secondAttribute="top" id="ahJ-Hc-vDb"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="dbD-zC-sV7" secondAttribute="trailing" id="l8i-gp-oQt"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -184,6 +194,7 @@
                                                             </constraints>
                                                         </collectionViewCellContentView>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <gestureRecognizers/>
                                                         <size key="customSize" width="159" height="120"/>
                                                         <connections>
                                                             <outlet property="colorView" destination="ocr-iJ-2NR" id="ne6-e7-bdP"/>
@@ -743,8 +754,8 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNd-ch-6vD" userLabel="View1.0" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="325" height="104.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="درآمد خالص این ماه" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gN4-sT-kdZ">
-                                                <rect key="frame" x="173.5" y="10" width="141.5" height="28.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="درآمد این ماه" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gN4-sT-kdZ">
+                                                <rect key="frame" x="223" y="10" width="92" height="28.5"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1223,7 +1234,7 @@
         <!--درآمد خالص-->
         <scene sceneID="eZK-vd-6kl">
             <objects>
-                <viewController storyboardIdentifier="FinanceListsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="azi-eB-4lo" customClass="SeeFinanceViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SeeFinanceViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="azi-eB-4lo" customClass="SeeFinanceViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7BG-Fz-qeI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2708,7 +2719,6 @@
                                             <outlet property="nameLabel" destination="wfU-qo-p4K" id="2W3-4s-Lne"/>
                                             <outlet property="phoneLabel" destination="e8e-J7-udp" id="F9Z-2t-5E2"/>
                                             <segue destination="08X-YO-DMk" kind="show" identifier="SeePatientHistorySegue" id="FcU-yp-jcQ"/>
-                                            <segue destination="08X-YO-DMk" kind="show" trigger="accessoryAction" id="AaE-4j-BbY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -3896,7 +3906,6 @@ AAAAAAACAQAAAAAAAABtAAAAAAAAAAAAAAAAAABHkQ
         <image name="xmark.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FcU-yp-jcQ"/>
         <segue reference="dmX-7u-kzd"/>
     </inferredMetricsTieBreakers>
 </document>

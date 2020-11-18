@@ -26,6 +26,8 @@ class RestAPIManagr {
         static let addClinicURL = URL(string: API.addClinic)!
         static let addFinanceURL = URL(string: API.finance)!
         static let syncURL = URL(string: API.sync)!
+        
+        static let deleteImage = API.images
         //TODO: Get finances are remained
     }
     
@@ -145,6 +147,38 @@ class RestAPIManagr {
         return request
     }
     
+    private func createDeleteImageRequest(appointmentID: UUID, image: Image) -> URLRequest? {
+        
+//        var request = URLRequest(url: API.addImageURL)
+//        request.httpMethod = "DELETE"
+//
+//        let params = [
+//            "apt_id": appointmentID.uuidString,
+//            "image_id": image.name
+//        ]
+//        let jsonData = try? JSONSerialization.data(withJSONObject: params)
+//        request.httpBody = jsonData
+//
+//        let bodyString = String(data: request.httpBody!, encoding: .utf8)
+//        print("body: \(bodyString) ^^")
+//
+//        request.addValue(ContentType.json.rawValue, forHTTPHeaderField: "Content-Type")
+////        request.addValue("10", forHTTPHeaderField: "Authorization") //10 should be token
+//        request.addValue("1", forHTTPHeaderField: "dentist_id")
+//
+////        print(url)
+//        return request
+        
+        
+        guard let url = URL(string: "\(API.deleteImage)?apt_id=\(appointmentID)&image_id=\(image.name)") else {
+            print("Error in creating URL")
+            return nil
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        return request
+    }
+    
     private func convertFormField(key: String, value: String, using boundary: String) -> String {
         var fieldString = "--\(boundary)\r\n"
         fieldString += "Content-Disposition: form-data; name=\"\(key)\"\r\n"
@@ -209,8 +243,10 @@ class RestAPIManagr {
     }
     
     func deleteImage(appointmentID: UUID, image: Image) {
-        
-    }
+        if let request = createDeleteImageRequest(appointmentID: appointmentID, image: image) {
+            postRequest(request:request )
+        }
+    } //TODO: Test
     
     func addFinance(finance: Finance) {
         postRequest(request: createAddFinanceRequest(finance: finance))

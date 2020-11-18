@@ -22,7 +22,15 @@ class HomeViewController: UIViewController {
     var menuCollectionViewDelegate: MenuCollectionViewDelegate?
     var todayTasksTableViewDelegate: TodayTasksTableViewDelegate?
     
+    //MARK: Functions
     @IBAction func changeAppointmentState(_ sender: Any) {
+    }
+    
+    func openPage(item: MenuItem) {
+        if let viewControllers = tabBarController?.viewControllers {
+            Info.sharedInstance.selectedMenuItem = item
+            tabBarController?.selectedViewController = viewControllers[item.tabBarItemIndex]
+        }
     }
     
     //MARK: UIComponents
@@ -50,14 +58,8 @@ class HomeViewController: UIViewController {
     }
     
     //MARK: Delegates
-    func setDelegates() {
-        setMenuDelegates()
-        setTodayTasksDelegates()
-        setTextViewDelegates()
-    }
-    
     func setMenuDelegates() {
-        menuCollectionViewDelegate = MenuCollectionViewDelegate()
+        menuCollectionViewDelegate = MenuCollectionViewDelegate(viewController: self)
         menuCollectionView.delegate = menuCollectionViewDelegate
         menuCollectionView.dataSource = menuCollectionViewDelegate
     }
@@ -75,20 +77,25 @@ class HomeViewController: UIViewController {
         quoteTextView.isEditable = false
     }
     
-    func configure() {
-        setDelegates()
+    func loadConfigure() {
+        setMenuDelegates()
+        setTextViewDelegates()
+    }
+    
+    func appearConfigure() {
+        setTodayTasksDelegates()
         setUIComponents()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        configure()
+        loadConfigure()
         Info.sharedInstance.sync()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Info.sharedInstance.lastViewController = self
-        configure()
+        Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.home.rawValue
+        appearConfigure()
     }
 }

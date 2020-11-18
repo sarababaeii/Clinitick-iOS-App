@@ -20,7 +20,13 @@ class Image: Equatable {
         self.img = UIImage(data: data)!
     }
     
+    init(img: UIImage) {
+        self.name = UUID().uuidString
+        self.data = img.jpegData(compressionQuality: 1)!
+        self.img = img
+    }
+    
     static func == (lhs: Image, rhs: Image) -> Bool {
         return lhs.name == rhs.name
-    } //TODO: Is it okay?
+    }
 }

@@ -17,9 +17,14 @@ class TodayTasksTableViewCell: UITableViewCell {
     
     func setAttributes(tasks: TodayTasks) {
         visitsNumberLabel.text = String(tasks.number).convertEnglishNumToPersianNum()
-        if let clinic = tasks.clinic {
+        setClinic(clinic: tasks.clinic)
+    }
+    
+    func setClinic(clinic: Clinic?) {
+        if let clinic = clinic {
             clinicLabel.text = "(\(clinic.title))"
             colorView.backgroundColor = UIColor(hexString: clinic.color)
+            clinicLabel.isHidden = false
         } else {
             clinicLabel.isHidden = true
         }

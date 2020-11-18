@@ -72,6 +72,7 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
     }
     
     func update(newImages: [Image]) {
+        sendImages(newImages: newImages)
         for img in newImages {
             let indexPath = IndexPath(item: images.count, section: 0)
             insertImage(img, at: indexPath)
@@ -86,6 +87,8 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
     }
     
     func deleteImage(_ image: Image) {
+        RestAPIManagr.sharedInstance.deleteImage(appointmentID: viewController.appointmentID, image: image)
+        
         if let indexPath = findIndexOfImage(image) {
             imagesCollectionView.performBatchUpdates({
                 images.remove(at: indexPath.item)
@@ -97,6 +100,8 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
             viewController.showButtons()
         }
     }
+    
+    func sendImages(newImages: [Image]) {
+        RestAPIManagr.sharedInstance.addImage(appointmentID: viewController.appointmentID, images: newImages)
+    }
 }
-
-//TODO: send to server

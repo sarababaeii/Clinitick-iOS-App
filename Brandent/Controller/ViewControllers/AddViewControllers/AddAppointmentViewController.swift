@@ -227,9 +227,24 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     }
     
     func back() {
-        tabBarController?.selectedViewController = Info.sharedInstance.lastViewController
+        if let viewControllers = tabBarController?.viewControllers {
+            tabBarController?.selectedViewController = viewControllers[Info.sharedInstance.lastViewControllerIndex]
+        }
     }
     
+    func reset() {
+        resetTextFields()
+    }
+    
+    func resetTextFields() {
+        for textField in textFields {
+            textField.text = ""
+        }
+    }
+    
+    func resetDelegates() {
+        imageCollectionViewDelegate?.images = [Image]()
+    }
     //MARK: UI Handling
     func setUIComponents() {
         self.tabBarController?.tabBar.isHidden = true
@@ -251,15 +266,24 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     
     func setDelegates() {
         prepareClinicMenu()
-        setImagesDelegates()
         setNotesDelegates()
     }
     
-    func configure() {
-        setUIComponents()
+    func loadConfigure() {
         creatDatePicker()
-        setDelegates()
+        setImagesDelegates()
         textFields = [patientNameTextField, patientPhoneNumberTextField, diseaseTextField, priceTextField, alergyTextField, dateTextField]
+    }
+    
+    func appearConfigure() {
+        setUIComponents()
+        setDelegates()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewWillLayoutSubviews()
+        appearConfigure()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -269,14 +293,10 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        configure()
+        loadConfigure()
     }
-    
-//    override func viewWillLayoutSubviews() {
-//        configure()
-//    }
 }
 
 //alergy typed then canceled?
 //hiding keyboard
+//reloading page

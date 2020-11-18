@@ -134,11 +134,11 @@ class DataController {
         return fetchRequest(object: .appointment, predicate: predicate, sortBy: dateAttribute)
     }
     
-    func fetchTodayAppointments(in clinic: Clinic) -> [NSManagedObject]? {
+    func fetchTodayAppointments(in clinic: Clinic?) -> [NSManagedObject]? {
         let dateAttribute = AppointmentAttributes.date.rawValue
         let clinicAttribute = AppointmentAttributes.clinic.rawValue
         let titleAttribute = ClinicAttributes.title.rawValue
-        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) < %@ AND \(clinicAttribute).\(titleAttribute) == %@", Date().startOfDate() as NSDate, Date().nextDay()! as NSDate, clinic.title)
+        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) < %@ AND \(clinicAttribute).\(titleAttribute) == %@", Date().startOfDate() as NSDate, Date().nextDay()! as NSDate, clinic?.title ?? NSNull())
         return fetchRequest(object: .appointment, predicate: predicate, sortBy: nil)
     }
     
@@ -150,7 +150,8 @@ class DataController {
                     todayTasks.append(TodayTasks(number: appointments.count, clinic: clinic))
                 }
             }
-        } else if let appointments = fetchAppointmentsInDay(in: Date()) {
+        }
+        if let appointments = fetchTodayAppointments(in: nil) as? [Appointment], appointments.count > 0 {
             todayTasks.append(TodayTasks(number: appointments.count, clinic: nil))
         }
         return todayTasks
