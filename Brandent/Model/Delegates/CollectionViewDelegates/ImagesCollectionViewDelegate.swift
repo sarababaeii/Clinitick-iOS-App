@@ -17,12 +17,19 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
     var headerCell: ImagesCollectionViewHeader?
     var viewController: AddViewController
     
-    
+    //MARK: Initializer
     init(imagesCollectionView: UICollectionView, viewController: AddViewController) {
         self.imagesCollectionView = imagesCollectionView
         self.viewController = viewController
     }
     
+    func reset() {
+        for img in images {
+            deleteImage(img)
+        }
+    }
+    
+    //MARK: Header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         switch kind {
@@ -38,6 +45,7 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
         }
     }
     
+    //MARK: Delegate Functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }
@@ -58,6 +66,15 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
         return nil
     }
     
+    //MARK: Update
+    func update(newImages: [Image]) {
+        sendImages(newImages: newImages)
+        for img in newImages {
+            let indexPath = IndexPath(item: images.count, section: 0)
+            insertImage(img, at: indexPath)
+        }
+    }
+    
     func insertImage(_ image: Image?, at indexPath: IndexPath?) {
         if let image = image, let indexPath = indexPath {
             imagesCollectionView.performBatchUpdates({
@@ -69,21 +86,6 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
             headerCell?.showButtons()
             viewController.hideButtons()
         }
-    }
-    
-    func update(newImages: [Image]) {
-        sendImages(newImages: newImages)
-        for img in newImages {
-            let indexPath = IndexPath(item: images.count, section: 0)
-            insertImage(img, at: indexPath)
-        }
-    }
-    
-    func findIndexOfImage(_ image: Image) -> IndexPath? {
-        if let index =  images.firstIndex(of: image) {
-            return IndexPath(item: index, section: 0)
-        }
-        return nil
     }
     
     func deleteImage(_ image: Image) {
@@ -101,6 +103,14 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
         }
     }
     
+    func findIndexOfImage(_ image: Image) -> IndexPath? {
+        if let index =  images.firstIndex(of: image) {
+            return IndexPath(item: index, section: 0)
+        }
+        return nil
+    }
+    
+    //MARK: API Calling
     func sendImages(newImages: [Image]) {
         RestAPIManagr.sharedInstance.addImage(appointmentID: viewController.appointmentID, images: newImages)
     }

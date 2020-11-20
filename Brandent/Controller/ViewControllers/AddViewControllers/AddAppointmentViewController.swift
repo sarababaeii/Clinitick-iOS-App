@@ -42,10 +42,10 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     var currentTextField: UITextField?
     var appointmentData = ["", "", "", -1, "", ""] as [Any] //0: name, 1: phone, 2: disease, 3: price, 4: alergy, 5: notes
     var clinicTitle: String?
-    var hasAlergy: Bool = false
     var date: Date?
+    var hasAlergy: Bool = false
     
-    let appointmentID = UUID()
+    var appointmentID = UUID()
     
     //MARK: Clinic Functions
     func prepareClinicMenu() {
@@ -113,6 +113,9 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     func setHasAlergy(by button: CheckButton) {
         hasAlergy = button.hasAlergy()
         alergyTextField.isEnabled = hasAlergy
+        if !hasAlergy {
+            alergyTextField.text = ""
+        }
     }
     
     //MARK: TextFields Functions
@@ -185,7 +188,6 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
         let appointment = Appointment.createAppointment(id: appointmentID, name: appointmentData[0] as! String, phone: appointmentData[1] as! String, diseaseTitle: appointmentData[2] as! String, price: appointmentData[3] as! Int, clinicTitle: clinicTitle, alergies: appointmentData[4] as? String, visit_time: date!, notes: appointmentData[5] as? String)
         Info.sharedInstance.sync()
         RestAPIManagr.sharedInstance.addAppointment(appointment: appointment)
-//        Info.dataController.loadData()
         
         back()
     }
@@ -229,11 +231,20 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     func back() {
         if let viewControllers = tabBarController?.viewControllers {
             tabBarController?.selectedViewController = viewControllers[Info.sharedInstance.lastViewControllerIndex]
+                reset()
         }
     }
     
+    //MARK: Reset
     func reset() {
+        resetDelegates()
+        resetUIComponents()
+        appointmentID = UUID()
+    }
+    
+    func resetUIComponents() { //TODO: clinic
         resetTextFields()
+        resetButtons()
     }
     
     func resetTextFields() {
@@ -242,47 +253,52 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
         }
     }
     
-    func resetDelegates() {
-        imageCollectionViewDelegate?.images = [Image]()
+    func resetButtons() {
+        noAlergyButton.unselectCheckButton()
+        hasAlergyButton.unselectCheckButton()
     }
+    
+    func resetDelegates() {
+        imageCollectionViewDelegate?.reset()
+    }
+    
     //MARK: UI Handling
-    func setUIComponents() {
+    func setUIComponents() { //appear
         self.tabBarController?.tabBar.isHidden = true
-        notesTextView.textColor = Color.gray.componentColor
+        textViewDelegate?.setPlaceHolder(textView: notesTextView, text: "اطلاعات تکمیلی")
     }
     
     //MARK: Initialization
-    func setImagesDelegates() {
+    func setImagesDelegates() { //load
         imageCollectionViewDelegate = ImagesCollectionViewDelegate(imagesCollectionView:imagesCollectionView, viewController: self)
         imagesCollectionView.delegate = imageCollectionViewDelegate
         imagesCollectionView.dataSource = imageCollectionViewDelegate
         imagePickerDelegate = ImagePickerDelegate(from: self)
     }
     
-    func setNotesDelegates() {
+    func setNotesDelegates() { //load
         textViewDelegate = TextViewDelegate(label: wordLimitLabel)
         notesTextView.delegate = textViewDelegate
     }
     
     func setDelegates() {
-        prepareClinicMenu()
-        setNotesDelegates()
+        setImagesDelegates() //load
+        setNotesDelegates() //load
     }
     
     func loadConfigure() {
         creatDatePicker()
-        setImagesDelegates()
+        setDelegates()
         textFields = [patientNameTextField, patientPhoneNumberTextField, diseaseTextField, priceTextField, alergyTextField, dateTextField]
     }
     
     func appearConfigure() {
         setUIComponents()
-        setDelegates()
+        prepareClinicMenu() //appear
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewWillLayoutSubviews()
         appearConfigure()
     }
     
@@ -297,6 +313,5 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     }
 }
 
-//alergy typed then canceled?
+//reset clinic
 //hiding keyboard
-//reloading page

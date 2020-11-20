@@ -15,8 +15,13 @@ public class Clinic: NSManagedObject {
 
     @available(iOS 13.0, *)
     static func getClinic(id: UUID?, title: String, address: String?, color: String?) -> Clinic {
-        if let clinic = Info.dataController.fetchClinic(title: title) {
-            return clinic as! Clinic
+        if let id = id, let object = Info.dataController.fetchClinic(id: id),
+            let clinic = object as? Clinic {
+            return clinic
+        }
+        if let object = Info.dataController.fetchClinic(title: title),
+            let clinic = object as? Clinic {
+            return clinic
         }
         return Info.dataController.createClinic(id: id, title: title, address: address, color: color)
     }

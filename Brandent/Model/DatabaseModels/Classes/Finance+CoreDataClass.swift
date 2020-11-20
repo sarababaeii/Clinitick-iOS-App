@@ -16,7 +16,10 @@ public class Finance: NSManagedObject {
     //MARK: Creating object
     @available(iOS 13.0, *)
     static func getFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
-        //is repeated?
+        if let id = id, let object = Info.dataController.fetchFinance(id: id),
+            let finance = object as? Finance {
+            return finance
+        }
         return Info.dataController.createFinance(id: id, title: title, amount: amount, isCost: isCost, date: date)
     }
     

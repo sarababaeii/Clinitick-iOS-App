@@ -21,6 +21,10 @@ public class Appointment: NSManagedObject {
     
     @available(iOS 13.0, *)
     static func createAppointment(id: UUID, name: String, phone: String, diseaseTitle: String, price: Int, clinicTitle: String?, alergies: String?, visit_time: Date, notes: String?) -> Appointment {
+        if let object = Info.dataController.fetchAppointment(id: id),
+            let appointment = object as? Appointment {
+            return appointment
+        }
         var clinic: Clinic?
         if let clinicTitle = clinicTitle {
             clinic = Clinic.getClinic(id: nil, title: clinicTitle, address: nil, color: nil)

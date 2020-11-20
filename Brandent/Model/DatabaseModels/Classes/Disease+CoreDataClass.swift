@@ -15,8 +15,13 @@ public class Disease: NSManagedObject {
     
     @available(iOS 13.0, *)
     static func getDisease(id: UUID?, title: String, price: Int) -> Disease {
-        if let disease = Info.dataController.fetchDisease(title: title) {
-            return disease as! Disease
+        if let id = id, let object = Info.dataController.fetchDisease(id: id),
+            let disease = object as? Disease {
+            return disease
+        }
+        if let object = Info.dataController.fetchDisease(title: title),
+            let disease = object as? Disease{
+            return disease
         }
         return Info.dataController.createDisease(id: id, title: title, price: price)
     }

@@ -29,11 +29,7 @@ class DataController {
     var specialityEntity: NSEntityDescription
     var diseaseEntity: NSEntityDescription
     var financeEntity: NSEntityDescription
-    
-//    var today: Date{
-//        return Date().startOfDate()
-//    }
-    
+   
     //MARK: Initialization
     @available(iOS 13.0, *)
     init() {
@@ -54,6 +50,7 @@ class DataController {
         do{
             try context.save()
         } catch{
+            print("Could not save to local DB")
         }
     }
     
@@ -80,10 +77,15 @@ class DataController {
         return fetchRequest(object: entityName, predicate: nil, sortBy: key)
     }
     
-    func fetch(object entityName: EntityNames, by attribute: String, value: String) -> NSManagedObject? {
+    func fetchObject(object entityName: EntityNames, by attribute: String, value: String) -> NSManagedObject? {
         let predicate = NSPredicate(format: "\(attribute) = %@", value)
         return fetchRequest(object: entityName, predicate: predicate, sortBy: nil)?.first
     }
+    
+    func fetchObject(object entityName: EntityNames, idAttribute: String, id: UUID) -> NSManagedObject? {
+        let predicate = NSPredicate(format: "\(idAttribute) = %@", id as CVarArg)
+        return fetchRequest(object: entityName, predicate: predicate, sortBy: nil)?.first
+    } //TODO: Test
     
     func fetchForSync(entityName: EntityNames, modifiedAttribute: String, lastUpdated date: Date) -> [NSManagedObject]? {
         let predicate = NSPredicate(format: "\(modifiedAttribute) > %@", date as NSDate)
@@ -110,6 +112,10 @@ class DataController {
         return appointment
     }
 
+    func fetchAppointment(id: UUID) -> NSManagedObject? {
+        return fetchObject(object: .appointment, idAttribute: AppointmentAttributes.id.rawValue, id: id)
+    }
+    
     func fetchAllAppointments() -> [NSManagedObject]? {
         return fetchAll(object: .appointment, sortBy: nil)
     }
@@ -178,8 +184,15 @@ class DataController {
         return patient
     }
     
-    func fetchPatient(phone: String) -> NSManagedObject? { //English and Persian
-        return fetch(object: .patient, by: PatientAttributes.phone.rawValue, value: phone)
+    func fetchPatient(name: String, phone: String) -> NSManagedObject? {
+        let nameAttribute = PatientAttributes.name.rawValue
+        let phoneAttribute = PatientAttributes.phone.rawValue
+        let predicate = NSPredicate(format: "\(nameAttribute) = %@ AND \(phoneAttribute) = %@", name, phone)
+        return fetchRequest(object: .patient, predicate: predicate, sortBy: nil)?.first
+    }
+    
+    func fetchPatient(id: UUID) -> NSManagedObject? {
+        return fetchObject(object: .patient, idAttribute: PatientAttributes.id.rawValue, id: id)
     }
     
     func fetchAllPatients() -> [NSManagedObject]? {
@@ -205,7 +218,11 @@ class DataController {
     }
     
     func fetchDisease(title: String) -> NSManagedObject? {
-        return fetch(object: .disease, by: DiseaseAttributes.title.rawValue, value: title)
+        return fetchObject(object: .disease, by: DiseaseAttributes.title.rawValue, value: title)
+    }
+    
+    func fetchDisease(id: UUID) -> NSManagedObject? {
+        return fetchObject(object: .disease, idAttribute: DiseaseAttributes.id.rawValue, id: id)
     }
     
     func fetchAllDiseases() -> [NSManagedObject]? {
@@ -238,7 +255,11 @@ class DataController {
     }
     
     func fetchClinic(title: String) -> NSManagedObject? {
-        return fetch(object: .clinic, by: ClinicAttributes.title.rawValue, value: title)
+        return fetchObject(object: .clinic, by: ClinicAttributes.title.rawValue, value: title)
+    }
+    
+    func fetchClinic(id: UUID) -> NSManagedObject? {
+        return fetchObject(object: .clinic, idAttribute: ClinicAttributes.id.rawValue, id: id)
     }
     
     func fetchAllClinics() -> [NSManagedObject]? {
@@ -263,6 +284,10 @@ class DataController {
         
         saveContext()
         return finance
+    }
+    
+    func fetchFinance(id: UUID) -> NSManagedObject? {
+        return fetchObject(object: .finance, idAttribute: FinanceAttributes.id.rawValue, id: id)
     }
     
     func fetchFinancesForSync(lastUpdated date: Date) -> [NSManagedObject]? {
@@ -328,18 +353,6 @@ class DataController {
         }
         return mixture
     } //should go to other class
-    
-    func loadData() {
-        guard let appointments = fetchAllAppointments() as? [Appointment] else {
-            return
-        }
-        for appointment in appointments {
-            print(appointment)
-            print(appointment.patient.name as Any)
-            print(appointment.patient.phone as Any)
-            print("***\n")
-        }
-    }
 }
 
 //insert and replace

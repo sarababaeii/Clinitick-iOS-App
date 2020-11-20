@@ -285,6 +285,29 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		0321F86925681A220048D77B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				03FCCEB82562CDB5008A27B1 /* Image.swift */,
+				03EE136F25542F5500363EA0 /* MenuItem.swift */,
+				03088770255EB11A00207D91 /* TodayTasks.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		0321F86A25681A400048D77B /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				030C67FB2549BAD400CECCC2 /* AlertMessage.swift */,
+				03091FD92565527B00E9FA6C /* TabBarItemIndex.swift */,
+				03BDDF91255AF1160086DF25 /* APIKey.swift */,
+				0321F8632567CA0F0048D77B /* APIAddress.swift */,
+				0321F8652567CA920048D77B /* ContentType.swift */,
+				0321F8672567CC470048D77B /* APIRequestType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		03749EA4250E76D6003CBE49 = {
 			isa = PBXGroup;
 			children = (
@@ -362,17 +385,10 @@
 			children = (
 				039E2E372535C79D00F6D5EE /* DatabaseModels */,
 				030AEE83253C55EC00E29CE1 /* Delegates */,
+				0321F86925681A220048D77B /* Classes */,
+				0321F86A25681A400048D77B /* Enums */,
 				039E2E362535C78E00F6D5EE /* Extensions */,
 				03B032E12530D78800CF1075 /* Info.swift */,
-				03FCCEB82562CDB5008A27B1 /* Image.swift */,
-				03EE136F25542F5500363EA0 /* MenuItem.swift */,
-				03088770255EB11A00207D91 /* TodayTasks.swift */,
-				030C67FB2549BAD400CECCC2 /* AlertMessage.swift */,
-				03091FD92565527B00E9FA6C /* TabBarItemIndex.swift */,
-				03BDDF91255AF1160086DF25 /* APIKey.swift */,
-				0321F8632567CA0F0048D77B /* APIAddress.swift */,
-				0321F8652567CA920048D77B /* ContentType.swift */,
-				0321F8672567CC470048D77B /* APIRequestType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

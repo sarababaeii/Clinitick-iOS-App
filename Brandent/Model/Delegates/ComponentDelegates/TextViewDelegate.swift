@@ -14,6 +14,7 @@ class TextViewDelegate: NSObject, UITextViewDelegate {
     
     var characterLimitLabel: UILabel
     
+    //MARK: Initializer
     init(label: UILabel) {
         characterLimitLabel = label
     }
@@ -28,9 +29,13 @@ class TextViewDelegate: NSObject, UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "اطلاعات تکمیلی"
-            textView.textColor = Color.gray.componentColor
+            setPlaceHolder(textView: textView, text: "اطلاعات تکمیلی")
         }
+    }
+    
+    func setPlaceHolder(textView: UITextView, text: String) {
+        textView.text = text
+        textView.textColor = Color.gray.componentColor
     }
     
     //MARK: Character Limit

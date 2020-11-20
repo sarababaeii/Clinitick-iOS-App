@@ -51,7 +51,8 @@ import UIKit
 
 extension UITextView {
     func fetchInput() -> String? {
-        if let caption = self.text?.trimmingCharacters(in: .whitespaces) {
+        if self.textColor != Color.gray.componentColor,
+            let caption = self.text?.trimmingCharacters(in: .whitespaces) {
             return caption.count > 0 ? caption : nil
         }
         return nil
