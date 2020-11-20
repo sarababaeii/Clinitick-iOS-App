@@ -14,28 +14,32 @@ import CoreData
 public class Patient: NSManagedObject {
     
     @available(iOS 13.0, *)
-    static func getPatient(phone: String, name: String, alergies: String?) -> Patient {
+    static func getPatient(id: UUID?, phone: String, name: String, alergies: String?) -> Patient {
         if let patient = Info.dataController.fetchPatient(phone: phone) {
             return patient as! Patient
         }
-        return Info.dataController.createPatient(name: name, phone: phone, alergies: alergies)
+        return Info.dataController.createPatient(id: id, name: name, phone: phone, alergies: alergies)
     }
     
-    func setID() {
-        let uuid = UUID()
-        self.id = uuid
+    func setID(id: UUID?) {
+        if let id = id {
+            self.id = id
+        } else {
+            let uuid = UUID()
+            self.id = uuid
+        }
     }
     
     func setModifiedTime() {
         self.modified_at = Date()
     }
     
+    //MARK: API Functions
     func toDictionary() -> [String: String] {
         let params: [String: String] = [
             APIKey.patient.id!: self.id.uuidString,
             APIKey.patient.name!: self.name,
-            APIKey.patient.phone!: self.phone
-        ]
+            APIKey.patient.phone!: self.phone]
         return params
     }
     
@@ -45,6 +49,15 @@ public class Patient: NSManagedObject {
             params.append(patient.toDictionary())
         }
         return params
+    }
+    
+    static func savePatient(_ patient: NSDictionary) {
+        if let idString = patient[APIKey.patient.id!] as? String,
+         let id = UUID.init(uuidString: idString),
+         let name = patient[APIKey.patient.name!] as? String,
+         let phone = patient[APIKey.patient.phone!] as? String {
+            let _ = getPatient(id: id, phone: phone, name: name, alergies: nil)
+        }
     }
 }
 

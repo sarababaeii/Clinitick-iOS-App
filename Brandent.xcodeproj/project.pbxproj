@@ -22,6 +22,9 @@
 		030C68042549EC6C00CECCC2 /* DiseaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C68032549EC6C00CECCC2 /* DiseaseTableViewCell.swift */; };
 		030C68062549ECB200CECCC2 /* DiseasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C68052549ECB200CECCC2 /* DiseasesViewController.swift */; };
 		0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0310F44F250FF577008B3E5B /* CustomUIView.swift */; };
+		0321F8642567CA0F0048D77B /* APIAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321F8632567CA0F0048D77B /* APIAddress.swift */; };
+		0321F8662567CA920048D77B /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321F8652567CA920048D77B /* ContentType.swift */; };
+		0321F8682567CC470048D77B /* APIRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321F8672567CC470048D77B /* APIRequestType.swift */; };
 		0323B3C52540745900EB34CD /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323B3C42540745900EB34CD /* RestAPIManager.swift */; };
 		0323B3C72540A83F00EB34CD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323B3C62540A83F00EB34CD /* DateExtension.swift */; };
 		0328877E254F63B700AF1A9F /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0328877D254F63B700AF1A9F /* ColorCollectionViewCell.swift */; };
@@ -137,6 +140,9 @@
 		030C68032549EC6C00CECCC2 /* DiseaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseTableViewCell.swift; sourceTree = "<group>"; };
 		030C68052549ECB200CECCC2 /* DiseasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesViewController.swift; sourceTree = "<group>"; };
 		0310F44F250FF577008B3E5B /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
+		0321F8632567CA0F0048D77B /* APIAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAddress.swift; sourceTree = "<group>"; };
+		0321F8652567CA920048D77B /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
+		0321F8672567CC470048D77B /* APIRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestType.swift; sourceTree = "<group>"; };
 		0323B3C42540745900EB34CD /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
 		0323B3C62540A83F00EB34CD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0328877D254F63B700AF1A9F /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -358,12 +364,15 @@
 				030AEE83253C55EC00E29CE1 /* Delegates */,
 				039E2E362535C78E00F6D5EE /* Extensions */,
 				03B032E12530D78800CF1075 /* Info.swift */,
-				03091FD92565527B00E9FA6C /* TabBarItemIndex.swift */,
-				030C67FB2549BAD400CECCC2 /* AlertMessage.swift */,
-				03BDDF91255AF1160086DF25 /* APIKey.swift */,
-				03EE136F25542F5500363EA0 /* MenuItem.swift */,
 				03FCCEB82562CDB5008A27B1 /* Image.swift */,
+				03EE136F25542F5500363EA0 /* MenuItem.swift */,
 				03088770255EB11A00207D91 /* TodayTasks.swift */,
+				030C67FB2549BAD400CECCC2 /* AlertMessage.swift */,
+				03091FD92565527B00E9FA6C /* TabBarItemIndex.swift */,
+				03BDDF91255AF1160086DF25 /* APIKey.swift */,
+				0321F8632567CA0F0048D77B /* APIAddress.swift */,
+				0321F8652567CA920048D77B /* ContentType.swift */,
+				0321F8672567CC470048D77B /* APIRequestType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -440,10 +449,10 @@
 			children = (
 				03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */,
 				03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */,
-				03BC1F7E25251658009749C0 /* Dentist+CoreDataClass.swift */,
 				03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */,
 				03FBE699255495BC00FEFF63 /* Finance+CoreDataClass.swift */,
 				03BC1F8025251658009749C0 /* Patient+CoreDataClass.swift */,
+				03BC1F7E25251658009749C0 /* Dentist+CoreDataClass.swift */,
 				03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */,
 			);
 			path = Classes;
@@ -843,6 +852,7 @@
 				0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */,
 				03D41BBC2553145A005BB942 /* PickerViewDelegate.swift in Sources */,
 				03B032E22530D78800CF1075 /* Info.swift in Sources */,
+				0321F8642567CA0F0048D77B /* APIAddress.swift in Sources */,
 				03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */,
 				03E7F935254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift in Sources */,
 				03BC1F8A25251658009749C0 /* Dentist+CoreDataClass.swift in Sources */,
@@ -853,6 +863,7 @@
 				03036D31250FE8F500C7824A /* AddAppointmentViewController.swift in Sources */,
 				03091FDA2565527B00E9FA6C /* TabBarItemIndex.swift in Sources */,
 				030C68062549ECB200CECCC2 /* DiseasesViewController.swift in Sources */,
+				0321F8682567CC470048D77B /* APIRequestType.swift in Sources */,
 				0360D860255165AA00C36AE4 /* PatientProfileViewController.swift in Sources */,
 				03088773255EB31600207D91 /* TodayTasksTableViewDelegate.swift in Sources */,
 				03FBE68A2554786E00FEFF63 /* Dentist+CoreDataProperties.swift in Sources */,
@@ -884,6 +895,7 @@
 				03BC1F8C25251658009749C0 /* Patient+CoreDataClass.swift in Sources */,
 				03EE13742554480E00363EA0 /* UIViewExtension.swift in Sources */,
 				03E7F93D254C88DC000EDDD0 /* AddClinicViewController.swift in Sources */,
+				0321F8662567CA920048D77B /* ContentType.swift in Sources */,
 				0363E686253235980095AF7C /* Color.swift in Sources */,
 				0323B3C52540745900EB34CD /* RestAPIManager.swift in Sources */,
 				03FBE6842554786E00FEFF63 /* Disease+CoreDataProperties.swift in Sources */,

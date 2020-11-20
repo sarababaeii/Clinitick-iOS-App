@@ -14,28 +14,39 @@ import CoreData
 public class Disease: NSManagedObject {
     
     @available(iOS 13.0, *)
-    static func getDisease(title: String, price: Int) -> Disease {
+    static func getDisease(id: UUID?, title: String, price: Int) -> Disease {
         if let disease = Info.dataController.fetchDisease(title: title) {
             return disease as! Disease
         }
-        return Info.dataController.createDisease(title: title, price: price)
+        return Info.dataController.createDisease(id: id, title: title, price: price)
     }
     
-    func setID() {
-        let uuid = UUID()
-        self.id = uuid
+    func setID(id: UUID?) {
+        if let id = id {
+            self.id = id
+        } else {
+            let uuid = UUID()
+            self.id = uuid
+        }
     }
     
     func setModifiedTime() {
         self.modified_at = Date()
     }
     
+    static func saveDiseaseArray(diseases: NSArray) {
+        for item in diseases {
+            if let disease = item as? NSDictionary {
+                saveDisease(disease)
+            }
+        }
+    }
+    //MARK: API Functions
     func toDictionary() -> [String: String] {
         let params: [String: String] = [
             APIKey.disease.id!: self.id.uuidString,
             APIKey.disease.title!: self.title,
-            APIKey.disease.price!: String(Int(truncating: self.price))
-        ]
+            APIKey.disease.price!: String(Int(truncating: self.price))]
         return params
     }
     
@@ -45,6 +56,16 @@ public class Disease: NSManagedObject {
             params.append(disease.toDictionary())
         }
         return params
+    }
+    
+    static func saveDisease(_ disease: NSDictionary) {
+        if let idString = disease[APIKey.disease.id!] as? String,
+         let id = UUID.init(uuidString: idString),
+         let title = disease[APIKey.disease.title!] as? String,
+         let priceString = disease[APIKey.disease.price!] as? String,
+         let price = Int(priceString) {
+            let _ = getDisease(id: id, title: title, price: price)
+        }
     }
 }
 

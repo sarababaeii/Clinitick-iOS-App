@@ -15,7 +15,7 @@ enum APIKey: String {
     case clinic
     case finance
     case dentist
-    case images = "images[]"
+    case images = "images"
     
     case lastUpdate = "last_updated"
     
@@ -181,6 +181,24 @@ enum APIKey: String {
         switch self {
         case .appointment:
             return "patient_id"
+        default:
+            return nil
+        }
+    }
+    
+    //MARK: Sync
+    var sync: String? {
+        switch self {
+        case .clinic:
+            return "clinics"
+        case .patient:
+            return "patients"
+        case .finance:
+            return "finances"
+        case .disease:
+            return "diseases"
+        case .appointment:
+            return "appointments"
         default:
             return nil
         }

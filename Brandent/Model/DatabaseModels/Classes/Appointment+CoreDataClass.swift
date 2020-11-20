@@ -23,10 +23,10 @@ public class Appointment: NSManagedObject {
     static func createAppointment(id: UUID, name: String, phone: String, diseaseTitle: String, price: Int, clinicTitle: String?, alergies: String?, visit_time: Date, notes: String?) -> Appointment {
         var clinic: Clinic?
         if let clinicTitle = clinicTitle {
-            clinic = Clinic.getClinic(title: clinicTitle, address: nil, color: nil)
+            clinic = Clinic.getClinic(id: nil, title: clinicTitle, address: nil, color: nil)
         }
-        let patient = Patient.getPatient(phone: phone, name: name, alergies: alergies)
-        let disease = Disease.getDisease(title: diseaseTitle, price: price)
+        let patient = Patient.getPatient(id: nil, phone: phone, name: name, alergies: alergies)
+        let disease = Disease.getDisease(id: nil, title: diseaseTitle, price: price)
         return Info.dataController.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, alergies: alergies, notes: notes)
     }
     
@@ -43,11 +43,13 @@ public class Appointment: NSManagedObject {
 //        }
     } //yes?
     
-    func setID(id: UUID) {
-//        if id == nil {
-//            id = UUID()
-//        }
-        self.id = id
+    func setID(id: UUID?) {
+        if let id = id {
+            self.id = id
+        } else {
+            let uuid = UUID()
+            self.id = uuid
+        }
     }
     
     func setPatient(patient: Patient) {
@@ -64,6 +66,7 @@ public class Appointment: NSManagedObject {
         self.modified_at = Date()
     }
     
+    //MARK: API Functions
     func toDictionary() -> [String: String] {
         var params = [
             APIKey.appointment.id!: self.id.uuidString,
@@ -72,8 +75,7 @@ public class Appointment: NSManagedObject {
             APIKey.appointment.date!: self.visit_time.toDBFormatDateAndTimeString(),
             APIKey.appointment.disease!: self.disease.title,
             APIKey.appointment.isDeleted!: String(self.isDeleted), //test
-            APIKey.appointment.patient!: self.patient.id.uuidString,
-        ]
+            APIKey.appointment.patient!: self.patient.id.uuidString]
         if let notes = self.notes {
             params[APIKey.appointment.notes!] = notes
         }
@@ -93,6 +95,31 @@ public class Appointment: NSManagedObject {
         }
         return params
     }
+    
+    static func saveAppointment(_ appointment: NSDictionary) {
+        guard let idString = appointment[APIKey.appointment.id!] as? String,
+         let id = UUID.init(uuidString: idString),
+         let name = appointment[APIKey.patient.name!] as? String,
+         let phone = appointment[APIKey.patient.phone!] as? String,
+         let disease = appointment[APIKey.appointment.disease!] as? String,
+         let priceString = appointment[APIKey.appointment.price!] as? String,
+         let price = Int(priceString),
+         let dateString = appointment[APIKey.appointment.date!] as? String,
+         let date = Date.getDBFormatDate(from: dateString) else {
+            return
+        }
+//        var clinic: String? // let clinic = appointment[APIKey.appointment.clinic!] as? String,
+        var alergies: String?
+        var notes: String?
+
+        if let alergy = appointment[APIKey.appointment.alergies!] as? String {
+            alergies = alergy
+        }
+        if let note = appointment[APIKey.appointment.notes!] as? String {
+            notes = note
+        }
+        let _ = createAppointment(id: id, name: name, phone: phone, diseaseTitle: disease, price: price, clinicTitle: nil, alergies: alergies, visit_time: date, notes: notes)
+    } //TODO: Set clinic and date
 }
 
 //"appointment": {
@@ -106,4 +133,4 @@ public class Appointment: NSManagedObject {
 //  "clinic_id": "890a32fe-12e6-11eb-adc1-0242ac120002",
 //  "allergies": "peanut butter",
 //  "patient_id": "890a32fe-12e6-11eb-adc1-0242ac120002"
-//},
+//}

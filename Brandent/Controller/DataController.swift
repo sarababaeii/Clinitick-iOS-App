@@ -90,7 +90,7 @@ class DataController {
         return fetchRequest(object: entityName, predicate: predicate, sortBy: nil)
     }
     
-    //MARK: Appointment
+    //MARK: Appointment TODO: ID
     func createAppointment(id: UUID, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic?, alergies: String?, notes: String?) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
         
@@ -105,7 +105,6 @@ class DataController {
         appointment.setPatient(patient: patient)
         appointment.setDisease(disease: disease)
         appointment.setModifiedTime()
-        //TODO: set image
 
         saveContext()
         return appointment
@@ -164,7 +163,7 @@ class DataController {
     }
     
     //MARK: Patient
-    func createPatient(name: String, phone: String, alergies: String?) -> Patient {
+    func createPatient(id: UUID?, name: String, phone: String, alergies: String?) -> Patient {
         let patient = Patient(entity: patientEntity, insertInto: context)
         
         patient.name = name
@@ -172,7 +171,7 @@ class DataController {
         if let alergies = alergies {
             patient.alergies = alergies
         }
-        patient.setID()
+        patient.setID(id: id)
         patient.setModifiedTime()
         
         saveContext()
@@ -192,12 +191,12 @@ class DataController {
     }
     
     //MARK: Disease
-    func createDisease(title: String, price: Int) -> Disease {
+    func createDisease(id: UUID?, title: String, price: Int) -> Disease {
         let disease = Disease(entity: diseaseEntity, insertInto: context)
         
         disease.title = title
         disease.price = NSDecimalNumber(value: price)
-        disease.setID()
+        disease.setID(id: id)
         disease.setModifiedTime()
         //TODO: set for dentist?
         
@@ -218,7 +217,7 @@ class DataController {
     }
     
     //MARK: Clinic
-    func createClinic(title: String, address: String?, color: String?) -> Clinic {
+    func createClinic(id: UUID?, title: String, address: String?, color: String?) -> Clinic {
         let clinic = Clinic(entity: clinicEntity, insertInto: context)
         
         clinic.title = title
@@ -231,7 +230,7 @@ class DataController {
             clinic.color = Color.lightGreen.clinicColor.toHexString()
         }
         
-        clinic.setID()
+        clinic.setID(id: id)
         clinic.setModifiedTime()
         
         saveContext()
@@ -252,14 +251,14 @@ class DataController {
     
     //MARK: Finance
     @available(iOS 13.0, *)
-    func createFinance(title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
+    func createFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
         let finance = Finance(entity: financeEntity, insertInto: context)
         
         finance.title = title
         finance.amount = NSDecimalNumber(value: amount)
         finance.is_cost = isCost
         finance.date = date
-        finance.setID()
+        finance.setID(id: id)
         finance.setModifiedTime()
         
         saveContext()

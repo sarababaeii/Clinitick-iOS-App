@@ -84,7 +84,7 @@ class AddDiseaseViewController: UIViewController {
             return
         }
 
-        let disease = Disease.getDisease(title: diseaseData[0] as! String, price: diseaseData[1] as! Int)
+        let disease = Disease.getDisease(id: nil, title: diseaseData[0] as! String, price: diseaseData[1] as! Int)
 //        RestAPIManagr.sharedInstance.addDisease(disease: disease)
 
         back()

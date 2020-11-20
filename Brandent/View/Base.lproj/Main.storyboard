@@ -1214,7 +1214,7 @@
                             <outletCollection property="gestureRecognizers" destination="FBi-7R-EIm" appends="YES" id="uoA-bd-er0"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="افزودن تراکنش" id="hPA-Mr-Iq9"/>
+                    <navigationItem key="navigationItem" title="افزودن تراکنش" id="hPA-Mr-Iq9" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target"/>
                     <connections>
                         <outlet property="dateTextField" destination="YGS-T1-nBL" id="Hy9-5L-S7G"/>
                         <outlet property="kindMenu" destination="LCP-QY-uv9" id="zML-ia-BSa"/>

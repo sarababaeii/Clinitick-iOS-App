@@ -71,7 +71,7 @@ class AddClinicViewController: UIViewController {
             return
         }
         let color = colorsCollectionViewDelegate?.selectedColorCell?.color ?? Color.lightGreen
-        let clinic = Clinic.getClinic(title: clinicData[0], address: clinicData[1], color: color.clinicColor.toHexString())
+        let clinic = Clinic.getClinic(id: nil, title: clinicData[0], address: clinicData[1], color: color.clinicColor.toHexString())
         RestAPIManagr.sharedInstance.addClinic(clinic: clinic)
         
         back()

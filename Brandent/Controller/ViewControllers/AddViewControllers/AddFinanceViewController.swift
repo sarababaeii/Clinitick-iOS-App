@@ -108,7 +108,7 @@ class AddFinanceViewConrtoller: UIViewController, SwiftyMenuDelegate {
             return
         }
 
-        let finance = Finance.getFinance(title: financeData[0] as! String, amount: financeData[1] as! Int, isCost: isCost!, date: date!)
+        let finance = Finance.getFinance(id: nil, title: financeData[0] as! String, amount: financeData[1] as! Int, isCost: isCost!, date: date!)
         RestAPIManagr.sharedInstance.addFinance(finance: finance)
 
         back()

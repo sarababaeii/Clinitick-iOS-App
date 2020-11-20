@@ -14,28 +14,32 @@ import CoreData
 public class Clinic: NSManagedObject {
 
     @available(iOS 13.0, *)
-    static func getClinic(title: String, address: String?, color: String?) -> Clinic {
+    static func getClinic(id: UUID?, title: String, address: String?, color: String?) -> Clinic {
         if let clinic = Info.dataController.fetchClinic(title: title) {
             return clinic as! Clinic
         }
-        return Info.dataController.createClinic(title: title, address: address, color: color)
+        return Info.dataController.createClinic(id: id, title: title, address: address, color: color)
     }
     
-    func setID() {
-        let uuid = UUID()
-        self.id = uuid
+    func setID(id: UUID?) {
+        if let id = id {
+            self.id = id
+        } else {
+            let uuid = UUID()
+            self.id = uuid
+        }
     }
     
     func setModifiedTime() {
         self.modified_at = Date()
     }
     
+    //MARK: API Functions
     func toDictionary() -> [String: String] {
         var params: [String: String] = [
             APIKey.clinic.id!: self.id.uuidString,
             APIKey.clinic.title!: self.title,
-            APIKey.clinic.color! : self.color
-        ]
+            APIKey.clinic.color! : self.color]
         if let address = self.address {
             params[APIKey.clinic.address!] = address
         }
@@ -48,6 +52,20 @@ public class Clinic: NSManagedObject {
             params.append(clinic.toDictionary())
         }
         return params
+    }
+    
+    static func saveClinic(_ clinic: NSDictionary) {
+        guard let idString = clinic[APIKey.clinic.id!] as? String,
+         let id = UUID.init(uuidString: idString),
+         let title = clinic[APIKey.clinic.title!] as? String,
+         let color = clinic[APIKey.clinic.color!] as? String else {
+           return
+        }
+        var address: String?
+        if let add = clinic[APIKey.clinic.address!] as? String {
+            address = add
+        }
+        let _ = getClinic(id: id, title: title, address: address, color: color)
     }
 }
 

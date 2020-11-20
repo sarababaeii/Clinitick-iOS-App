@@ -10,44 +10,17 @@ import Foundation
 import UIKit
 
 class RestAPIManagr {
-    private struct API {
-        private static let base = "http://185.235.40.77:7000/api/"
-        private static let sync = API.base + "sync"
-        private static let appointment = API.base + "appointments"
-        private static let add = "/add"
-        private static let addAppointment = API.appointment + API.add
-        private static let images = API.addAppointment + "/images"
-        private static let clinic = API.base + "clinics"
-        private static let addClinic = API.clinic + API.add
-        private static let finance = API.base + "finances"
-        
-        static let addAppointmentURL = URL(string: API.addAppointment)!
-        static let addImageURL = URL(string: API.images)!
-        static let addClinicURL = URL(string: API.addClinic)!
-        static let addFinanceURL = URL(string: API.finance)!
-        static let syncURL = URL(string: API.sync)!
-        
-        static let deleteImage = API.images
-        //TODO: Get finances are remained
-    }
-    
-    private enum ContentType: String {
-        case json = "application/json"
-        case multipart = "multipart/form-data"
-    }
     
     static let sharedInstance = RestAPIManagr()
-//    var accessToken: String?
-//    var refreshToken: String?
-    
-    //MARK: Posting A Request
-    private func postRequest(request: URLRequest) {
+
+    //MARK: Sending A Request
+    private func sendRequest(request: URLRequest, type: APIRequestType) {
         let session = URLSession(configuration: .default)
         var code = 0
-        
+        var result: Data?
         let task = session.dataTask(with: request) { (data, response, error) in
-//            self.setToken(data: data)
             if let data = data {
+                result = data
                 let responseString = String(data: data, encoding: .utf8)
                 print("My response --> \(String(describing: responseString))")
             }
@@ -55,10 +28,33 @@ class RestAPIManagr {
         }
         task.resume()
         while true {
-            if code != 0 { //task.state == .completed
-                action(response: code)
+            if code != 0, let data = result { //task.state == .completed
+                action(response: code, data: data, requestType: type)
                 return
             }
+        }
+    }
+    
+    //MARK: Processing Response
+    private func checkResponse(response: HTTPURLResponse?, error: Error?) -> Int {
+        if error == nil, let response = response { //toast
+            print("response: \(response.debugDescription)")
+            return response.statusCode
+        }
+        print("Error0 \(error.debugDescription)")
+        return 1
+    }
+        
+    private func action(response: Int, data: Data, requestType: APIRequestType) {
+        print("response: \(response)")
+        if response != 200 {
+            return
+        }
+        switch requestType {
+        case .sync:
+            saveNewData(data: data)
+        default:
+            return
         }
     }
     
@@ -69,15 +65,10 @@ class RestAPIManagr {
         
         let jsonData = try? JSONSerialization.data(withJSONObject: params)
         request.httpBody = jsonData
-        
-        let bodyString = String(data: request.httpBody!, encoding: .utf8)
-        print("body: \(bodyString) ^^")
-
+//        let bodyString = String(data: request.httpBody!, encoding: .utf8)
         request.addValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
 //        request.addValue("10", forHTTPHeaderField: "Authorization") //10 should be token
         request.addValue("1", forHTTPHeaderField: "dentist_id")
-        
-        print(url)
         return request
     }
     
@@ -86,7 +77,6 @@ class RestAPIManagr {
         let params: [String: Any] = [
             "appointment": appointment.toDictionary(),
             "patient": appointment.patient.toDictionary()]
-        print("params: \(params)")
         return createRequest(url: API.addAppointmentURL, params: params as [String : Any], contentType: .json)
     }
     
@@ -100,8 +90,7 @@ class RestAPIManagr {
     
     private func createAddClinicRequest(clinic: Clinic) -> URLRequest {
         let params: [String: Any] = [
-            "clinic": clinic.toDictionary()
-        ]
+            "clinic": clinic.toDictionary()]
         return createRequest(url: API.addClinicURL, params: params, contentType: .json)
     }
     
@@ -111,21 +100,20 @@ class RestAPIManagr {
             params["last_updated"] = lastUpdate
         }
         if let clinics = clinics {
-            params["clinics"] = Clinic.toDictionaryArray(clinics: clinics)
+            params[APIKey.clinic.sync!] = Clinic.toDictionaryArray(clinics: clinics)
         }
         if let patients = patients {
-            params["patients"] = Patient.toDictionaryArray(patients: patients)
+            params[APIKey.patient.sync!] = Patient.toDictionaryArray(patients: patients)
         }
         if let finances = finances {
-            params["finances"] = Finance.toDictionaryArray(finances: finances)
+            params[APIKey.finance.sync!] = Finance.toDictionaryArray(finances: finances)
         }
         if let diseases = diseases {
-            params["diseases"] = Disease.toDictionaryArray(diseases: diseases)
+            params[APIKey.disease.sync!] = Disease.toDictionaryArray(diseases: diseases)
         }
         if let appointments = appointments {
-            params["appointments"] = Appointment.toDictionaryArray(appointments: appointments)
+            params[APIKey.appointment.sync!] = Appointment.toDictionaryArray(appointments: appointments)
         }
-        print("^^ Sync Request Is Going To Be Created ^")
         return createRequest(url: API.syncURL, params: params, contentType: .json)
     }
     
@@ -135,12 +123,12 @@ class RestAPIManagr {
 
         var request = URLRequest(url: API.addImageURL)
         request.httpMethod = "POST"
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        
+        request.setValue("\(ContentType.multipart.rawValue); boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+
         let httpBody = NSMutableData()
         httpBody.appendString(convertFormField(key: APIKey.images.id!, value: appointmentID.uuidString, using: boundary))
         for image in images {
-            httpBody.append(convertFileData(key: APIKey.images.rawValue, fileName: "\(image.name).jpeg", mimeType: "image/jpeg", fileData: image.data, using: boundary))
+            httpBody.append(convertFileData(key: APIKey.images.rawValue, fileName: image.name, mimeType: "image/jpeg", fileData: image.data, using: boundary))
         }
         httpBody.appendString("--\(boundary)--")
         request.httpBody = httpBody as Data
@@ -148,29 +136,8 @@ class RestAPIManagr {
     }
     
     private func createDeleteImageRequest(appointmentID: UUID, image: Image) -> URLRequest? {
-        
-//        var request = URLRequest(url: API.addImageURL)
-//        request.httpMethod = "DELETE"
-//
-//        let params = [
-//            "apt_id": appointmentID.uuidString,
-//            "image_id": image.name
-//        ]
-//        let jsonData = try? JSONSerialization.data(withJSONObject: params)
-//        request.httpBody = jsonData
-//
-//        let bodyString = String(data: request.httpBody!, encoding: .utf8)
-//        print("body: \(bodyString) ^^")
-//
-//        request.addValue(ContentType.json.rawValue, forHTTPHeaderField: "Content-Type")
-////        request.addValue("10", forHTTPHeaderField: "Authorization") //10 should be token
-//        request.addValue("1", forHTTPHeaderField: "dentist_id")
-//
-////        print(url)
-//        return request
-        
-        
-        guard let url = URL(string: "\(API.deleteImage)?apt_id=\(appointmentID)&image_id=\(image.name)") else {
+//        URL(string: "\(API.deleteImage)?apt_id=\(appointmentID)&image_id=\(image.name)")
+        guard let url = URL(string: "?apt_id=\(appointmentID)&image_id=\(image.name)", relativeTo: API.addImageURL) else {
             print("Error in creating URL")
             return nil
         }
@@ -197,67 +164,72 @@ class RestAPIManagr {
         return data as Data
     }
     
-    //MARK: Processing Response
-//    func setToken(data: Data?) {
-//        guard let data = data, let responseJSON = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
-//            return
-//        }
-//        print(responseJSON as Any)
-//        if let token = responseJSON["access_token"] as? String {
-//            accessToken = token
-//        }
-//        if let token = responseJSON["refresh_token"] as? String {
-//            refreshToken = token
-//        }
-//    }
-    
-    private func checkResponse(response: HTTPURLResponse?, error: Error?) -> Int {
-        if error == nil, let response = response {
-            print("@@ response: \(response.debugDescription) @")
-            return response.statusCode
-        }
-        print("@@ Error0 \(error.debugDescription) @")
-        return 1
-    }
-    
-    private func action(response: Int) {
-        print("$$ response: \(response) $")
-//        if response == 200 {
-//            UIApplication.topViewController()?.showNextPage(identifier: "HomeViewController")
-//            SocketIOManager.sharedInstance.establishConnection()
-//            //TODO: set me
-//        } else if response == 401{
-//            UIApplication.topViewController()?.showNextPage(identifier: "SignUpViewController")
-//        } else {
-//            UIApplication.topViewController()?.showToast(message: "Error \(response)")
-//        }
-    }
-    
     //MARK: Functions
     func addAppointment(appointment: Appointment) {
-        postRequest(request: createAddAppointmentRequest(appointment: appointment))
+        sendRequest(request: createAddAppointmentRequest(appointment: appointment), type: .addAppointment)
     }
     
     func addImage(appointmentID: UUID, images: [Image]) {
-        postRequest(request: createAddImagesRequest(appointmentID: appointmentID, images: images))
+        sendRequest(request: createAddImagesRequest(appointmentID: appointmentID, images: images), type: .addImage)
     }
     
     func deleteImage(appointmentID: UUID, image: Image) {
         if let request = createDeleteImageRequest(appointmentID: appointmentID, image: image) {
-            postRequest(request:request )
+            sendRequest(request:request, type: .addImage )
         }
-    } //TODO: Test
+    }
     
     func addFinance(finance: Finance) {
-        postRequest(request: createAddFinanceRequest(finance: finance))
+        sendRequest(request: createAddFinanceRequest(finance: finance), type: .addFinance)
     }
     
     func addClinic(clinic: Clinic) {
-        postRequest(request: createAddClinicRequest(clinic: clinic))
+        sendRequest(request: createAddClinicRequest(clinic: clinic), type: .addClinic)
     }
     
     func sync(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, diseases: [Disease]?, appointments: [Appointment]?) {
-        print("^^ Sync Called ^")
-        postRequest(request: createSyncRequest(clinics: clinics, patients: patients, finances: finances, diseases: diseases, appointments: appointments))
+        sendRequest(request: createSyncRequest(clinics: clinics, patients: patients, finances: finances, diseases: diseases, appointments: appointments), type: .sync)
+    }
+    
+    func saveNewData(data: Data) {
+        guard let result = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary else {
+            print("Could not save new data")
+            return
+        }
+        print(result)
+        if let timeString = result["timestamp"] as? String { //TODO: Test
+            Info.sharedInstance.lastUpdate = timeString
+        }
+        let keys: [APIKey] = [.clinic, .patient, .finance, .disease, .appointment]
+        for key in keys {
+            if let array = getArray(data: result, key: key.sync!) {
+                saveArray(array: array, key: key)
+            }
+        }
+    }
+    
+    func getArray(data: NSDictionary, key: String) -> NSArray? {
+        return data[key] as? NSArray
+    }
+    
+    func saveArray(array: NSArray, key: APIKey) {
+        for item in array {
+            if let dictionary = item as? NSDictionary {
+                switch key {
+                case .clinic:
+                    Clinic.saveClinic(dictionary)
+                case .patient:
+                    Patient.savePatient(dictionary)
+                case .finance:
+                    Finance.saveFinance(dictionary)
+                case .disease:
+                    Disease.saveDisease(dictionary)
+                case .appointment:
+                    Appointment.saveAppointment(dictionary)
+                default:
+                    return
+                }
+            }
+        }
     }
 }

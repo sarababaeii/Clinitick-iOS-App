@@ -15,14 +15,18 @@ import CoreData
 public class Finance: NSManagedObject {
     //MARK: Creating object
     @available(iOS 13.0, *)
-    static func getFinance(title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
+    static func getFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
         //is repeated?
-        return Info.dataController.createFinance(title: title, amount: amount, isCost: isCost, date: date)
+        return Info.dataController.createFinance(id: id, title: title, amount: amount, isCost: isCost, date: date)
     }
     
-    func setID() {
-        let uuid = UUID()
-        self.id = uuid
+    func setID(id: UUID?) {
+        if let id = id {
+            self.id = id
+        } else {
+            let uuid = UUID()
+            self.id = uuid
+        }
     }
     
     func setModifiedTime() {
@@ -62,7 +66,7 @@ public class Finance: NSManagedObject {
         return sum
     }
     
-    //MARK: Create Dictionary From Object
+    //MARK: API Functions
     func toDictionary() -> [String: String] {
         let params: [String: String] = [
             APIKey.finance.id!: self.id.uuidString,
@@ -70,8 +74,7 @@ public class Finance: NSManagedObject {
             APIKey.finance.isCost!: String(self.is_cost),
             APIKey.finance.price!: String(Int(truncating: self.amount)),
             APIKey.finance.date!: self.date.toDBFormatDateString(),
-            APIKey.finance.isDeleted!: String(self.isDeleted)
-        ]
+            APIKey.finance.isDeleted!: String(self.isDeleted)]
         return params
     }
     
@@ -82,6 +85,20 @@ public class Finance: NSManagedObject {
         }
         return params
     }
+    
+    static func saveFinance(_ finance: NSDictionary) {
+        if let idString = finance[APIKey.finance.id!] as? String,
+         let id = UUID.init(uuidString: idString),
+         let title = finance[APIKey.finance.title!] as? String,
+         let priceString = finance[APIKey.finance.price!] as? String,
+         let price = Int(priceString),
+         let dateString = finance[APIKey.finance.date!] as? String,
+         let date = Date.getDBFormatDate(from: dateString),
+         let isCostString = finance[APIKey.finance.isCost!] as? String,
+         let isCost = Bool(isCostString) {
+            let _ = getFinance(id: id, title: title, amount: price, isCost: isCost, date: date)
+        }
+    } //TODO: set date
 }
 
 //"finance": {
