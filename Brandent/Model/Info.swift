@@ -29,8 +29,12 @@ class Info {
     }
     
     func sync() {
+        if lastUpdate == nil {
+            lastUpdate = "1970-10-10 10:10:10"
+        }
         guard let time = lastUpdate, let lastUpdate = Date.getDBFormatDate(from: time) else {
             RestAPIManagr.sharedInstance.sync(clinics: nil, patients: nil, finances: nil, diseases: nil, appointments: nil)
+            print("Couldn't sync")
             return
         }
         let clinics = Info.dataController.fetchClinicsForSync(lastUpdated: lastUpdate) as? [Clinic]

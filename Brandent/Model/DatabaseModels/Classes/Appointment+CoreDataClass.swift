@@ -112,18 +112,20 @@ public class Appointment: NSManagedObject {
          let date = Date.getDBFormatDate(from: dateString) else {
             return
         }
-//        var clinic: String? // let clinic = appointment[APIKey.appointment.clinic!] as? String,
+        var clinic: String?
         var alergies: String?
         var notes: String?
-
+        if let title = appointment[APIKey.clinic.title!] as? String {
+            clinic = title
+        }
         if let alergy = appointment[APIKey.appointment.alergies!] as? String {
             alergies = alergy
         }
         if let note = appointment[APIKey.appointment.notes!] as? String {
             notes = note
         }
-        let _ = createAppointment(id: id, name: name, phone: phone, diseaseTitle: disease, price: price, clinicTitle: nil, alergies: alergies, visit_time: date, notes: notes)
-    } //TODO: Set clinic and date
+        let _ = createAppointment(id: id, name: name, phone: phone, diseaseTitle: disease, price: price, clinicTitle: clinic, alergies: alergies, visit_time: date, notes: notes)
+    } //TODO: date
 }
 
 //"appointment": {
