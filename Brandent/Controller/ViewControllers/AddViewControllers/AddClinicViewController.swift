@@ -91,6 +91,8 @@ class AddClinicViewController: UIViewController {
     func configure() {
         textFields = [titleTextField, addressTextField]
         setDelegates()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "افزودن مطب", style: UIBarButtonItem.Style.plain, target: self, action: .none)
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 26.0)!], for: .normal)
     }
     
     override func viewDidLoad() {

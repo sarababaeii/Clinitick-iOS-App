@@ -17,30 +17,45 @@ class CustomNavigationBar: UINavigationBar {
         }
     }
     
-    @IBInspectable var backFontStyle: String = "Vazir" {
+//    @IBInspectable var backFontStyle: String = "Vazir" {
+//        didSet {
+//            setBackButtonFont(style: backFontStyle, size: backFontSize)
+//        }
+//    }
+//    
+//    @IBInspectable var backFontSize: CGFloat = 18 {
+//        didSet {
+//            setBackButtonFont(style: backFontStyle, size: backFontSize)
+//        }
+//    }
+//    
+//    func setBackButtonFont(style: String, size: CGFloat) {
+//        print(style)
+////        self.setBackButtonFont(style: style, size: size)
+//        guard let items = self.items else {
+//            return
+//        }
+//        print(items)
+//        for item in items {
+//            item.backBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: style, size: size)!], for: UIControl.State.normal)
+//            print("DID")
+//        }
+//    }
+    
+    @IBInspectable var title: String = "title" {
         didSet {
-            setBackButtonFont(style: backFontStyle, size: backFontSize)
+            guard let items = self.items else {
+                return
+            }
+            for item in items {
+                let rightItem = UIBarButtonItem(title: "Title", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+                rightItem.isEnabled = false
+                rightItem.tintColor = UIColor.black
+                item.rightBarButtonItem = rightItem
+                print(item.title)
+            }
         }
     }
     
-    @IBInspectable var backFontSize: CGFloat = 18 {
-        didSet {
-            setBackButtonFont(style: backFontStyle, size: backFontSize)
-        }
-    }
-    
-    func setBackButtonFont(style: String, size: CGFloat) {
-        guard let items = self.items else {
-            return
-        }
-        for item in items {
-            item.backBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: style, size: size)!], for: UIControl.State.normal)
-        }
-    }
 }
 
-//let rightItem = UIBarButtonItem(title: "Title", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
-//rightItem.isEnabled = false
-//rightItem.tintColor = UIColor.black
-//item.rightBarButtonItem = rightItem
-//print(item.title)

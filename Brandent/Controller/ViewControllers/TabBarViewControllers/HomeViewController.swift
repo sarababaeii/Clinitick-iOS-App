@@ -91,7 +91,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         loadConfigure()
-        Info.sharedInstance.sync()
+//        Info.sharedInstance.sync()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -24,6 +24,8 @@ class DiseaseViewController: UIViewController {
     
     func configure() {
         setDelegates()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "بیماری‌ها", style: UIBarButtonItem.Style.plain, target: self, action: .none)
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 26.0)!], for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -18,6 +18,11 @@ class TasksViewController: UIViewController {
     
     var taskTableViewDelegate: TasksTableViewDelegate?
     
+    
+    @IBAction func selectToday(_ sender: Any) {
+        calendar.selectToday()
+    }
+    
     func setUIComponent() {
         // Initialize gradient layer.
         let gradientLayer: CAGradientLayer = CAGradientLayer()
@@ -35,10 +40,10 @@ class TasksViewController: UIViewController {
         gradientLayer.colors = [topColor, bottomColor]
 
         // Set start point.
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
 
         // Set end point.
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
 
         // Insert gradient layer into view's layer heirarchy.
         line.layer.insertSublayer(gradientLayer, at: 0)
@@ -46,7 +51,6 @@ class TasksViewController: UIViewController {
     
     func configure() {
         setUIComponent()
-        UserDefaults.standard.set("fa_IR", forKey: "current_locale")
         calendar.dateSelectHandler = { [unowned self] date in
             self.taskTableViewDelegate?.date = date
         }

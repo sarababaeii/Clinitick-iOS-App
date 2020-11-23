@@ -26,7 +26,9 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
     
     //MARK: UI Management
     func setTitle() {
-        self.title = titles[senderTag]
+//        self.title = titles[senderTag]
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: titles[senderTag], style: UIBarButtonItem.Style.plain, target: self, action: .none)
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 26.0)!], for: .normal)
     }
     
     func setTotalAmount(totalAmount: Int) {

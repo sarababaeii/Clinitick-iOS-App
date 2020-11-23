@@ -111,7 +111,11 @@ extension Date {
     
     func toPersianDayString() -> String { // 15
         let formatter = Date.getPersianDateFormatterWithStyle(format: "dd", dateStyle: nil, timeStyle: nil)
-        return formatter.string(from: self)
+        let str = formatter.string(from: self)
+        if str[0] == "۰" {
+            return str[1]
+        }
+        return str
     }
     
     func toPersianMonthString() -> String { // aban

@@ -266,6 +266,7 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     func setUIComponents() { //appear
         self.tabBarController?.tabBar.isHidden = true
         textViewDelegate?.setPlaceHolder(textView: notesTextView, text: "اطلاعات تکمیلی")
+//        notesTextView.sidePadding = 15
     }
     
     //MARK: Initialization

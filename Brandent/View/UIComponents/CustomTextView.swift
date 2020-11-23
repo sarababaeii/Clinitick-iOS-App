@@ -26,7 +26,7 @@ import UIKit
     
     @IBInspectable var sidePadding: CGFloat = 15 {
         didSet {
-            
+            self.textContainerInset = UIEdgeInsets(top: 15, left: sidePadding, bottom: 5, right: sidePadding)
         }
     }
     

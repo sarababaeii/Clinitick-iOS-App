@@ -949,8 +949,8 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Il-8U-foV" userLabel="View2" customClass="LightningUIView" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="25" y="521.66666666666663" width="325" height="174.66666666666663"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="نمودار شهریور" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ZC-3t-YH5">
-                                        <rect key="frame" x="239" y="10" width="76" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="نمودار آذر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ZC-3t-YH5">
+                                        <rect key="frame" x="264" y="10" width="51" height="22"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -990,7 +990,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cmW-Id-5PZ" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
+                    <navigationItem key="navigationItem" id="cmW-Id-5PZ">
                         <barButtonItem key="backBarButtonItem" title="بازگشت" id="Ztc-sX-l68"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="backFontStyle" value="Vazir"/>
@@ -1034,7 +1034,7 @@
             </objects>
             <point key="canvasLocation" x="86" y="1017"/>
         </scene>
-        <!--افزودن تراکنش-->
+        <!--Add Finance View Conrtoller-->
         <scene sceneID="yAc-yi-b69">
             <objects>
                 <viewController storyboardIdentifier="AddFinanceViewController" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TAQ-km-2To" customClass="AddFinanceViewConrtoller" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
@@ -1214,7 +1214,7 @@
                             <outletCollection property="gestureRecognizers" destination="FBi-7R-EIm" appends="YES" id="uoA-bd-er0"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="افزودن تراکنش" id="hPA-Mr-Iq9" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target"/>
+                    <navigationItem key="navigationItem" id="hPA-Mr-Iq9" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target"/>
                     <connections>
                         <outlet property="dateTextField" destination="YGS-T1-nBL" id="Hy9-5L-S7G"/>
                         <outlet property="kindMenu" destination="LCP-QY-uv9" id="zML-ia-BSa"/>
@@ -1231,7 +1231,7 @@
             </objects>
             <point key="canvasLocation" x="451" y="1752"/>
         </scene>
-        <!--درآمد خالص-->
+        <!--See Finance View Controller-->
         <scene sceneID="eZK-vd-6kl">
             <objects>
                 <viewController storyboardIdentifier="SeeFinanceViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="azi-eB-4lo" customClass="SeeFinanceViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
@@ -1437,7 +1437,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LgD-Ap-OlH"/>
                     </view>
-                    <navigationItem key="navigationItem" title="درآمد خالص" id="Ybe-D2-U74" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
+                    <navigationItem key="navigationItem" id="Ybe-D2-U74" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="rightTitle" value="درآمد خالص"/>
                             <userDefinedRuntimeAttribute type="color" keyPath="rightTitleColor">
@@ -1814,6 +1814,9 @@
                                                         <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="اطلاعات تکمیلی"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="sidePadding">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+۲۰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53m-hJ-fzV">
@@ -2161,16 +2164,16 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H09-qG-X6P" userLabel="View1" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="375" height="165"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="195"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="برنامه‌ی روزانه" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehu-qv-7If">
-                                        <rect key="frame" x="212.66666666666663" y="15.999999999999996" width="138.33333333333337" height="40.666666666666657"/>
+                                        <rect key="frame" x="212.66666666666663" y="10" width="138.33333333333337" height="40.666666666666664"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="26"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0a9-zM-mF2" customClass="GDCalendar" customModule="Brandent" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="60.666666666666679" width="375" height="104.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="60.666666666666679" width="375" height="124.33333333333331"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="headerBackgroundColor">
@@ -2187,21 +2190,34 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVD-X8-VrU">
+                                        <rect key="frame" x="27" y="20" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="selectToday:" destination="yHm-mx-6B1" eventType="touchUpInside" id="pUf-RI-zEv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="0a9-zM-mF2" secondAttribute="bottom" id="DiV-RJ-ecE"/>
+                                    <constraint firstAttribute="bottom" secondItem="0a9-zM-mF2" secondAttribute="bottom" constant="10" id="DiV-RJ-ecE"/>
                                     <constraint firstAttribute="trailing" secondItem="0a9-zM-mF2" secondAttribute="trailing" id="G6a-Jx-yhP"/>
                                     <constraint firstAttribute="trailing" secondItem="ehu-qv-7If" secondAttribute="trailing" constant="24" id="U59-IU-Q80"/>
-                                    <constraint firstItem="0a9-zM-mF2" firstAttribute="top" secondItem="ehu-qv-7If" secondAttribute="bottom" constant="4" id="X92-Ix-iwz"/>
-                                    <constraint firstItem="ehu-qv-7If" firstAttribute="top" secondItem="H09-qG-X6P" secondAttribute="top" constant="16" id="Xfm-m4-nTr"/>
+                                    <constraint firstItem="0a9-zM-mF2" firstAttribute="top" secondItem="ehu-qv-7If" secondAttribute="bottom" constant="10" id="X92-Ix-iwz"/>
+                                    <constraint firstItem="ehu-qv-7If" firstAttribute="top" secondItem="H09-qG-X6P" secondAttribute="top" constant="10" id="Xfm-m4-nTr"/>
                                     <constraint firstItem="ehu-qv-7If" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H09-qG-X6P" secondAttribute="leading" constant="20" symbolic="YES" id="ghM-BP-5fn"/>
                                     <constraint firstItem="0a9-zM-mF2" firstAttribute="leading" secondItem="H09-qG-X6P" secondAttribute="leading" id="i5W-or-H9J"/>
-                                    <constraint firstAttribute="height" constant="165" id="xsy-YA-5oE"/>
+                                    <constraint firstAttribute="height" constant="195" id="xsy-YA-5oE"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibx-rI-jd8" userLabel="Line View" customClass="LightningUIView" customModule="Brandent" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="226" width="341" height="1"/>
+                                <rect key="frame" x="0.0" y="256" width="341" height="1"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Bcj-6T-Phj"/>
@@ -2216,7 +2232,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nue-8N-9mY" userLabel="Circle View" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
-                                <rect key="frame" x="341" y="221" width="10" height="10"/>
+                                <rect key="frame" x="341" y="251" width="10" height="10"/>
                                 <color key="backgroundColor" red="0.52156862745098043" green="0.37254901960784315" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="10" id="QPg-U0-5yX"/>
@@ -2229,7 +2245,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="top" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="88" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PpH-je-Pzf">
-                                <rect key="frame" x="24" y="243" width="327" height="456"/>
+                                <rect key="frame" x="24" y="273" width="327" height="426"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -2676,7 +2692,7 @@
             </objects>
             <point key="canvasLocation" x="3496" y="1017"/>
         </scene>
-        <!--لیست بیماران-->
+        <!--Patients View Controller-->
         <scene sceneID="TuJ-jO-J8U">
             <objects>
                 <viewController storyboardIdentifier="PatientsViewController" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rGo-g0-WsQ" customClass="PatientsViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
@@ -2700,7 +2716,7 @@
                                                     <rect key="frame" x="0.0" y="6" width="318" height="60"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="علی اکبری نژاد" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfU-qo-p4K">
-                                                            <rect key="frame" x="223.66666666666666" y="19" width="78.333333333333343" height="22"/>
+                                                            <rect key="frame" x="223.33333333333334" y="19" width="78.666666666666657" height="22"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -2757,7 +2773,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4F0-o3-pEk"/>
                     </view>
-                    <navigationItem key="navigationItem" title="لیست بیماران" id="JCV-fL-rQZ" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
+                    <navigationItem key="navigationItem" id="JCV-fL-rQZ" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
                         <barButtonItem key="backBarButtonItem" title="بازگشت" id="C4i-xO-bmK"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="backFontStyle" value="Vazir"/>
@@ -2774,7 +2790,7 @@
             </objects>
             <point key="canvasLocation" x="2445" y="1815"/>
         </scene>
-        <!--بیماری‌ها-->
+        <!--Disease View Controller-->
         <scene sceneID="Imx-de-IKA">
             <objects>
                 <viewController storyboardIdentifier="DiseaseViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2Dv-gK-Jpk" customClass="DiseaseViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
@@ -2881,7 +2897,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S1b-c7-3dJ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="بیماری‌ها" id="fmw-N1-LV9" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
+                    <navigationItem key="navigationItem" id="fmw-N1-LV9" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
                         <barButtonItem key="backBarButtonItem" title="بازگشت" id="uGu-da-WpE"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="backFontStyle" value="Vazir"/>
@@ -2898,7 +2914,7 @@
             </objects>
             <point key="canvasLocation" x="3496" y="1815"/>
         </scene>
-        <!--مطب‌ها-->
+        <!--Clinics View Controller-->
         <scene sceneID="0uw-wI-zag">
             <objects>
                 <viewController storyboardIdentifier="ClinicsViewController" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yFf-aF-4vU" customClass="ClinicsViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
@@ -3004,7 +3020,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lJo-mk-Z1B"/>
                     </view>
-                    <navigationItem key="navigationItem" title="مطب‌ها" id="S7S-rS-vIs" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
+                    <navigationItem key="navigationItem" id="S7S-rS-vIs" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
                         <barButtonItem key="backBarButtonItem" title="بازگشت" id="dpl-SP-G3Z"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="backFontStyle" value="Vazir"/>
@@ -3021,7 +3037,7 @@
             </objects>
             <point key="canvasLocation" x="4580" y="1815"/>
         </scene>
-        <!--افزودن مطب-->
+        <!--Add Clinic View Controller-->
         <scene sceneID="uWJ-t0-B84">
             <objects>
                 <viewController storyboardIdentifier="AddClinicViewController" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i9X-Ut-Yb2" customClass="AddClinicViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
@@ -3196,7 +3212,7 @@
                             <outletCollection property="gestureRecognizers" destination="gEp-8m-Zz9" appends="YES" id="P1S-WE-Jua"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="افزودن مطب" id="qE4-vn-RNl" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
+                    <navigationItem key="navigationItem" id="qE4-vn-RNl" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="backFontStyle" value="Vazir"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="backFontSize">
@@ -3366,7 +3382,7 @@
             </objects>
             <point key="canvasLocation" x="2445" y="2613"/>
         </scene>
-        <!--افزودن بیماری-->
+        <!--Add Disease View Controller-->
         <scene sceneID="7Y9-v7-2FX">
             <objects>
                 <viewController storyboardIdentifier="AddDiseaseViewController" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wFk-Sd-vpy" customClass="AddDiseaseViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
@@ -3427,7 +3443,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-z0-fon" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
-                                <rect key="frame" x="253" y="255.33333333333337" width="98" height="31"/>
+                                <rect key="frame" x="234" y="255.33333333333337" width="117" height="37"/>
                                 <color key="backgroundColor" red="1" green="0.46026253700000003" blue="0.044820412990000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nqK-z0-fon" secondAttribute="height" multiplier="133:42" id="WFS-NX-DJH"/>
@@ -3464,7 +3480,7 @@
                             <outletCollection property="gestureRecognizers" destination="fsn-9b-bqJ" appends="YES" id="4SD-PA-yMH"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="افزودن بیماری" id="hrk-s3-oDN" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
+                    <navigationItem key="navigationItem" id="hrk-s3-oDN" customClass="CustomNavigationItem" customModule="Brandent" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="backFontStyle" value="Vazir"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="backFontSize">
@@ -3545,6 +3561,7 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="backFontSize">
                                 <real key="value" value="18"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="title"/>
                         </userDefinedRuntimeAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

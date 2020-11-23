@@ -153,10 +153,10 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
     }
     
     fileprivate func setCollectionViewConstraints(){
-        monthView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: 10.0).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: leftAnchor, constant: 40.0).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: -34.0).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0.0).isActive = true
+        monthView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -10.0).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: leftAnchor, constant: 35.0).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: -35.0).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 30.0).isActive = true
     }
     
     // MARK: - Initiate Variables
@@ -260,6 +260,12 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
         
         return "\(month) \(dateComps.year)".convertNumbers
     }
+    
+    func selectToday() { //TODO: doesn't work
+        if let index = lastIndex {
+            collectionView(collectionView, didSelectItemAt: index)
+        }
+    }
 }
 
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
@@ -325,7 +331,7 @@ extension GDCalendar: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (frame.width - 74) / 7, height: (frame.width - 74) / 7)
+        return CGSize(width: (frame.width - 70) / 7, height: (frame.width - 70) / 7)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

@@ -54,7 +54,7 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     
     //MARK: Update
     func update(newTasks: [Appointment]) {
-        for i in 0 ..< tasks.count {
+        for i in stride(from: tasks.count - 1, to: -1, by: -1) {
             deleteTask(index: i)
         }
         for task in newTasks {
@@ -75,7 +75,9 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     func deleteTask(index: Int) {
         let indexPath = IndexPath(row: index, section: 0)
         tasksTableView.performBatchUpdates({
-            tasks.remove(at: index)
+            if index < tasks.count {
+                tasks.remove(at: index)
+            }
             tasksTableView.deleteRows(at: [indexPath], with: .automatic)
             }, completion: nil)
     }

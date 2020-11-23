@@ -73,22 +73,47 @@ class GDCalendarItemCell: UICollectionViewCell{
         generateHeaderLabel(with: value, color: headerItemColor, font: headersFont)
     }
     
-    public func setupCell(value: String, itemColor: UIColor, itemsFont: UIFont = UIFont(name: "Vazir-Bold", size: 13)!){
+    public func setupCell(value: String, itemColor: UIColor, itemsFont: UIFont = UIFont(name: "Vazir-Bold", size: 14)!){
         layer.cornerRadius = frame.width / 2
         generateItemLabel(with: value, color: itemColor, font: itemsFont)
     }
     
     public func highlightCell(highlightColor: UIColor, textColor: UIColor){
-        UIView.animate(withDuration: 0.15) {
-            self.backgroundColor = highlightColor
+        UIView.animate(withDuration: 0.15){
+            let top = UIColor(red: 255/255, green: 119/255, blue: 0/255, alpha: 1)
+            let bottom = UIColor(red: 255/255, green: 106/255, blue: 58/255, alpha: 1)
+            self.setGradient(lightGradientColor: top, darkGradientColor: bottom)
             self.itemLabel.textColor = textColor
         }
     }
     
     public func unhighlightCell(){
-        UIView.animate(withDuration: 0.15) {
-            self.backgroundColor = UIColor.clear
+        UIView.animate(withDuration: 0.15){
+            self.removeGradient()
             self.itemLabel.textColor = UIColor.black
         }
+    }
+    
+    private func setGradient(lightGradientColor: UIColor, darkGradientColor: UIColor) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.bounds
+        gradientLayer.cornerRadius = self.layer.cornerRadius
+        gradientLayer.colors = [lightGradientColor.cgColor, darkGradientColor.cgColor]
+        
+        removeGradient()
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func removeGradient() {
+        if let gradientLayer = self.getGradientLayer() {
+            gradientLayer.removeFromSuperlayer()
+        }
+    }
+    
+    private func getGradientLayer() -> CALayer? {
+        if let topLayer = self.layer.sublayers?.first, topLayer is CAGradientLayer {
+            return topLayer
+        }
+        return nil
     }
 }

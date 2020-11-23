@@ -65,7 +65,8 @@ class RestAPIManagr {
         
         let jsonData = try? JSONSerialization.data(withJSONObject: params)
         request.httpBody = jsonData
-//        let bodyString = String(data: request.httpBody!, encoding: .utf8)
+        let bodyString = String(data: request.httpBody!, encoding: .utf8)
+        print("Body: \(bodyString)")
         request.addValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
 //        request.addValue("10", forHTTPHeaderField: "Authorization") //10 should be token
         request.addValue("1", forHTTPHeaderField: "dentist_id")
