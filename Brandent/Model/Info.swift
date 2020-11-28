@@ -29,6 +29,7 @@ class Info {
     }
     
     func sync() {
+        print(lastUpdate)
         if lastUpdate == nil {
             lastUpdate = "1970-10-10 10:10:10"
         }

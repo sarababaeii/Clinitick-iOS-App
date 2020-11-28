@@ -75,6 +75,7 @@
 		03BC1F9025251658009749C0 /* Speciality+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */; };
 		03BC1F9225251658009749C0 /* Disease+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */; };
 		03BDDF92255AF1160086DF25 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BDDF91255AF1160086DF25 /* APIKey.swift */; };
+		03D16F3B25729E1100E05E2C /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D16F3A25729E1100E05E2C /* Bool.swift */; };
 		03D41BBA25530EE7005BB942 /* UIDatePickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */; };
 		03D41BBC2553145A005BB942 /* PickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */; };
 		03D8573525558CA000304B00 /* CustomNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D8573425558CA000304B00 /* CustomNavigationItem.swift */; };
@@ -203,6 +204,7 @@
 		03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Speciality+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disease+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03BDDF91255AF1160086DF25 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		03D16F3A25729E1100E05E2C /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
 		03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDatePickerExtension.swift; sourceTree = "<group>"; };
 		03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDelegate.swift; sourceTree = "<group>"; };
 		03D8573425558CA000304B00 /* CustomNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationItem.swift; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 				0384E4F52550A74000197CD9 /* UIColorExtension.swift */,
 				03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */,
 				03FCCEB62562C7F6008A27B1 /* NSMutableData.swift */,
+				03D16F3A25729E1100E05E2C /* Bool.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -900,6 +903,7 @@
 				0321F87E256855510048D77B /* Date.swift in Sources */,
 				033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */,
 				03036D31250FE8F500C7824A /* AddAppointmentViewController.swift in Sources */,
+				03D16F3B25729E1100E05E2C /* Bool.swift in Sources */,
 				03091FDA2565527B00E9FA6C /* TabBarItemIndex.swift in Sources */,
 				030C68062549ECB200CECCC2 /* DiseasesViewController.swift in Sources */,
 				0321F8682567CC470048D77B /* APIRequestType.swift in Sources */,

@@ -32,6 +32,9 @@ class RestAPIManagr {
                 action(response: code, data: data, requestType: type)
                 return
             }
+            if code == 1 {
+                return
+            }
         }
     }
     

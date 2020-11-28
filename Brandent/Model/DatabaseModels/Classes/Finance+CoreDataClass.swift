@@ -91,17 +91,17 @@ public class Finance: NSManagedObject {
     
     static func saveFinance(_ finance: NSDictionary) {
         if let idString = finance[APIKey.finance.id!] as? String,
-         let id = UUID.init(uuidString: idString),
-         let title = finance[APIKey.finance.title!] as? String,
-         let priceString = finance[APIKey.finance.price!] as? String,
-         let price = Int(priceString),
-         let dateString = finance[APIKey.finance.date!] as? String,
-         let date = Date.getDBFormatDate(from: dateString),
-         let isCostString = finance[APIKey.finance.isCost!] as? String,
-         let isCost = Bool(isCostString) {
+            let id = UUID.init(uuidString: idString),
+            let title = finance[APIKey.finance.title!] as? String,
+            let priceString = finance[APIKey.finance.price!] as? String,
+            let price = Int(priceString),
+            let dateString = finance[APIKey.finance.date!] as? String,
+            let date = Date.getDBFormatDate(from: dateString),
+            let isCostString = finance[APIKey.finance.isCost!] as? Int,
+            let isCost = Bool.intToBool(value: isCostString) {
             let _ = getFinance(id: id, title: title, amount: price, isCost: isCost, date: date)
         }
-    } //TODO: set date
+    }
 }
 
 //"finance": {

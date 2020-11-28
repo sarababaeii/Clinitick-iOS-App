@@ -158,6 +158,17 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
         }
     }
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+
+        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+        let locationInScrollView = scrollView.panGestureRecognizer.location(in: scrollView)
+
+        if translation.y > 0 && locationInScrollView.y < 500.0 {
+            print("scrollView refresh:  Y: \(locationInScrollView.y)")
+//            setupUI()
+        }
+    }
+    
     //MARK: Image Picking
     @IBAction func addPhoto(_ sender: Any) {
         imagePickerDelegate?.displayImagePickingOptions()
