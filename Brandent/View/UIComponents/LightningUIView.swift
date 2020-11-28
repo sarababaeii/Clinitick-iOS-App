@@ -23,11 +23,11 @@ import UIKit
         }
     }
     
-//    @IBInspectable var vertical: Bool = true {
-//        didSet {
-//            updateGradientDirection()
-//        }
-//    }
+    @IBInspectable var isHorizontal: Bool = false {
+        didSet {
+            updateGradientDirection()
+        }
+    }
     
     private func setGradient() {
         let gradientLayer = CAGradientLayer()
@@ -52,9 +52,12 @@ import UIKit
         return nil
     }
     
-//    func updateGradientDirection() {
-//        gradientLayer.endPoint = vertical ? CGPoint(x: 0, y: 1) : CGPoint(x: 1, y: 0)
-//    }
+    func updateGradientDirection() {
+        if isHorizontal, let gradient = getGradientLayer() as? CAGradientLayer {
+            gradient.startPoint = CGPoint(x: 0, y: 1)
+            gradient.endPoint = CGPoint(x: 1, y: 1)
+        }
+    }
     
     func resizeGradientLayer() {
         if let gradientLayer = self.getGradientLayer() {

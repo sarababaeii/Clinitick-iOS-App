@@ -24,29 +24,7 @@ class TasksViewController: UIViewController {
     }
     
     func setUIComponent() {
-        // Initialize gradient layer.
-        let gradientLayer: CAGradientLayer = CAGradientLayer()
-
-        // Set frame of gradient layer.
-        gradientLayer.frame = line.bounds
-
-        // Color at the top of the gradient.
-        let topColor: CGColor = line!.lightGradientColor.cgColor
-
-        // Color at the bottom of the gradient.
-        let bottomColor: CGColor = line!.darkGradientColor.cgColor
-
-        // Set colors.
-        gradientLayer.colors = [topColor, bottomColor]
-
-        // Set start point.
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-
-        // Set end point.
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
-
-        // Insert gradient layer into view's layer heirarchy.
-        line.layer.insertSublayer(gradientLayer, at: 0)
+        self.setGradientSizes()
     }
     
     func configure() {
