@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         UserDefaults.standard.set("fa_IR", forKey: "current_locale") //for calendar
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Vazir", size: 18.0)!], for: .normal) //font style for back buttons of UIBarItems
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Vazir", size: 14.0)!], for: .normal) //font style for back buttons of UIBarItems
         return true
     }
 

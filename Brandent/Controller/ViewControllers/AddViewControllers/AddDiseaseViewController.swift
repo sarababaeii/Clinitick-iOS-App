@@ -97,7 +97,7 @@ class AddDiseaseViewController: UIViewController {
     func configure() {
         textFields = [titleTextField, priceTextField]
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "افزودن بیماری‌", style: UIBarButtonItem.Style.plain, target: self, action: .none)
-        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 26.0)!], for: .normal)
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
     }
     
     override func viewDidLoad() {

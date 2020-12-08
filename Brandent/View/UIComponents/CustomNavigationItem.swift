@@ -42,20 +42,20 @@ class CustomNavigationBar: UINavigationBar {
 //        }
 //    }
     
-    @IBInspectable var title: String = "title" {
-        didSet {
-            guard let items = self.items else {
-                return
-            }
-            for item in items {
-                let rightItem = UIBarButtonItem(title: "Title", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
-                rightItem.isEnabled = false
-                rightItem.tintColor = UIColor.black
-                item.rightBarButtonItem = rightItem
-                print(item.title)
-            }
-        }
-    }
+//    @IBInspectable var title: String = "title" {
+//        didSet {
+//            guard let items = self.items else {
+//                return
+//            }
+//            for item in items {
+//                let rightItem = UIBarButtonItem(title: "Title", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+//                rightItem.isEnabled = false
+//                rightItem.tintColor = UIColor.black
+//                item.rightBarButtonItem = rightItem
+//                print(item.title)
+//            }
+//        }
+//    }
     
 }
 
