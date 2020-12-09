@@ -33,6 +33,11 @@
 		0323B3C72540A83F00EB34CD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323B3C62540A83F00EB34CD /* DateExtension.swift */; };
 		0328877E254F63B700AF1A9F /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0328877D254F63B700AF1A9F /* ColorCollectionViewCell.swift */; };
 		033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033C7661253D9EC900D25F4E /* CustomTabBar.swift */; };
+		03425322258127D700DA6F29 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03425321258127D700DA6F29 /* LoginViewController.swift */; };
+		034253242581284900DA6F29 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034253232581284900DA6F29 /* SignUpViewController.swift */; };
+		034253262581287F00DA6F29 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034253252581287F00DA6F29 /* CodeViewController.swift */; };
+		03425328258128A900DA6F29 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03425327258128A900DA6F29 /* InformationViewController.swift */; };
+		0342532A25815C2700DA6F29 /* TimerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0342532925815C2700DA6F29 /* TimerDelegate.swift */; };
 		0344D47E253756F00031122F /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344D47D253756F00031122F /* ImagePickerDelegate.swift */; };
 		034F5468255DB020005145C6 /* SwiftyMenuExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F5467255DB020005145C6 /* SwiftyMenuExtension.swift */; };
 		035540E4251624A8003B9638 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E3251624A8003B9638 /* CustomImageView.swift */; };
@@ -156,6 +161,11 @@
 		0323B3C62540A83F00EB34CD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0328877D254F63B700AF1A9F /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		033C7661253D9EC900D25F4E /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		03425321258127D700DA6F29 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		034253232581284900DA6F29 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		034253252581287F00DA6F29 /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
+		03425327258128A900DA6F29 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		0342532925815C2700DA6F29 /* TimerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDelegate.swift; sourceTree = "<group>"; };
 		0344D47D253756F00031122F /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
 		034F5467255DB020005145C6 /* SwiftyMenuExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMenuExtension.swift; sourceTree = "<group>"; };
 		035540E3251624A8003B9638 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
@@ -327,6 +337,17 @@
 				0321F87F2568557D0048D77B /* String.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		034253202581277F00DA6F29 /* AuthenticationViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				03425321258127D700DA6F29 /* LoginViewController.swift */,
+				034253232581284900DA6F29 /* SignUpViewController.swift */,
+				034253252581287F00DA6F29 /* CodeViewController.swift */,
+				03425327258128A900DA6F29 /* InformationViewController.swift */,
+			);
+			path = AuthenticationViewControllers;
 			sourceTree = "<group>";
 		};
 		03749EA4250E76D6003CBE49 = {
@@ -514,6 +535,7 @@
 		03D857362555A17100304B00 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				034253202581277F00DA6F29 /* AuthenticationViewControllers */,
 				03D857372555A17D00304B00 /* TabBarViewControllers */,
 				03D857382555A19C00304B00 /* AddViewControllers */,
 				03D857392555A1BC00304B00 /* SeeViewControllers */,
@@ -585,6 +607,7 @@
 				03ADFDF3253B4D8B00A6827B /* TextViewDelegate.swift */,
 				03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */,
 				0344D47D253756F00031122F /* ImagePickerDelegate.swift */,
+				0342532925815C2700DA6F29 /* TimerDelegate.swift */,
 			);
 			path = ComponentDelegates;
 			sourceTree = "<group>";
@@ -886,10 +909,12 @@
 				030C68042549EC6C00CECCC2 /* DiseaseTableViewCell.swift in Sources */,
 				03EE136E25542E4900363EA0 /* MenuCollectionViewCell.swift in Sources */,
 				035D4AD62544B566007D8395 /* CheckButton.swift in Sources */,
+				034253242581284900DA6F29 /* SignUpViewController.swift in Sources */,
 				03FBE69B255495BC00FEFF63 /* Finance+CoreDataClass.swift in Sources */,
 				03749EB7250E76D6003CBE49 /* FinanceViewController.swift in Sources */,
 				0321F8802568557D0048D77B /* String.swift in Sources */,
 				0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */,
+				0342532A25815C2700DA6F29 /* TimerDelegate.swift in Sources */,
 				03D41BBC2553145A005BB942 /* PickerViewDelegate.swift in Sources */,
 				03B032E22530D78800CF1075 /* Info.swift in Sources */,
 				0321F8642567CA0F0048D77B /* APIAddress.swift in Sources */,
@@ -903,12 +928,14 @@
 				0321F87E256855510048D77B /* Date.swift in Sources */,
 				033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */,
 				03036D31250FE8F500C7824A /* AddAppointmentViewController.swift in Sources */,
+				034253262581287F00DA6F29 /* CodeViewController.swift in Sources */,
 				03D16F3B25729E1100E05E2C /* Bool.swift in Sources */,
 				03091FDA2565527B00E9FA6C /* TabBarItemIndex.swift in Sources */,
 				030C68062549ECB200CECCC2 /* DiseasesViewController.swift in Sources */,
 				0321F8682567CC470048D77B /* APIRequestType.swift in Sources */,
 				0360D860255165AA00C36AE4 /* PatientProfileViewController.swift in Sources */,
 				03088773255EB31600207D91 /* TodayTasksTableViewDelegate.swift in Sources */,
+				03425328258128A900DA6F29 /* InformationViewController.swift in Sources */,
 				03FBE68A2554786E00FEFF63 /* Dentist+CoreDataProperties.swift in Sources */,
 				0361A868253A1579001840EC /* CustomTextView.swift in Sources */,
 				03FBE6862554786E00FEFF63 /* Patient+CoreDataProperties.swift in Sources */,
@@ -943,6 +970,7 @@
 				0323B3C52540745900EB34CD /* RestAPIManager.swift in Sources */,
 				0321F87C2568553C0048D77B /* GDCalendarCell.swift in Sources */,
 				03FBE6842554786E00FEFF63 /* Disease+CoreDataProperties.swift in Sources */,
+				03425322258127D700DA6F29 /* LoginViewController.swift in Sources */,
 				030C67FC2549BAD400CECCC2 /* AlertMessage.swift in Sources */,
 				030C68002549E65E00CECCC2 /* PatientsViewController.swift in Sources */,
 				03088771255EB11A00207D91 /* TodayTasks.swift in Sources */,
