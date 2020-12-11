@@ -40,17 +40,16 @@ public class Dentist: NSManagedObject {
     }
     
     //MARK: API Functions
-//    func toDictionary() -> [String: String] {
-//        var params: [String: String] = [
-//            APIKey.clinic.id!: self.id.uuidString,
-//            APIKey.clinic.title!: self.title,
-//            APIKey.clinic.color! : self.color]
-//        if let address = self.address {
-//            params[APIKey.clinic.address!] = address
-//        }
-//        return params
-//    }
-//
+    func toDictionary() -> [String: String] {
+        let params: [String: String] = [
+            APIKey.dentist.phone!: self.phone,
+            APIKey.dentist.password!: self.password,
+            APIKey.dentist.name! : self.first_name,
+            APIKey.dentist.lastName!: self.last_name,
+            APIKey.dentist.speciality!: self.speciality]
+        return params
+    }
+
 //    static func toDictionaryArray(clinics: [Clinic]) -> [[String: String]] {
 //        var params = [[String: String]]()
 //        for clinic in clinics {
@@ -73,3 +72,11 @@ public class Dentist: NSManagedObject {
 //        let _ = getClinic(id: id, title: title, address: address, color: color)
 //    }
 }
+
+//{
+//  "phone": 9203012037,
+//  "password": "DAShnj131nADn",
+//  "first_name": "Hutch",
+//  "last_name": "The honey bee",
+//  "speciality": "جمع کردن عسل"
+//}

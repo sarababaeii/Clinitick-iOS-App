@@ -18,10 +18,15 @@ struct API {
     private static let clinic = API.base + "clinics"
     private static let addClinic = API.clinic + API.add
     private static let finance = API.base + "finances"
+    private static let authentication = API.base + "auth"
+    private static let login = API.authentication + "/login"
+    private static let signUp = API.authentication + "/register"
     
     static let addAppointmentURL = URL(string: API.addAppointment)!
     static let addImageURL = URL(string: API.images)!
     static let addClinicURL = URL(string: API.addClinic)!
     static let addFinanceURL = URL(string: API.finance)!
     static let syncURL = URL(string: API.sync)!
+    static let loginURL = URL(string: API.login)!
+    static let signUpURL = URL(string: API.signUp)!
 }

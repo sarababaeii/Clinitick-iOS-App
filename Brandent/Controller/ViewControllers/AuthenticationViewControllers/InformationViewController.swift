@@ -75,6 +75,7 @@ class InformationViewController: UIViewController {
         
         let dentist = Dentist.getDentist(id: nil, firstName: dentistData[0], lastName: dentistData[1], phone: dentistData[4], speciality: dentistData[2], password: dentistData[3])
         print(dentist)
+        RestAPIManagr.sharedInstance.signUp(dentist: dentist)
 //        RestAPIManagr.sharedInstance.addDisease(disease: disease)
         //TODO: Next page
     }

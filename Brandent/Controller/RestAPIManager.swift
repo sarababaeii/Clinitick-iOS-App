@@ -64,6 +64,7 @@ class RestAPIManagr {
     //MARK: Creating A Request
     private func createRequest(url: URL, params: [String: Any], contentType: ContentType) -> URLRequest {
         var request = URLRequest(url: url)
+        print(url)
         request.httpMethod = "POST"
         
         let jsonData = try? JSONSerialization.data(withJSONObject: params)
@@ -77,6 +78,18 @@ class RestAPIManagr {
     }
     
     //MARK: Creating Specific Request
+    private func createSignUpRequest(dentist: Dentist) -> URLRequest {
+        let params: [String: Any] = dentist.toDictionary()
+        return createRequest(url: API.signUpURL, params: params as [String : Any], contentType: .json)
+    }
+    
+    private func createLoginRequest(phone: String, password: String) -> URLRequest {
+        let params: [String: Any] = [
+            "phone": phone,
+            "password": password]
+        return createRequest(url: API.loginURL, params: params as [String : Any], contentType: .json)
+    }
+    
     private func createAddAppointmentRequest(appointment: Appointment) -> URLRequest {
         let params: [String: Any] = [
             "appointment": appointment.toDictionary(),
@@ -169,6 +182,14 @@ class RestAPIManagr {
     }
     
     //MARK: Functions
+    func login(phone: String, password: String) {
+        sendRequest(request: createLoginRequest(phone: phone, password: password), type: .login)
+    }
+    
+    func signUp(dentist: Dentist) {
+        sendRequest(request: createSignUpRequest(dentist: dentist), type: .signUp)
+    }
+    
     func addAppointment(appointment: Appointment) {
         sendRequest(request: createAddAppointmentRequest(appointment: appointment), type: .addAppointment)
     }

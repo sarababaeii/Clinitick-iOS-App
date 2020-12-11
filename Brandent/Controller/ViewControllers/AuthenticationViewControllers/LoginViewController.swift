@@ -71,6 +71,7 @@ class LoginViewController: UIViewController {
         print(dentistData[0])
         print(dentistData[1])
         
+        RestAPIManagr.sharedInstance.login(phone: dentistData[0], password: dentistData[1])
 //        let dentist = Dentist.getDentist(firstName: dentistData[0], lastName: dentistData[1], speciality: dentistData[2], phone: dentistData[3], password: dentistData[4])
 //        RestAPIManagr.sharedInstance.addDisease(disease: disease)
         //TODO: next page
@@ -83,10 +84,12 @@ class LoginViewController: UIViewController {
     }
     
     func nextPage() {
-        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController, dentistData[0] != "" else {
+        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else {
             return
         }
-        controller.phoneNumber = dentistData[0]
+        if dentistData[0] != "" {
+            controller.phoneNumber = dentistData[0]
+        }
         navigationController?.show(controller, sender: nil)
     }
     

@@ -22,9 +22,9 @@ enum APIKey: String {
     //MARK: ID
     var id: String? {
         switch self {
-        case .dentist:
-            return "dentist_id"
-        case .clinic, .disease, .appointment, .patient, .finance:
+//        case .dentist:
+//            return "dentist_id" bug?!
+        case .clinic, .disease, .appointment, .patient, .finance, .dentist:
             return "id"
         case .images:
             return "apt_id"
@@ -63,6 +63,7 @@ enum APIKey: String {
         }
     }
     
+    //MARK: Color
     var color: String? {
         switch self {
         case .clinic:
@@ -77,6 +78,18 @@ enum APIKey: String {
         switch self {
         case .patient:
             return "full_name"
+        case .dentist:
+            return "first_name"
+        default:
+            return nil
+        }
+    }
+    
+    //MARK: Last Name
+    var lastName: String? {
+        switch self {
+        case .dentist:
+            return "last_name"
         default:
             return nil
         }
@@ -85,7 +98,7 @@ enum APIKey: String {
     //MARK: Phone
     var phone: String? {
         switch self {
-        case .patient:
+        case .patient, .dentist:
             return "phone"
         default:
             return nil
@@ -185,6 +198,27 @@ enum APIKey: String {
             return nil
         }
     }
+    
+    //MARK: Password
+    var password: String? {
+        switch self {
+        case .dentist:
+            return "password"
+        default:
+            return nil
+        }
+    }
+    
+    //MARK: Speciality
+    var speciality: String? {
+        switch self {
+        case .dentist:
+            return "speciality"
+        default:
+            return nil
+        }
+    }
+    
     
     //MARK: Sync
     var sync: String? {
