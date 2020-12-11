@@ -2,7 +2,7 @@
 //  Dentist+CoreDataProperties.swift
 //  Brandent
 //
-//  Created by Sara Babaei on 11/5/20.
+//  Created by Sara Babaei on 12/10/20.
 //  Copyright © 2020 Sara Babaei. All rights reserved.
 //
 //
@@ -17,15 +17,20 @@ extension Dentist {
         return NSFetchRequest<Dentist>(entityName: "Dentist")
     }
 
-    @NSManaged public var name: Float
-    @NSManaged public var phone: String?
+    @NSManaged public var first_name: String
+    @NSManaged public var phone: String
     @NSManaged public var photo: Data?
+    @NSManaged public var last_name: String
+    @NSManaged public var password: String
+    @NSManaged public var id: UUID
+    @NSManaged public var modified_at: Date
+    @NSManaged public var speciality: String
     @NSManaged public var appointments: NSSet?
     @NSManaged public var clinics: NSSet?
     @NSManaged public var diseases: NSSet?
-    @NSManaged public var specialities: NSSet?
     @NSManaged public var finances: NSSet?
     @NSManaged public var patients: NSSet?
+    @NSManaged public var specialities: NSSet?
 
 }
 
@@ -80,23 +85,6 @@ extension Dentist {
 
 }
 
-// MARK: Generated accessors for specialities
-extension Dentist {
-
-    @objc(addSpecialitiesObject:)
-    @NSManaged public func addToSpecialities(_ value: Speciality)
-
-    @objc(removeSpecialitiesObject:)
-    @NSManaged public func removeFromSpecialities(_ value: Speciality)
-
-    @objc(addSpecialities:)
-    @NSManaged public func addToSpecialities(_ values: NSSet)
-
-    @objc(removeSpecialities:)
-    @NSManaged public func removeFromSpecialities(_ values: NSSet)
-
-}
-
 // MARK: Generated accessors for finances
 extension Dentist {
 
@@ -130,3 +118,41 @@ extension Dentist {
     @NSManaged public func removeFromPatients(_ values: NSSet)
 
 }
+
+// MARK: Generated accessors for specialities
+extension Dentist {
+
+    @objc(addSpecialitiesObject:)
+    @NSManaged public func addToSpecialities(_ value: Speciality)
+
+    @objc(removeSpecialitiesObject:)
+    @NSManaged public func removeFromSpecialities(_ value: Speciality)
+
+    @objc(addSpecialities:)
+    @NSManaged public func addToSpecialities(_ values: NSSet)
+
+    @objc(removeSpecialities:)
+    @NSManaged public func removeFromSpecialities(_ values: NSSet)
+
+}
+
+enum DentistAttributes: String {
+    case id = "id"
+    case firstName = "first_name"
+    case lastName = "last_name"
+    case phone = "phone"
+    case photo = "photo"
+    case password = "password"
+    case speciality = "speciality"
+    case modifiedAt = "modified_at"
+    
+    case appointments = "appointments"
+    case clinics = "clinics"
+    case diseases = "diseases"
+    case finances = "finances"
+    case patients = "patients"
+    case specialities = "specialities"
+}
+
+ 
+ 

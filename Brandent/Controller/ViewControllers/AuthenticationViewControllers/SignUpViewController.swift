@@ -28,9 +28,8 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    //Mark: Submission
+    //MARK: Submission
     func mustComplete() -> CustomTextField? {
-        print(phoneNumber)
         if phoneNumber == "" {
             return phoneNumberTextField
         }
@@ -50,7 +49,15 @@ class SignUpViewController: UIViewController {
             return
         }
 
-        print(phoneNumber)
+        nextPage()
+    }
+    
+    func nextPage() {
+        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CodeViewController") as? CodeViewController else {
+            return
+        }
+        controller.phoneNumber = phoneNumber
+        navigationController?.show(controller, sender: nil)
     }
     
     //MARK: Initialization
@@ -70,5 +77,3 @@ class SignUpViewController: UIViewController {
         configure()
     }
 }
-
-//TODO: go to next page programmatically

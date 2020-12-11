@@ -74,7 +74,6 @@
 		03AF9395251653BA008DD4A0 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF9394251653BA008DD4A0 /* DataController.swift */; };
 		03B032E22530D78800CF1075 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B032E12530D78800CF1075 /* Info.swift */; };
 		03BC1F8825251658009749C0 /* Appointment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */; };
-		03BC1F8A25251658009749C0 /* Dentist+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F7E25251658009749C0 /* Dentist+CoreDataClass.swift */; };
 		03BC1F8C25251658009749C0 /* Patient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8025251658009749C0 /* Patient+CoreDataClass.swift */; };
 		03BC1F8E25251658009749C0 /* Clinic+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */; };
 		03BC1F9025251658009749C0 /* Speciality+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */; };
@@ -84,6 +83,8 @@
 		03D41BBA25530EE7005BB942 /* UIDatePickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */; };
 		03D41BBC2553145A005BB942 /* PickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */; };
 		03D8573525558CA000304B00 /* CustomNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D8573425558CA000304B00 /* CustomNavigationItem.swift */; };
+		03E2FE252582994E00749377 /* Dentist+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2FE232582994E00749377 /* Dentist+CoreDataClass.swift */; };
+		03E2FE262582994E00749377 /* Dentist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2FE242582994E00749377 /* Dentist+CoreDataProperties.swift */; };
 		03E7F933254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F932254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift */; };
 		03E7F935254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F934254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift */; };
 		03E7F939254C61C8000EDDD0 /* AddDiseaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F938254C61C8000EDDD0 /* AddDiseaseViewController.swift */; };
@@ -105,7 +106,6 @@
 		03FBE6842554786E00FEFF63 /* Disease+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE6782554786E00FEFF63 /* Disease+CoreDataProperties.swift */; };
 		03FBE6862554786E00FEFF63 /* Patient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE67A2554786E00FEFF63 /* Patient+CoreDataProperties.swift */; };
 		03FBE6882554786E00FEFF63 /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE67C2554786E00FEFF63 /* Appointment+CoreDataProperties.swift */; };
-		03FBE68A2554786E00FEFF63 /* Dentist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE67E2554786E00FEFF63 /* Dentist+CoreDataProperties.swift */; };
 		03FBE68C2554786E00FEFF63 /* Speciality+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE6802554786E00FEFF63 /* Speciality+CoreDataProperties.swift */; };
 		03FBE69B255495BC00FEFF63 /* Finance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE699255495BC00FEFF63 /* Finance+CoreDataClass.swift */; };
 		03FBE69C255495BC00FEFF63 /* Finance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE69A255495BC00FEFF63 /* Finance+CoreDataProperties.swift */; };
@@ -208,7 +208,6 @@
 		03AF9394251653BA008DD4A0 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		03B032E12530D78800CF1075 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataClass.swift"; sourceTree = "<group>"; };
-		03BC1F7E25251658009749C0 /* Dentist+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dentist+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03BC1F8025251658009749C0 /* Patient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clinic+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Speciality+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -218,6 +217,8 @@
 		03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDatePickerExtension.swift; sourceTree = "<group>"; };
 		03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDelegate.swift; sourceTree = "<group>"; };
 		03D8573425558CA000304B00 /* CustomNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationItem.swift; sourceTree = "<group>"; };
+		03E2FE232582994E00749377 /* Dentist+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dentist+CoreDataClass.swift"; sourceTree = "<group>"; };
+		03E2FE242582994E00749377 /* Dentist+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dentist+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		03E7F932254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsTableViewDelegate.swift; sourceTree = "<group>"; };
 		03E7F934254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesTableViewDelegate.swift; sourceTree = "<group>"; };
 		03E7F938254C61C8000EDDD0 /* AddDiseaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDiseaseViewController.swift; sourceTree = "<group>"; };
@@ -239,7 +240,6 @@
 		03FBE6782554786E00FEFF63 /* Disease+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disease+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		03FBE67A2554786E00FEFF63 /* Patient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		03FBE67C2554786E00FEFF63 /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		03FBE67E2554786E00FEFF63 /* Dentist+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dentist+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		03FBE6802554786E00FEFF63 /* Speciality+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Speciality+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		03FBE699255495BC00FEFF63 /* Finance+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Finance+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03FBE69A255495BC00FEFF63 /* Finance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Finance+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -509,10 +509,10 @@
 			children = (
 				03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */,
 				03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */,
+				03E2FE232582994E00749377 /* Dentist+CoreDataClass.swift */,
 				03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */,
 				03FBE699255495BC00FEFF63 /* Finance+CoreDataClass.swift */,
 				03BC1F8025251658009749C0 /* Patient+CoreDataClass.swift */,
-				03BC1F7E25251658009749C0 /* Dentist+CoreDataClass.swift */,
 				03BC1F8425251658009749C0 /* Speciality+CoreDataClass.swift */,
 			);
 			path = Classes;
@@ -523,7 +523,7 @@
 			children = (
 				03FBE67C2554786E00FEFF63 /* Appointment+CoreDataProperties.swift */,
 				03FBE6722554784A00FEFF63 /* Clinic+CoreDataProperties.swift */,
-				03FBE67E2554786E00FEFF63 /* Dentist+CoreDataProperties.swift */,
+				03E2FE242582994E00749377 /* Dentist+CoreDataProperties.swift */,
 				03FBE6782554786E00FEFF63 /* Disease+CoreDataProperties.swift */,
 				03FBE69A255495BC00FEFF63 /* Finance+CoreDataProperties.swift */,
 				03FBE67A2554786E00FEFF63 /* Patient+CoreDataProperties.swift */,
@@ -920,7 +920,6 @@
 				0321F8642567CA0F0048D77B /* APIAddress.swift in Sources */,
 				03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */,
 				03E7F935254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift in Sources */,
-				03BC1F8A25251658009749C0 /* Dentist+CoreDataClass.swift in Sources */,
 				036A4E12254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift in Sources */,
 				0321F87A256854E90048D77B /* GDCalendar.swift in Sources */,
 				03E7F933254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift in Sources */,
@@ -936,7 +935,6 @@
 				0360D860255165AA00C36AE4 /* PatientProfileViewController.swift in Sources */,
 				03088773255EB31600207D91 /* TodayTasksTableViewDelegate.swift in Sources */,
 				03425328258128A900DA6F29 /* InformationViewController.swift in Sources */,
-				03FBE68A2554786E00FEFF63 /* Dentist+CoreDataProperties.swift in Sources */,
 				0361A868253A1579001840EC /* CustomTextView.swift in Sources */,
 				03FBE6862554786E00FEFF63 /* Patient+CoreDataProperties.swift in Sources */,
 				03EE13722554322400363EA0 /* MenuCollectionViewDelegate.swift in Sources */,
@@ -970,6 +968,7 @@
 				0323B3C52540745900EB34CD /* RestAPIManager.swift in Sources */,
 				0321F87C2568553C0048D77B /* GDCalendarCell.swift in Sources */,
 				03FBE6842554786E00FEFF63 /* Disease+CoreDataProperties.swift in Sources */,
+				03E2FE262582994E00749377 /* Dentist+CoreDataProperties.swift in Sources */,
 				03425322258127D700DA6F29 /* LoginViewController.swift in Sources */,
 				030C67FC2549BAD400CECCC2 /* AlertMessage.swift in Sources */,
 				030C68002549E65E00CECCC2 /* PatientsViewController.swift in Sources */,
@@ -977,6 +976,7 @@
 				03FBE68C2554786E00FEFF63 /* Speciality+CoreDataProperties.swift in Sources */,
 				03E7F944254C8A98000EDDD0 /* ClinicsTableViewDelegate.swift in Sources */,
 				03D41BBA25530EE7005BB942 /* UIDatePickerExtension.swift in Sources */,
+				03E2FE252582994E00749377 /* Dentist+CoreDataClass.swift in Sources */,
 				03FBE69C255495BC00FEFF63 /* Finance+CoreDataProperties.swift in Sources */,
 				0384E4F62550A74000197CD9 /* UIColorExtension.swift in Sources */,
 				03BDDF92255AF1160086DF25 /* APIKey.swift in Sources */,

@@ -73,18 +73,21 @@ class LoginViewController: UIViewController {
         
 //        let dentist = Dentist.getDentist(firstName: dentistData[0], lastName: dentistData[1], speciality: dentistData[2], phone: dentistData[3], password: dentistData[4])
 //        RestAPIManagr.sharedInstance.addDisease(disease: disease)
+        //TODO: next page
     }
     
     @IBAction func signUp(_ sender: Any) {
+        editingEnded(currentTextField as Any)
+        currentTextField = nil
+        nextPage()
     }
     
-    //MARK: Sending Phone Number to SignUp
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SignUpSegue",
-            dentistData[0] != "",
-            let viewController = segue.destination as? SignUpViewController {
-            viewController.phoneNumber = dentistData[0]
+    func nextPage() {
+        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController, dentistData[0] != "" else {
+            return
         }
+        controller.phoneNumber = dentistData[0]
+        navigationController?.show(controller, sender: nil)
     }
     
     //MARK: Initialization

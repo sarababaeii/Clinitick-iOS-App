@@ -19,10 +19,13 @@ class CodeViewController: UIViewController {
     @IBOutlet weak var resendView: CustomUIView!
     @IBOutlet weak var resendButton: CustomButton!
     
+    var timer: TimerDelegate?
+    
     var textFields = [CustomTextField]()
     var currentTextField: UITextField?
     
     var codeDigits = ["", "", "", ""] //0: first digit, 1: socond digit, 2: third digit, 4: fourth digit
+    var phoneNumber = ""
     
     //MARK: User Flow
     @IBAction func editingStarted(_ sender: Any) {
@@ -36,7 +39,8 @@ class CodeViewController: UIViewController {
             if textField.tag != 3 {
                 next(textField)
             } else {
-                //TODO: go to next page
+                //TODO: check code
+                nextPage()
             }
         }
     }
@@ -48,9 +52,18 @@ class CodeViewController: UIViewController {
     }
         
     func next(_ textField: UITextField) {
+        textFields[textField.tag + 1].isEnabled = true
         textFields[textField.tag + 1].becomeFirstResponder()
     }
         
+    func nextPage() {
+        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InformationViewController") as? InformationViewController else {
+            return
+        }
+        controller.phoneNumber = phoneNumber
+        navigationController?.show(controller, sender: nil)
+    }
+    
     @IBAction func hideKeyboard(_ sender: Any) {
         if let textField = currentTextField {
             textField.resignFirstResponder()
@@ -58,16 +71,29 @@ class CodeViewController: UIViewController {
     }
     
     @IBAction func resendCode(_ sender: Any) {
+        //TODO: API
+        setTimer()
+        resendButton.isHidden = true
+        //enable?
+        resendView.isHidden = false
+    }
+    
+    //MARK: Timer
+    func setTimer() {
+        timer = TimerDelegate(label: timerLabel, time: 60, from: self)
     }
     
     func timerFinished() {
         resendView.isHidden = true
         resendButton.isHidden = false
+        //enable?
     }
     
     //MARK: Initialization
     func configure() {
         textFields = [firstDigitTextField, secondDigitTextField, thirdDigitTextField, fourthDigitTextField]
+        setTimer()
+        firstDigitTextField.becomeFirstResponder()
     }
     
     override func viewDidLoad() {

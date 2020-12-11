@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TimerSetting {
+class TimerDelegate {
     var timer: Timer?
     let label: UILabel
     var counter: Int
@@ -23,20 +23,15 @@ class TimerSetting {
         on()
     }
     
-    private func on() {
+    func on() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
     }
     
-    private func off() {
+    func off() {
         timer?.invalidate()
     }
     
     @objc func updateCounter() {
-//        guard UIApplication.topViewController() == viewController else {
-//            off()
-//            return
-//        }
-        
         if counter > 0 {
             counter -= 1
             setTimerLabel(counter: counter)
@@ -55,6 +50,6 @@ class TimerSetting {
         if counter <= 9 {
             counterString = "۰\(counterString)"
         }
-        label.text = "۰۰:\(counterString)"
+        label.text = "۰:\(counterString)"
     }
 }

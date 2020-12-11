@@ -353,6 +353,31 @@ class DataController {
         }
         return mixture
     } //should go to other class
+    
+    //MARK: Dentist
+    @available(iOS 13.0, *)
+    func createDentist(id: UUID?, firstName: String, lastName: String, phone: String, speciality: String, password: String) -> Dentist {
+        let dentist = Dentist(entity: dentistEntity, insertInto: context)
+        
+        dentist.first_name = firstName
+        dentist.last_name = lastName
+        dentist.phone = phone
+        dentist.speciality = speciality
+        dentist.password = password
+        dentist.setID(id: id)
+        dentist.setModifiedTime()
+        
+        saveContext()
+        return dentist
+    }
+    
+    func fetchDentist(id: UUID) -> NSManagedObject? {
+        return fetchObject(object: .dentist, idAttribute: DentistAttributes.id.rawValue, id: id)
+    }
+    
+    func fetchDentist(phone: String) -> NSManagedObject? {
+        return fetchObject(object: .dentist, by: DentistAttributes.phone.rawValue, value: phone)
+    }
 }
 
 //insert and replace

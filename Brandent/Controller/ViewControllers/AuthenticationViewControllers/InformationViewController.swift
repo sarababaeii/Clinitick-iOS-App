@@ -21,6 +21,7 @@ class InformationViewController: UIViewController {
     var currentTextField: UITextField?
     
     var dentistData = ["", "", "", "", ""] as [String] //0: first name, 1: last name, 2: speciality, 3: password, 4: phone number
+    var phoneNumber = ""
     
     //MARK: User Flow
     @IBAction func editingStarted(_ sender: Any) {
@@ -51,6 +52,7 @@ class InformationViewController: UIViewController {
     func mustComplete() -> CustomTextField? {
         for i in 0 ..< 5 {
             if dentistData[i] == "" {
+                print(i)
                 return textFields[i]
             }
         }
@@ -70,20 +72,23 @@ class InformationViewController: UIViewController {
             submitionError(for: requiredTextField)
             return
         }
-
-        print(dentistData[0])
-        print(dentistData[1])
-        print(dentistData[2])
-        print(dentistData[3])
-        print(dentistData[4])
         
-//        let dentist = Dentist.getDentist(firstName: dentistData[0], lastName: dentistData[1], speciality: dentistData[2], phone: dentistData[3], password: dentistData[4])
+        let dentist = Dentist.getDentist(id: nil, firstName: dentistData[0], lastName: dentistData[1], phone: dentistData[4], speciality: dentistData[2], password: dentistData[3])
+        print(dentist)
 //        RestAPIManagr.sharedInstance.addDisease(disease: disease)
+        //TODO: Next page
+    }
+    
+    //MARK: UI Setting
+    func setPhoneNumber() {
+        phoneNumberTextField.text = phoneNumber
+        dentistData[4] = phoneNumber
     }
     
     //MARK: Initialization
     func configure() {
         textFields = [firstNameTextField, lastNameTextField, specialityTextField, passwordTextField, phoneNumberTextField]
+        setPhoneNumber()
     }
     
     override func viewDidLoad() {
