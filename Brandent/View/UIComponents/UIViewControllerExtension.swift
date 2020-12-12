@@ -12,8 +12,9 @@ import UIKit
 extension UIViewController {
     //MARK: Showing Next ViewController
     func showNextPage(identifier: String) {
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier) as UIViewController
+         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier) as UIViewController
         self.present(controller, animated: true, completion: nil)
+//        navigationController?.show(controller, sender: nil)
     }
     
     //MARK: Toast

@@ -67,14 +67,12 @@ class LoginViewController: UIViewController {
             submitionError(for: requiredTextField)
             return
         }
-
-        print(dentistData[0])
-        print(dentistData[1])
         
         RestAPIManagr.sharedInstance.login(phone: dentistData[0], password: dentistData[1])
+        if let _ = Info.sharedInstance.token {
+            self.showNextPage(identifier: "TabBarViewController")
+        }
 //        let dentist = Dentist.getDentist(firstName: dentistData[0], lastName: dentistData[1], speciality: dentistData[2], phone: dentistData[3], password: dentistData[4])
-//        RestAPIManagr.sharedInstance.addDisease(disease: disease)
-        //TODO: next page
     }
     
     @IBAction func signUp(_ sender: Any) {

@@ -18,14 +18,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var todayTasksTableView: UITableView!
     @IBOutlet weak var patientNameLabel: UILabel!
     @IBOutlet weak var diseaseLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     var menuCollectionViewDelegate: MenuCollectionViewDelegate?
     var todayTasksTableViewDelegate: TodayTasksTableViewDelegate?
     
     //MARK: Functions
-    @IBAction func changeAppointmentState(_ sender: Any) {
-    }
-    
     func openPage(item: MenuItem) {
         if let viewControllers = tabBarController?.viewControllers {
             Info.sharedInstance.selectedMenuItem = item
@@ -54,6 +52,7 @@ class HomeViewController: UIViewController {
         if let appointment = Info.dataController.getNextAppointment() {
             patientNameLabel.text = appointment.patient.name
             diseaseLabel.text = appointment.disease.title
+            timeLabel.text = appointment.visit_time.toPersianTimeString()
         }
     }
     

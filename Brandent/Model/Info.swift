@@ -18,13 +18,20 @@ class Info {
     var selectedMenuItem: MenuItem?
     
     let defaults = UserDefaults.standard
-    let lastUpdatedDefaultsKey = "LastUpdated"
-    var lastUpdate: String? {
+    var token: String? {
         get {
-            return defaults.string(forKey: lastUpdatedDefaultsKey)
+            return defaults.string(forKey: DefaultKey.token.rawValue)
         }
         set {
-            defaults.set(newValue, forKey: lastUpdatedDefaultsKey)
+            defaults.set(newValue, forKey: DefaultKey.token.rawValue)
+        }
+    }
+    var lastUpdate: String? {
+        get {
+            return defaults.string(forKey: DefaultKey.lastUpdated.rawValue)
+        }
+        set {
+            defaults.set(newValue, forKey: DefaultKey.lastUpdated.rawValue)
         }
     }
     
@@ -46,3 +53,5 @@ class Info {
         RestAPIManagr.sharedInstance.sync(clinics: clinics, patients: patients, finances: finances, diseases: diseases, appointments: appointments)
     }
 }
+
+// for dentist, save id to defaults and search it from DB

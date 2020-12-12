@@ -15,10 +15,11 @@ class RestAPIManagr {
 
     //MARK: Sending A Request
     private func sendRequest(request: URLRequest, type: APIRequestType) {
+        let req = setTokenInHeader(request: request, type: type)
         let session = URLSession(configuration: .default)
         var code = 0
         var result: Data?
-        let task = session.dataTask(with: request) { (data, response, error) in
+        let task = session.dataTask(with: req) { (data, response, error) in
             if let data = data {
                 result = data
                 let responseString = String(data: data, encoding: .utf8)
@@ -54,6 +55,8 @@ class RestAPIManagr {
             return
         }
         switch requestType {
+        case .login, .signUp:
+            authentication(data: data, type: requestType)
         case .sync:
             saveNewData(data: data)
         default:
@@ -64,7 +67,6 @@ class RestAPIManagr {
     //MARK: Creating A Request
     private func createRequest(url: URL, params: [String: Any], contentType: ContentType) -> URLRequest {
         var request = URLRequest(url: url)
-        print(url)
         request.httpMethod = "POST"
         
         let jsonData = try? JSONSerialization.data(withJSONObject: params)
@@ -72,9 +74,17 @@ class RestAPIManagr {
         let bodyString = String(data: request.httpBody!, encoding: .utf8)
         print("Body: \(bodyString)")
         request.addValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
-//        request.addValue("10", forHTTPHeaderField: "Authorization") //10 should be token
-        request.addValue("1", forHTTPHeaderField: "dentist_id")
+//        request.addValue("1", forHTTPHeaderField: "dentist_id")
         return request
+    }
+    
+    private func setTokenInHeader(request: URLRequest, type: APIRequestType) -> URLRequest {
+        guard type != .login && type != .signUp, let token = Info.sharedInstance.token else {
+            return request
+        }
+        var newRequest = request
+        newRequest.addValue(token, forHTTPHeaderField: "Authorization") //key?
+        return newRequest
     }
     
     //MARK: Creating Specific Request
@@ -153,7 +163,6 @@ class RestAPIManagr {
     }
     
     private func createDeleteImageRequest(appointmentID: UUID, image: Image) -> URLRequest? {
-//        URL(string: "\(API.deleteImage)?apt_id=\(appointmentID)&image_id=\(image.name)")
         guard let url = URL(string: "?apt_id=\(appointmentID)&image_id=\(image.name)", relativeTo: API.addImageURL) else {
             print("Error in creating URL")
             return nil
@@ -182,12 +191,12 @@ class RestAPIManagr {
     }
     
     //MARK: Functions
-    func login(phone: String, password: String) {
-        sendRequest(request: createLoginRequest(phone: phone, password: password), type: .login)
-    }
-    
     func signUp(dentist: Dentist) {
         sendRequest(request: createSignUpRequest(dentist: dentist), type: .signUp)
+    }
+    
+    func login(phone: String, password: String) {
+        sendRequest(request: createLoginRequest(phone: phone, password: password), type: .login)
     }
     
     func addAppointment(appointment: Appointment) {
@@ -212,13 +221,13 @@ class RestAPIManagr {
         sendRequest(request: createAddClinicRequest(clinic: clinic), type: .addClinic)
     }
     
+    //MARK: Sync
     func sync(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, diseases: [Disease]?, appointments: [Appointment]?) {
         sendRequest(request: createSyncRequest(clinics: clinics, patients: patients, finances: finances, diseases: diseases, appointments: appointments), type: .sync)
     }
     
     func saveNewData(data: Data) {
-        guard let result = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary else {
-            print("Could not save new data")
+        guard let result = readJSON(data: data) else {
             return
         }
         print(result)
@@ -256,5 +265,33 @@ class RestAPIManagr {
                 }
             }
         }
+    }
+    
+    //MARK: Authentication
+    func authentication(data: Data, type: APIRequestType) {
+        if type == .login {
+            saveDentist(data: data)
+        }
+        saveToken(data: data)
+    }
+    
+    func saveDentist(data: Data) {
+        print("Is saving dentist")
+        //TODO: Save dentist information in local DB
+    }
+    
+    func saveToken(data: Data) {
+        guard let dictionary = readJSON(data: data), let token = dictionary["token"] as? String else {
+            return
+        }
+        Info.sharedInstance.token = token
+    }
+    
+    func readJSON(data: Data) -> NSDictionary? {
+        if let result = try? JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
+            return result
+        }
+        print("Could not save new data")
+        return nil
     }
 }

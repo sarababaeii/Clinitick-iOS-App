@@ -51,6 +51,7 @@
 		0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */; };
 		0368107925473FA80016C1D6 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0368107825473FA80016C1D6 /* ImageCollectionViewCell.swift */; };
 		036A4E12254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A4E11254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift */; };
+		0373AA722585324900E79383 /* DefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0373AA712585324900E79383 /* DefaultKey.swift */; };
 		03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB0250E76D6003CBE49 /* AppDelegate.swift */; };
 		03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB2250E76D6003CBE49 /* SceneDelegate.swift */; };
 		03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB4250E76D6003CBE49 /* HomeViewController.swift */; };
@@ -179,6 +180,7 @@
 		0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		0368107825473FA80016C1D6 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		036A4E11254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		0373AA712585324900E79383 /* DefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKey.swift; sourceTree = "<group>"; };
 		03749EAD250E76D6003CBE49 /* Brandent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brandent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03749EB0250E76D6003CBE49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03749EB2250E76D6003CBE49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				0321F8632567CA0F0048D77B /* APIAddress.swift */,
 				0321F8652567CA920048D77B /* ContentType.swift */,
 				0321F8672567CC470048D77B /* APIRequestType.swift */,
+				0373AA712585324900E79383 /* DefaultKey.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -992,6 +995,7 @@
 				0360D8622551665500C36AE4 /* AppointmentsTableViewDelegate.swift in Sources */,
 				03F4A5C52551951F00D7E1C6 /* AddFinanceViewController.swift in Sources */,
 				03BC1F8E25251658009749C0 /* Clinic+CoreDataClass.swift in Sources */,
+				0373AA722585324900E79383 /* DefaultKey.swift in Sources */,
 				03AF9395251653BA008DD4A0 /* DataController.swift in Sources */,
 				030BE2F92543454600AA642C /* TaskTableViewCell.swift in Sources */,
 				03E7F939254C61C8000EDDD0 /* AddDiseaseViewController.swift in Sources */,
