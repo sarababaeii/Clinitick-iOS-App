@@ -44,4 +44,10 @@ class PatientsViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         configure()
     }
+    
+    //MARK: Showing NavigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 }

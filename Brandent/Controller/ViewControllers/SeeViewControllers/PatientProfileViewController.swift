@@ -8,10 +8,15 @@
 
 import Foundation
 import UIKit
+import SwiftyMenu
 
 @available(iOS 13.0, *)
 class PatientProfileViewController: UIViewController {
     
+    @IBOutlet weak var phoneTextField: CustomTextField!
+    @IBOutlet weak var nameTextField: CustomTextField!
+    @IBOutlet weak var clinicMenu: SwiftyMenu!
+    @IBOutlet weak var alergyMenu: SwiftyMenu!
     @IBOutlet weak var appointmentsTableView: UITableView!
     
     var patient: Patient?
@@ -22,6 +27,13 @@ class PatientProfileViewController: UIViewController {
 //        self.title = patient?.name
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: patient?.name, style: UIBarButtonItem.Style.plain, target: self, action: .none)
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
+    }
+    
+    func setInformation() {
+        phoneTextField.text = patient?.phone
+        nameTextField.text = patient?.name
+        //set clinic
+        //set alergy
     }
     
     func setDelegates() {
@@ -35,10 +47,14 @@ class PatientProfileViewController: UIViewController {
             return
         }
         setHeader()
+        setInformation()
         setDelegates()
     }
     
+    //MARK: Showing NavigationBar
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
         configure()
     }
 }

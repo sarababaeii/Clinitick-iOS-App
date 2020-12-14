@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         // Make sure you set an Storyboard ID for the view controller you want to instantiate
         if let _ = Info.sharedInstance.token {
-            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController")
+            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "MainNavigationController")
         } else {
             window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "AuthenticationNavigationController")
         }

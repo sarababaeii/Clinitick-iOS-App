@@ -86,18 +86,8 @@ class FinanceViewController: UIViewController {
         tomanLabels[tag].textColor = color.componentColor
     }
     
-    func checkParent() {
-        guard let item = Info.sharedInstance.selectedMenuItem else {
-            return
-        }
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: item.viewControllerIdentifier) as UIViewController
-        navigationController?.show(controller, sender: nil)
-        Info.sharedInstance.selectedMenuItem = nil
-    }
-    
     func configure() {
         self.setGradientSizes()
-        checkParent()
         numberLabels = [totalIncomeLabel, appointmentsIncomeLabel, otherIncomeLabel, expensesLabel]
         tomanLabels = [totalIncomeTomanLabel, appointmentsIncomeTomanLabel, otherIncomeTomanLabel, expensesTomanLabel]
         setNumbers()
@@ -118,10 +108,5 @@ class FinanceViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }

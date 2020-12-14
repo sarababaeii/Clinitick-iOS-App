@@ -15,7 +15,7 @@ class Info {
     @available(iOS 13.0, *)
     static var dataController = DataController()
     var lastViewControllerIndex = 0
-    var selectedMenuItem: MenuItem?
+    var dentist: Dentist? //TODO: Set
     
     let defaults = UserDefaults.standard
     var token: String? {

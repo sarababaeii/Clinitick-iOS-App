@@ -92,4 +92,10 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
         // Do any additional setup after loading the view.
         configure()
     }
+    
+    //MARK: Showing NavigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 }

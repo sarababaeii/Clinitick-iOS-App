@@ -28,7 +28,10 @@ class DiseaseViewController: UIViewController {
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
     }
     
+    //MARK: Showing NavigationBar
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
         configure()
     }
 }

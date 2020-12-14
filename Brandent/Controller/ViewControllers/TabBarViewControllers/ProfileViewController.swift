@@ -10,38 +10,43 @@ import Foundation
 import UIKit
 
 class ProfileViewController: UIViewController {
-
-    func checkParent() {
-        guard let item = Info.sharedInstance.selectedMenuItem else {
+    
+    @IBOutlet weak var dentistImageView: CustomImageView!
+    @IBOutlet weak var dentistNameLabel: UILabel!
+    @IBOutlet weak var specialityLabel: UILabel!
+    
+    func setDentistInformation() {
+        guard let dentist = Info.sharedInstance.dentist else {
             return
         }
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: item.viewControllerIdentifier) as UIViewController
-        navigationController?.show(controller, sender: nil)
-        Info.sharedInstance.selectedMenuItem = nil
+//        dentistImageView.image = dentist.photo
+        dentistNameLabel.text = dentist.first_name + dentist.last_name
+        specialityLabel.text = dentist.speciality
     }
     
     func configure() {
-        checkParent()
+        setDentistInformation()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        configure()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.profile.rawValue
-        configure()
 //        print(Info.sharedInstance.defaults.string(forKey: Info.sharedInstance.lastUpdatedDefaultsKey))
     }
     
+    //MARK: Hiding NavigationBar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        print("Bye")
+//        super.viewWillDisappear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
+//    }
 }

@@ -105,4 +105,10 @@ class AddDiseaseViewController: UIViewController {
         // Do any additional setup after loading the view.
         configure()
     }
+    
+    //MARK: Showing NavigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 }

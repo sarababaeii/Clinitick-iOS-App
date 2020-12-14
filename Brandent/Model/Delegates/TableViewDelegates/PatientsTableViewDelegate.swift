@@ -31,6 +31,7 @@ class PatientsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataS
         if let patient = patientDataSource(indexPath: indexPath) {
             cell.setAttributes(patient: patient)
         }
+        cell.selectionStyle = .none
         return cell
     }
     

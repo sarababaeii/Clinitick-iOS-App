@@ -25,10 +25,12 @@ class HomeViewController: UIViewController {
     
     //MARK: Functions
     func openPage(item: MenuItem) {
-        if let viewControllers = tabBarController?.viewControllers {
-            Info.sharedInstance.selectedMenuItem = item
-            tabBarController?.selectedViewController = viewControllers[item.tabBarItemIndex]
-        }
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: item.viewControllerIdentifier)
+        navigationController?.show(controller, sender: nil)
+//        if let viewControllers = tabBarController?.viewControllers {
+//            Info.sharedInstance.selectedMenuItem = item
+//            tabBarController?.selectedViewController = viewControllers[item.tabBarItemIndex]
+//        }
     }
     
     //MARK: UIComponents
@@ -39,9 +41,12 @@ class HomeViewController: UIViewController {
     }
     
     func setHeaderView() {
-//        profileImageView.image =
-//        dentistNameLabel.text =
         dateLabel.text = Date().toPersianWeekDMonth()
+        guard let dentist = Info.sharedInstance.dentist else {
+            return
+        }
+//        profileImageView.image = dentist.photo
+        dentistNameLabel.text = dentist.last_name
     }
     
     func setQuoteView() {
@@ -90,10 +95,13 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         loadConfigure()
-        Info.sharedInstance.sync()
+//        Info.sharedInstance.sync()
     }
     
+    //MARK: Hiding NavigationBar
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
         Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.home.rawValue
         appearConfigure()
     }

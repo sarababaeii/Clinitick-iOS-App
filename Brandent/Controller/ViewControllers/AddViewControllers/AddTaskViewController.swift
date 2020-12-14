@@ -1,8 +1,8 @@
 //
-//  AddFinanceViewController.swift
+//  AddTask.swift
 //  Brandent
 //
-//  Created by Sara Babaei on 11/3/20.
+//  Created by Sara Babaei on 12/13/20.
 //  Copyright © 2020 Sara Babaei. All rights reserved.
 //
 
@@ -10,38 +10,45 @@ import Foundation
 import UIKit
 import SwiftyMenu
 
-class AddFinanceViewConrtoller: UIViewController, SwiftyMenuDelegate {
+class AddTaskViewController: UIViewController, SwiftyMenuDelegate {
     
     @IBOutlet weak var titleTextField: CustomTextField!
-    @IBOutlet weak var priceTextField: CustomTextField!
-    @IBOutlet weak var kindMenu: SwiftyMenu!
     @IBOutlet weak var dateTextField: CustomTextField!
+    @IBOutlet weak var clinicMenu: SwiftyMenu!
     
-    let kindOptions = ["درآمد", "هزینه"]
     let datePicker = UIDatePicker()
+    var clinicOptions = [String]()
     
     var textFields = [CustomTextField]()
     var currentTextField: UITextField?
-    var financeData = ["", -1, ""] as [Any] //0: title, 1: price, 2: isIncome, 3: date
-    var isCost: Bool?
+    var taskData = ["", ""] //0: title, 2: clinic
     var date: Date?
     
-    //MARK: DropDownMenu Functions
-    func setKindMenuDelegates() {
-        kindMenu.delegate = self
-        kindMenu.options = kindOptions
-        kindMenu.collapsingAnimationStyle = .spring(level: .low)
+    //MARK: Clinic Functions
+    func prepareClinicMenu() {
+        getClinics()
+        if clinicOptions.count > 0 {
+            setClinicMenuDelegates()
+        }
+    }
+    
+    func getClinics() {
+        clinicOptions.removeAll()
+        if let clinics = Info.dataController.fetchAllClinics() as? [Clinic] {
+            for clinic in clinics {
+                clinicOptions.append(clinic.title)
+            }
+        }
+    }
+    
+    func setClinicMenuDelegates() {
+        clinicMenu.delegate = self
+        clinicMenu.options = clinicOptions
+        clinicMenu.collapsingAnimationStyle = .spring(level: .low)
     }
     
     func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
-        switch index {
-        case 0:
-            isCost = false
-        case 1:
-            isCost = true
-        default:
-            isCost = nil
-        }
+        taskData[2] = selectedOption.displayValue
     }
     
     //MARK: DatePicker Functions
@@ -66,22 +73,12 @@ class AddFinanceViewConrtoller: UIViewController, SwiftyMenuDelegate {
     @IBAction func editingStarted(_ sender: Any) {
         if let textField = sender as? UITextField {
             currentTextField = textField
-//            if textField.tag == 1 {
-//                textField.text = nil
-//            }
         }
     }
     
     @IBAction func editingEnded(_ sender: Any) {
         if let textField = sender as? UITextField, let text = textField.fetchInput() {
-            if textField.tag == 1 {
-                if let price = Int(text) {
-                    financeData[textField.tag] = price
-                    textField.text = "\(String.toPersianPriceString(price: price)) تومان"
-                }
-            } else {
-                financeData[textField.tag] = text
-            }
+            taskData[textField.tag] = text
         }
     }
     
@@ -98,7 +95,6 @@ class AddFinanceViewConrtoller: UIViewController, SwiftyMenuDelegate {
     }
     
     //MARK: Submission
-    @available(iOS 13.0, *)
     @IBAction func submit(_ sender: Any) {
         editingEnded(currentTextField as Any)
         currentTextField = nil
@@ -108,33 +104,25 @@ class AddFinanceViewConrtoller: UIViewController, SwiftyMenuDelegate {
             return
         }
 
-        let finance = Finance.getFinance(id: nil, title: financeData[0] as! String, amount: financeData[1] as! Int, isCost: isCost!, date: date!)
-        RestAPIManagr.sharedInstance.addFinance(finance: finance)
+//        let task = Task.getTask(id: nil, title: taskData[0], date: date!, clinic: taskData[1],)
+//        RestAPIManagr.sharedInstance.addTask(finance: task)
 
         back()
     }
     
-    func mustComplete() -> Any? {
-        for i in 0 ..< 3 {
-            if ((i == 0 || i == 2) && financeData[i] as! String == "") ||
-                (i == 1 && financeData[i] as! Int == -1) {
-                return textFields[i]
-            }
+    func mustComplete() -> CustomTextField? {
+        if taskData[0] == "" {
+            return textFields[0]
         }
-        if isCost == nil {
-            return kindMenu
+        if date == nil {
+            return textFields[1]
         }
         return nil
     }
     
     //MARK: Showing Error
-    func submitionError(for requiredItem: Any) {
-        if let textField = requiredItem as? CustomTextField {
-            textField.showError()
-        }
-        else if let menu = requiredItem as? SwiftyMenu {
-            menu.showError()
-        }
+    func submitionError(for textField: CustomTextField) {
+        textField.showError()
         self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
     }
     
@@ -142,18 +130,21 @@ class AddFinanceViewConrtoller: UIViewController, SwiftyMenuDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-    //MARK: Initialization
-    func configure() {
-        textFields = [titleTextField, priceTextField, dateTextField]
-        setKindMenuDelegates()
-        creatDatePicker()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "افزودن تراکنش", style: UIBarButtonItem.Style.plain, target: self, action: .none)
+    //MARK: UI Management
+    func setTitle() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "افزودن کار", style: UIBarButtonItem.Style.plain, target: self, action: .none)
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
+    }
+    
+    func configure() {
+        setTitle()
+        textFields = [titleTextField, dateTextField]
+        prepareClinicMenu()
+        creatDatePicker()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         configure()
     }
     
@@ -163,5 +154,3 @@ class AddFinanceViewConrtoller: UIViewController, SwiftyMenuDelegate {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
-
-//errors are not in order

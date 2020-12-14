@@ -40,15 +40,18 @@ class TasksViewController: UIViewController {
         tasksTableView.dataSource = taskTableViewDelegate
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.tasks.rawValue
-        setDelegates()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         configure()
+    }
+    
+    //MARK: Hiding NavigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.tasks.rawValue
+        setDelegates()
     }
 }
 

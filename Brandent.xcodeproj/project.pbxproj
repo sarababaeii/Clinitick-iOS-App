@@ -69,6 +69,7 @@
 		03749EFD250EA611003CBE49 /* Vazir-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03749EF8250EA611003CBE49 /* Vazir-Light.ttf */; };
 		03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EFF250EA8AE003CBE49 /* CustomTextField.swift */; };
 		0384E4F62550A74000197CD9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384E4F52550A74000197CD9 /* UIColorExtension.swift */; };
+		038D88B32587DE8600447506 /* SeeImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D88B22587DE8600447506 /* SeeImagesViewController.swift */; };
 		039DC3FD254895FE00D542E6 /* ImagesCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039DC3FC254895FE00D542E6 /* ImagesCollectionViewDelegate.swift */; };
 		039E2E3325359EDC00F6D5EE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039E2E3225359EDC00F6D5EE /* StringExtension.swift */; };
 		03ADFDF4253B4D8B00A6827B /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ADFDF3253B4D8B00A6827B /* TextViewDelegate.swift */; };
@@ -99,6 +100,9 @@
 		03EE13742554480E00363EA0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE13732554480E00363EA0 /* UIViewExtension.swift */; };
 		03EE13762554492300363EA0 /* LightningUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE13752554492300363EA0 /* LightningUIView.swift */; };
 		03EE13782554498A00363EA0 /* ShadowyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE13772554498A00363EA0 /* ShadowyUIView.swift */; };
+		03F27556258688A000526477 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F27555258688A000526477 /* AddTaskViewController.swift */; };
+		03F2755825868E0300526477 /* AddPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2755725868E0300526477 /* AddPatientViewController.swift */; };
+		03F2755A2586918400526477 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F275592586918400526477 /* AddViewController.swift */; };
 		03F4A5C52551951F00D7E1C6 /* AddFinanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */; };
 		03F4A5C92551D01A00D7E1C6 /* FinanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5C82551D01A00D7E1C6 /* FinanceTableViewCell.swift */; };
 		03F4A5CB2551D03300D7E1C6 /* TodayTasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5CA2551D03300D7E1C6 /* TodayTasksTableViewCell.swift */; };
@@ -204,6 +208,7 @@
 		03749EF8250EA611003CBE49 /* Vazir-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vazir-Light.ttf"; sourceTree = "<group>"; };
 		03749EFF250EA8AE003CBE49 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		0384E4F52550A74000197CD9 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		038D88B22587DE8600447506 /* SeeImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeImagesViewController.swift; sourceTree = "<group>"; };
 		039DC3FC254895FE00D542E6 /* ImagesCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		039E2E3225359EDC00F6D5EE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		03ADFDF3253B4D8B00A6827B /* TextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
@@ -234,6 +239,9 @@
 		03EE13732554480E00363EA0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		03EE13752554492300363EA0 /* LightningUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningUIView.swift; sourceTree = "<group>"; };
 		03EE13772554498A00363EA0 /* ShadowyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowyUIView.swift; sourceTree = "<group>"; };
+		03F27555258688A000526477 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		03F2755725868E0300526477 /* AddPatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPatientViewController.swift; sourceTree = "<group>"; };
+		03F275592586918400526477 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFinanceViewController.swift; sourceTree = "<group>"; };
 		03F4A5C82551D01A00D7E1C6 /* FinanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceTableViewCell.swift; sourceTree = "<group>"; };
 		03F4A5CA2551D03300D7E1C6 /* TodayTasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTasksTableViewCell.swift; sourceTree = "<group>"; };
@@ -560,10 +568,13 @@
 		03D857382555A19C00304B00 /* AddViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				03F2755725868E0300526477 /* AddPatientViewController.swift */,
 				03036D30250FE8F500C7824A /* AddAppointmentViewController.swift */,
+				03F27555258688A000526477 /* AddTaskViewController.swift */,
 				03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */,
 				03E7F938254C61C8000EDDD0 /* AddDiseaseViewController.swift */,
 				03E7F93C254C88DC000EDDD0 /* AddClinicViewController.swift */,
+				03F275592586918400526477 /* AddViewController.swift */,
 			);
 			path = AddViewControllers;
 			sourceTree = "<group>";
@@ -576,6 +587,7 @@
 				0360D85F255165AA00C36AE4 /* PatientProfileViewController.swift */,
 				030C68052549ECB200CECCC2 /* DiseasesViewController.swift */,
 				03E7F93E254C8940000EDDD0 /* ClinicsViewController.swift */,
+				038D88B22587DE8600447506 /* SeeImagesViewController.swift */,
 			);
 			path = SeeViewControllers;
 			sourceTree = "<group>";
@@ -935,6 +947,7 @@
 				03091FDA2565527B00E9FA6C /* TabBarItemIndex.swift in Sources */,
 				030C68062549ECB200CECCC2 /* DiseasesViewController.swift in Sources */,
 				0321F8682567CC470048D77B /* APIRequestType.swift in Sources */,
+				03F27556258688A000526477 /* AddTaskViewController.swift in Sources */,
 				0360D860255165AA00C36AE4 /* PatientProfileViewController.swift in Sources */,
 				03088773255EB31600207D91 /* TodayTasksTableViewDelegate.swift in Sources */,
 				03425328258128A900DA6F29 /* InformationViewController.swift in Sources */,
@@ -943,6 +956,7 @@
 				03EE13722554322400363EA0 /* MenuCollectionViewDelegate.swift in Sources */,
 				03BC1F9025251658009749C0 /* Speciality+CoreDataClass.swift in Sources */,
 				0368107925473FA80016C1D6 /* ImageCollectionViewCell.swift in Sources */,
+				038D88B32587DE8600447506 /* SeeImagesViewController.swift in Sources */,
 				03FCCEB92562CDB5008A27B1 /* Image.swift in Sources */,
 				0323B3C72540A83F00EB34CD /* DateExtension.swift in Sources */,
 				035540E625162725003B9638 /* CustmButton.swift in Sources */,
@@ -952,7 +966,9 @@
 				03FBE6882554786E00FEFF63 /* Appointment+CoreDataProperties.swift in Sources */,
 				03FBE6742554784A00FEFF63 /* Clinic+CoreDataProperties.swift in Sources */,
 				030C67FE2549D2C800CECCC2 /* ImagesCollectionViewHeader.swift in Sources */,
+				03F2755A2586918400526477 /* AddViewController.swift in Sources */,
 				03EE13782554498A00363EA0 /* ShadowyUIView.swift in Sources */,
+				03F2755825868E0300526477 /* AddPatientViewController.swift in Sources */,
 				03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */,
 				039DC3FD254895FE00D542E6 /* ImagesCollectionViewDelegate.swift in Sources */,
 				03EE13762554492300363EA0 /* LightningUIView.swift in Sources */,
