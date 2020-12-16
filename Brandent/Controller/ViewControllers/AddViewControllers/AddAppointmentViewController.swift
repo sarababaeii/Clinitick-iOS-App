@@ -13,6 +13,16 @@ class AddAppointmentViewController: UITableViewController {
     
     var patient: Patient?
     
+    func getCellInformation(indexPath: IndexPath) -> Any? {
+        let cell = tableView.cellForRow(at: indexPath)
+        let textField = cell?.contentView.subviews[0] as? CustomTextField
+        return textField?.fetchInput()
+    }
+    
+    func getAppointmentInformation() {
+        
+    }
+    
     //MARK: UI Management
     func setTitle() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "فعالیت درمانی", style: UIBarButtonItem.Style.plain, target: self, action: .none)
@@ -21,6 +31,9 @@ class AddAppointmentViewController: UITableViewController {
     
     func configure() {
         setTitle()
+        print(tableView!.numberOfSections)
+        var ip = IndexPath(row: 0, section: 0)
+        
     }
     
     override func viewDidLoad() {

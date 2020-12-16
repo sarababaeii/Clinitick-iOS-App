@@ -48,7 +48,8 @@ class SignUpViewController: UIViewController {
             submitionError(for: requiredTextField)
             return
         }
-
+        
+        RestAPIManagr.sharedInstance.getOneTimeCode(phone: phoneNumber)
         nextPage()
     }
     

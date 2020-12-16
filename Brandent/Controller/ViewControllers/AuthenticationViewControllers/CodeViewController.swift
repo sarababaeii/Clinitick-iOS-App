@@ -27,7 +27,7 @@ class CodeViewController: UIViewController {
     var codeDigits = ["", "", "", ""] //0: first digit, 1: socond digit, 2: third digit, 4: fourth digit
     var phoneNumber = ""
     
-    //MARK: User Flow
+    //MARK: TextFields Functions
     @IBAction func editingStarted(_ sender: Any) {
         if let textField = sender as? UITextField {
             currentTextField = textField
@@ -39,29 +39,26 @@ class CodeViewController: UIViewController {
             if textField.tag != 3 {
                 next(textField)
             } else {
-                //TODO: check code
-                nextPage()
+                textField.resignFirstResponder()
             }
+            sendCode()
         }
     }
     
     @IBAction func editingEnded(_ sender: Any) {
-        if let textField = sender as? UITextField, let text = textField.fetchInput() {
-            codeDigits[textField.tag] = text //Int(text)?
+        guard let textField = sender as? UITextField else {
+            return
+        }
+        if let text = textField.fetchInput() {
+            codeDigits[textField.tag] = text
+        } else {
+            codeDigits[textField.tag] = ""
         }
     }
         
     func next(_ textField: UITextField) {
         textFields[textField.tag + 1].isEnabled = true
         textFields[textField.tag + 1].becomeFirstResponder()
-    }
-        
-    func nextPage() {
-        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InformationViewController") as? InformationViewController else {
-            return
-        }
-        controller.phoneNumber = phoneNumber
-        navigationController?.show(controller, sender: nil)
     }
     
     @IBAction func hideKeyboard(_ sender: Any) {
@@ -70,12 +67,33 @@ class CodeViewController: UIViewController {
         }
     }
     
-    @IBAction func resendCode(_ sender: Any) {
-        //TODO: API
-        setTimer()
-        resendButton.isHidden = true
-        //enable?
-        resendView.isHidden = false
+    //MARK: Submission
+    func getEnteredCode() -> String {
+        var code = ""
+        for digit in codeDigits {
+            code += digit
+        }
+        return code
+    }
+    
+     func sendCode() {
+        let code = getEnteredCode()
+        guard code.count == 4 else {
+            return
+        }
+        if RestAPIManagr.sharedInstance.sendOneTimeCode(phone: phoneNumber, code: code) {
+            nextPage()
+        } else {
+            //?
+        }
+    }
+    
+    func nextPage() {
+        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InformationViewController") as? InformationViewController else {
+            return
+        }
+        controller.phoneNumber = phoneNumber
+        navigationController?.show(controller, sender: nil)
     }
     
     //MARK: Timer
@@ -84,9 +102,18 @@ class CodeViewController: UIViewController {
     }
     
     func timerFinished() {
-        resendView.isHidden = true
-        resendButton.isHidden = false
-        //enable?
+        changeResendCodeVisiblity()
+    }
+    
+    @IBAction func resendCode(_ sender: Any) {
+        RestAPIManagr.sharedInstance.getOneTimeCode(phone: phoneNumber)
+        setTimer()
+        changeResendCodeVisiblity()
+    }
+    
+    func changeResendCodeVisiblity() {
+        resendView.isHidden = !resendView.isHidden
+        resendButton.isHidden = !resendButton.isHidden
     }
     
     //MARK: Initialization

@@ -10,17 +10,24 @@ import Foundation
 
 struct API {
     private static let base = "http://185.235.40.77:7000/api/"
-    private static let sync = API.base + "sync"
-    private static let appointment = API.base + "appointments"
     private static let add = "/add"
+    
+    private static let sync = API.base + "sync"
+    
+    private static let appointment = API.base + "appointments"
     private static let addAppointment = API.appointment + API.add
     private static let images = API.addAppointment + "/images"
+    
     private static let clinic = API.base + "clinics"
     private static let addClinic = API.clinic + API.add
+    
     private static let finance = API.base + "finances"
+    
     private static let authentication = API.base + "auth/"
     private static let login = API.authentication + "login"
     private static let signUp = API.authentication + "register"
+    private static let sendPhone = API.signUp + "/phone"
+    private static let sendCode = API.signUp + "/code"
     
     static let addAppointmentURL = URL(string: API.addAppointment)!
     static let addImageURL = URL(string: API.images)!
@@ -29,4 +36,6 @@ struct API {
     static let syncURL = URL(string: API.sync)!
     static let loginURL = URL(string: API.login)!
     static let signUpURL = URL(string: API.signUp)!
+    static let sendPhoneURL = URL(string: API.sendPhone)!
+    static let sendCodeURL = URL(string: API.sendCode)!
 }

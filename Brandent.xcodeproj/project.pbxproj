@@ -49,6 +49,8 @@
 		0361A868253A1579001840EC /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361A867253A1579001840EC /* CustomTextView.swift */; };
 		0363E686253235980095AF7C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363E685253235980095AF7C /* Color.swift */; };
 		0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */; };
+		036626BB258A6054002CCEE2 /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036626BA258A6054002CCEE2 /* JSONSerializer.swift */; };
+		036626BD258A74C1002CCEE2 /* RestAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036626BC258A74C1002CCEE2 /* RestAPIResult.swift */; };
 		0368107925473FA80016C1D6 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0368107825473FA80016C1D6 /* ImageCollectionViewCell.swift */; };
 		036A4E12254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A4E11254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift */; };
 		0373AA722585324900E79383 /* DefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0373AA712585324900E79383 /* DefaultKey.swift */; };
@@ -182,6 +184,8 @@
 		0361A867253A1579001840EC /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		0363E685253235980095AF7C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		036626BA258A6054002CCEE2 /* JSONSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerializer.swift; sourceTree = "<group>"; };
+		036626BC258A74C1002CCEE2 /* RestAPIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIResult.swift; sourceTree = "<group>"; };
 		0368107825473FA80016C1D6 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		036A4E11254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		0373AA712585324900E79383 /* DefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKey.swift; sourceTree = "<group>"; };
@@ -315,6 +319,19 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		03101685258A82BD0034717F /* APIClasses */ = {
+			isa = PBXGroup;
+			children = (
+				0323B3C42540745900EB34CD /* RestAPIManager.swift */,
+				036626BC258A74C1002CCEE2 /* RestAPIResult.swift */,
+				036626BA258A6054002CCEE2 /* JSONSerializer.swift */,
+				0321F8632567CA0F0048D77B /* APIAddress.swift */,
+				0321F8672567CC470048D77B /* APIRequestType.swift */,
+				03BDDF91255AF1160086DF25 /* APIKey.swift */,
+			);
+			path = APIClasses;
+			sourceTree = "<group>";
+		};
 		0321F86925681A220048D77B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,10 +347,7 @@
 			children = (
 				030C67FB2549BAD400CECCC2 /* AlertMessage.swift */,
 				03091FD92565527B00E9FA6C /* TabBarItemIndex.swift */,
-				03BDDF91255AF1160086DF25 /* APIKey.swift */,
-				0321F8632567CA0F0048D77B /* APIAddress.swift */,
 				0321F8652567CA920048D77B /* ContentType.swift */,
-				0321F8672567CC470048D77B /* APIRequestType.swift */,
 				0373AA712585324900E79383 /* DefaultKey.swift */,
 			);
 			path = Enums;
@@ -359,6 +373,15 @@
 				03425327258128A900DA6F29 /* InformationViewController.swift */,
 			);
 			path = AuthenticationViewControllers;
+			sourceTree = "<group>";
+		};
+		036626B9258A5785002CCEE2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				03749EBE250E76D7003CBE49 /* Assets.xcassets */,
+				03749EE9250EA3C7003CBE49 /* Fonts */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		03749EA4250E76D6003CBE49 = {
@@ -389,6 +412,7 @@
 				03749EE7250E76F9003CBE49 /* Model */,
 				03749EE6250E76F3003CBE49 /* View */,
 				03749EE5250E76EA003CBE49 /* Controller */,
+				036626B9258A5785002CCEE2 /* Resources */,
 				03749EE8250E7720003CBE49 /* SupportingFiles */,
 			);
 			path = Brandent;
@@ -416,8 +440,6 @@
 			isa = PBXGroup;
 			children = (
 				03D857362555A17100304B00 /* ViewControllers */,
-				03AF9394251653BA008DD4A0 /* DataController.swift */,
-				0323B3C42540745900EB34CD /* RestAPIManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -436,6 +458,7 @@
 		03749EE7250E76F9003CBE49 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				03101685258A82BD0034717F /* APIClasses */,
 				0321F878256854D40048D77B /* Calendar */,
 				039E2E372535C79D00F6D5EE /* DatabaseModels */,
 				030AEE83253C55EC00E29CE1 /* Delegates */,
@@ -443,6 +466,7 @@
 				0321F86A25681A400048D77B /* Enums */,
 				039E2E362535C78E00F6D5EE /* Extensions */,
 				03B032E12530D78800CF1075 /* Info.swift */,
+				03AF9394251653BA008DD4A0 /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -450,10 +474,8 @@
 		03749EE8250E7720003CBE49 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				03749EE9250EA3C7003CBE49 /* Fonts */,
 				03749EB0250E76D6003CBE49 /* AppDelegate.swift */,
 				03749EB2250E76D6003CBE49 /* SceneDelegate.swift */,
-				03749EBE250E76D7003CBE49 /* Assets.xcassets */,
 				03749EC0250E76D7003CBE49 /* LaunchScreen.storyboard */,
 				03749EC3250E76D7003CBE49 /* Info.plist */,
 				03749EBB250E76D6003CBE49 /* Brandent.xcdatamodeld */,
@@ -921,6 +943,7 @@
 				030C68022549EB1400CECCC2 /* PatientTableViewCell.swift in Sources */,
 				03E7F93F254C8940000EDDD0 /* ClinicsViewController.swift in Sources */,
 				030BE2FB25434A5000AA642C /* TasksTableViewDelegate.swift in Sources */,
+				036626BB258A6054002CCEE2 /* JSONSerializer.swift in Sources */,
 				030C68042549EC6C00CECCC2 /* DiseaseTableViewCell.swift in Sources */,
 				03EE136E25542E4900363EA0 /* MenuCollectionViewCell.swift in Sources */,
 				035D4AD62544B566007D8395 /* CheckButton.swift in Sources */,
@@ -972,6 +995,7 @@
 				03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */,
 				039DC3FD254895FE00D542E6 /* ImagesCollectionViewDelegate.swift in Sources */,
 				03EE13762554492300363EA0 /* LightningUIView.swift in Sources */,
+				036626BD258A74C1002CCEE2 /* RestAPIResult.swift in Sources */,
 				03BC1F9225251658009749C0 /* Disease+CoreDataClass.swift in Sources */,
 				03ADFDF4253B4D8B00A6827B /* TextViewDelegate.swift in Sources */,
 				03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */,

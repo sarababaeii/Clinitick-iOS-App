@@ -135,7 +135,7 @@ extension Date {
     }
     
     func toPersianDMonthYString() -> String { // 15 aban 1399
-        let formatter = Date.getPersianDateFormatterWithStyle(format: nil, dateStyle: .medium, timeStyle: .none)
+        let formatter = Date.getPersianDateFormatterWithStyle(format: nil, dateStyle: .medium, timeStyle: nil)
         return formatter.string(from: self)
     }
 }
