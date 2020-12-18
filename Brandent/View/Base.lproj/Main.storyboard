@@ -1862,9 +1862,6 @@
                                         <color key="value" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="next:" destination="TAQ-km-2To" eventType="primaryActionTriggered" id="jA0-wi-l7l"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="مقدار (تومان)" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bdn-aH-eEn" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="24" y="86" width="327" height="54"/>
@@ -1886,9 +1883,6 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="next:" destination="TAQ-km-2To" eventType="primaryActionTriggered" id="3e3-eY-VTh"/>
-                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCP-QY-uv9" customClass="SwiftyMenu" customModule="SwiftyMenu">
                                 <rect key="frame" x="24" y="156" width="327" height="54"/>
@@ -1960,9 +1954,6 @@
                                         <real key="value" value="45"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="next:" destination="TAQ-km-2To" eventType="primaryActionTriggered" id="w2X-FH-13B"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSR-ua-oA0" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="234" y="296" width="117" height="37"/>
@@ -2839,9 +2830,6 @@
                                         <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="next:" destination="2wq-1P-FVO" eventType="primaryActionTriggered" id="1fR-If-V4Q"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T0h-D6-Htj" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="24" y="86" width="327" height="54"/>
@@ -2870,9 +2858,6 @@
                                         <real key="value" value="45"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="next:" destination="2wq-1P-FVO" eventType="primaryActionTriggered" id="3TE-JF-O2Y"/>
-                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JUZ-xt-Zt6" customClass="SwiftyMenu" customModule="SwiftyMenu">
                                 <rect key="frame" x="24" y="156" width="327" height="54"/>
@@ -4823,9 +4808,6 @@
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="next:" destination="i9X-Ut-Yb2" eventType="primaryActionTriggered" id="afd-O3-buR"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="آدرس (اختیاری)" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Irs-Dw-ee9" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="24" y="86.5" width="327" height="54.5"/>
@@ -4847,9 +4829,6 @@
                                         <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="submit:" destination="i9X-Ut-Yb2" eventType="primaryActionTriggered" id="lGd-Kz-U6c"/>
-                                </connections>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TM3-sN-OAQ">
                                 <rect key="frame" x="24" y="157" width="327" height="35"/>
@@ -5315,9 +5294,6 @@
                                         <color key="value" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="next:" destination="wFk-Sd-vpy" eventType="primaryActionTriggered" id="eaC-T5-HiV"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه‌ی پیش‌فرض" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQj-8m-6hB" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="24" y="83.5" width="327" height="52"/>
@@ -5339,9 +5315,6 @@
                                         <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="submit:" destination="wFk-Sd-vpy" eventType="primaryActionTriggered" id="l7i-JH-XmV"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-z0-fon" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="234" y="167.5" width="117" height="37"/>

@@ -110,7 +110,6 @@
 		03F4A5C52551951F00D7E1C6 /* AddFinanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */; };
 		03F4A5C92551D01A00D7E1C6 /* FinanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5C82551D01A00D7E1C6 /* FinanceTableViewCell.swift */; };
 		03F4A5CB2551D03300D7E1C6 /* TodayTasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5CA2551D03300D7E1C6 /* TodayTasksTableViewCell.swift */; };
-		03F8C045258CA1C000881175 /* DatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F8C044258CA1C000881175 /* DatePickerDelegate.swift */; };
 		03FBE6702554704800FEFF63 /* SeeFinanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE66F2554704800FEFF63 /* SeeFinanceViewController.swift */; };
 		03FBE6742554784A00FEFF63 /* Clinic+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE6722554784A00FEFF63 /* Clinic+CoreDataProperties.swift */; };
 		03FBE6842554786E00FEFF63 /* Disease+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE6782554786E00FEFF63 /* Disease+CoreDataProperties.swift */; };
@@ -254,7 +253,6 @@
 		03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFinanceViewController.swift; sourceTree = "<group>"; };
 		03F4A5C82551D01A00D7E1C6 /* FinanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceTableViewCell.swift; sourceTree = "<group>"; };
 		03F4A5CA2551D03300D7E1C6 /* TodayTasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTasksTableViewCell.swift; sourceTree = "<group>"; };
-		03F8C044258CA1C000881175 /* DatePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDelegate.swift; sourceTree = "<group>"; };
 		03FBE66F2554704800FEFF63 /* SeeFinanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeFinanceViewController.swift; sourceTree = "<group>"; };
 		03FBE6722554784A00FEFF63 /* Clinic+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clinic+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		03FBE6782554786E00FEFF63 /* Disease+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disease+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -653,7 +651,6 @@
 				0344D47D253756F00031122F /* ImagePickerDelegate.swift */,
 				0342532925815C2700DA6F29 /* TimerDelegate.swift */,
 				03101686258A847A0034717F /* TextFieldDelegate.swift */,
-				03F8C044258CA1C000881175 /* DatePickerDelegate.swift */,
 			);
 			path = ComponentDelegates;
 			sourceTree = "<group>";
@@ -979,7 +976,6 @@
 				03091FDA2565527B00E9FA6C /* TabBarItemIndex.swift in Sources */,
 				030C68062549ECB200CECCC2 /* DiseasesViewController.swift in Sources */,
 				0321F8682567CC470048D77B /* APIRequestType.swift in Sources */,
-				03F8C045258CA1C000881175 /* DatePickerDelegate.swift in Sources */,
 				03F27556258688A000526477 /* AddTaskViewController.swift in Sources */,
 				0360D860255165AA00C36AE4 /* PatientProfileViewController.swift in Sources */,
 				03088773255EB31600207D91 /* TodayTasksTableViewDelegate.swift in Sources */,

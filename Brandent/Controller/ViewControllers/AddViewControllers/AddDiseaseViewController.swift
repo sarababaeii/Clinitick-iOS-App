@@ -41,12 +41,6 @@ class AddDiseaseViewController: FormViewController {
     }
     
     //MARK: User Flow
-    @IBAction func next(_ sender: Any) {
-        if let textField = sender as? UITextField {
-            textFields[textField.tag + 1].becomeFirstResponder()
-        }
-    }
-    
     @IBAction func hideKeyboard(_ sender: Any) {
         if let textField = currentTextField {
             textField.resignFirstResponder()

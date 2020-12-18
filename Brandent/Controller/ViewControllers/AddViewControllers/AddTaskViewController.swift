@@ -70,16 +70,9 @@ class AddTaskViewController: FormViewController, SwiftyMenuDelegate {
     
     func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
         data[1] = selectedOption.displayValue
-        print("HI \(data[1])")
     }
     
     //MARK: User Flow
-    @IBAction func next(_ sender: Any) {
-        if let textField = sender as? UITextField {
-            textFields[textField.tag + 1].becomeFirstResponder()
-        }
-    }
-    
     @IBAction func hideKeyboard(_ sender: Any) {
         if let textField = currentTextField {
             textField.resignFirstResponder()

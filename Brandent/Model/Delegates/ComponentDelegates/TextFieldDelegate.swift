@@ -27,6 +27,17 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         viewController.currentTextField = textField
     }
     
+    //MARK: Change Editing
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard isForPrice else {
+            return true
+        }
+        if let text = textField.text, text.count > 0 {
+            textField.text = text.toPriceString(separator: ".", willAdd: string)
+        }
+        return true
+    }
+    
     //MARK: End Editing
     func textFieldDidEndEditing(_ textField: UITextField) {
         if isForDate {
@@ -39,8 +50,16 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         }
     }
     
+    //MARK: Return
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if viewController.textFields.count > textField.tag + 1 {
+            viewController.textFields[textField.tag + 1].becomeFirstResponder()
+        }
+        return true
+    }
+    
     private func getPriceData(_ textField: UITextField) {
-        guard let text = textField.fetchInput(), let price = Int(text) else {
+        guard let text = textField.fetchInput(), let price = text.toPriceInt() else {
             return
         }
         viewController.data[textField.tag] = price

@@ -69,24 +69,50 @@ extension String: SwiftMenuDisplayable {
         return enNumber!
     }
     
-    static func toPersianPriceString(price: Int) -> String {
-        return String(price).convertEnglishNumToPersianNum().toPriceString(separator: ".")
+    func toPriceInt() -> Int? {
+        return Int(self.deletePriceSeperators(separator: "."))
     }
     
-    func toPriceString(separator: String) -> String {
-        let st = self.firstDotIndex()
-        var ans = self[0 ..< st]
-        for i in st ..< self.count {
-            if (i - st) % 3 == 0 {
-                ans += separator
+    static func toPersianPriceString(price: Int) -> String {
+        return String(price).convertEnglishNumToPersianNum().toPriceString(separator: ".", willAdd: nil)
+    }
+    
+    func deletePriceSeperators(separator: String) -> String {
+        var ans = ""
+        for i in 0 ..< self.count {
+            if self[i] != separator {
+                ans += self[i]
             }
-            ans += self[i]
         }
         return ans
     }
     
-    func firstDotIndex() -> Int {
-        switch self.count % 3 {
+    func toPriceString(separator: String, willAdd: String?) -> String {
+        let rawString = self.deletePriceSeperators(separator: separator)
+        let size = rawString.calculateSize(willAdd: willAdd)
+        let st = rawString.firstDotIndex(size: size)
+        var ans = ""
+        for i in 0 ..< rawString.count {
+            if (i - st) % 3 == 0 && i >= st && i != rawString.count - 1 {
+                ans += separator
+            }
+            ans += rawString[i]
+        }
+        return ans
+    }
+    
+    private func calculateSize(willAdd: String?) -> Int {
+        if let char = willAdd {
+            if char != "" {
+                return self.count + 1
+            }
+            return self.count - 1
+        }
+        return self.count
+    }
+    
+    func firstDotIndex(size: Int) -> Int {
+        switch size % 3 {
         case 0:
             return 3
         case 1:
