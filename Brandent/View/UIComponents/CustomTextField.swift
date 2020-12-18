@@ -115,6 +115,7 @@ import UIKit
             self.placeholder = "*\(self.placeholder!)"
             self.placeHolderColor = Color.red.componentColor
         }
+        self.becomeFirstResponder()
     }
 }
 

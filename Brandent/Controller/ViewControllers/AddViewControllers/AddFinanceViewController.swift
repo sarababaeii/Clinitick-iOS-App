@@ -10,21 +10,46 @@ import Foundation
 import UIKit
 import SwiftyMenu
 
-class AddFinanceViewConrtoller: UIViewController, SwiftyMenuDelegate {
+class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
     
     @IBOutlet weak var titleTextField: CustomTextField!
     @IBOutlet weak var priceTextField: CustomTextField!
     @IBOutlet weak var kindMenu: SwiftyMenu!
     @IBOutlet weak var dateTextField: CustomTextField!
     
+    var textFieldDelegates = [TextFieldDelegate]()
     let kindOptions = ["درآمد", "هزینه"]
-    let datePicker = UIDatePicker()
     
-    var textFields = [CustomTextField]()
-    var currentTextField: UITextField?
-    var financeData = ["", -1, ""] as [Any] //0: title, 1: price, 2: isIncome, 3: date
     var isCost: Bool?
-    var date: Date?
+    
+    //MARK: Initialization
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configure()
+    }
+    
+    func configure() {
+        initializeTextFields()
+        setKindMenuDelegates()
+        setDatePicker(dateTextFieldIndex: 2, mode: .date)
+        setTitle(title: "افزودن تراکنش")
+    }
+    
+    func initializeTextFields() {
+        textFields = [titleTextField, priceTextField, dateTextField]
+        data = ["", -1] as [Any] //0: title, 1: price
+        setTextFieldDelegates()
+    }
+    
+    func setTextFieldDelegates() {
+        textFieldDelegates = [
+            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false),
+            TextFieldDelegate(viewController: self, isForPrice: true, isForDate: false),
+            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: true)]
+        for i in 0 ..< 3 {
+            textFields[i].delegate = textFieldDelegates[i]
+        }
+    }
     
     //MARK: DropDownMenu Functions
     func setKindMenuDelegates() {
@@ -44,47 +69,7 @@ class AddFinanceViewConrtoller: UIViewController, SwiftyMenuDelegate {
         }
     }
     
-    //MARK: DatePicker Functions
-    func creatDatePicker() {
-        datePicker.createPersianDatePicker(mode: .date)
-        dateTextField.inputView = datePicker
-        
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        dateTextField.inputAccessoryView = toolbar
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        toolbar.setItems([doneButton], animated: true )
-    }
-    
-    @objc func donePressed() {
-        dateTextField.text = datePicker.date.toPersianDMonthYString()
-        dateTextField.endEditing(true)
-        date = datePicker.date
-    }
-    
-    //MARK: TextFields Functions
-    @IBAction func editingStarted(_ sender: Any) {
-        if let textField = sender as? UITextField {
-            currentTextField = textField
-//            if textField.tag == 1 {
-//                textField.text = nil
-//            }
-        }
-    }
-    
-    @IBAction func editingEnded(_ sender: Any) {
-        if let textField = sender as? UITextField, let text = textField.fetchInput() {
-            if textField.tag == 1 {
-                if let price = Int(text) {
-                    financeData[textField.tag] = price
-                    textField.text = "\(String.toPersianPriceString(price: price)) تومان"
-                }
-            } else {
-                financeData[textField.tag] = text
-            }
-        }
-    }
-    
+    //MARK: User Flow
     @IBAction func next(_ sender: Any) {
         if let textField = sender as? UITextField {
             textFields[textField.tag + 1].becomeFirstResponder()
@@ -100,68 +85,27 @@ class AddFinanceViewConrtoller: UIViewController, SwiftyMenuDelegate {
     //MARK: Submission
     @available(iOS 13.0, *)
     @IBAction func submit(_ sender: Any) {
-        editingEnded(currentTextField as Any)
-        currentTextField = nil
-
-        if let requiredItem = mustComplete() {
-            submitionError(for: requiredItem)
-            return
-        }
-
-        let finance = Finance.getFinance(id: nil, title: financeData[0] as! String, amount: financeData[1] as! Int, isCost: isCost!, date: date!)
-        RestAPIManagr.sharedInstance.addFinance(finance: finance)
-
-        back()
+        submitForm()
     }
     
-    func mustComplete() -> Any? {
-        for i in 0 ..< 3 {
-            if ((i == 0 || i == 2) && financeData[i] as! String == "") ||
-                (i == 1 && financeData[i] as! Int == -1) {
-                return textFields[i]
-            }
+    override func mustComplete() -> Any? {
+        if data[0] as! String == "" {
+            return textFields[0]
+        }
+        if data[1] as! Int == -1 {
+            return textFields[1]
         }
         if isCost == nil {
             return kindMenu
         }
+        if date == nil {
+            return textFields[2]
+        }
         return nil
     }
     
-    //MARK: Showing Error
-    func submitionError(for requiredItem: Any) {
-        if let textField = requiredItem as? CustomTextField {
-            textField.showError()
-        }
-        else if let menu = requiredItem as? SwiftyMenu {
-            menu.showError()
-        }
-        self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
-    }
-    
-    func back() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    //MARK: Initialization
-    func configure() {
-        textFields = [titleTextField, priceTextField, dateTextField]
-        setKindMenuDelegates()
-        creatDatePicker()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "افزودن تراکنش", style: UIBarButtonItem.Style.plain, target: self, action: .none)
-        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        configure()
-    }
-    
-    //MARK: Showing NavigationBar
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+    override func saveData() {
+        let finance = Finance.getFinance(id: nil, title: data[0] as! String, amount: data[1] as! Int, isCost: isCost!, date: date!)
+        RestAPIManagr.sharedInstance.addFinance(finance: finance)
     }
 }
-
-//errors are not in order

@@ -9,39 +9,38 @@
 import Foundation
 import UIKit
 
-class AddDiseaseViewController: UIViewController {
+class AddDiseaseViewController: FormViewController {
     
     @IBOutlet weak var titleTextField: CustomTextField!
     @IBOutlet weak var priceTextField: CustomTextField!
     
-    var textFields = [CustomTextField]()
-    var currentTextField: UITextField?
+    var textFieldDelegates = [TextFieldDelegate]()
     
-    var diseaseData = ["", -1] as [Any] //0: title, 1: price
+    //MARK: Initialization
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configure()
+    }
     
+    func configure() {
+        initializeTextFields()
+        setTitle(title: "افزودن بیماری‌")
+    }
     
-    @IBAction func editingStarted(_ sender: Any) {
-        if let textField = sender as? UITextField {
-            currentTextField = textField
-//            if textField.tag == 1 {
-//                textField.text = nil
-//            }
+    func initializeTextFields() {
+        textFields = [titleTextField, priceTextField]
+        data = ["", -1] as [Any] //0: title, 1: price
+        setTextFieldDelegates()
+    }
+    
+    func setTextFieldDelegates() {
+        textFieldDelegates = [TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false), TextFieldDelegate(viewController: self, isForPrice: true, isForDate: false)]
+        for i in 0 ..< 2 {
+            textFields[i].delegate = textFieldDelegates[i]
         }
     }
     
-    @IBAction func editingEnded(_ sender: Any) {
-        if let textField = sender as? UITextField, let text = textField.fetchInput() {
-            if textField.tag == 1 {
-                if let price = Int(text) {
-                    diseaseData[textField.tag] = price
-                    textField.text = "\(String.toPersianPriceString(price: price)) تومان"
-                }
-            } else {
-                diseaseData[textField.tag] = text
-            }
-        }
-    }
-    
+    //MARK: User Flow
     @IBAction func next(_ sender: Any) {
         if let textField = sender as? UITextField {
             textFields[textField.tag + 1].becomeFirstResponder()
@@ -55,60 +54,22 @@ class AddDiseaseViewController: UIViewController {
     }
     
     //MARK: Submission
-    func mustComplete() -> CustomTextField? {
-        if diseaseData[0] as! String == "" {
+    @available(iOS 13.0, *)
+    @IBAction func submit(_ sender: Any) {
+        submitForm()
+    }
+    
+    override func mustComplete() -> Any? {
+        if data[0] as! String == "" {
             return textFields[0]
         }
-        if diseaseData[1] as! Int == -1 {
+        if data[1] as! Int == -1 {
             return textFields[1]
         }
         return nil
     }
     
-    
-    func submitionError(for textField: CustomTextField) {
-        if textField.placeHolderColor != Color.red.componentColor {
-            textField.placeholder = "*\(textField.placeholder!)"
-            textField.placeHolderColor = Color.red.componentColor
-        }
-        self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
-    }
-    
-    @available(iOS 13.0, *)
-    @IBAction func submit(_ sender: Any) {
-        editingEnded(currentTextField as Any)
-        currentTextField = nil
-
-        if let requiredTextField = mustComplete() {
-            submitionError(for: requiredTextField)
-            return
-        }
-
-        let disease = Disease.getDisease(id: nil, title: diseaseData[0] as! String, price: diseaseData[1] as! Int)
-//        RestAPIManagr.sharedInstance.addDisease(disease: disease)
-
-        back()
-    }
-    
-    func back() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    func configure() {
-        textFields = [titleTextField, priceTextField]
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "افزودن بیماری‌", style: UIBarButtonItem.Style.plain, target: self, action: .none)
-        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        configure()
-    }
-    
-    //MARK: Showing NavigationBar
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+    override func saveData() {
+        let _ = Disease.getDisease(id: nil, title: data[0] as! String, price: data[1] as! Int)
     }
 }

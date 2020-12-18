@@ -37,13 +37,13 @@
                                 <rect key="frame" x="12.5" y="80" width="350" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="خوش آمدید" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzm-Yl-D6j">
-                                        <rect key="frame" x="109.5" y="0.0" width="131" height="44"/>
+                                        <rect key="frame" x="110" y="0.0" width="130.5" height="44"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="28"/>
                                         <color key="textColor" red="1" green="0.46274509800000002" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="هدف ما: آسوده کردن زندگی کاری دندان‌پزشکان." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upX-6H-8xd">
-                                        <rect key="frame" x="26.5" y="55" width="297" height="25"/>
+                                        <rect key="frame" x="26.5" y="55" width="297.5" height="25"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -232,13 +232,13 @@
                                 <rect key="frame" x="24" y="80" width="327" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ثبت نام" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yys-nC-WyC">
-                                        <rect key="frame" x="121" y="0.0" width="85" height="44"/>
+                                        <rect key="frame" x="121.5" y="0.0" width="84.5" height="44"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="28"/>
                                         <color key="textColor" red="1" green="0.46274509800000002" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لطفا شماره تلفن همراه خود را وارد کنید." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQH-Mq-P1M">
-                                        <rect key="frame" x="39" y="45" width="249" height="25"/>
+                                        <rect key="frame" x="39.5" y="45" width="248.5" height="25"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -351,7 +351,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="کد پیامک شده را وارد کنید." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvU-NP-1V1">
-                                        <rect key="frame" x="69" y="41.5" width="189" height="28.5"/>
+                                        <rect key="frame" x="69.5" y="41.5" width="188.5" height="28.5"/>
                                         <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -988,7 +988,7 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </view>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لیست بیماران" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDS-vl-5Tw">
-                                                                            <rect key="frame" x="33.5" y="82" width="76" height="22"/>
+                                                                            <rect key="frame" x="34" y="82" width="75.5" height="22"/>
                                                                             <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
                                                                             <color key="textColor" red="0.17254901959999999" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -1559,13 +1559,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9J-Dr-N9N">
-                                                <rect key="frame" x="10" y="63" width="45" height="32"/>
+                                                <rect key="frame" x="10" y="63.5" width="45" height="31.5"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="20"/>
                                                 <color key="textColor" red="0.41960784313725491" green="0.81176470588235294" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۳۶.۰۰۰.۰۰۰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWp-Xg-tfe">
-                                                <rect key="frame" x="60" y="63" width="89" height="32"/>
+                                                <rect key="frame" x="60" y="63.5" width="89" height="31.5"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="20"/>
                                                 <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1863,8 +1863,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="editingEnded:" destination="TAQ-km-2To" eventType="editingDidEnd" id="oII-bV-FfD"/>
-                                    <action selector="editingStarted:" destination="TAQ-km-2To" eventType="editingDidBegin" id="PqF-yK-ZZM"/>
                                     <action selector="next:" destination="TAQ-km-2To" eventType="primaryActionTriggered" id="jA0-wi-l7l"/>
                                 </connections>
                             </textField>
@@ -1889,8 +1887,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="editingEnded:" destination="TAQ-km-2To" eventType="editingDidEnd" id="Sdw-K4-ygV"/>
-                                    <action selector="editingStarted:" destination="TAQ-km-2To" eventType="editingDidBegin" id="UAG-bB-N9Z"/>
                                     <action selector="next:" destination="TAQ-km-2To" eventType="primaryActionTriggered" id="3e3-eY-VTh"/>
                                 </connections>
                             </textField>
@@ -1965,8 +1961,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="editingEnded:" destination="TAQ-km-2To" eventType="editingDidEnd" id="aq5-F7-EzG"/>
-                                    <action selector="editingStarted:" destination="TAQ-km-2To" eventType="editingDidBegin" id="LCa-6z-ldk"/>
                                     <action selector="next:" destination="TAQ-km-2To" eventType="primaryActionTriggered" id="w2X-FH-13B"/>
                                 </connections>
                             </textField>
@@ -2820,7 +2814,7 @@
         <!--Add Task View Controller-->
         <scene sceneID="jCD-Zt-QOb">
             <objects>
-                <viewController storyboardIdentifier="AddTaskViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2wq-1P-FVO" customClass="AddTaskViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTaskViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2wq-1P-FVO" customClass="AddTaskViewController" customModule="Brandent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BZG-28-pUY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2846,8 +2840,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="editingEnded:" destination="2wq-1P-FVO" eventType="editingDidEnd" id="wZw-D0-1Ar"/>
-                                    <action selector="editingStarted:" destination="2wq-1P-FVO" eventType="editingDidBegin" id="pTc-5v-K6A"/>
                                     <action selector="next:" destination="2wq-1P-FVO" eventType="primaryActionTriggered" id="1fR-If-V4Q"/>
                                 </connections>
                             </textField>
@@ -2879,8 +2871,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="editingEnded:" destination="2wq-1P-FVO" eventType="editingDidEnd" id="r3o-sK-xnM"/>
-                                    <action selector="editingStarted:" destination="2wq-1P-FVO" eventType="editingDidBegin" id="glK-U4-gg7"/>
                                     <action selector="next:" destination="2wq-1P-FVO" eventType="primaryActionTriggered" id="3TE-JF-O2Y"/>
                                 </connections>
                             </textField>
@@ -3004,7 +2994,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مورد جدید" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rC9-Te-d55">
-                                        <rect key="frame" x="263" y="4.5" width="88" height="35"/>
+                                        <rect key="frame" x="263" y="5" width="88" height="34.5"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -4210,13 +4200,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مسعود جعفری" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hua-Ii-PBI">
-                                        <rect key="frame" x="129" y="136" width="117" height="31"/>
+                                        <rect key="frame" x="129" y="136" width="117.5" height="31.5"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ارتودنتیست" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPd-OZ-BQp">
-                                        <rect key="frame" x="151" y="167" width="73" height="25"/>
+                                        <rect key="frame" x="151.5" y="167.5" width="72.5" height="25"/>
                                         <fontDescription key="fontDescription" name="Vazir-Thin" family="Vazir" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -4834,8 +4824,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="editingEnded:" destination="i9X-Ut-Yb2" eventType="editingDidEnd" id="Qed-xo-e1Y"/>
-                                    <action selector="editingStarted:" destination="i9X-Ut-Yb2" eventType="editingDidBegin" id="u1j-ub-805"/>
                                     <action selector="next:" destination="i9X-Ut-Yb2" eventType="primaryActionTriggered" id="afd-O3-buR"/>
                                 </connections>
                             </textField>
@@ -4860,8 +4848,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="editingEnded:" destination="i9X-Ut-Yb2" eventType="editingDidEnd" id="TQI-qW-Y50"/>
-                                    <action selector="editingStarted:" destination="i9X-Ut-Yb2" eventType="editingDidBegin" id="i3v-9b-HwD"/>
                                     <action selector="submit:" destination="i9X-Ut-Yb2" eventType="primaryActionTriggered" id="lGd-Kz-U6c"/>
                                 </connections>
                             </textField>
@@ -5330,8 +5316,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="editingEnded:" destination="wFk-Sd-vpy" eventType="editingDidEnd" id="mGd-JU-d7P"/>
-                                    <action selector="editingStarted:" destination="wFk-Sd-vpy" eventType="editingDidBegin" id="nyk-a7-CqL"/>
                                     <action selector="next:" destination="wFk-Sd-vpy" eventType="primaryActionTriggered" id="eaC-T5-HiV"/>
                                 </connections>
                             </textField>
@@ -5356,8 +5340,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="editingEnded:" destination="wFk-Sd-vpy" eventType="editingDidEnd" id="Suy-Qj-1AY"/>
-                                    <action selector="editingStarted:" destination="wFk-Sd-vpy" eventType="editingDidBegin" id="j7W-cK-FJ4"/>
                                     <action selector="submit:" destination="wFk-Sd-vpy" eventType="primaryActionTriggered" id="l7i-JH-XmV"/>
                                 </connections>
                             </textField>
