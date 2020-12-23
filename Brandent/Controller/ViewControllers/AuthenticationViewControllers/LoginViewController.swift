@@ -9,35 +9,39 @@
 import Foundation
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: FormViewController {
     
     @IBOutlet weak var phoneNumberTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
     
-    var textFields = [CustomTextField]()
-    var currentTextField: UITextField?
+    var textFieldDelegates = [TextFieldDelegate]()
     
-    var dentistData = ["", ""] //0: phone number, 1: password
+    //MARK: Initialization
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configure()
+    }
     
-    //MARK: User Flow
-    @IBAction func editingStarted(_ sender: Any) {
-        if let textField = sender as? UITextField {
-            currentTextField = textField
+    func configure() {
+        initializeTextFields()
+    }
+    
+    func initializeTextFields() {
+        textFields = [phoneNumberTextField, passwordTextField]
+        data = ["", ""] //0: phone number, 1: password
+        setTextFieldDelegates()
+    }
+    
+    func setTextFieldDelegates() {
+        textFieldDelegates = [
+            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false),
+            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false)]
+        for i in 0 ..< 2 {
+            textFields[i].delegate = textFieldDelegates[i]
         }
     }
-        
-    @IBAction func editingEnded(_ sender: Any) {
-        if let textField = sender as? UITextField, let text = textField.fetchInput() {
-            dentistData[textField.tag] = text
-        }
-    }
-        
-    @IBAction func next(_ sender: Any) {
-        if let textField = sender as? UITextField {
-            textFields[textField.tag + 1].becomeFirstResponder()
-        }
-    }
-        
+    
+    //MARK: Keyboard Management
     @IBAction func hideKeyboard(_ sender: Any) {
         if let textField = currentTextField {
             textField.resignFirstResponder()
@@ -45,39 +49,32 @@ class LoginViewController: UIViewController {
     }
         
     //MARK: Submission
-    func mustComplete() -> CustomTextField? {
-        for i in 0 ..< 2 {
-            if dentistData[i] == "" {
-                return textFields[i]
-            }
-        }
-        return nil
-    }
-        
-    func submitionError(for textField: CustomTextField) {
-        textField.showError()
-        self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
-    }
-    
     @IBAction func login(_ sender: Any) {
-        editingEnded(currentTextField as Any)
-        currentTextField = nil
+        getLastData()
 
         if let requiredTextField = mustComplete() {
             submitionError(for: requiredTextField)
             return
         }
         
-        RestAPIManagr.sharedInstance.login(phone: dentistData[0], password: dentistData[1])
+        RestAPIManagr.sharedInstance.login(phone: data[0] as! String, password: data[1] as! String)
         if let _ = Info.sharedInstance.token {
-            self.showNextPage(identifier: "TabBarViewController")
+            nextPage2()
         }
 //        let dentist = Dentist.getDentist(firstName: dentistData[0], lastName: dentistData[1], speciality: dentistData[2], phone: dentistData[3], password: dentistData[4])
     }
     
+    override func mustComplete() -> Any? {
+        for i in 0 ..< 2 {
+            if data[i] as? String == "" {
+                return textFields[i]
+            }
+        }
+        return nil
+    }
+    
     @IBAction func signUp(_ sender: Any) {
-        editingEnded(currentTextField as Any)
-        currentTextField = nil
+        getLastData()
         nextPage()
     }
     
@@ -85,20 +82,16 @@ class LoginViewController: UIViewController {
         guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else {
             return
         }
-        if dentistData[0] != "" {
-            controller.phoneNumber = dentistData[0]
+        if data[0] as? String != "" {
+            controller.phoneNumber = self.data[0] as! String
         }
         navigationController?.show(controller, sender: nil)
     }
     
-    //MARK: Initialization
-    func configure() {
-        textFields = [phoneNumberTextField, passwordTextField]
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        configure()
+    func nextPage2() {
+        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarViewController") as? UITabBarController else {
+            return
+        }
+        navigationController?.show(controller, sender: nil)
     }
 }

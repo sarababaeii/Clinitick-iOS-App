@@ -10,17 +10,26 @@
 import Foundation
 import CoreData
 
-@available(iOS 13.0, *)
 @objc(Finance)
 public class Finance: NSManagedObject {
-    //MARK: Creating object
-    @available(iOS 13.0, *)
+    
     static func getFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
-        if let id = id, let object = Info.dataController.fetchFinance(id: id),
+        if let id = id, let object = DataController.sharedInstance.fetchFinance(id: id),
             let finance = object as? Finance {
             return finance
         }
-        return Info.dataController.createFinance(id: id, title: title, amount: amount, isCost: isCost, date: date)
+        return DataController.sharedInstance.createFinance(id: id, title: title, amount: amount, isCost: isCost, date: date)
+    }
+    
+    func setAttributes(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) {
+        self.title = title
+        self.amount = NSDecimalNumber(value: amount)
+        self.is_cost = isCost
+        self.date = date
+        
+        self.setID(id: id)
+        self.setDentist()
+        self.setModifiedTime()
     }
     
     func setID(id: UUID?) {
@@ -32,6 +41,12 @@ public class Finance: NSManagedObject {
         }
     }
     
+    func setDentist() {
+        if let dentist = Info.sharedInstance.dentist {
+            self.dentist = dentist
+        }
+    }
+    
     func setModifiedTime() {
         self.modified_at = Date()
     }
@@ -40,15 +55,15 @@ public class Finance: NSManagedObject {
     static func getFinancesArray(tag: Int, date: Date) -> [Any]? {
         switch tag {
         case 0:
-            return Info.dataController.fetchFinancesAndAppointments(in: date)
+            return DataController.sharedInstance.fetchFinancesAndAppointments(in: date)
         case 1:
-            return Info.dataController.fetchAppointmentsInMonth(in: date)
+            return DataController.sharedInstance.fetchAppointmentsInMonth(in: date)
         case 2:
-            return Info.dataController.fetchFinanceExternalIncomes(in: date)
+            return DataController.sharedInstance.fetchFinanceExternalIncomes(in: date)
         case 3:
-            return Info.dataController.fetchFinanceCosts(in: date)
+            return DataController.sharedInstance.fetchFinanceCosts(in: date)
         default:
-            return Info.dataController.fetchFinancesAndAppointments(in: date)
+            return DataController.sharedInstance.fetchFinancesAndAppointments(in: date)
         }
     }
     

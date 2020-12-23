@@ -10,28 +10,44 @@
 import Foundation
 import CoreData
 
-enum State: String {
-    case todo = "unknown"
-    case done = "done"
-    case canceled = "canceled"
-}
-
 @objc(Appointment)
 public class Appointment: NSManagedObject {
     
-    @available(iOS 13.0, *)
-    static func createAppointment(id: UUID, name: String, phone: String, diseaseTitle: String, price: Int, clinicTitle: String?, alergies: String?, visit_time: Date, notes: String?) -> Appointment {
-        if let object = Info.dataController.fetchAppointment(id: id),
-            let appointment = object as? Appointment {
+    static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, diseaseTitle: String, price: Int, date: Date) -> Appointment {
+        if let appointment = getAppointmentByID(id) { // for sync
             return appointment
         }
-        var clinic: Clinic?
-        if let clinicTitle = clinicTitle {
-            clinic = Clinic.getClinic(id: nil, title: clinicTitle, address: nil, color: nil)
+        let clinic = Clinic.getClinicByID(clinicID)!
+        let patient = Patient.getPatientByID(patientID)! //TODO: sare unwrapping
+        return createAppointment(id: id, patient: patient, clinic: clinic, diseaseTitle: diseaseTitle, price: price, date: date)
+    }
+    
+    static func createAppointment(id: UUID?, patient: Patient, clinic: Clinic, diseaseTitle: String, price: Int, date: Date) -> Appointment {
+        if let id = id, let appointment = getAppointmentByID(id) { // for add
+            return appointment
         }
-        let patient = Patient.getPatient(id: nil, phone: phone, name: name, alergies: alergies)
         let disease = Disease.getDisease(id: nil, title: diseaseTitle, price: price)
-        return Info.dataController.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, alergies: alergies, notes: notes)
+        return DataController.sharedInstance.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic)
+    }
+    
+    static func getAppointmentByID(_ id: UUID) -> Appointment? {
+        if let object = DataController.sharedInstance.fetchAppointment(id: id), let appointment = object as? Appointment {
+            return appointment
+        }
+        return nil
+    }
+    
+    func setAttributes(id: UUID?, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic) {
+        self.price = NSDecimalNumber(value: price)
+        self.visit_time = visit_time
+        self.state = State.todo.rawValue //should set
+        self.clinic = clinic
+        self.patient = patient
+        self.disease = disease
+      
+        self.setID(id: id)
+        self.setDentist()
+        self.setModifiedTime()
     }
     
     func setState(tag: Int) {
@@ -56,14 +72,10 @@ public class Appointment: NSManagedObject {
         }
     }
     
-    func setPatient(patient: Patient) {
-        self.patient = patient
-        patient.addToHistory(self)
-    }
-    
-    func setDisease(disease: Disease) {
-        self.disease = disease
-        disease.addToAppointments(self)
+    func setDentist() {
+        if let dentist = Info.sharedInstance.dentist {
+            self.dentist = dentist
+        }
     }
     
     func setModifiedTime() {
@@ -72,23 +84,15 @@ public class Appointment: NSManagedObject {
     
     //MARK: API Functions
     func toDictionary() -> [String: String] {
-        var params = [
+        let params = [
             APIKey.appointment.id!: self.id.uuidString,
             APIKey.appointment.price!: String(Int(truncating: self.price)),
             APIKey.appointment.state!: self.state,
             APIKey.appointment.date!: self.visit_time.toDBFormatDateAndTimeString(),
             APIKey.appointment.disease!: self.disease.title,
             APIKey.appointment.isDeleted!: String(self.isDeleted), //test
-            APIKey.appointment.patient!: self.patient.id.uuidString]
-        if let notes = self.notes {
-            params[APIKey.appointment.notes!] = notes
-        }
-        if let clinic = self.clinic {
-            params[APIKey.appointment.clinic!] = clinic.id.uuidString
-        }
-        if let alergies = self.alergies {
-            params[APIKey.appointment.alergies!] = alergies
-        }
+            APIKey.appointment.patient!: self.patient.id.uuidString,
+            APIKey.appointment.clinic!: self.clinic.id.uuidString]
         return params
     }
     
@@ -103,29 +107,19 @@ public class Appointment: NSManagedObject {
     static func saveAppointment(_ appointment: NSDictionary) {
         guard let idString = appointment[APIKey.appointment.id!] as? String,
          let id = UUID.init(uuidString: idString),
-         let name = appointment[APIKey.patient.name!] as? String,
-         let phone = appointment[APIKey.patient.phone!] as? String,
+         let patientIDString = appointment[APIKey.appointment.patient!] as? String,
+         let patientID = UUID.init(uuidString: patientIDString),
          let disease = appointment[APIKey.appointment.disease!] as? String,
          let priceString = appointment[APIKey.appointment.price!] as? String,
          let price = Int(priceString),
          let dateString = appointment[APIKey.appointment.date!] as? String,
-         let date = Date.getDBFormatDate(from: dateString) else {
+         let date = Date.getDBFormatDate(from: dateString),
+         let clinicIDString = appointment[APIKey.appointment.clinic!] as? String,
+         let clinicID = UUID.init(uuidString: clinicIDString) else {
             return
         }
-        var clinic: String?
-        var alergies: String?
-        var notes: String?
-        if let title = appointment[APIKey.clinic.title!] as? String {
-            clinic = title
-        }
-        if let alergy = appointment[APIKey.appointment.alergies!] as? String {
-            alergies = alergy
-        }
-        if let note = appointment[APIKey.appointment.notes!] as? String {
-            notes = note
-        }
-        let _ = createAppointment(id: id, name: name, phone: phone, diseaseTitle: disease, price: price, clinicTitle: clinic, alergies: alergies, visit_time: date, notes: notes)
-    } //TODO: date
+        let _ = createAppointment(id: id, patientID: patientID, clinicID: clinicID, diseaseTitle: disease, price: price, date: date)
+    }
 }
 
 //"appointment": {

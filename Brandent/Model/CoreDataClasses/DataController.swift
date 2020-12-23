@@ -10,28 +10,19 @@ import Foundation
 import UIKit
 import CoreData
 
-enum EntityNames: String {
-    case appointment = "Appointment"
-    case dentist = "Dentist"
-    case patient = "Patient"
-    case clinic = "Clinic"
-    case speciality = "Speciality"
-    case disease = "Disease"
-    case finance = "Finance"
-}
-
 class DataController {
+    static let sharedInstance = DataController()
+    
     var context: NSManagedObjectContext
     var appointmentEntity: NSEntityDescription
     var dentistEntity: NSEntityDescription
     var patientEntity: NSEntityDescription
     var clinicEntity: NSEntityDescription
-    var specialityEntity: NSEntityDescription
     var diseaseEntity: NSEntityDescription
     var financeEntity: NSEntityDescription
+    var taskEntity: NSEntityDescription
    
     //MARK: Initialization
-    @available(iOS 13.0, *)
     init() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         context = appDelegate.persistentContainer.viewContext
@@ -40,23 +31,35 @@ class DataController {
         dentistEntity = NSEntityDescription.entity(forEntityName: EntityNames.dentist.rawValue, in: context)!
         patientEntity = NSEntityDescription.entity(forEntityName: EntityNames.patient.rawValue, in: context)!
         clinicEntity = NSEntityDescription.entity(forEntityName: EntityNames.clinic.rawValue, in: context)!
-        specialityEntity = NSEntityDescription.entity(forEntityName: EntityNames.speciality.rawValue, in: context)!
         diseaseEntity = NSEntityDescription.entity(forEntityName: EntityNames.disease.rawValue, in: context)!
         financeEntity = NSEntityDescription.entity(forEntityName: EntityNames.finance.rawValue, in: context)!
+        taskEntity = NSEntityDescription.entity(forEntityName: EntityNames.task.rawValue, in: context)!
     }
     
     //MARK: DB Functions
     func saveContext(){
-        do{
-            try context.save()
-        } catch{
-            print("Could not save to local DB")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.saveContext()
+    }
+    
+    func getPredicate(object entityName: EntityNames, predicate: NSPredicate?) -> NSPredicate? {
+        if entityName == .dentist {
+            return predicate
         }
+        guard let idString = Info.sharedInstance.dentistID, let id = UUID(uuidString: idString) else {
+            return nil
+        }
+        print("%?% \(id)")
+        var fullPredicate = NSPredicate(format: "dentist.id = %@", id as CVarArg)
+        if let predicate = predicate {
+            fullPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fullPredicate, predicate])
+        }
+        return fullPredicate
     }
     
     func fetchRequest(object entityName: EntityNames, predicate: NSPredicate?, sortBy key: String?) -> [NSManagedObject]? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName.rawValue)
-        if let predicate = predicate {
+        if let predicate = getPredicate(object: entityName, predicate: predicate) {
             request.predicate = predicate
         }
         if let key = key { //Sorting
@@ -69,8 +72,8 @@ class DataController {
             return result
         } catch {
             print("Error in fetching \(entityName.rawValue)")
+            return nil
         }
-        return nil
     }
     
     func fetchAll(object entityName: EntityNames, sortBy key: String?) -> [NSManagedObject]? {
@@ -85,7 +88,7 @@ class DataController {
     func fetchObject(object entityName: EntityNames, idAttribute: String, id: UUID) -> NSManagedObject? {
         let predicate = NSPredicate(format: "\(idAttribute) = %@", id as CVarArg)
         return fetchRequest(object: entityName, predicate: predicate, sortBy: nil)?.first
-    } //TODO: Test
+    }
     
     func fetchForSync(entityName: EntityNames, modifiedAttribute: String, lastUpdated date: Date) -> [NSManagedObject]? {
         let predicate = NSPredicate(format: "\(modifiedAttribute) > %@", date as NSDate)
@@ -93,21 +96,9 @@ class DataController {
     }
     
     //MARK: Appointment TODO: ID
-    func createAppointment(id: UUID, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic?, alergies: String?, notes: String?) -> Appointment {
+    func createAppointment(id: UUID?, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
-        
-        appointment.price = NSDecimalNumber(value: price)
-        appointment.visit_time = visit_time
-        appointment.clinic = clinic
-        appointment.alergies = alergies
-        appointment.notes = notes
-
-        appointment.state = State.todo.rawValue
-        appointment.setID(id: id)
-        appointment.setPatient(patient: patient)
-        appointment.setDisease(disease: disease)
-        appointment.setModifiedTime()
-
+        appointment.setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic)
         saveContext()
         return appointment
     }
@@ -171,23 +162,14 @@ class DataController {
     //MARK: Patient
     func createPatient(id: UUID?, name: String, phone: String, alergies: String?) -> Patient {
         let patient = Patient(entity: patientEntity, insertInto: context)
-        
-        patient.name = name
-        patient.phone = phone
-        if let alergies = alergies {
-            patient.alergies = alergies
-        }
-        patient.setID(id: id)
-        patient.setModifiedTime()
-        
+        patient.setAttributes(id: id, name: name, phone: phone, alergies: alergies)
         saveContext()
         return patient
     }
     
-    func fetchPatient(name: String, phone: String) -> NSManagedObject? {
-        let nameAttribute = PatientAttributes.name.rawValue
+    func fetchPatient(phone: String) -> NSManagedObject? {
         let phoneAttribute = PatientAttributes.phone.rawValue
-        let predicate = NSPredicate(format: "\(nameAttribute) = %@ AND \(phoneAttribute) = %@", name, phone)
+        let predicate = NSPredicate(format: "\(phoneAttribute) = %@", phone)
         return fetchRequest(object: .patient, predicate: predicate, sortBy: nil)?.first
     }
     
@@ -206,13 +188,7 @@ class DataController {
     //MARK: Disease
     func createDisease(id: UUID?, title: String, price: Int) -> Disease {
         let disease = Disease(entity: diseaseEntity, insertInto: context)
-        
-        disease.title = title
-        disease.price = NSDecimalNumber(value: price)
-        disease.setID(id: id)
-        disease.setModifiedTime()
-        //TODO: set for dentist?
-        
+        disease.setAttributes(id: id, title: title, price: price)
         saveContext()
         return disease
     }
@@ -234,22 +210,9 @@ class DataController {
     }
     
     //MARK: Clinic
-    func createClinic(id: UUID?, title: String, address: String?, color: String?) -> Clinic {
+    func createClinic(id: UUID?, title: String, address: String?, color: String) -> Clinic {
         let clinic = Clinic(entity: clinicEntity, insertInto: context)
-        
-        clinic.title = title
-        if let address = address {
-            clinic.address = address
-        }
-        if let color = color {
-            clinic.color = color
-        } else {
-            clinic.color = Color.lightGreen.clinicColor.toHexString()
-        }
-        
-        clinic.setID(id: id)
-        clinic.setModifiedTime()
-        
+        clinic.setAttributes(id: id, title: title, address: address, color: color)
         saveContext()
         return clinic
     }
@@ -271,17 +234,9 @@ class DataController {
     }
     
     //MARK: Finance
-    @available(iOS 13.0, *)
     func createFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
         let finance = Finance(entity: financeEntity, insertInto: context)
-        
-        finance.title = title
-        finance.amount = NSDecimalNumber(value: amount)
-        finance.is_cost = isCost
-        finance.date = date
-        finance.setID(id: id)
-        finance.setModifiedTime()
-        
+        finance.setAttributes(id: id, title: title, amount: amount, isCost: isCost, date: date)
         saveContext()
         return finance
     }
@@ -355,18 +310,9 @@ class DataController {
     } //should go to other class
     
     //MARK: Dentist
-    @available(iOS 13.0, *)
-    func createDentist(id: UUID?, firstName: String, lastName: String, phone: String, speciality: String, password: String) -> Dentist {
+    func createDentist(id: UUID?, firstName: String, lastName: String, phone: String, speciality: String, clinic: Clinic, password: String) -> Dentist {
         let dentist = Dentist(entity: dentistEntity, insertInto: context)
-        
-        dentist.first_name = firstName
-        dentist.last_name = lastName
-        dentist.phone = phone
-        dentist.speciality = speciality
-        dentist.password = password
-        dentist.setID(id: id)
-        dentist.setModifiedTime()
-        
+        dentist.setAttributes(id: id, firstName: firstName, lastName: lastName, phone: phone, speciality: speciality, clinic: clinic, password: password)
         saveContext()
         return dentist
     }
@@ -378,7 +324,19 @@ class DataController {
     func fetchDentist(phone: String) -> NSManagedObject? {
         return fetchObject(object: .dentist, by: DentistAttributes.phone.rawValue, value: phone)
     }
+    
+    //MARK: Task
+    func createTask(id: UUID?, title: String, date: Date, clinic: Clinic?) -> Task {
+        let task = Task(entity: taskEntity, insertInto: context)
+        task.setAttributes(id: id, title: title, date: date, clinic: clinic)
+        saveContext()
+        print(task)
+        return task
+    }
+    
+    func fetchTask(id: UUID) -> NSManagedObject? {
+        return fetchObject(object: .task, idAttribute: TaskAttributes.id.rawValue, id: id)
+    }
 }
 
 //insert and replace
-//TODO: iOS availability

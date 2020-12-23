@@ -9,19 +9,43 @@
 import Foundation
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: FormViewController {
     
     @IBOutlet weak var phoneNumberTextField: CustomTextField!
     
+    var textFieldDelegate: TextFieldDelegate?
     var phoneNumber = ""
     
-    //MARK: User Flow
-    @IBAction func editingEnded(_ sender: Any) {
-        if let textField = sender as? UITextField, let text = textField.fetchInput() {
-            phoneNumber = text
+    //MARK: Initialization
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configure()
+    }
+    
+    func configure() {
+        initializeTextFields()
+        setPhoneNumber()
+    }
+    
+    func initializeTextFields() {
+        textFields = [phoneNumberTextField]
+        data = [""] as [Any] //0: phone
+        setTextFieldDelegates()
+    }
+    
+    func setTextFieldDelegates() {
+        textFieldDelegate = TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false)
+        textFields[0].delegate = textFieldDelegate
+    }
+    
+    func setPhoneNumber() {
+        if phoneNumber != "" {
+            data[0] = phoneNumber
+            phoneNumberTextField.text = phoneNumber
         }
     }
     
+    //MARK: Keyboard Management
     @IBAction func hideKeyboard(_ sender: Any) {
         if let textField = sender as? UITextField {
             textField.resignFirstResponder()
@@ -29,52 +53,30 @@ class SignUpViewController: UIViewController {
     }
     
     //MARK: Submission
-    func mustComplete() -> CustomTextField? {
-        if phoneNumber == "" {
-            return phoneNumberTextField
-        }
-        return nil
-    }
-        
-    func submitionError(for textField: CustomTextField) {
-        textField.showError()
-        self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
-    }
-    
     @IBAction func getCode(_ sender: Any) {
-        editingEnded(phoneNumberTextField as Any)
+        getLastData()
 
         if let requiredTextField = mustComplete() {
             submitionError(for: requiredTextField)
             return
         }
         
-        RestAPIManagr.sharedInstance.getOneTimeCode(phone: phoneNumber)
+        RestAPIManagr.sharedInstance.getOneTimeCode(phone: data[0] as! String)
         nextPage()
+    }
+    
+    override func mustComplete() -> Any? {
+        if data[0] as? String == "" {
+            return phoneNumberTextField
+        }
+        return nil
     }
     
     func nextPage() {
         guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CodeViewController") as? CodeViewController else {
             return
         }
-        controller.phoneNumber = phoneNumber
+        controller.phoneNumber = data[0] as! String
         navigationController?.show(controller, sender: nil)
-    }
-    
-    //MARK: Initialization
-    func setPhoneNumber() {
-        if phoneNumber != "" {
-            phoneNumberTextField.text = phoneNumber
-        }
-    }
-    
-    func configure() {
-        setPhoneNumber()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        configure()
     }
 }

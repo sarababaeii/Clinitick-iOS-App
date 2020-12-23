@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-@available(iOS 13.0, *)
 class PatientsViewController: UIViewController {
     
     @IBOutlet weak var patientsTableView: UITableView!
@@ -35,7 +34,6 @@ class PatientsViewController: UIViewController {
     }
     
     func configure() {
-//        Info.sharedInstance.lastViewController = self
         setDelegates()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "لیست بیماران", style: UIBarButtonItem.Style.plain, target: self, action: .none)
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)

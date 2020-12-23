@@ -44,7 +44,6 @@ class RestAPIManagr {
         let bodyString = String(data: request.httpBody!, encoding: .utf8)
         print("Body: \(bodyString)")
         request.addValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
-//        request.addValue("1", forHTTPHeaderField: "dentist_id")
         return request
     }
     
@@ -83,7 +82,6 @@ class RestAPIManagr {
         return createRequest(url: API.addAppointmentURL, params: params as [String: Any], contentType: .json)
     }
     
-    @available(iOS 13.0, *)
     private func createAddFinanceRequest(finance: Finance) -> URLRequest {
         let params: [String: Any] = jsonSerializer.getAddFinanceData(finance: finance)
         return createRequest(url: API.addFinanceURL, params: params, contentType: .json)

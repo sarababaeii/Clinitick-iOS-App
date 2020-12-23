@@ -14,7 +14,7 @@ class TodayTasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDat
     
     //MARK: Initializer
     override init() {
-        if let tasks = Info.dataController.getTodayTasks() {
+        if let tasks = DataController.sharedInstance.getTodayTasks() {
             self.tasks = tasks
         }
     }

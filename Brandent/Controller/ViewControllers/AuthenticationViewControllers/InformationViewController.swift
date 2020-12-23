@@ -9,39 +9,55 @@
 import Foundation
 import UIKit
 
-class InformationViewController: UIViewController {
+class InformationViewController: FormViewController {
     
     @IBOutlet weak var firstNameTextField: CustomTextField!
     @IBOutlet weak var lastNameTextField: CustomTextField!
     @IBOutlet weak var specialityTextField: CustomTextField!
+    @IBOutlet weak var clinicTitleTextField: CustomTextField!
     @IBOutlet weak var phoneNumberTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
     
-    var textFields = [CustomTextField]()
-    var currentTextField: UITextField?
+    var textFieldDelegates = [TextFieldDelegate]()
     
-    var dentistData = ["", "", "", "", ""] as [String] //0: first name, 1: last name, 2: speciality, 3: password, 4: phone number
     var phoneNumber = ""
     
-    //MARK: User Flow
-    @IBAction func editingStarted(_ sender: Any) {
-        if let textField = sender as? UITextField {
-            currentTextField = textField
+    //MARK: Initialization
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configure()
+    }
+    
+    func configure() {
+        initializeTextFields()
+        setPhoneNumber()
+    }
+    
+    func initializeTextFields() {
+        textFields = [firstNameTextField, lastNameTextField, specialityTextField, clinicTitleTextField, passwordTextField, phoneNumberTextField]
+        data = ["", "", "", "", "", ""] as [String] //0: first name, 1: last name, 2: speciality, 3: clinicTitle, 4: password, 5: phone number
+        setTextFieldDelegates()
+    }
+    
+    func setTextFieldDelegates() {
+        textFieldDelegates = [
+            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false),
+            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false),
+            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false),
+            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false),
+            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false)]
+        for i in 0 ..< 5 {
+            textFields[i].delegate = textFieldDelegates[i]
         }
     }
-        
-    @IBAction func editingEnded(_ sender: Any) {
-        if let textField = sender as? UITextField, let text = textField.fetchInput() {
-            dentistData[textField.tag] = text
-        }
+    
+    //MARK: UI Setting
+    func setPhoneNumber() {
+        phoneNumberTextField.text = phoneNumber
+        data[5] = phoneNumber
     }
-        
-    @IBAction func next(_ sender: Any) {
-        if let textField = sender as? UITextField {
-            textFields[textField.tag + 1].becomeFirstResponder()
-        }
-    }
-        
+    
+    //MARK: Keyboard Management
     @IBAction func hideKeyboard(_ sender: Any) {
         if let textField = currentTextField {
             textField.resignFirstResponder()
@@ -49,53 +65,36 @@ class InformationViewController: UIViewController {
     }
         
     //MARK: Submission
-    func mustComplete() -> CustomTextField? {
-        for i in 0 ..< 5 {
-            if dentistData[i] == "" {
+    @IBAction func signUp(_ sender: Any) {
+       getLastData()
+        if let requiredTextField = mustComplete() {
+            submitionError(for: requiredTextField)
+            return
+        }
+        
+        let dentist = Dentist.getDentist(id: nil, firstName: data[0] as! String, lastName: data[1] as! String, phone: data[5] as! String, speciality: data[2] as! String, clinicTitle: data[3] as! String, password: data[4] as! String)
+        print(dentist)
+        RestAPIManagr.sharedInstance.signUp(dentist: dentist)
+        
+        if let _ = Info.sharedInstance.token {
+            nextPage2()
+        }
+    }
+    
+    override func mustComplete() -> Any? {
+        for i in 0 ..< 6 {
+            if data[i] as? String == "" {
                 print(i)
                 return textFields[i]
             }
         }
         return nil
     }
-        
-    func submitionError(for textField: CustomTextField) {
-        textField.showError()
-        self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
-    }
     
-    @IBAction func signUp(_ sender: Any) {
-        editingEnded(currentTextField as Any)
-        currentTextField = nil
-
-        if let requiredTextField = mustComplete() {
-            submitionError(for: requiredTextField)
+    func nextPage2() {
+        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarViewController") as? UITabBarController else {
             return
         }
-        
-        let dentist = Dentist.getDentist(id: nil, firstName: dentistData[0], lastName: dentistData[1], phone: dentistData[4], speciality: dentistData[2], password: dentistData[3])
-        print(dentist)
-        RestAPIManagr.sharedInstance.signUp(dentist: dentist)
-        if let _ = Info.sharedInstance.token {
-            self.showNextPage(identifier: "TabBarViewController")
-        }
-    }
-    
-    //MARK: UI Setting
-    func setPhoneNumber() {
-        phoneNumberTextField.text = phoneNumber
-        dentistData[4] = phoneNumber
-    }
-    
-    //MARK: Initialization
-    func configure() {
-        textFields = [firstNameTextField, lastNameTextField, specialityTextField, passwordTextField, phoneNumberTextField]
-        setPhoneNumber()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        configure()
+        navigationController?.show(controller, sender: nil)
     }
 }

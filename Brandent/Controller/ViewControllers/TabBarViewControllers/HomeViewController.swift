@@ -54,7 +54,7 @@ class HomeViewController: UIViewController {
     }
     
     func setNextAppointmentView() {
-        if let appointment = Info.dataController.getNextAppointment() {
+        if let appointment = DataController.sharedInstance.getNextAppointment() {
             patientNameLabel.text = appointment.patient.name
             diseaseLabel.text = appointment.disease.title
             timeLabel.text = appointment.visit_time.toPersianTimeString()
@@ -93,7 +93,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         loadConfigure()
 //        Info.sharedInstance.sync()
     }

@@ -10,73 +10,52 @@ import Foundation
 import UIKit
 import SwiftyMenu
 
-class AddPatientViewController: UIViewController, SwiftyMenuDelegate {
+class AddPatientViewController: FormViewController {
     @IBOutlet weak var phoneNumberTextField: CustomTextField!
     @IBOutlet weak var nameTextField: CustomTextField!
     @IBOutlet weak var clinicMenu: SwiftyMenu!
     @IBOutlet weak var alergyMenu: SwiftyMenu!
     
-    var clinicOptions = [String]()
+    var textFieldDelegates = [TextFieldDelegate]()
+    var menuDelegate: MenuDelegate?
     
-    var textFields = [CustomTextField]()
-    var currentTextField: UITextField?
-    var paitentData = ["", "", "", ""] //0: phone, 1: name, 2: clinic, 3: alergy
-    var clinicTitle: String?
-    
-    //MARK: UI Management
-    func setTitle() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "اطلاعات بیمار", style: UIBarButtonItem.Style.plain, target: self, action: .none)
-        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
+    //MARK: Initialization
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        configure()
     }
     
-    //MARK: Clinic Functions
-    func prepareClinicMenu() {
-        getClinics()
-        if clinicOptions.count > 0 {
-            setClinicMenuDelegates()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        self.tabBarController?.tabBar.isHidden = true
+        configure()
+    }
+    
+    func configure() {
+        initializeTextFields()
+        setMenuDelegate()
+        setTitle(title: "اطلاعات بیمار")
+    }
+    
+    func initializeTextFields() {
+        textFields = [phoneNumberTextField, nameTextField]
+        data = ["", "", "", ""] //0: phone, 1: name, 2: clinic, 3: alergy
+        setTextFieldDelegates()
+    }
+    
+    func setTextFieldDelegates() {
+        textFieldDelegates = [TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false), TextFieldDelegate(viewController: self, isForPrice: false, isForDate: true)]
+        for i in 0 ..< 2 {
+            textFields[i].delegate = textFieldDelegates[i]
         }
     }
     
-    func getClinics() {
-        clinicOptions.removeAll()
-        if let clinics = Info.dataController.fetchAllClinics() as? [Clinic] {
-            for clinic in clinics {
-                clinicOptions.append(clinic.title)
-            }
-        }
+    func setMenuDelegate() {
+        menuDelegate = MenuDelegate(viewController: self, menuDataIndex: 2)
+        menuDelegate!.prepareClinicMenu(menu: clinicMenu)
     }
     
-    func setClinicMenuDelegates() {
-//        clinicMenu.isHidden = false
-        clinicMenu.delegate = self
-        clinicMenu.options = clinicOptions
-        clinicMenu.collapsingAnimationStyle = .spring(level: .low)
-    }
-    
-    func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
-        paitentData[2] = selectedOption.displayValue
-    }
-    
-    //MARK: TextFields Functions
-    @IBAction func editingStarted(_ sender: Any) {
-        if let textField = sender as? UITextField {
-            currentTextField = textField
-        }
-    }
-    
-    @IBAction func editingEnded(_ sender: Any) {
-        if let textField = sender as? UITextField, let text = textField.fetchInput() {
-            paitentData[textField.tag] = text
-        }
-    }
-    
-    //MARK: Keboard Management
-    @IBAction func next(_ sender: Any) {
-        if let textField = sender as? UITextField {
-            textFields[textField.tag + 1].becomeFirstResponder()
-        }
-    }
-    
+    //MARK: Keyboard Management
     @IBAction func hideKeyboard(_ sender: Any) {
         if let textField = currentTextField {
             textField.resignFirstResponder()
@@ -84,35 +63,24 @@ class AddPatientViewController: UIViewController, SwiftyMenuDelegate {
     }
     
     @IBAction func submit(_ sender: Any) {
-        editingEnded(currentTextField as Any)
-        currentTextField = nil
-        
+        getLastData()
         if let requiredItem = mustComplete() {
             submitionError(for: requiredItem)
             return
         }
         
-        let patient = Patient.getPatient(id: nil, phone: paitentData[0], name: paitentData[1], alergies: paitentData[3])
+        let patient = Patient.getPatient(id: nil, phone: data[0] as! String, name: data[1] as! String, alergies: (data[3] as! String))
+        print(patient)
         nextPage(patient: patient)
     }
     
-    func mustComplete() -> Any? {
+    override func mustComplete() -> Any? {
         for i in 0 ..< 3 { //alergy is optional
-            if paitentData[i] == "" {
+            if data[i] as? String == "" {
                 return textFields[i]
             }
         }
         return nil
-    }
-    
-    func submitionError(for requiredItem: Any) {
-        if let textField = requiredItem as? CustomTextField {
-            textField.showError()
-        }
-        else if let menu = requiredItem as? SwiftyMenu {
-            menu.showError()
-        }
-        self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
     }
     
     func nextPage(patient: Patient) {
@@ -121,25 +89,6 @@ class AddPatientViewController: UIViewController, SwiftyMenuDelegate {
         }
         controller.patient = patient
         navigationController?.show(controller, sender: nil)
-    }
-    
-    func configure() {
-        textFields = [phoneNumberTextField, nameTextField]
-        setTitle()
-        prepareClinicMenu()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        configure()
-    }
-    
-    //MARK: Showing NavigationBar
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-//        self.tabBarController?.tabBar.isHidden = true
-        configure()
     }
 }
 

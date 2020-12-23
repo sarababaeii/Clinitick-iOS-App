@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-@available(iOS 13.0, *)
 class ClinicsViewController: UIViewController {
     
     @IBOutlet weak var clinicsTableView: UITableView!

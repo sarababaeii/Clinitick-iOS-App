@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Appointment" representedClassName="Appointment" syncable="YES">
-        <attribute name="alergies" optional="YES" attributeType="String"/>
-        <attribute name="deleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
-        <attribute name="images" optional="YES" attributeType="Binary"/>
         <attribute name="modified_at" attributeType="Date" defaultDateTimeInterval="624539640" usesScalarValueType="NO"/>
-        <attribute name="notes" optional="YES" attributeType="String" maxValueString="250"/>
         <attribute name="price" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="state" attributeType="String" defaultValueString="todo"/>
-        <attribute name="visit_time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="visit_time" attributeType="Date" defaultDateTimeInterval="630013740" usesScalarValueType="NO"/>
         <relationship name="clinic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Clinic" inverseName="appointments" inverseEntity="Clinic"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="appointments" inverseEntity="Dentist"/>
         <relationship name="disease" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disease" inverseName="appointments" inverseEntity="Disease"/>
@@ -23,22 +19,24 @@
         <attribute name="title" attributeType="String" defaultValueString="مطب ۱"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="clinic" inverseEntity="Appointment"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="clinics" inverseEntity="Dentist"/>
+        <relationship name="patients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="clinics" inverseEntity="Patient"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="clinic" inverseEntity="Task"/>
     </entity>
     <entity name="Dentist" representedClassName="Dentist" syncable="YES">
         <attribute name="first_name" attributeType="String" defaultValueString="مسعود"/>
         <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
         <attribute name="last_name" attributeType="String" defaultValueString="جعفری"/>
         <attribute name="modified_at" attributeType="Date" defaultDateTimeInterval="629394060" usesScalarValueType="NO"/>
-        <attribute name="password" attributeType="String" defaultValueString=""/>
-        <attribute name="phone" attributeType="String" minValueString="11" maxValueString="11" defaultValueString="00000000000"/>
+        <attribute name="password" attributeType="String" defaultValueString="123456"/>
+        <attribute name="phone" attributeType="String" defaultValueString="00000000000"/>
         <attribute name="photo" optional="YES" attributeType="Binary"/>
-        <attribute name="speciality" attributeType="String" defaultValueString=""/>
+        <attribute name="speciality" attributeType="String" defaultValueString="عمومی"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="dentist" inverseEntity="Appointment"/>
         <relationship name="clinics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clinic" inverseName="dentist" inverseEntity="Clinic"/>
         <relationship name="diseases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disease" inverseName="dentist" inverseEntity="Disease"/>
         <relationship name="finances" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Finance" inverseName="dentist" inverseEntity="Finance"/>
         <relationship name="patients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="dentist" inverseEntity="Patient"/>
-        <relationship name="specialities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Speciality" inverseName="dentist" inverseEntity="Speciality"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="dentist" inverseEntity="Task"/>
     </entity>
     <entity name="Disease" representedClassName="Disease" syncable="YES">
         <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
@@ -47,7 +45,6 @@
         <attribute name="title" attributeType="String" defaultValueString="toothace"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="disease" inverseEntity="Appointment"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="diseases" inverseEntity="Dentist"/>
-        <relationship name="specialities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Speciality" inverseName="diseases" inverseEntity="Speciality"/>
     </entity>
     <entity name="Finance" representedClassName="Finance" syncable="YES">
         <attribute name="amount" attributeType="Decimal" defaultValueString="0.0"/>
@@ -64,22 +61,25 @@
         <attribute name="modified_at" attributeType="Date" defaultDateTimeInterval="626291520" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString="بیمار"/>
         <attribute name="phone" attributeType="String" defaultValueString="00000000000"/>
+        <relationship name="clinics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clinic" inverseName="patients" inverseEntity="Clinic"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="patients" inverseEntity="Dentist"/>
         <relationship name="history" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="patient" inverseEntity="Appointment"/>
     </entity>
-    <entity name="Speciality" representedClassName="Speciality" syncable="YES">
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="date" attributeType="Date" defaultDateTimeInterval="630012120" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="specialities" inverseEntity="Dentist"/>
-        <relationship name="diseases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disease" inverseName="specialities" inverseEntity="Disease"/>
+        <attribute name="modified_at" attributeType="Date" defaultDateTimeInterval="630012480" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String" defaultValueString="کار"/>
+        <relationship name="clinic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Clinic" inverseName="tasks" inverseEntity="Clinic"/>
+        <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="tasks" inverseEntity="Dentist"/>
     </entity>
     <elements>
-        <element name="Appointment" positionX="-34.1796875" positionY="-261.04296875" width="128" height="238"/>
-        <element name="Clinic" positionX="-203.81640625" positionY="-447.2578125" width="128" height="148"/>
+        <element name="Appointment" positionX="-34.1796875" positionY="-261.04296875" width="128" height="178"/>
+        <element name="Clinic" positionX="-203.81640625" positionY="-447.2578125" width="128" height="178"/>
         <element name="Dentist" positionX="-376.40625" positionY="-302.43359375" width="128" height="253"/>
-        <element name="Disease" positionX="-621.47265625" positionY="-36.9453125" width="128" height="148"/>
+        <element name="Disease" positionX="-621.47265625" positionY="-36.9453125" width="128" height="133"/>
         <element name="Finance" positionX="-589.46484375" positionY="-421.609375" width="128" height="148"/>
-        <element name="Patient" positionX="-189.765625" positionY="-38.48828125" width="128" height="148"/>
-        <element name="Speciality" positionX="-608.98828125" positionY="-212.359375" width="128" height="103"/>
+        <element name="Patient" positionX="-189.765625" positionY="-38.48828125" width="128" height="163"/>
+        <element name="Task" positionX="-423" positionY="-297" width="128" height="133"/>
     </elements>
 </model>

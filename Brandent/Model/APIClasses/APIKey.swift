@@ -9,12 +9,13 @@
 import Foundation
 
 enum APIKey: String {
-    case appointment
+    case dentist
+    case finance
+    case task
+    case clinic
     case patient
     case disease
-    case clinic
-    case finance
-    case dentist
+    case appointment
     case images = "images"
     
     case lastUpdate = "last_updated"
@@ -24,7 +25,7 @@ enum APIKey: String {
         switch self {
 //        case .dentist:
 //            return "dentist_id" bug?!
-        case .clinic, .disease, .appointment, .patient, .finance, .dentist:
+        case .clinic, .disease, .appointment, .patient, .finance, .dentist, .task:
             return "id"
         case .images:
             return "apt_id"
@@ -34,9 +35,9 @@ enum APIKey: String {
     }
     
     //MARK: IsDeleted
-    var isDeleted: String? {
+    var isDeleted: String? { //TODO: Shoul set for other entities
         switch self {
-        case .appointment, .finance:
+        case .appointment, .finance, .task:
             return "is_deleted"
         default:
             return nil
@@ -46,7 +47,7 @@ enum APIKey: String {
     //MARK: Title
     var title: String? {
         switch self {
-        case .clinic, .finance, .disease:
+        case .clinic, .finance, .disease, .task:
             return "title"
         default:
             return nil
@@ -134,16 +135,8 @@ enum APIKey: String {
             return "visit_time"
         case .finance:
             return "date"
-        default:
-            return nil
-        }
-    }
-    
-    //MARK: Notes
-    var notes: String? {
-        switch self {
-        case .appointment:
-            return "notes"
+        case .task:
+            return "task_date"
         default:
             return nil
         }
@@ -172,7 +165,7 @@ enum APIKey: String {
     //MARK: Clinic
     var clinic: String? {
         switch self {
-        case .appointment:
+        case .appointment, .task:
             return "clinic_id"
         default:
             return nil
@@ -182,8 +175,8 @@ enum APIKey: String {
     //MARK: Alergies
     var alergies: String? {
         switch self {
-        case .appointment:
-            return "state"
+        case .patient: //TODO: check
+            return "allergies"
         default:
             return nil
         }
@@ -219,7 +212,6 @@ enum APIKey: String {
         }
     }
     
-    
     //MARK: Sync
     var sync: String? {
         switch self {
@@ -233,6 +225,8 @@ enum APIKey: String {
             return "diseases"
         case .appointment:
             return "appointments"
+        case .task:
+            return "tasks"
         default:
             return nil
         }

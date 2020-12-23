@@ -59,7 +59,7 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     
     func getClinics() {
         clinicOptions.removeAll()
-        if let clinics = Info.dataController.fetchAllClinics() as? [Clinic] {
+        if let clinics = DataController.sharedInstance.fetchAllClinics() as? [Clinic] {
             for clinic in clinics {
                 clinicOptions.append(clinic.title)
             }
@@ -196,9 +196,9 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
             return
         }
         
-        let appointment = Appointment.createAppointment(id: appointmentID, name: appointmentData[0] as! String, phone: appointmentData[1] as! String, diseaseTitle: appointmentData[2] as! String, price: appointmentData[3] as! Int, clinicTitle: clinicTitle, alergies: appointmentData[4] as? String, visit_time: date!, notes: appointmentData[5] as? String)
-        Info.sharedInstance.sync()
-        RestAPIManagr.sharedInstance.addAppointment(appointment: appointment)
+//        let appointment = Appointment.createAppointment(id: appointmentID, name: appointmentData[0] as! String, phone: appointmentData[1] as! String, diseaseTitle: appointmentData[2] as! String, price: appointmentData[3] as! Int, clinicTitle: clinicTitle, alergies: appointmentData[4] as? String, visit_time: date!, notes: appointmentData[5] as? String)
+//        Info.sharedInstance.sync()
+//        RestAPIManagr.sharedInstance.addAppointment(appointment: appointment)
         
         back()
     }

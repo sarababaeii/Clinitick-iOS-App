@@ -9,13 +9,12 @@
 import Foundation
 import UIKit
 
-@available(iOS 13.0, *)
 class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
    
     var tasksTableView: UITableView
     var date: Date = Date() {
         didSet {
-            if let tasks = Info.dataController.fetchAppointmentsInDay(in: date) as? [Appointment] {
+            if let tasks = DataController.sharedInstance.fetchAppointmentsInDay(in: date) as? [Appointment] {
                 update(newTasks: tasks)
             }
         }
@@ -27,7 +26,7 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     init(tasksTableView: UITableView, date: Date) {
         self.tasksTableView = tasksTableView
         self.date = date
-        if let tasks = Info.dataController.fetchAppointmentsInDay(in: date) as? [Appointment] {
+        if let tasks = DataController.sharedInstance.fetchAppointmentsInDay(in: date) as? [Appointment] {
             self.tasks = tasks
         }
     }

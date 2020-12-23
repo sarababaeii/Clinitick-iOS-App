@@ -32,7 +32,7 @@ class RestAPIResult {
     
     private func saveDentist(data: Data) {
         print("Is saving dentist")
-        //TODO: Save dentist information in local DB
+        //TODO: Save dentist information in local DB with dentist.getDentist
     }
     
     private func saveToken(data: Data) {

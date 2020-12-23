@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -82,11 +83,6 @@
                                                 <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="editingEnded:" destination="HFg-KA-wt3" eventType="editingDidEnd" id="GUn-xF-HO8"/>
-                                            <action selector="editingStarted:" destination="HFg-KA-wt3" eventType="editingDidBegin" id="Blw-Gb-0Nk"/>
-                                            <action selector="next:" destination="HFg-KA-wt3" eventType="primaryActionTriggered" id="5iK-Yn-Mys"/>
-                                        </connections>
                                     </textField>
                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="رمز عبور" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xop-N4-CPJ" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="70" width="327" height="54"/>
@@ -107,11 +103,6 @@
                                                 <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="editingEnded:" destination="HFg-KA-wt3" eventType="editingDidEnd" id="l8f-dq-gLX"/>
-                                            <action selector="editingStarted:" destination="HFg-KA-wt3" eventType="editingDidBegin" id="j8E-5i-aDA"/>
-                                            <action selector="hideKeyboard:" destination="HFg-KA-wt3" eventType="primaryActionTriggered" id="wXZ-p8-bGD"/>
-                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -274,7 +265,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="editingEnded:" destination="TAP-Gc-QWI" eventType="editingDidEnd" id="xRd-B1-4nU"/>
                                     <action selector="getCode:" destination="TAP-Gc-QWI" eventType="primaryActionTriggered" id="yzv-AI-Z7L"/>
                                 </connections>
                             </textField>
@@ -643,7 +633,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Shm-Pn-va5" userLabel="View1">
-                                <rect key="frame" x="24" y="160" width="327" height="334"/>
+                                <rect key="frame" x="24" y="160" width="327" height="404"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="نام" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="frL-he-aCg" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="54"/>
@@ -665,11 +655,6 @@
                                                 <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="editingEnded:" destination="Hao-qB-dP7" eventType="editingDidEnd" id="yIb-OO-pCL"/>
-                                            <action selector="editingStarted:" destination="Hao-qB-dP7" eventType="editingDidBegin" id="cOc-Bn-DSJ"/>
-                                            <action selector="next:" destination="Hao-qB-dP7" eventType="primaryActionTriggered" id="jTz-TG-lKb"/>
-                                        </connections>
                                     </textField>
                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="نام خانوادگی" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="84J-6V-FHr" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="70" width="327" height="54"/>
@@ -691,11 +676,6 @@
                                                 <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="editingEnded:" destination="Hao-qB-dP7" eventType="editingDidEnd" id="LFB-5l-yIk"/>
-                                            <action selector="editingStarted:" destination="Hao-qB-dP7" eventType="editingDidBegin" id="XlS-0p-X9Z"/>
-                                            <action selector="next:" destination="Hao-qB-dP7" eventType="primaryActionTriggered" id="Sb4-oh-tLw"/>
-                                        </connections>
                                     </textField>
                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="رشته" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U3o-oO-8Ws" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="140" width="327" height="54"/>
@@ -717,14 +697,30 @@
                                                 <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="editingEnded:" destination="Hao-qB-dP7" eventType="editingDidEnd" id="WJI-Zp-Abr"/>
-                                            <action selector="editingStarted:" destination="Hao-qB-dP7" eventType="editingDidBegin" id="W6W-Nh-uIA"/>
-                                            <action selector="next:" destination="Hao-qB-dP7" eventType="primaryActionTriggered" id="8D1-jX-cx9"/>
-                                        </connections>
                                     </textField>
-                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="شماره موبایل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k9w-Xw-WEA" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="مطب" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PVS-e5-8UA" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="210" width="327" height="54"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="O92-61-R6y"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="organization-title"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" tag="5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="شماره موبایل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k9w-Xw-WEA" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="280" width="327" height="54"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="7W9-hn-wPn"/>
@@ -743,14 +739,9 @@
                                                 <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="editingEnded:" destination="Hao-qB-dP7" eventType="editingDidEnd" id="2C0-IA-uVi"/>
-                                            <action selector="editingStarted:" destination="Hao-qB-dP7" eventType="editingDidBegin" id="oIP-kS-3gJ"/>
-                                            <action selector="next:" destination="Hao-qB-dP7" eventType="primaryActionTriggered" id="qsH-cv-mvr"/>
-                                        </connections>
                                     </textField>
-                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="رمز عبور" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y5G-4I-Z4u" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="280" width="327" height="54"/>
+                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="رمز عبور" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y5G-4I-Z4u" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="350" width="327" height="54"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="54" id="fZU-hB-P8d"/>
@@ -769,34 +760,33 @@
                                                 <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="editingEnded:" destination="Hao-qB-dP7" eventType="editingDidEnd" id="xZC-0d-9MO"/>
-                                            <action selector="editingStarted:" destination="Hao-qB-dP7" eventType="editingDidBegin" id="9vZ-Sc-hmW"/>
-                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="84J-6V-FHr" secondAttribute="trailing" id="0wq-PM-v9s"/>
-                                    <constraint firstItem="k9w-Xw-WEA" firstAttribute="top" secondItem="U3o-oO-8Ws" secondAttribute="bottom" constant="16" id="1jy-lR-Ccn"/>
+                                    <constraint firstItem="PVS-e5-8UA" firstAttribute="leading" secondItem="Shm-Pn-va5" secondAttribute="leading" id="1em-oM-wKE"/>
+                                    <constraint firstItem="k9w-Xw-WEA" firstAttribute="top" secondItem="PVS-e5-8UA" secondAttribute="bottom" constant="16" id="1jy-lR-Ccn"/>
                                     <constraint firstItem="frL-he-aCg" firstAttribute="leading" secondItem="Shm-Pn-va5" secondAttribute="leading" id="6Ja-xy-MQW"/>
                                     <constraint firstItem="k9w-Xw-WEA" firstAttribute="leading" secondItem="Shm-Pn-va5" secondAttribute="leading" id="6uL-Jg-E2v"/>
                                     <constraint firstAttribute="trailing" secondItem="frL-he-aCg" secondAttribute="trailing" id="7Sg-o8-sSO"/>
                                     <constraint firstItem="U3o-oO-8Ws" firstAttribute="top" secondItem="84J-6V-FHr" secondAttribute="bottom" constant="16" id="A2J-1B-D2G"/>
                                     <constraint firstItem="Y5G-4I-Z4u" firstAttribute="leading" secondItem="Shm-Pn-va5" secondAttribute="leading" id="FWP-rO-wvd"/>
                                     <constraint firstItem="84J-6V-FHr" firstAttribute="top" secondItem="frL-he-aCg" secondAttribute="bottom" constant="16" id="HHW-73-Flj"/>
-                                    <constraint firstAttribute="height" constant="334" id="HYi-gd-KE8"/>
+                                    <constraint firstAttribute="height" constant="404" id="HYi-gd-KE8"/>
                                     <constraint firstAttribute="trailing" secondItem="k9w-Xw-WEA" secondAttribute="trailing" id="Zbn-e2-viq"/>
                                     <constraint firstItem="frL-he-aCg" firstAttribute="top" secondItem="Shm-Pn-va5" secondAttribute="top" id="bLR-s1-8PZ"/>
                                     <constraint firstAttribute="trailing" secondItem="Y5G-4I-Z4u" secondAttribute="trailing" id="bd6-lz-he4"/>
                                     <constraint firstItem="84J-6V-FHr" firstAttribute="leading" secondItem="Shm-Pn-va5" secondAttribute="leading" id="caP-vc-6jL"/>
+                                    <constraint firstItem="PVS-e5-8UA" firstAttribute="top" secondItem="U3o-oO-8Ws" secondAttribute="bottom" constant="16" id="fgm-ra-CKW"/>
                                     <constraint firstAttribute="trailing" secondItem="U3o-oO-8Ws" secondAttribute="trailing" id="iac-wI-NEG"/>
+                                    <constraint firstAttribute="trailing" secondItem="PVS-e5-8UA" secondAttribute="trailing" id="lj1-ab-jGY"/>
                                     <constraint firstItem="U3o-oO-8Ws" firstAttribute="leading" secondItem="Shm-Pn-va5" secondAttribute="leading" id="mQs-HM-hsM"/>
                                     <constraint firstAttribute="bottom" secondItem="Y5G-4I-Z4u" secondAttribute="bottom" id="uT9-Dp-Daf"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wio-Ds-4s1" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
-                                <rect key="frame" x="24" y="524" width="327" height="41"/>
+                                <rect key="frame" x="24" y="594" width="327" height="41"/>
                                 <color key="backgroundColor" red="1" green="0.46274509800000002" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="2lU-ek-FYk"/>
@@ -835,6 +825,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Yde-Sn-Hq6"/>
                     <connections>
+                        <outlet property="clinicTitleTextField" destination="PVS-e5-8UA" id="bgF-54-ZLw"/>
                         <outlet property="firstNameTextField" destination="frL-he-aCg" id="JsK-Q3-uRB"/>
                         <outlet property="lastNameTextField" destination="84J-6V-FHr" id="jtN-XW-cst"/>
                         <outlet property="passwordTextField" destination="Y5G-4I-Z4u" id="nlC-X1-1Va"/>
@@ -2831,7 +2822,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T0h-D6-Htj" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T0h-D6-Htj" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="24" y="86" width="327" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -3677,11 +3668,6 @@
                                         <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="editingEnded:" destination="EmN-3c-9HP" eventType="editingDidEnd" id="cqC-Lz-zgw"/>
-                                    <action selector="editingStarted:" destination="EmN-3c-9HP" eventType="editingDidBegin" id="LHR-fb-nkm"/>
-                                    <action selector="next:" destination="EmN-3c-9HP" eventType="primaryActionTriggered" id="aAx-Za-nnu"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="نام کامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OIM-yr-fCq" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="24" y="82" width="327" height="54"/>
@@ -3708,11 +3694,6 @@
                                         <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="editingEnded:" destination="EmN-3c-9HP" eventType="editingDidEnd" id="RbO-GN-UsF"/>
-                                    <action selector="editingStarted:" destination="EmN-3c-9HP" eventType="editingDidBegin" id="9P1-1n-ltW"/>
-                                    <action selector="next:" destination="EmN-3c-9HP" eventType="primaryActionTriggered" id="k4V-v7-2Yu"/>
-                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3I-6K-CbU" customClass="SwiftyMenu" customModule="SwiftyMenu">
                                 <rect key="frame" x="24" y="148" width="327" height="54"/>
@@ -3782,7 +3763,7 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="optionColor">
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="مطب"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="آلرژی و حساسیت"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
@@ -5206,7 +5187,7 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="optionColor">
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="مطب"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="آلرژی و حساسیت"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
@@ -5391,7 +5372,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="49e-Tb-3d3" kind="relationship" relationship="rootViewController" id="Fdj-P0-8S8"/>
+                        <segue destination="49e-Tb-3d3" kind="relationship" relationship="rootViewController" id="v9y-LB-XoB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAT-FV-7mK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

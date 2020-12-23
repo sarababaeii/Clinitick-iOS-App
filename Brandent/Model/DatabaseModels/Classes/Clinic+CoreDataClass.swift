@@ -13,17 +13,44 @@ import CoreData
 @objc(Clinic)
 public class Clinic: NSManagedObject {
 
-    @available(iOS 13.0, *)
     static func getClinic(id: UUID?, title: String, address: String?, color: String?) -> Clinic {
-        if let id = id, let object = Info.dataController.fetchClinic(id: id),
-            let clinic = object as? Clinic {
+        if let id = id, let clinic = getClinicByID(id) {
             return clinic
         }
-        if let object = Info.dataController.fetchClinic(title: title),
-            let clinic = object as? Clinic {
+        if let clinic = getClinicByTitle(title) {
             return clinic
         }
-        return Info.dataController.createClinic(id: id, title: title, address: address, color: color)
+        var clinicColor: String
+        if let color = color {
+            clinicColor = color
+        } else {
+            clinicColor = Color.lightGreen.clinicColor.toHexString()
+        }
+        return DataController.sharedInstance.createClinic(id: id, title: title, address: address, color: clinicColor)
+    }
+    
+    static func getClinicByID(_ id: UUID) -> Clinic? {
+        if let object = DataController.sharedInstance.fetchClinic(id: id), let clinic = object as? Clinic {
+            return clinic
+        }
+        return nil
+    }
+    
+    static func getClinicByTitle(_ title: String) -> Clinic? {
+        if let object = DataController.sharedInstance.fetchClinic(title: title), let clinic = object as? Clinic {
+            return clinic
+        }
+        return nil
+    }
+    
+    func setAttributes(id: UUID?, title: String, address: String?, color: String) {
+        self.title = title
+        self.color = color
+        self.address = address
+       
+        self.setID(id: id)
+        self.setDentist()
+        self.setModifiedTime()
     }
     
     func setID(id: UUID?) {
@@ -32,6 +59,12 @@ public class Clinic: NSManagedObject {
         } else {
             let uuid = UUID()
             self.id = uuid
+        }
+    }
+    
+    func setDentist() {
+        if let dentist = Info.sharedInstance.dentist {
+            self.dentist = dentist
         }
     }
     

@@ -49,7 +49,6 @@ class JSONSerializer {
     }
     
     //MARK: Finance
-    @available(iOS 13.0, *)
     func getAddFinanceData(finance: Finance) -> [String: Any] {
         return ["dentist_id": "1", //should be deleted?!
             "finance": finance.toDictionary()]

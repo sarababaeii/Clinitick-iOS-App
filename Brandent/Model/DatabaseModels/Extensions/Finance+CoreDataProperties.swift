@@ -11,7 +11,6 @@ import Foundation
 import CoreData
 
 
-@available(iOS 13.0, *)
 extension Finance {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Finance> {
@@ -24,7 +23,7 @@ extension Finance {
     @NSManaged public var modified_at: Date
     @NSManaged public var title: String
     @NSManaged public var date: Date
-    @NSManaged public var dentist: Dentist?
+    @NSManaged public var dentist: Dentist
 
 }
 

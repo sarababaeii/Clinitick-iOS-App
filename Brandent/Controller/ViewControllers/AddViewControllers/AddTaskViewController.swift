@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 import SwiftyMenu
 
-class AddTaskViewController: FormViewController, SwiftyMenuDelegate {
+class AddTaskViewController: FormViewController {
     
     @IBOutlet weak var titleTextField: CustomTextField!
     @IBOutlet weak var dateTextField: CustomTextField!
     @IBOutlet weak var clinicMenu: SwiftyMenu!
     
     var textFieldDelegates = [TextFieldDelegate]()
-    var clinicOptions = [String]()
+    var menuDelegate: MenuDelegate?
     
     //MARK: Initialization
     override func viewDidLoad() {
@@ -27,8 +27,8 @@ class AddTaskViewController: FormViewController, SwiftyMenuDelegate {
     
     func configure() {
         initializeTextFields()
-        prepareClinicMenu()
-        setDatePicker(dateTextFieldIndex: 1, mode: .date)
+        setMenuDelegate()
+        setDatePicker(dateTextFieldIndex: 1, mode: .dateAndTime)
         setTitle(title: "افزودن کار")
     }
     
@@ -45,34 +45,12 @@ class AddTaskViewController: FormViewController, SwiftyMenuDelegate {
         }
     }
     
-    //MARK: Clinic Functions
-    func prepareClinicMenu() {
-        getClinics()
-        if clinicOptions.count > 0 {
-            setClinicMenuDelegates()
-        }
+    func setMenuDelegate() {
+        menuDelegate = MenuDelegate(viewController: self, menuDataIndex: 1)
+        menuDelegate!.prepareClinicMenu(menu: clinicMenu)
     }
     
-    func getClinics() {
-        clinicOptions.removeAll()
-        if let clinics = Info.dataController.fetchAllClinics() as? [Clinic] {
-            for clinic in clinics {
-                clinicOptions.append(clinic.title)
-            }
-        }
-    }
-    
-    func setClinicMenuDelegates() {
-        clinicMenu.delegate = self
-        clinicMenu.options = clinicOptions
-        clinicMenu.collapsingAnimationStyle = .spring(level: .low)
-    }
-    
-    func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
-        data[1] = selectedOption.displayValue
-    }
-    
-    //MARK: User Flow
+    //MARK: Keyboard Management
     @IBAction func hideKeyboard(_ sender: Any) {
         if let textField = currentTextField {
             textField.resignFirstResponder()
@@ -95,7 +73,7 @@ class AddTaskViewController: FormViewController, SwiftyMenuDelegate {
     }
     
     override func saveData() {
-//        let task = Task.getTask(id: nil, title: taskData[0], date: date!, clinic: taskData[1],)
+        let _ = Task.getTask(title: data[0] as! String, date: date!, clinicTitle: data[1] as? String)
 //        RestAPIManagr.sharedInstance.addTask(finance: task)
     }
 }

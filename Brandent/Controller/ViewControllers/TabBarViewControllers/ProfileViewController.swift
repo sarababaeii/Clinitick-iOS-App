@@ -35,7 +35,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.profile.rawValue
-//        print(Info.sharedInstance.defaults.string(forKey: Info.sharedInstance.lastUpdatedDefaultsKey))
     }
     
     //MARK: Hiding NavigationBar
@@ -43,10 +42,4 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
-//    override func viewWillDisappear(_ animated: Bool) {
-//        print("Bye")
-//        super.viewWillDisappear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: animated)
-//    }
 }

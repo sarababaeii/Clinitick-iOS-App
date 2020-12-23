@@ -8,7 +8,6 @@
 
 import UIKit
 
-@available(iOS 13.0, *)
 class FinanceViewController: UIViewController {
 
     @IBOutlet weak var totalIncomeLabel: UILabel!
@@ -70,9 +69,7 @@ class FinanceViewController: UIViewController {
     func setNumberLabels() {
         for i in 0 ..< 4 {
             if numbers[i] < 0 {
-//                if i == 3 {
-                    numbers[i] *= -1
-//                }
+                numbers[i] *= -1
                 setLabelColor(tag: i, color: .red)
             } else {
                 setLabelColor(tag: i, color: .green)
@@ -96,7 +93,6 @@ class FinanceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {

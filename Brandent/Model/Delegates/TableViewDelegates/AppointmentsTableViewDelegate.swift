@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-@available(iOS 13.0, *)
 class AppointmentsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
    
     var patient: Patient

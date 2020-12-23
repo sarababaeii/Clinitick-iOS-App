@@ -9,14 +9,13 @@
 import Foundation
 import UIKit
 
-@available(iOS 13.0, *)
 class PatientsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
    
     var patients = [Patient]()
     
     //MARK: Initializer
     override init() {
-        if let patients = Info.dataController.fetchAllPatients() as? [Patient] {
+        if let patients = DataController.sharedInstance.fetchAllPatients() as? [Patient] {
             self.patients = patients
         }
     }

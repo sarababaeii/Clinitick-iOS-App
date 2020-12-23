@@ -2,7 +2,7 @@
 //  Patient+CoreDataProperties.swift
 //  Brandent
 //
-//  Created by Sara Babaei on 11/5/20.
+//  Created by Sara Babaei on 12/18/20.
 //  Copyright © 2020 Sara Babaei. All rights reserved.
 //
 //
@@ -19,11 +19,12 @@ extension Patient {
 
     @NSManaged public var alergies: String?
     @NSManaged public var id: UUID
+    @NSManaged public var modified_at: Date
     @NSManaged public var name: String
     @NSManaged public var phone: String
-    @NSManaged public var modified_at: Date
+    @NSManaged public var dentist: Dentist
     @NSManaged public var history: NSSet?
-    @NSManaged public var dentist: Dentist?
+    @NSManaged public var clinics: NSSet?
 
 }
 
@@ -44,11 +45,30 @@ extension Patient {
 
 }
 
+// MARK: Generated accessors for clinics
+extension Patient {
+
+    @objc(addClinicsObject:)
+    @NSManaged public func addToClinics(_ value: Clinic)
+
+    @objc(removeClinicsObject:)
+    @NSManaged public func removeFromClinics(_ value: Clinic)
+
+    @objc(addClinics:)
+    @NSManaged public func addToClinics(_ values: NSSet)
+
+    @objc(removeClinics:)
+    @NSManaged public func removeFromClinics(_ values: NSSet)
+
+}
+
 enum PatientAttributes: String {
     case id = "id"
     case name = "name"
     case phone = "phone"
     case alergies = "alergies"
+    case clinics = "clinics"
+    case images = "images"
     case history = "history"
     case dentist = "dentist"
     case modifiedAt = "modified_at"

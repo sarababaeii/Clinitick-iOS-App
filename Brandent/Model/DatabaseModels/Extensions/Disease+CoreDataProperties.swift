@@ -22,9 +22,7 @@ extension Disease {
     @NSManaged public var title: String
     @NSManaged public var modified_at: Date
     @NSManaged public var appointments: NSSet?
-    @NSManaged public var dentist: Dentist?
-    @NSManaged public var specialities: NSSet?
-
+    @NSManaged public var dentist: Dentist
 }
 
 // MARK: Generated accessors for appointments
@@ -44,29 +42,11 @@ extension Disease {
 
 }
 
-// MARK: Generated accessors for specialities
-extension Disease {
-
-    @objc(addSpecialitiesObject:)
-    @NSManaged public func addToSpecialities(_ value: Speciality)
-
-    @objc(removeSpecialitiesObject:)
-    @NSManaged public func removeFromSpecialities(_ value: Speciality)
-
-    @objc(addSpecialities:)
-    @NSManaged public func addToSpecialities(_ values: NSSet)
-
-    @objc(removeSpecialities:)
-    @NSManaged public func removeFromSpecialities(_ values: NSSet)
-
-}
-
 enum DiseaseAttributes: String {
     case id = "id"
     case title = "title"
     case price = "price"
     case appointments = "appointments"
-    case specialities = "specialities"
     case dentist = "dentist"
     case modifiedAt = "modified_at"
 }

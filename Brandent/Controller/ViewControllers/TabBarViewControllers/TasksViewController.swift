@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-@available(iOS 13.0, *)
 class TasksViewController: UIViewController {
 
     @IBOutlet weak var calendar: GDCalendar!
@@ -17,7 +16,6 @@ class TasksViewController: UIViewController {
     @IBOutlet weak var tasksTableView: UITableView!
     
     var taskTableViewDelegate: TasksTableViewDelegate?
-    
     
     @IBAction func selectToday(_ sender: Any) {
         calendar.selectToday()

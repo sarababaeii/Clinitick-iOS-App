@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 import SwiftyMenu
 
-@available(iOS 13.0, *)
-class PatientProfileViewController: UIViewController {
+class PatientProfileViewController: FormViewController {
     
     @IBOutlet weak var phoneTextField: CustomTextField!
     @IBOutlet weak var nameTextField: CustomTextField!
@@ -21,12 +20,24 @@ class PatientProfileViewController: UIViewController {
     
     var patient: Patient?
     
+    var textFieldDelegates = [TextFieldDelegate]()
+    var menuDelegate: MenuDelegate?
     var appointmentsTableViewDelegate: AppointmentsTableViewDelegate?
     
-    func setHeader() {
-//        self.title = patient?.name
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: patient?.name, style: UIBarButtonItem.Style.plain, target: self, action: .none)
-        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
+    //MARK: Initialization
+    override func viewDidLoad() {
+        configure()
+    }
+    
+    func configure() {
+        guard let patient = patient else {
+            return
+        }
+        initializeTextFields()
+        setMenuDelegate()
+        setInformation()
+        setTitle(title: patient.name)
+        setTableViewDelegates()
     }
     
     func setInformation() {
@@ -36,25 +47,27 @@ class PatientProfileViewController: UIViewController {
         //set alergy
     }
     
-    func setDelegates() {
+    func initializeTextFields() {
+        textFields = [phoneTextField, nameTextField]
+        data = ["", "", "", ""] //0: phone, 1: name, 2: clinic, 3: alergy
+        setTextFieldDelegates()
+    }
+    
+    func setTextFieldDelegates() {
+        textFieldDelegates = [TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false), TextFieldDelegate(viewController: self, isForPrice: false, isForDate: true)]
+        for i in 0 ..< 2 {
+            textFields[i].delegate = textFieldDelegates[i]
+        }
+    }
+    
+    func setMenuDelegate() {
+        menuDelegate = MenuDelegate(viewController: self, menuDataIndex: 2)
+        menuDelegate!.prepareClinicMenu(menu: clinicMenu)
+    }
+    
+    func setTableViewDelegates() {
         appointmentsTableViewDelegate = AppointmentsTableViewDelegate(patient: patient!)
         appointmentsTableView.delegate = appointmentsTableViewDelegate
         appointmentsTableView.dataSource = appointmentsTableViewDelegate
-    }
-    
-    func configure() {
-        if patient == nil {
-            return
-        }
-        setHeader()
-        setInformation()
-        setDelegates()
-    }
-    
-    //MARK: Showing NavigationBar
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-        configure()
     }
 }

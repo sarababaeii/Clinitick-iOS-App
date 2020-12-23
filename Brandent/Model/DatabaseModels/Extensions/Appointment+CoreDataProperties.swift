@@ -19,14 +19,11 @@ extension Appointment {
 
 //    @NSManaged public var deleted: Bool
     @NSManaged public var id: UUID
-    @NSManaged public var images: Data?
     @NSManaged public var modified_at: Date
-    @NSManaged public var notes: String?
     @NSManaged public var price: NSDecimalNumber
     @NSManaged public var state: String
     @NSManaged public var visit_time: Date
-    @NSManaged public var alergies: String?
-    @NSManaged public var clinic: Clinic?
+    @NSManaged public var clinic: Clinic
     @NSManaged public var dentist: Dentist
     @NSManaged public var disease: Disease
     @NSManaged public var patient: Patient
@@ -39,9 +36,6 @@ enum AppointmentAttributes: String {
     case disease = "disease"
     case price = "price"
     case date = "visit_time"
-    case alergies = "alergies"
-    case notes = "notes"
-    case images = "images"
     case state = "state"
     case dentist = "dentist"
     case modifiedAt = "modified_at"

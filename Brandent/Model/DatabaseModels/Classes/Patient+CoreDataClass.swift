@@ -13,17 +13,38 @@ import CoreData
 @objc(Patient)
 public class Patient: NSManagedObject {
     
-    @available(iOS 13.0, *)
     static func getPatient(id: UUID?, phone: String, name: String, alergies: String?) -> Patient {
-        if let id = id, let object = Info.dataController.fetchPatient(id: id),
-            let patient = object as? Patient {
+        if let id = id, let patient = getPatientByID(id) {
             return patient
         }
-        if let object = Info.dataController.fetchPatient(name: name, phone: phone),
-            let patient = object as? Patient{
+        if let patient = getPatientByPhone(phone) {
             return patient
         }
-        return Info.dataController.createPatient(id: id, name: name, phone: phone, alergies: alergies)
+        return DataController.sharedInstance.createPatient(id: id, name: name, phone: phone, alergies: alergies)
+    }
+    
+    static func getPatientByID(_ id: UUID) -> Patient? {
+        if let object = DataController.sharedInstance.fetchPatient(id: id), let patient = object as? Patient {
+            return patient
+        }
+        return nil
+    }
+    
+    static func getPatientByPhone(_ phone: String) -> Patient? { //could be isUnique and generate error
+        if let object = DataController.sharedInstance.fetchPatient(phone: phone), let patient = object as? Patient {
+            return patient
+        }
+        return nil
+    }
+    
+    func setAttributes(id: UUID?, name: String, phone: String, alergies: String?) {
+        self.name = name
+        self.phone = phone
+        self.alergies = alergies
+        
+        self.setID(id: id)
+        self.setDentist()
+        self.setModifiedTime()
     }
     
     func setID(id: UUID?) {
@@ -35,8 +56,20 @@ public class Patient: NSManagedObject {
         }
     }
     
+    func setDentist() {
+        if let dentist = Info.sharedInstance.dentist {
+            self.dentist = dentist
+        }
+    }
+    
     func setModifiedTime() {
         self.modified_at = Date()
+    }
+    
+    func setClinics(clinics: [Clinic]) {
+        for clinic in clinics {
+            self.addToClinics(clinic)
+        }
     }
     
     //MARK: API Functions
@@ -72,4 +105,4 @@ public class Patient: NSManagedObject {
 //    "full_name": "Mary J. Blige",
 //    "phone": "09203012037"
 //  }
-//],
+//], TODO: alergies

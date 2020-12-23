@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import SwiftyMenu
 
-@available(iOS 13.0, *)
 class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
     
     @IBOutlet weak var dateMenu: SwiftyMenu!
@@ -52,7 +51,6 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
         dateMenu.delegate = self
         dateMenu.options = dateOptions
         dateMenu.placeHolderText = date.toPersianMonthString()
-//        dateMenu.expandingAnimationStyle = .linear
         dateMenu.collapsingAnimationStyle = .spring(level: .low)
     }
     

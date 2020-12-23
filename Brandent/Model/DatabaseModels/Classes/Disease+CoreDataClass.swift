@@ -13,17 +13,24 @@ import CoreData
 @objc(Disease)
 public class Disease: NSManagedObject {
     
-    @available(iOS 13.0, *)
     static func getDisease(id: UUID?, title: String, price: Int) -> Disease {
-        if let id = id, let object = Info.dataController.fetchDisease(id: id),
+        if let id = id, let object = DataController.sharedInstance.fetchDisease(id: id),
             let disease = object as? Disease {
             return disease
         }
-        if let object = Info.dataController.fetchDisease(title: title),
+        if let object = DataController.sharedInstance.fetchDisease(title: title),
             let disease = object as? Disease{
             return disease
         }
-        return Info.dataController.createDisease(id: id, title: title, price: price)
+        return DataController.sharedInstance.createDisease(id: id, title: title, price: price)
+    }
+    
+    func setAttributes(id: UUID?, title: String, price: Int) {
+        self.title = title
+        self.price = NSDecimalNumber(value: price)
+        self.setID(id: id)
+        self.setDentist()
+        self.setModifiedTime()
     }
     
     func setID(id: UUID?) {
@@ -32,6 +39,12 @@ public class Disease: NSManagedObject {
         } else {
             let uuid = UUID()
             self.id = uuid
+        }
+    }
+    
+    func setDentist() {
+        if let dentist = Info.sharedInstance.dentist {
+            self.dentist = dentist
         }
     }
     

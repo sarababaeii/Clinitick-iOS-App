@@ -12,18 +12,44 @@ import CoreData
 
 @objc(Dentist)
 public class Dentist: NSManagedObject {
-  
-    @available(iOS 13.0, *)
-    static func getDentist(id: UUID?, firstName: String, lastName: String, phone: String, speciality: String, password: String) -> Dentist {
-        if let id = id, let object = Info.dataController.fetchDentist(id: id),
-            let dentist = object as? Dentist {
+    
+    static func getDentist(id: UUID?, firstName: String, lastName: String, phone: String, speciality: String, clinicTitle: String, password: String) -> Dentist {
+        if let id = id, let dentist = getDentistByID(id) {
             return dentist
         }
-        if let object = Info.dataController.fetchDentist(phone: phone),
-            let dentist = object as? Dentist {
+        if let dentist = getDentistByPhone(phone) {
             return dentist
         }
-        return Info.dataController.createDentist(id: id, firstName: firstName, lastName: lastName, phone: phone, speciality: speciality, password: password)
+        let clinic = Clinic.getClinic(id: nil, title: clinicTitle, address: nil, color: nil)
+        let dentist = DataController.sharedInstance.createDentist(id: id, firstName: firstName, lastName: lastName, phone: phone, speciality: speciality, clinic: clinic, password: password)
+        Info.sharedInstance.dentistID = dentist.id.uuidString //setting dentist in info
+        return dentist
+    }
+    
+    static func getDentistByID(_ id: UUID) -> Dentist? {
+        if let object = DataController.sharedInstance.fetchDentist(id: id), let dentist = object as? Dentist {
+            return dentist
+        }
+        return nil
+    }
+    
+    static func getDentistByPhone(_ phone: String) -> Dentist? {
+        if let object = DataController.sharedInstance.fetchDentist(phone: phone), let dentist = object as? Dentist {
+            return dentist
+        }
+        return nil
+    }
+    
+    func setAttributes(id: UUID?, firstName: String, lastName: String, phone: String, speciality: String, clinic: Clinic, password: String) {
+        self.first_name = firstName
+        self.last_name = lastName
+        self.phone = phone
+        self.speciality = speciality
+        self.addToClinics(clinic)
+        self.password = password
+        
+        self.setID(id: id)
+        self.setModifiedTime()
     }
     
     func setID(id: UUID?) {
@@ -49,28 +75,6 @@ public class Dentist: NSManagedObject {
             APIKey.dentist.speciality!: self.speciality]
         return params
     }
-
-//    static func toDictionaryArray(clinics: [Clinic]) -> [[String: String]] {
-//        var params = [[String: String]]()
-//        for clinic in clinics {
-//            params.append(clinic.toDictionary())
-//        }
-//        return params
-//    }
-//
-//    static func saveClinic(_ clinic: NSDictionary) {
-//        guard let idString = clinic[APIKey.clinic.id!] as? String,
-//         let id = UUID.init(uuidString: idString),
-//         let title = clinic[APIKey.clinic.title!] as? String,
-//         let color = clinic[APIKey.clinic.color!] as? String else {
-//           return
-//        }
-//        var address: String?
-//        if let add = clinic[APIKey.clinic.address!] as? String {
-//            address = add
-//        }
-//        let _ = getClinic(id: id, title: title, address: address, color: color)
-//    }
 }
 
 //{
