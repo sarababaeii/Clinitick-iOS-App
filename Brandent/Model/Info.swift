@@ -56,16 +56,17 @@ class Info {
             lastUpdate = "1970-10-10 10:10:10"
         }
         guard let time = lastUpdate, let lastUpdate = Date.getDBFormatDate(from: time) else {
-            RestAPIManagr.sharedInstance.sync(clinics: nil, patients: nil, finances: nil, diseases: nil, appointments: nil)
+            RestAPIManagr.sharedInstance.sync(clinics: nil, patients: nil, finances: nil, tasks: nil, diseases: nil, appointments: nil)
             print("Couldn't sync")
             return
         }
         let clinics = DataController.sharedInstance.fetchClinicsForSync(lastUpdated: lastUpdate) as? [Clinic]
         let patients = DataController.sharedInstance.fetchPatientsForSync(lastUpdated: lastUpdate) as? [Patient]
         let finances = DataController.sharedInstance.fetchFinancesForSync(lastUpdated: lastUpdate) as? [Finance]
+        let tasks = DataController.sharedInstance.fetchTasksForSync(lastUpdated: lastUpdate) as? [Task]
         let diseases = DataController.sharedInstance.fetchDiseasesForSync(lastUpdated: lastUpdate) as? [Disease]
         let appointments = DataController.sharedInstance.fetchAppointmentsForSync(lastUpdated: lastUpdate) as? [Appointment]
-        RestAPIManagr.sharedInstance.sync(clinics: clinics, patients: patients, finances: finances, diseases: diseases, appointments: appointments)
+        RestAPIManagr.sharedInstance.sync(clinics: clinics, patients: patients, finances: finances, tasks: tasks, diseases: diseases, appointments: appointments)
     }
 }
 

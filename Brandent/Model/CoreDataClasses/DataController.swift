@@ -26,7 +26,6 @@ class DataController {
     init() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         context = appDelegate.persistentContainer.viewContext
-        
         appointmentEntity = NSEntityDescription.entity(forEntityName: EntityNames.appointment.rawValue, in: context)!
         dentistEntity = NSEntityDescription.entity(forEntityName: EntityNames.dentist.rawValue, in: context)!
         patientEntity = NSEntityDescription.entity(forEntityName: EntityNames.patient.rawValue, in: context)!
@@ -42,7 +41,11 @@ class DataController {
         appDelegate.saveContext()
     }
     
-    func getPredicate(object entityName: EntityNames, predicate: NSPredicate?) -> NSPredicate? {
+    func joinPredicates(predicates: [NSPredicate]) -> NSPredicate {
+        return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+    }
+    
+    func addDentistIDToPredicate(object entityName: EntityNames, predicate: NSPredicate?) -> NSPredicate? {
         if entityName == .dentist {
             return predicate
         }
@@ -50,16 +53,23 @@ class DataController {
             return nil
         }
         print("%?% \(id)")
-        var fullPredicate = NSPredicate(format: "dentist.id = %@", id as CVarArg)
+        let idPredicate = NSPredicate(format: "dentist.id = %@", id as CVarArg)
         if let predicate = predicate {
-            fullPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fullPredicate, predicate])
+            return joinPredicates(predicates: [idPredicate, predicate])
         }
-        return fullPredicate
+        return idPredicate
+    }
+    
+    func predicateForTimeInterval(dateAttribute: String, start: Date?, end: Date?) -> NSPredicate? {
+        guard let from = start, let to = end else {
+            return nil
+        }
+        return NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) < %@", from as NSDate, to as NSDate)
     }
     
     func fetchRequest(object entityName: EntityNames, predicate: NSPredicate?, sortBy key: String?) -> [NSManagedObject]? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName.rawValue)
-        if let predicate = getPredicate(object: entityName, predicate: predicate) {
+        if let predicate = addDentistIDToPredicate(object: entityName, predicate: predicate) {
             request.predicate = predicate
         }
         if let key = key { //Sorting
@@ -95,7 +105,14 @@ class DataController {
         return fetchRequest(object: entityName, predicate: predicate, sortBy: nil)
     }
     
-    //MARK: Appointment TODO: ID
+    func fetchObjectsInTimeInterval(object: EntityNames, dateAttribute: String, start: Date?, end: Date?) -> [NSManagedObject]? {
+        if let predicate = predicateForTimeInterval(dateAttribute: dateAttribute, start: start, end: end) {
+            return fetchRequest(object: object, predicate: predicate, sortBy: dateAttribute)
+        }
+        return nil
+    }
+    
+    //MARK: Appointment
     func createAppointment(id: UUID?, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
         appointment.setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic)
@@ -107,35 +124,26 @@ class DataController {
         return fetchObject(object: .appointment, idAttribute: AppointmentAttributes.id.rawValue, id: id)
     }
     
-    func fetchAllAppointments() -> [NSManagedObject]? {
-        return fetchAll(object: .appointment, sortBy: nil)
-    }
-    
     func fetchAppointmentsForSync(lastUpdated date: Date) -> [NSManagedObject]? {
         return fetchForSync(entityName: .appointment, modifiedAttribute: AppointmentAttributes.modifiedAt.rawValue, lastUpdated: date)
     }
     
     func fetchAppointmentsInMonth(in date: Date) -> [NSManagedObject]? {
-        let dateAttribute = AppointmentAttributes.date.rawValue
-        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) <= %@", date.startOfMonth() as NSDate, date.endOfMonth() as NSDate)
-        return fetchRequest(object: .appointment, predicate: predicate, sortBy: dateAttribute)
+        return fetchObjectsInTimeInterval(object: .appointment, dateAttribute: AppointmentAttributes.date.rawValue, start: date.startOfMonth(), end: date.endOfMonth())
     }
     
     func fetchAppointmentsInDay(in date: Date) -> [NSManagedObject]? {
-        guard let to = date.nextDay()?.startOfDate() else {
-            return nil
-        }
-        let dateAttribute = AppointmentAttributes.date.rawValue
-        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) <= %@", date.startOfDate() as NSDate, to as NSDate)
-        return fetchRequest(object: .appointment, predicate: predicate, sortBy: dateAttribute)
+        return fetchObjectsInTimeInterval(object: .appointment, dateAttribute: AppointmentAttributes.date.rawValue, start: date.startOfDate(), end: date.nextDay()?.startOfDate())
     }
     
     func fetchTodayAppointments(in clinic: Clinic?) -> [NSManagedObject]? {
-        let dateAttribute = AppointmentAttributes.date.rawValue
+        guard let datePredicate = predicateForTimeInterval(dateAttribute: AppointmentAttributes.date.rawValue, start: Date().startOfDate(), end: Date().nextDay()) else {
+            return nil
+        }
         let clinicAttribute = AppointmentAttributes.clinic.rawValue
         let titleAttribute = ClinicAttributes.title.rawValue
-        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) < %@ AND \(clinicAttribute).\(titleAttribute) == %@", Date().startOfDate() as NSDate, Date().nextDay()! as NSDate, clinic?.title ?? NSNull())
-        return fetchRequest(object: .appointment, predicate: predicate, sortBy: nil)
+        let clinicPredicate = NSPredicate(format: "\(clinicAttribute).\(titleAttribute) == %@", clinic?.title ?? NSNull())
+        return fetchRequest(object: .appointment, predicate: joinPredicates(predicates: [datePredicate, clinicPredicate]), sortBy: nil)
     }
     
     func getTodayTasks() -> [TodayTasks]? {
@@ -154,9 +162,10 @@ class DataController {
     }
     
     func getNextAppointment() -> Appointment? {
-        let dateAttribute = AppointmentAttributes.date.rawValue
-        let predicate = NSPredicate(format: "\(dateAttribute) >= %@ AND \(dateAttribute) < %@", Date() as NSDate, Date().nextDay()! as NSDate)
-        return fetchRequest(object: .appointment, predicate: predicate, sortBy: dateAttribute)?.first as? Appointment
+        if let todayAppointments = fetchAppointmentsInDay(in: Date()) {
+            return todayAppointments.first as? Appointment
+        }
+        return nil
     }
     
     //MARK: Patient
@@ -230,7 +239,7 @@ class DataController {
     }
     
     func fetchClinicsForSync(lastUpdated date: Date) -> [NSManagedObject]? {
-        return fetchForSync(entityName: .clinic, modifiedAttribute: AppointmentAttributes.modifiedAt.rawValue, lastUpdated: date)
+        return fetchForSync(entityName: .clinic, modifiedAttribute: ClinicAttributes.modifiedAt.rawValue, lastUpdated: date)
     }
     
     //MARK: Finance
@@ -251,14 +260,14 @@ class DataController {
     
     func financeFetchRequest(in month: Date, isCost: Bool?) -> [NSManagedObject]? {
         let dateAttribute = FinanceAttributes.date.rawValue
-        let predicate: NSPredicate
-        let predicateFormat = "\(dateAttribute) >= %@ AND \(dateAttribute) <= %@"
-       
+        guard let datePredicate = predicateForTimeInterval(dateAttribute: dateAttribute, start: month.startOfMonth(), end: month.endOfMonth()) else {
+            return nil
+        }
+        var predicate = datePredicate
         if let isCost = isCost {
             let isCostAttribute = FinanceAttributes.isCost.rawValue
-            predicate = NSPredicate(format: "\(predicateFormat) AND \(isCostAttribute) == %d", month.startOfMonth() as NSDate, month.endOfMonth() as NSDate, isCost)
-        } else {
-            predicate = NSPredicate(format: predicateFormat, month.startOfMonth() as NSDate, month.endOfMonth() as NSDate)
+            let isCostPredicate = NSPredicate(format: "\(isCostAttribute) == %d", isCost)
+            predicate = joinPredicates(predicates: [predicate, isCostPredicate])
         }
         return fetchRequest(object: .finance, predicate: predicate, sortBy: dateAttribute)
     }
@@ -278,36 +287,8 @@ class DataController {
     func fetchFinancesAndAppointments(in month: Date) -> [NSManagedObject]? {
         let appointments = fetchAppointmentsInMonth(in: month) as? [Appointment]
         let finances = fetchFinances(in: month) as? [Finance]
-        return sort(appointments: appointments, finances: finances)
+        return Appointment.sort(appointments: appointments, others: finances)
     }
-    
-    func sort(appointments: [Appointment]?, finances: [Finance]?) -> [NSManagedObject]? {
-        guard let appointments = appointments else {
-            return finances //could be nil
-        }
-        guard let finances = finances else {
-            return appointments
-        }
-        var mixture = [NSManagedObject]()
-        var appoinmentPointer = 0
-        var financePointer = 0
-        while mixture.count < appointments.count + finances.count {
-            if appoinmentPointer >= appointments.count {
-                mixture.append(finances[financePointer])
-                financePointer += 1
-            } else if financePointer >= finances.count {
-                mixture.append(appointments[appoinmentPointer])
-                appoinmentPointer += 1
-            } else if appointments[appoinmentPointer].visit_time < finances[financePointer].date {
-                mixture.append(appointments[appoinmentPointer])
-                appoinmentPointer += 1
-            } else {
-                mixture.append(finances[financePointer])
-                financePointer += 1
-            }
-        }
-        return mixture
-    } //should go to other class
     
     //MARK: Dentist
     func createDentist(id: UUID?, firstName: String, lastName: String, phone: String, speciality: String, clinic: Clinic, password: String) -> Dentist {
@@ -330,12 +311,25 @@ class DataController {
         let task = Task(entity: taskEntity, insertInto: context)
         task.setAttributes(id: id, title: title, date: date, clinic: clinic)
         saveContext()
-        print(task)
         return task
     }
     
     func fetchTask(id: UUID) -> NSManagedObject? {
         return fetchObject(object: .task, idAttribute: TaskAttributes.id.rawValue, id: id)
+    }
+    
+    func fetchTasksForSync(lastUpdated date: Date) -> [NSManagedObject]? {
+        return fetchForSync(entityName: .task, modifiedAttribute: TaskAttributes.modifiedAt.rawValue, lastUpdated: date)
+    }
+    
+    func fetchTasksInDay(in date: Date) -> [NSManagedObject]? {
+        return fetchObjectsInTimeInterval(object: .task, dateAttribute: TaskAttributes.date.rawValue, start: date.startOfDate(), end: date.nextDay()?.startOfDate())
+    }
+    
+    func fetchTasksAndAppointments(in date: Date) -> [NSManagedObject]? {
+        let appointments = fetchAppointmentsInDay(in: date) as? [Appointment]
+        let tasks = fetchTasksInDay(in: date) as? [Task]
+        return Appointment.sort(appointments: appointments, others: tasks)
     }
 }
 

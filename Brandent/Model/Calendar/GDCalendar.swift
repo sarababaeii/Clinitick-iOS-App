@@ -56,6 +56,7 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
     fileprivate var numberOfDaysInMonth: Int = 0
     fileprivate var firstDayOfMonth = 0
     fileprivate var lastIndex: IndexPath? = nil
+    fileprivate var todayIndex: IndexPath? = nil
     
     fileprivate var collectionView: UICollectionView!
     fileprivate var monthView: UIView!
@@ -261,8 +262,10 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
         return "\(month) \(dateComps.year)".convertNumbers
     }
     
-    func selectToday() { //TODO: doesn't work
-        if let index = lastIndex {
+    //MARK: Set today
+    func selectToday() { //TODO: doesn't work in other weeks
+        if let index = todayIndex {
+            collectionView.selectItem(at: index, animated: true, scrollPosition: .left)
             collectionView(collectionView, didSelectItemAt: index)
         }
     }
@@ -301,6 +304,8 @@ extension GDCalendar: UICollectionViewDelegate, UICollectionViewDataSource, UICo
             if currDate.date.isToday(date: Date().today){
                 cell.highlightCell(highlightColor: itemHighlightColor, textColor: itemHighlightTextColor)
                 lastIndex = indexPath
+                //MARK: Here
+                todayIndex = indexPath
             }else{
                 cell.unhighlightCell()
             }

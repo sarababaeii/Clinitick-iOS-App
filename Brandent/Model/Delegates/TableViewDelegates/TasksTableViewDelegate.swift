@@ -14,19 +14,19 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     var tasksTableView: UITableView
     var date: Date = Date() {
         didSet {
-            if let tasks = DataController.sharedInstance.fetchAppointmentsInDay(in: date) as? [Appointment] {
+            if let tasks = DataController.sharedInstance.fetchTasksAndAppointments(in: date) {
                 update(newTasks: tasks)
             }
         }
     }
     
-    var tasks = [Appointment]()
+    var tasks = [Any]()
     
     //MARK: Initializer
     init(tasksTableView: UITableView, date: Date) {
         self.tasksTableView = tasksTableView
         self.date = date
-        if let tasks = DataController.sharedInstance.fetchAppointmentsInDay(in: date) as? [Appointment] {
+        if let tasks = DataController.sharedInstance.fetchTasksAndAppointments(in: date) {
             self.tasks = tasks
         }
     }
@@ -38,13 +38,13 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCellID", for: indexPath) as! TaskTableViewCell
-        if let appointment = taskDataSource(indexPath: indexPath) {
-            cell.setAttributes(appointment: appointment)
+        if let item = taskDataSource(indexPath: indexPath) {
+            cell.setAttributes(item: item)
         }
         return cell
     }
     
-    func taskDataSource(indexPath: IndexPath) -> Appointment? {
+    func taskDataSource(indexPath: IndexPath) -> Any? {
         if indexPath.row < tasks.count {
             return tasks[indexPath.row]
         }
@@ -52,7 +52,7 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     }
     
     //MARK: Update
-    func update(newTasks: [Appointment]) {
+    func update(newTasks: [Any]) {
         for i in stride(from: tasks.count - 1, to: -1, by: -1) {
             deleteTask(index: i)
         }
@@ -62,10 +62,10 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func insertTask(_ appointment: Appointment?, at indexPath: IndexPath?) {
-        if let appointment = appointment, let indexPath = indexPath {
+    func insertTask(_ item: Any?, at indexPath: IndexPath?) {
+        if let task = item, let indexPath = indexPath {
             tasksTableView.performBatchUpdates({
-                tasks.insert(appointment, at: indexPath.item)
+                tasks.insert(task, at: indexPath.item)
                 tasksTableView.insertRows(at: [indexPath], with: .automatic)
             }, completion: nil)
         }
@@ -78,6 +78,6 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
                 tasks.remove(at: index)
             }
             tasksTableView.deleteRows(at: [indexPath], with: .automatic)
-            }, completion: nil)
+        }, completion: nil)
     }
 }

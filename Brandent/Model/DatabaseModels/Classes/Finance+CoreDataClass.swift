@@ -67,6 +67,34 @@ public class Finance: NSManagedObject {
         }
     }
     
+//    static func sort(appointments: [Appointment]?, finances: [Finance]?) -> [NSManagedObject]? {
+//        guard let appointments = appointments else {
+//            return finances //could be nil
+//        }
+//        guard let finances = finances else {
+//            return appointments
+//        }
+//        var mixture = [NSManagedObject]()
+//        var appoinmentPointer = 0
+//        var financePointer = 0
+//        while mixture.count < appointments.count + finances.count {
+//            if appoinmentPointer >= appointments.count {
+//                mixture.append(finances[financePointer])
+//                financePointer += 1
+//            } else if financePointer >= finances.count {
+//                mixture.append(appointments[appoinmentPointer])
+//                appoinmentPointer += 1
+//            } else if appointments[appoinmentPointer].visit_time < finances[financePointer].date {
+//                mixture.append(appointments[appoinmentPointer])
+//                appoinmentPointer += 1
+//            } else {
+//                mixture.append(finances[financePointer])
+//                financePointer += 1
+//            }
+//        }
+//        return mixture
+//    } //should go to other class
+    
     static func calculateSum(finances: [Any]) -> Int {
         var sum = 0
         for finance in finances {

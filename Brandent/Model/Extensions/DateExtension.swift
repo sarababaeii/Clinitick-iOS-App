@@ -10,17 +10,20 @@ import Foundation
 
 extension Date {
     //MARK: Getting Specific Dates
-    func startOfMonth() -> Date {
+    func startOfMonth() -> Date? {
         let calendar = Calendar(identifier: .persian)
         let components = calendar.dateComponents([.year, .month], from: self)
-        return  calendar.date(from: components)!
+        return  calendar.date(from: components)
     }
     
-    func endOfMonth() -> Date {
+    func endOfMonth() -> Date? {
         var components = DateComponents()
         components.month = 1
         components.second = -1
-        return Calendar(identifier: .persian).date(byAdding: components, to: startOfMonth())!
+        if let start = startOfMonth() {
+            return Calendar(identifier: .persian).date(byAdding: components, to: start)
+        }
+        return nil
     }
     
     func startOfDate() -> Date {
