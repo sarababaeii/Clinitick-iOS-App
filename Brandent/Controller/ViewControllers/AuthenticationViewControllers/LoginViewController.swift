@@ -16,6 +16,12 @@ class LoginViewController: FormViewController {
     
     var textFieldDelegates = [TextFieldDelegate]()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     //MARK: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,11 +63,9 @@ class LoginViewController: FormViewController {
             return
         }
         
-        RestAPIManagr.sharedInstance.login(phone: data[0] as! String, password: data[1] as! String)
-        if let _ = Info.sharedInstance.token {
-            nextPage2()
-        }
+        let statusCode = RestAPIManagr.sharedInstance.login(phone: data[0] as! String, password: data[1] as! String)
 //        let dentist = Dentist.getDentist(firstName: dentistData[0], lastName: dentistData[1], speciality: dentistData[2], phone: dentistData[3], password: dentistData[4])
+        checkResponse(statusCode: statusCode)
     }
     
     override func mustComplete() -> Any? {
@@ -71,6 +75,19 @@ class LoginViewController: FormViewController {
             }
         }
         return nil
+    }
+    
+    func checkResponse(statusCode: Int) {
+        switch statusCode {
+        case 200:
+            if let _ = Info.sharedInstance.token {
+                nextPage2()
+            }
+        case 403:
+            self.showToast(message: "نام کاربری یا رمز عبور اشتباه است.")
+        default:
+            self.showToast(message: "خطایی رخ داده است.")
+        }
     }
     
     @IBAction func signUp(_ sender: Any) {

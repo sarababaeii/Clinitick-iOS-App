@@ -60,6 +60,7 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     
     private func getPriceData(_ textField: UITextField) {
         guard let text = textField.fetchInput(), let price = text.toPriceInt() else {
+            viewController.data[textField.tag] = ""
             return
         }
         viewController.data[textField.tag] = price
@@ -69,6 +70,8 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     private func getTextData(_ textField: UITextField) {
         if let text = textField.fetchInput() {
             viewController.data[textField.tag] = text
+        } else {
+            viewController.data[textField.tag] = ""
         }
     }
 }

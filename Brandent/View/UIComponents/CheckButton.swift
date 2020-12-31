@@ -19,6 +19,16 @@ class CheckButton: CustomButton {
     let selectedAlergyButtonImages = [UIImage(named: "white_close"), UIImage(named: "white_tick")]
     let unselectedAlergyButtonImages = [UIImage(named: "black_close"), UIImage(named: "black_tick")]
     
+    var discreption: TaskState {
+        get {
+            if tag % 2 == 0 {
+                return .canceled
+            } else {
+                return .done
+            }
+        }
+    }
+    
     func getOtherButton() -> CheckButton? {
         guard let siblings = self.superview?.subviews else {
             return nil

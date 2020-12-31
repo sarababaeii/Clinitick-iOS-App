@@ -37,6 +37,11 @@ public class Patient: NSManagedObject {
         return nil
     }
     
+    func updatePatient(phone: String?, name: String?, alergies: String?) {
+        setAttributes(id: self.id, name: name ?? self.name, phone: phone ?? self.phone, alergies: alergies)
+        DataController.sharedInstance.saveContext()
+    }
+    
     func setAttributes(id: UUID?, name: String, phone: String, alergies: String?) {
         self.name = name
         self.phone = phone
@@ -66,10 +71,26 @@ public class Patient: NSManagedObject {
         self.modified_at = Date()
     }
     
-    func setClinics(clinics: [Clinic]) {
-        for clinic in clinics {
-            self.addToClinics(clinic)
+//    func setClinics(clinics: [Clinic]) {
+//        for clinic in clinics {
+//            self.addToClinics(clinic)
+//        }
+//    }
+    
+    func getClinics() -> [Clinic]? {
+        guard let appointments = self.history else {
+            return nil
         }
+        var clinics = [Clinic]()
+        for item in appointments {
+            if let appointment = item as? Appointment {
+                let clinic = appointment.clinic
+                if !clinics.contains(clinic) {
+                    clinics.append(clinic)
+                }
+            }
+        }
+        return clinics
     }
     
     //MARK: API Functions

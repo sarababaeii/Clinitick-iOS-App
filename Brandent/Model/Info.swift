@@ -12,7 +12,7 @@ import UIKit
 class Info {
     static let sharedInstance = Info()
     
-    var lastViewControllerIndex = 0
+    var lastViewControllerIndex: Int?
     var dentist: Dentist? //TODO: delete in logout
     
     let defaults = UserDefaults.standard
@@ -47,6 +47,8 @@ class Info {
         print(dentistID)
         if let idString = dentistID, let id = UUID(uuidString: idString) {
             dentist = DataController.sharedInstance.fetchDentist(id: id) as? Dentist
+        } else {
+            dentist = nil
         }
     }
     

@@ -27,8 +27,25 @@ class AddPatientViewController: FormViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
 //        self.tabBarController?.tabBar.isHidden = true
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
+//        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+//        let play = UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(playTapped))
+
+//        navigationItem.rightBarButtonItems = [add, play]
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "بازگشت", style: UIBarButtonItem.Style.plain, target: self, action: .none)
+//        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 14)!], for: .normal)
         configure()
+    }
+    
+    @objc func addTapped() {
+        print("add tapped")
+    }
+    
+    @objc func playTapped() {
+        print("play tapped")
     }
     
     func configure() {
@@ -44,7 +61,9 @@ class AddPatientViewController: FormViewController {
     }
     
     func setTextFieldDelegates() {
-        textFieldDelegates = [TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false), TextFieldDelegate(viewController: self, isForPrice: false, isForDate: true)]
+        textFieldDelegates = [
+            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false),
+            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false)]
         for i in 0 ..< 2 {
             textFields[i].delegate = textFieldDelegates[i]
         }
@@ -71,23 +90,35 @@ class AddPatientViewController: FormViewController {
         
         let patient = Patient.getPatient(id: nil, phone: data[0] as! String, name: data[1] as! String, alergies: (data[3] as! String))
         print(patient)
-        nextPage(patient: patient)
+        if let clinic = getClinic() {
+            print(clinic)
+            nextPage(patient: patient, clinic: clinic)
+        }
     }
     
     override func mustComplete() -> Any? {
         for i in 0 ..< 3 { //alergy is optional
             if data[i] as? String == "" {
+                print(i)
+                if i == 2 {
+                    return clinicMenu
+                }
                 return textFields[i]
             }
         }
         return nil
     }
     
-    func nextPage(patient: Patient) {
-        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddAppointmentViewController") as? AddAppointmentViewController else {
+    func getClinic() -> Clinic? {
+        return Clinic.getClinicByTitle(data[2] as! String)
+    }
+    
+    func nextPage(patient: Patient, clinic: Clinic) {
+        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TempAddAppointmrntViewController") as? TempAddAppointmrntViewController else {
             return
         }
         controller.patient = patient
+        controller.clinic = clinic
         navigationController?.show(controller, sender: nil)
     }
 }

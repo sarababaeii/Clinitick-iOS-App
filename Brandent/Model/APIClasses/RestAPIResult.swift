@@ -20,14 +20,19 @@ class RestAPIResult {
     }
     
     //MARK: Authentication
-    func authenticate(type: APIRequestType) {
-        guard let data = data else {
-            return
+    func authenticate(type: APIRequestType) -> Int {
+        guard let response = response, let data = data else {
+            return 500
+        }
+        if response.statusCode != 200 {
+            print("wrong password")
+            return response.statusCode
         }
         if type == .login {
             saveDentist(data: data)
         }
         saveToken(data: data)
+        return 200
     }
     
     private func saveDentist(data: Data) {

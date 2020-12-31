@@ -17,20 +17,15 @@ class PatientsViewController: UIViewController {
     
     let testPatients = [Patient]()
     
-    //MARK: Sending Sender to PatientProfile
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SeePatientHistorySegue",
-            let cell = sender as? PatientTableViewCell,
-            let patient = cell.patient,
-            let viewController = segue.destination as? PatientProfileViewController {
-                viewController.patient = patient
-        }
+    //MARK: Showing NavigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        configure()
     }
     
-    func setDelegates() {
-        patientsTableViewDelegate = PatientsTableViewDelegate()
-        patientsTableView.delegate = patientsTableViewDelegate
-        patientsTableView.dataSource = patientsTableViewDelegate
+    override func viewWillLayoutSubviews() {
+//        configure()
     }
     
     func configure() {
@@ -39,13 +34,19 @@ class PatientsViewController: UIViewController {
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
     }
     
-    override func viewWillLayoutSubviews() {
-        configure()
+    func setDelegates() {
+        patientsTableViewDelegate = PatientsTableViewDelegate()
+        patientsTableView.delegate = patientsTableViewDelegate
+        patientsTableView.dataSource = patientsTableViewDelegate
     }
     
-    //MARK: Showing NavigationBar
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+    //MARK: Sending Sender to PatientProfile
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SeePatientHistorySegue",
+            let cell = sender as? PatientTableViewCell,
+            let patient = cell.patient,
+            let viewController = segue.destination as? PatientProfileViewController {
+                viewController.patient = patient
+        }
     }
 }

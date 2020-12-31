@@ -94,13 +94,19 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadConfigure()
-        Info.sharedInstance.sync()
+//        Info.sharedInstance.sync()
     }
     
     //MARK: Hiding NavigationBar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let lastViewController = Info.sharedInstance.lastViewControllerIndex,
+            let viewControllers = tabBarController?.viewControllers {
+            tabBarController?.selectedViewController = viewControllers[lastViewController]
+        }
+        
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
         Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.home.rawValue
         appearConfigure()
     }

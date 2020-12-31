@@ -73,6 +73,7 @@ class FormViewController: UIViewController {
     func submitForm() {
         getLastData()
         if let requiredItem = mustComplete() {
+            print(requiredItem)
             submitionError(for: requiredItem)
             return
         }

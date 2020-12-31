@@ -61,6 +61,7 @@ class CodeViewController: UIViewController {
         textFields[textField.tag + 1].becomeFirstResponder()
     }
     
+    //MARK: Keyboard Management
     @IBAction func hideKeyboard(_ sender: Any) {
         if let textField = currentTextField {
             textField.resignFirstResponder()
@@ -106,14 +107,27 @@ class CodeViewController: UIViewController {
     }
     
     @IBAction func resendCode(_ sender: Any) {
-        RestAPIManagr.sharedInstance.getOneTimeCode(phone: phoneNumber)
+        let statusCode = RestAPIManagr.sharedInstance.getOneTimeCode(phone: phoneNumber)
         setTimer()
         changeResendCodeVisiblity()
+        checkResponse(statusCode: statusCode)
     }
     
     func changeResendCodeVisiblity() {
         resendView.isHidden = !resendView.isHidden
         resendButton.isHidden = !resendButton.isHidden
+    }
+    
+    func checkResponse(statusCode: Int) {
+        switch statusCode {
+        case 200:
+            self.showToast(message: "ارسال شد.")
+            nextPage()
+        case 401:
+            self.showToast(message: "شماره موبایل تکراری است.")
+        default:
+            self.showToast(message: "خطایی رخ داده است.")
+        }
     }
     
     //MARK: Initialization

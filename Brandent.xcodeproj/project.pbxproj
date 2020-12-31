@@ -13,6 +13,7 @@
 		03088771255EB11A00207D91 /* TodayTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03088770255EB11A00207D91 /* TodayTasks.swift */; };
 		03088773255EB31600207D91 /* TodayTasksTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03088772255EB31600207D91 /* TodayTasksTableViewDelegate.swift */; };
 		03091FDA2565527B00E9FA6C /* TabBarItemIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03091FD92565527B00E9FA6C /* TabBarItemIndex.swift */; };
+		030BBD9C259A560000A61249 /* TempAddAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030BBD9B259A560000A61249 /* TempAddAppointmentViewController.swift */; };
 		030BE2F92543454600AA642C /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030BE2F82543454600AA642C /* TaskTableViewCell.swift */; };
 		030BE2FB25434A5000AA642C /* TasksTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030BE2FA25434A5000AA642C /* TasksTableViewDelegate.swift */; };
 		030C67FC2549BAD400CECCC2 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C67FB2549BAD400CECCC2 /* AlertMessage.swift */; };
@@ -153,6 +154,7 @@
 		03088770255EB11A00207D91 /* TodayTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTasks.swift; sourceTree = "<group>"; };
 		03088772255EB31600207D91 /* TodayTasksTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTasksTableViewDelegate.swift; sourceTree = "<group>"; };
 		03091FD92565527B00E9FA6C /* TabBarItemIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemIndex.swift; sourceTree = "<group>"; };
+		030BBD9B259A560000A61249 /* TempAddAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempAddAppointmentViewController.swift; sourceTree = "<group>"; };
 		030BE2F82543454600AA642C /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		030BE2FA25434A5000AA642C /* TasksTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewDelegate.swift; sourceTree = "<group>"; };
 		030C67FB2549BAD400CECCC2 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 		03D857382555A19C00304B00 /* AddViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				030BBD9B259A560000A61249 /* TempAddAppointmentViewController.swift */,
 				03F2755725868E0300526477 /* AddPatientViewController.swift */,
 				03036D30250FE8F500C7824A /* AddAppointmentViewController.swift */,
 				03F27555258688A000526477 /* AddTaskViewController.swift */,
@@ -989,6 +992,7 @@
 				03E7F933254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift in Sources */,
 				0344D47E253756F00031122F /* ImagePickerDelegate.swift in Sources */,
 				0321F87E256855510048D77B /* Date.swift in Sources */,
+				030BBD9C259A560000A61249 /* TempAddAppointmentViewController.swift in Sources */,
 				033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */,
 				03036D31250FE8F500C7824A /* AddAppointmentViewController.swift in Sources */,
 				034253262581287F00DA6F29 /* CodeViewController.swift in Sources */,

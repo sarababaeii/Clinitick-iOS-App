@@ -23,6 +23,7 @@ extension Appointment {
     @NSManaged public var price: NSDecimalNumber
     @NSManaged public var state: String
     @NSManaged public var visit_time: Date
+//    @NSManaged public var disease: String
     @NSManaged public var clinic: Clinic
     @NSManaged public var dentist: Dentist
     @NSManaged public var disease: Disease

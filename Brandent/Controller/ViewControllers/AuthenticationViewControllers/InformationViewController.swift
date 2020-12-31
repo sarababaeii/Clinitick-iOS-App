@@ -74,11 +74,8 @@ class InformationViewController: FormViewController {
         
         let dentist = Dentist.getDentist(id: nil, firstName: data[0] as! String, lastName: data[1] as! String, phone: data[5] as! String, speciality: data[2] as! String, clinicTitle: data[3] as! String, password: data[4] as! String)
         print(dentist)
-        RestAPIManagr.sharedInstance.signUp(dentist: dentist)
-        
-        if let _ = Info.sharedInstance.token {
-            nextPage2()
-        }
+        let statusCode = RestAPIManagr.sharedInstance.signUp(dentist: dentist)
+        checkResponse(statusCode: statusCode)
     }
     
     override func mustComplete() -> Any? {
@@ -89,6 +86,19 @@ class InformationViewController: FormViewController {
             }
         }
         return nil
+    }
+    
+    func checkResponse(statusCode: Int) {
+        switch statusCode {
+        case 200:
+            if let _ = Info.sharedInstance.token {
+                nextPage2()
+            }
+        case 403:
+            self.showToast(message: "شماره موبایل تکراری است.")
+        default:
+            self.showToast(message: "خطایی رخ داده است.")
+        }
     }
     
     func nextPage2() {

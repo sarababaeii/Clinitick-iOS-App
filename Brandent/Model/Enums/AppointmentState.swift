@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum State: String {
+enum TaskState: String {
     case todo = "unknown"
     case done = "done"
     case canceled = "canceled"

@@ -54,6 +54,7 @@ class SignUpViewController: FormViewController {
     
     //MARK: Submission
     @IBAction func getCode(_ sender: Any) {
+        currentTextField = phoneNumberTextField
         getLastData()
 
         if let requiredTextField = mustComplete() {
@@ -61,8 +62,8 @@ class SignUpViewController: FormViewController {
             return
         }
         
-        RestAPIManagr.sharedInstance.getOneTimeCode(phone: data[0] as! String)
-        nextPage()
+        let statusCode = RestAPIManagr.sharedInstance.getOneTimeCode(phone: data[0] as! String)
+        checkResponse(statusCode: statusCode)
     }
     
     override func mustComplete() -> Any? {
@@ -70,6 +71,18 @@ class SignUpViewController: FormViewController {
             return phoneNumberTextField
         }
         return nil
+    }
+    
+    func checkResponse(statusCode: Int) {
+        switch statusCode {
+        case 200:
+            self.showToast(message: "ارسال شد.")
+            nextPage()
+        case 401:
+            self.showToast(message: "شماره موبایل تکراری است.")
+        default:
+            self.showToast(message: "خطایی رخ داده است.")
+        }
     }
     
     func nextPage() {

@@ -15,17 +15,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var dentistNameLabel: UILabel!
     @IBOutlet weak var specialityLabel: UILabel!
     
-    func setDentistInformation() {
-        guard let dentist = Info.sharedInstance.dentist else {
-            return
-        }
-//        dentistImageView.image = dentist.photo
-        dentistNameLabel.text = dentist.first_name + dentist.last_name
-        specialityLabel.text = dentist.speciality
-    }
-    
-    func configure() {
-        setDentistInformation()
+    //MARK: Hiding NavigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewDidLoad() {
@@ -37,9 +30,28 @@ class ProfileViewController: UIViewController {
         Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.profile.rawValue
     }
     
-    //MARK: Hiding NavigationBar
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+    func configure() {
+        setDentistInformation()
+    }
+    
+    func setDentistInformation() {
+        guard let dentist = Info.sharedInstance.dentist else {
+            return
+        }
+//        dentistImageView.image = dentist.photo
+        dentistNameLabel.text = dentist.first_name + " " + dentist.last_name
+        specialityLabel.text = dentist.speciality
+    }
+    
+    @IBAction func logOut(_ sender: Any) {
+        Info.sharedInstance.token = nil
+        nextPage()
+    }
+    
+    func nextPage() {
+        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {
+            return
+        }
+        navigationController?.show(controller, sender: nil)
     }
 }

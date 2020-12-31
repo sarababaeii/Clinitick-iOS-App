@@ -19,7 +19,7 @@ class AppointmentsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewD
         self.patient = patient
         if let appointments = patient.history?.allObjects as? [Appointment] {
             self.appointments = Array(appointments)
-        }
+        } //TODO: sort by visit time
     }
     
     //MARK: Protocol Functions

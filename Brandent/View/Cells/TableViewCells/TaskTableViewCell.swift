@@ -12,7 +12,7 @@ import UIKit
 class TaskTableViewCell: UITableViewCell {
     
     @IBOutlet weak var patientNameLabel: UILabel!
-    @IBOutlet weak var diseaseLabel: UILabel!
+    @IBOutlet weak var diseaseLabel: UILabel! // just for appointment
     @IBOutlet weak var visitTimeLabel: UILabel!
     @IBOutlet weak var doneButton: CheckButton!
     @IBOutlet weak var canceledButton: CheckButton!
@@ -38,21 +38,34 @@ class TaskTableViewCell: UITableViewCell {
     
     func setTaskAttributes(task: Task) {
         patientNameLabel.text = task.title
+        diseaseLabel.text = ""
         visitTimeLabel.text = task.date.toPersianTimeString()
-//        setState(appointment: task)
+        setState(task: task)
     }
     
     func setState(appointment: Appointment) {
-        if appointment.state == State.done.rawValue {
-            changeAppointmentState(doneButton as Any)
-        } else if appointment.state == State.canceled.rawValue {
-            changeAppointmentState(canceledButton as Any)
+        if appointment.state == TaskState.done.rawValue {
+            changeTaskState(doneButton as Any)
+        } else if appointment.state == TaskState.canceled.rawValue {
+            changeTaskState(canceledButton as Any)
         }
     }
     
-    @IBAction func changeAppointmentState(_ sender: Any) {
+    func setState(task: Task) {
+        if task.state == TaskState.done.rawValue {
+            changeTaskState(doneButton as Any)
+        } else if task.state == TaskState.canceled.rawValue {
+            changeTaskState(canceledButton as Any)
+        }
+    }
+    
+    @IBAction func changeTaskState(_ sender: Any) {
         if let button = sender as? CheckButton {
-//            item?.setState(tag: button.tag)
+            if let appointment = item as? Appointment {
+                appointment.updateState(state: button.discreption)
+            } else if let task = item as? Task {
+                task.updateState(state: button.discreption)
+            }
             button.visibleSelection()
         }
     }

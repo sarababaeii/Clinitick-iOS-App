@@ -53,6 +53,7 @@ class RestAPIManagr {
         }
         var newRequest = request
         newRequest.addValue(token, forHTTPHeaderField: "token") //key?
+        print(token)
         return newRequest
     }
     
@@ -119,18 +120,19 @@ class RestAPIManagr {
     }
     
     //MARK: Functions
-    func login(phone: String, password: String) {
+    func login(phone: String, password: String) -> Int {
         let result = sendRequest(request: createLoginRequest(phone: phone, password: password), type: .login)
-        result.authenticate(type: .login)
+        return result.authenticate(type: .login)
     }
     
-    func signUp(dentist: Dentist) {
+    func signUp(dentist: Dentist) -> Int {
         let result = sendRequest(request: createSignUpRequest(dentist: dentist), type: .signUp)
-        result.authenticate(type: .signUp)
+        return result.authenticate(type: .signUp)
     }
     
-    func getOneTimeCode(phone: String) {
-        let _ = sendRequest(request: createSendPhoneRequest(phone: phone), type: .sendPhone)
+    func getOneTimeCode(phone: String) -> Int {
+        let result = sendRequest(request: createSendPhoneRequest(phone: phone), type: .sendPhone)
+        return result.response?.statusCode ?? 500
     }
     
     func sendOneTimeCode(phone: String, code: String) -> Bool {

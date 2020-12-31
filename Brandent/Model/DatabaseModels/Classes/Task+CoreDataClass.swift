@@ -43,7 +43,7 @@ public class Task: NSManagedObject {
         self.title = title
         self.date = date
         self.clinic = clinic
-        
+        self.state = TaskState.todo.rawValue
         self.setID(id: id)
         self.setDentist()
         self.setModifiedTime()
@@ -66,6 +66,12 @@ public class Task: NSManagedObject {
     
     func setModifiedTime() {
         self.modified_at = Date()
+    }
+    
+    func updateState(state: TaskState) {
+        self.state = state.rawValue
+        self.setModifiedTime()
+        DataController.sharedInstance.saveContext()
     }
         
     //MARK: API Functions

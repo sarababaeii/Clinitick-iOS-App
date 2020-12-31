@@ -240,10 +240,10 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     }
     
     func back() {
-        if let viewControllers = tabBarController?.viewControllers {
-            tabBarController?.selectedViewController = viewControllers[Info.sharedInstance.lastViewControllerIndex]
-                reset()
-        }
+//        if let viewControllers = tabBarController?.viewControllers {
+//            tabBarController?.selectedViewController = viewControllers[Info.sharedInstance.lastViewControllerIndex]
+//                reset()
+//        }
     }
     
     //MARK: Reset

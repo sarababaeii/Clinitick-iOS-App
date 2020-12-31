@@ -13,12 +13,12 @@ import CoreData
 @objc(Appointment)
 public class Appointment: NSManagedObject {
     
-    static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, diseaseTitle: String, price: Int, date: Date) -> Appointment {
-        if let appointment = getAppointmentByID(id) { // for sync
+    static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, diseaseTitle: String, price: Int, date: Date) -> Appointment { // for sync
+        if let appointment = getAppointmentByID(id) {
             return appointment
         }
         let clinic = Clinic.getClinicByID(clinicID)!
-        let patient = Patient.getPatientByID(patientID)! //TODO: sare unwrapping
+        let patient = Patient.getPatientByID(patientID)! //TODO: safe unwrapping
         return createAppointment(id: id, patient: patient, clinic: clinic, diseaseTitle: diseaseTitle, price: price, date: date)
     }
     
@@ -40,7 +40,7 @@ public class Appointment: NSManagedObject {
     func setAttributes(id: UUID?, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic) {
         self.price = NSDecimalNumber(value: price)
         self.visit_time = visit_time
-        self.state = State.todo.rawValue //should set
+        self.state = TaskState.todo.rawValue //should set
         self.clinic = clinic
         self.patient = patient
         self.disease = disease
@@ -50,12 +50,10 @@ public class Appointment: NSManagedObject {
         self.setModifiedTime()
     }
     
-    func setState(tag: Int) {
-        if tag == 1 {
-            self.state = State.done.rawValue
-        } else if tag == 0 {
-            self.state = State.canceled.rawValue
-        }
+    func updateState(state: TaskState) {
+        self.state = state.rawValue
+        self.setModifiedTime()
+        DataController.sharedInstance.saveContext()
     }
     
     func setID(id: UUID?) {
