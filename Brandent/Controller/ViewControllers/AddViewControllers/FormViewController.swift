@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SwiftyMenu
 
-class FormViewController: UIViewController {
+class FormViewController: NavigationBarViewController {
     
     var textFields: [CustomTextField] = []
     var currentTextField: UITextField?
@@ -20,17 +20,6 @@ class FormViewController: UIViewController {
     
     var data: [Any] = []
     var date: Date?
-    
-    //MARK: UI Management
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
-    func setTitle(title: String) {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: title, style: UIBarButtonItem.Style.plain, target: self, action: .none)
-        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
-    }
     
     //MARK: Date Picker Functions
     func setDatePicker(dateTextFieldIndex: Int, mode: UIDatePicker.Mode) {

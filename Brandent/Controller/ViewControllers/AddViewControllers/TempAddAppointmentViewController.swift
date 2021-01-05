@@ -21,19 +21,6 @@ class TempAddAppointmrntViewController: FormViewController {
     var textFieldDelegates = [TextFieldDelegate]()
     
     //MARK: Initialization
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "بازگشت", style: UIBarButtonItem.Style.plain, target: self, action: #selector(close))
-        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 14)!], for: .normal)
-    }
-    
-    @objc func close() {
-        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarViewController") as? UITabBarController else {
-            return
-        }
-        navigationController?.show(controller, sender: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -42,7 +29,7 @@ class TempAddAppointmrntViewController: FormViewController {
     func configure() {
         initializeTextFields()
         setDatePicker(dateTextFieldIndex: 2, mode: .dateAndTime)
-        setTitle(title: "مورد جدید")
+        setTitle(title: "فعالیت درمانی")
     }
     
     func initializeTextFields() {
@@ -85,6 +72,6 @@ class TempAddAppointmrntViewController: FormViewController {
     }
     
     override func back() {
-        close()
+        navigateToPage(identifier: "TabBarViewController")
     }
 }

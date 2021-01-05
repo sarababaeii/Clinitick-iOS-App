@@ -77,7 +77,6 @@ class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
     }
     
     //MARK: Submission
-    @available(iOS 13.0, *)
     @IBAction func submit(_ sender: Any) {
         submitForm()
     }

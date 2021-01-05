@@ -14,13 +14,20 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
     var imagesCollectionView: UICollectionView
     var images = [Image]()
     
-    var headerCell: ImagesCollectionViewHeader?
-    var viewController: AddViewController
+    var paitientID: UUID
+    
+//    var headerCell: ImagesCollectionViewHeader?
+//    var viewController: GalleryViewController
     
     //MARK: Initializer
-    init(imagesCollectionView: UICollectionView, viewController: AddViewController) {
+//    init(imagesCollectionView: UICollectionView, viewController: GalleryViewController) {
+//        self.imagesCollectionView = imagesCollectionView
+//        self.viewController = viewController
+//    }
+    
+    init(imagesCollectionView: UICollectionView, paitientID: UUID) {
         self.imagesCollectionView = imagesCollectionView
-        self.viewController = viewController
+        self.paitientID = paitientID
     }
     
     func reset() {
@@ -29,21 +36,21 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
         }
     }
     
-    //MARK: Header
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ImagesHeaderCellID", for: indexPath) as? ImagesCollectionViewHeader else {
-                    fatalError("Invalid view type")
-            }
-            headerView.setAttributes(viewController: viewController)
-            headerCell = headerView
-            return headerView
-        default:
-            assert(false, "Invalid element type")
-        }
-    }
+//    //MARK: Header
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//
+//        switch kind {
+//        case UICollectionView.elementKindSectionHeader:
+//            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ImagesHeaderCellID", for: indexPath) as? ImagesCollectionViewHeader else {
+//                    fatalError("Invalid view type")
+//            }
+//            headerView.setAttributes(viewController: viewController)
+//            headerCell = headerView
+//            return headerView
+//        default:
+//            assert(false, "Invalid element type")
+//        }
+//    }
     
     //MARK: Delegate Functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -82,14 +89,15 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
                 imagesCollectionView.insertItems(at: [indexPath])
             }, completion: nil)
         }
-        if !images.isEmpty {
-            headerCell?.showButtons()
-            viewController.hideButtons()
-        }
+//        if !images.isEmpty {
+//            headerCell?.showButtons()
+//            viewController.hideButtons()
+//        }
     }
     
     func deleteImage(_ image: Image) {
-        RestAPIManagr.sharedInstance.deleteImage(appointmentID: viewController.appointmentID, image: image)
+//        RestAPIManagr.sharedInstance.deleteImage(appointmentID: viewController.appointmentID, image: image)
+        RestAPIManagr.sharedInstance.deleteImage(image: image)
         
         if let indexPath = findIndexOfImage(image) {
             imagesCollectionView.performBatchUpdates({
@@ -97,10 +105,10 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
                 imagesCollectionView.deleteItems(at: [indexPath])
             }, completion: nil)
         }
-        if images.isEmpty {
-            headerCell?.hideButtons()
-            viewController.showButtons()
-        }
+//        if images.isEmpty {
+//            headerCell?.hideButtons()
+//            viewController.showButtons()
+//        }
     }
     
     func findIndexOfImage(_ image: Image) -> IndexPath? {
@@ -112,6 +120,7 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
     
     //MARK: API Calling
     func sendImages(newImages: [Image]) {
-        RestAPIManagr.sharedInstance.addImage(appointmentID: viewController.appointmentID, images: newImages)
+        RestAPIManagr.sharedInstance.addImage(patientID: paitientID, images: newImages)
+//        RestAPIManagr.sharedInstance.addImage(appointmentID: viewController.appointmentID, images: newImages)
     }
 }

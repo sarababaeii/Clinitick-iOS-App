@@ -87,9 +87,19 @@ class JSONSerializer {
     }
     
     //MARK: Image
-    func getAddImageData(appointmentID: UUID, images: [Image], boundary: String) -> Data {
+//    func getAddImageData(appointmentID: UUID, images: [Image], boundary: String) -> Data {
+//        let httpBody = NSMutableData()
+//        httpBody.appendString(convertFormField(key: APIKey.images.id!, value: appointmentID.uuidString, using: boundary))
+//        for image in images {
+//            httpBody.append(convertFileData(key: APIKey.images.rawValue, fileName: image.name, mimeType: "image/jpeg", fileData: image.data, using: boundary))
+//        }
+//        httpBody.appendString("--\(boundary)--")
+//        return httpBody as Data
+//    }
+    
+    func getAddImageData(images: [Image], boundary: String) -> Data {
         let httpBody = NSMutableData()
-        httpBody.appendString(convertFormField(key: APIKey.images.id!, value: appointmentID.uuidString, using: boundary))
+//        httpBody.appendString(convertFormField(key: APIKey.images.id!, value: appointmentID.uuidString, using: boundary))
         for image in images {
             httpBody.append(convertFileData(key: APIKey.images.rawValue, fileName: image.name, mimeType: "image/jpeg", fileData: image.data, using: boundary))
         }
@@ -97,13 +107,13 @@ class JSONSerializer {
         return httpBody as Data
     }
     
-    private func convertFormField(key: String, value: String, using boundary: String) -> String {
-        var fieldString = "--\(boundary)\r\n"
-        fieldString += "Content-Disposition: form-data; name=\"\(key)\"\r\n"
-        fieldString += "\r\n"
-        fieldString += "\(value)\r\n"
-        return fieldString
-    }
+//    private func convertFormField(key: String, value: String, using boundary: String) -> String {
+//        var fieldString = "--\(boundary)\r\n"
+//        fieldString += "Content-Disposition: form-data; name=\"\(key)\"\r\n"
+//        fieldString += "\r\n"
+//        fieldString += "\(value)\r\n"
+//        return fieldString
+//    }
     
     private func convertFileData(key: String, fileName: String, mimeType: String, fileData: Data, using boundary: String) -> Data {
         let data = NSMutableData()

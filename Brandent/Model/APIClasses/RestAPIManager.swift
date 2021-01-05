@@ -99,21 +99,36 @@ class RestAPIManagr {
     }
     
     //MARK: Images
-    private func createAddImagesRequest(appointmentID: UUID, images: [Image]) -> URLRequest {
+    private func createAddImagesRequest(patientID: UUID, images: [Image]) -> URLRequest {
         let boundary = "Boundary-\(UUID().uuidString)"
 
-        var request = URLRequest(url: API.addImageURL)
+        var request = URLRequest(url: URL(string: "\(API.images)/\(patientID)")!)
+        print("### \(request.url)")
         request.httpMethod = "POST"
         request.setValue("\(ContentType.multipart.rawValue); boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonSerializer.getAddImageData(appointmentID: appointmentID, images: images, boundary: boundary)
+        
+//        request.addValue(patientID.uuidString, forHTTPHeaderField: "patient_id")
+//        request.httpBody = jsonSerializer.getAddImageData(appointmentID: appointmentID, images: images, boundary: boundary)
+        request.httpBody = jsonSerializer.getAddImageData(images: images, boundary: boundary)
         return request
     }
     
-    private func createDeleteImageRequest(appointmentID: UUID, image: Image) -> URLRequest? {
-        guard let url = URL(string: "?apt_id=\(appointmentID)&image_id=\(image.name)", relativeTo: API.addImageURL) else {
+//    private func createDeleteImageRequest(appointmentID: UUID, image: Image) -> URLRequest? {
+//        guard let url = URL(string: "?apt_id=\(appointmentID)&image_id=\(image.name)", relativeTo: API.addImageURL) else {
+//            print("Error in creating URL")
+//            return nil
+//        }
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "DELETE"
+//        return request
+//    }
+    
+    private func createDeleteImageRequest(image: Image) -> URLRequest? {
+        guard let url = URL(string: "\(API.images)/\(image.name)") else {
             print("Error in creating URL")
             return nil
         }
+        print("$$$ \(url)")
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         return request
@@ -144,12 +159,15 @@ class RestAPIManagr {
         let _ = sendRequest(request: createAddAppointmentRequest(appointment: appointment), type: .addAppointment)
     }
     
-    func addImage(appointmentID: UUID, images: [Image]) {
-        let _ = sendRequest(request: createAddImagesRequest(appointmentID: appointmentID, images: images), type: .addImage)
+    func addImage(patientID: UUID, images: [Image]) {
+        let _ = sendRequest(request: createAddImagesRequest(patientID: patientID, images: images), type: .addImage)
     }
     
-    func deleteImage(appointmentID: UUID, image: Image) {
-        if let request = createDeleteImageRequest(appointmentID: appointmentID, image: image) {
+    func deleteImage(image: Image) {
+//        if let request = createDeleteImageRequest(appointmentID: appointmentID, image: image) {
+//            let _ = sendRequest(request:request, type: .addImage )
+//        }
+        if let request = createDeleteImageRequest(image: image) {
             let _ = sendRequest(request:request, type: .addImage )
         }
     }

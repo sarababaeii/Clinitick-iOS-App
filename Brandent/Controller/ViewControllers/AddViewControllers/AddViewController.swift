@@ -282,10 +282,10 @@ class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegat
     
     //MARK: Initialization
     func setImagesDelegates() { //load
-        imageCollectionViewDelegate = ImagesCollectionViewDelegate(imagesCollectionView:imagesCollectionView, viewController: self)
-        imagesCollectionView.delegate = imageCollectionViewDelegate
-        imagesCollectionView.dataSource = imageCollectionViewDelegate
-        imagePickerDelegate = ImagePickerDelegate(from: self)
+//        imageCollectionViewDelegate = ImagesCollectionViewDelegate(imagesCollectionView:imagesCollectionView, viewController: self)
+//        imagesCollectionView.delegate = imageCollectionViewDelegate
+//        imagesCollectionView.dataSource = imageCollectionViewDelegate
+//        imagePickerDelegate = ImagePickerDelegate(from: self)
     }
     
     func setNotesDelegates() { //load

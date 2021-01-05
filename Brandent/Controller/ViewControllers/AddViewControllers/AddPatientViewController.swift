@@ -19,6 +19,8 @@ class AddPatientViewController: FormViewController {
     var textFieldDelegates = [TextFieldDelegate]()
     var menuDelegate: MenuDelegate?
     
+    var patient: Patient?
+    
     //MARK: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,31 +29,15 @@ class AddPatientViewController: FormViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-//        self.tabBarController?.tabBar.isHidden = true
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
-//        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-//        let play = UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(playTapped))
-
-//        navigationItem.rightBarButtonItems = [add, play]
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "بازگشت", style: UIBarButtonItem.Style.plain, target: self, action: .none)
-//        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 14)!], for: .normal)
+        self.tabBarController?.tabBar.isHidden = true
         configure()
-    }
-    
-    @objc func addTapped() {
-        print("add tapped")
-    }
-    
-    @objc func playTapped() {
-        print("play tapped")
     }
     
     func configure() {
         initializeTextFields()
         setMenuDelegate()
         setTitle(title: "اطلاعات بیمار")
+        setBackButton()
     }
     
     func initializeTextFields() {
@@ -74,11 +60,28 @@ class AddPatientViewController: FormViewController {
         menuDelegate!.prepareClinicMenu(menu: clinicMenu)
     }
     
+    func setBackButton() {
+        self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "بازگشت", style: UIBarButtonItem.Style.plain, target: self, action: #selector(back))
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 14.0)!], for: .normal)
+    }
+    
+    @objc override func back() {
+        navigateToPage(identifier: "TabBarViewController")
+    }
+    
     //MARK: Keyboard Management
     @IBAction func hideKeyboard(_ sender: Any) {
         if let textField = currentTextField {
             textField.resignFirstResponder()
         }
+    }
+    
+    func autoFillData(phone: String) {
+        guard let patient = Patient.getPatientByPhone(phone) else {
+            return
+        }
+        nameTextField.text = patient.name
+        //TODO:
     }
     
     @IBAction func submit(_ sender: Any) {
@@ -88,11 +91,9 @@ class AddPatientViewController: FormViewController {
             return
         }
         
-        let patient = Patient.getPatient(id: nil, phone: data[0] as! String, name: data[1] as! String, alergies: (data[3] as! String))
-        print(patient)
+        savePatient()
         if let clinic = getClinic() {
-            print(clinic)
-            nextPage(patient: patient, clinic: clinic)
+            nextPage(patient: patient!, clinic: clinic)
         }
     }
     
@@ -109,10 +110,15 @@ class AddPatientViewController: FormViewController {
         return nil
     }
     
+    func savePatient() {
+        patient = Patient.getPatient(id: nil, phone: data[0] as! String, name: data[1] as! String, alergies: (data[3] as! String))
+    }
+    
     func getClinic() -> Clinic? {
         return Clinic.getClinicByTitle(data[2] as! String)
     }
     
+    //MARK: Navigation Management
     func nextPage(patient: Patient, clinic: Clinic) {
         guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TempAddAppointmrntViewController") as? TempAddAppointmrntViewController else {
             return
@@ -121,6 +127,17 @@ class AddPatientViewController: FormViewController {
         controller.clinic = clinic
         navigationController?.show(controller, sender: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        savePatient()
+        Info.sharedInstance.sync()
+        if segue.identifier == "GallerySegue",
+            let viewController = segue.destination as? GalleryViewController,
+            let patient = patient {
+            viewController.patient = patient
+        }
+    }
 }
 
 //TODO: Set alergy
+//when hides

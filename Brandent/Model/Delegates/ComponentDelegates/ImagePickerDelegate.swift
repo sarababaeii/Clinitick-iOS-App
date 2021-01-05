@@ -14,13 +14,13 @@ import Photos
 
 class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    var viewController: AddViewController
+    var viewController: GalleryViewController
     
     var selectedAssets = [PHAsset]()
     var images = [Image]()
     
     //MARK: Initialization
-    init(from viewController: AddViewController) {
+    init(from viewController: GalleryViewController) {
         self.viewController = viewController
     }
     

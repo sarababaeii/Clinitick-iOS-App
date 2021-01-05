@@ -16,7 +16,9 @@ struct API {
     
     private static let appointment = API.base + "appointments"
     private static let addAppointment = API.appointment + API.add
-    private static let images = API.addAppointment + "/images"
+    
+    private static let patient = API.base + "patients"
+    static let images = API.patient + "/images"
     
     private static let clinic = API.base + "clinics"
     private static let addClinic = API.clinic + API.add
