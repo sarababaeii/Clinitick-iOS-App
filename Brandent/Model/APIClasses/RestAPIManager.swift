@@ -103,34 +103,25 @@ class RestAPIManagr {
         let boundary = "Boundary-\(UUID().uuidString)"
 
         var request = URLRequest(url: URL(string: "\(API.images)/\(patientID)")!)
-        print("### \(request.url)")
         request.httpMethod = "POST"
         request.setValue("\(ContentType.multipart.rawValue); boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        
-//        request.addValue(patientID.uuidString, forHTTPHeaderField: "patient_id")
-//        request.httpBody = jsonSerializer.getAddImageData(appointmentID: appointmentID, images: images, boundary: boundary)
         request.httpBody = jsonSerializer.getAddImageData(images: images, boundary: boundary)
         return request
     }
-    
-//    private func createDeleteImageRequest(appointmentID: UUID, image: Image) -> URLRequest? {
-//        guard let url = URL(string: "?apt_id=\(appointmentID)&image_id=\(image.name)", relativeTo: API.addImageURL) else {
-//            print("Error in creating URL")
-//            return nil
-//        }
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "DELETE"
-//        return request
-//    }
     
     private func createDeleteImageRequest(image: Image) -> URLRequest? {
         guard let url = URL(string: "\(API.images)/\(image.name)") else {
             print("Error in creating URL")
             return nil
         }
-        print("$$$ \(url)")
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
+        return request
+    }
+    
+    private func createGetImagesRequest(patientID: UUID) -> URLRequest {
+        var request = URLRequest(url: URL(string: "\(API.images)/\(patientID)")!)
+        request.httpMethod = "GET"
         return request
     }
     
@@ -164,14 +155,16 @@ class RestAPIManagr {
     }
     
     func deleteImage(image: Image) {
-//        if let request = createDeleteImageRequest(appointmentID: appointmentID, image: image) {
-//            let _ = sendRequest(request:request, type: .addImage )
-//        }
         if let request = createDeleteImageRequest(image: image) {
             let _ = sendRequest(request:request, type: .addImage )
         }
     }
     
+    func getImages(patientID: UUID) -> NSArray? {
+        let result = sendRequest(request: createGetImagesRequest(patientID: patientID), type: .addImage)
+        return result.getImages()
+    }
+
     func addFinance(finance: Finance) {
         let _ = sendRequest(request: createAddFinanceRequest(finance: finance), type: .addFinance)
     }

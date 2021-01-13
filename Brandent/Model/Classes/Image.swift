@@ -20,6 +20,17 @@ class Image: Equatable {
         self.img = UIImage(data: data)!
     }
     
+    init(name: String) {
+        self.name = name
+        guard let url = URL(string: "\(API.image)\(name)"), let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {
+            self.img = UIImage(named: "gallery")!
+            self.data = img.jpegData(compressionQuality: 1)!
+            return
+        }
+        self.data = data
+        self.img = image
+    }
+    
     init(img: UIImage) {
         self.name = UUID().uuidString
         self.data = img.jpegData(compressionQuality: 1)!

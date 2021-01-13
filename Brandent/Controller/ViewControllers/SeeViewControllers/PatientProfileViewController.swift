@@ -105,4 +105,12 @@ class PatientProfileViewController: FormViewController {
             (data[1] as? String != patient?.name) ||
             (data[2] as? String != patient?.alergies)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GallerySegue",
+            let viewController = segue.destination as? GalleryViewController,
+            let patient = patient {
+            viewController.patient = patient
+        }
+    }
 }

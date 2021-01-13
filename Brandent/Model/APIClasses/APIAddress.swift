@@ -9,7 +9,8 @@
 import Foundation
 
 struct API {
-    private static let base = "http://185.235.40.77:7000/api/"
+    private static let server = "http://185.235.40.77:7000/"
+    private static let base = API.server + "api/"
     private static let add = "/add"
     
     private static let sync = API.base + "sync"
@@ -18,7 +19,8 @@ struct API {
     private static let addAppointment = API.appointment + API.add
     
     private static let patient = API.base + "patients"
-    static let images = API.patient + "/images"
+    public static let images = API.patient + "/images"
+    public static let image = API.server + "public/uploads/"
     
     private static let clinic = API.base + "clinics"
     private static let addClinic = API.clinic + API.add

@@ -11,6 +11,7 @@ import UIKit
 import SwiftyMenu
 
 class AddPatientViewController: FormViewController {
+    
     @IBOutlet weak var phoneNumberTextField: CustomTextField!
     @IBOutlet weak var nameTextField: CustomTextField!
     @IBOutlet weak var clinicMenu: SwiftyMenu!
@@ -84,33 +85,43 @@ class AddPatientViewController: FormViewController {
         //TODO:
     }
     
-    @IBAction func submit(_ sender: Any) {
-        getLastData()
-        if let requiredItem = mustComplete() {
-            submitionError(for: requiredItem)
+    @IBAction func showGallery(_ sender: Any) {
+        savePatient(isForGallery: true)
+        Info.sharedInstance.sync()
+        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GalleryViewController") as? GalleryViewController, let patient = patient else {
             return
         }
-        
-        savePatient()
+        controller.patient = patient
+        navigationController?.show(controller, sender: nil)
+    }
+    
+    @IBAction func submit(_ sender: Any) {
+        savePatient(isForGallery: false)
         if let clinic = getClinic() {
             nextPage(patient: patient!, clinic: clinic)
         }
     }
     
-    override func mustComplete() -> Any? {
+    func mustComplete(isForGallery: Bool) -> Any? {
         for i in 0 ..< 3 { //alergy is optional
             if data[i] as? String == "" {
-                print(i)
-                if i == 2 {
+                if i == 2 && !isForGallery {
                     return clinicMenu
                 }
-                return textFields[i]
+                if i != 2 {
+                    return textFields[i]
+                }
             }
         }
         return nil
     }
     
-    func savePatient() {
+    func savePatient(isForGallery: Bool) {
+        getLastData()
+        if let requiredItem = mustComplete(isForGallery: isForGallery) {
+            submitionError(for: requiredItem)
+            return
+        }
         patient = Patient.getPatient(id: nil, phone: data[0] as! String, name: data[1] as! String, alergies: (data[3] as! String))
     }
     
@@ -126,16 +137,6 @@ class AddPatientViewController: FormViewController {
         controller.patient = patient
         controller.clinic = clinic
         navigationController?.show(controller, sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        savePatient()
-        Info.sharedInstance.sync()
-        if segue.identifier == "GallerySegue",
-            let viewController = segue.destination as? GalleryViewController,
-            let patient = patient {
-            viewController.patient = patient
-        }
     }
 }
 

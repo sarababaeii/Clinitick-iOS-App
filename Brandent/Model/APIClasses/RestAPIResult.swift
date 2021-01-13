@@ -54,7 +54,7 @@ class RestAPIResult {
         return false
     }
     
-    //MARK: Authentication
+    //MARK: Sync
     func saveNewData() {
         guard let data = data, let result = jsonSerializer.decodeData(data: data) else {
             return
@@ -94,5 +94,16 @@ class RestAPIResult {
                 }
             }
         }
+    }
+    
+    //MARK: Gallery
+    func getImages() -> NSArray? {
+        if response?.statusCode != 200 {
+            return nil
+        }
+        guard let data = data, let result = jsonSerializer.decodeData(data: data), let array = getArray(data: result, key: "images") else {
+            return nil
+        }
+        return array
     }
 }

@@ -31,6 +31,7 @@ class GalleryViewController: NavigationBarViewController {
         }
         setTitle(title: "تصاویر")
         setDelegates()
+        getImages()
     }
     
     func setDelegates() {
@@ -39,6 +40,18 @@ class GalleryViewController: NavigationBarViewController {
         imagesCollectionView.dataSource = imageCollectionViewDelegate
         
         imagePickerDelegate = ImagePickerDelegate(from: self)
+    }
+    
+    func getImages() {
+        guard let images = RestAPIManagr.sharedInstance.getImages(patientID: patient!.id) else {
+            return
+        }
+        for item in images {
+            if let dict = item as? NSDictionary, let imageName = dict["image"] as? String {
+                print("img: \(imageName)")
+                imageCollectionViewDelegate?.showImage(fileName: imageName)
+            }
+        }
     }
     
     @IBAction func addImage(_ sender: Any) {

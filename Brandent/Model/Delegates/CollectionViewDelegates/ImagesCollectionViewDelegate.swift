@@ -16,15 +16,7 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
     
     var paitientID: UUID
     
-//    var headerCell: ImagesCollectionViewHeader?
-//    var viewController: GalleryViewController
-    
     //MARK: Initializer
-//    init(imagesCollectionView: UICollectionView, viewController: GalleryViewController) {
-//        self.imagesCollectionView = imagesCollectionView
-//        self.viewController = viewController
-//    }
-    
     init(imagesCollectionView: UICollectionView, paitientID: UUID) {
         self.imagesCollectionView = imagesCollectionView
         self.paitientID = paitientID
@@ -118,9 +110,18 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
         return nil
     }
     
+    func showImage(fileName: String) {
+//        guard let url = URL(string: "\(API.image)\(fileName)"), let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {
+//            return
+//        }
+//        print("url: \(url)")
+        let image = Image(name: fileName)
+        let indexPath = IndexPath(item: images.count, section: 0)
+        insertImage(image, at: indexPath)
+    }
+    
     //MARK: API Calling
     func sendImages(newImages: [Image]) {
         RestAPIManagr.sharedInstance.addImage(patientID: paitientID, images: newImages)
-//        RestAPIManagr.sharedInstance.addImage(appointmentID: viewController.appointmentID, images: newImages)
     }
 }
