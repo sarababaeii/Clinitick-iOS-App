@@ -53,7 +53,16 @@ class FormViewController: NavigationBarViewController {
         guard let index = dateTextFieldIndex, let picker = datePicker else {
             return
         }
-        textFields[index].text = picker.date.toPersianDMonthYString()
+        switch picker.datePickerMode {
+        case .dateAndTime:
+            textFields[index].text = picker.date.toCompletePersianString()
+        case .date:
+            textFields[index].text = picker.date.toPersianDMonthYString()
+        case .time:
+            textFields[index].text = picker.date.toPersianTimeString()
+        default:
+            textFields[index].text = picker.date.toPersianDMonthYString()
+        }
         textFields[index].endEditing(true)
         date = picker.date
     }

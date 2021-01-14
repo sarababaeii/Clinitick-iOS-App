@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0300B3FF25B0B59B00D8CAD5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300B3FE25B0B59B00D8CAD5 /* TabBarViewController.swift */; };
 		03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D2E250FE8BB00C7824A /* ProfileViewController.swift */; };
 		03036D31250FE8F500C7824A /* AddAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D30250FE8F500C7824A /* AddAppointmentViewController.swift */; };
 		03036D33250FE92400C7824A /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D32250FE92400C7824A /* TasksViewController.swift */; };
@@ -149,6 +150,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0300B3FE25B0B59B00D8CAD5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		03036D2E250FE8BB00C7824A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		03036D30250FE8F500C7824A /* AddAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentViewController.swift; sourceTree = "<group>"; };
 		03036D32250FE92400C7824A /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
@@ -608,6 +610,7 @@
 				03749EB6250E76D6003CBE49 /* FinanceViewController.swift */,
 				03036D32250FE92400C7824A /* TasksViewController.swift */,
 				03036D2E250FE8BB00C7824A /* ProfileViewController.swift */,
+				0300B3FE25B0B59B00D8CAD5 /* TabBarViewController.swift */,
 			);
 			path = TabBarViewControllers;
 			sourceTree = "<group>";
@@ -1037,6 +1040,7 @@
 				034F5468255DB020005145C6 /* SwiftyMenuExtension.swift in Sources */,
 				0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */,
 				03BC1F8C25251658009749C0 /* Patient+CoreDataClass.swift in Sources */,
+				0300B3FF25B0B59B00D8CAD5 /* TabBarViewController.swift in Sources */,
 				03EE13742554480E00363EA0 /* UIViewExtension.swift in Sources */,
 				03E7F93D254C88DC000EDDD0 /* AddClinicViewController.swift in Sources */,
 				0321F8662567CA920048D77B /* ContentType.swift in Sources */,

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TasksViewController: UIViewController {
+class TasksViewController: TabBarViewController {
 
     @IBOutlet weak var calendar: GDCalendar!
     @IBOutlet weak var line: LightningUIView!
@@ -17,19 +17,21 @@ class TasksViewController: UIViewController {
     
     var taskTableViewDelegate: TasksTableViewDelegate?
     
-    @IBAction func selectToday(_ sender: Any) {
-        calendar.selectToday()
-    }
+    //MARK: Initialization
+//    override func viewDidAppear(_ animated: Bool) {
+//        setDelegates()
+//    }
     
-    func setUIComponent() {
-        self.setGradientSizes()
-    }
-    
-    func configure() {
+    override func configure() {
         setUIComponent()
+        setDelegates()
         calendar.dateSelectHandler = { [unowned self] date in
             self.taskTableViewDelegate?.date = date
         }
+    }
+    
+    func setUIComponent() {
+        self.setGradientSizes() //for line
     }
     
     func setDelegates() {
@@ -38,19 +40,7 @@ class TasksViewController: UIViewController {
         tasksTableView.dataSource = taskTableViewDelegate
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        configure()
-    }
-    
-    //MARK: Hiding NavigationBar
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.tasks.rawValue
-        setDelegates()
+    @IBAction func selectToday(_ sender: Any) {
+        calendar.selectToday()
     }
 }
-
-//TODO: save changing state to DB

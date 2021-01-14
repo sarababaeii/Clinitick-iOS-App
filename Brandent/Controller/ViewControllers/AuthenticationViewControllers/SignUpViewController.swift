@@ -47,7 +47,7 @@ class SignUpViewController: FormViewController {
     
     //MARK: Keyboard Management
     @IBAction func hideKeyboard(_ sender: Any) {
-        if let textField = sender as? UITextField {
+        if let textField = currentTextField {
             textField.resignFirstResponder()
         }
     }

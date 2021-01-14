@@ -129,7 +129,15 @@ class DataController {
     }
     
     func fetchAppointmentsInMonth(in date: Date) -> [NSManagedObject]? {
-        return fetchObjectsInTimeInterval(object: .appointment, dateAttribute: AppointmentAttributes.date.rawValue, start: date.startOfMonth(), end: date.endOfMonth())
+        let dateAttribute = AppointmentAttributes.date.rawValue
+        guard let datePredicate = predicateForTimeInterval(dateAttribute: dateAttribute, start: date.startOfMonth(), end: date.endOfMonth()) else {
+            return nil
+        }
+        let stateAttribute = AppointmentAttributes.state.rawValue
+        let statePredicate = NSPredicate(format: "\(stateAttribute) == %@", TaskState.done.rawValue)
+        let predicate = joinPredicates(predicates: [datePredicate, statePredicate])
+        return fetchRequest(object: .appointment, predicate: predicate, sortBy: dateAttribute)
+//        return fetchObjectsInTimeInterval(object: .appointment, dateAttribute: AppointmentAttributes.date.rawValue, start: date.startOfMonth(), end: date.endOfMonth())
     }
     
     func fetchAppointmentsInDay(in date: Date) -> [NSManagedObject]? {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FinanceViewController: UIViewController {
+class FinanceViewController: TabBarViewController {
 
     @IBOutlet weak var totalIncomeLabel: UILabel!
     @IBOutlet weak var totalIncomeTomanLabel: UILabel!
@@ -24,36 +24,17 @@ class FinanceViewController: UIViewController {
     var numbers = [0, 0, 0, 0]
     var numbersAreHidden = false
     
-    //MARK: Numbers Visibility
-    @IBAction func changeNumbersVisiblity(_ sender: Any) {
-        if numbersAreHidden {
-            showNumbers()
-        } else {
-            hideNumbers()
-        }
-        numbersAreHidden = !numbersAreHidden
+    //MARK: Initialization
+    override func configure() {
+//        self.setGradientSizes()
+        initializeVariables()
+        setNumbers()
+        setNumberLabels()
     }
     
-    func hideNumbers() {
-        for label in numberLabels {
-            label.text = "******"
-        }
-    }
-    
-    func showNumbers() {
-        for label in numberLabels {
-            label.text = String.toPersianPriceString(price: numbers[label.tag])
-        }
-    }
-    
-    //MARK: Sending Sender to SeeFinances
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SeeFinanceSegue",
-            let gesture = sender as? UITapGestureRecognizer,
-            let view = gesture.view,
-            let viewController = segue.destination as? SeeFinanceViewController {
-            viewController.senderTag = view.tag
-        }
+    func initializeVariables() {
+        numberLabels = [totalIncomeLabel, appointmentsIncomeLabel, otherIncomeLabel, expensesLabel]
+        tomanLabels = [totalIncomeTomanLabel, appointmentsIncomeTomanLabel, otherIncomeTomanLabel, expensesTomanLabel]
     }
     
     func setNumbers() {
@@ -83,26 +64,35 @@ class FinanceViewController: UIViewController {
         tomanLabels[tag].textColor = color.componentColor
     }
     
-    func configure() {
-        self.setGradientSizes()
-        numberLabels = [totalIncomeLabel, appointmentsIncomeLabel, otherIncomeLabel, expensesLabel]
-        tomanLabels = [totalIncomeTomanLabel, appointmentsIncomeTomanLabel, otherIncomeTomanLabel, expensesTomanLabel]
-        setNumbers()
-        setNumberLabels()
+    //MARK: Numbers Visibility
+    @IBAction func changeNumbersVisiblity(_ sender: Any) {
+        if numbersAreHidden {
+            showNumbers()
+        } else {
+            hideNumbers()
+        }
+        numbersAreHidden = !numbersAreHidden
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func hideNumbers() {
+        for label in numberLabels {
+            label.text = "******"
+        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.finance.rawValue
-        configure()
+    func showNumbers() {
+        for label in numberLabels {
+            label.text = String.toPersianPriceString(price: numbers[label.tag])
+        }
     }
     
-    //MARK: Hiding NavigationBar
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+    //MARK: Sending Data With Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SeeFinanceSegue",
+            let gesture = sender as? UITapGestureRecognizer,
+            let view = gesture.view,
+            let viewController = segue.destination as? SeeFinanceViewController {
+            viewController.senderTag = view.tag
+        }
     }
 }

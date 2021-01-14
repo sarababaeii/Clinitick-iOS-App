@@ -38,13 +38,13 @@
                                 <rect key="frame" x="12.5" y="80" width="350" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="خوش آمدید" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzm-Yl-D6j">
-                                        <rect key="frame" x="119.5" y="0.0" width="111.5" height="33"/>
+                                        <rect key="frame" x="110" y="0.0" width="130.5" height="44"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="28"/>
                                         <color key="textColor" red="1" green="0.46274509800000002" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="هدف ما: آسوده کردن زندگی کاری دندان‌پزشکان." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upX-6H-8xd">
-                                        <rect key="frame" x="39" y="61" width="272.5" height="19"/>
+                                        <rect key="frame" x="26.5" y="55" width="297.5" height="25"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -91,7 +91,7 @@
                                             <constraint firstAttribute="height" constant="54" id="9ky-fm-5gH"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="10"/>
@@ -103,6 +103,9 @@
                                                 <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="hideKeyboard:" destination="HFg-KA-wt3" eventType="primaryActionTriggered" id="Sfn-aA-Io3"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -223,13 +226,13 @@
                                 <rect key="frame" x="24" y="80" width="327" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ثبت نام" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yys-nC-WyC">
-                                        <rect key="frame" x="128.5" y="0.0" width="70.5" height="33"/>
+                                        <rect key="frame" x="121.5" y="0.0" width="84.5" height="44"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="28"/>
                                         <color key="textColor" red="1" green="0.46274509800000002" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لطفا شماره تلفن همراه خود را وارد کنید." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQH-Mq-P1M">
-                                        <rect key="frame" x="52" y="51" width="223" height="19"/>
+                                        <rect key="frame" x="39.5" y="45" width="248.5" height="25"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -304,7 +307,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tUd-zw-Ujh"/>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="Gsh-fg-BVS" appends="YES" id="QVh-IQ-gda"/>
+                            <outletCollection property="gestureRecognizers" destination="ObI-de-xs5" appends="YES" id="Ehy-wf-f0v"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="ZdV-sd-Lcr">
@@ -315,11 +318,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8FV-jB-pm4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Gsh-fg-BVS">
+                <panGestureRecognizer minimumNumberOfTouches="1" id="ObI-de-xs5">
                     <connections>
-                        <action selector="hideKeyboard:" destination="TAP-Gc-QWI" id="ykK-AW-sYN"/>
+                        <action selector="hideKeyboard:" destination="TAP-Gc-QWI" id="32f-1v-2ek"/>
                     </connections>
-                </tapGestureRecognizer>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-3567" y="1046"/>
         </scene>
@@ -2523,7 +2526,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="افزودن تصویر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f60-Hu-bdx">
-                                        <rect key="frame" x="114.5" y="60" width="74.5" height="22"/>
+                                        <rect key="frame" x="117" y="65.5" width="69" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="14"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -4999,13 +5002,13 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="چک‌آپ ماهانه" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvz-DS-HjQ">
-                                                            <rect key="frame" x="224.5" y="12" width="76.5" height="22"/>
+                                                            <rect key="frame" x="237" y="12" width="64" height="16.5"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۱۴ فروردین ۱۳۹۹" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShU-f8-dds">
-                                                            <rect key="frame" x="209.5" y="38" width="91.5" height="22"/>
+                                                            <rect key="frame" x="213" y="43.5" width="88" height="16.5"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Thin" family="Vazir" pointSize="14"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>

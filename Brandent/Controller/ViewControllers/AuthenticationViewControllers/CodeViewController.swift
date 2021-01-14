@@ -27,6 +27,19 @@ class CodeViewController: UIViewController {
     var codeDigits = ["", "", "", ""] //0: first digit, 1: socond digit, 2: third digit, 4: fourth digit
     var phoneNumber = ""
     
+    //MARK: Initialization
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        configure()
+    }
+    
+    func configure() {
+        textFields = [firstDigitTextField, secondDigitTextField, thirdDigitTextField, fourthDigitTextField]
+        setTimer()
+        firstDigitTextField.becomeFirstResponder()
+    }
+    
     //MARK: TextFields Functions
     @IBAction func editingStarted(_ sender: Any) {
         if let textField = sender as? UITextField {
@@ -68,6 +81,39 @@ class CodeViewController: UIViewController {
         }
     }
     
+    //MARK: Timer
+    func setTimer() {
+        timer = TimerDelegate(label: timerLabel, time: 60, from: self)
+    }
+    
+    func timerFinished() {
+        changeResendCodeVisiblity()
+    }
+    
+    //MARK: Resending Code
+    @IBAction func resendCode(_ sender: Any) {
+        let statusCode = RestAPIManagr.sharedInstance.getOneTimeCode(phone: phoneNumber)
+        setTimer()
+        changeResendCodeVisiblity()
+        checkResponse(statusCode: statusCode)
+    }
+    
+    func changeResendCodeVisiblity() {
+        resendView.isHidden = !resendView.isHidden
+        resendButton.isHidden = !resendButton.isHidden
+    }
+    
+    func checkResponse(statusCode: Int) {
+        switch statusCode {
+        case 200:
+            self.showToast(message: "ارسال شد.")
+        case 401:
+            self.showToast(message: "شماره موبایل تکراری است.")
+        default:
+            self.showToast(message: "خطایی رخ داده است.")
+        }
+    }
+    
     //MARK: Submission
     func getEnteredCode() -> String {
         var code = ""
@@ -85,7 +131,7 @@ class CodeViewController: UIViewController {
         if RestAPIManagr.sharedInstance.sendOneTimeCode(phone: phoneNumber, code: code) {
             nextPage()
         } else {
-            //?
+            self.showToast(message: "کد وارد شده اشتباه است.")
         }
     }
     
@@ -95,51 +141,5 @@ class CodeViewController: UIViewController {
         }
         controller.phoneNumber = phoneNumber
         navigationController?.show(controller, sender: nil)
-    }
-    
-    //MARK: Timer
-    func setTimer() {
-        timer = TimerDelegate(label: timerLabel, time: 60, from: self)
-    }
-    
-    func timerFinished() {
-        changeResendCodeVisiblity()
-    }
-    
-    @IBAction func resendCode(_ sender: Any) {
-        let statusCode = RestAPIManagr.sharedInstance.getOneTimeCode(phone: phoneNumber)
-        setTimer()
-        changeResendCodeVisiblity()
-        checkResponse(statusCode: statusCode)
-    }
-    
-    func changeResendCodeVisiblity() {
-        resendView.isHidden = !resendView.isHidden
-        resendButton.isHidden = !resendButton.isHidden
-    }
-    
-    func checkResponse(statusCode: Int) {
-        switch statusCode {
-        case 200:
-            self.showToast(message: "ارسال شد.")
-            nextPage()
-        case 401:
-            self.showToast(message: "شماره موبایل تکراری است.")
-        default:
-            self.showToast(message: "خطایی رخ داده است.")
-        }
-    }
-    
-    //MARK: Initialization
-    func configure() {
-        textFields = [firstDigitTextField, secondDigitTextField, thirdDigitTextField, fourthDigitTextField]
-        setTimer()
-        firstDigitTextField.becomeFirstResponder()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        configure()
     }
 }

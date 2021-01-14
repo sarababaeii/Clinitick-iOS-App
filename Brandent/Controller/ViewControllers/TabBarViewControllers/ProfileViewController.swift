@@ -9,28 +9,14 @@
 import Foundation
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: TabBarViewController {
     
     @IBOutlet weak var dentistImageView: CustomImageView!
     @IBOutlet weak var dentistNameLabel: UILabel!
     @IBOutlet weak var specialityLabel: UILabel!
     
-    //MARK: Hiding NavigationBar
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configure()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.profile.rawValue
-    }
-    
-    func configure() {
+    //MARK: Initialization
+    override func configure() {
         setDentistInformation()
     }
     

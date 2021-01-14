@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: TabBarViewController {
 
     @IBOutlet weak var profileImageView: CustomImageView!
     @IBOutlet weak var dentistNameLabel: UILabel!
@@ -23,17 +23,44 @@ class HomeViewController: UIViewController {
     var menuCollectionViewDelegate: MenuCollectionViewDelegate?
     var todayTasksTableViewDelegate: TodayTasksTableViewDelegate?
     
-    //MARK: Functions
-    func openPage(item: MenuItem) {
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: item.viewControllerIdentifier)
-        navigationController?.show(controller, sender: nil)
-//        if let viewControllers = tabBarController?.viewControllers {
-//            Info.sharedInstance.selectedMenuItem = item
-//            tabBarController?.selectedViewController = viewControllers[item.tabBarItemIndex]
-//        }
+    //MARK: Initialization
+    override func viewWillAppear(_ animated: Bool) {
+        if let lastViewController = Info.sharedInstance.lastViewControllerIndex,
+            let viewControllers = tabBarController?.viewControllers {
+            tabBarController?.selectedViewController = viewControllers[lastViewController]
+        }
+        navigationController?.navigationBar.prefersLargeTitles = false
+        super.viewWillAppear(animated)
     }
     
-    //MARK: UIComponents
+    override func configure() {
+        setTodayTasksDelegates()
+        setUIComponents()
+        setMenuDelegates()
+        setTextViewDelegates()
+    }
+    
+    //MARK: Delegates
+    func setMenuDelegates() {
+        menuCollectionViewDelegate = MenuCollectionViewDelegate(viewController: self)
+        menuCollectionView.delegate = menuCollectionViewDelegate
+        menuCollectionView.dataSource = menuCollectionViewDelegate
+    }
+    
+    func setTodayTasksDelegates() {
+        todayTasksTableViewDelegate = TodayTasksTableViewDelegate()
+        todayTasksTableView.delegate = todayTasksTableViewDelegate
+        todayTasksTableView.dataSource = todayTasksTableViewDelegate
+    }
+    
+    func setTextViewDelegates() {
+        quoteTextView.isEditable = true
+        quoteTextView.text = "\"آینده از آن کسانی است که به استقبال آن می‌روند.\""
+        quoteTextView.font = UIFont(name: "Vazir-Bold", size: 14)
+        quoteTextView.isEditable = false
+    }
+    
+    //MARK: UI Management
     func setUIComponents() {
         setHeaderView()
         setQuoteView()
@@ -61,53 +88,9 @@ class HomeViewController: UIViewController {
         }
     }
     
-    //MARK: Delegates
-    func setMenuDelegates() {
-        menuCollectionViewDelegate = MenuCollectionViewDelegate(viewController: self)
-        menuCollectionView.delegate = menuCollectionViewDelegate
-        menuCollectionView.dataSource = menuCollectionViewDelegate
-    }
-    
-    func setTodayTasksDelegates() {
-        todayTasksTableViewDelegate = TodayTasksTableViewDelegate()
-        todayTasksTableView.delegate = todayTasksTableViewDelegate
-        todayTasksTableView.dataSource = todayTasksTableViewDelegate
-    }
-    
-    func setTextViewDelegates() {
-        quoteTextView.isEditable = true
-        quoteTextView.text = "\"آینده از آن کسانی است که به استقبال آن می‌روند.\""
-        quoteTextView.font = UIFont(name: "Vazir-Bold", size: 14)
-        quoteTextView.isEditable = false
-    }
-    
-    func loadConfigure() {
-        setMenuDelegates()
-        setTextViewDelegates()
-    }
-    
-    func appearConfigure() {
-        setTodayTasksDelegates()
-        setUIComponents()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        loadConfigure()
-//        Info.sharedInstance.sync()
-    }
-    
-    //MARK: Hiding NavigationBar
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let lastViewController = Info.sharedInstance.lastViewControllerIndex,
-            let viewControllers = tabBarController?.viewControllers {
-            tabBarController?.selectedViewController = viewControllers[lastViewController]
-        }
-        
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        navigationController?.navigationBar.prefersLargeTitles = false
-        Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.home.rawValue
-        appearConfigure()
+    //MARK: Item Navigations
+    func openPage(item: MenuItem) {
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: item.viewControllerIdentifier)
+        navigationController?.show(controller, sender: nil)
     }
 }
