@@ -15,9 +15,20 @@ class ProfileViewController: TabBarViewController {
     @IBOutlet weak var dentistNameLabel: UILabel!
     @IBOutlet weak var specialityLabel: UILabel!
     
+    var imagePickerDelegate: ProfileImagePickerDelegate?
+    
     //MARK: Initialization
-    override func configure() {
+    override func viewDidAppear(_ animated: Bool) {
+        configure()
+    }
+    
+    func configure() {
+        setDelegates()
         setDentistInformation()
+    }
+    
+    func setDelegates() {
+        imagePickerDelegate = ProfileImagePickerDelegate(from: self)
     }
     
     func setDentistInformation() {
@@ -29,8 +40,14 @@ class ProfileViewController: TabBarViewController {
         specialityLabel.text = dentist.speciality
     }
     
+    @IBAction func changeProfileImage(_ sender: Any) {
+        print("Heey")
+        imagePickerDelegate?.displayImagePickingOptions()
+    }
+    
     @IBAction func logOut(_ sender: Any) {
         Info.sharedInstance.token = nil
+        Info.sharedInstance.dentistID = nil //TODO: Check
         nextPage()
     }
     

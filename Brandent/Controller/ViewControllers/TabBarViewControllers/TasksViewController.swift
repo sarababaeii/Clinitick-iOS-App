@@ -18,11 +18,11 @@ class TasksViewController: TabBarViewController {
     var taskTableViewDelegate: TasksTableViewDelegate?
     
     //MARK: Initialization
-//    override func viewDidAppear(_ animated: Bool) {
-//        setDelegates()
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        configure()
+    }
     
-    override func configure() {
+    func configure() {
         setUIComponent()
         setDelegates()
         calendar.dateSelectHandler = { [unowned self] date in

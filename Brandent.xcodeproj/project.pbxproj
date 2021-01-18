@@ -82,6 +82,8 @@
 		037AECD1258D3C640097AF42 /* Patient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037AECC9258D3C630097AF42 /* Patient+CoreDataProperties.swift */; };
 		037AECD5258D3C640097AF42 /* Dentist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037AECCD258D3C640097AF42 /* Dentist+CoreDataProperties.swift */; };
 		037AECD7258D3C640097AF42 /* Clinic+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037AECCF258D3C640097AF42 /* Clinic+CoreDataProperties.swift */; };
+		037EE34925B5A91F0039AB83 /* GalleryImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037EE34825B5A91F0039AB83 /* GalleryImagePickerDelegate.swift */; };
+		037EE34B25B5BC400039AB83 /* ProfileImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037EE34A25B5BC400039AB83 /* ProfileImagePickerDelegate.swift */; };
 		03803FA025A0EDA100387FF5 /* NavigationBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03803F9F25A0EDA100387FF5 /* NavigationBarViewController.swift */; };
 		0384E4F62550A74000197CD9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384E4F52550A74000197CD9 /* UIColorExtension.swift */; };
 		038D88B32587DE8600447506 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D88B22587DE8600447506 /* GalleryViewController.swift */; };
@@ -231,6 +233,8 @@
 		037AECC9258D3C630097AF42 /* Patient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		037AECCD258D3C640097AF42 /* Dentist+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dentist+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		037AECCF258D3C640097AF42 /* Clinic+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clinic+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		037EE34825B5A91F0039AB83 /* GalleryImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryImagePickerDelegate.swift; sourceTree = "<group>"; };
+		037EE34A25B5BC400039AB83 /* ProfileImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePickerDelegate.swift; sourceTree = "<group>"; };
 		03803F9F25A0EDA100387FF5 /* NavigationBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewController.swift; sourceTree = "<group>"; };
 		0384E4F52550A74000197CD9 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		038D88B22587DE8600447506 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
@@ -541,6 +545,16 @@
 			path = UIComponents;
 			sourceTree = "<group>";
 		};
+		037EE34C25B5C30C0039AB83 /* ImagePickerDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				0344D47D253756F00031122F /* ImagePickerDelegate.swift */,
+				037EE34825B5A91F0039AB83 /* GalleryImagePickerDelegate.swift */,
+				037EE34A25B5BC400039AB83 /* ProfileImagePickerDelegate.swift */,
+			);
+			path = ImagePickerDelegates;
+			sourceTree = "<group>";
+		};
 		039E2E362535C78E00F6D5EE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -671,9 +685,9 @@
 		03EE136A25542BD500363EA0 /* ComponentDelegates */ = {
 			isa = PBXGroup;
 			children = (
+				037EE34C25B5C30C0039AB83 /* ImagePickerDelegates */,
 				03ADFDF3253B4D8B00A6827B /* TextViewDelegate.swift */,
 				03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */,
-				0344D47D253756F00031122F /* ImagePickerDelegate.swift */,
 				0342532925815C2700DA6F29 /* TimerDelegate.swift */,
 				03101686258A847A0034717F /* TextFieldDelegate.swift */,
 				037AECC2258D241B0097AF42 /* MenuDelegate.swift */,
@@ -1036,6 +1050,7 @@
 				03ADFDF4253B4D8B00A6827B /* TextViewDelegate.swift in Sources */,
 				03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */,
 				0360D85E2551654500C36AE4 /* AppointmentTableViewCell.swift in Sources */,
+				037EE34B25B5BC400039AB83 /* ProfileImagePickerDelegate.swift in Sources */,
 				03FBE6702554704800FEFF63 /* SeeFinanceViewController.swift in Sources */,
 				034F5468255DB020005145C6 /* SwiftyMenuExtension.swift in Sources */,
 				0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */,
@@ -1072,6 +1087,7 @@
 				03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */,
 				03749EBD250E76D6003CBE49 /* Brandent.xcdatamodeld in Sources */,
 				03F4A5C92551D01A00D7E1C6 /* FinanceTableViewCell.swift in Sources */,
+				037EE34925B5A91F0039AB83 /* GalleryImagePickerDelegate.swift in Sources */,
 				0360D8622551665500C36AE4 /* AppointmentsTableViewDelegate.swift in Sources */,
 				03F4A5C52551951F00D7E1C6 /* AddFinanceViewController.swift in Sources */,
 				03BC1F8E25251658009749C0 /* Clinic+CoreDataClass.swift in Sources */,

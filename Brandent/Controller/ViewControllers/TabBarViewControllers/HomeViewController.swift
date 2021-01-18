@@ -33,7 +33,11 @@ class HomeViewController: TabBarViewController {
         super.viewWillAppear(animated)
     }
     
-    override func configure() {
+    override func viewDidAppear(_ animated: Bool) {
+        configure()
+    }
+    
+    func configure() {
         setTodayTasksDelegates()
         setUIComponents()
         setMenuDelegates()
@@ -71,6 +75,10 @@ class HomeViewController: TabBarViewController {
         dateLabel.text = Date().toPersianWeekDMonth()
         guard let dentist = Info.sharedInstance.dentist else {
             return
+        }
+        
+        if let image = Info.sharedInstance.dentistImage {
+            profileImageView.image = image
         }
 //        profileImageView.image = dentist.photo
         dentistNameLabel.text = dentist.last_name

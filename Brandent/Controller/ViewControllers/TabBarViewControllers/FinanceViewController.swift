@@ -25,7 +25,11 @@ class FinanceViewController: TabBarViewController {
     var numbersAreHidden = false
     
     //MARK: Initialization
-    override func configure() {
+    override func viewDidAppear(_ animated: Bool) {
+        configure()
+    }
+    
+    func configure() {
 //        self.setGradientSizes()
         initializeVariables()
         setNumbers()

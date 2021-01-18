@@ -16,7 +16,7 @@ class TabBarViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         setLastViewController()
-        configure()
+//        configure()
     }
     
     private func setLastViewController() {
@@ -34,6 +34,6 @@ class TabBarViewController: UIViewController {
         }
     }
     
-    func configure() {
-    }
+//    func configure() {
+//    }
 }

@@ -14,7 +14,7 @@ class GalleryViewController: NavigationBarViewController {
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     
     var imageCollectionViewDelegate: ImagesCollectionViewDelegate?
-    var imagePickerDelegate: ImagePickerDelegate?
+    var imagePickerDelegate: GalleryImagePickerDelegate?
     
     var patient: Patient?
     
@@ -39,7 +39,7 @@ class GalleryViewController: NavigationBarViewController {
         imagesCollectionView.delegate = imageCollectionViewDelegate
         imagesCollectionView.dataSource = imageCollectionViewDelegate
         
-        imagePickerDelegate = ImagePickerDelegate(from: self)
+        imagePickerDelegate = GalleryImagePickerDelegate(from: self)
     }
     
     func getImages() {

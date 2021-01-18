@@ -15,6 +15,8 @@ class Info {
     var lastViewControllerIndex: Int?
     var dentist: Dentist? //TODO: delete in logout
     
+    var dentistImage: UIImage?
+    
     let defaults = UserDefaults.standard
     var token: String? {
         get {
