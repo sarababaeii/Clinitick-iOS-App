@@ -264,10 +264,11 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
     }
     
     //MARK: Set today
-    func selectToday() { //TODO: doesn't work in other weeks
-        if let index = todayIndex {
-            collectionView.selectItem(at: index, animated: true, scrollPosition: .left)
-            collectionView(collectionView, didSelectItemAt: index)
+    func selectToday() {
+        initializeVars()
+        monthViewLabel.text = currentMonthYearInfo
+        DispatchQueue.main.async {
+            self.generateDates()
         }
     }
 }
