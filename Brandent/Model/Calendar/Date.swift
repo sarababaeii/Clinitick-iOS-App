@@ -22,24 +22,24 @@ extension Date {
     }
     
     public var today: Date {
-        let comps: DateComponents = currentCalendar.dateComponents([.year, .month, .day], from: self)
+        let comps: DateComponents = currentCalendar.dateComponents([.year, .month, .weekOfMonth, .day], from: self)
         return currentCalendar.date(from: comps)!
     }
     
-    public var startingDayOfMonth: Int{
+    public var startingDayOfWeek: Int{
         return currentCalendar.component(.weekday, from: self)
     }
     
-    public var startDayOfMonth: Date{
-        var firstDayOfMonth = currentCalendar.date(from: currentCalendar.dateComponents([.year, .month], from: currentCalendar.startOfDay(for: self)))!
-        while firstDayOfMonth.componentsOfDate.week != currentCalendar.startOfDay(for: self).componentsOfDate.week {
-            firstDayOfMonth = currentCalendar.date(byAdding: .day, value: 1, to: firstDayOfMonth)!
+    public var startDayOfWeek: Date{
+        var firstDayOfWeek = currentCalendar.date(from: currentCalendar.dateComponents([.year, .month, .weekOfYear], from: currentCalendar.startOfDay(for: self)))! //of year or month?
+        while firstDayOfWeek.componentsOfDate.week != currentCalendar.startOfDay(for: self).componentsOfDate.week {
+            firstDayOfWeek = currentCalendar.date(byAdding: .day, value: 1, to: firstDayOfWeek)!
         }
-        return firstDayOfMonth
+        return firstDayOfWeek
     }
     
-    public var endDayOfMonth: Date{
-        return currentCalendar.date(byAdding: DateComponents(month: 1, day: -1), to: startDayOfMonth)!
+    public var endDayOfWeek: Date{
+        return currentCalendar.date(byAdding: DateComponents(day: 7), to: startDayOfWeek)!
     }
     
     public func date(year: Int, month: Int, day: Int) -> Date{
@@ -51,8 +51,8 @@ extension Date {
         return currentCalendar.date(from: comps)!
     }
     
-    public var daysIntMonth: Int{
-        return currentCalendar.range(of: .day, in: .month, for: self)!.count
+    public var daysIntWeek: Int{
+        return currentCalendar.range(of: .day, in: .weekOfMonth, for: self)!.count
     }
     
     public var componentsOfDate: (year: Int, month: Int, day: Int, week: Int, weekDay: Int){
@@ -60,11 +60,11 @@ extension Date {
         return (comps.year!, comps.month!, comps.day!, comps.weekOfMonth!, comps.weekday!)
     }
     
-    public var nextMonth: Date{
+    public var nextWeek: Date{
         return currentCalendar.date(byAdding: DateComponents(weekOfMonth: 1), to: self)!
     }
     
-    public var previousMonth: Date{
+    public var previousWeek: Date{
         return currentCalendar.date(byAdding: DateComponents(weekOfMonth: -1), to: self)!
     }
     

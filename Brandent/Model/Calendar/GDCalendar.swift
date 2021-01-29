@@ -53,8 +53,8 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
     fileprivate var datesArray: [(date: Date, day: Int, week: Int)?] = []
     fileprivate var calendar: Calendar = Date().currentCalendar
     fileprivate var startDate: Date!
-    fileprivate var numberOfDaysInMonth: Int = 0
-    fileprivate var firstDayOfMonth = 0
+    fileprivate var numberOfDaysInWeek: Int = 0
+    fileprivate var firstDayOfWeek = 0
     fileprivate var lastIndex: IndexPath? = nil
     fileprivate var todayIndex: IndexPath? = nil
     
@@ -169,8 +169,8 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
     fileprivate func initializeVars(){
         calendar = Date().currentCalendar
         currentDate = Date().today
-        startDate = currentDate.startDayOfMonth
-        numberOfDaysInMonth = currentDate.daysIntMonth
+        startDate = currentDate.startDayOfWeek
+        numberOfDaysInWeek = currentDate.daysIntWeek
         
         var langCode = "en"
         if let lcode = calendar.locale?.languageCode{
@@ -180,29 +180,29 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
     }
     
     fileprivate func setDates(){
-        startDate = currentDate.startDayOfMonth
-        numberOfDaysInMonth = currentDate.daysIntMonth
+        startDate = currentDate.startDayOfWeek
+        numberOfDaysInWeek = currentDate.daysIntWeek
     }
     
     //MARK: - Funcs
     @objc func didSwipe(_ sender: UISwipeGestureRecognizer){
         if sender.direction == .left{
-            gotoPreviousMonth()
+            gotoPreviousWeek()
         }else if sender.direction == .right{
-            gotoNextMonth()
+            gotoNextWeek()
         }
     }
     
-    public func gotoNextMonth(){
-        currentDate = currentDate.nextMonth
+    public func gotoNextWeek(){
+        currentDate = currentDate.nextWeek
         setDates()
         generateDates()
         
         monthViewLabel.text = currentMonthYearInfo
     }
     
-    public func gotoPreviousMonth(){
-        currentDate = currentDate.previousMonth
+    public func gotoPreviousWeek(){
+        currentDate = currentDate.previousWeek
         setDates()
         generateDates()
         
@@ -221,28 +221,29 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
         }
     }
     
-    private func generateDatesData() -> [(date: Date, day: Int, week: Int)?]{
+    private func generateDatesData() -> [(date: Date, day: Int, week: Int)?] {
         datesArray.removeAll()
         
         let today = startDate
         
         var dates: [(date: Date, day: Int, week: Int)?] = []
-        if direction == .rightToLeft{
-            firstDayOfMonth = startDate.startingDayOfMonth
-        }else{
-            firstDayOfMonth = startDate.startingDayOfMonth - 1
+        if direction == .rightToLeft {
+            firstDayOfWeek = startDate.startingDayOfWeek
+        } else {
+            firstDayOfWeek = startDate.startingDayOfWeek - 1
         }
-        if firstDayOfMonth != 7{
-            for _ in 0..<firstDayOfMonth{
-                dates.append(nil)
+        if firstDayOfWeek != 7 {
+            var dummyDay = calendar.date(byAdding: .day, value: -firstDayOfWeek, to: startDate)!
+            for _ in 0 ..< firstDayOfWeek {
+                dates.append((dummyDay, dummyDay.componentsOfDate.2, dummyDay.componentsOfDate.3))
+                dummyDay = calendar.date(byAdding: .day, value: 1, to: dummyDay)!
             }
         }
         while startDate.componentsOfDate.month != today?.componentsOfDate.month {
             dates.append((startDate, startDate.componentsOfDate.2, startDate.componentsOfDate.3))
             startDate = calendar.date(byAdding: .day, value: 1, to: startDate)!
         }
-        for _ in 0..<numberOfDaysInMonth{
-            print("^^ \(dates.count)")
+        for _ in 0 ..< numberOfDaysInWeek {
             if startDate.componentsOfDate.3 == today?.componentsOfDate.3 {
                 dates.append((startDate, startDate.componentsOfDate.2, startDate.componentsOfDate.3))
                 startDate = calendar.date(byAdding: .day, value: 1, to: startDate)!
