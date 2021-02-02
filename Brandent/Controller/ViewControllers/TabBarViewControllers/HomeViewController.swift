@@ -31,17 +31,24 @@ class HomeViewController: TabBarViewController {
         }
         navigationController?.navigationBar.prefersLargeTitles = false
         super.viewWillAppear(animated)
+        
+        configure()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        setMenuDelegates()
+        setTextViewDelegates()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        configure()
+//        configure()
+        Info.sharedInstance.sync()
+        print(Info.sharedInstance.dentist)
     }
     
     func configure() {
         setTodayTasksDelegates()
         setUIComponents()
-        setMenuDelegates()
-        setTextViewDelegates()
     }
     
     //MARK: Delegates
@@ -80,7 +87,7 @@ class HomeViewController: TabBarViewController {
         if let image = Info.sharedInstance.dentistImage {
             profileImageView.image = image
         }
-//        profileImageView.image = dentist.photo
+        profileImageView.image = UIImage(data: dentist.photo!)
         dentistNameLabel.text = dentist.last_name
     }
     

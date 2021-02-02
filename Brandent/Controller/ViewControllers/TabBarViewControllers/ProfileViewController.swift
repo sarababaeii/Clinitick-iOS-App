@@ -22,9 +22,13 @@ class ProfileViewController: TabBarViewController {
         configure()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setDentistInformation()
+    }
+    
     func configure() {
         setDelegates()
-        setDentistInformation()
+//        setDentistInformation()
     }
     
     func setDelegates() {
@@ -35,13 +39,12 @@ class ProfileViewController: TabBarViewController {
         guard let dentist = Info.sharedInstance.dentist else {
             return
         }
-//        dentistImageView.image = dentist.photo
+        dentistImageView.image = UIImage(data: dentist.photo!)
         dentistNameLabel.text = dentist.first_name + " " + dentist.last_name
         specialityLabel.text = dentist.speciality
     }
     
     @IBAction func changeProfileImage(_ sender: Any) {
-        print("Heey")
         imagePickerDelegate?.displayImagePickingOptions()
     }
     

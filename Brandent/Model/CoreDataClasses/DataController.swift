@@ -306,6 +306,11 @@ class DataController {
         return dentist
     }
     
+    func setDentistPhoto(dentist: Dentist, photo: Image) {
+        dentist.photo = photo.data
+        saveContext()
+    }
+    
     func fetchDentist(id: UUID) -> NSManagedObject? {
         return fetchObject(object: .dentist, idAttribute: DentistAttributes.id.rawValue, id: id)
     }
