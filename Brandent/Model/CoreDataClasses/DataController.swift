@@ -112,6 +112,10 @@ class DataController {
         return nil
     }
     
+    func deleteRecord(record: NSManagedObject) {
+//        record.delete
+    }
+    
     //MARK: Appointment
     func createAppointment(id: UUID?, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
@@ -299,9 +303,9 @@ class DataController {
     }
     
     //MARK: Dentist
-    func createDentist(id: UUID?, firstName: String, lastName: String, phone: String, speciality: String, clinic: Clinic, password: String) -> Dentist {
+    func createDentist(id: NSDecimalNumber, firstName: String, lastName: String, phone: String, speciality: String) -> Dentist {
         let dentist = Dentist(entity: dentistEntity, insertInto: context)
-        dentist.setAttributes(id: id, firstName: firstName, lastName: lastName, phone: phone, speciality: speciality, clinic: clinic, password: password)
+        dentist.setAttributes(id: id, firstName: firstName, lastName: lastName, phone: phone, speciality: speciality)
         saveContext()
         return dentist
     }
@@ -311,8 +315,15 @@ class DataController {
         saveContext()
     }
     
-    func fetchDentist(id: UUID) -> NSManagedObject? {
-        return fetchObject(object: .dentist, idAttribute: DentistAttributes.id.rawValue, id: id)
+    func setDentistClinic(dentist: Dentist, clinic: Clinic) {
+        dentist.addToClinics(clinic)
+        saveContext()
+    }
+    
+    func fetchDentist(id: NSDecimalNumber) -> NSManagedObject? {
+        let predicate = NSPredicate(format: "\(DentistAttributes.id.rawValue) = %@", id) //TODO: Test
+        return fetchRequest(object: .dentist, predicate: predicate, sortBy: nil)?.first
+//        return fetchObject(object: .dentist, idAttribute: DentistAttributes.id.rawValue, id: id)
     }
     
     func fetchDentist(phone: String) -> NSManagedObject? {

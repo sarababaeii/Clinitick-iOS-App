@@ -35,6 +35,7 @@ class AddPatientViewController: FormViewController {
     }
     
     func configure() {
+        Info.sharedInstance.isForReturn = true
         initializeTextFields()
         setMenuDelegate()
         setTitle(title: "اطلاعات بیمار")

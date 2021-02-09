@@ -42,7 +42,7 @@ class RestAPIManagr {
         let jsonData = try? JSONSerialization.data(withJSONObject: params)
         request.httpBody = jsonData
         let bodyString = String(data: request.httpBody!, encoding: .utf8)
-        print("Body: \(bodyString)")
+        print("Body: \(String(describing: bodyString))")
         request.addValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
         return request
     }
@@ -63,7 +63,7 @@ class RestAPIManagr {
         return createRequest(url: API.loginURL, params: params as [String: Any], contentType: .json)
     }
     
-    private func createSignUpRequest(dentist: Dentist) -> URLRequest {
+    private func createSignUpRequest(dentist: DummyDentist) -> URLRequest {
         let params: [String: Any] = jsonSerializer.getSignUpData(dentist: dentist)
         return createRequest(url: API.signUpURL, params: params as [String: Any], contentType: .json)
     }
@@ -99,13 +99,13 @@ class RestAPIManagr {
     }
     
     //MARK: Images
-    private func createAddImagesRequest(patientID: UUID, images: [Image]) -> URLRequest {
+    private func createAddImagesRequest(url: URL, key: APIKey, images: [Image]) -> URLRequest {
         let boundary = "Boundary-\(UUID().uuidString)"
 
-        var request = URLRequest(url: URL(string: "\(API.images)/\(patientID)")!)
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("\(ContentType.multipart.rawValue); boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonSerializer.getAddImageData(images: images, boundary: boundary)
+        request.httpBody = jsonSerializer.getAddImageData(key: key, images: images, boundary: boundary)
         return request
     }
     
@@ -119,21 +119,21 @@ class RestAPIManagr {
         return request
     }
     
-    private func createGetImagesRequest(patientID: UUID) -> URLRequest {
-        var request = URLRequest(url: URL(string: "\(API.images)/\(patientID)")!)
+    private func createGetImagesRequest(url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
         return request
     }
     
-    //MARK: Functions
+    //MARK: Authentication
     func login(phone: String, password: String) -> Int {
         let result = sendRequest(request: createLoginRequest(phone: phone, password: password), type: .login)
-        return result.authenticate(type: .login)
+        return result.authenticate(type: .login, clinicTitle: nil)
     }
     
-    func signUp(dentist: Dentist) -> Int {
+    func signUp(dentist: DummyDentist) -> Int {
         let result = sendRequest(request: createSignUpRequest(dentist: dentist), type: .signUp)
-        return result.authenticate(type: .signUp)
+        return result.authenticate(type: .signUp, clinicTitle: dentist.clinicTitle)
     }
     
     func getOneTimeCode(phone: String) -> Int {
@@ -146,12 +146,25 @@ class RestAPIManagr {
         return result.isCodeValid()
     }
     
+    func setProfilePicture(photo: [Image]) {
+        let url = API.profilePictureURL
+        let _ = sendRequest(request: createAddImagesRequest(url: url, key: .dentist, images: photo), type: .setProfile)
+    }
+    
+    func getProfilePicture() -> Image? {
+        let url = API.profilePictureURL
+        let result = sendRequest(request: createGetImagesRequest(url: url), type: .setProfile)
+        return result.processProfilePicture()
+    }
+    
+    //MARK: Functions
     func addAppointment(appointment: Appointment) {
         let _ = sendRequest(request: createAddAppointmentRequest(appointment: appointment), type: .addAppointment)
     }
     
     func addImage(patientID: UUID, images: [Image]) {
-        let _ = sendRequest(request: createAddImagesRequest(patientID: patientID, images: images), type: .addImage)
+        let url = URL(string: "\(API.images)/\(patientID)")!
+        let _ = sendRequest(request: createAddImagesRequest(url: url, key: .patient, images: images), type: .addImage)
     }
     
     func deleteImage(image: Image) {
@@ -161,7 +174,8 @@ class RestAPIManagr {
     }
     
     func getImages(patientID: UUID) -> NSArray? {
-        let result = sendRequest(request: createGetImagesRequest(patientID: patientID), type: .addImage)
+        let url = URL(string: "\(API.images)/\(patientID)")!
+        let result = sendRequest(request: createGetImagesRequest(url: url), type: .addImage)
         return result.getImages()
     }
 

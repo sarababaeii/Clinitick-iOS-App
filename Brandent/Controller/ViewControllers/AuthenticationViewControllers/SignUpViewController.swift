@@ -76,7 +76,7 @@ class SignUpViewController: FormViewController {
     func checkResponse(statusCode: Int) {
         switch statusCode {
         case 200:
-            self.showToast(message: "ارسال شد.")
+//            self.showToast(message: "ارسال شد.")
             nextPage()
         case 401:
             self.showToast(message: "شماره موبایل تکراری است.")

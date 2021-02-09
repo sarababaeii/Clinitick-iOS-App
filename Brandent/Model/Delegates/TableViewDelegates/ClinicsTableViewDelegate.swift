@@ -11,13 +11,15 @@ import UIKit
 
 class ClinicsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
    
+    var tableView: UITableView
     var clinics = [Clinic]()
     
     //MARK: Initializer
-    override init() {
+    init(tableView: UITableView) {
         if let clinics = DataController.sharedInstance.fetchAllClinics() as? [Clinic] {
             self.clinics = clinics
         }
+        self.tableView = tableView
     }
     
     //MARK: Protocol Functions
@@ -33,10 +35,44 @@ class ClinicsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSo
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var actions: [UITableViewRowAction]?
+        if let _ = clinicDataSource(indexPath: indexPath) {
+            let delete = UITableViewRowAction(style: .destructive, title: "حذف") {
+                (actions, indexPath) in
+                self.deleteClinic(at: indexPath)
+            }
+            actions = [delete]
+        }
+        return actions
+    }
+    
     func clinicDataSource(indexPath: IndexPath) -> Clinic? {
         if indexPath.row < clinics.count {
             return clinics[indexPath.row]
         }
         return nil
+    }
+    
+    func deleteClinic(at indexPath: IndexPath?) {
+        if let indexPath = indexPath, let clinic = clinicDataSource(indexPath: indexPath) {
+            tableView.beginUpdates()
+            clinic.delete()
+            clinics.remove(at: indexPath.row)
+//            lastDeletedIndexPath = indexPath
+
+//            if indexPath.section == 1 {
+//                lastDeletedTask = priorityTasks[indexPath.row]
+//                priorityTasks.remove(at: indexPath.row)
+//            }
+//            else{
+//                lastDeletedTask = bonusTasks[indexPath.row]
+//                bonusTasks.remove(at: indexPath.row)
+//            }
+
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+
+            tableView.endUpdates()
+        }
     }
 }

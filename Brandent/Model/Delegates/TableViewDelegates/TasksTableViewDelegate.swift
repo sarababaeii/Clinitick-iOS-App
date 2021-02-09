@@ -44,6 +44,18 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var actions: [UITableViewRowAction]?
+        if let _ = taskDataSource(indexPath: indexPath) {
+            let delete = UITableViewRowAction(style: .destructive, title: "حذف") {
+                (actions, indexPath) in
+                self.deleteTask(index: indexPath.row) //TODO: OK?
+            }
+            actions = [delete]
+        }
+        return actions
+    }
+    
     func taskDataSource(indexPath: IndexPath) -> Any? {
         if indexPath.row < tasks.count {
             return tasks[indexPath.row]

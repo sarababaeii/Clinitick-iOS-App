@@ -23,6 +23,7 @@ class ProfileViewController: TabBarViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setDentistInformation()
     }
     
@@ -39,7 +40,9 @@ class ProfileViewController: TabBarViewController {
         guard let dentist = Info.sharedInstance.dentist else {
             return
         }
-        dentistImageView.image = UIImage(data: dentist.photo!)
+        if let image = dentist.photo {
+            dentistImageView.image = UIImage(data: image)
+        }
         dentistNameLabel.text = dentist.first_name + " " + dentist.last_name
         specialityLabel.text = dentist.speciality
     }

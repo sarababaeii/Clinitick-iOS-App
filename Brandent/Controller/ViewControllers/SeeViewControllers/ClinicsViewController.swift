@@ -16,7 +16,7 @@ class ClinicsViewController: UIViewController {
     var clinicsTableViewDelegate: ClinicsTableViewDelegate?
     
     func setDelegates() {
-        clinicsTableViewDelegate = ClinicsTableViewDelegate()
+        clinicsTableViewDelegate = ClinicsTableViewDelegate(tableView: clinicsTableView)
         clinicsTableView.delegate = clinicsTableViewDelegate
         clinicsTableView.dataSource = clinicsTableViewDelegate
     }

@@ -21,10 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        // Make sure you set an Storyboard ID for the view controller you want to instantiate
         if let _ = Info.sharedInstance.token {
             window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "MainNavigationController")
-            Info.sharedInstance.setDentist()
+            Info.sharedInstance.setDentist() //Setting Dentist
         } else {
             window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "AuthenticationNavigationController")
         }

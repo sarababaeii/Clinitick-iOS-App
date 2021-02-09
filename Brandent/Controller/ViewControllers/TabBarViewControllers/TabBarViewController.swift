@@ -20,6 +20,7 @@ class TabBarViewController: UIViewController {
     }
     
     private func setLastViewController() {
+        print("VC is: \(self.restorationIdentifier)")
         switch self.restorationIdentifier {
         case "HomeViewController":
             Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.home.rawValue

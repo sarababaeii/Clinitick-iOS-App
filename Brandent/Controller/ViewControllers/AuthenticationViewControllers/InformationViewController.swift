@@ -72,8 +72,8 @@ class InformationViewController: FormViewController {
             return
         }
         
-        let dentist = Dentist.getDentist(id: nil, firstName: data[0] as! String, lastName: data[1] as! String, phone: data[5] as! String, speciality: data[2] as! String, clinicTitle: data[3] as! String, password: data[4] as! String)
-        print(dentist)
+        let dentist = DummyDentist(first_name: data[0] as! String, last_name: data[1] as! String, phone: data[5] as! String, password: data[4] as! String, speciality: data[2] as! String, clinicTitle: data[3] as! String)
+        print("Dummy Dentist is: \(dentist)")
         let statusCode = RestAPIManagr.sharedInstance.signUp(dentist: dentist)
         checkResponse(statusCode: statusCode)
     }

@@ -30,7 +30,6 @@ class CodeViewController: UIViewController {
     //MARK: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         configure()
     }
     
@@ -44,6 +43,7 @@ class CodeViewController: UIViewController {
     @IBAction func editingStarted(_ sender: Any) {
         if let textField = sender as? UITextField {
             currentTextField = textField
+            textField.text = ""
         }
     }
     
@@ -54,7 +54,7 @@ class CodeViewController: UIViewController {
             } else {
                 textField.resignFirstResponder()
             }
-            sendCode()
+            sendCode() //TODO: showing text
         }
     }
     

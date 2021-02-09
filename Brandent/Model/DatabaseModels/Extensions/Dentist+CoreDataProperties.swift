@@ -18,10 +18,9 @@ extension Dentist {
     }
 
     @NSManaged public var first_name: String
-    @NSManaged public var id: UUID
+    @NSManaged public var id: NSDecimalNumber
     @NSManaged public var last_name: String
     @NSManaged public var modified_at: Date
-    @NSManaged public var password: String
     @NSManaged public var phone: String
     @NSManaged public var photo: Data?
     @NSManaged public var speciality: String
@@ -143,7 +142,6 @@ enum DentistAttributes: String {
     case lastName = "last_name"
     case phone = "phone"
     case photo = "photo"
-    case password = "password"
     case speciality = "speciality"
     case modifiedAt = "modified_at"
     

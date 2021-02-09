@@ -11,15 +11,17 @@ import UIKit
 
 class AppointmentsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
    
+    var tableView: UITableView
     var patient: Patient
     var appointments = [Appointment]()
     
     //MARK: Initializer
-    init(patient: Patient) {
+    init(tableView: UITableView, patient: Patient) {
         self.patient = patient
         if let appointments = patient.history?.allObjects as? [Appointment] {
             self.appointments = Array(appointments)
         } //TODO: sort by visit time
+        self.tableView = tableView
     }
     
     //MARK: Protocol Functions
@@ -35,10 +37,32 @@ class AppointmentsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var actions: [UITableViewRowAction]?
+        if let _ = appointmentDataSource(indexPath: indexPath) {
+            let delete = UITableViewRowAction(style: .destructive, title: "حذف") {
+                (actions, indexPath) in
+                self.deleteAppointment(at: indexPath)
+            }
+            actions = [delete]
+        }
+        return actions
+    }
+    
     func appointmentDataSource(indexPath: IndexPath) -> Appointment? {
         if indexPath.row < appointments.count {
             return appointments[indexPath.row]
         }
         return nil
+    }
+    
+    func deleteAppointment(at indexPath: IndexPath?) {
+        if let indexPath = indexPath, let appointment = appointmentDataSource(indexPath: indexPath) {
+            tableView.beginUpdates()
+//            appointment.delete()
+            appointments.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
     }
 }

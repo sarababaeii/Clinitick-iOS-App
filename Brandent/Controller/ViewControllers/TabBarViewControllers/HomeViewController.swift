@@ -24,29 +24,37 @@ class HomeViewController: TabBarViewController {
     var todayTasksTableViewDelegate: TodayTasksTableViewDelegate?
     
     //MARK: Initialization
-    override func viewWillAppear(_ animated: Bool) {
-        if let lastViewController = Info.sharedInstance.lastViewControllerIndex,
-            let viewControllers = tabBarController?.viewControllers {
-            tabBarController?.selectedViewController = viewControllers[lastViewController]
-        }
-        navigationController?.navigationBar.prefersLargeTitles = false
-        super.viewWillAppear(animated)
-        
-        configure()
+    override func viewWillLayoutSubviews() {
+        loadConfigure()
     }
     
-    override func viewWillLayoutSubviews() {
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = false
+        if Info.sharedInstance.isForReturn,
+            let lastViewController = Info.sharedInstance.lastViewControllerIndex,
+            lastViewController != 0,
+            let viewControllers = tabBarController?.viewControllers {
+            tabBarController?.selectedViewController = viewControllers[lastViewController]
+            print(lastViewController)
+        } else {
+            print("IM HERE")
+            super.viewWillAppear(animated)
+            appearConfigure()
+        }
+        Info.sharedInstance.isForReturn = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        Info.sharedInstance.sync()
+        print("Dentist: \(String(describing: Info.sharedInstance.dentist))")
+    }
+    
+    func loadConfigure() {
         setMenuDelegates()
         setTextViewDelegates()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-//        configure()
-        Info.sharedInstance.sync()
-        print(Info.sharedInstance.dentist)
-    }
-    
-    func configure() {
+    func appearConfigure() {
         setTodayTasksDelegates()
         setUIComponents()
     }
@@ -83,11 +91,9 @@ class HomeViewController: TabBarViewController {
         guard let dentist = Info.sharedInstance.dentist else {
             return
         }
-        
-        if let image = Info.sharedInstance.dentistImage {
-            profileImageView.image = image
+        if let image = dentist.photo {
+            profileImageView.image = UIImage(data: image)
         }
-        profileImageView.image = UIImage(data: dentist.photo!)
         dentistNameLabel.text = dentist.last_name
     }
     

@@ -35,7 +35,7 @@ class PatientsViewController: UIViewController {
     }
     
     func setDelegates() {
-        patientsTableViewDelegate = PatientsTableViewDelegate()
+        patientsTableViewDelegate = PatientsTableViewDelegate(tableView: patientsTableView)
         patientsTableView.delegate = patientsTableViewDelegate
         patientsTableView.dataSource = patientsTableViewDelegate
     }

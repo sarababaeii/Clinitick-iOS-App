@@ -68,6 +68,10 @@ public class Clinic: NSManagedObject {
         }
     }
     
+    func delete() {
+        
+    }
+    
     func setModifiedTime() {
         self.modified_at = Date()
     }

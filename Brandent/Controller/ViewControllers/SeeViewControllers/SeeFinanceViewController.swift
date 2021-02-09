@@ -70,7 +70,7 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
             return
         }
         setTotalAmount(totalAmount: Finance.calculateSum(finances: finances))
-        financeTableViewDelegate = FinanceTableViewDelegate(finances: finances)
+        financeTableViewDelegate = FinanceTableViewDelegate(tableView: financeTableView, finances: finances)
         financeTableView.delegate = financeTableViewDelegate
         financeTableView.dataSource = financeTableViewDelegate
     }

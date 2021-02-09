@@ -84,7 +84,7 @@ class PatientProfileViewController: FormViewController {
     }
     
     func setTableViewDelegates() {
-        appointmentsTableViewDelegate = AppointmentsTableViewDelegate(patient: patient!)
+        appointmentsTableViewDelegate = AppointmentsTableViewDelegate(tableView: appointmentsTableView, patient: patient!)
         appointmentsTableView.delegate = appointmentsTableViewDelegate
         appointmentsTableView.dataSource = appointmentsTableViewDelegate
     }

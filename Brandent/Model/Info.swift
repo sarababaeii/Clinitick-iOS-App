@@ -12,12 +12,13 @@ import UIKit
 class Info {
     static let sharedInstance = Info()
     
-    var lastViewControllerIndex: Int?
-    var dentist: Dentist? //TODO: delete in logout
-    
-    var dentistImage: UIImage?
-    
     let defaults = UserDefaults.standard
+    var lastViewControllerIndex: Int?
+    var isForReturn = false
+    
+    //MARK: User Data
+    var dentist: Dentist?
+    
     var token: String? {
         get {
             return defaults.string(forKey: DefaultKey.token.rawValue)
@@ -26,6 +27,7 @@ class Info {
             defaults.set(newValue, forKey: DefaultKey.token.rawValue)
         }
     }
+    
     var dentistID: String? { // could be phone
         get {
             return defaults.string(forKey: DefaultKey.dentistID.rawValue)
@@ -35,6 +37,17 @@ class Info {
             setDentist()
         }
     }
+    
+    func setDentist() {
+        print("^^^ Dentist ID is: \(dentistID ?? "NIL")")
+        if let idString = dentistID, let id = Int(idString) {
+            dentist = DataController.sharedInstance.fetchDentist(id: NSDecimalNumber(value: id)) as? Dentist
+        } else {
+            dentist = nil
+        }
+    }
+    
+    //MARK: Sync
     var lastUpdate: String? {
         get {
             return defaults.string(forKey: DefaultKey.lastUpdated.rawValue)
@@ -44,18 +57,9 @@ class Info {
         }
     }
     
-    func setDentist() {
-        print("^^^")
-        print(dentistID)
-        if let idString = dentistID, let id = UUID(uuidString: idString) {
-            dentist = DataController.sharedInstance.fetchDentist(id: id) as? Dentist
-        } else {
-            dentist = nil
-        }
-    }
-    
     func sync() {
-        print(lastUpdate)
+        print("Last Updated in: \(lastUpdate ?? "NIL")")
+        
         if lastUpdate == nil {
             lastUpdate = "1970-10-10 10:10:10"
         }
@@ -73,5 +77,3 @@ class Info {
         RestAPIManagr.sharedInstance.sync(clinics: clinics, patients: patients, finances: finances, tasks: tasks, diseases: diseases, appointments: appointments)
     }
 }
-
-//set dentist in launching

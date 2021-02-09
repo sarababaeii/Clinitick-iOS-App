@@ -25,10 +25,14 @@ class ProfileImagePickerDelegate: ImagePickerDelegate {
         guard let viewController = viewController as? ProfileViewController, images.count > 0 else {
             return
         }
+        RestAPIManagr.sharedInstance.setProfilePicture(photo: images)
+        
         viewController.dentistImageView.image = images[0].img
         if let dentist = Info.sharedInstance.dentist {
-            DataController.sharedInstance.setDentistPhoto(dentist: dentist, photo: images[0])
+            dentist.setProfilePicture(photo: images[0], fromAPI: false)
+//            DataController.sharedInstance.setDentistPhoto(dentist: dentist, photo: images[0])
         }
+        
         selectedAssets = [PHAsset]()
         images = [Image]()
     }

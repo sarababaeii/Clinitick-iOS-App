@@ -115,7 +115,7 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
 //            return
 //        }
 //        print("url: \(url)")
-        let image = Image(name: fileName)
+        let image = Image(name: fileName, urlString: API.imageFiles)
         let indexPath = IndexPath(item: images.count, section: 0)
         insertImage(image, at: indexPath)
     }

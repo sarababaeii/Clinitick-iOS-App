@@ -27,6 +27,7 @@
 		0310168A258A88170034717F /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03101689258A88170034717F /* FormViewController.swift */; };
 		03109B46258E29E300AEA959 /* EntitiyNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03109B45258E29E300AEA959 /* EntitiyNames.swift */; };
 		0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0310F44F250FF577008B3E5B /* CustomUIView.swift */; };
+		0315221125D1C09600D1894B /* DummyDentist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0315221025D1C09600D1894B /* DummyDentist.swift */; };
 		0321F8642567CA0F0048D77B /* APIAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321F8632567CA0F0048D77B /* APIAddress.swift */; };
 		0321F8662567CA920048D77B /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321F8652567CA920048D77B /* ContentType.swift */; };
 		0321F8682567CC470048D77B /* APIRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0321F8672567CC470048D77B /* APIRequestType.swift */; };
@@ -172,6 +173,7 @@
 		03101689258A88170034717F /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		03109B45258E29E300AEA959 /* EntitiyNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitiyNames.swift; sourceTree = "<group>"; };
 		0310F44F250FF577008B3E5B /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
+		0315221025D1C09600D1894B /* DummyDentist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDentist.swift; sourceTree = "<group>"; };
 		0321F8632567CA0F0048D77B /* APIAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAddress.swift; sourceTree = "<group>"; };
 		0321F8652567CA920048D77B /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 		0321F8672567CC470048D77B /* APIRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestType.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				0321F8632567CA0F0048D77B /* APIAddress.swift */,
 				0321F8672567CC470048D77B /* APIRequestType.swift */,
 				03BDDF91255AF1160086DF25 /* APIKey.swift */,
+				0315221025D1C09600D1894B /* DummyDentist.swift */,
 			);
 			path = APIClasses;
 			sourceTree = "<group>";
@@ -993,6 +996,7 @@
 				030C68042549EC6C00CECCC2 /* DiseaseTableViewCell.swift in Sources */,
 				03EE136E25542E4900363EA0 /* MenuCollectionViewCell.swift in Sources */,
 				035D4AD62544B566007D8395 /* CheckButton.swift in Sources */,
+				0315221125D1C09600D1894B /* DummyDentist.swift in Sources */,
 				034253242581284900DA6F29 /* SignUpViewController.swift in Sources */,
 				037AECD7258D3C640097AF42 /* Clinic+CoreDataProperties.swift in Sources */,
 				03FBE69B255495BC00FEFF63 /* Finance+CoreDataClass.swift in Sources */,

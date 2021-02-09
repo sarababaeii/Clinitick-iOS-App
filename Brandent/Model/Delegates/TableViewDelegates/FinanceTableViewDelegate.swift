@@ -12,13 +12,15 @@ import CoreData
 
 class FinanceTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
    
+    var tableView: UITableView
     var finances = [NSManagedObject]()
     
     //MARK: Initializer
-    init(finances: [Any]) {
+    init(tableView: UITableView, finances: [Any]) {
         if let finances = finances as? [NSManagedObject] {
             self.finances = finances
         }
+        self.tableView = tableView
     }
     
     //MARK: Protocol Functions
@@ -34,10 +36,32 @@ class FinanceTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSo
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var actions: [UITableViewRowAction]?
+        if let _ = financeDataSource(indexPath: indexPath) {
+            let delete = UITableViewRowAction(style: .destructive, title: "حذف") {
+                (actions, indexPath) in
+                self.deleteFinance(at: indexPath)
+            }
+            actions = [delete]
+        }
+        return actions
+    }
+    
     func financeDataSource(indexPath: IndexPath) -> Any? {
         if indexPath.row < finances.count {
             return finances[indexPath.row]
         }
         return nil
+    }
+    
+    func deleteFinance(at indexPath: IndexPath?) {
+        if let indexPath = indexPath, let finance = financeDataSource(indexPath: indexPath) {
+            tableView.beginUpdates()
+//            finance.delete()
+            finances.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
     }
 }

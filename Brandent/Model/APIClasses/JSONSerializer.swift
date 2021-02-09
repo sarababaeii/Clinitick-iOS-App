@@ -24,7 +24,7 @@ class JSONSerializer {
     
     
     //MARK: Authentication
-    func getSignUpData(dentist: Dentist) -> [String: Any] {
+    func getSignUpData(dentist: DummyDentist) -> [String: Any] {
         return dentist.toDictionary()
     }
     
@@ -97,11 +97,11 @@ class JSONSerializer {
 //        return httpBody as Data
 //    }
     
-    func getAddImageData(images: [Image], boundary: String) -> Data {
+    func getAddImageData(key: APIKey, images: [Image], boundary: String) -> Data {
         let httpBody = NSMutableData()
 //        httpBody.appendString(convertFormField(key: APIKey.images.id!, value: appointmentID.uuidString, using: boundary))
         for image in images {
-            httpBody.append(convertFileData(key: APIKey.images.rawValue, fileName: image.name, mimeType: "image/jpeg", fileData: image.data, using: boundary))
+            httpBody.append(convertFileData(key: key.image!, fileName: image.name, mimeType: "image/jpeg", fileData: image.data, using: boundary))
         }
         httpBody.appendString("--\(boundary)--")
         return httpBody as Data

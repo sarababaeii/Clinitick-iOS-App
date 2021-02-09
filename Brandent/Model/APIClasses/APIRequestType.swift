@@ -15,6 +15,7 @@ enum APIRequestType {
     case addDisease
     case addImage
     case addFinance
+    case setProfile
     case login
     case signUp
     case sendPhone
