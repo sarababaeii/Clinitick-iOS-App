@@ -45,19 +45,38 @@ class DataController {
         return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
     }
     
-    func addDentistIDToPredicate(object entityName: EntityNames, predicate: NSPredicate?) -> NSPredicate? {
+    func finilizePredicate(object entityName: EntityNames, predicate: NSPredicate?) -> NSPredicate? {
+        if let idPredicate = addDentistIDToPredicate(object: entityName, predicate: predicate) {
+            return addNotDeletedToPredicate(object: entityName, predicate: idPredicate)
+        }
+        return nil
+    }
+    
+    private func addDentistIDToPredicate(object entityName: EntityNames, predicate: NSPredicate?) -> NSPredicate? {
         if entityName == .dentist {
             return predicate
         }
-        guard let idString = Info.sharedInstance.dentistID, let id = UUID(uuidString: idString) else {
+        guard let id = Info.sharedInstance.dentistID else {
             return nil
         }
         print("%?% \(id)")
-        let idPredicate = NSPredicate(format: "dentist.id = %@", id as CVarArg)
+        let idPredicate = NSPredicate(format: "dentist.id = %d", id)
         if let predicate = predicate {
             return joinPredicates(predicates: [idPredicate, predicate])
         }
         return idPredicate
+    }
+    
+    private func addNotDeletedToPredicate(object entityName: EntityNames, predicate: NSPredicate?) -> NSPredicate? {
+        if entityName == .dentist {
+            return predicate
+        }
+        let deletedAttribute = EntityAttributes.isDeleted.rawValue
+        let deletedPredicate = NSPredicate(format: "\(deletedAttribute) = %d", false)
+        if let predicate = predicate {
+            return joinPredicates(predicates: [deletedPredicate, predicate])
+        }
+        return deletedPredicate
     }
     
     func predicateForTimeInterval(dateAttribute: String, start: Date?, end: Date?) -> NSPredicate? {
@@ -69,7 +88,7 @@ class DataController {
     
     func fetchRequest(object entityName: EntityNames, predicate: NSPredicate?, sortBy key: String?) -> [NSManagedObject]? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName.rawValue)
-        if let predicate = addDentistIDToPredicate(object: entityName, predicate: predicate) {
+        if let predicate = finilizePredicate(object: entityName, predicate: predicate) {
             request.predicate = predicate
         }
         if let key = key { //Sorting
@@ -112,7 +131,10 @@ class DataController {
         return nil
     }
     
+    //MARK: Delete
     func deleteRecord(record: NSManagedObject) {
+        context.delete(record)
+//        saveContext()
 //        record.delete
     }
     
@@ -321,9 +343,8 @@ class DataController {
     }
     
     func fetchDentist(id: NSDecimalNumber) -> NSManagedObject? {
-        let predicate = NSPredicate(format: "\(DentistAttributes.id.rawValue) = %@", id) //TODO: Test
+        let predicate = NSPredicate(format: "\(DentistAttributes.id.rawValue) == %@", id)
         return fetchRequest(object: .dentist, predicate: predicate, sortBy: nil)?.first
-//        return fetchObject(object: .dentist, idAttribute: DentistAttributes.id.rawValue, id: id)
     }
     
     func fetchDentist(phone: String) -> NSManagedObject? {

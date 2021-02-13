@@ -17,13 +17,11 @@ extension Task {
         return NSFetchRequest<Task>(entityName: "Task")
     }
 
-    @NSManaged public var id: UUID
     @NSManaged public var title: String
     @NSManaged public var date: Date
     @NSManaged public var state: String
     @NSManaged public var clinic: Clinic?
     @NSManaged public var dentist: Dentist
-    @NSManaged public var modified_at: Date
 }
 
 enum TaskAttributes: String {

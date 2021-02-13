@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(Finance)
-public class Finance: NSManagedObject {
+public class Finance: Entity {
     
     static func getFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
         if let id = id, let object = DataController.sharedInstance.fetchFinance(id: id),
@@ -32,23 +32,10 @@ public class Finance: NSManagedObject {
         self.setModifiedTime()
     }
     
-    func setID(id: UUID?) {
-        if let id = id {
-            self.id = id
-        } else {
-            let uuid = UUID()
-            self.id = uuid
-        }
-    }
-    
     func setDentist() {
         if let dentist = Info.sharedInstance.dentist {
             self.dentist = dentist
         }
-    }
-    
-    func setModifiedTime() {
-        self.modified_at = Date()
     }
     
     //MARK: Other Functions

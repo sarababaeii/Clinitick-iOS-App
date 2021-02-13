@@ -18,9 +18,7 @@ extension Finance {
     }
 
     @NSManaged public var amount: NSDecimalNumber
-    @NSManaged public var id: UUID
     @NSManaged public var is_cost: Bool
-    @NSManaged public var modified_at: Date
     @NSManaged public var title: String
     @NSManaged public var date: Date
     @NSManaged public var dentist: Dentist

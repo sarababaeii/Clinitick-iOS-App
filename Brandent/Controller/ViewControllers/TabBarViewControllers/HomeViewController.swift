@@ -35,9 +35,7 @@ class HomeViewController: TabBarViewController {
             lastViewController != 0,
             let viewControllers = tabBarController?.viewControllers {
             tabBarController?.selectedViewController = viewControllers[lastViewController]
-            print(lastViewController)
         } else {
-            print("IM HERE")
             super.viewWillAppear(animated)
             appearConfigure()
         }

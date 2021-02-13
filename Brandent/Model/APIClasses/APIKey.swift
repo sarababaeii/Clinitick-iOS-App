@@ -16,7 +16,6 @@ enum APIKey: String {
     case patient
     case disease
     case appointment
-//    case images = "images"
     
     case lastUpdate = "last_updated"
     
@@ -35,12 +34,8 @@ enum APIKey: String {
     //MARK: ID
     var id: String? {
         switch self {
-//        case .dentist:
-//            return "dentist_id" bug?!
         case .clinic, .disease, .appointment, .patient, .finance, .dentist, .task:
             return "id"
-//        case .images:
-//            return "apt_id"
         default:
             return nil
         }

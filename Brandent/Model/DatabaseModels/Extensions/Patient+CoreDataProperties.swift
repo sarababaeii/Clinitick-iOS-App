@@ -18,8 +18,6 @@ extension Patient {
     }
 
     @NSManaged public var alergies: String?
-    @NSManaged public var id: UUID
-    @NSManaged public var modified_at: Date
     @NSManaged public var name: String
     @NSManaged public var phone: String
     @NSManaged public var dentist: Dentist

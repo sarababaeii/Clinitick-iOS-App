@@ -17,10 +17,8 @@ extension Disease {
         return NSFetchRequest<Disease>(entityName: "Disease")
     }
 
-    @NSManaged public var id: UUID
     @NSManaged public var price: NSDecimalNumber
     @NSManaged public var title: String
-    @NSManaged public var modified_at: Date
     @NSManaged public var appointments: NSSet?
     @NSManaged public var dentist: Dentist
 }

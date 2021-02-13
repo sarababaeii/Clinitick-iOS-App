@@ -19,8 +19,6 @@ extension Clinic {
 
     @NSManaged public var address: String?
     @NSManaged public var color: String
-    @NSManaged public var id: UUID
-    @NSManaged public var modified_at: Date
     @NSManaged public var title: String
     @NSManaged public var appointments: NSSet?
     @NSManaged public var dentist: Dentist

@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(Clinic)
-public class Clinic: NSManagedObject {
+public class Clinic: Entity {
 
     static func getClinic(id: UUID?, title: String, address: String?, color: String?) -> Clinic {
         if let id = id, let clinic = getClinicByID(id) {
@@ -28,38 +28,29 @@ public class Clinic: NSManagedObject {
         }
         return DataController.sharedInstance.createClinic(id: id, title: title, address: address, color: clinicColor)
     }
-    
+
     static func getClinicByID(_ id: UUID) -> Clinic? {
         if let object = DataController.sharedInstance.fetchClinic(id: id), let clinic = object as? Clinic {
             return clinic
         }
         return nil
     }
-    
+
     static func getClinicByTitle(_ title: String) -> Clinic? {
         if let object = DataController.sharedInstance.fetchClinic(title: title), let clinic = object as? Clinic {
             return clinic
         }
         return nil
     }
-    
+
     func setAttributes(id: UUID?, title: String, address: String?, color: String) {
         self.title = title
         self.color = color
         self.address = address
-       
+
         self.setID(id: id)
         self.setDentist()
         self.setModifiedTime()
-    }
-    
-    func setID(id: UUID?) {
-        if let id = id {
-            self.id = id
-        } else {
-            let uuid = UUID()
-            self.id = uuid
-        }
     }
     
     func setDentist() {
@@ -67,15 +58,15 @@ public class Clinic: NSManagedObject {
             self.dentist = dentist
         }
     }
-    
-    func delete() {
-        
-    }
-    
-    func setModifiedTime() {
-        self.modified_at = Date()
-    }
-    
+
+//    func delete() {
+//        DataController.sharedInstance.deleteRecord(record: self)
+//        print("***")
+//        print(self)
+//        print(self.isDeleted)
+//        print("***")
+//    }
+
     //MARK: API Functions
     func toDictionary() -> [String: String] {
         var params: [String: String] = [
@@ -87,7 +78,7 @@ public class Clinic: NSManagedObject {
         }
         return params
     }
-    
+
     static func toDictionaryArray(clinics: [Clinic]) -> [[String: String]] {
         var params = [[String: String]]()
         for clinic in clinics {
@@ -95,7 +86,7 @@ public class Clinic: NSManagedObject {
         }
         return params
     }
-    
+
     static func saveClinic(_ clinic: NSDictionary) {
         guard let idString = clinic[APIKey.clinic.id!] as? String,
          let id = UUID.init(uuidString: idString),

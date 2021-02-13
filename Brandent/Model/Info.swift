@@ -28,9 +28,9 @@ class Info {
         }
     }
     
-    var dentistID: String? { // could be phone
+    var dentistID: Int? { // could be phone
         get {
-            return defaults.string(forKey: DefaultKey.dentistID.rawValue)
+            return defaults.integer(forKey: DefaultKey.dentistID.rawValue)
         }
         set {
             defaults.set(newValue, forKey: DefaultKey.dentistID.rawValue)
@@ -39,8 +39,8 @@ class Info {
     }
     
     func setDentist() {
-        print("^^^ Dentist ID is: \(dentistID ?? "NIL")")
-        if let idString = dentistID, let id = Int(idString) {
+        print("^^^ Dentist ID is: \(dentistID ?? 0)")
+        if let id = dentistID {
             dentist = DataController.sharedInstance.fetchDentist(id: NSDecimalNumber(value: id)) as? Dentist
         } else {
             dentist = nil

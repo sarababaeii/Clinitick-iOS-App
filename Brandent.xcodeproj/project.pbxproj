@@ -119,6 +119,8 @@
 		03F27556258688A000526477 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F27555258688A000526477 /* AddTaskViewController.swift */; };
 		03F2755825868E0300526477 /* AddPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2755725868E0300526477 /* AddPatientViewController.swift */; };
 		03F2755A2586918400526477 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F275592586918400526477 /* AddViewController.swift */; };
+		03F3FD8525D5988700C0A8CD /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3FD8325D5988700C0A8CD /* Entity+CoreDataClass.swift */; };
+		03F3FD8625D5988700C0A8CD /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3FD8425D5988700C0A8CD /* Entity+CoreDataProperties.swift */; };
 		03F4A5C52551951F00D7E1C6 /* AddFinanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */; };
 		03F4A5C92551D01A00D7E1C6 /* FinanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5C82551D01A00D7E1C6 /* FinanceTableViewCell.swift */; };
 		03F4A5CB2551D03300D7E1C6 /* TodayTasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5CA2551D03300D7E1C6 /* TodayTasksTableViewCell.swift */; };
@@ -271,6 +273,8 @@
 		03F27555258688A000526477 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		03F2755725868E0300526477 /* AddPatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPatientViewController.swift; sourceTree = "<group>"; };
 		03F275592586918400526477 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		03F3FD8325D5988700C0A8CD /* Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		03F3FD8425D5988700C0A8CD /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFinanceViewController.swift; sourceTree = "<group>"; };
 		03F4A5C82551D01A00D7E1C6 /* FinanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceTableViewCell.swift; sourceTree = "<group>"; };
 		03F4A5CA2551D03300D7E1C6 /* TodayTasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTasksTableViewCell.swift; sourceTree = "<group>"; };
@@ -583,6 +587,7 @@
 		039E2E382535C7BE00F6D5EE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				03F3FD8325D5988700C0A8CD /* Entity+CoreDataClass.swift */,
 				03BC1F7C25251658009749C0 /* Appointment+CoreDataClass.swift */,
 				03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */,
 				03E2FE232582994E00749377 /* Dentist+CoreDataClass.swift */,
@@ -597,6 +602,7 @@
 		039E2E392535C7EA00F6D5EE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				03F3FD8425D5988700C0A8CD /* Entity+CoreDataProperties.swift */,
 				03FBE67C2554786E00FEFF63 /* Appointment+CoreDataProperties.swift */,
 				037AECCF258D3C640097AF42 /* Clinic+CoreDataProperties.swift */,
 				037AECCD258D3C640097AF42 /* Dentist+CoreDataProperties.swift */,
@@ -994,9 +1000,11 @@
 				030BE2FB25434A5000AA642C /* TasksTableViewDelegate.swift in Sources */,
 				036626BB258A6054002CCEE2 /* JSONSerializer.swift in Sources */,
 				030C68042549EC6C00CECCC2 /* DiseaseTableViewCell.swift in Sources */,
+				03F3FD8625D5988700C0A8CD /* Entity+CoreDataProperties.swift in Sources */,
 				03EE136E25542E4900363EA0 /* MenuCollectionViewCell.swift in Sources */,
 				035D4AD62544B566007D8395 /* CheckButton.swift in Sources */,
 				0315221125D1C09600D1894B /* DummyDentist.swift in Sources */,
+				03F3FD8525D5988700C0A8CD /* Entity+CoreDataClass.swift in Sources */,
 				034253242581284900DA6F29 /* SignUpViewController.swift in Sources */,
 				037AECD7258D3C640097AF42 /* Clinic+CoreDataProperties.swift in Sources */,
 				03FBE69B255495BC00FEFF63 /* Finance+CoreDataClass.swift in Sources */,

@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(Appointment)
-public class Appointment: NSManagedObject {
+public class Appointment: Entity {
     
     static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, diseaseTitle: String, price: Int, date: Date) -> Appointment { // for sync
         if let appointment = getAppointmentByID(id) {
@@ -56,23 +56,10 @@ public class Appointment: NSManagedObject {
         DataController.sharedInstance.saveContext()
     }
     
-    func setID(id: UUID?) {
-        if let id = id {
-            self.id = id
-        } else {
-            let uuid = UUID()
-            self.id = uuid
-        }
-    }
-    
     func setDentist() {
         if let dentist = Info.sharedInstance.dentist {
             self.dentist = dentist
         }
-    }
-    
-    func setModifiedTime() {
-        self.modified_at = Date()
     }
     
     static func sort(appointments: [Appointment]?, others: [NSManagedObject]?) -> [NSManagedObject]? {

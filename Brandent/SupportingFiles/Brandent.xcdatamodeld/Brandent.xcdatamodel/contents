@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
-    <entity name="Appointment" representedClassName="Appointment" syncable="YES">
-        <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
-        <attribute name="modified_at" attributeType="Date" defaultDateTimeInterval="624539640" usesScalarValueType="NO"/>
+    <entity name="Appointment" representedClassName="Appointment" parentEntity="Entity" syncable="YES">
         <attribute name="price" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="state" attributeType="String" defaultValueString="todo"/>
         <attribute name="visit_time" attributeType="Date" defaultDateTimeInterval="630013740" usesScalarValueType="NO"/>
@@ -11,11 +9,9 @@
         <relationship name="disease" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disease" inverseName="appointments" inverseEntity="Disease"/>
         <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="history" inverseEntity="Patient"/>
     </entity>
-    <entity name="Clinic" representedClassName="Clinic" syncable="YES">
+    <entity name="Clinic" representedClassName="Clinic" parentEntity="Entity" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="color" attributeType="String" defaultValueString="Green"/>
-        <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
-        <attribute name="modified_at" attributeType="Date" defaultDateTimeInterval="626291460" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String" defaultValueString="مطب ۱"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="clinic" inverseEntity="Appointment"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="clinics" inverseEntity="Dentist"/>
@@ -37,49 +33,47 @@
         <relationship name="patients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="dentist" inverseEntity="Patient"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="dentist" inverseEntity="Task"/>
     </entity>
-    <entity name="Disease" representedClassName="Disease" syncable="YES">
-        <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
-        <attribute name="modified_at" attributeType="Date" defaultDateTimeInterval="626291520" usesScalarValueType="NO"/>
+    <entity name="Disease" representedClassName="Disease" parentEntity="Entity" syncable="YES">
         <attribute name="price" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="title" attributeType="String" defaultValueString="toothace"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="disease" inverseEntity="Appointment"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="diseases" inverseEntity="Dentist"/>
     </entity>
-    <entity name="Finance" representedClassName="Finance" syncable="YES">
+    <entity name="Entity" representedClassName="Entity" isAbstract="YES" syncable="YES">
+        <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
+        <attribute name="is_deleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="modified_at" attributeType="Date" defaultDateTimeInterval="634755000" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Finance" representedClassName="Finance" parentEntity="Entity" syncable="YES">
         <attribute name="amount" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="date" attributeType="Date" defaultDateTimeInterval="626300160" usesScalarValueType="NO"/>
-        <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
         <attribute name="is_cost" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="modified_at" attributeType="Date" defaultDateTimeInterval="626291760" usesScalarValueType="NO"/>
         <attribute name="title" attributeType="String" defaultValueString="خرید"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="finances" inverseEntity="Dentist"/>
     </entity>
-    <entity name="Patient" representedClassName="Patient" syncable="YES">
+    <entity name="Patient" representedClassName="Patient" parentEntity="Entity" syncable="YES">
         <attribute name="alergies" optional="YES" attributeType="String"/>
-        <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
-        <attribute name="modified_at" attributeType="Date" defaultDateTimeInterval="626291520" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString="بیمار"/>
         <attribute name="phone" attributeType="String" defaultValueString="00000000000"/>
         <relationship name="clinics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clinic" inverseName="patients" inverseEntity="Clinic"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="patients" inverseEntity="Dentist"/>
         <relationship name="history" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="patient" inverseEntity="Appointment"/>
     </entity>
-    <entity name="Task" representedClassName="Task" syncable="YES">
+    <entity name="Task" representedClassName="Task" parentEntity="Entity" syncable="YES">
         <attribute name="date" attributeType="Date" defaultDateTimeInterval="630012120" usesScalarValueType="NO"/>
-        <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
-        <attribute name="modified_at" attributeType="Date" defaultDateTimeInterval="630012480" usesScalarValueType="NO"/>
         <attribute name="state" attributeType="String" defaultValueString="todo"/>
         <attribute name="title" attributeType="String" defaultValueString="کار"/>
         <relationship name="clinic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Clinic" inverseName="tasks" inverseEntity="Clinic"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="tasks" inverseEntity="Dentist"/>
     </entity>
     <elements>
-        <element name="Appointment" positionX="-34.1796875" positionY="-261.04296875" width="128" height="178"/>
-        <element name="Clinic" positionX="-203.81640625" positionY="-447.2578125" width="128" height="178"/>
+        <element name="Appointment" positionX="-34.1796875" positionY="-261.04296875" width="128" height="148"/>
+        <element name="Clinic" positionX="-203.81640625" positionY="-447.2578125" width="128" height="148"/>
         <element name="Dentist" positionX="-376.40625" positionY="-302.43359375" width="128" height="238"/>
-        <element name="Disease" positionX="-621.47265625" positionY="-36.9453125" width="128" height="133"/>
-        <element name="Finance" positionX="-589.46484375" positionY="-421.609375" width="128" height="148"/>
-        <element name="Patient" positionX="-189.765625" positionY="-38.48828125" width="128" height="163"/>
-        <element name="Task" positionX="-423" positionY="-297" width="128" height="148"/>
+        <element name="Disease" positionX="-621.47265625" positionY="-36.9453125" width="128" height="103"/>
+        <element name="Entity" positionX="-405" positionY="-288" width="128" height="88"/>
+        <element name="Finance" positionX="-589.46484375" positionY="-421.609375" width="128" height="118"/>
+        <element name="Patient" positionX="-189.765625" positionY="-38.48828125" width="128" height="133"/>
+        <element name="Task" positionX="-423" positionY="-297" width="128" height="118"/>
     </elements>
 </model>

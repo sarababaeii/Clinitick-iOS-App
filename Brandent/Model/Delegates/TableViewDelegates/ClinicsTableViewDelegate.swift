@@ -18,6 +18,8 @@ class ClinicsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSo
     init(tableView: UITableView) {
         if let clinics = DataController.sharedInstance.fetchAllClinics() as? [Clinic] {
             self.clinics = clinics
+            print(clinics.count)
+            print("clinics: \(clinics)")
         }
         self.tableView = tableView
     }

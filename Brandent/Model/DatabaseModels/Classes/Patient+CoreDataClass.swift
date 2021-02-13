@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(Patient)
-public class Patient: NSManagedObject {
+public class Patient: Entity {
     
     static func getPatient(id: UUID?, phone: String, name: String, alergies: String?) -> Patient {
         if let id = id, let patient = getPatientByID(id) {
@@ -52,23 +52,10 @@ public class Patient: NSManagedObject {
         self.setModifiedTime()
     }
     
-    func setID(id: UUID?) {
-        if let id = id {
-            self.id = id
-        } else {
-            let uuid = UUID()
-            self.id = uuid
-        }
-    }
-    
     func setDentist() {
         if let dentist = Info.sharedInstance.dentist {
             self.dentist = dentist
         }
-    }
-    
-    func setModifiedTime() {
-        self.modified_at = Date()
     }
     
 //    func setClinics(clinics: [Clinic]) {

@@ -52,7 +52,7 @@ class RestAPIManagr {
             return request
         }
         var newRequest = request
-        newRequest.addValue(token, forHTTPHeaderField: "token") //key?
+        newRequest.addValue(token, forHTTPHeaderField: "token")
         print(token)
         return newRequest
     }

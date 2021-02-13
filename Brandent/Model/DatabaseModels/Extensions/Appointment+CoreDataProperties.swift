@@ -17,9 +17,6 @@ extension Appointment {
         return NSFetchRequest<Appointment>(entityName: "Appointment")
     }
 
-//    @NSManaged public var deleted: Bool
-    @NSManaged public var id: UUID
-    @NSManaged public var modified_at: Date
     @NSManaged public var price: NSDecimalNumber
     @NSManaged public var state: String
     @NSManaged public var visit_time: Date

@@ -22,7 +22,6 @@ public class Dentist: NSManagedObject {
         }
         
         let dentist = DataController.sharedInstance.createDentist(id: id, firstName: firstName, lastName: lastName, phone: phone, speciality: speciality)
-        Info.sharedInstance.dentistID = String(describing: dentist.id) //Setting dentist in info
         return dentist
     }
     

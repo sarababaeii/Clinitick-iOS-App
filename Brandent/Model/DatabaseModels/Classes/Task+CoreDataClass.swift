@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(Task)
-public class Task: NSManagedObject {
+public class Task: Entity {
     
     static func getTask(id: UUID, title: String, date: Date, clinicID: String?) -> Task {
         if let task = getTaskByID(id) {
@@ -48,26 +48,13 @@ public class Task: NSManagedObject {
         self.setDentist()
         self.setModifiedTime()
     }
-        
-    func setID(id: UUID?) {
-        if let id = id {
-            self.id = id
-        } else {
-            let uuid = UUID()
-            self.id = uuid
-        }
-    }
     
     func setDentist() {
         if let dentist = Info.sharedInstance.dentist {
             self.dentist = dentist
         }
     }
-    
-    func setModifiedTime() {
-        self.modified_at = Date()
-    }
-    
+
     func updateState(state: TaskState) {
         self.state = state.rawValue
         self.setModifiedTime()

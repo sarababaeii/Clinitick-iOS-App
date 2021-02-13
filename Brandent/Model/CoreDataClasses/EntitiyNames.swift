@@ -11,6 +11,7 @@ import Foundation
 enum EntityNames: String {
     case appointment = "Appointment"
     case dentist = "Dentist"
+    case entity = "Entity"
     case patient = "Patient"
     case clinic = "Clinic"
     case speciality = "Speciality"
