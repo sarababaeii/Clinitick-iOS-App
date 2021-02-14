@@ -22,9 +22,13 @@ class TasksViewController: TabBarViewController {
         configure()
     }
     
+    override func viewWillLayoutSubviews() {
+        setDelegates()
+    }
+    
     func configure() {
         setUIComponent()
-        setDelegates()
+//        setDelegates()
         calendar.dateSelectHandler = { [unowned self] date in
             self.taskTableViewDelegate?.date = date
         }

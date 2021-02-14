@@ -27,6 +27,10 @@ public class Entity: NSManagedObject {
     }
     
     func delete() {
+        DataController.sharedInstance.temporaryDelete(record: self)
+    }
+    
+    func setDeleteAttributes() {
         self.is_deleted = true
         self.setModifiedTime()
     }

@@ -39,18 +39,18 @@ public class Finance: Entity {
     }
     
     //MARK: Other Functions
-    static func getFinancesArray(tag: Int, date: Date) -> [Any]? {
+    static func getFinancesArray(tag: Int, date: Date) -> [Entity]? {
         switch tag {
         case 0:
-            return DataController.sharedInstance.fetchFinancesAndAppointments(in: date)
+            return DataController.sharedInstance.fetchFinancesAndAppointments(in: date) as? [Entity]
         case 1:
-            return DataController.sharedInstance.fetchAppointmentsInMonth(in: date)
+            return DataController.sharedInstance.fetchAppointmentsInMonth(in: date) as? [Entity]
         case 2:
-            return DataController.sharedInstance.fetchFinanceExternalIncomes(in: date)
+            return DataController.sharedInstance.fetchFinanceExternalIncomes(in: date) as? [Entity]
         case 3:
-            return DataController.sharedInstance.fetchFinanceCosts(in: date)
+            return DataController.sharedInstance.fetchFinanceCosts(in: date) as? [Entity]
         default:
-            return DataController.sharedInstance.fetchFinancesAndAppointments(in: date)
+            return DataController.sharedInstance.fetchFinancesAndAppointments(in: date) as? [Entity]
         }
     }
     

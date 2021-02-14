@@ -58,7 +58,7 @@ class PatientsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataS
     func deletePatient(at indexPath: IndexPath?) {
         if let indexPath = indexPath, let patient = patientDataSource(indexPath: indexPath) {
             tableView.beginUpdates()
-//            patient.delete()
+            patient.deletePatient()
             patients.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()

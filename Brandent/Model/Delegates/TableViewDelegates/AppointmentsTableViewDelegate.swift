@@ -22,6 +22,20 @@ class AppointmentsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewD
             self.appointments = Array(appointments)
         } //TODO: sort by visit time
         self.tableView = tableView
+        super.init()
+        preprocessAppointments()
+    }
+    
+    func preprocessAppointments() {
+        var i = 0
+        while i < appointments.count {
+            print("\(i), \(appointments.count)")
+            if appointments[i].is_deleted {
+                appointments.remove(at: i)
+                i -= 1
+            }
+            i += 1
+        }
     }
     
     //MARK: Protocol Functions
@@ -59,7 +73,7 @@ class AppointmentsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewD
     func deleteAppointment(at indexPath: IndexPath?) {
         if let indexPath = indexPath, let appointment = appointmentDataSource(indexPath: indexPath) {
             tableView.beginUpdates()
-//            appointment.delete()
+            appointment.delete()
             appointments.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()

@@ -132,10 +132,14 @@ class DataController {
     }
     
     //MARK: Delete
-    func deleteRecord(record: NSManagedObject) {
+    func temporaryDelete(record: Entity) {
+        record.setDeleteAttributes()
+        saveContext()
+    }
+    
+    func permanentDelete(record: NSManagedObject) {
         context.delete(record)
-//        saveContext()
-//        record.delete
+        saveContext()
     }
     
     //MARK: Appointment

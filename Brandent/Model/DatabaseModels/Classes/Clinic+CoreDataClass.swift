@@ -59,13 +59,33 @@ public class Clinic: Entity {
         }
     }
 
-//    func delete() {
-//        DataController.sharedInstance.deleteRecord(record: self)
-//        print("***")
-//        print(self)
-//        print(self.isDeleted)
-//        print("***")
-//    }
+    func deleteClinic() {
+        self.deleteAppointments()
+        self.deleteTasks()
+        self.delete()
+    }
+    
+    private func deleteAppointments() {
+        guard let appointments = self.appointments else {
+            return
+        }
+        for appointment in appointments {
+            if let appointment = appointment as? Appointment {
+                appointment.delete()
+            }
+        }
+    }
+    
+    private func deleteTasks() {
+        guard let tasks = self.tasks else {
+            return
+        }
+        for task in tasks {
+            if let task = task as? Task {
+                task.delete()
+            }
+        }
+    }
 
     //MARK: API Functions
     func toDictionary() -> [String: String] {

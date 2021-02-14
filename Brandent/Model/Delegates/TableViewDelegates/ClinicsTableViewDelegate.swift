@@ -18,8 +18,6 @@ class ClinicsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSo
     init(tableView: UITableView) {
         if let clinics = DataController.sharedInstance.fetchAllClinics() as? [Clinic] {
             self.clinics = clinics
-            print(clinics.count)
-            print("clinics: \(clinics)")
         }
         self.tableView = tableView
     }
@@ -59,7 +57,7 @@ class ClinicsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSo
     func deleteClinic(at indexPath: IndexPath?) {
         if let indexPath = indexPath, let clinic = clinicDataSource(indexPath: indexPath) {
             tableView.beginUpdates()
-            clinic.delete()
+            clinic.deleteClinic()
             clinics.remove(at: indexPath.row)
 //            lastDeletedIndexPath = indexPath
 

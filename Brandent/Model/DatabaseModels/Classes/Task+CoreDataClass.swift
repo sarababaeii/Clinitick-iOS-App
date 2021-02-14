@@ -54,7 +54,7 @@ public class Task: Entity {
             self.dentist = dentist
         }
     }
-
+    
     func updateState(state: TaskState) {
         self.state = state.rawValue
         self.setModifiedTime()

@@ -104,6 +104,10 @@ class HomeViewController: TabBarViewController {
             patientNameLabel.text = appointment.patient.name
             diseaseLabel.text = appointment.disease.title
             timeLabel.text = appointment.visit_time.toPersianTimeString()
+        } else {
+            patientNameLabel.text = ""
+            diseaseLabel.text = ""
+            timeLabel.text = ""
         }
     }
     

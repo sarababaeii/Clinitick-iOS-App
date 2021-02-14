@@ -15,7 +15,6 @@
         <attribute name="title" attributeType="String" defaultValueString="مطب ۱"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="clinic" inverseEntity="Appointment"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="clinics" inverseEntity="Dentist"/>
-        <relationship name="patients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="clinics" inverseEntity="Patient"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="clinic" inverseEntity="Task"/>
     </entity>
     <entity name="Dentist" representedClassName="Dentist" syncable="YES">
@@ -55,7 +54,6 @@
         <attribute name="alergies" optional="YES" attributeType="String"/>
         <attribute name="name" attributeType="String" defaultValueString="بیمار"/>
         <attribute name="phone" attributeType="String" defaultValueString="00000000000"/>
-        <relationship name="clinics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clinic" inverseName="patients" inverseEntity="Clinic"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="patients" inverseEntity="Dentist"/>
         <relationship name="history" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="patient" inverseEntity="Appointment"/>
     </entity>
@@ -68,12 +66,12 @@
     </entity>
     <elements>
         <element name="Appointment" positionX="-34.1796875" positionY="-261.04296875" width="128" height="148"/>
-        <element name="Clinic" positionX="-203.81640625" positionY="-447.2578125" width="128" height="148"/>
+        <element name="Clinic" positionX="-203.81640625" positionY="-447.2578125" width="128" height="133"/>
         <element name="Dentist" positionX="-376.40625" positionY="-302.43359375" width="128" height="238"/>
         <element name="Disease" positionX="-621.47265625" positionY="-36.9453125" width="128" height="103"/>
         <element name="Entity" positionX="-405" positionY="-288" width="128" height="88"/>
         <element name="Finance" positionX="-589.46484375" positionY="-421.609375" width="128" height="118"/>
-        <element name="Patient" positionX="-189.765625" positionY="-38.48828125" width="128" height="133"/>
+        <element name="Patient" positionX="-189.765625" positionY="-38.48828125" width="128" height="118"/>
         <element name="Task" positionX="-423" positionY="-297" width="128" height="118"/>
     </elements>
 </model>

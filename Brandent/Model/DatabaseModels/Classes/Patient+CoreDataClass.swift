@@ -58,11 +58,21 @@ public class Patient: Entity {
         }
     }
     
-//    func setClinics(clinics: [Clinic]) {
-//        for clinic in clinics {
-//            self.addToClinics(clinic)
-//        }
-//    }
+    func deletePatient() {
+        self.deleteAppointments()
+        self.delete()
+    }
+    
+    private func deleteAppointments() {
+        guard let appointments = self.history else {
+            return
+        }
+        for appointment in appointments {
+            if let appointment = appointment as? Appointment {
+                appointment.delete()
+            }
+        }
+    }
     
     func getClinics() -> [Clinic]? {
         guard let appointments = self.history else {
@@ -70,7 +80,7 @@ public class Patient: Entity {
         }
         var clinics = [Clinic]()
         for item in appointments {
-            if let appointment = item as? Appointment {
+            if let appointment = item as? Appointment, !appointment.is_deleted {
                 let clinic = appointment.clinic
                 if !clinics.contains(clinic) {
                     clinics.append(clinic)

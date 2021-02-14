@@ -43,23 +43,6 @@ extension Patient {
 
 }
 
-// MARK: Generated accessors for clinics
-extension Patient {
-
-    @objc(addClinicsObject:)
-    @NSManaged public func addToClinics(_ value: Clinic)
-
-    @objc(removeClinicsObject:)
-    @NSManaged public func removeFromClinics(_ value: Clinic)
-
-    @objc(addClinics:)
-    @NSManaged public func addToClinics(_ values: NSSet)
-
-    @objc(removeClinics:)
-    @NSManaged public func removeFromClinics(_ values: NSSet)
-
-}
-
 enum PatientAttributes: String {
     case id = "id"
     case name = "name"

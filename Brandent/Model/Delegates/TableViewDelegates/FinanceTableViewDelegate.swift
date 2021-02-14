@@ -13,13 +13,11 @@ import CoreData
 class FinanceTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
    
     var tableView: UITableView
-    var finances = [NSManagedObject]()
+    var finances = [Entity]()
     
     //MARK: Initializer
-    init(tableView: UITableView, finances: [Any]) {
-        if let finances = finances as? [NSManagedObject] {
-            self.finances = finances
-        }
+    init(tableView: UITableView, finances: [Entity]) {
+        self.finances = finances
         self.tableView = tableView
     }
     
@@ -48,7 +46,7 @@ class FinanceTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSo
         return actions
     }
     
-    func financeDataSource(indexPath: IndexPath) -> Any? {
+    func financeDataSource(indexPath: IndexPath) -> Entity? {
         if indexPath.row < finances.count {
             return finances[indexPath.row]
         }
@@ -58,7 +56,7 @@ class FinanceTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSo
     func deleteFinance(at indexPath: IndexPath?) {
         if let indexPath = indexPath, let finance = financeDataSource(indexPath: indexPath) {
             tableView.beginUpdates()
-//            finance.delete()
+            finance.delete()
             finances.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.endUpdates()
