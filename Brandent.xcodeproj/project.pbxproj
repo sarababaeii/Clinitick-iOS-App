@@ -98,11 +98,13 @@
 		03BC1F8E25251658009749C0 /* Clinic+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */; };
 		03BC1F9225251658009749C0 /* Disease+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */; };
 		03BDDF92255AF1160086DF25 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BDDF91255AF1160086DF25 /* APIKey.swift */; };
+		03C2F49725D9948700AB2048 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C2F49625D9948700AB2048 /* TabBarController.swift */; };
 		03D16F3B25729E1100E05E2C /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D16F3A25729E1100E05E2C /* Bool.swift */; };
 		03D41BBA25530EE7005BB942 /* UIDatePickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */; };
 		03D41BBC2553145A005BB942 /* PickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */; };
 		03D8573525558CA000304B00 /* CustomNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D8573425558CA000304B00 /* CustomNavigationItem.swift */; };
 		03E2FE252582994E00749377 /* Dentist+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2FE232582994E00749377 /* Dentist+CoreDataClass.swift */; };
+		03E4497625DC177A0002548A /* DeletableTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4497525DC177A0002548A /* DeletableTableViewDelegate.swift */; };
 		03E7F933254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F932254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift */; };
 		03E7F935254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F934254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift */; };
 		03E7F939254C61C8000EDDD0 /* AddDiseaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F938254C61C8000EDDD0 /* AddDiseaseViewController.swift */; };
@@ -252,11 +254,13 @@
 		03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clinic+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disease+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03BDDF91255AF1160086DF25 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		03C2F49625D9948700AB2048 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		03D16F3A25729E1100E05E2C /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
 		03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDatePickerExtension.swift; sourceTree = "<group>"; };
 		03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDelegate.swift; sourceTree = "<group>"; };
 		03D8573425558CA000304B00 /* CustomNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationItem.swift; sourceTree = "<group>"; };
 		03E2FE232582994E00749377 /* Dentist+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dentist+CoreDataClass.swift"; sourceTree = "<group>"; };
+		03E4497525DC177A0002548A /* DeletableTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableTableViewDelegate.swift; sourceTree = "<group>"; };
 		03E7F932254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsTableViewDelegate.swift; sourceTree = "<group>"; };
 		03E7F934254C4E51000EDDD0 /* DiseasesTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasesTableViewDelegate.swift; sourceTree = "<group>"; };
 		03E7F938254C61C8000EDDD0 /* AddDiseaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDiseaseViewController.swift; sourceTree = "<group>"; };
@@ -634,6 +638,7 @@
 				03036D32250FE92400C7824A /* TasksViewController.swift */,
 				03036D2E250FE8BB00C7824A /* ProfileViewController.swift */,
 				0300B3FE25B0B59B00D8CAD5 /* TabBarViewController.swift */,
+				03C2F49625D9948700AB2048 /* TabBarController.swift */,
 			);
 			path = TabBarViewControllers;
 			sourceTree = "<group>";
@@ -677,6 +682,7 @@
 				03E7F943254C8A98000EDDD0 /* ClinicsTableViewDelegate.swift */,
 				03FBE69D255499CD00FEFF63 /* FinanceTableViewDelegate.swift */,
 				03088772255EB31600207D91 /* TodayTasksTableViewDelegate.swift */,
+				03E4497525DC177A0002548A /* DeletableTableViewDelegate.swift */,
 			);
 			path = TableViewDelegates;
 			sourceTree = "<group>";
@@ -1076,6 +1082,7 @@
 				0321F87C2568553C0048D77B /* GDCalendarCell.swift in Sources */,
 				03FBE6842554786E00FEFF63 /* Disease+CoreDataProperties.swift in Sources */,
 				03425322258127D700DA6F29 /* LoginViewController.swift in Sources */,
+				03C2F49725D9948700AB2048 /* TabBarController.swift in Sources */,
 				037AECC7258D39AA0097AF42 /* Task+CoreDataProperties.swift in Sources */,
 				037AECC3258D241B0097AF42 /* MenuDelegate.swift in Sources */,
 				030C67FC2549BAD400CECCC2 /* AlertMessage.swift in Sources */,
@@ -1106,6 +1113,7 @@
 				0373AA722585324900E79383 /* DefaultKey.swift in Sources */,
 				03AF9395251653BA008DD4A0 /* DataController.swift in Sources */,
 				030BE2F92543454600AA642C /* TaskTableViewCell.swift in Sources */,
+				03E4497625DC177A0002548A /* DeletableTableViewDelegate.swift in Sources */,
 				03E7F939254C61C8000EDDD0 /* AddDiseaseViewController.swift in Sources */,
 				03FBE69E255499CD00FEFF63 /* FinanceTableViewDelegate.swift in Sources */,
 				03EE137025542F5500363EA0 /* MenuItem.swift in Sources */,

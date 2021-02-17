@@ -19,7 +19,7 @@ extension UIViewController {
     
     //MARK: Toast
     func showToast(message : String) {
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 124, y: self.view.frame.size.height-130, width: 310, height: 41)) //TODO: set size
+        let toastLabel = UILabel(frame: CGRect(x: (self.view.frame.size.width - 320)/2, y: self.view.frame.size.height-130, width: 310, height: 41)) //TODO: set size
         toastLabel.backgroundColor = Color.red.componentColor
         toastLabel.textColor = UIColor.white
         toastLabel.font = UIFont(name: "Vazir", size: 16)
@@ -36,7 +36,7 @@ extension UIViewController {
             toastLabel.removeFromSuperview()
         })
     }
-    
+      
     //MARK: Setting Gradient Layers
     func setGradientSizes() {
         guard let subviews = getSubviews(view: self.view) else {
