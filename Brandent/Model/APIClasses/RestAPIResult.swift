@@ -106,6 +106,18 @@ class RestAPIResult {
     }
     
     //MARK: Sync
+    func processOldData(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, diseases: [Disease]?, appointments: [Appointment]?) {
+        guard let response = response, response.statusCode == 200 else {
+            return
+        }
+        Entity.removeDeletedItems(array: clinics)
+        Entity.removeDeletedItems(array: patients)
+        Entity.removeDeletedItems(array: finances)
+        Entity.removeDeletedItems(array: tasks)
+        Entity.removeDeletedItems(array: diseases)
+        Entity.removeDeletedItems(array: appointments)
+    }
+    
     func saveNewData() {
         guard let data = data, let result = jsonSerializer.decodeData(data: data) else {
             return

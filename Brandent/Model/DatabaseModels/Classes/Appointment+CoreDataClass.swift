@@ -12,7 +12,7 @@ import CoreData
 
 @objc(Appointment)
 public class Appointment: Entity {
-    
+    //MARK: Initialization
     static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, diseaseTitle: String, price: Int, date: Date) -> Appointment { // for sync
         if let appointment = getAppointmentByID(id) {
             return appointment
@@ -37,6 +37,7 @@ public class Appointment: Entity {
         return nil
     }
     
+    //MARK: Setting Attributes
     func setAttributes(id: UUID?, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic) {
         self.price = NSDecimalNumber(value: price)
         self.visit_time = visit_time
@@ -50,18 +51,19 @@ public class Appointment: Entity {
         self.setModifiedTime()
     }
     
-    func updateState(state: TaskState) {
-        self.state = state.rawValue
-        self.setModifiedTime()
-        DataController.sharedInstance.saveContext()
-    }
-    
     func setDentist() {
         if let dentist = Info.sharedInstance.dentist {
             self.dentist = dentist
         }
     }
     
+    func updateState(state: TaskState) {
+        self.state = state.rawValue
+        self.setModifiedTime()
+        DataController.sharedInstance.saveContext()
+    }
+    
+    //MARK: Functions
     static func sort(appointments: [Appointment]?, others: [NSManagedObject]?) -> [NSManagedObject]? {
         guard let appointments = appointments else {
             return others //could be nil
@@ -105,7 +107,7 @@ public class Appointment: Entity {
             APIKey.appointment.state!: self.state,
             APIKey.appointment.date!: self.visit_time.toDBFormatDateAndTimeString(),
             APIKey.appointment.disease!: self.disease.title,
-            APIKey.appointment.isDeleted!: String(self.isDeleted), //test
+            APIKey.appointment.isDeleted!: String(self.is_deleted),
             APIKey.appointment.patient!: self.patient.id.uuidString,
             APIKey.appointment.clinic!: self.clinic.id.uuidString]
         return params

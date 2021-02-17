@@ -68,6 +68,9 @@ class AddPatientViewController: FormViewController {
     }
     
     @objc override func back() {
+//        if let lastViewController = Info.sharedInstance.lastViewControllerIndex {
+//            tabBarController?.selectedIndex = lastViewController
+//        }
         navigateToPage(identifier: "TabBarViewController")
     }
     

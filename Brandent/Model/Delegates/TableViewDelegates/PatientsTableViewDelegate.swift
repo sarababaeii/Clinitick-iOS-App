@@ -9,22 +9,17 @@
 import Foundation
 import UIKit
 
-class PatientsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
+class PatientsTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, UITableViewDataSource {
    
-    var tableView: UITableView
-    var patients = [Patient]()
-    
     //MARK: Initializer
-    init(tableView: UITableView) {
-        if let patients = DataController.sharedInstance.fetchAllPatients() as? [Patient] {
-            self.patients = patients
-        }
-        self.tableView = tableView
+    init(viewController: UIViewController, tableView: UITableView) {
+        let patients = DataController.sharedInstance.fetchAllPatients() as? [Patient]
+        super.init(viewController: viewController, tableView: tableView, items: patients)
     }
     
     //MARK: Protocol Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return patients.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,19 +44,15 @@ class PatientsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataS
     }
     
     func patientDataSource(indexPath: IndexPath) -> Patient? {
-        if indexPath.row < patients.count {
-            return patients[indexPath.row]
+        if indexPath.row < items.count {
+            return items[indexPath.row] as? Patient
         }
         return nil
     }
     
     func deletePatient(at indexPath: IndexPath?) {
         if let indexPath = indexPath, let patient = patientDataSource(indexPath: indexPath) {
-            tableView.beginUpdates()
-            patient.deletePatient()
-            patients.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
+            super.deleteItem(at: indexPath, item: patient)
         }
     }
 }

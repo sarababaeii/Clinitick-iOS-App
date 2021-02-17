@@ -15,10 +15,11 @@ class ClinicsViewController: UIViewController {
     
     var clinicsTableViewDelegate: ClinicsTableViewDelegate?
     
-    func setDelegates() {
-        clinicsTableViewDelegate = ClinicsTableViewDelegate(tableView: clinicsTableView)
-        clinicsTableView.delegate = clinicsTableViewDelegate
-        clinicsTableView.dataSource = clinicsTableViewDelegate
+    //MARK: Showing NavigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        configure()
     }
     
     func configure() {
@@ -27,10 +28,9 @@ class ClinicsViewController: UIViewController {
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
     }
     
-    //MARK: Showing NavigationBar
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-        configure()
+    func setDelegates() {
+        clinicsTableViewDelegate = ClinicsTableViewDelegate(viewController: self, tableView: clinicsTableView)
+        clinicsTableView.delegate = clinicsTableViewDelegate
+        clinicsTableView.dataSource = clinicsTableViewDelegate
     }
 }

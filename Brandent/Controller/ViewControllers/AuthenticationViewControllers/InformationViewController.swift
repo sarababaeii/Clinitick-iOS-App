@@ -11,11 +11,13 @@ import UIKit
 
 class InformationViewController: FormViewController {
     
+    @IBOutlet weak var dentistImageView: CustomImageView!
+    @IBOutlet weak var profileImageButton: UIButton!
     @IBOutlet weak var firstNameTextField: CustomTextField!
     @IBOutlet weak var lastNameTextField: CustomTextField!
     @IBOutlet weak var specialityTextField: CustomTextField!
     @IBOutlet weak var clinicTitleTextField: CustomTextField!
-    @IBOutlet weak var phoneNumberTextField: CustomTextField!
+//    @IBOutlet weak var phoneNumberTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
     
     var textFieldDelegates = [TextFieldDelegate]()
@@ -34,7 +36,7 @@ class InformationViewController: FormViewController {
     }
     
     func initializeTextFields() {
-        textFields = [firstNameTextField, lastNameTextField, specialityTextField, clinicTitleTextField, passwordTextField, phoneNumberTextField]
+        textFields = [firstNameTextField, lastNameTextField, specialityTextField, clinicTitleTextField, passwordTextField]
         data = ["", "", "", "", "", ""] as [String] //0: first name, 1: last name, 2: speciality, 3: clinicTitle, 4: password, 5: phone number
         setTextFieldDelegates()
     }
@@ -53,7 +55,7 @@ class InformationViewController: FormViewController {
     
     //MARK: UI Setting
     func setPhoneNumber() {
-        phoneNumberTextField.text = phoneNumber
+//        phoneNumberTextField.text = phoneNumber
         data[5] = phoneNumber
     }
     
@@ -64,6 +66,9 @@ class InformationViewController: FormViewController {
         }
     }
         
+    @IBAction func setProfileImage(_ sender: Any) {
+    }
+    
     //MARK: Submission
     @IBAction func signUp(_ sender: Any) {
        getLastData()
@@ -79,7 +84,7 @@ class InformationViewController: FormViewController {
     }
     
     override func mustComplete() -> Any? {
-        for i in 0 ..< 6 {
+        for i in 0 ..< 5 {
             if data[i] as? String == "" {
                 print(i)
                 return textFields[i]

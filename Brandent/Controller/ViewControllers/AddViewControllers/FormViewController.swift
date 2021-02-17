@@ -98,6 +98,7 @@ class FormViewController: NavigationBarViewController {
         else if let menu = requiredItem as? SwiftyMenu {
             menu.showError()
         }
+//        self.showUndoToast()
         self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
     }
     

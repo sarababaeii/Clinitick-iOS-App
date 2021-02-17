@@ -12,7 +12,7 @@ import CoreData
 
 @objc(Clinic)
 public class Clinic: Entity {
-
+    //MARK: Initialization
     static func getClinic(id: UUID?, title: String, address: String?, color: String?) -> Clinic {
         if let id = id, let clinic = getClinicByID(id) {
             return clinic
@@ -43,6 +43,7 @@ public class Clinic: Entity {
         return nil
     }
 
+    //MARK: Setting Attributes
     func setAttributes(id: UUID?, title: String, address: String?, color: String) {
         self.title = title
         self.color = color
@@ -59,10 +60,10 @@ public class Clinic: Entity {
         }
     }
 
-    func deleteClinic() {
+    override func delete() {
         self.deleteAppointments()
         self.deleteTasks()
-        self.delete()
+        super.delete()
     }
     
     private func deleteAppointments() {

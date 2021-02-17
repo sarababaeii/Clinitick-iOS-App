@@ -128,6 +128,7 @@ class CodeViewController: UIViewController {
         guard code.count == 4 else {
             return
         }
+        currentTextField?.resignFirstResponder()
         if RestAPIManagr.sharedInstance.sendOneTimeCode(phone: phoneNumber, code: code) {
             nextPage()
         } else {

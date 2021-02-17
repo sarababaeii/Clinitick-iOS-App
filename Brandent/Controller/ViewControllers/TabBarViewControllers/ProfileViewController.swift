@@ -18,18 +18,14 @@ class ProfileViewController: TabBarViewController {
     var imagePickerDelegate: ProfileImagePickerDelegate?
     
     //MARK: Initialization
-    override func viewDidAppear(_ animated: Bool) {
-        configure()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setDentistInformation()
+        configure()
     }
     
     func configure() {
         setDelegates()
-//        setDentistInformation()
+        setDentistInformation()
     }
     
     func setDelegates() {
@@ -53,7 +49,7 @@ class ProfileViewController: TabBarViewController {
     
     @IBAction func logOut(_ sender: Any) {
         Info.sharedInstance.token = nil
-        Info.sharedInstance.dentistID = nil //TODO: Check
+        Info.sharedInstance.dentistID = nil
         nextPage()
     }
     

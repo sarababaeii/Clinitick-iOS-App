@@ -12,7 +12,7 @@ import CoreData
 
 @objc(Task)
 public class Task: Entity {
-    
+    //MARK: Initialization
     static func getTask(id: UUID, title: String, date: Date, clinicID: String?) -> Task {
         if let task = getTaskByID(id) {
             return task
@@ -39,6 +39,7 @@ public class Task: Entity {
         return nil
     }
     
+    //MARK: Setting Attributes
     func setAttributes(id: UUID?, title: String, date: Date, clinic: Clinic?) {
         self.title = title
         self.date = date
@@ -67,7 +68,7 @@ public class Task: Entity {
             APIKey.task.id!: self.id.uuidString,
             APIKey.task.title!: self.title,
             APIKey.task.date!: self.date.toDBFormatDateAndTimeString(),
-            APIKey.task.isDeleted!: String(self.isDeleted)]
+            APIKey.task.isDeleted!: String(self.is_deleted)]
         
         if let clinic = self.clinic {
             params[APIKey.task.clinic!] = clinic.id.uuidString

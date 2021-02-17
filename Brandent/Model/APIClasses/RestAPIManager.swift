@@ -191,5 +191,6 @@ class RestAPIManagr {
     func sync(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, diseases: [Disease]?, appointments: [Appointment]?) {
         let result = sendRequest(request: createSyncRequest(clinics: clinics, patients: patients, finances: finances, tasks: tasks, diseases: diseases, appointments: appointments), type: .sync)
         result.saveNewData()
+        result.processOldData(clinics: clinics, patients: patients, finances: finances, tasks: tasks, diseases: diseases, appointments: appointments)
     }
 }

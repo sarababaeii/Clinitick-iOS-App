@@ -80,8 +80,8 @@ class GDCalendarItemCell: UICollectionViewCell{
     
     public func highlightCell(highlightColor: UIColor, textColor: UIColor){
         UIView.animate(withDuration: 0.15){
-            let top = UIColor(red: 255/255, green: 119/255, blue: 0/255, alpha: 1)
-            let bottom = UIColor(red: 255/255, green: 106/255, blue: 58/255, alpha: 1)
+            let top = UIColor(red: 71/255, green: 43/255, blue: 179/255, alpha: 1)
+            let bottom = UIColor(red: 71/255, green: 43/255, blue: 179/255, alpha: 1)
             self.setGradient(lightGradientColor: top, darkGradientColor: bottom)
             self.itemLabel.textColor = textColor
         }

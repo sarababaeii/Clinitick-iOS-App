@@ -12,7 +12,7 @@ import CoreData
 
 @objc(Finance)
 public class Finance: Entity {
-    
+    //MARK: Initialization
     static func getFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
         if let id = id, let object = DataController.sharedInstance.fetchFinance(id: id),
             let finance = object as? Finance {
@@ -21,6 +21,7 @@ public class Finance: Entity {
         return DataController.sharedInstance.createFinance(id: id, title: title, amount: amount, isCost: isCost, date: date)
     }
     
+    //MARK: Setting Attributes
     func setAttributes(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) {
         self.title = title
         self.amount = NSDecimalNumber(value: amount)
@@ -38,7 +39,7 @@ public class Finance: Entity {
         }
     }
     
-    //MARK: Other Functions
+    //MARK: Functions
     static func getFinancesArray(tag: Int, date: Date) -> [Entity]? {
         switch tag {
         case 0:

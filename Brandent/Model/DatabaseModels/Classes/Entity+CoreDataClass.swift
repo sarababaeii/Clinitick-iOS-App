@@ -27,11 +27,26 @@ public class Entity: NSManagedObject {
     }
     
     func delete() {
+        
         DataController.sharedInstance.temporaryDelete(record: self)
     }
     
     func setDeleteAttributes() {
         self.is_deleted = true
         self.setModifiedTime()
+    }
+    
+    static func removeDeletedItems(array: [Entity]?) {
+        guard let entities = array else {
+            return
+        }
+        var i = 0
+        while i < entities.count {
+            if entities[i].is_deleted {
+                DataController.sharedInstance.permanentDelete(record: entities[i])
+                i -= 1
+            }
+            i += 1
+        }
     }
 }

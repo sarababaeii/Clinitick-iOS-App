@@ -10,13 +10,34 @@ import Foundation
 import UIKit
 
 class TabBarViewController: UIViewController {
-    
     //MARK: Hiding NavigationBar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        configure()
+    }
+    
+    private func configure() {
+        selectTabBarItem()
+        setUIComponents()
+    }
+    
+    private func selectTabBarItem() {
+        if Info.sharedInstance.isForReturn,
+            let lastViewController = Info.sharedInstance.lastViewControllerIndex {
+            Info.sharedInstance.isForReturn = false
+            tabBarController?.selectedIndex = lastViewController
+        }
+    }
+    
+    private func setUIComponents() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.navigationBar.prefersLargeTitles = false
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         setLastViewController()
-//        configure()
     }
     
     private func setLastViewController() {
@@ -33,7 +54,4 @@ class TabBarViewController: UIViewController {
             Info.sharedInstance.lastViewControllerIndex = TabBarItemIndex.home.rawValue
         }
     }
-    
-//    func configure() {
-//    }
 }

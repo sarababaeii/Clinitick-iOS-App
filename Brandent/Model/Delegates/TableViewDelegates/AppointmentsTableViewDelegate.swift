@@ -9,29 +9,27 @@
 import Foundation
 import UIKit
 
-class AppointmentsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
+class AppointmentsTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, UITableViewDataSource {
    
-    var tableView: UITableView
     var patient: Patient
-    var appointments = [Appointment]()
     
     //MARK: Initializer
-    init(tableView: UITableView, patient: Patient) {
+    init(viewController: UIViewController, tableView: UITableView, patient: Patient) {
         self.patient = patient
-        if let appointments = patient.history?.allObjects as? [Appointment] {
-            self.appointments = Array(appointments)
+        var appointments = [Appointment]()
+        if let history = patient.history?.allObjects as? [Appointment] {
+            appointments = Array(history)
         } //TODO: sort by visit time
-        self.tableView = tableView
-        super.init()
+        super.init(viewController: viewController, tableView: tableView, items: appointments)
         preprocessAppointments()
     }
     
     func preprocessAppointments() {
         var i = 0
-        while i < appointments.count {
-            print("\(i), \(appointments.count)")
-            if appointments[i].is_deleted {
-                appointments.remove(at: i)
+        while i < items.count {
+            print("\(i), \(items.count)")
+            if items[i].is_deleted {
+                items.remove(at: i)
                 i -= 1
             }
             i += 1
@@ -40,7 +38,7 @@ class AppointmentsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewD
     
     //MARK: Protocol Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appointments.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,19 +62,15 @@ class AppointmentsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewD
     }
     
     func appointmentDataSource(indexPath: IndexPath) -> Appointment? {
-        if indexPath.row < appointments.count {
-            return appointments[indexPath.row]
+        if indexPath.row < items.count {
+            return items[indexPath.row] as? Appointment
         }
         return nil
     }
     
     func deleteAppointment(at indexPath: IndexPath?) {
         if let indexPath = indexPath, let appointment = appointmentDataSource(indexPath: indexPath) {
-            tableView.beginUpdates()
-            appointment.delete()
-            appointments.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
+            super.deleteItem(at: indexPath, item: appointment)
         }
     }
 }

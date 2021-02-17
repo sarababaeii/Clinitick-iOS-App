@@ -8,22 +8,18 @@
 
 import Foundation
 import UIKit
-import CoreData
 
-class FinanceTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
-   
-    var tableView: UITableView
-    var finances = [Entity]()
-    
+class FinanceTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, UITableViewDataSource {
+      
     //MARK: Initializer
-    init(tableView: UITableView, finances: [Entity]) {
-        self.finances = finances
-        self.tableView = tableView
+    init(viewController: UIViewController, tableView: UITableView, finances: [Entity]) {
+        super.init(viewController: viewController, tableView: tableView, items: finances)
+        print(items)
     }
     
     //MARK: Protocol Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return finances.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,19 +43,15 @@ class FinanceTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSo
     }
     
     func financeDataSource(indexPath: IndexPath) -> Entity? {
-        if indexPath.row < finances.count {
-            return finances[indexPath.row]
+        if indexPath.row < items.count {
+            return items[indexPath.row]
         }
         return nil
     }
     
     func deleteFinance(at indexPath: IndexPath?) {
         if let indexPath = indexPath, let finance = financeDataSource(indexPath: indexPath) {
-            tableView.beginUpdates()
-            finance.delete()
-            finances.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
+            super.deleteItem(at: indexPath, item: finance)
         }
     }
 }

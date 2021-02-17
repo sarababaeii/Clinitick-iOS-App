@@ -12,7 +12,7 @@ import CoreData
 
 @objc(Dentist)
 public class Dentist: NSManagedObject {
-    
+    //MARK: Initialization
     static func getDentist(id: NSDecimalNumber, firstName: String, lastName: String, phone: String, speciality: String) -> Dentist {
         if let dentist = getDentistByID(id) {
             return dentist
@@ -39,6 +39,7 @@ public class Dentist: NSManagedObject {
         return nil
     }
     
+    //MARK: Setting Attributes
     func setAttributes(id: NSDecimalNumber, firstName: String, lastName: String, phone: String, speciality: String) {
         self.id = id
         self.first_name = firstName
@@ -47,10 +48,6 @@ public class Dentist: NSManagedObject {
         self.speciality = speciality
         
         self.setModifiedTime()
-    }
-    
-    func setModifiedTime() {
-        self.modified_at = Date()
     }
     
     func setClinic(clinicTitle: String) {
@@ -63,5 +60,9 @@ public class Dentist: NSManagedObject {
         if !fromAPI {
             self.setModifiedTime()
         }
+    }
+    
+    func setModifiedTime() {
+        self.modified_at = Date()
     }
 }

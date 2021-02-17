@@ -23,6 +23,23 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
     let dateOptions = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"]
     let titles = ["درآمد خالص", "ویزیت‌ها", "درآمدهای خارجی", "خرج‌ها"]
     
+    //MARK: Showing NavigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        configure()
+    }
+    
+    func configure() {
+        setTitle()
+        setDelegates()
+    }
+    
+    func setDelegates() {
+        setTableViewDelegates()
+        setDateMenuDelegates()
+    }
+    
     //MARK: UI Management
     func setTitle() {
 //        self.title = titles[senderTag]
@@ -70,30 +87,11 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
             return
         }
         setTotalAmount(totalAmount: Finance.calculateSum(finances: finances))
-        financeTableViewDelegate = FinanceTableViewDelegate(tableView: financeTableView, finances: finances)
+        financeTableViewDelegate = FinanceTableViewDelegate(viewController: self, tableView: financeTableView, finances: finances)
         financeTableView.delegate = financeTableViewDelegate
         financeTableView.dataSource = financeTableViewDelegate
     }
     
-    func setDelegates() {
-        setTableViewDelegates()
-        setDateMenuDelegates()
-    }
-    
-    func configure() {
-        setTitle()
-        setDelegates()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        configure()
-    }
-    
-    //MARK: Showing NavigationBar
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
+//    deinit {
+//    }
 }

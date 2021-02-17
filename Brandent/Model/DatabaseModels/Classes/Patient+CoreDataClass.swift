@@ -12,7 +12,7 @@ import CoreData
 
 @objc(Patient)
 public class Patient: Entity {
-    
+    //MARK: Initialization
     static func getPatient(id: UUID?, phone: String, name: String, alergies: String?) -> Patient {
         if let id = id, let patient = getPatientByID(id) {
             return patient
@@ -37,11 +37,7 @@ public class Patient: Entity {
         return nil
     }
     
-    func updatePatient(phone: String?, name: String?, alergies: String?) {
-        setAttributes(id: self.id, name: name ?? self.name, phone: phone ?? self.phone, alergies: alergies)
-        DataController.sharedInstance.saveContext()
-    }
-    
+    //MARK: Setting Attributes
     func setAttributes(id: UUID?, name: String, phone: String, alergies: String?) {
         self.name = name
         self.phone = phone
@@ -58,9 +54,14 @@ public class Patient: Entity {
         }
     }
     
-    func deletePatient() {
+    func updatePatient(phone: String?, name: String?, alergies: String?) {
+        setAttributes(id: self.id, name: name ?? self.name, phone: phone ?? self.phone, alergies: alergies)
+        DataController.sharedInstance.saveContext()
+    }
+    
+    override func delete() {
         self.deleteAppointments()
-        self.delete()
+        super.delete()
     }
     
     private func deleteAppointments() {
@@ -74,6 +75,7 @@ public class Patient: Entity {
         }
     }
     
+    //MARK: Functions
     func getClinics() -> [Clinic]? {
         guard let appointments = self.history else {
             return nil

@@ -9,9 +9,8 @@
 import Foundation
 import UIKit
 
-class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
+class TasksTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, UITableViewDataSource {
    
-    var tableView: UITableView
     var date: Date = Date() {
         didSet {
             if let tasks = DataController.sharedInstance.fetchTasksAndAppointments(in: date) as? [Entity] {
@@ -20,21 +19,16 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    var tasks = [Entity]()
-    
     //MARK: Initializer
-    init(tasksTableView: UITableView, date: Date) {
-        self.tableView = tasksTableView
+    init(viewController: UIViewController, tasksTableView: UITableView, date: Date) {
         self.date = date
-        if let tasks = DataController.sharedInstance.fetchTasksAndAppointments(in: date) as? [Entity] {
-            self.tasks = tasks
-            print(tasks)
-        }
+        let tasks = DataController.sharedInstance.fetchTasksAndAppointments(in: date) as? [Entity]
+        super.init(viewController: viewController, tableView: tasksTableView, items: tasks)
     }
     
     //MARK: Protocol Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,19 +52,19 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     }
     
     func taskDataSource(indexPath: IndexPath) -> Entity? {
-        if indexPath.row < tasks.count {
-            return tasks[indexPath.row]
+        if indexPath.row < items.count {
+            return items[indexPath.row]
         }
         return nil
     }
     
     //MARK: Update
     func update(newTasks: [Entity]) {
-        for i in stride(from: tasks.count - 1, to: -1, by: -1) {
+        for i in stride(from: items.count - 1, to: -1, by: -1) {
             removeTasks(index: i)
         }
         for task in newTasks {
-            let indexPath = IndexPath(item: tasks.count, section: 0)
+            let indexPath = IndexPath(item: items.count, section: 0)
             insertTask(task, at: indexPath)
         }
     }
@@ -78,7 +72,7 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     func insertTask(_ item: Entity?, at indexPath: IndexPath?) {
         if let task = item, let indexPath = indexPath {
             tableView.performBatchUpdates({
-                tasks.insert(task, at: indexPath.item)
+                items.insert(task, at: indexPath.item)
                 tableView.insertRows(at: [indexPath], with: .automatic)
             }, completion: nil)
         }
@@ -87,8 +81,8 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     func removeTasks(index: Int) { //remove all?!
         let indexPath = IndexPath(row: index, section: 0)
         tableView.performBatchUpdates({
-            if index < tasks.count {
-                tasks.remove(at: index)
+            if index < items.count {
+                items.remove(at: index)
             }
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }, completion: nil)
@@ -96,11 +90,7 @@ class TasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     
     func deleteTask(at indexPath: IndexPath?) {
         if let indexPath = indexPath, let task = taskDataSource(indexPath: indexPath) {
-            tableView.beginUpdates()
-            task.delete()
-            tasks.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.endUpdates()
+            super.deleteItem(at: indexPath, item: task)
         }
     }
 }

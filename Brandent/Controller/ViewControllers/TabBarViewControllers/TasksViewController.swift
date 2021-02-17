@@ -18,28 +18,28 @@ class TasksViewController: TabBarViewController {
     var taskTableViewDelegate: TasksTableViewDelegate?
     
     //MARK: Initialization
-    override func viewDidAppear(_ animated: Bool) {
-        configure()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadConfigure()
+    }
+   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        layoutConfigure()
     }
     
-    override func viewWillLayoutSubviews() {
-        setDelegates()
-    }
-    
-    func configure() {
-        setUIComponent()
-//        setDelegates()
+    func loadConfigure() {
         calendar.dateSelectHandler = { [unowned self] date in
             self.taskTableViewDelegate?.date = date
         }
     }
     
-    func setUIComponent() {
-        self.setGradientSizes() //for line
+    func layoutConfigure() {
+        setDelegates()
     }
     
     func setDelegates() {
-        taskTableViewDelegate = TasksTableViewDelegate(tasksTableView: tasksTableView, date: Date())
+        taskTableViewDelegate = TasksTableViewDelegate(viewController: self, tasksTableView: tasksTableView, date: Date())
         tasksTableView.delegate = taskTableViewDelegate
         tasksTableView.dataSource = taskTableViewDelegate
     }

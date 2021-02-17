@@ -9,22 +9,17 @@
 import Foundation
 import UIKit
 
-class ClinicsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
-   
-    var tableView: UITableView
-    var clinics = [Clinic]()
+class ClinicsTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Initializer
-    init(tableView: UITableView) {
-        if let clinics = DataController.sharedInstance.fetchAllClinics() as? [Clinic] {
-            self.clinics = clinics
-        }
-        self.tableView = tableView
+    init(viewController: UIViewController, tableView: UITableView) {
+        let clinics = DataController.sharedInstance.fetchAllClinics() as? [Clinic]
+        super.init(viewController: viewController, tableView: tableView, items: clinics)
     }
     
     //MARK: Protocol Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clinics.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,31 +43,15 @@ class ClinicsTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSo
     }
     
     func clinicDataSource(indexPath: IndexPath) -> Clinic? {
-        if indexPath.row < clinics.count {
-            return clinics[indexPath.row]
+        if indexPath.row < items.count {
+            return items[indexPath.row] as? Clinic
         }
         return nil
     }
     
     func deleteClinic(at indexPath: IndexPath?) {
         if let indexPath = indexPath, let clinic = clinicDataSource(indexPath: indexPath) {
-            tableView.beginUpdates()
-            clinic.deleteClinic()
-            clinics.remove(at: indexPath.row)
-//            lastDeletedIndexPath = indexPath
-
-//            if indexPath.section == 1 {
-//                lastDeletedTask = priorityTasks[indexPath.row]
-//                priorityTasks.remove(at: indexPath.row)
-//            }
-//            else{
-//                lastDeletedTask = bonusTasks[indexPath.row]
-//                bonusTasks.remove(at: indexPath.row)
-//            }
-
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-
-            tableView.endUpdates()
+            super.deleteItem(at: indexPath, item: clinic)
         }
     }
 }
