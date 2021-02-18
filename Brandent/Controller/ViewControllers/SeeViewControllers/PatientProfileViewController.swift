@@ -89,22 +89,31 @@ class PatientProfileViewController: FormViewController {
         appointmentsTableView.dataSource = appointmentsTableViewDelegate
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        saveData()
+    
+    @IBAction func editPatientData(_ sender: Any) {
+        guard let button = sender as? UIButton, let title = button.titleLabel?.text else {
+            return
+        }
+        if title == "ویرایش" {
+            textFields[button.tag].isEnabled = true
+            button.setTitle("ثبت", for: .normal)
+        } else {
+            textFields[button.tag].isEnabled = false
+            saveData()
+            button.setTitle("ویرایش", for: .normal)
+        }
     }
     
     override func saveData() {
         getLastData()
-        if isChanged() {
-            patient?.updatePatient(phone: data[0] as? String, name: data[1] as? String, alergies: data[2] as? String)
-        }
+        patient?.updatePatient(phone: data[0] as? String, name: data[1] as? String, alergies: data[2] as? String)
     }
     
-    func isChanged() -> Bool {
-        return (data[0] as? String != patient?.phone) ||
-            (data[1] as? String != patient?.name) ||
-            (data[2] as? String != patient?.alergies)
-    }
+//    func isChanged() -> Bool {
+//        return (data[0] as? String != patient?.phone) ||
+//            (data[1] as? String != patient?.name) ||
+//            (data[2] as? String != patient?.alergies)
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GallerySegue",
