@@ -98,7 +98,6 @@
 		03BC1F8E25251658009749C0 /* Clinic+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */; };
 		03BC1F9225251658009749C0 /* Disease+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */; };
 		03BDDF92255AF1160086DF25 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BDDF91255AF1160086DF25 /* APIKey.swift */; };
-		03C2F49725D9948700AB2048 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C2F49625D9948700AB2048 /* TabBarController.swift */; };
 		03D16F3B25729E1100E05E2C /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D16F3A25729E1100E05E2C /* Bool.swift */; };
 		03D41BBA25530EE7005BB942 /* UIDatePickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */; };
 		03D41BBC2553145A005BB942 /* PickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */; };
@@ -254,7 +253,6 @@
 		03BC1F8225251658009749C0 /* Clinic+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Clinic+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03BC1F8625251658009749C0 /* Disease+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disease+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03BDDF91255AF1160086DF25 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		03C2F49625D9948700AB2048 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		03D16F3A25729E1100E05E2C /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
 		03D41BB925530EE7005BB942 /* UIDatePickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDatePickerExtension.swift; sourceTree = "<group>"; };
 		03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDelegate.swift; sourceTree = "<group>"; };
@@ -638,7 +636,6 @@
 				03036D32250FE92400C7824A /* TasksViewController.swift */,
 				03036D2E250FE8BB00C7824A /* ProfileViewController.swift */,
 				0300B3FE25B0B59B00D8CAD5 /* TabBarViewController.swift */,
-				03C2F49625D9948700AB2048 /* TabBarController.swift */,
 			);
 			path = TabBarViewControllers;
 			sourceTree = "<group>";
@@ -1082,7 +1079,6 @@
 				0321F87C2568553C0048D77B /* GDCalendarCell.swift in Sources */,
 				03FBE6842554786E00FEFF63 /* Disease+CoreDataProperties.swift in Sources */,
 				03425322258127D700DA6F29 /* LoginViewController.swift in Sources */,
-				03C2F49725D9948700AB2048 /* TabBarController.swift in Sources */,
 				037AECC7258D39AA0097AF42 /* Task+CoreDataProperties.swift in Sources */,
 				037AECC3258D241B0097AF42 /* MenuDelegate.swift in Sources */,
 				030C67FC2549BAD400CECCC2 /* AlertMessage.swift in Sources */,

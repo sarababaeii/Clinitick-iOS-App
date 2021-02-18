@@ -20,6 +20,7 @@ class PatientProfileViewController: FormViewController {
     
     var patient: Patient?
     
+    var selectedEditButton: UIButton?
     var textFieldDelegates = [TextFieldDelegate]()
 //    var menuDelegate: MenuDelegate?
     var appointmentsTableViewDelegate: AppointmentsTableViewDelegate?
@@ -89,32 +90,41 @@ class PatientProfileViewController: FormViewController {
         appointmentsTableView.dataSource = appointmentsTableViewDelegate
     }
     
-    
+    //MARK: Editing
     @IBAction func editPatientData(_ sender: Any) {
         guard let button = sender as? UIButton, let title = button.titleLabel?.text else {
             return
         }
         if title == "ویرایش" {
+            selectedEditButton = button
             textFields[button.tag].isEnabled = true
             button.setTitle("ثبت", for: .normal)
         } else {
+            submitForm()
+        }
+    }
+    
+    override func mustComplete() -> Any? {
+        for i in 0 ..< 2 {
+            if data[i] as? String == "" {
+                return textFields[i]
+            }
+        }
+        return nil
+    }
+    
+    override func saveData() {
+        patient?.updatePatient(phone: data[0] as? String, name: data[1] as? String, alergies: data[2] as? String)
+        if let button = selectedEditButton {
             textFields[button.tag].isEnabled = false
-            saveData()
             button.setTitle("ویرایش", for: .normal)
         }
     }
     
-    override func saveData() {
-        getLastData()
-        patient?.updatePatient(phone: data[0] as? String, name: data[1] as? String, alergies: data[2] as? String)
+    override func back() {
     }
     
-//    func isChanged() -> Bool {
-//        return (data[0] as? String != patient?.phone) ||
-//            (data[1] as? String != patient?.name) ||
-//            (data[2] as? String != patient?.alergies)
-//    }
-    
+    //MARK: Sending Data With Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GallerySegue",
             let viewController = segue.destination as? GalleryViewController,

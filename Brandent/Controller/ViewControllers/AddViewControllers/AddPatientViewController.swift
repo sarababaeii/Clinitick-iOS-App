@@ -23,11 +23,6 @@ class AddPatientViewController: FormViewController {
     var patient: Patient?
     
     //MARK: Initialization
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        configure()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
@@ -35,7 +30,7 @@ class AddPatientViewController: FormViewController {
     }
     
     func configure() {
-        Info.sharedInstance.isForReturn = true
+//        Info.sharedInstance.isForReturn = true
         initializeTextFields()
         setMenuDelegate()
         setTitle(title: "اطلاعات بیمار")
@@ -44,8 +39,19 @@ class AddPatientViewController: FormViewController {
     
     func initializeTextFields() {
         textFields = [phoneNumberTextField, nameTextField]
-        data = ["", "", "", ""] //0: phone, 1: name, 2: clinic, 3: alergy
+        emptyTextFields()
         setTextFieldDelegates()
+    }
+    
+    func emptyTextFields() {
+        if !Info.sharedInstance.isForReturn {
+            data = ["", "", "", ""] //0: phone, 1: name, 2: clinic, 3: alergy
+            for i in 0 ..< 2 {
+                textFields[i].text = ""
+                textFields[i].resignFirstResponder()
+            }
+            clinicMenu.selectedIndex = nil //TODO: Clinic title
+        }
     }
     
     func setTextFieldDelegates() {
@@ -68,10 +74,10 @@ class AddPatientViewController: FormViewController {
     }
     
     @objc override func back() {
-//        if let lastViewController = Info.sharedInstance.lastViewControllerIndex {
-//            tabBarController?.selectedIndex = lastViewController
-//        }
-        navigateToPage(identifier: "TabBarViewController")
+        if let lastViewController = Info.sharedInstance.lastViewControllerIndex {
+            tabBarController?.selectedIndex = lastViewController
+        }
+//        navigateToPage(identifier: "TabBarViewController")
     }
     
     //MARK: Keyboard Management
@@ -81,24 +87,22 @@ class AddPatientViewController: FormViewController {
         }
     }
     
+    @IBAction func editingDidEnd(_ sender: Any) {
+        guard let textField = sender as? UITextField, let phone = textField.fetchInput() else {
+            return
+        }
+        autoFillData(phone: phone)
+    }
+    
+    
     func autoFillData(phone: String) {
         guard let patient = Patient.getPatientByPhone(phone) else {
             return
         }
         nameTextField.text = patient.name
-        //TODO:
     }
     
-    @IBAction func showGallery(_ sender: Any) {
-        savePatient(isForGallery: true)
-        Info.sharedInstance.sync()
-        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GalleryViewController") as? GalleryViewController, let patient = patient else {
-            return
-        }
-        controller.patient = patient
-        navigationController?.show(controller, sender: nil)
-    }
-    
+    //MARK: Submission
     @IBAction func submit(_ sender: Any) {
         savePatient(isForGallery: false)
         if let clinic = getClinic() {
@@ -134,6 +138,16 @@ class AddPatientViewController: FormViewController {
     }
     
     //MARK: Navigation Management
+    @IBAction func showGallery(_ sender: Any) {
+        savePatient(isForGallery: true)
+        Info.sharedInstance.sync()
+        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GalleryViewController") as? GalleryViewController, let patient = patient else {
+            return
+        }
+        controller.patient = patient
+        navigationController?.show(controller, sender: nil)
+    }
+    
     func nextPage(patient: Patient, clinic: Clinic) {
         guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TempAddAppointmrntViewController") as? TempAddAppointmrntViewController else {
             return
@@ -145,4 +159,3 @@ class AddPatientViewController: FormViewController {
 }
 
 //TODO: Set alergy
-//when hides

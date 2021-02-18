@@ -71,7 +71,6 @@ class FormViewController: NavigationBarViewController {
     func submitForm() {
         getLastData()
         if let requiredItem = mustComplete() {
-            print(requiredItem)
             submitionError(for: requiredItem)
             return
         }
@@ -98,7 +97,6 @@ class FormViewController: NavigationBarViewController {
         else if let menu = requiredItem as? SwiftyMenu {
             menu.showError()
         }
-//        self.showUndoToast()
         self.showToast(message: "خطا: همه‌ی موارد ضروری وارد نشده است.")
     }
     

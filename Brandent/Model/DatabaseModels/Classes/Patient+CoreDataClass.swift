@@ -15,9 +15,11 @@ public class Patient: Entity {
     //MARK: Initialization
     static func getPatient(id: UUID?, phone: String, name: String, alergies: String?) -> Patient {
         if let id = id, let patient = getPatientByID(id) {
+            patient.updatePatient(phone: phone, name: name, alergies: alergies)
             return patient
         }
         if let patient = getPatientByPhone(phone) {
+            patient.updatePatient(phone: phone, name: name, alergies: alergies)
             return patient
         }
         return DataController.sharedInstance.createPatient(id: id, name: name, phone: phone, alergies: alergies)
