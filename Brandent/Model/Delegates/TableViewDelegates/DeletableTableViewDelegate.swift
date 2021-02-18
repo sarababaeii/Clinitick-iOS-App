@@ -128,3 +128,5 @@ class DeletableTableViewDelegate: NSObject {
         return undoButton
     }
 }
+
+//TODO: Deleting 2 items immediately

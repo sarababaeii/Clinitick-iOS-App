@@ -64,8 +64,8 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
             return
         }
         viewController.data[textField.tag] = price
-        textField.text = "\(String.toPersianPriceString(price: price)) تومان"
-    }
+//        textField.text = "\(String.toPersianPriceString(price: price)) تومان"
+    } //TODO: Persian numbers
     
     private func getTextData(_ textField: UITextField) {
         if let text = textField.fetchInput() {

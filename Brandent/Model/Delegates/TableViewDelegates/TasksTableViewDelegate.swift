@@ -11,18 +11,22 @@ import UIKit
 
 class TasksTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, UITableViewDataSource {
    
-    var date: Date = Date() {
+    var noTaskView: UIView
+    var date: Date {
         didSet {
             if let tasks = DataController.sharedInstance.fetchTasksAndAppointments(in: date) as? [Entity] {
                 update(newTasks: tasks)
+                noTaskView.isHidden = tasks.count > 0
             }
         }
     }
     
     //MARK: Initializer
-    init(viewController: UIViewController, tasksTableView: UITableView, date: Date) {
+    init(viewController: UIViewController, tasksTableView: UITableView, date: Date, noTaskView: UIView) {
+        self.noTaskView = noTaskView
         self.date = date
         let tasks = DataController.sharedInstance.fetchTasksAndAppointments(in: date) as? [Entity]
+        noTaskView.isHidden = tasks?.count ?? 1 > 0
         super.init(viewController: viewController, tableView: tasksTableView, items: tasks)
     }
     

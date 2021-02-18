@@ -30,7 +30,6 @@ class AddPatientViewController: FormViewController {
     }
     
     func configure() {
-//        Info.sharedInstance.isForReturn = true
         initializeTextFields()
         setMenuDelegate()
         setTitle(title: "اطلاعات بیمار")
@@ -77,7 +76,6 @@ class AddPatientViewController: FormViewController {
         if let lastViewController = Info.sharedInstance.lastViewControllerIndex {
             tabBarController?.selectedIndex = lastViewController
         }
-//        navigateToPage(identifier: "TabBarViewController")
     }
     
     //MARK: Keyboard Management

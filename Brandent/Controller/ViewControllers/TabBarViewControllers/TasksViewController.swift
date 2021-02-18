@@ -13,6 +13,7 @@ class TasksViewController: TabBarViewController {
 
     @IBOutlet weak var calendar: GDCalendar!
     @IBOutlet weak var line: LightningUIView!
+    @IBOutlet weak var noTaskView: UIView!
     @IBOutlet weak var tasksTableView: UITableView!
     
     var taskTableViewDelegate: TasksTableViewDelegate?
@@ -39,7 +40,7 @@ class TasksViewController: TabBarViewController {
     }
     
     func setDelegates() {
-        taskTableViewDelegate = TasksTableViewDelegate(viewController: self, tasksTableView: tasksTableView, date: Date())
+        taskTableViewDelegate = TasksTableViewDelegate(viewController: self, tasksTableView: tasksTableView, date: Date(), noTaskView: noTaskView)
         tasksTableView.delegate = taskTableViewDelegate
         tasksTableView.dataSource = taskTableViewDelegate
     }

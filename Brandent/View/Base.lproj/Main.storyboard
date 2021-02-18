@@ -34,8 +34,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome" translatesAutoresizingMaskIntoConstraints="NO" id="SLT-cE-eUM">
+                                <rect key="frame" x="32" y="24" width="311" height="312"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTE-sg-E0X" userLabel="View0">
-                                <rect key="frame" x="24" y="80" width="327" height="80"/>
+                                <rect key="frame" x="24" y="360" width="327" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="خوش آمدید" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzm-Yl-D6j">
                                         <rect key="frame" x="196.5" y="0.0" width="130.5" height="44"/>
@@ -44,9 +47,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="هدف ما: آسوده کردن زندگی کاری دندان‌پزشکان." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upX-6H-8xd">
-                                        <rect key="frame" x="29.5" y="55" width="297.5" height="25"/>
+                                        <rect key="frame" x="29.5" y="45" width="297.5" height="25"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -56,13 +59,13 @@
                                     <constraint firstAttribute="bottom" secondItem="upX-6H-8xd" secondAttribute="bottom" id="LBc-eF-kGO"/>
                                     <constraint firstItem="upX-6H-8xd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LTE-sg-E0X" secondAttribute="leading" constant="20" symbolic="YES" id="RrO-M9-C1x"/>
                                     <constraint firstItem="kzm-Yl-D6j" firstAttribute="top" secondItem="LTE-sg-E0X" secondAttribute="top" id="nYv-pA-XT9"/>
-                                    <constraint firstAttribute="height" constant="80" id="sz2-9P-aeo"/>
+                                    <constraint firstAttribute="height" constant="70" id="sz2-9P-aeo"/>
                                     <constraint firstAttribute="trailing" secondItem="kzm-Yl-D6j" secondAttribute="trailing" id="wui-yJ-ukN"/>
                                     <constraint firstItem="kzm-Yl-D6j" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LTE-sg-E0X" secondAttribute="leading" constant="20" symbolic="YES" id="y18-Dt-qS8"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rmv-YF-HBa" userLabel="View1">
-                                <rect key="frame" x="24" y="190" width="327" height="124"/>
+                                <rect key="frame" x="24" y="454" width="327" height="124"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="شماره موبایل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0wj-yH-oWF" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="54"/>
@@ -121,7 +124,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7J-ka-Kca" userLabel="View2">
-                                <rect key="frame" x="24" y="344" width="327" height="41"/>
+                                <rect key="frame" x="24" y="602" width="327" height="41"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaQ-Dm-oQV" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
                                         <rect key="frame" x="197" y="0.0" width="130" height="41"/>
@@ -184,16 +187,20 @@
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="r7J-ka-Kca" firstAttribute="top" secondItem="Rmv-YF-HBa" secondAttribute="bottom" constant="30" id="7ki-ZV-19c"/>
+                            <constraint firstItem="r7J-ka-Kca" firstAttribute="top" secondItem="Rmv-YF-HBa" secondAttribute="bottom" constant="24" id="7ki-ZV-19c"/>
                             <constraint firstItem="r7J-ka-Kca" firstAttribute="trailing" secondItem="Rmv-YF-HBa" secondAttribute="trailing" id="EDh-cI-2xh"/>
                             <constraint firstItem="LTE-sg-E0X" firstAttribute="centerX" secondItem="hki-5W-Rb5" secondAttribute="centerX" id="Foi-Jr-bkG"/>
+                            <constraint firstItem="1B1-J6-DWP" firstAttribute="bottom" secondItem="r7J-ka-Kca" secondAttribute="bottom" constant="24" id="LRO-QP-hc7"/>
                             <constraint firstItem="LTE-sg-E0X" firstAttribute="centerX" secondItem="hki-5W-Rb5" secondAttribute="centerX" id="NK9-Zs-BfD"/>
                             <constraint firstItem="r7J-ka-Kca" firstAttribute="leading" secondItem="Rmv-YF-HBa" secondAttribute="leading" id="P9G-EC-jnT"/>
-                            <constraint firstItem="LTE-sg-E0X" firstAttribute="top" secondItem="hki-5W-Rb5" secondAttribute="top" constant="80" id="PGO-3g-TSt"/>
-                            <constraint firstItem="Rmv-YF-HBa" firstAttribute="top" secondItem="LTE-sg-E0X" secondAttribute="bottom" constant="30" id="URV-jc-OdE"/>
+                            <constraint firstItem="1B1-J6-DWP" firstAttribute="trailing" secondItem="SLT-cE-eUM" secondAttribute="trailing" constant="32" id="PVO-xV-lbp"/>
+                            <constraint firstItem="Rmv-YF-HBa" firstAttribute="top" secondItem="LTE-sg-E0X" secondAttribute="bottom" constant="24" id="URV-jc-OdE"/>
+                            <constraint firstItem="SLT-cE-eUM" firstAttribute="bottom" secondItem="LTE-sg-E0X" secondAttribute="top" constant="-24" id="Uao-vn-9DT"/>
                             <constraint firstItem="Rmv-YF-HBa" firstAttribute="trailing" secondItem="LTE-sg-E0X" secondAttribute="trailing" id="cGM-FO-TmC"/>
                             <constraint firstItem="1B1-J6-DWP" firstAttribute="trailing" secondItem="Rmv-YF-HBa" secondAttribute="trailing" constant="24" id="ehY-tZ-CTh"/>
                             <constraint firstItem="Rmv-YF-HBa" firstAttribute="centerX" secondItem="hki-5W-Rb5" secondAttribute="centerX" id="p55-08-Fx0"/>
+                            <constraint firstItem="SLT-cE-eUM" firstAttribute="top" secondItem="hki-5W-Rb5" secondAttribute="top" constant="24" id="raC-tv-HTv"/>
+                            <constraint firstItem="SLT-cE-eUM" firstAttribute="centerX" secondItem="hki-5W-Rb5" secondAttribute="centerX" id="wPp-vX-95T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1B1-J6-DWP"/>
                         <connections>
@@ -2785,7 +2792,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه‌ی درمان" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2xF-QI-KIJ" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه‌ی درمان (تومان)" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2xF-QI-KIJ" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="24" y="86" width="327" height="54"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -3929,6 +3936,29 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usF-E3-2AD" userLabel="No Task View">
+                                <rect key="frame" x="24" y="229" width="327" height="359"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="daily_tasks" translatesAutoresizingMaskIntoConstraints="NO" id="nvp-IZ-PQ4">
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="346"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="برای این روز قراری ندارید." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4B-AA-dqz">
+                                        <rect key="frame" x="85" y="334" width="157" height="25"/>
+                                        <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="nvp-IZ-PQ4" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="a4B-AA-dqz" secondAttribute="top" constant="12" id="PO9-xa-knE"/>
+                                    <constraint firstItem="nvp-IZ-PQ4" firstAttribute="leading" secondItem="usF-E3-2AD" secondAttribute="leading" id="X3N-H8-kGz"/>
+                                    <constraint firstAttribute="trailing" secondItem="nvp-IZ-PQ4" secondAttribute="trailing" id="YjK-S0-LEf"/>
+                                    <constraint firstItem="nvp-IZ-PQ4" firstAttribute="top" secondItem="usF-E3-2AD" secondAttribute="top" id="f1M-2B-3n0"/>
+                                    <constraint firstItem="a4B-AA-dqz" firstAttribute="centerX" secondItem="usF-E3-2AD" secondAttribute="centerX" id="ha7-Cf-559"/>
+                                    <constraint firstAttribute="bottom" secondItem="a4B-AA-dqz" secondAttribute="bottom" id="jww-rb-i3u"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="top" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="88" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PpH-je-Pzf">
                                 <rect key="frame" x="24" y="229" width="327" height="359"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4072,13 +4102,17 @@
                         <color key="backgroundColor" red="0.96509641408920288" green="0.97208470106124878" blue="0.98953872919082642" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="sLh-Q6-cxy" firstAttribute="trailing" secondItem="H09-qG-X6P" secondAttribute="trailing" id="0JD-RL-EWI"/>
+                            <constraint firstItem="usF-E3-2AD" firstAttribute="top" secondItem="H09-qG-X6P" secondAttribute="bottom" constant="24" id="0PT-C2-7GR"/>
                             <constraint firstItem="ibx-rI-jd8" firstAttribute="top" secondItem="H09-qG-X6P" secondAttribute="bottom" constant="17" id="40e-pA-4l6"/>
+                            <constraint firstItem="sLh-Q6-cxy" firstAttribute="bottom" secondItem="usF-E3-2AD" secondAttribute="bottom" constant="30" id="4Jk-XZ-vb7"/>
                             <constraint firstItem="sLh-Q6-cxy" firstAttribute="trailing" secondItem="PpH-je-Pzf" secondAttribute="trailing" constant="24" id="C7Z-z6-6Q1"/>
                             <constraint firstItem="H09-qG-X6P" firstAttribute="leading" secondItem="sLh-Q6-cxy" secondAttribute="leading" id="EAA-dL-3i2"/>
                             <constraint firstItem="ibx-rI-jd8" firstAttribute="leading" secondItem="sLh-Q6-cxy" secondAttribute="leading" id="MBX-vK-kxw"/>
                             <constraint firstItem="sLh-Q6-cxy" firstAttribute="bottom" secondItem="PpH-je-Pzf" secondAttribute="bottom" constant="30" id="NRO-gg-p5d"/>
                             <constraint firstItem="97u-On-L1E" firstAttribute="bottom" secondItem="sLh-Q6-cxy" secondAttribute="top" id="NYf-Ro-I2G"/>
                             <constraint firstAttribute="trailing" secondItem="97u-On-L1E" secondAttribute="trailing" id="QQE-p8-EpS"/>
+                            <constraint firstItem="usF-E3-2AD" firstAttribute="centerX" secondItem="uio-We-SF2" secondAttribute="centerX" id="akw-O1-2Yt"/>
+                            <constraint firstItem="sLh-Q6-cxy" firstAttribute="trailing" secondItem="usF-E3-2AD" secondAttribute="trailing" constant="24" id="d1z-rS-he0"/>
                             <constraint firstItem="sLh-Q6-cxy" firstAttribute="trailing" secondItem="nue-8N-9mY" secondAttribute="trailing" constant="24" id="e4v-qm-zvq"/>
                             <constraint firstItem="PpH-je-Pzf" firstAttribute="centerX" secondItem="uio-We-SF2" secondAttribute="centerX" id="fcE-EK-GzK"/>
                             <constraint firstItem="PpH-je-Pzf" firstAttribute="top" secondItem="H09-qG-X6P" secondAttribute="bottom" constant="24" id="fp2-pb-2zF"/>
@@ -4098,6 +4132,7 @@
                     <connections>
                         <outlet property="calendar" destination="0a9-zM-mF2" id="hCS-em-y7A"/>
                         <outlet property="line" destination="ibx-rI-jd8" id="085-0Y-3xB"/>
+                        <outlet property="noTaskView" destination="usF-E3-2AD" id="ymM-aJ-Kfw"/>
                         <outlet property="tasksTableView" destination="PpH-je-Pzf" id="KZK-8Z-9Fb"/>
                     </connections>
                 </viewController>
@@ -5357,7 +5392,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه‌ی پیش‌فرض" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQj-8m-6hB" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه‌ی پیش‌فرض (تومان)" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AQj-8m-6hB" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="24" y="83.5" width="327" height="52"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -5509,6 +5544,7 @@
         <image name="black_close" width="10" height="10"/>
         <image name="black_tick" width="14" height="10"/>
         <image name="calendar" width="18" height="18"/>
+        <image name="daily_tasks" width="366" height="346"/>
         <image name="diseases" width="18" height="14"/>
         <image name="finance" width="34" height="24"/>
         <image name="gallery" width="24" height="24"/>
@@ -5839,6 +5875,7 @@ AAAAAAACAQAAAAAAAABtAAAAAAAAAAAAAAAAAABHkQ
 </mutableData>
         </image>
         <image name="weekly_calendar" width="23" height="23"/>
+        <image name="welcome" width="351" height="396"/>
         <image name="xmark.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
