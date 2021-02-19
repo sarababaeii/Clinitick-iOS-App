@@ -21,6 +21,7 @@
         <attribute name="first_name" attributeType="String" defaultValueString="مسعود"/>
         <attribute name="id" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="last_name" attributeType="String" defaultValueString="جعفری"/>
+        <attribute name="last_update" attributeType="String" defaultValueString="10/10/70, 10:10 AM"/>
         <attribute name="modified_at" attributeType="Date" defaultDateTimeInterval="629394060" usesScalarValueType="NO"/>
         <attribute name="phone" attributeType="String" defaultValueString="00000000000"/>
         <attribute name="photo" optional="YES" attributeType="Binary"/>
@@ -67,7 +68,7 @@
     <elements>
         <element name="Appointment" positionX="-34.1796875" positionY="-261.04296875" width="128" height="148"/>
         <element name="Clinic" positionX="-203.81640625" positionY="-447.2578125" width="128" height="133"/>
-        <element name="Dentist" positionX="-376.40625" positionY="-302.43359375" width="128" height="238"/>
+        <element name="Dentist" positionX="-376.40625" positionY="-302.43359375" width="128" height="253"/>
         <element name="Disease" positionX="-621.47265625" positionY="-36.9453125" width="128" height="103"/>
         <element name="Entity" positionX="-405" positionY="-288" width="128" height="88"/>
         <element name="Finance" positionX="-589.46484375" positionY="-421.609375" width="128" height="118"/>

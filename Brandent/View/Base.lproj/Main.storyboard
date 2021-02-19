@@ -2886,6 +2886,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tI0-Fm-fVk"/>
                     </view>
+                    <navigationItem key="navigationItem" id="aqL-Jb-SSY"/>
                     <connections>
                         <outlet property="dateTextField" destination="VAC-cf-Whs" id="VSS-zL-Ep6"/>
                         <outlet property="diseaseTextField" destination="WeU-an-xCS" id="YiQ-yv-ftv"/>
@@ -3937,13 +3938,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usF-E3-2AD" userLabel="No Task View">
-                                <rect key="frame" x="24" y="229" width="327" height="359"/>
+                                <rect key="frame" x="24" y="229" width="327" height="365"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="daily_tasks" translatesAutoresizingMaskIntoConstraints="NO" id="nvp-IZ-PQ4">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="346"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="برای این روز قراری ندارید." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4B-AA-dqz">
-                                        <rect key="frame" x="85" y="334" width="157" height="25"/>
+                                        <rect key="frame" x="85" y="340" width="157" height="25"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3951,7 +3952,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="nvp-IZ-PQ4" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="a4B-AA-dqz" secondAttribute="top" constant="12" id="PO9-xa-knE"/>
+                                    <constraint firstItem="a4B-AA-dqz" firstAttribute="top" relation="lessThanOrEqual" secondItem="nvp-IZ-PQ4" secondAttribute="bottom" constant="15" id="ThL-dz-UKL"/>
                                     <constraint firstItem="nvp-IZ-PQ4" firstAttribute="leading" secondItem="usF-E3-2AD" secondAttribute="leading" id="X3N-H8-kGz"/>
                                     <constraint firstAttribute="trailing" secondItem="nvp-IZ-PQ4" secondAttribute="trailing" id="YjK-S0-LEf"/>
                                     <constraint firstItem="nvp-IZ-PQ4" firstAttribute="top" secondItem="usF-E3-2AD" secondAttribute="top" id="f1M-2B-3n0"/>
@@ -4104,7 +4105,7 @@
                             <constraint firstItem="sLh-Q6-cxy" firstAttribute="trailing" secondItem="H09-qG-X6P" secondAttribute="trailing" id="0JD-RL-EWI"/>
                             <constraint firstItem="usF-E3-2AD" firstAttribute="top" secondItem="H09-qG-X6P" secondAttribute="bottom" constant="24" id="0PT-C2-7GR"/>
                             <constraint firstItem="ibx-rI-jd8" firstAttribute="top" secondItem="H09-qG-X6P" secondAttribute="bottom" constant="17" id="40e-pA-4l6"/>
-                            <constraint firstItem="sLh-Q6-cxy" firstAttribute="bottom" secondItem="usF-E3-2AD" secondAttribute="bottom" constant="30" id="4Jk-XZ-vb7"/>
+                            <constraint firstItem="sLh-Q6-cxy" firstAttribute="bottom" secondItem="usF-E3-2AD" secondAttribute="bottom" constant="24" id="4Jk-XZ-vb7"/>
                             <constraint firstItem="sLh-Q6-cxy" firstAttribute="trailing" secondItem="PpH-je-Pzf" secondAttribute="trailing" constant="24" id="C7Z-z6-6Q1"/>
                             <constraint firstItem="H09-qG-X6P" firstAttribute="leading" secondItem="sLh-Q6-cxy" secondAttribute="leading" id="EAA-dL-3i2"/>
                             <constraint firstItem="ibx-rI-jd8" firstAttribute="leading" secondItem="sLh-Q6-cxy" secondAttribute="leading" id="MBX-vK-kxw"/>

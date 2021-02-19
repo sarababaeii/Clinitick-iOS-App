@@ -20,6 +20,7 @@ extension Dentist {
     @NSManaged public var first_name: String
     @NSManaged public var id: NSDecimalNumber
     @NSManaged public var last_name: String
+    @NSManaged public var last_update: String
     @NSManaged public var modified_at: Date
     @NSManaged public var phone: String
     @NSManaged public var photo: Data?

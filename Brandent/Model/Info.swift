@@ -48,22 +48,28 @@ class Info {
     }
     
     //MARK: Sync
-    var lastUpdate: String? {
-        get {
-            return defaults.string(forKey: DefaultKey.lastUpdated.rawValue)
-        }
-        set {
-            defaults.set(newValue, forKey: DefaultKey.lastUpdated.rawValue)
-        }
-    }
+//    var lastUpdate: String? {
+//        get {
+//            return defaults.string(forKey: DefaultKey.lastUpdated.rawValue)
+//        }
+//        set {
+//            defaults.set(newValue, forKey: DefaultKey.lastUpdated.rawValue)
+//        }
+//    }
     
     func sync() {
-        print("Last Updated in: \(lastUpdate ?? "NIL")")
+//        print("Last Updated in: \(lastUpdate ?? "NIL")")
+//
+//        if lastUpdate == nil {
+//            lastUpdate = "1970-10-10 10:10:10"
+//        }
+//        guard let time = lastUpdate, let lastUpdate = Date.getDBFormatDate(from: time) else {
+//            RestAPIManagr.sharedInstance.sync(clinics: nil, patients: nil, finances: nil, tasks: nil, diseases: nil, appointments: nil)
+//            print("Couldn't sync")
+//            return
+//        }
         
-        if lastUpdate == nil {
-            lastUpdate = "1970-10-10 10:10:10"
-        }
-        guard let time = lastUpdate, let lastUpdate = Date.getDBFormatDate(from: time) else {
+        guard let dentist = dentist, let lastUpdate = Date.getDBFormatDate(from: dentist.last_update) else {
             RestAPIManagr.sharedInstance.sync(clinics: nil, patients: nil, finances: nil, tasks: nil, diseases: nil, appointments: nil)
             print("Couldn't sync")
             return

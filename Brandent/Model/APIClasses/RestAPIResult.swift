@@ -124,7 +124,8 @@ class RestAPIResult {
         }
         print(result)
         if let timeString = result["timestamp"] as? String {
-            Info.sharedInstance.lastUpdate = timeString
+            Info.sharedInstance.dentist?.last_update = timeString
+//            Info.sharedInstance.lastUpdate = timeString
         }
         let keys: [APIKey] = [.clinic, .patient, .finance, .disease, .appointment]
         for key in keys {

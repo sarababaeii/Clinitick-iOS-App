@@ -62,7 +62,7 @@ class JSONSerializer {
     //MARK: Sync
     func getSyncData(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, diseases: [Disease]?, appointments: [Appointment]?) -> [String: Any] {
         var params = [String: Any]()
-        if let lastUpdate = Info.sharedInstance.lastUpdate {
+        if let lastUpdate = Info.sharedInstance.dentist?.last_update {
             params["last_updated"] = lastUpdate
         }
         if let clinics = clinics {
