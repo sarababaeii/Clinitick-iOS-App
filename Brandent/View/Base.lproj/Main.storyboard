@@ -348,13 +348,13 @@
                                 <rect key="frame" x="24" y="80" width="327" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ورود کد" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caN-pF-lSG">
-                                        <rect key="frame" x="127" y="0.0" width="73.5" height="33"/>
+                                        <rect key="frame" x="122" y="0.0" width="83" height="44"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="28"/>
                                         <color key="textColor" red="0.13180619478225708" green="0.14018970727920532" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="کد پیامک شده را وارد کنید." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvU-NP-1V1">
-                                        <rect key="frame" x="78.5" y="49" width="170" height="21"/>
+                                        <rect key="frame" x="69.5" y="41.5" width="188.5" height="28.5"/>
                                         <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -514,13 +514,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="186" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ارسال مجدد کد:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dzq-2q-9jN">
-                                                <rect key="frame" x="69" y="11" width="91" height="19"/>
+                                                <rect key="frame" x="60.5" y="8" width="99.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                                 <color key="textColor" red="0.81176470588235294" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۱:۰۰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOx-8S-Kbe">
-                                                <rect key="frame" x="42" y="11" width="27" height="19"/>
+                                                <rect key="frame" x="36" y="8" width="24.5" height="25"/>
                                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                                 <color key="textColor" red="0.81181066180000006" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -4746,6 +4746,7 @@
                                         <connections>
                                             <outlet property="colorView" destination="bLM-M4-94p" id="9ru-jg-FVX"/>
                                             <outlet property="titleLabel" destination="GIa-0u-aPO" id="4km-ty-95W"/>
+                                            <segue destination="i9X-Ut-Yb2" kind="show" identifier="ClinicDetailsSegue" id="hfm-aH-h5N"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -5879,6 +5880,7 @@ AAAAAAACAQAAAAAAAABtAAAAAAAAAAAAAAAAAABHkQ
         <image name="xmark.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hfm-aH-h5N"/>
         <segue reference="Kpg-0q-Dp0"/>
     </inferredMetricsTieBreakers>
 </document>

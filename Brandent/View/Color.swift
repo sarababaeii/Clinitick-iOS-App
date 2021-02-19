@@ -76,4 +76,26 @@ enum Color {
         }
     }
     
+    static func getColor(hex str: String) -> Color {
+        switch str {
+        case "#17b243":
+            return .darkGreen
+        case "#009989":
+            return .indigo
+        case "#00c0da":
+            return .lightBlue
+        case "#0098fd":
+            return .darkBlue
+        case "#7033bf":
+            return .purple
+        case "#fc2479":
+            return .pink
+        case "#ff2927":
+            return .red
+        case "#7ec630":
+            return .lightGreen
+        default:
+            return .lightGreen
+        }
+    }
 }

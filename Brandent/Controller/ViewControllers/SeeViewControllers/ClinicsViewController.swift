@@ -33,4 +33,14 @@ class ClinicsViewController: UIViewController {
         clinicsTableView.delegate = clinicsTableViewDelegate
         clinicsTableView.dataSource = clinicsTableViewDelegate
     }
+    
+    //MARK: Sending Sender to PatientProfile
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ClinicDetailsSegue",
+            let cell = sender as? ClinicTableViewCell,
+            let clinic = cell.clinic,
+            let viewController = segue.destination as? AddClinicViewController {
+                viewController.clinic = clinic
+        }
+    }
 }

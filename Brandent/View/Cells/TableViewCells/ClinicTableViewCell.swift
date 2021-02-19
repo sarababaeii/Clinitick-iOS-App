@@ -13,7 +13,10 @@ class ClinicTableViewCell: UITableViewCell {
     @IBOutlet weak var colorView: CustomUIView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    var clinic: Clinic?
+    
     func setAttributes(clinic: Clinic) {
+        self.clinic = clinic
         titleLabel.text = clinic.title
         colorView.backgroundColor = UIColor(hexString: clinic.color)
     }

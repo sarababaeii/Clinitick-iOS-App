@@ -14,18 +14,21 @@ import CoreData
 public class Clinic: Entity {
     //MARK: Initialization
     static func getClinic(id: UUID?, title: String, address: String?, color: String?) -> Clinic {
-        if let id = id, let clinic = getClinicByID(id) {
-            return clinic
-        }
-        if let clinic = getClinicByTitle(title) {
-            return clinic
-        }
         var clinicColor: String
         if let color = color {
             clinicColor = color
         } else {
             clinicColor = Color.lightGreen.clinicColor.toHexString()
         }
+        
+        if let id = id, let clinic = getClinicByID(id) {
+            clinic.updateClinic(id: id, title: title, address: address, color: clinicColor)
+            return clinic
+        }
+        if let clinic = getClinicByTitle(title) {
+            return clinic
+        }
+        
         return DataController.sharedInstance.createClinic(id: id, title: title, address: address, color: clinicColor)
     }
 
@@ -60,6 +63,11 @@ public class Clinic: Entity {
         }
     }
 
+    func updateClinic(id: UUID?, title: String, address: String?, color: String) {
+        setAttributes(id: id, title: title, address: address, color: color)
+        DataController.sharedInstance.saveContext()
+    }
+    
     override func delete() {
         self.deleteAppointments()
         self.deleteTasks()

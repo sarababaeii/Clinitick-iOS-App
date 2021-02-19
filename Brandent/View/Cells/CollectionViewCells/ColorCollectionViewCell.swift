@@ -22,7 +22,7 @@ class ColorCollectionViewCell: UICollectionViewCell {
         self.delegate = delegate
         colorButton.backgroundColor = color.clinicColor
         
-        if color == Color.lightGreen {
+        if color == delegate.selectedColor {
             selectColor()
         }
     }

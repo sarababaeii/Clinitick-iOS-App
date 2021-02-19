@@ -17,6 +17,9 @@ class AddClinicViewController: FormViewController {
     
     var textFieldDelegates = [TextFieldDelegate]()
     var colorsCollectionViewDelegate: ColorsCollectionViewDelegate?
+    var defaultColor = Color.lightGreen
+    
+    var clinic: Clinic?
     
     //MARK: Initialization
     override func viewDidLoad() {
@@ -34,6 +37,16 @@ class AddClinicViewController: FormViewController {
         textFields = [titleTextField, addressTextField]
         data = ["", ""] //0: title, 1: address
         setTextFieldDelegates()
+        setTextFieldsData()
+    }
+    
+    func setTextFieldsData() {
+        if let clinic = clinic {
+            titleTextField.text = clinic.title
+            addressTextField.text = clinic.address
+            defaultColor = Color.getColor(hex: clinic.color)
+            data = [clinic.title, clinic.address as Any]
+        }
     }
     
     func setTextFieldDelegates() {
@@ -45,7 +58,7 @@ class AddClinicViewController: FormViewController {
     
     func setColorsDelegate() {
         let colors = [Color.lightGreen, Color.darkGreen, Color.indigo, Color.lightBlue, Color.darkBlue, Color.purple, Color.pink, Color.red]
-        colorsCollectionViewDelegate = ColorsCollectionViewDelegate(colors: colors)
+        colorsCollectionViewDelegate = ColorsCollectionViewDelegate(colors: colors, selectedColor: defaultColor)
         colorsCollectionView.delegate = colorsCollectionViewDelegate
         colorsCollectionView.dataSource = colorsCollectionViewDelegate
     }
@@ -71,9 +84,7 @@ class AddClinicViewController: FormViewController {
     
     override func saveData() {
         let color = colorsCollectionViewDelegate?.selectedColorCell?.color ?? Color.lightGreen
-        print("%%% \((data[0] as? String)!)")
-        let clinic = Clinic.getClinic(id: nil, title: (data[0] as? String)!, address: data[1] as? String, color: color.clinicColor.toHexString())
-        print("^^^ \(clinic)")
+        let clinic = Clinic.getClinic(id: self.clinic?.id, title: (data[0] as? String)!, address: data[1] as? String, color: color.clinicColor.toHexString())
         RestAPIManagr.sharedInstance.addClinic(clinic: clinic)
     }
 }

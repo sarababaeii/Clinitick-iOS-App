@@ -13,10 +13,12 @@ class ColorsCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
     
     var colors: [Color]
     var selectedColorCell: ColorCollectionViewCell?
+    var selectedColor = Color.lightGreen
     
     //MARK: Initializer
-    init(colors: [Color]) {
+    init(colors: [Color], selectedColor: Color) {
         self.colors = colors
+        self.selectedColor = selectedColor
     }
     
     //MARK: Protocol Functions
