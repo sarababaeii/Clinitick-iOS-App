@@ -270,8 +270,8 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
         DispatchQueue.main.async {
             self.generateDates()
         }
-        currentDate = Date()
-        dateSelectHandler?(Date())
+        currentDate = Date().today
+        dateSelectHandler?(Date().today)
     }
 }
 

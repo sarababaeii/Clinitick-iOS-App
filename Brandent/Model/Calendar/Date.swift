@@ -113,4 +113,10 @@ extension Date {
     public func add(months: Int) -> Date{
         return currentCalendar.date(byAdding: .month, value: months, to: self)!
     }
+    
+    public func isInSameDay(date: Date) -> Bool {
+        return date.componentsOfDate.year == self.componentsOfDate.year &&
+            date.componentsOfDate.month == self.componentsOfDate.month &&
+            date.componentsOfDate.day == self.componentsOfDate.day
+    }
 }

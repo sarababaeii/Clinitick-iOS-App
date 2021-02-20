@@ -22,6 +22,12 @@ class LoginViewController: FormViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        for i in 0 ..< 2 {
+            textFields[i].removeError()
+        }
+    }
+    
     //MARK: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +36,7 @@ class LoginViewController: FormViewController {
     
     func configure() {
         initializeTextFields()
+        registerForKeyboardNotifications()
     }
     
     func initializeTextFields() {
@@ -44,6 +51,7 @@ class LoginViewController: FormViewController {
             TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false)]
         for i in 0 ..< 2 {
             textFields[i].delegate = textFieldDelegates[i]
+            textFields[i].removeError()
         }
     }
     
@@ -53,7 +61,28 @@ class LoginViewController: FormViewController {
             textField.resignFirstResponder()
         }
     }
+    
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowOrChange), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowOrChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShowOrChange(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.size.height else {
+            return
+        }
+        adjustLayoutForKeyboard(targetHight: -keyboardSize)
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        adjustLayoutForKeyboard(targetHight: 0)
+    }
         
+    func adjustLayoutForKeyboard(targetHight: CGFloat){
+        self.view.frame.origin.y = targetHight
+    }
+    
     //MARK: Submission
     @IBAction func login(_ sender: Any) {
         getLastData()

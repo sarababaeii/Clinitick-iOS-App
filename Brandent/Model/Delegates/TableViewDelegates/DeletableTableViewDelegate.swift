@@ -65,7 +65,7 @@ class DeletableTableViewDelegate: NSObject {
         }
     }
     
-    private func insertItemInTableView() {
+    func insertItemInTableView() {
         if let item = deletedItem, let indexPath = deletedIndexPath {
             tableView.beginUpdates()
             items.insert(item, at: indexPath.row)

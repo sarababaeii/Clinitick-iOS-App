@@ -40,7 +40,7 @@ class TasksViewController: TabBarViewController {
     }
     
     func setDelegates() {
-        taskTableViewDelegate = TasksTableViewDelegate(viewController: self, tasksTableView: tasksTableView, date: Date(), noTaskView: noTaskView)
+        taskTableViewDelegate = TasksTableViewDelegate(viewController: self, tasksTableView: tasksTableView, noTaskView: noTaskView)
         tasksTableView.delegate = taskTableViewDelegate
         tasksTableView.dataSource = taskTableViewDelegate
     }

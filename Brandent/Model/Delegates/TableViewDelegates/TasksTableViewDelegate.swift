@@ -12,9 +12,16 @@ import UIKit
 class TasksTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, UITableViewDataSource {
    
     var noTaskView: UIView
+    var hasDateChanged = false
     var date: Date {
+        willSet {
+            if newValue != date {
+                hasDateChanged = true
+            }
+        }
         didSet {
-            if let tasks = DataController.sharedInstance.fetchTasksAndAppointments(in: date) as? [Entity] {
+            if hasDateChanged, let tasks = DataController.sharedInstance.fetchTasksAndAppointments(in: date) as? [Entity] {
+                hasDateChanged = false
                 update(newTasks: tasks)
                 noTaskView.isHidden = tasks.count > 0
             }
@@ -22,9 +29,9 @@ class TasksTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, U
     }
     
     //MARK: Initializer
-    init(viewController: UIViewController, tasksTableView: UITableView, date: Date, noTaskView: UIView) {
+    init(viewController: UIViewController, tasksTableView: UITableView, noTaskView: UIView) {
         self.noTaskView = noTaskView
-        self.date = date
+        self.date = Date().today
         let tasks = DataController.sharedInstance.fetchTasksAndAppointments(in: date) as? [Entity]
         noTaskView.isHidden = tasks?.count ?? 1 > 0
         super.init(viewController: viewController, tableView: tasksTableView, items: tasks)
@@ -50,6 +57,7 @@ class TasksTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, U
                 (actions, indexPath) in
                 self.deleteTask(at: indexPath)
             }
+//            delete.accessibilityAttributedLabel
             actions = [delete]
         }
         return actions
@@ -64,32 +72,18 @@ class TasksTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, U
     
     //MARK: Update
     func update(newTasks: [Entity]) {
-        for i in stride(from: items.count - 1, to: -1, by: -1) {
-            removeTasks(index: i)
-        }
-        for task in newTasks {
-            let indexPath = IndexPath(item: items.count, section: 0)
-            insertTask(task, at: indexPath)
-        }
+        items.removeAll()
+        items = newTasks
+        tableView.reloadData()
     }
     
-    func insertTask(_ item: Entity?, at indexPath: IndexPath?) {
-        if let task = item, let indexPath = indexPath {
-            tableView.performBatchUpdates({
-                items.insert(task, at: indexPath.item)
-                tableView.insertRows(at: [indexPath], with: .automatic)
-            }, completion: nil)
+    override func insertItemInTableView() {
+        if let appointment = deletedItem as? Appointment, appointment.visit_time.isInSameDay(date: date) {
+            super.insertItemInTableView()
         }
-    }
-    
-    func removeTasks(index: Int) { //remove all?!
-        let indexPath = IndexPath(row: index, section: 0)
-        tableView.performBatchUpdates({
-            if index < items.count {
-                items.remove(at: index)
-            }
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }, completion: nil)
+        else if let task = deletedItem as? Task, task.date.isInSameDay(date: date) {
+            super.insertItemInTableView()
+        }
     }
     
     func deleteTask(at indexPath: IndexPath?) {
@@ -98,3 +92,5 @@ class TasksTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, U
         }
     }
 }
+
+//TODO: deleted item, then changed selected date and then came back to first date -> don't show deleted item

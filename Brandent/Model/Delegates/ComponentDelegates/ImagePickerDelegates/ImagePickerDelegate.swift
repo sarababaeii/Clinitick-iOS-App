@@ -41,7 +41,7 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
     }
     
     //MARK: Trouble
-    private func troubleAlert(message: String?) {
+    func troubleAlert(message: String?) {
         let alertController = UIAlertController(title: "Oops...", message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "Got it", style: .cancel)
         alertController.addAction(OKAction)
@@ -83,13 +83,14 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
         let noPermissionMessage = AlertMessage.camera.noPermission
         switch status {
         case .notDetermined:
-            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (granted) in
-                if granted {
-                    self.presentCamera(sourceType: sourceType)
-                } else {
-                    self.troubleAlert(message: noPermissionMessage)
-                }
-            })
+            viewController.getCameraPermission(delegate: self, sourceType: sourceType, noPermissionMessage: noPermissionMessage)
+//            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (granted) in
+//                if granted {
+//                    self.presentCamera(sourceType: sourceType)
+//                } else {
+//                    self.troubleAlert(message: noPermissionMessage)
+//                }
+//            })
         case .authorized:
             self.presentCamera(sourceType: sourceType)
         case .denied, .restricted:
@@ -99,17 +100,18 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
         }
     }
     
-    private func presentCamera(sourceType: UIImagePickerController.SourceType) {
+    func presentCamera(sourceType: UIImagePickerController.SourceType) {
         presentImagePicker(sourceType: sourceType)
     }
     
     //MARK: Image Picker
     private func presentImagePicker(sourceType: UIImagePickerController.SourceType) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = sourceType
-        imagePicker.allowsEditing = true
-        viewController.present(imagePicker, animated: true, completion: nil)
+        viewController.presentImagePicker(delegate: self, sourceType: sourceType)
+//        let imagePicker = UIImagePickerController()
+//        imagePicker.delegate = self
+//        imagePicker.sourceType = sourceType
+//        imagePicker.allowsEditing = true
+//        viewController.present(imagePicker, animated: true, completion: nil)
     }
     
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

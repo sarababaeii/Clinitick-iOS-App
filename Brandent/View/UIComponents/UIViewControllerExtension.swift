@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Photos
 
 extension UIViewController {
     //MARK: Showing Next ViewController
@@ -15,6 +16,24 @@ extension UIViewController {
          let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier) as UIViewController
         self.present(controller, animated: true, completion: nil)
 //        navigationController?.show(controller, sender: nil)
+    }
+    
+    func presentImagePicker(delegate: ImagePickerDelegate, sourceType: UIImagePickerController.SourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = delegate
+        imagePicker.sourceType = sourceType
+        imagePicker.allowsEditing = true
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func getCameraPermission(delegate: ImagePickerDelegate, sourceType: UIImagePickerController.SourceType, noPermissionMessage: String) {
+        AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (granted) in
+            if granted {
+                delegate.presentCamera(sourceType: sourceType)
+            } else {
+                delegate.troubleAlert(message: noPermissionMessage)
+            }
+        })
     }
     
     //MARK: Toast
