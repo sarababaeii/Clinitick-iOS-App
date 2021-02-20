@@ -47,7 +47,7 @@ class AddPatientViewController: FormViewController {
             data = ["", "", "", ""] //0: phone, 1: name, 2: clinic, 3: alergy
             for i in 0 ..< 2 {
                 textFields[i].text = ""
-                textFields[i].resignFirstResponder()
+                textFields[i].removeError()
             }
             clinicMenu.selectedIndex = nil //TODO: Clinic title
         }
@@ -103,8 +103,8 @@ class AddPatientViewController: FormViewController {
     //MARK: Submission
     @IBAction func submit(_ sender: Any) {
         savePatient(isForGallery: false)
-        if let clinic = getClinic() {
-            nextPage(patient: patient!, clinic: clinic)
+        if let clinic = getClinic(), let patient = patient {
+            nextPage(patient: patient, clinic: clinic)
         }
     }
     

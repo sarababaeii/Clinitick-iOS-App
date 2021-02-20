@@ -21,7 +21,7 @@
         <attribute name="first_name" attributeType="String" defaultValueString="مسعود"/>
         <attribute name="id" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="last_name" attributeType="String" defaultValueString="جعفری"/>
-        <attribute name="last_update" attributeType="String" defaultValueString="10/10/70, 10:10 AM"/>
+        <attribute name="last_update" attributeType="String" defaultValueString="1970-10-10 10:10:10"/>
         <attribute name="modified_at" attributeType="Date" defaultDateTimeInterval="629394060" usesScalarValueType="NO"/>
         <attribute name="phone" attributeType="String" defaultValueString="00000000000"/>
         <attribute name="photo" optional="YES" attributeType="Binary"/>

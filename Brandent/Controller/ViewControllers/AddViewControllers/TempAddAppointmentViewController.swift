@@ -27,10 +27,10 @@ class TempAddAppointmrntViewController: FormViewController {
     }
     
     func configure() {
+        Info.sharedInstance.isForReturn = true
         initializeTextFields()
         setDatePicker(dateTextFieldIndex: 2, mode: .dateAndTime)
         setTitle(title: "فعالیت درمانی")
-        Info.sharedInstance.isForReturn = true
     }
     
     func initializeTextFields() {

@@ -25,6 +25,7 @@ class GalleryViewController: NavigationBarViewController {
     }
     
     func configure() {
+        Info.sharedInstance.isForReturn = true
         guard let _ = patient else {
             print("ERROOOOOOOOOOOOOR")
             return

@@ -10,7 +10,7 @@ import Foundation
 import SwiftyMenu
 
 extension String: SwiftMenuDisplayable {
-    
+    //MARK: Swifty Menu
     public var displayValue: String {
         return self
     }
@@ -19,6 +19,7 @@ extension String: SwiftMenuDisplayable {
         return self
     }
     
+    //MARK: Indices
     subscript (i: Int) -> String {
         return self[i ..< i + 1]
     }
@@ -38,6 +39,18 @@ extension String: SwiftMenuDisplayable {
         return String(self[start ..< end])
     }
     
+    //MARK: Placeholders
+    func getPalceholderWithoutStar() -> String {
+        var str = ""
+        for char in self {
+            if char != "*" {
+                str.append(char)
+            }
+        }
+        return str
+    }
+    
+    //MARK: Numbers
     func convertEnglishNumToPersianNum() -> String {
         let format = NumberFormatter()
         format.locale = Locale(identifier: "fa_IR")
@@ -69,6 +82,7 @@ extension String: SwiftMenuDisplayable {
         return enNumber!
     }
     
+    //MARK: Prices
     func toPriceInt() -> Int? {
         return Int(self.deletePriceSeperators(separator: "."))
     }
@@ -77,7 +91,7 @@ extension String: SwiftMenuDisplayable {
         return String(price).convertEnglishNumToPersianNum().toPriceString(separator: ".", willAdd: nil)
     }
     
-    func deletePriceSeperators(separator: String) -> String {
+    private func deletePriceSeperators(separator: String) -> String {
         var ans = ""
         for i in 0 ..< self.count {
             if self[i] != separator {
@@ -111,7 +125,7 @@ extension String: SwiftMenuDisplayable {
         return self.count
     }
     
-    func firstDotIndex(size: Int) -> Int {
+    private func firstDotIndex(size: Int) -> Int {
         switch size % 3 {
         case 0:
             return 3

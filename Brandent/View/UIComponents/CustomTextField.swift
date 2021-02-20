@@ -111,12 +111,33 @@ import UIKit
     }
     
     func showError() {
-        if self.placeHolderColor != Color.red.componentColor {
-            self.placeholder = "*\(self.placeholder!)"
+        if self.placeHolderColor != Color.red.componentColor, let placeholder = self.placeholder {
+            self.placeholder = "*\(placeholder)"
             self.placeHolderColor = Color.red.componentColor
         }
         self.becomeFirstResponder()
     }
+    
+    func removeError() {
+        if self.placeHolderColor == Color.red.componentColor, let placeholder = self.placeholder {
+            self.placeholder = placeholder.getPalceholderWithoutStar()
+            self.placeHolderColor = Color.gray.componentColor
+        }
+        self.resignFirstResponder()
+    }
+    
+//    private func getActualPalceHolderText(textWithStar string: String) -> String {
+//        print(string)
+//        var ans = ""
+//        for char in string {
+//            print(char)
+//            if char != "*" {
+//                ans.append(char)
+//                print(ans)
+//            }
+//        }
+//        return ans
+//    }
 }
 
 extension UITextField {

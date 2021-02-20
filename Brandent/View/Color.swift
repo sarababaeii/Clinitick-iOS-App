@@ -78,6 +78,8 @@ enum Color {
     
     static func getColor(hex str: String) -> Color {
         switch str {
+        case "#7ec630":
+            return .lightGreen
         case "#17b243":
             return .darkGreen
         case "#009989":
@@ -92,8 +94,6 @@ enum Color {
             return .pink
         case "#ff2927":
             return .red
-        case "#7ec630":
-            return .lightGreen
         default:
             return .lightGreen
         }
