@@ -22,6 +22,8 @@ class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
     
     var isCost: Bool?
     
+    var finance: Finance?
+    
     //MARK: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,19 @@ class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
         textFields = [titleTextField, priceTextField, dateTextField]
         data = ["", -1] as [Any] //0: title, 1: price
         setTextFieldDelegates()
+        setTextFieldsData()
+    }
+    
+    func setTextFieldsData() {
+        if let finance = finance {
+            titleTextField.text = finance.title
+            priceTextField.text = String.toPersianPriceString(price: Int(truncating: finance.amount))
+//            kindMenu
+//            dateTextField
+            data = [finance.title, finance.amount]
+            isCost = finance.is_cost
+//            date
+        }
     }
     
     func setTextFieldDelegates() {
@@ -98,7 +113,7 @@ class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
     }
     
     override func saveData() {
-        let finance = Finance.getFinance(id: nil, title: data[0] as! String, amount: data[1] as! Int, isCost: isCost!, date: date!)
+        let finance = Finance.getFinance(id: self.finance?.id, title: data[0] as! String, amount: data[1] as! Int, isCost: isCost!, date: date!)
         RestAPIManagr.sharedInstance.addFinance(finance: finance)
     }
 }

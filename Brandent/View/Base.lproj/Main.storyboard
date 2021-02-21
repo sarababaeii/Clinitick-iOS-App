@@ -2048,7 +2048,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="31" y="1046"/>
+            <point key="canvasLocation" x="172" y="1046"/>
         </scene>
         <!--See Finance View Controller-->
         <scene sceneID="eZK-vd-6kl">
@@ -2237,6 +2237,88 @@
                                             <outlet property="nameLabel" destination="gvP-Oh-j0c" id="Wmq-8H-gEF"/>
                                             <outlet property="priceLabel" destination="TUc-Cd-WrG" id="Ag9-GS-LWJ"/>
                                             <outlet property="tomanLabel" destination="d4Y-w4-fbi" id="P1z-LU-khU"/>
+                                            <segue destination="TAQ-km-2To" kind="show" identifier="EditFinanceSegue" id="qAk-vO-iOw"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppointmentInFinanceCellID" rowHeight="88" id="rqs-Yz-E5F" customClass="FinanceTableViewCell" customModule="Brandent" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="116" width="327" height="88"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rqs-Yz-E5F" id="HxY-Th-idX">
+                                            <rect key="frame" x="0.0" y="0.0" width="327" height="88"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YbL-j8-wTC" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="327" height="72"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="علی اکبری نژاد" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pY-Qf-D0w">
+                                                            <rect key="frame" x="232.5" y="12" width="78.5" height="22"/>
+                                                            <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="چک‌آپ ماهانه" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nf-Uv-DHB">
+                                                            <rect key="frame" x="234.5" y="38" width="76.5" height="22"/>
+                                                            <fontDescription key="fontDescription" name="Vazir-Thin" family="Vazir" pointSize="14"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLw-JP-ebc">
+                                                            <rect key="frame" x="16" y="10.5" width="36" height="25"/>
+                                                            <fontDescription key="fontDescription" name="Vazir-Medium" family="Vazir" pointSize="16"/>
+                                                            <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۵۰۰۰۰" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6x6-ct-t3y">
+                                                            <rect key="frame" x="54" y="10.5" width="38" height="25"/>
+                                                            <fontDescription key="fontDescription" name="Vazir-Medium" family="Vazir" pointSize="16"/>
+                                                            <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۹۹/۰۷/۳۰" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XV8-VY-IJG">
+                                                            <rect key="frame" x="16" y="39.5" width="47" height="19"/>
+                                                            <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="12"/>
+                                                            <color key="textColor" red="0.52156862749999999" green="0.52156862749999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="8nf-Uv-DHB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XV8-VY-IJG" secondAttribute="trailing" constant="8" symbolic="YES" id="5G0-Tq-Fu3"/>
+                                                        <constraint firstAttribute="trailing" secondItem="7pY-Qf-D0w" secondAttribute="trailing" constant="16" id="C8i-Pb-pNf"/>
+                                                        <constraint firstAttribute="bottom" secondItem="8nf-Uv-DHB" secondAttribute="bottom" constant="12" id="Eu7-Qy-9Sz"/>
+                                                        <constraint firstItem="cLw-JP-ebc" firstAttribute="leading" secondItem="YbL-j8-wTC" secondAttribute="leading" constant="16" id="FXg-f5-p4q"/>
+                                                        <constraint firstItem="8nf-Uv-DHB" firstAttribute="centerY" secondItem="XV8-VY-IJG" secondAttribute="centerY" id="Kti-KP-VrS"/>
+                                                        <constraint firstItem="7pY-Qf-D0w" firstAttribute="centerY" secondItem="cLw-JP-ebc" secondAttribute="centerY" id="Rad-bs-c0s"/>
+                                                        <constraint firstItem="7pY-Qf-D0w" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6x6-ct-t3y" secondAttribute="trailing" constant="8" symbolic="YES" id="ell-DR-U6G"/>
+                                                        <constraint firstAttribute="trailing" secondItem="8nf-Uv-DHB" secondAttribute="trailing" constant="16" id="exh-x4-ifo"/>
+                                                        <constraint firstItem="6x6-ct-t3y" firstAttribute="leading" secondItem="cLw-JP-ebc" secondAttribute="trailing" constant="2" id="hGY-5y-H5J"/>
+                                                        <constraint firstItem="7pY-Qf-D0w" firstAttribute="centerY" secondItem="6x6-ct-t3y" secondAttribute="centerY" id="mWM-gF-Nti"/>
+                                                        <constraint firstItem="7pY-Qf-D0w" firstAttribute="top" secondItem="YbL-j8-wTC" secondAttribute="top" constant="12" id="t1l-BN-Nrh"/>
+                                                        <constraint firstItem="XV8-VY-IJG" firstAttribute="leading" secondItem="cLw-JP-ebc" secondAttribute="leading" id="tgD-WI-HSd"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="YbL-j8-wTC" secondAttribute="trailing" id="SkC-1x-zqG"/>
+                                                <constraint firstAttribute="bottom" secondItem="YbL-j8-wTC" secondAttribute="bottom" constant="16" id="c5W-Yg-4ov"/>
+                                                <constraint firstItem="YbL-j8-wTC" firstAttribute="leading" secondItem="HxY-Th-idX" secondAttribute="leading" id="ch6-Ja-DCA"/>
+                                                <constraint firstItem="YbL-j8-wTC" firstAttribute="top" secondItem="HxY-Th-idX" secondAttribute="top" id="e5s-g9-vH5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="XV8-VY-IJG" id="2Vd-yb-jZH"/>
+                                            <outlet property="diseaseLabel" destination="8nf-Uv-DHB" id="nMv-vz-gdS"/>
+                                            <outlet property="nameLabel" destination="7pY-Qf-D0w" id="g6m-BG-70W"/>
+                                            <outlet property="priceLabel" destination="6x6-ct-t3y" id="oIC-SQ-5sI"/>
+                                            <outlet property="tomanLabel" destination="cLw-JP-ebc" id="Hae-dI-Jox"/>
+                                            <segue destination="PMS-Wx-B47" kind="show" identifier="EditAppointmentFromFinanceSegue" id="104-nN-C3Y"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2257,6 +2339,7 @@
                         <viewLayoutGuide key="safeArea" id="LgD-Ap-OlH"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ybe-D2-U74">
+                        <barButtonItem key="backBarButtonItem" title="بازگشت" id="2yj-Ty-Rqi"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="rightTitle" value="درآمد خالص"/>
                             <userDefinedRuntimeAttribute type="color" keyPath="rightTitleColor">
@@ -2273,7 +2356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gBP-O2-U3b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-841" y="1046"/>
+            <point key="canvasLocation" x="-977" y="1046"/>
         </scene>
         <!--Add Appointment View Controller-->
         <scene sceneID="gag-KY-hmN">
@@ -4095,6 +4178,140 @@
                                             <outlet property="doneButton" destination="4By-Ye-1Zi" id="c4z-In-wEZ"/>
                                             <outlet property="patientNameLabel" destination="EJf-I4-8aV" id="85B-Gy-brh"/>
                                             <outlet property="visitTimeLabel" destination="XbN-ES-Naw" id="6qx-DJ-uPZ"/>
+                                            <segue destination="2wq-1P-FVO" kind="show" identifier="EditTaskSegue" id="Xf5-vY-bSr"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="AppointmentInTaskCellID" rowHeight="88" id="1Z7-yE-2VS" customClass="TaskTableViewCell" customModule="Brandent" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="116" width="327" height="88"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Z7-yE-2VS" id="64l-Yx-hsM">
+                                            <rect key="frame" x="0.0" y="0.0" width="327" height="88"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7R-Oo-AQ2" userLabel="View0" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="8" width="272" height="72"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="علی اکبری نژاد" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSm-V2-5wO">
+                                                            <rect key="frame" x="177.5" y="12" width="78.5" height="22"/>
+                                                            <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlx-dA-mM5">
+                                                            <rect key="frame" x="256" y="60" width="0.0" height="0.0"/>
+                                                            <fontDescription key="fontDescription" name="Vazir-Thin" family="Vazir" pointSize="14"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mA-xe-74O" customClass="CheckButton" customModule="Brandent" customModuleProvider="target">
+                                                            <rect key="frame" x="17" y="21" width="30" height="30"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="30" id="PfV-AA-svG"/>
+                                                                <constraint firstAttribute="width" constant="30" id="esj-WC-htN"/>
+                                                            </constraints>
+                                                            <state key="normal" image="black_tick"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="15"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                                    <color key="value" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="changeTaskState:" destination="1Z7-yE-2VS" eventType="touchUpInside" id="gl9-Bw-gk0"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcC-Rw-0Lc" customClass="CheckButton" customModule="Brandent" customModuleProvider="target">
+                                                            <rect key="frame" x="55" y="21" width="30" height="30"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="30" id="yni-6P-fCb"/>
+                                                            </constraints>
+                                                            <state key="normal" image="black_close"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="15"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                                    <color key="value" red="0.81176470590000005" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="changeTaskState:" destination="1Z7-yE-2VS" eventType="touchUpInside" id="5XC-CH-rCR"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="tcC-Rw-0Lc" firstAttribute="top" secondItem="2mA-xe-74O" secondAttribute="top" id="9Gr-d1-otD"/>
+                                                        <constraint firstAttribute="trailing" secondItem="mlx-dA-mM5" secondAttribute="trailing" constant="16" id="Cmf-ni-D2d"/>
+                                                        <constraint firstAttribute="bottom" secondItem="mlx-dA-mM5" secondAttribute="bottom" constant="12" id="JZz-0u-6HV"/>
+                                                        <constraint firstItem="fSm-V2-5wO" firstAttribute="top" secondItem="v7R-Oo-AQ2" secondAttribute="top" constant="12" id="Lz3-LY-6Lk"/>
+                                                        <constraint firstItem="2mA-xe-74O" firstAttribute="leading" secondItem="v7R-Oo-AQ2" secondAttribute="leading" constant="17" id="Nfa-7F-MMl"/>
+                                                        <constraint firstItem="fSm-V2-5wO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v7R-Oo-AQ2" secondAttribute="leading" constant="20" symbolic="YES" id="YF1-ox-Ziw"/>
+                                                        <constraint firstItem="tcC-Rw-0Lc" firstAttribute="leading" secondItem="2mA-xe-74O" secondAttribute="trailing" constant="8" id="Z5J-xa-XSW"/>
+                                                        <constraint firstItem="2mA-xe-74O" firstAttribute="centerY" secondItem="v7R-Oo-AQ2" secondAttribute="centerY" id="fPE-Z3-mpN"/>
+                                                        <constraint firstItem="tcC-Rw-0Lc" firstAttribute="bottom" secondItem="2mA-xe-74O" secondAttribute="bottom" id="fzu-kA-u2B"/>
+                                                        <constraint firstItem="mlx-dA-mM5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v7R-Oo-AQ2" secondAttribute="leading" constant="20" symbolic="YES" id="lyk-ut-aXn"/>
+                                                        <constraint firstAttribute="trailing" secondItem="fSm-V2-5wO" secondAttribute="trailing" constant="16" id="qil-CN-fK5"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEj-je-FDA" userLabel="View1">
+                                                    <rect key="frame" x="272" y="8" width="55" height="72"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۱۳:۰۰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSw-Ci-jcF">
+                                                            <rect key="frame" x="12" y="25" width="31" height="22"/>
+                                                            <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
+                                                            <color key="textColor" red="0.17254901959999999" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="aSw-Ci-jcF" firstAttribute="centerX" secondItem="aEj-je-FDA" secondAttribute="centerX" id="Hpa-Tk-dYr"/>
+                                                        <constraint firstItem="aSw-Ci-jcF" firstAttribute="centerY" secondItem="aEj-je-FDA" secondAttribute="centerY" id="ZfF-H1-Bhp"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="v7R-Oo-AQ2" firstAttribute="top" secondItem="64l-Yx-hsM" secondAttribute="top" constant="8" id="Dae-Ql-NKq"/>
+                                                <constraint firstAttribute="trailing" secondItem="aEj-je-FDA" secondAttribute="trailing" id="XNH-gX-yaA"/>
+                                                <constraint firstAttribute="bottom" secondItem="aEj-je-FDA" secondAttribute="bottom" constant="8" id="cG5-ve-uy8"/>
+                                                <constraint firstAttribute="bottom" secondItem="v7R-Oo-AQ2" secondAttribute="bottom" constant="8" id="dGd-In-Vlk"/>
+                                                <constraint firstItem="v7R-Oo-AQ2" firstAttribute="trailing" secondItem="64l-Yx-hsM" secondAttribute="trailing" constant="-55" id="rso-PI-Bcx"/>
+                                                <constraint firstItem="aEj-je-FDA" firstAttribute="top" secondItem="64l-Yx-hsM" secondAttribute="top" constant="8" id="t2q-ci-lEi"/>
+                                                <constraint firstItem="v7R-Oo-AQ2" firstAttribute="leading" secondItem="64l-Yx-hsM" secondAttribute="leading" id="wEF-2U-z55"/>
+                                                <constraint firstItem="aEj-je-FDA" firstAttribute="leading" secondItem="v7R-Oo-AQ2" secondAttribute="trailing" id="yZ9-DD-19P"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="canceledButton" destination="tcC-Rw-0Lc" id="wqQ-8s-T3V"/>
+                                            <outlet property="diseaseLabel" destination="mlx-dA-mM5" id="4XI-IE-9eE"/>
+                                            <outlet property="doneButton" destination="2mA-xe-74O" id="6Gf-Wa-RBy"/>
+                                            <outlet property="patientNameLabel" destination="fSm-V2-5wO" id="Ojp-cw-pWX"/>
+                                            <outlet property="visitTimeLabel" destination="aSw-Ci-jcF" id="hmD-Ar-EFd"/>
+                                            <segue destination="PMS-Wx-B47" kind="show" identifier="EditAppointmentFromTasksSegue" id="yHY-Oo-P8v"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -5882,6 +6099,9 @@ AAAAAAACAQAAAAAAAABtAAAAAAAAAAAAAAAAAABHkQ
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hfm-aH-h5N"/>
+        <segue reference="yHY-Oo-P8v"/>
+        <segue reference="Xf5-vY-bSr"/>
         <segue reference="Kpg-0q-Dp0"/>
+        <segue reference="qAk-vO-iOw"/>
     </inferredMetricsTieBreakers>
 </document>

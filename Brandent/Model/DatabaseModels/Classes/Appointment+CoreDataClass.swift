@@ -15,6 +15,7 @@ public class Appointment: Entity {
     //MARK: Initialization
     static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, diseaseTitle: String, price: Int, date: Date) -> Appointment { // for sync
         if let appointment = getAppointmentByID(id) {
+//            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic)
             return appointment
         }
         let clinic = Clinic.getClinicByID(clinicID)!
@@ -23,10 +24,11 @@ public class Appointment: Entity {
     }
     
     static func createAppointment(id: UUID?, patient: Patient, clinic: Clinic, diseaseTitle: String, price: Int, date: Date) -> Appointment {
+        let disease = Disease.getDisease(id: nil, title: diseaseTitle, price: price)
         if let id = id, let appointment = getAppointmentByID(id) { // for add
+            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic)
             return appointment
         }
-        let disease = Disease.getDisease(id: nil, title: diseaseTitle, price: price)
         return DataController.sharedInstance.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic)
     }
     
@@ -55,6 +57,11 @@ public class Appointment: Entity {
         if let dentist = Info.sharedInstance.dentist {
             self.dentist = dentist
         }
+    }
+    
+    func updateAppointment(id: UUID?, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic) {
+        setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic)
+        DataController.sharedInstance.saveContext()
     }
     
     func updateState(state: TaskState) {

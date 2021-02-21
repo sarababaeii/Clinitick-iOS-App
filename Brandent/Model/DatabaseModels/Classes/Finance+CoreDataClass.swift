@@ -16,6 +16,7 @@ public class Finance: Entity {
     static func getFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
         if let id = id, let object = DataController.sharedInstance.fetchFinance(id: id),
             let finance = object as? Finance {
+            finance.updateFinance(id: id, title: title, amount: amount, isCost: isCost, date: date)
             return finance
         }
         return DataController.sharedInstance.createFinance(id: id, title: title, amount: amount, isCost: isCost, date: date)
@@ -37,6 +38,11 @@ public class Finance: Entity {
         if let dentist = Info.sharedInstance.dentist {
             self.dentist = dentist
         }
+    }
+    
+    func updateFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) {
+        setAttributes(id: id, title: title, amount: amount, isCost: isCost, date: date)
+        DataController.sharedInstance.saveContext()
     }
     
     //MARK: Functions

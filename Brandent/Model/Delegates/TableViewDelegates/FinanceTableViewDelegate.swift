@@ -23,9 +23,15 @@ class FinanceTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FinanceCellID", for: indexPath) as! FinanceTableViewCell
-        if let finance = financeDataSource(indexPath: indexPath) {
+        let entiti = financeDataSource(indexPath: indexPath)
+        var cell = FinanceTableViewCell()
+        if let finance = entiti as? Finance {
+            cell = tableView.dequeueReusableCell(withIdentifier: "FinanceCellID", for: indexPath) as! FinanceTableViewCell
             cell.setAttributes(item: finance)
+        }
+        if let appointment = entiti as? Appointment {
+            cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentInFinanceCellID", for: indexPath) as! FinanceTableViewCell
+            cell.setAttributes(item: appointment)
         }
         return cell
     }

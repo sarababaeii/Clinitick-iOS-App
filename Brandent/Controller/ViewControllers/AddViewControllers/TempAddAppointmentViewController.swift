@@ -20,6 +20,8 @@ class TempAddAppointmrntViewController: FormViewController {
     
     var textFieldDelegates = [TextFieldDelegate]()
     
+    var appointment: Appointment?
+    
     //MARK: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()

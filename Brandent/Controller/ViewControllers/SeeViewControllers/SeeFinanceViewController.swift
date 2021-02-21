@@ -92,6 +92,23 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
         financeTableView.dataSource = financeTableViewDelegate
     }
     
+    //MARK: Sending Sender to PatientProfile
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let cell = sender as? FinanceTableViewCell, let entity = cell.entity else {
+            return
+        }
+        if segue.identifier == "EditFinanceSegue",
+            let finance = entity as? Finance,
+            let viewController = segue.destination as? AddFinanceViewConrtoller {
+                viewController.finance = finance
+        }
+        if segue.identifier == "EditAppointmentFromFinanceSegue",
+            let appointment = entity as? Appointment,
+            let viewController = segue.destination as? TempAddAppointmrntViewController {
+                viewController.appointment = appointment
+        }
+    }
+    
 //    deinit {
 //    }
 }

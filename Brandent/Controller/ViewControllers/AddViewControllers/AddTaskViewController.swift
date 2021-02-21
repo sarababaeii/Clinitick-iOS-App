@@ -19,6 +19,8 @@ class AddTaskViewController: FormViewController {
     var textFieldDelegates = [TextFieldDelegate]()
     var menuDelegate: MenuDelegate?
     
+    var task: Task?
+    
     //MARK: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,16 @@ class AddTaskViewController: FormViewController {
         textFields = [titleTextField, dateTextField]
         data = ["", ""] //0: title, 1: clinic
         setTextFieldDelegates()
+        setTextFieldsData()
+    }
+    
+    func setTextFieldsData() {
+        if let task = task {
+            titleTextField.text = task.title
+//            date
+//            addressTextField.text = clinic.address
+            data = [task.title, task.clinic?.title as Any]
+        }
     }
     
     func setTextFieldDelegates() {

@@ -17,7 +17,10 @@ class FinanceTableViewCell: UITableViewCell {
     @IBOutlet weak var tomanLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    func setAttributes(item: Any) {
+    var entity: Entity?
+    
+    func setAttributes(item: Entity) {
+        self.entity = item
         if let finance = item as? Finance {
             setFinanceAttributes(finance: finance)
         }

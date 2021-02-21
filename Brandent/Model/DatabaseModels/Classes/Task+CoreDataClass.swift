@@ -14,12 +14,13 @@ import CoreData
 public class Task: Entity {
     //MARK: Initialization
     static func getTask(id: UUID, title: String, date: Date, clinicID: String?) -> Task {
-        if let task = getTaskByID(id) {
-            return task
-        }
         var clinic: Clinic?
         if let clinicID = clinicID, let id = UUID(uuidString: clinicID), let theClinic = Clinic.getClinicByID(id) {
             clinic = theClinic
+        }
+        if let task = getTaskByID(id) {
+            task.updateTask(id: id, title: title, date: date, clinic: clinic)
+            return task
         }
         return DataController.sharedInstance.createTask(id: id, title: title, date: date, clinic: clinic)
     }
@@ -54,6 +55,11 @@ public class Task: Entity {
         if let dentist = Info.sharedInstance.dentist {
             self.dentist = dentist
         }
+    }
+    
+    func updateTask(id: UUID?, title: String, date: Date, clinic: Clinic?) {
+        setAttributes(id: id, title: title, date: date, clinic: clinic)
+        DataController.sharedInstance.saveContext()
     }
     
     func updateState(state: TaskState) {

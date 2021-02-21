@@ -17,10 +17,10 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var doneButton: CheckButton!
     @IBOutlet weak var canceledButton: CheckButton!
     
-    var item: Any?
+    var entity: Any?
     
     func setAttributes(item: Any) {
-        self.item = item
+        self.entity = item
         if let appointment = item as? Appointment {
             setAppointmentAttributes(appointment: appointment)
         }
@@ -61,9 +61,9 @@ class TaskTableViewCell: UITableViewCell {
     
     @IBAction func changeTaskState(_ sender: Any) {
         if let button = sender as? CheckButton {
-            if let appointment = item as? Appointment {
+            if let appointment = entity as? Appointment {
                 appointment.updateState(state: button.discreption)
-            } else if let task = item as? Task {
+            } else if let task = entity as? Task {
                 task.updateState(state: button.discreption)
             }
             button.visibleSelection()

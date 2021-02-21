@@ -43,9 +43,15 @@ class TasksTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, U
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCellID", for: indexPath) as! TaskTableViewCell
-        if let item = taskDataSource(indexPath: indexPath) {
-            cell.setAttributes(item: item)
+        let entiti = taskDataSource(indexPath: indexPath)
+        var cell = TaskTableViewCell()
+        if let task = entiti as? Task {
+            cell = tableView.dequeueReusableCell(withIdentifier: "TaskCellID", for: indexPath) as! TaskTableViewCell
+            cell.setAttributes(item: task)
+        }
+        if let appointment = entiti as? Appointment {
+            cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentInTaskCellID", for: indexPath) as! TaskTableViewCell
+            cell.setAttributes(item: appointment)
         }
         return cell
     }

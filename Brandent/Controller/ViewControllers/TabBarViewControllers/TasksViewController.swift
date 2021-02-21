@@ -48,4 +48,23 @@ class TasksViewController: TabBarViewController {
     @IBAction func selectToday(_ sender: Any) {
         calendar.selectToday()
     }
+    
+    //MARK: Sending Data With Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let cell = sender as? TaskTableViewCell, let entity = cell.entity else {
+            return
+        }
+        if segue.identifier == "EditTaskSegue",
+            let task = entity as? Task,
+            let viewController = segue.destination as? AddTaskViewController {
+                viewController.task = task
+        }
+        if segue.identifier == "EditAppointmentFromTasksSegue",
+            let appointment = entity as? Appointment,
+            let viewController = segue.destination as? TempAddAppointmrntViewController {
+                viewController.appointment = appointment
+        }
+    }
 }
+
+//bug
