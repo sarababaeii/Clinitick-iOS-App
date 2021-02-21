@@ -126,6 +126,12 @@ class PatientProfileViewController: FormViewController {
     
     //MARK: Sending Data With Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditAppointmentFromPatientSegue",
+            let cell = sender as? AppointmentTableViewCell,
+            let appointment = cell.appointment,
+            let viewController = segue.destination as? TempAddAppointmrntViewController {
+                viewController.appointment = appointment
+        }
         if segue.identifier == "GallerySegue",
             let viewController = segue.destination as? GalleryViewController,
             let patient = patient {

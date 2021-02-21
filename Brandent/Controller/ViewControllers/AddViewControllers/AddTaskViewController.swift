@@ -44,9 +44,10 @@ class AddTaskViewController: FormViewController {
     func setTextFieldsData() {
         if let task = task {
             titleTextField.text = task.title
-//            date
-//            addressTextField.text = clinic.address
+            dateTextField.text = task.date.toCompletePersianString()
+//            clinic
             data = [task.title, task.clinic?.title as Any]
+            super.date = task.date
         }
     }
     
@@ -85,7 +86,7 @@ class AddTaskViewController: FormViewController {
     }
     
     override func saveData() {
-        let _ = Task.getTask(title: data[0] as! String, date: date!, clinicTitle: data[1] as? String)
+        let _ = Task.getTask(id: self.task?.id, title: data[0] as! String, date: date!, clinicTitle: data[1] as? String)
 //        RestAPIManagr.sharedInstance.addTask(finance: task)
     }
 }

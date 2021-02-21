@@ -61,3 +61,5 @@ class FinanceTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate,
         }
     }
 }
+
+//TODO: Don't insert in another month after undo

@@ -13,23 +13,23 @@ import CoreData
 @objc(Appointment)
 public class Appointment: Entity {
     //MARK: Initialization
-    static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, diseaseTitle: String, price: Int, date: Date) -> Appointment { // for sync
+    static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, diseaseTitle: String, price: Int, date: Date, state: String) -> Appointment { // for sync
         if let appointment = getAppointmentByID(id) {
 //            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic)
             return appointment
         }
         let clinic = Clinic.getClinicByID(clinicID)!
         let patient = Patient.getPatientByID(patientID)! //TODO: safe unwrapping
-        return createAppointment(id: id, patient: patient, clinic: clinic, diseaseTitle: diseaseTitle, price: price, date: date)
+        return createAppointment(id: id, patient: patient, clinic: clinic, diseaseTitle: diseaseTitle, price: price, date: date, state: state)
     }
     
-    static func createAppointment(id: UUID?, patient: Patient, clinic: Clinic, diseaseTitle: String, price: Int, date: Date) -> Appointment {
+    static func createAppointment(id: UUID?, patient: Patient, clinic: Clinic, diseaseTitle: String, price: Int, date: Date, state: String) -> Appointment {
         let disease = Disease.getDisease(id: nil, title: diseaseTitle, price: price)
         if let id = id, let appointment = getAppointmentByID(id) { // for add
-            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic)
+            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state)
             return appointment
         }
-        return DataController.sharedInstance.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic)
+        return DataController.sharedInstance.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state)
     }
     
     static func getAppointmentByID(_ id: UUID) -> Appointment? {
@@ -40,10 +40,10 @@ public class Appointment: Entity {
     }
     
     //MARK: Setting Attributes
-    func setAttributes(id: UUID?, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic) {
+    func setAttributes(id: UUID?, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic, state: String) {
         self.price = NSDecimalNumber(value: price)
         self.visit_time = visit_time
-        self.state = TaskState.todo.rawValue //should set
+        self.state = state //TaskState.todo.rawValue //should set
         self.clinic = clinic
         self.patient = patient
         self.disease = disease
@@ -59,8 +59,8 @@ public class Appointment: Entity {
         }
     }
     
-    func updateAppointment(id: UUID?, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic) {
-        setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic)
+    func updateAppointment(id: UUID?, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic, state: String) {
+        setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, state: state)
         DataController.sharedInstance.saveContext()
     }
     
@@ -142,7 +142,7 @@ public class Appointment: Entity {
          let clinicID = UUID.init(uuidString: clinicIDString) else {
             return
         }
-        let _ = createAppointment(id: id, patientID: patientID, clinicID: clinicID, diseaseTitle: disease, price: price, date: date)
+        let _ = createAppointment(id: id, patientID: patientID, clinicID: clinicID, diseaseTitle: disease, price: price, date: date, state: TaskState.todo.rawValue) //TODO: State
     }
 }
 

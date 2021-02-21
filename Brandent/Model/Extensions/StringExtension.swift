@@ -91,6 +91,10 @@ extension String: SwiftMenuDisplayable {
         return String(price).convertEnglishNumToPersianNum().toPriceString(separator: ".", willAdd: nil)
     }
     
+    static func toEnglishPriceString(price: Int) -> String {
+        return String(price).toPriceString(separator: ".", willAdd: nil)
+    }
+    
     private func deletePriceSeperators(separator: String) -> String {
         var ans = ""
         for i in 0 ..< self.count {

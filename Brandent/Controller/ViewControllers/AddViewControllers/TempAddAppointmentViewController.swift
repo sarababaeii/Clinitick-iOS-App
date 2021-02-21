@@ -12,7 +12,7 @@ import UIKit
 class TempAddAppointmrntViewController: FormViewController {
     
     @IBOutlet weak var diseaseTextField: CustomTextField!
-    @IBOutlet weak var priceTetField: CustomTextField!
+    @IBOutlet weak var priceTextField: CustomTextField!
     @IBOutlet weak var dateTextField: CustomTextField!
     
     var patient: Patient?
@@ -36,9 +36,22 @@ class TempAddAppointmrntViewController: FormViewController {
     }
     
     func initializeTextFields() {
-        textFields = [diseaseTextField, priceTetField, dateTextField]
+        textFields = [diseaseTextField, priceTextField, dateTextField]
         data = ["", -1] //0: disease, 1: price
         setTextFieldDelegates()
+        setTextFieldsData()
+    }
+    
+    func setTextFieldsData() {
+        if let appointment = appointment {
+            diseaseTextField.text = appointment.disease.title
+            priceTextField.text = String.toEnglishPriceString(price: Int(truncating: appointment.price))
+            dateTextField.text = appointment.visit_time.toCompletePersianString()
+            data = [appointment.disease.title, Int(truncating: appointment.price)]
+            super.date = appointment.visit_time
+            self.patient = appointment.patient
+            self.clinic = appointment.clinic
+        }
     }
     
     func setTextFieldDelegates() {
@@ -69,7 +82,7 @@ class TempAddAppointmrntViewController: FormViewController {
     }
     
     override func saveData() {
-        let appointment = Appointment.createAppointment(id: nil, patient: patient!, clinic: clinic!, diseaseTitle: data[0] as! String, price: data[1] as! Int, date: date!)
+        let appointment = Appointment.createAppointment(id: self.appointment?.id, patient: patient!, clinic: clinic!, diseaseTitle: data[0] as! String, price: data[1] as! Int, date: date!, state: self.appointment?.state ?? TaskState.todo.rawValue)
         print(appointment)
         RestAPIManagr.sharedInstance.addAppointment(appointment: appointment)
     }

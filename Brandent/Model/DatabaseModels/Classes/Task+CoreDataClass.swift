@@ -13,7 +13,7 @@ import CoreData
 @objc(Task)
 public class Task: Entity {
     //MARK: Initialization
-    static func getTask(id: UUID, title: String, date: Date, clinicID: String?) -> Task {
+    static func getTask(id: UUID, title: String, date: Date, clinicID: String?) -> Task { //for sync
         var clinic: Clinic?
         if let clinicID = clinicID, let id = UUID(uuidString: clinicID), let theClinic = Clinic.getClinicByID(id) {
             clinic = theClinic
@@ -25,10 +25,14 @@ public class Task: Entity {
         return DataController.sharedInstance.createTask(id: id, title: title, date: date, clinic: clinic)
     }
         
-    static func getTask(title: String, date: Date, clinicTitle: String?) -> Task {
+    static func getTask(id: UUID?, title: String, date: Date, clinicTitle: String?) -> Task { //for add
         var clinic: Clinic?
         if let clinicTitle = clinicTitle, let theClinic = Clinic.getClinicByTitle(clinicTitle) {
             clinic = theClinic
+        }
+        if let id = id, let task = getTaskByID(id) {
+            task.updateTask(id: id, title: title, date: date, clinic: clinic)
+            return task
         }
         return DataController.sharedInstance.createTask(id: nil, title: title, date: date, clinic: clinic)
     }

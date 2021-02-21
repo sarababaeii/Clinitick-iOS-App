@@ -47,12 +47,12 @@ class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
     func setTextFieldsData() {
         if let finance = finance {
             titleTextField.text = finance.title
-            priceTextField.text = String.toPersianPriceString(price: Int(truncating: finance.amount))
+            priceTextField.text = String.toEnglishPriceString(price: Int(truncating: finance.amount))
 //            kindMenu
-//            dateTextField
-            data = [finance.title, finance.amount]
+            dateTextField.text = finance.date.toPersianDMonthYString()
+            data = [finance.title, Int(truncating: finance.amount)]
             isCost = finance.is_cost
-//            date
+            super.date = finance.date
         }
     }
     
