@@ -45,6 +45,13 @@ public class Finance: Entity {
         DataController.sharedInstance.saveContext()
     }
     
+    func getAmount() -> Int {
+        if self.is_cost {
+            return Int(truncating: self.amount) * -1
+        }
+        return Int(truncating: self.amount)
+    }
+    
     //MARK: Functions
     static func getFinancesArray(tag: Int, date: Date) -> [Entity]? {
         switch tag {
@@ -61,46 +68,16 @@ public class Finance: Entity {
         }
     }
     
-//    static func sort(appointments: [Appointment]?, finances: [Finance]?) -> [NSManagedObject]? {
-//        guard let appointments = appointments else {
-//            return finances //could be nil
-//        }
-//        guard let finances = finances else {
-//            return appointments
-//        }
-//        var mixture = [NSManagedObject]()
-//        var appoinmentPointer = 0
-//        var financePointer = 0
-//        while mixture.count < appointments.count + finances.count {
-//            if appoinmentPointer >= appointments.count {
-//                mixture.append(finances[financePointer])
-//                financePointer += 1
-//            } else if financePointer >= finances.count {
-//                mixture.append(appointments[appoinmentPointer])
-//                appoinmentPointer += 1
-//            } else if appointments[appoinmentPointer].visit_time < finances[financePointer].date {
-//                mixture.append(appointments[appoinmentPointer])
-//                appoinmentPointer += 1
-//            } else {
-//                mixture.append(finances[financePointer])
-//                financePointer += 1
-//            }
-//        }
-//        return mixture
-//    } //should go to other class
-    
-    static func calculateSum(finances: [Any]) -> Int {
+    static func calculateSum(finances: [Entity]?) -> Int {
         var sum = 0
-        for finance in finances {
-            if let item = finance as? Finance {
-                if item.is_cost {
-                    sum -= Int(truncating: item.amount)
-                } else {
-                    sum += Int(truncating: item.amount)
+        if let finances = finances {
+            for finance in finances {
+                if let item = finance as? Finance {
+                    sum += item.getAmount()
                 }
-            }
-            else if let item = finance as? Appointment {
-                sum += Int(truncating: item.price)
+                else if let item = finance as? Appointment {
+                    sum += Int(truncating: item.price)
+                }
             }
         }
         return sum

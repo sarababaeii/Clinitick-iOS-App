@@ -42,7 +42,6 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
     
     //MARK: UI Management
     func setTitle() {
-//        self.title = titles[senderTag]
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: titles[senderTag], style: UIBarButtonItem.Style.plain, target: self, action: .none)
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
     }
@@ -73,7 +72,7 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
     
     func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
         setDate(monthNumber: index)
-        setTableViewDelegates()
+        financeTableViewDelegate?.date = date
     }
     
     func setDate(monthNumber: Int) {
@@ -83,11 +82,7 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
     
     //MARK: TableView Functions
     func setTableViewDelegates() {
-        guard let finances = Finance.getFinancesArray(tag: senderTag, date: date) else {
-            return
-        }
-        setTotalAmount(totalAmount: Finance.calculateSum(finances: finances))
-        financeTableViewDelegate = FinanceTableViewDelegate(viewController: self, tableView: financeTableView, finances: finances)
+        financeTableViewDelegate = FinanceTableViewDelegate(viewController: self, tableView: financeTableView, tag: senderTag)
         financeTableView.delegate = financeTableViewDelegate
         financeTableView.dataSource = financeTableViewDelegate
     }

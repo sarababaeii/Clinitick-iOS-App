@@ -11,10 +11,37 @@ import UIKit
 
 class FinanceTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, UITableViewDataSource {
       
+    var tag: Int
+    var hasDateChanged = false
+    var date: Date {
+        willSet {
+            if newValue != date {
+                hasDateChanged = true
+            }
+        }
+        didSet {
+            if hasDateChanged, let finances = Finance.getFinancesArray(tag: tag, date: date) {
+                hasDateChanged = false
+                update(newFinances: finances)
+            }
+        }
+    }
+    var sum: Int = 0 {
+        didSet {
+            if let viewController = viewController as? SeeFinanceViewController {
+                viewController.setTotalAmount(totalAmount: sum)
+            }
+        }
+    }
+    
     //MARK: Initializer
-    init(viewController: UIViewController, tableView: UITableView, finances: [Entity]) {
+    init(viewController: SeeFinanceViewController, tableView: UITableView, tag: Int) {
+        self.tag = tag
+        self.date = Date()
+        let finances = Finance.getFinancesArray(tag: tag, date: date)
         super.init(viewController: viewController, tableView: tableView, items: finances)
-        print(items)
+        sum = Finance.calculateSum(finances: finances)
+        viewController.setTotalAmount(totalAmount: sum)
     }
     
     //MARK: Protocol Functions
@@ -55,11 +82,37 @@ class FinanceTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate,
         return nil
     }
     
+    func update(newFinances: [Entity]) {
+        items.removeAll()
+        items = newFinances
+        tableView.reloadData()
+        sum = Finance.calculateSum(finances: newFinances)
+    }
+    
+    override func deleteItemInTableView() {
+        super.deleteItemInTableView()
+        if let appointment = deletedItem as? Appointment {
+            sum -= Int(truncating: appointment.price)
+        }
+        else if let finance = deletedItem as? Finance {
+            sum -= finance.getAmount()
+        }
+    }
+    
+    override func insertItemInTableView() {
+        if let appointment = deletedItem as? Appointment, appointment.visit_time.isInSameMonth(date: date) {
+            sum += Int(truncating: appointment.price)
+            super.insertItemInTableView()
+        }
+        else if let finance = deletedItem as? Finance, finance.date.isInSameMonth(date: date) {
+            super.insertItemInTableView()
+            sum += finance.getAmount()
+        }
+    }
+    
     func deleteFinance(at indexPath: IndexPath?) {
         if let indexPath = indexPath, let finance = financeDataSource(indexPath: indexPath) {
             super.deleteItem(at: indexPath, item: finance)
         }
     }
 }
-
-//TODO: Don't insert in another month after undo

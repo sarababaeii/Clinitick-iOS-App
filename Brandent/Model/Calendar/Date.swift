@@ -119,4 +119,9 @@ extension Date {
             date.componentsOfDate.month == self.componentsOfDate.month &&
             date.componentsOfDate.day == self.componentsOfDate.day
     }
+    
+    public func isInSameMonth(date: Date) -> Bool {
+        return date.componentsOfDate.year == self.componentsOfDate.year &&
+            date.componentsOfDate.month == self.componentsOfDate.month
+    }
 }
