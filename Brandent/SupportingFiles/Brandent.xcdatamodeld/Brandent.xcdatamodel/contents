@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Appointment" representedClassName="Appointment" parentEntity="Entity" syncable="YES">
-        <attribute name="price" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="disease" attributeType="String" defaultValueString="بیماری"/>
+        <attribute name="price" attributeType="Decimal" defaultValueString="-1"/>
         <attribute name="state" attributeType="String" defaultValueString="todo"/>
-        <attribute name="visit_time" attributeType="Date" defaultDateTimeInterval="630013740" usesScalarValueType="NO"/>
+        <attribute name="visit_time" attributeType="Date" defaultDateTimeInterval="-953918400" usesScalarValueType="NO"/>
         <relationship name="clinic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Clinic" inverseName="appointments" inverseEntity="Clinic"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="appointments" inverseEntity="Dentist"/>
-        <relationship name="disease" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disease" inverseName="appointments" inverseEntity="Disease"/>
         <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="history" inverseEntity="Patient"/>
     </entity>
     <entity name="Clinic" representedClassName="Clinic" parentEntity="Entity" syncable="YES">
@@ -28,16 +28,9 @@
         <attribute name="speciality" attributeType="String" defaultValueString="عمومی"/>
         <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="dentist" inverseEntity="Appointment"/>
         <relationship name="clinics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Clinic" inverseName="dentist" inverseEntity="Clinic"/>
-        <relationship name="diseases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Disease" inverseName="dentist" inverseEntity="Disease"/>
         <relationship name="finances" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Finance" inverseName="dentist" inverseEntity="Finance"/>
         <relationship name="patients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="dentist" inverseEntity="Patient"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="dentist" inverseEntity="Task"/>
-    </entity>
-    <entity name="Disease" representedClassName="Disease" parentEntity="Entity" syncable="YES">
-        <attribute name="price" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="title" attributeType="String" defaultValueString="toothace"/>
-        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="disease" inverseEntity="Appointment"/>
-        <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="diseases" inverseEntity="Dentist"/>
     </entity>
     <entity name="Entity" representedClassName="Entity" isAbstract="YES" syncable="YES">
         <attribute name="id" attributeType="UUID" defaultValueString="890A32FE-12E6-11EB-ADC1-0242AC120002" usesScalarValueType="NO"/>
@@ -68,8 +61,7 @@
     <elements>
         <element name="Appointment" positionX="-34.1796875" positionY="-261.04296875" width="128" height="148"/>
         <element name="Clinic" positionX="-203.81640625" positionY="-447.2578125" width="128" height="133"/>
-        <element name="Dentist" positionX="-376.40625" positionY="-302.43359375" width="128" height="253"/>
-        <element name="Disease" positionX="-621.47265625" positionY="-36.9453125" width="128" height="103"/>
+        <element name="Dentist" positionX="-376.40625" positionY="-302.43359375" width="128" height="238"/>
         <element name="Entity" positionX="-405" positionY="-288" width="128" height="88"/>
         <element name="Finance" positionX="-589.46484375" positionY="-421.609375" width="128" height="118"/>
         <element name="Patient" positionX="-189.765625" positionY="-38.48828125" width="128" height="118"/>

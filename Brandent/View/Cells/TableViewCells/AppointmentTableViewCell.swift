@@ -20,8 +20,12 @@ class AppointmentTableViewCell: UITableViewCell {
     
     func setAttributes(appointment: Appointment) {
         self.appointment = appointment
-        diseaseTitleLabel.text = appointment.disease.title
-        visitTimeLabel.text = appointment.visit_time.toPersianDMonthYString()
+        diseaseTitleLabel.text = appointment.disease
+        print(appointment.visit_time)
+        print(Date.defaultDate())
+        if appointment.visit_time != Date.defaultDate() {
+            visitTimeLabel.text = appointment.visit_time.toPersianDMonthYString()
+        }
         setState(state: appointment.state)
     }
     

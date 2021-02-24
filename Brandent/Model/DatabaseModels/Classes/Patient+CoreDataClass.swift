@@ -99,7 +99,8 @@ public class Patient: Entity {
         let params: [String: String] = [
             APIKey.patient.id!: self.id.uuidString,
             APIKey.patient.name!: self.name,
-            APIKey.patient.phone!: self.phone]
+            APIKey.patient.phone!: self.phone,
+            APIKey.patient.isDeleted!: String(self.is_deleted)]
         return params
     }
     

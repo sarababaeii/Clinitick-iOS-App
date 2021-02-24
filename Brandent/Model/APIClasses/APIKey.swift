@@ -14,7 +14,6 @@ enum APIKey: String {
     case task
     case clinic
     case patient
-    case disease
     case appointment
     
     case lastUpdate = "last_updated"
@@ -34,7 +33,7 @@ enum APIKey: String {
     //MARK: ID
     var id: String? {
         switch self {
-        case .clinic, .disease, .appointment, .patient, .finance, .dentist, .task:
+        case .clinic, .appointment, .patient, .finance, .dentist, .task:
             return "id"
         default:
             return nil
@@ -44,7 +43,7 @@ enum APIKey: String {
     //MARK: IsDeleted
     var isDeleted: String? { //TODO: Shoul set for other entities
         switch self {
-        case .appointment, .finance, .task:
+        case .appointment, .finance, .task, .patient, .clinic:
             return "is_deleted"
         default:
             return nil
@@ -54,7 +53,7 @@ enum APIKey: String {
     //MARK: Title
     var title: String? {
         switch self {
-        case .clinic, .finance, .disease, .task:
+        case .clinic, .finance, .task:
             return "title"
         default:
             return nil
@@ -126,7 +125,7 @@ enum APIKey: String {
     //MARK: Price
     var price: String? {
         switch self {
-        case .appointment, .disease:
+        case .appointment:
             return "price"
         case .finance:
             return "amount"
@@ -228,8 +227,6 @@ enum APIKey: String {
             return "patients"
         case .finance:
             return "finances"
-        case .disease:
-            return "diseases"
         case .appointment:
             return "appointments"
         case .task:

@@ -9,6 +9,19 @@
 import Foundation
 
 extension Date {
+    
+    static func defaultDate() -> Date {
+        let calendar = Calendar.current
+        var components = DateComponents()
+        components.year = 1970
+        components.month = 10
+        components.day = 10
+        components.hour = 10
+        components.minute = 10
+        components.second = 0
+        return calendar.date(from: components)!
+    }
+    
     //MARK: Getting Specific Dates
     func startOfMonth() -> Date? {
         let calendar = Calendar(identifier: .persian)

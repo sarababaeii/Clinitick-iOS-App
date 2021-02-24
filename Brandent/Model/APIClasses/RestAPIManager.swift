@@ -93,8 +93,8 @@ class RestAPIManagr {
         return createRequest(url: API.addClinicURL, params: params, contentType: .json)
     }
     
-    private func createSyncRequest(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, diseases: [Disease]?, appointments: [Appointment]?) -> URLRequest {
-        let params: [String: Any] = jsonSerializer.getSyncData(clinics: clinics, patients: patients, finances: finances, tasks: tasks, diseases: diseases, appointments: appointments)
+    private func createSyncRequest(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, appointments: [Appointment]?) -> URLRequest {
+        let params: [String: Any] = jsonSerializer.getSyncData(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments)
         return createRequest(url: API.syncURL, params: params, contentType: .json)
     }
     
@@ -188,9 +188,9 @@ class RestAPIManagr {
     }
     
     //MARK: Sync
-    func sync(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, diseases: [Disease]?, appointments: [Appointment]?) {
-        let result = sendRequest(request: createSyncRequest(clinics: clinics, patients: patients, finances: finances, tasks: tasks, diseases: diseases, appointments: appointments), type: .sync)
+    func sync(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, appointments: [Appointment]?) {
+        let result = sendRequest(request: createSyncRequest(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments), type: .sync)
         result.saveNewData()
-        result.processOldData(clinics: clinics, patients: patients, finances: finances, tasks: tasks, diseases: diseases, appointments: appointments)
+        result.processOldData(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments)
     }
 }

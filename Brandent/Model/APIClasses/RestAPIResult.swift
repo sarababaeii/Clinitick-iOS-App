@@ -106,7 +106,7 @@ class RestAPIResult {
     }
     
     //MARK: Sync
-    func processOldData(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, diseases: [Disease]?, appointments: [Appointment]?) {
+    func processOldData(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, appointments: [Appointment]?) {
         guard let response = response, response.statusCode == 200 else {
             return
         }
@@ -114,7 +114,6 @@ class RestAPIResult {
         Entity.removeDeletedItems(array: patients)
         Entity.removeDeletedItems(array: finances)
         Entity.removeDeletedItems(array: tasks)
-        Entity.removeDeletedItems(array: diseases)
         Entity.removeDeletedItems(array: appointments)
     }
     
@@ -125,9 +124,8 @@ class RestAPIResult {
         print(result)
         if let timeString = result["timestamp"] as? String {
             Info.sharedInstance.dentist?.last_update = timeString
-//            Info.sharedInstance.lastUpdate = timeString
         }
-        let keys: [APIKey] = [.clinic, .patient, .finance, .disease, .appointment]
+        let keys: [APIKey] = [.clinic, .patient, .finance, .appointment, .task]
         for key in keys {
             if let array = getArray(data: result, key: key.sync!) {
                 saveArray(array: array, key: key)
@@ -149,10 +147,10 @@ class RestAPIResult {
                     Patient.savePatient(dictionary)
                 case .finance:
                     Finance.saveFinance(dictionary)
-                case .disease:
-                    Disease.saveDisease(dictionary)
                 case .appointment:
                     Appointment.saveAppointment(dictionary)
+                case .task:
+                    Task.saveTask(dictionary)
                 default:
                     return
                 }
@@ -171,15 +169,3 @@ class RestAPIResult {
         return array
     }
 }
- 
-/*
-{\"message\":\"success\",
- \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo4LCJmaXJzdF9uYW1lIjoi2YHYsdmH2KfYryIsImxhc3RfbmFtZSI6Itio2KfYqNin24zbjCIsInBob25lIjoiMDkxMjYwOTkwMjQiLCJwYXNzd29yZCI6IiQyYSQxMCQyMXgwMmV6YmpVU01aQlhaU0YwY2cuUXJ3Lng2MGZhL3NSYTdTenpmQUNYYnF1UjNkVVRZeSIsImltYWdlIjpudWxsLCJkYXRlX3RpbWUiOiIyMDIxLTAyLTExVDE1OjA2OjI1LjQ0MVoifSwiaWF0IjoxNjEzMDU1OTg1fQ.EL16tF4AvKttEEH04eIpCXkmevV1gl4tX6cpH1sKsVc\",
- \"user\":
-     {\"id\":8,
-     \"first_name\":\"فرهاد\",
-     \"last_name\":\"بابایی\",
-     \"phone\":\"09126099024\",
-     \"image\":null,
-     \"date_time\":\"2021-02-11T15:06:25.441Z\"}}")
- */

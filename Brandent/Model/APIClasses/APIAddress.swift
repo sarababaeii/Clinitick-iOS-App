@@ -49,3 +49,5 @@ struct API {
     static let sendCodeURL = URL(string: API.sendCode)!
     static let profilePictureURL = URL(string: API.profilePicture)!
 }
+
+//TODO: delete add APIs

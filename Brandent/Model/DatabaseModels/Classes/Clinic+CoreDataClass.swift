@@ -101,7 +101,8 @@ public class Clinic: Entity {
         var params: [String: String] = [
             APIKey.clinic.id!: self.id.uuidString,
             APIKey.clinic.title!: self.title,
-            APIKey.clinic.color! : self.color]
+            APIKey.clinic.color! : self.color,
+            APIKey.clinic.isDeleted!: String(self.is_deleted)]
         if let address = self.address {
             params[APIKey.clinic.address!] = address
         }

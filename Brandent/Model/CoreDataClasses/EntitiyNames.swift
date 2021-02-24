@@ -15,7 +15,6 @@ enum EntityNames: String {
     case patient = "Patient"
     case clinic = "Clinic"
     case speciality = "Speciality"
-    case disease = "Disease"
     case finance = "Finance"
     case task = "Task"
 }

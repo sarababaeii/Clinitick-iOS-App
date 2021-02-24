@@ -42,7 +42,7 @@ class FinanceTableViewCell: UITableViewCell {
     
     func setAppointmentAttributes(appointment: Appointment) {
         nameLabel.text = appointment.patient.name
-        diseaseLabel.text = appointment.disease.title
+        diseaseLabel.text = appointment.disease
         setPriceLabel(price: appointment.price)
         dateLabel.text = appointment.visit_time.toPersianShortString()
     }

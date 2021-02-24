@@ -31,7 +31,7 @@ class TaskTableViewCell: UITableViewCell {
     
     func setAppointmentAttributes(appointment: Appointment) {
         patientNameLabel.text = appointment.patient.name
-        diseaseLabel.text = appointment.disease.title
+        diseaseLabel.text = appointment.disease
         visitTimeLabel.text = appointment.visit_time.toPersianTimeString()
         setState(appointment: appointment)
     }

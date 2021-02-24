@@ -12,7 +12,6 @@ enum APIRequestType {
     case sync
     case addAppointment
     case addClinic
-    case addDisease
     case addImage
     case addFinance
     case setProfile

@@ -28,7 +28,6 @@ extension Dentist {
     
     @NSManaged public var appointments: NSSet?
     @NSManaged public var clinics: NSSet
-    @NSManaged public var diseases: NSSet?
     @NSManaged public var finances: NSSet?
     @NSManaged public var patients: NSSet?
     @NSManaged public var tasks: NSSet?
@@ -66,23 +65,6 @@ extension Dentist {
 
     @objc(removeClinics:)
     @NSManaged public func removeFromClinics(_ values: NSSet)
-
-}
-
-// MARK: Generated accessors for diseases
-extension Dentist {
-
-    @objc(addDiseasesObject:)
-    @NSManaged public func addToDiseases(_ value: Disease)
-
-    @objc(removeDiseasesObject:)
-    @NSManaged public func removeFromDiseases(_ value: Disease)
-
-    @objc(addDiseases:)
-    @NSManaged public func addToDiseases(_ values: NSSet)
-
-    @objc(removeDiseases:)
-    @NSManaged public func removeFromDiseases(_ values: NSSet)
 
 }
 
@@ -148,7 +130,6 @@ enum DentistAttributes: String {
     
     case appointments = "appointments"
     case clinics = "clinics"
-    case diseases = "diseases"
     case finances = "finances"
     case patients = "patients"
     case tasks = "tasks"

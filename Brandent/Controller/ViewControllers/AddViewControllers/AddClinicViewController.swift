@@ -85,6 +85,6 @@ class AddClinicViewController: FormViewController {
     override func saveData() {
         let color = colorsCollectionViewDelegate?.selectedColorCell?.color ?? Color.lightGreen
         let clinic = Clinic.getClinic(id: self.clinic?.id, title: (data[0] as? String)!, address: data[1] as? String, color: color.clinicColor.toHexString())
-        RestAPIManagr.sharedInstance.addClinic(clinic: clinic)
+//        RestAPIManagr.sharedInstance.addClinic(clinic: clinic)
     }
 }

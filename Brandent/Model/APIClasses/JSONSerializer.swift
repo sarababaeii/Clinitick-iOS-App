@@ -60,7 +60,7 @@ class JSONSerializer {
     }
     
     //MARK: Sync
-    func getSyncData(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, diseases: [Disease]?, appointments: [Appointment]?) -> [String: Any] {
+    func getSyncData(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, appointments: [Appointment]?) -> [String: Any] {
         var params = [String: Any]()
         if let lastUpdate = Info.sharedInstance.dentist?.last_update {
             params["last_updated"] = lastUpdate
@@ -76,9 +76,6 @@ class JSONSerializer {
         }
         if let tasks = tasks {
             params[APIKey.task.sync!] = Task.toDictionaryArray(tasks: tasks)
-        }
-        if let diseases = diseases {
-            params[APIKey.disease.sync!] = Disease.toDictionaryArray(diseases: diseases)
         }
         if let appointments = appointments {
             params[APIKey.appointment.sync!] = Appointment.toDictionaryArray(appointments: appointments)

@@ -18,7 +18,6 @@ class DataController {
     var dentistEntity: NSEntityDescription
     var patientEntity: NSEntityDescription
     var clinicEntity: NSEntityDescription
-    var diseaseEntity: NSEntityDescription
     var financeEntity: NSEntityDescription
     var taskEntity: NSEntityDescription
    
@@ -30,7 +29,6 @@ class DataController {
         dentistEntity = NSEntityDescription.entity(forEntityName: EntityNames.dentist.rawValue, in: context)!
         patientEntity = NSEntityDescription.entity(forEntityName: EntityNames.patient.rawValue, in: context)!
         clinicEntity = NSEntityDescription.entity(forEntityName: EntityNames.clinic.rawValue, in: context)!
-        diseaseEntity = NSEntityDescription.entity(forEntityName: EntityNames.disease.rawValue, in: context)!
         financeEntity = NSEntityDescription.entity(forEntityName: EntityNames.finance.rawValue, in: context)!
         taskEntity = NSEntityDescription.entity(forEntityName: EntityNames.task.rawValue, in: context)!
     }
@@ -145,7 +143,7 @@ class DataController {
     }
     
     //MARK: Appointment
-    func createAppointment(id: UUID?, patient: Patient, disease: Disease, price: Int, visit_time: Date, clinic: Clinic, state: String) -> Appointment {
+    func createAppointment(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, state: String) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
         appointment.setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, state: state)
         saveContext()
@@ -306,30 +304,6 @@ class DataController {
     
     func fetchPatientsForSync(lastUpdated date: Date) -> [NSManagedObject]? {
         return fetchForSync(entityName: .patient, modifiedAttribute: PatientAttributes.modifiedAt.rawValue, lastUpdated: date)
-    }
-    
-    //MARK: Disease
-    func createDisease(id: UUID?, title: String, price: Int) -> Disease {
-        let disease = Disease(entity: diseaseEntity, insertInto: context)
-        disease.setAttributes(id: id, title: title, price: price)
-        saveContext()
-        return disease
-    }
-    
-    func fetchDisease(title: String) -> NSManagedObject? {
-        return fetchObject(object: .disease, by: DiseaseAttributes.title.rawValue, value: title)
-    }
-    
-    func fetchDisease(id: UUID) -> NSManagedObject? {
-        return fetchObject(object: .disease, idAttribute: DiseaseAttributes.id.rawValue, id: id)
-    }
-    
-    func fetchAllDiseases() -> [NSManagedObject]? {
-        return fetchAll(object: .disease, sortBy: DiseaseAttributes.title.rawValue)
-    }
-    
-    func fetchDiseasesForSync(lastUpdated date: Date) -> [NSManagedObject]? {
-        return fetchForSync(entityName: .disease, modifiedAttribute: DiseaseAttributes.modifiedAt.rawValue, lastUpdated: date)
     }
     
     //MARK: Clinic
