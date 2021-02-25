@@ -20,9 +20,6 @@ public class Task: Entity {
         }
         if let task = getTaskByID(id) {
             task.updateTask(id: id, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
-            print("@@@")
-            print(task)
-            print("@@@")
             return task
         }
         return DataController.sharedInstance.createTask(id: id, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
@@ -115,10 +112,7 @@ public class Task: Entity {
         if let id = task[APIKey.task.clinic!] as? String {
             clinicID = id
         }
-        let task = getTask(id: id, title: title, date: date, clinicID: clinicID, isDeleted: isDeleted, modifiedTime: modifiedTime)
-        print("%%%")
-        print(task)
-        print("%%%")
+        let _ = getTask(id: id, title: title, date: date, clinicID: clinicID, isDeleted: isDeleted, modifiedTime: modifiedTime)
         return true
     }
 }
