@@ -51,8 +51,11 @@ extension Date {
     }
     
     //MARK: Setting Date Formatter
-    private static func getDateFormatter(calendar: Calendar.Identifier?) -> DateFormatter {
+    private static func getDateFormatter(calendar: Calendar.Identifier?, isForSync: Bool) -> DateFormatter {
         let formatter = DateFormatter()
+        if isForSync {
+            formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        }
         if let identifier = calendar, identifier == .persian {
             formatter.calendar = Calendar(identifier: .persian)
             formatter.locale = Locale(identifier: "fa_IR")
@@ -60,8 +63,8 @@ extension Date {
         return formatter
     }
     
-    private static func getDateFormatterWithStyle(calendar: Calendar.Identifier?, format: String?, dateStyle: DateFormatter.Style?, timeStyle: DateFormatter.Style?) -> DateFormatter {
-        let formatter = Date.getDateFormatter(calendar: calendar)
+    private static func getDateFormatterWithStyle(calendar: Calendar.Identifier?, format: String?, dateStyle: DateFormatter.Style?, timeStyle: DateFormatter.Style?, isForSync: Bool) -> DateFormatter {
+        let formatter = Date.getDateFormatter(calendar: calendar, isForSync: isForSync)
         if let format = format {
             formatter.dateFormat = format
         }
@@ -75,37 +78,37 @@ extension Date {
     }
     
     private static func getPersianDateFormatterWithStyle(format: String?, dateStyle: DateFormatter.Style?, timeStyle: DateFormatter.Style?) -> DateFormatter {
-        return Date.getDateFormatterWithStyle(calendar: .persian, format: format, dateStyle: dateStyle, timeStyle: timeStyle)
+        return Date.getDateFormatterWithStyle(calendar: .persian, format: format, dateStyle: dateStyle, timeStyle: timeStyle, isForSync: false)
     }
         
     static func getPersianDate(from date: String) -> Date? {
-        let formatter = Date.getDateFormatterWithStyle(calendar: .persian, format: "yyyy-MM-dd", dateStyle: nil, timeStyle: nil)
+        let formatter = Date.getDateFormatterWithStyle(calendar: .persian, format: "yyyy-MM-dd", dateStyle: nil, timeStyle: nil, isForSync: false)
         return formatter.date(from: date)
     }
     
-    static func getDBFormatDate(from date: String) -> Date? {
-        let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "yyyy-MM-dd HH:mm:ss", dateStyle: nil, timeStyle: nil)
+    static func getDBFormatDate(from date: String, isForSync: Bool) -> Date? {
+        let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "yyyy-MM-dd HH:mm:ss", dateStyle: nil, timeStyle: nil, isForSync: isForSync)
         return formatter.date(from: date)
     }
     
     //MARK: English Strings
-    func toDBFormatDateAndTimeString() -> String {
-        let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "yyyy-MM-dd HH:mm:ss", dateStyle: nil, timeStyle: nil)
+    func toDBFormatDateAndTimeString(isForSync: Bool) -> String {
+        let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "yyyy-MM-dd HH:mm:ss", dateStyle: nil, timeStyle: nil, isForSync: isForSync)
         return formatter.string(from: self)
     }
     
     func toDBFormatDateString() -> String {
-        let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "yyyy-MM-dd", dateStyle: nil, timeStyle: nil)
+        let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "yyyy-MM-dd", dateStyle: nil, timeStyle: nil, isForSync: false)
         return formatter.string(from: self)
     }
     
     func getHourString() -> String {
-        let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "HH", dateStyle: nil, timeStyle: nil)
+        let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "HH", dateStyle: nil, timeStyle: nil, isForSync: false)
         return formatter.string(from: self)
     }
     
     func getMinString() -> String {
-        let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "mm", dateStyle: nil, timeStyle: nil)
+        let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "mm", dateStyle: nil, timeStyle: nil, isForSync: false)
         return formatter.string(from: self)
     }
     

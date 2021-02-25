@@ -114,7 +114,7 @@ class PatientProfileViewController: FormViewController {
     }
     
     override func saveData() {
-        patient?.updatePatient(phone: data[0] as? String, name: data[1] as? String, alergies: data[2] as? String)
+        patient?.updatePatient(phone: data[0] as? String, name: data[1] as? String, alergies: data[2] as? String, isDeleted: nil, modifiedTime: Date())
         if let button = selectedEditButton {
             textFields[button.tag].isEnabled = false
             button.setTitle("ویرایش", for: .normal)

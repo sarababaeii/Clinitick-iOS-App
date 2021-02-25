@@ -128,7 +128,7 @@ class AddPatientViewController: FormViewController {
             submitionError(for: requiredItem)
             return
         }
-        patient = Patient.getPatient(id: nil, phone: data[0] as! String, name: data[1] as! String, alergies: (data[3] as! String))
+        patient = Patient.getPatient(id: nil, phone: data[0] as! String, name: data[1] as! String, alergies: (data[3] as! String), isDeleted: nil, modifiedTime: Date())
     }
     
     func getClinic() -> Clinic? {

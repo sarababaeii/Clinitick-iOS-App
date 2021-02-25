@@ -10,10 +10,7 @@ import Foundation
 
 enum APIRequestType {
     case sync
-    case addAppointment
-    case addClinic
     case addImage
-    case addFinance
     case setProfile
     case login
     case signUp

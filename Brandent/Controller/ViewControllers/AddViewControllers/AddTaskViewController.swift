@@ -86,7 +86,7 @@ class AddTaskViewController: FormViewController {
     }
     
     override func saveData() {
-        let _ = Task.getTask(id: self.task?.id, title: data[0] as! String, date: date!, clinicTitle: data[1] as? String)
-//        RestAPIManagr.sharedInstance.addTask(finance: task)
+        let _ = Task.getTask(id: self.task?.id, title: data[0] as! String, date: date!, clinicTitle: data[1] as? String, isDeleted: nil, modifiedTime: Date())
+        Info.sharedInstance.sync()
     }
 }

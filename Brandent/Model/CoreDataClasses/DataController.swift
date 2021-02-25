@@ -114,9 +114,9 @@ class DataController {
         return fetchRequest(object: entityName, predicate: predicate, sortBy: nil, isForSync: false)?.first
     }
     
-    private func fetchObject(object entityName: EntityNames, idAttribute: String, id: UUID) -> NSManagedObject? {
+    private func fetchObject(object entityName: EntityNames, idAttribute: String, id: UUID, isForSync: Bool) -> NSManagedObject? {
         let predicate = NSPredicate(format: "\(idAttribute) = %@", id as CVarArg)
-        return fetchRequest(object: entityName, predicate: predicate, sortBy: nil, isForSync: false)?.first
+        return fetchRequest(object: entityName, predicate: predicate, sortBy: nil, isForSync: isForSync)?.first
     }
     
     private func fetchForSync(entityName: EntityNames, modifiedAttribute: String, lastUpdated date: Date) -> [NSManagedObject]? {
@@ -143,15 +143,15 @@ class DataController {
     }
     
     //MARK: Appointment
-    func createAppointment(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, state: String) -> Appointment {
+    func createAppointment(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, state: String, isDeleted: Bool?, modifiedTime: Date?) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
-        appointment.setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, state: state)
+        appointment.setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
         saveContext()
         return appointment
     }
 
     func fetchAppointment(id: UUID) -> NSManagedObject? {
-        return fetchObject(object: .appointment, idAttribute: AppointmentAttributes.id.rawValue, id: id)
+        return fetchObject(object: .appointment, idAttribute: AppointmentAttributes.id.rawValue, id: id, isForSync: false)
     }
     
     func fetchAppointmentsForSync(lastUpdated date: Date) -> [NSManagedObject]? {
@@ -170,8 +170,9 @@ class DataController {
 //        return fetchObjectsInTimeInterval(object: .appointment, dateAttribute: AppointmentAttributes.date.rawValue, start: date.startOfMonth(), end: date.endOfMonth())
     }
     
-    func fetchAppointmentsInDay(in date: Date) -> [NSManagedObject]? {
-        return fetchObjectsInTimeInterval(object: .appointment, dateAttribute: AppointmentAttributes.date.rawValue, start: date.startOfDate(), end: date.nextDay()?.startOfDate())
+    func fetchAppointmentsInDay(from date: Date) -> [NSManagedObject]? {
+        print(date)
+        return fetchObjectsInTimeInterval(object: .appointment, dateAttribute: AppointmentAttributes.date.rawValue, start: date, end: date.nextDay()?.startOfDate())
     }
     
     func fetchTodayAppointments(in clinic: Clinic?) -> [NSManagedObject]? {
@@ -200,22 +201,22 @@ class DataController {
     }
     
     func getNextAppointment() -> Appointment? {
-        if let todayAppointments = fetchAppointmentsInDay(in: Date()) {
+        if let todayAppointments = fetchAppointmentsInDay(from: Date()) {
             return todayAppointments.first as? Appointment
         }
         return nil
     }
     
     //MARK: Task
-    func createTask(id: UUID?, title: String, date: Date, clinic: Clinic?) -> Task {
+    func createTask(id: UUID?, title: String, date: Date, clinic: Clinic?, isDeleted: Bool?, modifiedTime: Date?) -> Task {
         let task = Task(entity: taskEntity, insertInto: context)
-        task.setAttributes(id: id, title: title, date: date, clinic: clinic)
+        task.setAttributes(id: id, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
         saveContext()
         return task
     }
     
     func fetchTask(id: UUID) -> NSManagedObject? {
-        return fetchObject(object: .task, idAttribute: TaskAttributes.id.rawValue, id: id)
+        return fetchObject(object: .task, idAttribute: TaskAttributes.id.rawValue, id: id, isForSync: false)
     }
     
     func fetchTasksForSync(lastUpdated date: Date) -> [NSManagedObject]? {
@@ -227,21 +228,21 @@ class DataController {
     }
     
     func fetchTasksAndAppointments(in date: Date) -> [NSManagedObject]? {
-        let appointments = fetchAppointmentsInDay(in: date) as? [Appointment]
+        let appointments = fetchAppointmentsInDay(from: date.startOfDate()) as? [Appointment]
         let tasks = fetchTasksInDay(in: date) as? [Task]
         return Appointment.sort(appointments: appointments, others: tasks)
     }
     
     //MARK: Finance
-    func createFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
+    func createFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date, isDeleted: Bool?, modifiedTime: Date?) -> Finance {
         let finance = Finance(entity: financeEntity, insertInto: context)
-        finance.setAttributes(id: id, title: title, amount: amount, isCost: isCost, date: date)
+        finance.setAttributes(id: id, title: title, amount: amount, isCost: isCost, date: date, isDeleted: isDeleted, modifiedTime: modifiedTime)
         saveContext()
         return finance
     }
     
     func fetchFinance(id: UUID) -> NSManagedObject? {
-        return fetchObject(object: .finance, idAttribute: FinanceAttributes.id.rawValue, id: id)
+        return fetchObject(object: .finance, idAttribute: FinanceAttributes.id.rawValue, id: id, isForSync: false)
     }
     
     func fetchFinancesForSync(lastUpdated date: Date) -> [NSManagedObject]? {
@@ -281,9 +282,9 @@ class DataController {
     }
     
     //MARK: Patient
-    func createPatient(id: UUID?, name: String, phone: String, alergies: String?) -> Patient {
+    func createPatient(id: UUID?, name: String, phone: String, alergies: String?, isDeleted: Bool?, modifiedTime: Date?) -> Patient {
         let patient = Patient(entity: patientEntity, insertInto: context)
-        patient.setAttributes(id: id, name: name, phone: phone, alergies: alergies)
+        patient.setAttributes(id: id, name: name, phone: phone, alergies: alergies, isDeleted: isDeleted, modifiedTime: modifiedTime)
         saveContext()
         return patient
     }
@@ -294,8 +295,8 @@ class DataController {
         return fetchRequest(object: .patient, predicate: predicate, sortBy: nil, isForSync: false)?.first
     }
     
-    func fetchPatient(id: UUID) -> NSManagedObject? {
-        return fetchObject(object: .patient, idAttribute: PatientAttributes.id.rawValue, id: id)
+    func fetchPatient(id: UUID, isForSync: Bool) -> NSManagedObject? {
+        return fetchObject(object: .patient, idAttribute: PatientAttributes.id.rawValue, id: id, isForSync: isForSync)
     }
     
     func fetchAllPatients() -> [NSManagedObject]? {
@@ -307,9 +308,9 @@ class DataController {
     }
     
     //MARK: Clinic
-    func createClinic(id: UUID?, title: String, address: String?, color: String) -> Clinic {
+    func createClinic(id: UUID?, title: String, address: String?, color: String, isDeleted: Bool?, modifiedTime: Date?) -> Clinic {
         let clinic = Clinic(entity: clinicEntity, insertInto: context)
-        clinic.setAttributes(id: id, title: title, address: address, color: color)
+        clinic.setAttributes(id: id, title: title, address: address, color: color, isDeleted: isDeleted, modifiedTime: modifiedTime)
         saveContext()
         return clinic
     }
@@ -318,8 +319,8 @@ class DataController {
         return fetchObject(object: .clinic, by: ClinicAttributes.title.rawValue, value: title)
     }
     
-    func fetchClinic(id: UUID) -> NSManagedObject? {
-        return fetchObject(object: .clinic, idAttribute: ClinicAttributes.id.rawValue, id: id)
+    func fetchClinic(id: UUID, isForSync: Bool) -> NSManagedObject? {
+        return fetchObject(object: .clinic, idAttribute: ClinicAttributes.id.rawValue, id: id, isForSync: isForSync)
     }
     
     func fetchAllClinics() -> [NSManagedObject]? {

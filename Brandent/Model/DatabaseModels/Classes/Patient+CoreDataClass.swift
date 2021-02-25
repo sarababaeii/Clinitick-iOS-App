@@ -13,20 +13,20 @@ import CoreData
 @objc(Patient)
 public class Patient: Entity {
     //MARK: Initialization
-    static func getPatient(id: UUID?, phone: String, name: String, alergies: String?) -> Patient {
-        if let id = id, let patient = getPatientByID(id) {
-            patient.updatePatient(phone: phone, name: name, alergies: alergies)
+    static func getPatient(id: UUID?, phone: String, name: String, alergies: String?, isDeleted: Bool?, modifiedTime: Date?) -> Patient {
+        if let id = id, let patient = getPatientByID(id, isForSync: false) {
+            patient.updatePatient(phone: phone, name: name, alergies: alergies, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return patient
         }
         if let patient = getPatientByPhone(phone) {
-            patient.updatePatient(phone: phone, name: name, alergies: alergies)
+            patient.updatePatient(phone: phone, name: name, alergies: alergies, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return patient
         }
-        return DataController.sharedInstance.createPatient(id: id, name: name, phone: phone, alergies: alergies)
+        return DataController.sharedInstance.createPatient(id: id, name: name, phone: phone, alergies: alergies, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
     
-    static func getPatientByID(_ id: UUID) -> Patient? {
-        if let object = DataController.sharedInstance.fetchPatient(id: id), let patient = object as? Patient {
+    static func getPatientByID(_ id: UUID, isForSync: Bool) -> Patient? {
+        if let object = DataController.sharedInstance.fetchPatient(id: id, isForSync: isForSync), let patient = object as? Patient {
             return patient
         }
         return nil
@@ -40,14 +40,17 @@ public class Patient: Entity {
     }
     
     //MARK: Setting Attributes
-    func setAttributes(id: UUID?, name: String, phone: String, alergies: String?) {
+    func setAttributes(id: UUID?, name: String, phone: String, alergies: String?, isDeleted: Bool?, modifiedTime: Date?) {
         self.name = name
         self.phone = phone
         self.alergies = alergies
         
         self.setID(id: id)
         self.setDentist()
-        self.setModifiedTime()
+        if let isDeleted = isDeleted, let date = modifiedTime {
+            self.setDeleteAttributes(to: isDeleted, at: date)
+        }
+        self.setModifiedTime(at: modifiedTime)
     }
     
     func setDentist() {
@@ -56,8 +59,8 @@ public class Patient: Entity {
         }
     }
     
-    func updatePatient(phone: String?, name: String?, alergies: String?) {
-        setAttributes(id: self.id, name: name ?? self.name, phone: phone ?? self.phone, alergies: alergies)
+    func updatePatient(phone: String?, name: String?, alergies: String?, isDeleted: Bool?, modifiedTime: Date?) {
+        setAttributes(id: self.id, name: name ?? self.name, phone: phone ?? self.phone, alergies: alergies, isDeleted: isDeleted, modifiedTime: modifiedTime)
         DataController.sharedInstance.saveContext()
     }
     
@@ -112,13 +115,17 @@ public class Patient: Entity {
         return params
     }
     
-    static func savePatient(_ patient: NSDictionary) {
-        if let idString = patient[APIKey.patient.id!] as? String,
+    static func savePatient(_ patient: NSDictionary, modifiedTime: Date) -> Bool {
+        guard let idString = patient[APIKey.patient.id!] as? String,
          let id = UUID.init(uuidString: idString),
          let name = patient[APIKey.patient.name!] as? String,
-         let phone = patient[APIKey.patient.phone!] as? String {
-            let _ = getPatient(id: id, phone: phone, name: name, alergies: nil)
+         let phone = patient[APIKey.patient.phone!] as? String,
+         let isDeletedInt = patient[APIKey.patient.isDeleted!] as? Int,
+         let isDeleted = Bool.intToBool(value: isDeletedInt) else {
+            return false
         }
+        let _ = getPatient(id: id, phone: phone, name: name, alergies: nil, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        return true
     }
 }
 

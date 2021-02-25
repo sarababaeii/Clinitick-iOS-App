@@ -51,7 +51,7 @@ public class Dentist: NSManagedObject {
     }
     
     func setClinic(clinicTitle: String) {
-        let clinic = Clinic.getClinic(id: nil, title: clinicTitle, address: nil, color: nil)
+        let clinic = Clinic.getClinic(id: nil, title: clinicTitle, address: nil, color: nil, isDeleted: nil, modifiedTime: Date()) //is date ok?
         DataController.sharedInstance.setDentistClinic(dentist: self, clinic: clinic)
     }
     

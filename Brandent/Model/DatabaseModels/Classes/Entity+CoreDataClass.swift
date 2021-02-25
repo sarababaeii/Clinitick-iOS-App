@@ -22,18 +22,22 @@ public class Entity: NSManagedObject {
         }
     }
     
-    func setModifiedTime() {
-        self.modified_at = Date()
+    func setModifiedTime(at date: Date?) {
+        self.modified_at = date ?? Date()
     }
     
     func delete() {
-        
         DataController.sharedInstance.temporaryDelete(record: self)
     }
     
     func setDeleteAttributes() {
         self.is_deleted = true
-        self.setModifiedTime()
+        self.setModifiedTime(at: nil)
+    }
+    
+    func setDeleteAttributes(to isDeleted: Bool, at date: Date) {
+        self.is_deleted = isDeleted
+        self.setModifiedTime(at: date)
     }
     
     static func removeDeletedItems(array: [Entity]?) {

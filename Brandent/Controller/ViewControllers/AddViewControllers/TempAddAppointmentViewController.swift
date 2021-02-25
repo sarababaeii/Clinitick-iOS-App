@@ -45,8 +45,12 @@ class TempAddAppointmrntViewController: FormViewController {
     func setTextFieldsData() {
         if let appointment = appointment {
             diseaseTextField.text = appointment.disease
-            priceTextField.text = String.toEnglishPriceString(price: Int(truncating: appointment.price))
-            dateTextField.text = appointment.visit_time.toCompletePersianString()
+            if appointment.price != -1 {
+                priceTextField.text = String.toEnglishPriceString(price: Int(truncating: appointment.price))
+            }
+            if appointment.visit_time != Date.defaultDate() {
+                dateTextField.text = appointment.visit_time.toCompletePersianString()
+            }
             data = [appointment.disease, Int(truncating: appointment.price)]
             super.date = appointment.visit_time
             self.patient = appointment.patient
@@ -76,9 +80,9 @@ class TempAddAppointmrntViewController: FormViewController {
     }
     
     override func saveData() {
-        let appointment = Appointment.createAppointment(id: self.appointment?.id, patient: patient!, clinic: clinic!, disease: data[0] as! String, price: data[1] as? Int, date: date, state: self.appointment?.state ?? TaskState.todo.rawValue)
+        let appointment = Appointment.createAppointment(id: self.appointment?.id, patient: patient!, clinic: clinic!, disease: data[0] as! String, price: data[1] as? Int, date: date, state: self.appointment?.state ?? TaskState.todo.rawValue, isDeleted: nil, modifiedTime: Date())
         print(appointment)
-        RestAPIManagr.sharedInstance.addAppointment(appointment: appointment)
+        Info.sharedInstance.sync()
     }
     
     override func back() {

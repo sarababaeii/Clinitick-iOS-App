@@ -26,7 +26,7 @@ class TasksViewController: TabBarViewController {
    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        layoutConfigure()
+        appearConfigure()
     }
     
     func loadConfigure() {
@@ -35,12 +35,12 @@ class TasksViewController: TabBarViewController {
         }
     }
     
-    func layoutConfigure() {
+    func appearConfigure() {
         setDelegates()
     }
     
     func setDelegates() {
-        taskTableViewDelegate = TasksTableViewDelegate(viewController: self, tasksTableView: tasksTableView, noTaskView: noTaskView)
+        taskTableViewDelegate = TasksTableViewDelegate(viewController: self, tasksTableView: tasksTableView, noTaskView: noTaskView, date: taskTableViewDelegate?.date ?? Date().today)
         tasksTableView.delegate = taskTableViewDelegate
         tasksTableView.dataSource = taskTableViewDelegate
     }
@@ -66,5 +66,3 @@ class TasksViewController: TabBarViewController {
         }
     }
 }
-
-//bug

@@ -13,22 +13,24 @@ import CoreData
 @objc(Appointment)
 public class Appointment: Entity {
     //MARK: Initialization
-    static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, disease: String, price: Int?, date: Date?, state: String) -> Appointment { // for sync
+    static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, disease: String, price: Int?, date: Date?, state: String, isDeleted: Bool, modifiedTime: Date) -> Appointment? { // for sync
+        guard let clinic = Clinic.getClinicByID(clinicID, isForSync: true),
+         let patient = Patient.getPatientByID(patientID, isForSync: true) else {
+            return nil
+        }
         if let appointment = getAppointmentByID(id) {
-//            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic)
+            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return appointment
         }
-        let clinic = Clinic.getClinicByID(clinicID)!
-        let patient = Patient.getPatientByID(patientID)! //TODO: safe unwrapping
-        return createAppointment(id: id, patient: patient, clinic: clinic, disease: disease, price: price, date: date, state: state)
+        return createAppointment(id: id, patient: patient, clinic: clinic, disease: disease, price: price, date: date, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
     
-    static func createAppointment(id: UUID?, patient: Patient, clinic: Clinic, disease: String, price: Int?, date: Date?, state: String) -> Appointment {
+    static func createAppointment(id: UUID?, patient: Patient, clinic: Clinic, disease: String, price: Int?, date: Date?, state: String, isDeleted: Bool?, modifiedTime: Date?) -> Appointment {
         if let id = id, let appointment = getAppointmentByID(id) { // for add
-            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state)
+            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state, isDeleted: nil, modifiedTime: Date())
             return appointment
         }
-        return DataController.sharedInstance.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state)
+        return DataController.sharedInstance.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
     
     static func getAppointmentByID(_ id: UUID) -> Appointment? {
@@ -39,21 +41,24 @@ public class Appointment: Entity {
     }
     
     //MARK: Setting Attributes
-    func setAttributes(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, state: String) {
+    func setAttributes(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, state: String, isDeleted: Bool?, modifiedTime: Date?) {
         if let price = price {
             self.price = NSDecimalNumber(value: price)
         }
         if let visit_time = visit_time {
             self.visit_time = visit_time
         }
-        self.state = state //TaskState.todo.rawValue //should set
+        self.disease = disease
+        self.state = state
         self.clinic = clinic
         self.patient = patient
-        self.disease = disease
-      
+        
         self.setID(id: id)
         self.setDentist()
-        self.setModifiedTime()
+        if let isDeleted = isDeleted, let date = modifiedTime {
+            self.setDeleteAttributes(to: isDeleted, at: date)
+        }
+        self.setModifiedTime(at: modifiedTime)
     }
     
     func setDentist() {
@@ -62,14 +67,14 @@ public class Appointment: Entity {
         }
     }
     
-    func updateAppointment(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, state: String) {
-        setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, state: state)
+    func updateAppointment(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, state: String, isDeleted: Bool?, modifiedTime: Date?) {
+        setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
         DataController.sharedInstance.saveContext()
     }
     
     func updateState(state: TaskState) {
         self.state = state.rawValue
-        self.setModifiedTime()
+        self.setModifiedTime(at: Date())
         DataController.sharedInstance.saveContext()
     }
     
@@ -109,13 +114,29 @@ public class Appointment: Entity {
         return mixture
     } //should be tested
     
+    static func removeAppointmentsWithoutPrice(entities: [Entity]?) -> [Entity]? {
+        guard let entities = entities else {
+            return nil
+        }
+        var array = entities
+        var i = 0
+        while i < array.count {
+            if let appointment = array[i] as? Appointment, appointment.price == -1 {
+                array.remove(at: i)
+                i -= 1
+            }
+            i += 1
+        }
+        return array
+    }
+    
     //MARK: API Functions
     func toDictionary() -> [String: String] {
         let params = [
             APIKey.appointment.id!: self.id.uuidString,
             APIKey.appointment.price!: String(Int(truncating: self.price)),
             APIKey.appointment.state!: self.state,
-            APIKey.appointment.date!: self.visit_time.toDBFormatDateAndTimeString(),
+            APIKey.appointment.date!: self.visit_time.toDBFormatDateAndTimeString(isForSync: false),
             APIKey.appointment.disease!: self.disease,
             APIKey.appointment.isDeleted!: String(self.is_deleted),
             APIKey.appointment.patient!: self.patient.id.uuidString,
@@ -131,7 +152,7 @@ public class Appointment: Entity {
         return params
     }
     
-    static func saveAppointment(_ appointment: NSDictionary) {
+    static func saveAppointment(_ appointment: NSDictionary, modifiedTime: Date) -> Bool {
         guard let idString = appointment[APIKey.appointment.id!] as? String,
          let id = UUID.init(uuidString: idString),
          let patientIDString = appointment[APIKey.appointment.patient!] as? String,
@@ -140,12 +161,18 @@ public class Appointment: Entity {
          let priceString = appointment[APIKey.appointment.price!] as? String,
          let price = Int(priceString),
          let dateString = appointment[APIKey.appointment.date!] as? String,
-         let date = Date.getDBFormatDate(from: dateString),
+         let date = Date.getDBFormatDate(from: dateString, isForSync: false),
          let clinicIDString = appointment[APIKey.appointment.clinic!] as? String,
-         let clinicID = UUID.init(uuidString: clinicIDString) else {
-            return
+         let clinicID = UUID.init(uuidString: clinicIDString),
+         let state = appointment[APIKey.appointment.state!] as? String,
+         let isDeletedInt = appointment[APIKey.appointment.isDeleted!] as? Int,
+         let isDeleted = Bool.intToBool(value: isDeletedInt) else {
+            return false
         }
-        let _ = createAppointment(id: id, patientID: patientID, clinicID: clinicID, disease: disease, price: price, date: date, state: TaskState.todo.rawValue) //TODO: State
+        if let _ = createAppointment(id: id, patientID: patientID, clinicID: clinicID, disease: disease, price: price, date: date, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime) {
+            return true
+        }
+        return false
     }
 }
 

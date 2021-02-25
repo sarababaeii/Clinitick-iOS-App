@@ -78,21 +78,6 @@ class RestAPIManagr {
         return createRequest(url: API.sendCodeURL, params: params as [String: Any], contentType: .json)
     }
     
-    private func createAddAppointmentRequest(appointment: Appointment) -> URLRequest {
-        let params: [String: Any] = jsonSerializer.getAddAppointmentData(appointment: appointment)
-        return createRequest(url: API.addAppointmentURL, params: params as [String: Any], contentType: .json)
-    }
-    
-    private func createAddFinanceRequest(finance: Finance) -> URLRequest {
-        let params: [String: Any] = jsonSerializer.getAddFinanceData(finance: finance)
-        return createRequest(url: API.addFinanceURL, params: params, contentType: .json)
-    }
-    
-    private func createAddClinicRequest(clinic: Clinic) -> URLRequest {
-        let params: [String: Any] = jsonSerializer.getAddClinicData(clinic: clinic)
-        return createRequest(url: API.addClinicURL, params: params, contentType: .json)
-    }
-    
     private func createSyncRequest(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, appointments: [Appointment]?) -> URLRequest {
         let params: [String: Any] = jsonSerializer.getSyncData(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments)
         return createRequest(url: API.syncURL, params: params, contentType: .json)
@@ -158,10 +143,6 @@ class RestAPIManagr {
     }
     
     //MARK: Functions
-    func addAppointment(appointment: Appointment) {
-        let _ = sendRequest(request: createAddAppointmentRequest(appointment: appointment), type: .addAppointment)
-    }
-    
     func addImage(patientID: UUID, images: [Image]) {
         let url = URL(string: "\(API.images)/\(patientID)")!
         let _ = sendRequest(request: createAddImagesRequest(url: url, key: .patient, images: images), type: .addImage)
@@ -177,14 +158,6 @@ class RestAPIManagr {
         let url = URL(string: "\(API.images)/\(patientID)")!
         let result = sendRequest(request: createGetImagesRequest(url: url), type: .addImage)
         return result.getImages()
-    }
-
-    func addFinance(finance: Finance) {
-        let _ = sendRequest(request: createAddFinanceRequest(finance: finance), type: .addFinance)
-    }
-    
-    func addClinic(clinic: Clinic) {
-        let _ = sendRequest(request: createAddClinicRequest(clinic: clinic), type: .addClinic)
     }
     
     //MARK: Sync

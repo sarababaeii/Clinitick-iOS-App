@@ -13,7 +13,7 @@ import CoreData
 @objc(Clinic)
 public class Clinic: Entity {
     //MARK: Initialization
-    static func getClinic(id: UUID?, title: String, address: String?, color: String?) -> Clinic {
+    static func getClinic(id: UUID?, title: String, address: String?, color: String?, isDeleted: Bool?, modifiedTime: Date?) -> Clinic {
         var clinicColor: String
         if let color = color {
             clinicColor = color
@@ -21,19 +21,19 @@ public class Clinic: Entity {
             clinicColor = Color.lightGreen.clinicColor.toHexString()
         }
         
-        if let id = id, let clinic = getClinicByID(id) {
-            clinic.updateClinic(id: id, title: title, address: address, color: clinicColor)
+        if let id = id, let clinic = getClinicByID(id, isForSync: false) {
+            clinic.updateClinic(id: id, title: title, address: address, color: clinicColor, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return clinic
         }
         if let clinic = getClinicByTitle(title) {
             return clinic
         }
         
-        return DataController.sharedInstance.createClinic(id: id, title: title, address: address, color: clinicColor)
+        return DataController.sharedInstance.createClinic(id: id, title: title, address: address, color: clinicColor, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
 
-    static func getClinicByID(_ id: UUID) -> Clinic? {
-        if let object = DataController.sharedInstance.fetchClinic(id: id), let clinic = object as? Clinic {
+    static func getClinicByID(_ id: UUID, isForSync: Bool) -> Clinic? {
+        if let object = DataController.sharedInstance.fetchClinic(id: id, isForSync: isForSync), let clinic = object as? Clinic {
             return clinic
         }
         return nil
@@ -47,14 +47,17 @@ public class Clinic: Entity {
     }
 
     //MARK: Setting Attributes
-    func setAttributes(id: UUID?, title: String, address: String?, color: String) {
+    func setAttributes(id: UUID?, title: String, address: String?, color: String, isDeleted: Bool?, modifiedTime: Date?) {
         self.title = title
         self.color = color
         self.address = address
 
         self.setID(id: id)
         self.setDentist()
-        self.setModifiedTime()
+        if let isDeleted = isDeleted, let date = modifiedTime {
+            self.setDeleteAttributes(to: isDeleted, at: date)
+        }
+        self.setModifiedTime(at: modifiedTime)
     }
     
     func setDentist() {
@@ -63,8 +66,8 @@ public class Clinic: Entity {
         }
     }
 
-    func updateClinic(id: UUID?, title: String, address: String?, color: String) {
-        setAttributes(id: id, title: title, address: address, color: color)
+    func updateClinic(id: UUID?, title: String, address: String?, color: String, isDeleted: Bool?, modifiedTime: Date?) {
+        setAttributes(id: id, title: title, address: address, color: color, isDeleted: isDeleted, modifiedTime: modifiedTime)
         DataController.sharedInstance.saveContext()
     }
     
@@ -117,18 +120,21 @@ public class Clinic: Entity {
         return params
     }
 
-    static func saveClinic(_ clinic: NSDictionary) {
+    static func saveClinic(_ clinic: NSDictionary, modifiedTime: Date) -> Bool {
         guard let idString = clinic[APIKey.clinic.id!] as? String,
          let id = UUID.init(uuidString: idString),
          let title = clinic[APIKey.clinic.title!] as? String,
-         let color = clinic[APIKey.clinic.color!] as? String else {
-           return
+         let color = clinic[APIKey.clinic.color!] as? String,
+         let isDeletedInt = clinic[APIKey.clinic.isDeleted!] as? Int,
+         let isDeleted = Bool.intToBool(value: isDeletedInt) else {
+           return false
         }
         var address: String?
         if let add = clinic[APIKey.clinic.address!] as? String {
             address = add
         }
-        let _ = getClinic(id: id, title: title, address: address, color: color)
+        let _ = getClinic(id: id, title: title, address: address, color: color, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        return true
     }
 }
 

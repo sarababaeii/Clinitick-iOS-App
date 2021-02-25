@@ -49,7 +49,7 @@ class Info {
     
     //MARK: Sync
     func sync() {
-        guard let dentist = dentist, let lastUpdate = Date.getDBFormatDate(from: dentist.last_update) else {
+        guard let dentist = dentist, let lastUpdate = Date.getDBFormatDate(from: dentist.last_update, isForSync: true) else {
             RestAPIManagr.sharedInstance.sync(clinics: nil, patients: nil, finances: nil, tasks: nil, appointments: nil)
             print("Couldn't sync")
             return
@@ -58,6 +58,10 @@ class Info {
         let patients = DataController.sharedInstance.fetchPatientsForSync(lastUpdated: lastUpdate) as? [Patient]
         let finances = DataController.sharedInstance.fetchFinancesForSync(lastUpdated: lastUpdate) as? [Finance]
         let tasks = DataController.sharedInstance.fetchTasksForSync(lastUpdated: lastUpdate) as? [Task]
+        print("&&&")
+        print(lastUpdate)
+        print(tasks)
+        print("&&&")
         let appointments = DataController.sharedInstance.fetchAppointmentsForSync(lastUpdated: lastUpdate) as? [Appointment]
         RestAPIManagr.sharedInstance.sync(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments)
     }

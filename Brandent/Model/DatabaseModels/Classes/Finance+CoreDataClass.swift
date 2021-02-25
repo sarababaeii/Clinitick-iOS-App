@@ -13,17 +13,17 @@ import CoreData
 @objc(Finance)
 public class Finance: Entity {
     //MARK: Initialization
-    static func getFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) -> Finance {
+    static func getFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date, isDeleted: Bool?, modifiedTime: Date?) -> Finance {
         if let id = id, let object = DataController.sharedInstance.fetchFinance(id: id),
             let finance = object as? Finance {
-            finance.updateFinance(id: id, title: title, amount: amount, isCost: isCost, date: date)
+            finance.updateFinance(id: id, title: title, amount: amount, isCost: isCost, date: date, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return finance
         }
-        return DataController.sharedInstance.createFinance(id: id, title: title, amount: amount, isCost: isCost, date: date)
+        return DataController.sharedInstance.createFinance(id: id, title: title, amount: amount, isCost: isCost, date: date, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
     
     //MARK: Setting Attributes
-    func setAttributes(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) {
+    func setAttributes(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date, isDeleted: Bool?, modifiedTime: Date?) {
         self.title = title
         self.amount = NSDecimalNumber(value: amount)
         self.is_cost = isCost
@@ -31,7 +31,10 @@ public class Finance: Entity {
         
         self.setID(id: id)
         self.setDentist()
-        self.setModifiedTime()
+        if let isDeleted = isDeleted, let date = modifiedTime {
+            self.setDeleteAttributes(to: isDeleted, at: date)
+        }
+        self.setModifiedTime(at: modifiedTime)
     }
     
     func setDentist() {
@@ -40,8 +43,8 @@ public class Finance: Entity {
         }
     }
     
-    func updateFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date) {
-        setAttributes(id: id, title: title, amount: amount, isCost: isCost, date: date)
+    func updateFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date, isDeleted: Bool?, modifiedTime: Date?) {
+        setAttributes(id: id, title: title, amount: amount, isCost: isCost, date: date, isDeleted: isDeleted, modifiedTime: modifiedTime)
         DataController.sharedInstance.saveContext()
     }
     
@@ -56,9 +59,11 @@ public class Finance: Entity {
     static func getFinancesArray(tag: Int, date: Date) -> [Entity]? {
         switch tag {
         case 0:
-            return DataController.sharedInstance.fetchFinancesAndAppointments(in: date) as? [Entity]
+            let entities = DataController.sharedInstance.fetchFinancesAndAppointments(in: date) as? [Entity]
+            return Appointment.removeAppointmentsWithoutPrice(entities: entities)
         case 1:
-            return DataController.sharedInstance.fetchAppointmentsInMonth(in: date) as? [Entity]
+            let appointments = DataController.sharedInstance.fetchAppointmentsInMonth(in: date) as? [Entity]
+            return Appointment.removeAppointmentsWithoutPrice(entities: appointments)
         case 2:
             return DataController.sharedInstance.fetchFinanceExternalIncomes(in: date) as? [Entity]
         case 3:
@@ -91,7 +96,7 @@ public class Finance: Entity {
             APIKey.finance.isCost!: String(self.is_cost),
             APIKey.finance.price!: String(Int(truncating: self.amount)),
             APIKey.finance.date!: self.date.toDBFormatDateString(),
-            APIKey.finance.isDeleted!: String(self.isDeleted)]
+            APIKey.finance.isDeleted!: String(self.is_deleted)]
         return params
     }
     
@@ -103,18 +108,22 @@ public class Finance: Entity {
         return params
     }
     
-    static func saveFinance(_ finance: NSDictionary) {
-        if let idString = finance[APIKey.finance.id!] as? String,
-            let id = UUID.init(uuidString: idString),
-            let title = finance[APIKey.finance.title!] as? String,
-            let priceString = finance[APIKey.finance.price!] as? String,
-            let price = Int(priceString),
-            let dateString = finance[APIKey.finance.date!] as? String,
-            let date = Date.getDBFormatDate(from: dateString),
-            let isCostString = finance[APIKey.finance.isCost!] as? Int,
-            let isCost = Bool.intToBool(value: isCostString) {
-            let _ = getFinance(id: id, title: title, amount: price, isCost: isCost, date: date)
+    static func saveFinance(_ finance: NSDictionary, modifiedTime: Date) -> Bool {
+        guard let idString = finance[APIKey.finance.id!] as? String,
+         let id = UUID.init(uuidString: idString),
+         let title = finance[APIKey.finance.title!] as? String,
+         let priceString = finance[APIKey.finance.price!] as? String,
+         let price = Int(priceString),
+         let dateString = finance[APIKey.finance.date!] as? String,
+            let date = Date.getDBFormatDate(from: dateString, isForSync: false),
+         let isCostString = finance[APIKey.finance.isCost!] as? Int,
+         let isCost = Bool.intToBool(value: isCostString),
+         let isDeletedInt = finance[APIKey.finance.isDeleted!] as? Int,
+         let isDeleted = Bool.intToBool(value: isDeletedInt) else {
+            return false
         }
+        let _ = getFinance(id: id, title: title, amount: price, isCost: isCost, date: date, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        return true
     }
 }
 

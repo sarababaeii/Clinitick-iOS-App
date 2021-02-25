@@ -21,6 +21,9 @@ class TasksTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, U
         }
         didSet {
             if hasDateChanged, let tasks = DataController.sharedInstance.fetchTasksAndAppointments(in: date) as? [Entity] {
+                print("!!!")
+                print(tasks)
+                print("!!!")
                 hasDateChanged = false
                 update(newTasks: tasks)
                 noTaskView.isHidden = tasks.count > 0
@@ -29,9 +32,9 @@ class TasksTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, U
     }
     
     //MARK: Initializer
-    init(viewController: UIViewController, tasksTableView: UITableView, noTaskView: UIView) {
+    init(viewController: UIViewController, tasksTableView: UITableView, noTaskView: UIView, date: Date) {
         self.noTaskView = noTaskView
-        self.date = Date().today
+        self.date = date
         let tasks = DataController.sharedInstance.fetchTasksAndAppointments(in: date) as? [Entity]
         noTaskView.isHidden = tasks?.count ?? 1 > 0
         super.init(viewController: viewController, tableView: tasksTableView, items: tasks)

@@ -122,40 +122,50 @@ class RestAPIResult {
             return
         }
         print(result)
-        if let timeString = result["timestamp"] as? String {
-            Info.sharedInstance.dentist?.last_update = timeString
+        guard let timeString = result["timestamp"] as? String, let date = Date.getDBFormatDate(from: timeString, isForSync: true) else {
+            return
         }
+        print("LAST UPDATED: \(date)")
         let keys: [APIKey] = [.clinic, .patient, .finance, .appointment, .task]
         for key in keys {
             if let array = getArray(data: result, key: key.sync!) {
-                saveArray(array: array, key: key)
+                if !saveArray(array: array, key: key, at: date) {
+                    print("could not save \(key.rawValue)")
+                    return
+                }
             }
         }
+        Info.sharedInstance.dentist?.last_update = timeString
     }
     
     private func getArray(data: NSDictionary, key: String) -> NSArray? {
         return data[key] as? NSArray
     }
     
-    private func saveArray(array: NSArray, key: APIKey) {
+    private func saveArray(array: NSArray, key: APIKey, at date: Date) -> Bool {
         for item in array {
+            var wasSuccessfull = false
             if let dictionary = item as? NSDictionary {
                 switch key {
                 case .clinic:
-                    Clinic.saveClinic(dictionary)
+                    wasSuccessfull = Clinic.saveClinic(dictionary, modifiedTime: date)
                 case .patient:
-                    Patient.savePatient(dictionary)
+                    wasSuccessfull = Patient.savePatient(dictionary, modifiedTime: date)
                 case .finance:
-                    Finance.saveFinance(dictionary)
+                    wasSuccessfull = Finance.saveFinance(dictionary, modifiedTime: date)
                 case .appointment:
-                    Appointment.saveAppointment(dictionary)
+                    wasSuccessfull = Appointment.saveAppointment(dictionary, modifiedTime: date)
                 case .task:
-                    Task.saveTask(dictionary)
+                    wasSuccessfull = Task.saveTask(dictionary, modifiedTime: date)
                 default:
-                    return
+                    return false
                 }
             }
+            if !wasSuccessfull {
+                return false
+            }
         }
+        return true
     }
     
     //MARK: Gallery
