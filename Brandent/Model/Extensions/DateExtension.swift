@@ -86,12 +86,22 @@ extension Date {
         return formatter.date(from: date)
     }
     
+    static func getTimeStampFormatDate(from date: String, isForSync: Bool) -> Date? {
+        let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "yyyy-MM-dd HH:mm:ss.SSS", dateStyle: nil, timeStyle: nil, isForSync: isForSync)
+        return formatter.date(from: date)
+    }
+    
     static func getDBFormatDate(from date: String, isForSync: Bool) -> Date? {
         let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "yyyy-MM-dd HH:mm:ss", dateStyle: nil, timeStyle: nil, isForSync: isForSync)
         return formatter.date(from: date)
     }
     
     //MARK: English Strings
+//    func toTimeStampFormatDateAndTimeString(isForSync: Bool) -> String {
+//        let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "yyyy-MM-dd HH:mm:ss.SSS", dateStyle: nil, timeStyle: nil, isForSync: isForSync)
+//        return formatter.string(from: self)
+//    }
+    
     func toDBFormatDateAndTimeString(isForSync: Bool) -> String {
         let formatter = Date.getDateFormatterWithStyle(calendar: nil, format: "yyyy-MM-dd HH:mm:ss", dateStyle: nil, timeStyle: nil, isForSync: isForSync)
         return formatter.string(from: self)

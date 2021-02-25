@@ -141,6 +141,9 @@ public class Appointment: Entity {
             APIKey.appointment.isDeleted!: String(self.is_deleted),
             APIKey.appointment.patient!: self.patient.id.uuidString,
             APIKey.appointment.clinic!: self.clinic.id.uuidString]
+//        if Int(truncating: self.price) > -1 {
+//            params[APIKey.appointment.price!] = String(Int(truncating: self.price))
+//        }
         return params
     }
     

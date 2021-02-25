@@ -115,7 +115,7 @@ public class Finance: Entity {
          let priceString = finance[APIKey.finance.price!] as? String,
          let price = Int(priceString),
          let dateString = finance[APIKey.finance.date!] as? String,
-            let date = Date.getDBFormatDate(from: dateString, isForSync: false),
+         let date = Date.getDBFormatDate(from: dateString, isForSync: false),
          let isCostString = finance[APIKey.finance.isCost!] as? Int,
          let isCost = Bool.intToBool(value: isCostString),
          let isDeletedInt = finance[APIKey.finance.isDeleted!] as? Int,

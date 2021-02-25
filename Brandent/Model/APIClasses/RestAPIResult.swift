@@ -122,7 +122,7 @@ class RestAPIResult {
             return
         }
         print(result)
-        guard let timeString = result["timestamp"] as? String, let date = Date.getDBFormatDate(from: timeString, isForSync: true) else {
+        guard let timeString = result["timestamp"] as? String, let date = Date.getTimeStampFormatDate(from: timeString, isForSync: true) else {
             return
         }
         print("LAST UPDATED: \(date)")
