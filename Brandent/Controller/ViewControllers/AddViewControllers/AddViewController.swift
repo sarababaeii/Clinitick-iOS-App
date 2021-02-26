@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import Photos
 import AVFoundation
-import SwiftyMenu
 
 class AddViewController: UIViewController, UITextViewDelegate, SwiftyMenuDelegate {
     

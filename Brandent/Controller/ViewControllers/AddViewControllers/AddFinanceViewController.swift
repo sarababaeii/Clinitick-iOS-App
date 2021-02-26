@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import SwiftyMenu
+//import SwiftyMenu
 
 class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
     
@@ -31,8 +31,8 @@ class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
     }
     
     func configure() {
-        initializeTextFields()
         setKindMenuDelegates()
+        initializeTextFields()
         setDatePicker(dateTextFieldIndex: 2, mode: .date)
         setTitle(title: "افزودن تراکنش")
     }
@@ -48,7 +48,7 @@ class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
         if let finance = finance {
             titleTextField.text = finance.title
             priceTextField.text = String.toEnglishPriceString(price: Int(truncating: finance.amount))
-//            kindMenu
+            setKindMenuData(isCoset: finance.is_cost)
             dateTextField.text = finance.date.toPersianDMonthYString()
             data = [finance.title, Int(truncating: finance.amount)]
             isCost = finance.is_cost
@@ -56,6 +56,13 @@ class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
         }
     }
     
+    func setKindMenuData(isCoset: Bool) {
+        if isCoset {
+            kindMenu.selectOption(option: kindOptions[1])
+        } else {
+            kindMenu.selectOption(option: kindOptions[0])
+        }
+    }
     func setTextFieldDelegates() {
         textFieldDelegates = [
             TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false),

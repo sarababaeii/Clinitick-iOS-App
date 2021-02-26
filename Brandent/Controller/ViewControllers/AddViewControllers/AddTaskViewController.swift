@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import SwiftyMenu
 
 class AddTaskViewController: FormViewController {
     
@@ -28,8 +27,8 @@ class AddTaskViewController: FormViewController {
     }
     
     func configure() {
-        initializeTextFields()
         setMenuDelegate()
+        initializeTextFields()
         setDatePicker(dateTextFieldIndex: 1, mode: .dateAndTime)
         setTitle(title: "افزودن کار")
     }
@@ -45,7 +44,9 @@ class AddTaskViewController: FormViewController {
         if let task = task {
             titleTextField.text = task.title
             dateTextField.text = task.date.toCompletePersianString()
-//            clinic
+            if let clinic = task.clinic {
+                clinicMenu.selectOption(option: clinic.title)
+            }
             data = [task.title, task.clinic?.title as Any]
             super.date = task.date
         }

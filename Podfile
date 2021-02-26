@@ -7,7 +7,7 @@ target 'Brandent' do
 
   # Pods for Brandent
 pod "BSImagePicker", "~> 2.8"
-pod "SwiftyMenu", "~> 0.4.8"
+pod 'SnapKit', '~> 5.0.0'
 
   target 'BrandentTests' do
     inherit! :search_paths

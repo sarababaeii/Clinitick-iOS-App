@@ -13,9 +13,12 @@ class TodayTasksTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDat
     var tasks = [TodayTasks]()
     
     //MARK: Initializer
-    override init() {
-        if let tasks = DataController.sharedInstance.getTodayTasks() {
+    init(noTaskLabel: UILabel) {
+        if let tasks = DataController.sharedInstance.getTodayTasks(), tasks.count > 0 {
             self.tasks = tasks
+            noTaskLabel.isHidden = true
+        } else {
+            noTaskLabel.isHidden = false
         }
     }
     

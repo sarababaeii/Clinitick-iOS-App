@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyMenu
 
 class MenuDelegate: NSObject, SwiftyMenuDelegate {
     

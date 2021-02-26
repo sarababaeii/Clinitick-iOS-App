@@ -112,6 +112,9 @@
 		03EE13742554480E00363EA0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE13732554480E00363EA0 /* UIViewExtension.swift */; };
 		03EE13762554492300363EA0 /* LightningUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE13752554492300363EA0 /* LightningUIView.swift */; };
 		03EE13782554498A00363EA0 /* ShadowyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE13772554498A00363EA0 /* ShadowyUIView.swift */; };
+		03F18B9925E9236A00FE8C50 /* SwiftyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F18B9825E9236A00FE8C50 /* SwiftyMenu.swift */; };
+		03F18B9B25E9239100FE8C50 /* SwiftMenuDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F18B9A25E9239100FE8C50 /* SwiftMenuDisplayable.swift */; };
+		03F18B9D25E923B700FE8C50 /* SwiftyMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F18B9C25E923B700FE8C50 /* SwiftyMenuDelegate.swift */; };
 		03F27556258688A000526477 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F27555258688A000526477 /* AddTaskViewController.swift */; };
 		03F2755825868E0300526477 /* AddPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2755725868E0300526477 /* AddPatientViewController.swift */; };
 		03F2755A2586918400526477 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F275592586918400526477 /* AddViewController.swift */; };
@@ -261,6 +264,9 @@
 		03EE13732554480E00363EA0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		03EE13752554492300363EA0 /* LightningUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningUIView.swift; sourceTree = "<group>"; };
 		03EE13772554498A00363EA0 /* ShadowyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowyUIView.swift; sourceTree = "<group>"; };
+		03F18B9825E9236A00FE8C50 /* SwiftyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMenu.swift; sourceTree = "<group>"; };
+		03F18B9A25E9239100FE8C50 /* SwiftMenuDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMenuDisplayable.swift; sourceTree = "<group>"; };
+		03F18B9C25E923B700FE8C50 /* SwiftyMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMenuDelegate.swift; sourceTree = "<group>"; };
 		03F27555258688A000526477 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		03F2755725868E0300526477 /* AddPatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPatientViewController.swift; sourceTree = "<group>"; };
 		03F275592586918400526477 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
@@ -485,6 +491,7 @@
 		03749EE7250E76F9003CBE49 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				03F18B9725E9234B00FE8C50 /* SwiftyMenu */,
 				03109B44258E29B500AEA959 /* CoreDataClasses */,
 				03101685258A82BD0034717F /* APIClasses */,
 				0321F878256854D40048D77B /* Calendar */,
@@ -711,6 +718,16 @@
 				03EE136D25542E4900363EA0 /* MenuCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		03F18B9725E9234B00FE8C50 /* SwiftyMenu */ = {
+			isa = PBXGroup;
+			children = (
+				03F18B9825E9236A00FE8C50 /* SwiftyMenu.swift */,
+				03F18B9A25E9239100FE8C50 /* SwiftMenuDisplayable.swift */,
+				03F18B9C25E923B700FE8C50 /* SwiftyMenuDelegate.swift */,
+			);
+			path = SwiftyMenu;
 			sourceTree = "<group>";
 		};
 		28205E5403F793E0019230AB /* Pods */ = {
@@ -981,6 +998,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				030C68022549EB1400CECCC2 /* PatientTableViewCell.swift in Sources */,
+				03F18B9D25E923B700FE8C50 /* SwiftyMenuDelegate.swift in Sources */,
 				03E7F93F254C8940000EDDD0 /* ClinicsViewController.swift in Sources */,
 				030BE2FB25434A5000AA642C /* TasksTableViewDelegate.swift in Sources */,
 				036626BB258A6054002CCEE2 /* JSONSerializer.swift in Sources */,
@@ -1025,6 +1043,7 @@
 				0368107925473FA80016C1D6 /* ImageCollectionViewCell.swift in Sources */,
 				038D88B32587DE8600447506 /* GalleryViewController.swift in Sources */,
 				03FCCEB92562CDB5008A27B1 /* Image.swift in Sources */,
+				03F18B9925E9236A00FE8C50 /* SwiftyMenu.swift in Sources */,
 				0323B3C72540A83F00EB34CD /* DateExtension.swift in Sources */,
 				035540E625162725003B9638 /* CustmButton.swift in Sources */,
 				03E7F93B254C84D5000EDDD0 /* ClinicTableViewCell.swift in Sources */,
@@ -1044,6 +1063,7 @@
 				03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */,
 				0360D85E2551654500C36AE4 /* AppointmentTableViewCell.swift in Sources */,
 				037EE34B25B5BC400039AB83 /* ProfileImagePickerDelegate.swift in Sources */,
+				03F18B9B25E9239100FE8C50 /* SwiftMenuDisplayable.swift in Sources */,
 				03FBE6702554704800FEFF63 /* SeeFinanceViewController.swift in Sources */,
 				034F5468255DB020005145C6 /* SwiftyMenuExtension.swift in Sources */,
 				0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */,

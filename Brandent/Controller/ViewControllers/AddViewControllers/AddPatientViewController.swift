@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import SwiftyMenu
 
 class AddPatientViewController: FormViewController {
     
@@ -30,8 +29,8 @@ class AddPatientViewController: FormViewController {
     }
     
     func configure() {
-        initializeTextFields()
         setMenuDelegate()
+        initializeTextFields()
         setTitle(title: "اطلاعات بیمار")
         setBackButton()
     }
@@ -49,6 +48,7 @@ class AddPatientViewController: FormViewController {
                 textFields[i].text = ""
                 textFields[i].removeError()
             }
+            clinicMenu.selectOption(index: 0)
             clinicMenu.selectedIndex = nil //TODO: Clinic title
         }
     }

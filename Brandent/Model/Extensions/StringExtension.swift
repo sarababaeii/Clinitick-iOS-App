@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyMenu
 
 extension String: SwiftMenuDisplayable {
     //MARK: Swifty Menu

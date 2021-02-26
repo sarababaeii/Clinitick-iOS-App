@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyMenu
 
 extension SwiftyMenu {
     func showError() {

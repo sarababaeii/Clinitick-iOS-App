@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import SwiftyMenu
+//import SwiftyMenu
 
 class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
     
@@ -66,7 +66,8 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
     func setDateMenuDelegates() {
         dateMenu.delegate = self
         dateMenu.options = dateOptions
-        dateMenu.placeHolderText = date.toPersianMonthString()
+//        dateMenu.placeHolderText = date.toPersianMonthString()
+        dateMenu.selectOption(option: date.toPersianMonthString())
         dateMenu.collapsingAnimationStyle = .spring(level: .low)
     }
     
