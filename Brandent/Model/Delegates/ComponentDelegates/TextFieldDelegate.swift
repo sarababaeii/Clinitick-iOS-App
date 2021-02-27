@@ -38,6 +38,14 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
         return true
     }
     
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        if isForDate {
+            viewController.date = nil
+            return true
+        }
+        return false
+    }
+    
     //MARK: End Editing
     func textFieldDidEndEditing(_ textField: UITextField) {
         if isForDate {

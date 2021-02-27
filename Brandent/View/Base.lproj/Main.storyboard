@@ -1870,7 +1870,7 @@
                                     <outlet property="heightConstraint" destination="ZEf-C8-oDB" id="vYy-WS-rCu"/>
                                 </connections>
                             </view>
-                            <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YGS-T1-nBL" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                            <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YGS-T1-nBL" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="24" y="226" width="327" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1899,7 +1899,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSR-ua-oA0" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
-                                <rect key="frame" x="253" y="296" width="98" height="31"/>
+                                <rect key="frame" x="234" y="296" width="117" height="37"/>
                                 <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GSR-ua-oA0" secondAttribute="height" multiplier="133:42" id="Wvp-qZ-Pf1"/>
@@ -2619,7 +2619,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T0h-D6-Htj" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="T0h-D6-Htj" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="24" y="86" width="327" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2691,7 +2691,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lx7-6W-AEC" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
-                                <rect key="frame" x="253" y="234" width="98" height="31"/>
+                                <rect key="frame" x="234" y="234" width="117" height="37"/>
                                 <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lx7-6W-AEC" secondAttribute="height" multiplier="133:42" id="i2k-7u-8Uu"/>
@@ -2807,7 +2807,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VAC-cf-Whs" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
+                            <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VAC-cf-Whs" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
                                 <rect key="frame" x="24" y="156" width="327" height="54"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.39607843139999999" green="0.50980392159999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2885,6 +2885,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hib-r5-Ex0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Xm9-sK-aty">
+                    <connections>
+                        <action selector="hideKeyboard:" destination="PMS-Wx-B47" id="Ewi-zf-iN9"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1417" y="1046"/>
         </scene>

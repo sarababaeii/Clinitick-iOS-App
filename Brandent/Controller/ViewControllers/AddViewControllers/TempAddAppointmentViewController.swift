@@ -68,6 +68,13 @@ class TempAddAppointmrntViewController: FormViewController {
         }
     }
     
+    //MARK: Keyboard Management
+    @IBAction func hideKeyboard(_ sender: Any) {
+        if let textField = currentTextField {
+            textField.resignFirstResponder()
+        }
+    }
+    
     @IBAction func submit(_ sender: Any) {
         submitForm()
     }

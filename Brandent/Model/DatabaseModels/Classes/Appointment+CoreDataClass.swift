@@ -16,6 +16,8 @@ public class Appointment: Entity {
     static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, disease: String, price: Int?, date: Date?, state: String, isDeleted: Bool, modifiedTime: Date) -> Appointment? { // for sync
         guard let clinic = Clinic.getClinicByID(clinicID, isForSync: true),
          let patient = Patient.getPatientByID(patientID, isForSync: true) else {
+            print(patientID)
+            print(clinicID)
             return nil
         }
         if let appointment = getAppointmentByID(id) {
@@ -47,6 +49,8 @@ public class Appointment: Entity {
         }
         if let visit_time = visit_time {
             self.visit_time = visit_time
+        } else {
+            self.visit_time = Date.defaultDate()
         }
         self.disease = disease
         self.state = state

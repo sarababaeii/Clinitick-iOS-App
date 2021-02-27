@@ -81,6 +81,9 @@ class FormViewController: NavigationBarViewController {
         guard let textField = currentTextField else {
             return
         }
+        if textField.tag == dateTextFieldIndex {
+            donePressed()
+        }
         textField.delegate?.textFieldDidEndEditing?(textField)
         currentTextField = nil
     }

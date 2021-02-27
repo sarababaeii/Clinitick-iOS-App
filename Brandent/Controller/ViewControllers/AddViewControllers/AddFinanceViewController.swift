@@ -91,7 +91,7 @@ class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
         }
     }
     
-    //MARK: User Flow
+    //MARK: Keyboard Management
     @IBAction func hideKeyboard(_ sender: Any) {
         if let textField = currentTextField {
             textField.resignFirstResponder()
