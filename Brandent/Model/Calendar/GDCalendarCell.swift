@@ -74,7 +74,7 @@ class GDCalendarItemCell: UICollectionViewCell{
     }
     
     public func setupCell(value: String, itemColor: UIColor, itemsFont: UIFont = UIFont(name: "Vazir-Bold", size: 14)!){
-        layer.cornerRadius = frame.width / 2
+        layer.cornerRadius = frame.width / 3
         generateItemLabel(with: value, color: itemColor, font: itemsFont)
     }
     
@@ -96,7 +96,7 @@ class GDCalendarItemCell: UICollectionViewCell{
     
     private func setGradient(lightGradientColor: UIColor, darkGradientColor: UIColor) {
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.bounds
+        gradientLayer.frame = CGRect(x: self.bounds.width / 6, y: self.bounds.height / 6, width: self.bounds.width / 1.5, height: self.bounds.height / 1.5)
         gradientLayer.cornerRadius = self.layer.cornerRadius
         gradientLayer.colors = [lightGradientColor.cgColor, darkGradientColor.cgColor]
         

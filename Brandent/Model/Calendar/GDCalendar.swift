@@ -154,9 +154,10 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
     }
     
     fileprivate func setCollectionViewConstraints(){
-        monthView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -10.0).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: leftAnchor, constant: 35.0).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: -35.0).isActive = true
+        monthView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -8.0).isActive = true
+        let padding = ((frame.width - 48) / 7) / 3.5
+        collectionView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24 - padding).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24 + padding).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 30.0).isActive = true
     }
     
@@ -340,7 +341,7 @@ extension GDCalendar: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (frame.width - 70) / 7, height: (frame.width - 70) / 7)
+        return CGSize(width: (frame.width - 48) / 7, height: (frame.width - 48) / 7)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
