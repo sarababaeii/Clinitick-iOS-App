@@ -59,13 +59,26 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
         let status = PHPhotoLibrary.authorizationStatus()
         let noPermissionMessage = AlertMessage.photos.noPermission
         switch status {
-        case .notDetermined, .authorized:
+        case .authorized:
             self.presentLibrary(sourceType: sourceType)
+        case .notDetermined:
+            self.getLibraryPermission(sourceType: sourceType, noPermissionMessage: noPermissionMessage)
         case .denied, .restricted:
             self.troubleAlert(message: noPermissionMessage)
         default:
             print("Anything")
         }
+    }
+    
+    func getLibraryPermission(sourceType: UIImagePickerController.SourceType, noPermissionMessage: String) {
+        PHPhotoLibrary.requestAuthorization( { (newStatus) in
+            if newStatus == .authorized {
+                self.presentLibrary(sourceType: sourceType)
+            }
+            else {
+                self.troubleAlert(message: noPermissionMessage)
+            }
+        })
     }
     
     func presentLibrary(sourceType: UIImagePickerController.SourceType) {
@@ -83,14 +96,13 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
         let noPermissionMessage = AlertMessage.camera.noPermission
         switch status {
         case .notDetermined:
-            viewController.getCameraPermission(delegate: self, sourceType: sourceType, noPermissionMessage: noPermissionMessage)
-//            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (granted) in
-//                if granted {
-//                    self.presentCamera(sourceType: sourceType)
-//                } else {
-//                    self.troubleAlert(message: noPermissionMessage)
-//                }
-//            })
+            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (granted) in
+                if granted {
+                    self.presentCamera(sourceType: sourceType)
+                } else {
+                    self.troubleAlert(message: noPermissionMessage)
+                }
+            })
         case .authorized:
             self.presentCamera(sourceType: sourceType)
         case .denied, .restricted:
@@ -106,12 +118,13 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
     
     //MARK: Image Picker
     private func presentImagePicker(sourceType: UIImagePickerController.SourceType) {
-        viewController.presentImagePicker(delegate: self, sourceType: sourceType)
-//        let imagePicker = UIImagePickerController()
-//        imagePicker.delegate = self
-//        imagePicker.sourceType = sourceType
-//        imagePicker.allowsEditing = true
-//        viewController.present(imagePicker, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = sourceType
+            imagePicker.allowsEditing = true
+            self.viewController.present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -132,5 +145,3 @@ class ImagePickerDelegate: NSObject, UINavigationControllerDelegate, UIImagePick
     func processedPick() {
     }
 }
-
-//TODO: Camera permission

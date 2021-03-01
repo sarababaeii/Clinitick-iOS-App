@@ -16,23 +16,41 @@ class ProfileImagePickerDelegate: ImagePickerDelegate {
     var selectedAssets = [PHAsset]()
     
     //MARK: Initialization
-    init(from viewController: ProfileViewController) {
+    override init(from viewController: UIViewController) {
         super.init(from: viewController)
     }
        
     //MARK: Image Proccessing
     override func processedPick() {
-        guard let viewController = viewController as? ProfileViewController, images.count > 0 else {
+        guard images.count > 0 else {
             return
         }
+        setForDentist()
+        showImage()
+        deinitialize()
+    }
+    
+    func setForDentist() {
         RestAPIManagr.sharedInstance.setProfilePicture(photo: images)
-        
-        viewController.dentistImageView.image = images[0].img
         if let dentist = Info.sharedInstance.dentist {
             dentist.setProfilePicture(photo: images[0], fromAPI: false)
 //            DataController.sharedInstance.setDentistPhoto(dentist: dentist, photo: images[0])
         }
+    }
+    
+    func showImage() {
+        if let viewController = viewController as? ProfileViewController {
+            viewController.dentistImageView.image = images[0].img
+            viewController.addImageButton.setImage(nil, for: .normal)
+        }
         
+        if let viewController = viewController as? InformationViewController {
+            viewController.dentistImageView.image = images[0].img
+            viewController.addImageButton.setImage(nil, for: .normal)
+        }
+    }
+    
+    func deinitialize() {
         selectedAssets = [PHAsset]()
         images = [Image]()
     }

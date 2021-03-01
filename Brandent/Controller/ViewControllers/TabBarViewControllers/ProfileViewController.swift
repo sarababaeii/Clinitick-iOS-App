@@ -12,6 +12,7 @@ import UIKit
 class ProfileViewController: TabBarViewController {
     
     @IBOutlet weak var dentistImageView: CustomImageView!
+    @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var dentistNameLabel: UILabel!
     @IBOutlet weak var specialityLabel: UILabel!
     
@@ -29,7 +30,9 @@ class ProfileViewController: TabBarViewController {
     }
     
     func setDelegates() {
-        imagePickerDelegate = ProfileImagePickerDelegate(from: self)
+        DispatchQueue.main.async {
+            self.imagePickerDelegate = ProfileImagePickerDelegate(from: self)
+        }
     }
     
     func setDentistInformation() {
@@ -38,6 +41,9 @@ class ProfileViewController: TabBarViewController {
         }
         if let image = dentist.photo {
             dentistImageView.image = UIImage(data: image)
+            addImageButton.setImage(nil, for: .normal)
+        } else {
+            addImageButton.isHidden = false
         }
         dentistNameLabel.text = dentist.first_name + " " + dentist.last_name
         specialityLabel.text = dentist.speciality

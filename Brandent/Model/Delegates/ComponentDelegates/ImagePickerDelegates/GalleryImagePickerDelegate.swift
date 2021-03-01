@@ -20,6 +20,10 @@ class GalleryImagePickerDelegate: ImagePickerDelegate {
         super.init(from: viewController)
     }
     
+    override func getLibraryPermission(sourceType: UIImagePickerController.SourceType, noPermissionMessage: String) {
+        presentLibrary(sourceType: sourceType)
+    }
+    
     override func presentLibrary(sourceType: UIImagePickerController.SourceType){
         let vc = BSImagePickerViewController()
         viewController.bs_presentImagePickerController(vc, animated: true, select: { (assest: PHAsset) -> Void in

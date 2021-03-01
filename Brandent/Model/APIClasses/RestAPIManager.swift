@@ -20,20 +20,47 @@ class RestAPIManagr {
         let session = URLSession(configuration: .default)
         var result: RestAPIResult?
         let task = session.dataTask(with: req) { (data, response, error) in
+            print("2")
             if let data = data {
+                print("3")
                 let responseString = String(data: data, encoding: .utf8)
+                print("4")
                 print("My response --> \(String(describing: responseString))")
             }
+            print("5")
             result = RestAPIResult(data: data, response: response as? HTTPURLResponse)
+            print("6")
+            
         }
+//        print("YUHUU")
+//        self.action(result: result, type: type)
+//        return result!
         task.resume()
         while true {
+//            print("1")
             if let result = result {
                 return result
             }
         }
     }
     
+    func action(result: RestAPIResult?, type: APIRequestType) {
+        print("HIIIIII")
+        if let result = result {
+            print(result.response?.statusCode)
+//            switch type {
+//            case .sync:
+//                <#code#>
+//            case .addImage:
+//                result.getImages()
+//            default:
+//                <#code#>
+//            }
+        } else {
+            print(":(((")
+        }
+        
+    }
     //MARK: Creating A Request
     private func createRequest(url: URL, params: [String: Any], contentType: ContentType) -> URLRequest {
         var request = URLRequest(url: url)

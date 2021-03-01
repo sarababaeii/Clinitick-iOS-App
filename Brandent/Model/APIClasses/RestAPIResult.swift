@@ -127,10 +127,10 @@ class RestAPIResult {
         }
         print("LAST UPDATED: \(date)")
         let keys: [APIKey] = [.clinic, .patient, .finance, .appointment, .task]
-        for key in keys {
-            if let array = getArray(data: result, key: key.sync!) {
-                if !saveArray(array: array, key: key, at: date) {
-                    print("could not save \(key.rawValue)")
+        for i in 0 ..< keys.count {
+            if let array = getArray(data: result, key: keys[i].sync!) {
+                if !saveArray(array: array, key: keys[i], at: date) {
+                    print("could not save \(keys[i].rawValue)")
                     return
                 }
             }

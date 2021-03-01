@@ -18,24 +18,6 @@ extension UIViewController {
 //        navigationController?.show(controller, sender: nil)
     }
     
-    func presentImagePicker(delegate: ImagePickerDelegate, sourceType: UIImagePickerController.SourceType) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = delegate
-        imagePicker.sourceType = sourceType
-        imagePicker.allowsEditing = true
-        self.present(imagePicker, animated: true, completion: nil)
-    }
-    
-    func getCameraPermission(delegate: ImagePickerDelegate, sourceType: UIImagePickerController.SourceType, noPermissionMessage: String) {
-        AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (granted) in
-            if granted {
-                delegate.presentCamera(sourceType: sourceType)
-            } else {
-                delegate.troubleAlert(message: noPermissionMessage)
-            }
-        })
-    }
-    
     //MARK: Toast
     func showToast(message : String) {
         let toastLabel = UILabel(frame: CGRect(x: (self.view.frame.size.width - 320)/2, y: self.view.frame.size.height-130, width: 310, height: 41)) //TODO: set size

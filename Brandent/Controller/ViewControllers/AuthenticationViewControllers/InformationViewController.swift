@@ -12,7 +12,7 @@ import UIKit
 class InformationViewController: FormViewController {
     
     @IBOutlet weak var dentistImageView: CustomImageView!
-    @IBOutlet weak var profileImageButton: UIButton!
+    @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var firstNameTextField: CustomTextField!
     @IBOutlet weak var lastNameTextField: CustomTextField!
     @IBOutlet weak var specialityTextField: CustomTextField!
@@ -20,6 +20,7 @@ class InformationViewController: FormViewController {
 //    @IBOutlet weak var phoneNumberTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
     
+    var imagePickerDelegate: ProfileImagePickerDelegate?
     var textFieldDelegates = [TextFieldDelegate]()
     
     var phoneNumber = ""
@@ -33,6 +34,7 @@ class InformationViewController: FormViewController {
     func configure() {
         initializeTextFields()
         setPhoneNumber()
+        setDelegates()
     }
     
     func initializeTextFields() {
@@ -53,6 +55,12 @@ class InformationViewController: FormViewController {
         }
     }
     
+    func setDelegates() {
+        DispatchQueue.main.async {
+            self.imagePickerDelegate = ProfileImagePickerDelegate(from: self)
+        }
+    }
+    
     //MARK: UI Setting
     func setPhoneNumber() {
 //        phoneNumberTextField.text = phoneNumber
@@ -67,6 +75,7 @@ class InformationViewController: FormViewController {
     }
         
     @IBAction func setProfileImage(_ sender: Any) {
+        imagePickerDelegate?.displayImagePickingOptions()
     }
     
     //MARK: Submission
