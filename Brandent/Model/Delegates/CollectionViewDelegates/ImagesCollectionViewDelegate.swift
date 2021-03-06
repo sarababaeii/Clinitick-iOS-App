@@ -88,7 +88,6 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
     }
     
     func deleteImage(_ image: Image) {
-//        RestAPIManagr.sharedInstance.deleteImage(appointmentID: viewController.appointmentID, image: image)
         RestAPIManagr.sharedInstance.deleteImage(image: image)
         
         if let indexPath = findIndexOfImage(image) {
@@ -111,13 +110,11 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
     }
     
     func showImage(fileName: String) {
-//        guard let url = URL(string: "\(API.image)\(fileName)"), let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {
-//            return
-//        }
-//        print("url: \(url)")
         let image = Image(name: fileName, urlString: API.imageFiles)
         let indexPath = IndexPath(item: images.count, section: 0)
-        insertImage(image, at: indexPath)
+        DispatchQueue.main.async {
+            self.insertImage(image, at: indexPath)
+        }
     }
     
     //MARK: API Calling

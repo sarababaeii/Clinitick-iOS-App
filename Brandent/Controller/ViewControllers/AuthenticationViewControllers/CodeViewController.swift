@@ -54,7 +54,7 @@ class CodeViewController: UIViewController {
             } else {
                 textField.resignFirstResponder()
             }
-            sendCode() //TODO: showing text
+            sendCode()
         }
     }
     
@@ -92,10 +92,11 @@ class CodeViewController: UIViewController {
     
     //MARK: Resending Code
     @IBAction func resendCode(_ sender: Any) {
-        let statusCode = RestAPIManagr.sharedInstance.getOneTimeCode(phone: phoneNumber)
+        RestAPIManagr.sharedInstance.getOneTimeCode(phone: phoneNumber, {(statusCode) in
+            self.checkResponse(statusCode: statusCode)
+        })
         setTimer()
         changeResendCodeVisiblity()
-        checkResponse(statusCode: statusCode)
     }
     
     func changeResendCodeVisiblity() {
@@ -129,11 +130,13 @@ class CodeViewController: UIViewController {
             return
         }
         currentTextField?.resignFirstResponder()
-        if RestAPIManagr.sharedInstance.sendOneTimeCode(phone: phoneNumber, code: code) {
-            nextPage()
-        } else {
-            self.showToast(message: "کد وارد شده اشتباه است.")
-        }
+        RestAPIManagr.sharedInstance.sendOneTimeCode(phone: phoneNumber, code: code, {(isValid) in
+            if isValid {
+                self.nextPage()
+            } else {
+                self.showToast(message: "کد وارد شده اشتباه است.")
+            }
+        })
     }
     
     func nextPage() {

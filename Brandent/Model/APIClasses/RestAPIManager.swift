@@ -15,52 +15,25 @@ class RestAPIManagr {
     let jsonSerializer = JSONSerializer()
 
     //MARK: Sending A Request
-    private func sendRequest(request: URLRequest, type: APIRequestType) -> RestAPIResult {
+    private func sendRequest(request: URLRequest, type: APIRequestType, _ completion: @escaping (RestAPIResult) -> ()) {
         let req = setTokenInHeader(request: request, type: type)
         let session = URLSession(configuration: .default)
-        var result: RestAPIResult?
         let task = session.dataTask(with: req) { (data, response, error) in
-            print("2")
             if let data = data {
-                print("3")
                 let responseString = String(data: data, encoding: .utf8)
-                print("4")
                 print("My response --> \(String(describing: responseString))")
             }
-            print("5")
-            result = RestAPIResult(data: data, response: response as? HTTPURLResponse)
-            print("6")
-            
+            let result = RestAPIResult(data: data, response: response as? HTTPURLResponse)
+            completion(result)
         }
-//        print("YUHUU")
-//        self.action(result: result, type: type)
-//        return result!
         task.resume()
-        while true {
-//            print("1")
-            if let result = result {
-                return result
-            }
-        }
+//        while true {
+//            if let result = result {
+//                return result
+//            }
+//        }
     }
     
-    func action(result: RestAPIResult?, type: APIRequestType) {
-        print("HIIIIII")
-        if let result = result {
-            print(result.response?.statusCode)
-//            switch type {
-//            case .sync:
-//                <#code#>
-//            case .addImage:
-//                result.getImages()
-//            default:
-//                <#code#>
-//            }
-        } else {
-            print(":(((")
-        }
-        
-    }
     //MARK: Creating A Request
     private func createRequest(url: URL, params: [String: Any], contentType: ContentType) -> URLRequest {
         var request = URLRequest(url: url)
@@ -138,59 +111,80 @@ class RestAPIManagr {
     }
     
     //MARK: Authentication
-    func login(phone: String, password: String) -> Int {
-        let result = sendRequest(request: createLoginRequest(phone: phone, password: password), type: .login)
-        return result.authenticate(type: .login, clinicTitle: nil)
+    func login(phone: String, password: String,  _ completion: @escaping (Int) -> ()) {
+        sendRequest(request: createLoginRequest(phone: phone, password: password), type: .login, {(result) in
+            let code = result.authenticate(type: .login, clinicTitle: nil)
+            DispatchQueue.main.async {
+                completion(code)
+            }
+        })
     }
     
-    func signUp(dentist: DummyDentist) -> Int {
-        let result = sendRequest(request: createSignUpRequest(dentist: dentist), type: .signUp)
-        return result.authenticate(type: .signUp, clinicTitle: dentist.clinicTitle)
+    func signUp(dentist: DummyDentist,  _ completion: @escaping (Int) -> ()) {
+        sendRequest(request: createSignUpRequest(dentist: dentist), type: .signUp, {(result) in
+            let code = result.authenticate(type: .signUp, clinicTitle: dentist.clinicTitle)
+            DispatchQueue.main.async {
+                completion(code)
+            }
+        })
     }
     
-    func getOneTimeCode(phone: String) -> Int {
-        let result = sendRequest(request: createSendPhoneRequest(phone: phone), type: .sendPhone)
-        return result.response?.statusCode ?? 500
+    func getOneTimeCode(phone: String,  _ completion: @escaping (Int) -> ()) {
+        sendRequest(request: createSendPhoneRequest(phone: phone), type: .sendPhone, {(result) in
+            let code = result.response?.statusCode ?? 500
+            DispatchQueue.main.async {
+                completion(code)
+            }
+        })
     }
     
-    func sendOneTimeCode(phone: String, code: String) -> Bool {
-        let result = sendRequest(request: createSendOneTimeCodeRequest(phone: phone, code: code), type: .sendCode)
-        return result.isCodeValid()
+    func sendOneTimeCode(phone: String, code: String,  _ completion: @escaping (Bool) -> ()) {
+        sendRequest(request: createSendOneTimeCodeRequest(phone: phone, code: code), type: .sendCode, {(result) in
+            let isCodeValid = result.isCodeValid()
+            DispatchQueue.main.async {
+                completion(isCodeValid)
+            }
+        })
     }
     
     func setProfilePicture(photo: [Image]) {
         let url = API.profilePictureURL
-        let _ = sendRequest(request: createAddImagesRequest(url: url, key: .dentist, images: photo), type: .setProfile)
+        sendRequest(request: createAddImagesRequest(url: url, key: .dentist, images: photo), type: .setProfile, {(result) in})
     }
     
-    func getProfilePicture() -> Image? {
+    func getProfilePicture(_ completion: @escaping (Image?) -> ()) {
         let url = API.profilePictureURL
-        let result = sendRequest(request: createGetImagesRequest(url: url), type: .setProfile)
-        return result.processProfilePicture()
+        sendRequest(request: createGetImagesRequest(url: url), type: .setProfile, {(result) in
+            let image = result.processProfilePicture()
+            completion(image)
+        })
     }
     
     //MARK: Functions
     func addImage(patientID: UUID, images: [Image]) {
         let url = URL(string: "\(API.images)/\(patientID)")!
-        let _ = sendRequest(request: createAddImagesRequest(url: url, key: .patient, images: images), type: .addImage)
+        sendRequest(request: createAddImagesRequest(url: url, key: .patient, images: images), type: .addImage, {(result) in})
     }
     
     func deleteImage(image: Image) {
         if let request = createDeleteImageRequest(image: image) {
-            let _ = sendRequest(request:request, type: .addImage )
+            sendRequest(request:request, type: .addImage, {(result) in})
         }
     }
     
-    func getImages(patientID: UUID) -> NSArray? {
+    func getImages(patientID: UUID, _ completion: @escaping (NSArray?) -> ()) {
         let url = URL(string: "\(API.images)/\(patientID)")!
-        let result = sendRequest(request: createGetImagesRequest(url: url), type: .addImage)
-        return result.getImages()
+        sendRequest(request: createGetImagesRequest(url: url), type: .addImage, {(result) in
+            let images = result.getImages()
+            completion(images)
+        })
     }
     
     //MARK: Sync
     func sync(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, appointments: [Appointment]?) {
-        let result = sendRequest(request: createSyncRequest(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments), type: .sync)
-        result.saveNewData()
-        result.processOldData(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments)
+        sendRequest(request: createSyncRequest(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments), type: .sync, {(result) in
+            result.saveNewData()
+            result.processOldData(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments)
+        })
     }
 }

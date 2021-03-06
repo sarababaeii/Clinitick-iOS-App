@@ -24,10 +24,6 @@ class PatientsViewController: UIViewController {
         configure()
     }
     
-    override func viewWillLayoutSubviews() {
-//        configure()
-    }
-    
     func configure() {
         setDelegates()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "لیست بیماران", style: UIBarButtonItem.Style.plain, target: self, action: .none)

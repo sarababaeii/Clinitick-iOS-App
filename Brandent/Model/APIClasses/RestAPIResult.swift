@@ -70,7 +70,7 @@ class RestAPIResult {
         
         Info.sharedInstance.dentistID = id
         saveClinic(clinicTitle: clinicTitle)
-        saveProfilePicture(dictionary: user)
+        saveProfilePicture(dictionary: user) //TODO: should go otherwhere
         Info.sharedInstance.sync()
     }
     

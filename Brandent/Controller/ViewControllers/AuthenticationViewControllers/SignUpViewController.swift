@@ -62,8 +62,9 @@ class SignUpViewController: FormViewController {
             return
         }
         
-        let statusCode = RestAPIManagr.sharedInstance.getOneTimeCode(phone: data[0] as! String)
-        checkResponse(statusCode: statusCode)
+        RestAPIManagr.sharedInstance.getOneTimeCode(phone: data[0] as! String, {(statusCode) in
+            self.checkResponse(statusCode: statusCode)
+        })
     }
     
     override func mustComplete() -> Any? {

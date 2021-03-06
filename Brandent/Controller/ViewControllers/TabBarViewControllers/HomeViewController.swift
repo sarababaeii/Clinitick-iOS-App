@@ -37,7 +37,7 @@ class HomeViewController: TabBarViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        Info.sharedInstance.sync()
+        Info.sharedInstance.sync()
         print("Dentist: \(String(describing: Info.sharedInstance.dentist))")
     }
     

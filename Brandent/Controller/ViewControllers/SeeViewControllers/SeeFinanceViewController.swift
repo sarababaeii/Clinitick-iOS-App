@@ -66,7 +66,6 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
     func setDateMenuDelegates() {
         dateMenu.delegate = self
         dateMenu.options = dateOptions
-//        dateMenu.placeHolderText = date.toPersianMonthString()
         dateMenu.selectOption(option: date.toPersianMonthString())
         dateMenu.collapsingAnimationStyle = .spring(level: .low)
     }

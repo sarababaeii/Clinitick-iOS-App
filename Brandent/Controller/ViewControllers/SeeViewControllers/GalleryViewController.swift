@@ -27,7 +27,7 @@ class GalleryViewController: NavigationBarViewController {
     func configure() {
         Info.sharedInstance.isForReturn = true
         guard let _ = patient else {
-            print("ERROOOOOOOOOOOOOR")
+            print("ERROR in getting patient")
             return
         }
         setTitle(title: "تصاویر")
@@ -44,15 +44,17 @@ class GalleryViewController: NavigationBarViewController {
     }
     
     func getImages() {
-        guard let images = RestAPIManagr.sharedInstance.getImages(patientID: patient!.id) else {
-            return
-        }
-        for item in images {
-            if let dict = item as? NSDictionary, let imageName = dict["image"] as? String {
-                print("img: \(imageName)")
-                imageCollectionViewDelegate?.showImage(fileName: imageName)
+        RestAPIManagr.sharedInstance.getImages(patientID: patient!.id, {(images) in
+            guard let images = images else {
+                return
             }
-        }
+            for item in images {
+                if let dict = item as? NSDictionary, let imageName = dict["image"] as? String {
+                    print("img: \(imageName)")
+                    self.imageCollectionViewDelegate?.showImage(fileName: imageName)
+                }
+            }
+        })
     }
     
     @IBAction func addImage(_ sender: Any) {

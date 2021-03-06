@@ -17,7 +17,6 @@ class InformationViewController: FormViewController {
     @IBOutlet weak var lastNameTextField: CustomTextField!
     @IBOutlet weak var specialityTextField: CustomTextField!
     @IBOutlet weak var clinicTitleTextField: CustomTextField!
-//    @IBOutlet weak var phoneNumberTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
     
     var imagePickerDelegate: ProfileImagePickerDelegate?
@@ -63,7 +62,6 @@ class InformationViewController: FormViewController {
     
     //MARK: UI Setting
     func setPhoneNumber() {
-//        phoneNumberTextField.text = phoneNumber
         data[5] = phoneNumber
     }
     
@@ -88,8 +86,9 @@ class InformationViewController: FormViewController {
         
         let dentist = DummyDentist(first_name: data[0] as! String, last_name: data[1] as! String, phone: data[5] as! String, password: data[4] as! String, speciality: data[2] as! String, clinicTitle: data[3] as! String)
         print("Dummy Dentist is: \(dentist)")
-        let statusCode = RestAPIManagr.sharedInstance.signUp(dentist: dentist)
-        checkResponse(statusCode: statusCode)
+         RestAPIManagr.sharedInstance.signUp(dentist: dentist, {(statusCode) in
+            self.checkResponse(statusCode: statusCode)
+         })
     }
     
     override func mustComplete() -> Any? {

@@ -92,9 +92,9 @@ class LoginViewController: FormViewController {
             return
         }
         
-        let statusCode = RestAPIManagr.sharedInstance.login(phone: data[0] as! String, password: data[1] as! String)
-//        let dentist = Dentist.getDentist(firstName: dentistData[0], lastName: dentistData[1], speciality: dentistData[2], phone: dentistData[3], password: dentistData[4])
-        checkResponse(statusCode: statusCode)
+        RestAPIManagr.sharedInstance.login(phone: data[0] as! String, password: data[1] as! String, {(statusCode) in
+            self.checkResponse(statusCode: statusCode)
+        })
     }
     
     override func mustComplete() -> Any? {
