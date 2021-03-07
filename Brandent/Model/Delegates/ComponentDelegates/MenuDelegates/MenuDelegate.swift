@@ -18,29 +18,13 @@ class MenuDelegate: NSObject, SwiftyMenuDelegate {
         self.menuDataIndex = menuDataIndex
     }
     
+    func prepareMenu(menu: SwiftyMenu) { //will be overriden in subclasses
+    }
+    
     func setMenuDelegates(menu: SwiftyMenu, options: [String]) {
-//        menu.isHidden = false
         menu.delegate = self
         menu.options = options
         menu.collapsingAnimationStyle = .spring(level: .low)
-    }
-    
-    //MARK: Clinic Functions
-    func prepareClinicMenu(menu: SwiftyMenu) {
-        let options = getClinics()
-        if options.count > 0 {
-            setMenuDelegates(menu: menu, options: options)
-        }
-    }
-        
-    private func getClinics() -> [String]{
-        var options = [String]()
-        if let clinics = DataController.sharedInstance.fetchAllClinics() as? [Clinic] {
-            for clinic in clinics {
-                options.append(clinic.title)
-            }
-        }
-        return options
     }
     
     //MARK: Delegate Function

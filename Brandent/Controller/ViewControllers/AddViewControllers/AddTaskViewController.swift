@@ -16,7 +16,7 @@ class AddTaskViewController: FormViewController {
     @IBOutlet weak var clinicMenu: SwiftyMenu!
     
     var textFieldDelegates = [TextFieldDelegate]()
-    var menuDelegate: MenuDelegate?
+    var menuDelegate: ClinicMenuDelegate?
     
     var task: Task?
     
@@ -60,8 +60,8 @@ class AddTaskViewController: FormViewController {
     }
     
     func setMenuDelegate() {
-        menuDelegate = MenuDelegate(viewController: self, menuDataIndex: 1)
-        menuDelegate!.prepareClinicMenu(menu: clinicMenu)
+        menuDelegate = ClinicMenuDelegate(viewController: self, menuDataIndex: 1)
+        menuDelegate!.prepareMenu(menu: clinicMenu)
     }
     
     //MARK: Keyboard Management

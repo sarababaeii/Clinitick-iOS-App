@@ -35,8 +35,10 @@ class DataController {
     
     //MARK: Save
     func saveContext(){
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.saveContext()
+        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.saveContext()
+        }
     }
     
     //MARK: Predicates

@@ -17,7 +17,8 @@ class AddPatientViewController: FormViewController {
     @IBOutlet weak var alergyMenu: SwiftyMenu!
     
     var textFieldDelegates = [TextFieldDelegate]()
-    var menuDelegate: MenuDelegate?
+    var clinicMenuDelegate: ClinicMenuDelegate?
+    var alergyMenuDelegate: AlergyMenuDelegate?
     
     var patient: Patient?
     
@@ -63,8 +64,18 @@ class AddPatientViewController: FormViewController {
     }
     
     func setMenuDelegate() {
-        menuDelegate = MenuDelegate(viewController: self, menuDataIndex: 2)
-        menuDelegate!.prepareClinicMenu(menu: clinicMenu)
+        setClinicMenuDelegate()
+        setAlergyMenuDelegate()
+    }
+    
+    func setClinicMenuDelegate() {
+        clinicMenuDelegate = ClinicMenuDelegate(viewController: self, menuDataIndex: 2)
+        clinicMenuDelegate!.prepareMenu(menu: clinicMenu)
+    }
+    
+    func setAlergyMenuDelegate() {
+        alergyMenuDelegate = AlergyMenuDelegate(viewController: self, menuDataIndex: 3)
+        alergyMenuDelegate!.prepareMenu(menu: alergyMenu)
     }
     
     func setBackButton() {

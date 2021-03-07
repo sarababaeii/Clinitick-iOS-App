@@ -52,6 +52,8 @@
 		0360D8622551665500C36AE4 /* AppointmentsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0360D8612551665500C36AE4 /* AppointmentsTableViewDelegate.swift */; };
 		0361A868253A1579001840EC /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361A867253A1579001840EC /* CustomTextView.swift */; };
 		0361C4F2258F7D6B00BAF238 /* AppointmentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361C4F1258F7D6B00BAF238 /* AppointmentState.swift */; };
+		036208D925F54C99003414E5 /* ClinicMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036208D825F54C99003414E5 /* ClinicMenuDelegate.swift */; };
+		036208DB25F54CAF003414E5 /* AlergyMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036208DA25F54CAF003414E5 /* AlergyMenuDelegate.swift */; };
 		0363E686253235980095AF7C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363E685253235980095AF7C /* Color.swift */; };
 		0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */; };
 		036626BB258A6054002CCEE2 /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036626BA258A6054002CCEE2 /* JSONSerializer.swift */; };
@@ -198,6 +200,8 @@
 		0360D8612551665500C36AE4 /* AppointmentsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsTableViewDelegate.swift; sourceTree = "<group>"; };
 		0361A867253A1579001840EC /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		0361C4F1258F7D6B00BAF238 /* AppointmentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentState.swift; sourceTree = "<group>"; };
+		036208D825F54C99003414E5 /* ClinicMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicMenuDelegate.swift; sourceTree = "<group>"; };
+		036208DA25F54CAF003414E5 /* AlergyMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlergyMenuDelegate.swift; sourceTree = "<group>"; };
 		0363E685253235980095AF7C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		036626BA258A6054002CCEE2 /* JSONSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerializer.swift; sourceTree = "<group>"; };
@@ -406,6 +410,16 @@
 				03425327258128A900DA6F29 /* InformationViewController.swift */,
 			);
 			path = AuthenticationViewControllers;
+			sourceTree = "<group>";
+		};
+		036208D725F54C13003414E5 /* MenuDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				037AECC2258D241B0097AF42 /* MenuDelegate.swift */,
+				036208D825F54C99003414E5 /* ClinicMenuDelegate.swift */,
+				036208DA25F54CAF003414E5 /* AlergyMenuDelegate.swift */,
+			);
+			path = MenuDelegates;
 			sourceTree = "<group>";
 		};
 		036626B9258A5785002CCEE2 /* Resources */ = {
@@ -687,12 +701,12 @@
 		03EE136A25542BD500363EA0 /* ComponentDelegates */ = {
 			isa = PBXGroup;
 			children = (
+				036208D725F54C13003414E5 /* MenuDelegates */,
 				037EE34C25B5C30C0039AB83 /* ImagePickerDelegates */,
 				03ADFDF3253B4D8B00A6827B /* TextViewDelegate.swift */,
 				03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */,
 				0342532925815C2700DA6F29 /* TimerDelegate.swift */,
 				03101686258A847A0034717F /* TextFieldDelegate.swift */,
-				037AECC2258D241B0097AF42 /* MenuDelegate.swift */,
 			);
 			path = ComponentDelegates;
 			sourceTree = "<group>";
@@ -1068,6 +1082,7 @@
 				034F5468255DB020005145C6 /* SwiftyMenuExtension.swift in Sources */,
 				0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */,
 				03BC1F8C25251658009749C0 /* Patient+CoreDataClass.swift in Sources */,
+				036208DB25F54CAF003414E5 /* AlergyMenuDelegate.swift in Sources */,
 				0300B3FF25B0B59B00D8CAD5 /* TabBarViewController.swift in Sources */,
 				03EE13742554480E00363EA0 /* UIViewExtension.swift in Sources */,
 				03E7F93D254C88DC000EDDD0 /* AddClinicViewController.swift in Sources */,
@@ -1098,6 +1113,7 @@
 				03FCCEB72562C7F6008A27B1 /* NSMutableData.swift in Sources */,
 				03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */,
 				03749EBD250E76D6003CBE49 /* Brandent.xcdatamodeld in Sources */,
+				036208D925F54C99003414E5 /* ClinicMenuDelegate.swift in Sources */,
 				03F4A5C92551D01A00D7E1C6 /* FinanceTableViewCell.swift in Sources */,
 				037EE34925B5A91F0039AB83 /* GalleryImagePickerDelegate.swift in Sources */,
 				0360D8622551665500C36AE4 /* AppointmentsTableViewDelegate.swift in Sources */,

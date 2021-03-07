@@ -40,3 +40,4 @@ struct API {
 }
 
 //TODO: delete add APIs
+//TODO: /uploads/... —> /refined/...

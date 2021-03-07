@@ -12,6 +12,8 @@ import UIKit
 class Info {
     static let sharedInstance = Info()
     
+    let problems = ["دیابت", "بیماری کلیوی", "سابقه‌ی تب روماتیسمی", "بیماری قلبی عروقی", "آسم", "صرع", "شیمی‌درمانی/پرتودرمانی", "فشار خون", "هپاتیت", "اعتیاد", "بیماری انعقادی", "آلرژی (حساسیت)", "ایدز", "بارداری", "سرطان"]
+    
     let defaults = UserDefaults.standard
     var lastViewControllerIndex: Int?
     var isForReturn = false
@@ -58,10 +60,6 @@ class Info {
         let patients = DataController.sharedInstance.fetchPatientsForSync(lastUpdated: lastUpdate) as? [Patient]
         let finances = DataController.sharedInstance.fetchFinancesForSync(lastUpdated: lastUpdate) as? [Finance]
         let tasks = DataController.sharedInstance.fetchTasksForSync(lastUpdated: lastUpdate) as? [Task]
-        print("&&&")
-        print(lastUpdate)
-        print(tasks)
-        print("&&&")
         let appointments = DataController.sharedInstance.fetchAppointmentsForSync(lastUpdated: lastUpdate) as? [Appointment]
         RestAPIManagr.sharedInstance.sync(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments)
     }
