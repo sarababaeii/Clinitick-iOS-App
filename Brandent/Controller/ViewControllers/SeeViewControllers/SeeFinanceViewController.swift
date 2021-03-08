@@ -75,6 +75,10 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
         financeTableViewDelegate?.date = date
     }
     
+    func didUnselectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
+//        <#code#>
+    }
+    
     func setDate(monthNumber: Int) {
         let dateString = "1399-\(monthNumber + 1)-01"
         date = Date.getPersianDate(from: dateString)!

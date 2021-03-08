@@ -24,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let _ = Info.sharedInstance.token {
             window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "MainNavigationController")
             Info.sharedInstance.setDentist() //Setting Dentist
+            Info.sharedInstance.sync()
         } else {
             window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "AuthenticationNavigationController")
         }

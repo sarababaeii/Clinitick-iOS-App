@@ -14,5 +14,6 @@ extension SwiftyMenu {
             self.placeHolderText = "*\(self.placeHolderText!)"
             self.placeHolderColor = Color.red.componentColor
         }
+        expandMenu()
     }
 }

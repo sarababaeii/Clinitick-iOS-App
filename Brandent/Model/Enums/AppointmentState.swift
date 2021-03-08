@@ -13,3 +13,5 @@ enum TaskState: String {
     case done = "done"
     case canceled = "canceled"
 }
+
+//TODO: Numerical

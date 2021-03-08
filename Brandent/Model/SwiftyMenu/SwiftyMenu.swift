@@ -255,9 +255,15 @@ public class SwiftyMenu: UIView {
         }
     }
     
-//    func seelctOptions() {
-//        
-//    }
+    //MARK: Selecting Option
+    func selectOptions(options: String) {
+        let options = options.split(separator: ",")
+        for option in options {
+            print(option)
+            selectOption(option: String(option))
+        }
+    }
+    
     func selectOption(option: String) {
         let index = findIndexOfOption(option: option)
         if index != -1 {
@@ -279,6 +285,15 @@ public class SwiftyMenu: UIView {
             let indexPath = IndexPath(row: index, section: 0)
             tableView(optionsTableView, didSelectRowAt: indexPath)
         }   
+    }
+    
+    func unselectOptions() {
+        if isMultiSelect {
+            for option in selectedIndecis {
+                let indexPath = IndexPath(row: option.key, section: 0)
+                tableView(optionsTableView, didSelectRowAt: indexPath)
+            }
+        }
     }
 }
 
@@ -333,12 +348,18 @@ extension SwiftyMenu: UITableViewDelegate {
                 selectButton.setTitle(placeHolderText, for: .normal)
                 selectButton.setTitleColor(placeHolderColor, for: .normal)
             } else {
+                var currentIndex = 0
                 let titles = selectedIndecis.mapValues { (index) -> String in
                     return options[index].displayValue
                 }
                 var selectedTitle = ""
                 titles.forEach { option in
-                    selectedTitle.append(contentsOf: "\(option.value), ")
+                    if currentIndex != titles.count - 1 {
+                        selectedTitle.append(contentsOf: "\(option.value)، ")
+                    } else {
+                        selectedTitle.append(contentsOf: "\(option.value).")
+                    }
+                    currentIndex += 1
                 }
                 selectButton.setTitle(selectedTitle, for: .normal)
                 selectButton.setTitleColor(optionColor, for: .normal)
@@ -358,6 +379,9 @@ extension SwiftyMenu: UITableViewDelegate {
 
         if isMultiSelect {
             if selectedIndecis[indexPath.row] != nil {
+                let selectedText = self.options[selectedIndecis[indexPath.row]!]
+                delegate?.didUnselectOption(self, selectedText, indexPath.row)
+                
                 selectedIndecis[indexPath.row] = nil
                 setSelectedOptionsAsTitle()
                 tableView.reloadData()
@@ -377,6 +401,9 @@ extension SwiftyMenu: UITableViewDelegate {
             }
         } else {
             if selectedIndex == indexPath.row {
+                let selectedText = self.options[self.selectedIndex!]
+                delegate?.didUnselectOption(self, selectedText, indexPath.row)
+                
                 selectedIndex = nil
                 setSelectedOptionsAsTitle()
                 tableView.reloadData()
@@ -401,7 +428,7 @@ extension SwiftyMenu: UITableViewDelegate {
 // MARK: - Private Functions
 
 extension SwiftyMenu {
-    private func expandMenu() {
+    func expandMenu() {
         delegate?.swiftyMenuWillAppear(self)
         self.willExpand()
         self.state = .shown

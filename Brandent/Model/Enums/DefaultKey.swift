@@ -9,7 +9,6 @@
 import Foundation
 
 enum DefaultKey: String {
-//    case lastUpdated = "last_updated"
     case token = "token"
     case dentistID = "dentist_id"
 }

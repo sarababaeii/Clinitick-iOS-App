@@ -14,11 +14,11 @@ class AddPatientViewController: FormViewController {
     @IBOutlet weak var phoneNumberTextField: CustomTextField!
     @IBOutlet weak var nameTextField: CustomTextField!
     @IBOutlet weak var clinicMenu: SwiftyMenu!
-    @IBOutlet weak var alergyMenu: SwiftyMenu!
+    @IBOutlet weak var allergyMenu: SwiftyMenu!
     
     var textFieldDelegates = [TextFieldDelegate]()
     var clinicMenuDelegate: ClinicMenuDelegate?
-    var alergyMenuDelegate: AlergyMenuDelegate?
+    var allergyMenuDelegate: AllergyMenuDelegate?
     
     var patient: Patient?
     
@@ -32,6 +32,7 @@ class AddPatientViewController: FormViewController {
     func configure() {
         setMenuDelegate()
         initializeTextFields()
+        
         setTitle(title: "اطلاعات بیمار")
         setBackButton()
     }
@@ -49,8 +50,10 @@ class AddPatientViewController: FormViewController {
                 textFields[i].text = ""
                 textFields[i].removeError()
             }
+            clinicMenu.selectedIndex = nil
             clinicMenu.selectOption(index: 0)
-            clinicMenu.selectedIndex = nil //TODO: Clinic title
+            initializeAllergies()
+            allergyMenu.unselectOptions()
         }
     }
     
@@ -65,7 +68,7 @@ class AddPatientViewController: FormViewController {
     
     func setMenuDelegate() {
         setClinicMenuDelegate()
-        setAlergyMenuDelegate()
+        setAllergyMenuDelegate()
     }
     
     func setClinicMenuDelegate() {
@@ -73,9 +76,9 @@ class AddPatientViewController: FormViewController {
         clinicMenuDelegate!.prepareMenu(menu: clinicMenu)
     }
     
-    func setAlergyMenuDelegate() {
-        alergyMenuDelegate = AlergyMenuDelegate(viewController: self, menuDataIndex: 3)
-        alergyMenuDelegate!.prepareMenu(menu: alergyMenu)
+    func setAllergyMenuDelegate() {
+        allergyMenuDelegate = AllergyMenuDelegate(viewController: self, menuDataIndex: 3)
+        allergyMenuDelegate!.prepareMenu(menu: allergyMenu)
     }
     
     func setBackButton() {
@@ -109,6 +112,9 @@ class AddPatientViewController: FormViewController {
             return
         }
         nameTextField.text = patient.name
+        if let alergies = patient.alergies {
+            allergyMenu.selectOptions(options: alergies)
+        }
     }
     
     //MARK: Submission
@@ -166,5 +172,3 @@ class AddPatientViewController: FormViewController {
         navigationController?.show(controller, sender: nil)
     }
 }
-
-//TODO: Set alergy

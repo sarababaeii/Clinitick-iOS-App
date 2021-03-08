@@ -20,6 +20,15 @@ class FormViewController: NavigationBarViewController {
     var data: [Any] = []
     var date: Date?
     
+    var isSelectedAlergies = [String: Bool]()
+    
+    //MARK: Alergies
+    func initializeAllergies() {
+        for problem in Info.sharedInstance.problems {
+            isSelectedAlergies[problem] = false
+        }
+    }
+    
     //MARK: Date Picker Functions
     func setDatePicker(dateTextFieldIndex: Int, mode: UIDatePicker.Mode) {
         initializeDatePicker(mode: mode)

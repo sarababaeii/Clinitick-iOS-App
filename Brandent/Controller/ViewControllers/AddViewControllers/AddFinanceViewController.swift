@@ -91,6 +91,10 @@ class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
         }
     }
     
+    func didUnselectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
+        isCost = nil
+    }
+    
     //MARK: Keyboard Management
     @IBAction func hideKeyboard(_ sender: Any) {
         if let textField = currentTextField {

@@ -21,9 +21,6 @@ class TasksTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, U
         }
         didSet {
             if hasDateChanged, let tasks = Info.sharedInstance.dataController?.fetchTasksAndAppointments(in: date) as? [Entity] {
-                print("!!!")
-                print(tasks)
-                print("!!!")
                 hasDateChanged = false
                 update(newTasks: tasks)
                 noTaskView.isHidden = tasks.count > 0

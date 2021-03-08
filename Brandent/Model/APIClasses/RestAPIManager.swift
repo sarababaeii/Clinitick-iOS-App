@@ -27,11 +27,6 @@ class RestAPIManagr {
             completion(result)
         }
         task.resume()
-//        while true {
-//            if let result = result {
-//                return result
-//            }
-//        }
     }
     
     //MARK: Creating A Request

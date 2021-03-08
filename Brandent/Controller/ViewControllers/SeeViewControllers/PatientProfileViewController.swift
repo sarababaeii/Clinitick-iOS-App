@@ -21,7 +21,7 @@ class PatientProfileViewController: FormViewController {
     
     var selectedEditButton: UIButton?
     var textFieldDelegates = [TextFieldDelegate]()
-    var alergyMenuDelegate: AlergyMenuDelegate?
+    var alergyMenuDelegate: AllergyMenuDelegate?
     var appointmentsTableViewDelegate: AppointmentsTableViewDelegate?
     
     //MARK: Initialization
@@ -35,10 +35,8 @@ class PatientProfileViewController: FormViewController {
         }
         setTitle(title: patient.name)
         initializeTextFields()
-//        setMenuDelegate()
         setInformation()
         setDelegates()
-//        setTableViewDelegates()
     }
     
     func initializeTextFields() {
@@ -89,12 +87,15 @@ class PatientProfileViewController: FormViewController {
     }
     
     func setMenuDelegate() {
-        alergyMenuDelegate = AlergyMenuDelegate(viewController: self, menuDataIndex: 2)
+        alergyMenuDelegate = AllergyMenuDelegate(viewController: self, menuDataIndex: 2)
         alergyMenuDelegate!.prepareMenu(menu: alergyMenu)
+        initializeAllergies()
         print("$$$")
         print(patient?.alergies)
         print("$$$")
-        //TODO: set selected alergies
+        if let alergies = patient?.alergies {
+            alergyMenu.selectOptions(options: alergies)
+        }
     }
     
     func setTableViewDelegates() {

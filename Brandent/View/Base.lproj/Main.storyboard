@@ -2876,6 +2876,9 @@
                             <constraint firstItem="WeU-an-xCS" firstAttribute="top" secondItem="tI0-Fm-fVk" secondAttribute="top" constant="16" id="u1g-Ih-6Q8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tI0-Fm-fVk"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Xm9-sK-aty" appends="YES" id="gOP-qV-gcf"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="aqL-Jb-SSY"/>
                     <connections>
@@ -3123,7 +3126,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="alergyMenu" destination="5fm-wJ-Vl8" id="D3O-YG-998"/>
+                        <outlet property="allergyMenu" destination="5fm-wJ-Vl8" id="D3O-YG-998"/>
                         <outlet property="clinicMenu" destination="B3I-6K-CbU" id="ZXp-ip-C6k"/>
                         <outlet property="nameTextField" destination="OIM-yr-fCq" id="dwa-hi-gfL"/>
                         <outlet property="phoneNumberTextField" destination="MAu-xJ-UJE" id="v5I-hC-adr"/>
@@ -4594,7 +4597,7 @@
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShU-f8-dds">
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShU-f8-dds">
                                                             <rect key="frame" x="301" y="60" width="0.0" height="0.0"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Thin" family="Vazir" pointSize="14"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

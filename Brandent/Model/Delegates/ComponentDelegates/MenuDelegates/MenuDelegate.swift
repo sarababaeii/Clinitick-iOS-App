@@ -31,4 +31,8 @@ class MenuDelegate: NSObject, SwiftyMenuDelegate {
     func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
         viewController.data[menuDataIndex] = selectedOption.displayValue
     }
+    
+    func didUnselectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
+        viewController.data[menuDataIndex] = ""
+    }
 }
