@@ -27,23 +27,23 @@ class RestAPIResult {
         return false
     }
     
-    func authenticate(type: APIRequestType, clinicTitle: String?) -> Int {
+    func authenticate(type: APIRequestType, dummyDentist: DummyDentist?) -> Int {
         guard let response = response, let data = data else {
             return 500
         }
         if response.statusCode != 200 {
             return response.statusCode
         }
-        saveData(data: data, clinicTitle: clinicTitle)
+        saveData(data: data, dummyDentist: dummyDentist)
         return 200
     }
     
-    private func saveData(data: Data, clinicTitle: String?) {
+    private func saveData(data: Data, dummyDentist: DummyDentist?) {
         guard let dictionary = jsonSerializer.decodeData(data: data) else {
             return
         }
         saveToken(dictionary: dictionary)
-        saveDentist(dictionary: dictionary, clinicTitle: clinicTitle)
+        saveDentist(dictionary: dictionary, dummyDentist: dummyDentist)
     }
     
     private func saveToken(dictionary: NSDictionary) {
@@ -53,7 +53,7 @@ class RestAPIResult {
         Info.sharedInstance.token = token
     }
     
-    private func saveDentist(dictionary: NSDictionary, clinicTitle: String?) {
+    private func saveDentist(dictionary: NSDictionary, dummyDentist: DummyDentist?) {
         print("Is saving dentist")
         guard let user = dictionary["user"] as? [String: Any],
             let id = user["id"] as? Int,
@@ -69,31 +69,33 @@ class RestAPIResult {
         print("DENTIST SAVED SUCCESSFULLY \(dentist)")
         
         Info.sharedInstance.dentistID = id
-        saveClinic(clinicTitle: clinicTitle)
-        saveProfilePicture(dictionary: user) //TODO: should go otherwhere
+        setClinic(clinicTitle: dummyDentist?.clinicTitle)
+        setProfilePicture(image: dummyDentist?.profilePicture)
+        saveProfilePicture(dictionary: user)
         Info.sharedInstance.sync()
     }
     
-    private func saveClinic(clinicTitle: String?) {
+    private func setClinic(clinicTitle: String?) {
         if let dentist = Info.sharedInstance.dentist, let clinicTitle = clinicTitle {
             dentist.setClinic(clinicTitle: clinicTitle)
         }
     }
     
+    private func setProfilePicture(image: Image?) {
+        if let image = image {
+            if let dentist = Info.sharedInstance.dentist {
+                dentist.setProfilePicture(photo: image, fromAPI: false)
+            }
+        }
+    }
+    
     private func saveProfilePicture(dictionary: [String: Any]) {
-        if let dentist = Info.sharedInstance.dentist, let photo = getProfilePicture(dictionary: dictionary) {
+        if let dentist = Info.sharedInstance.dentist, let photo = getProfilePictureFile(dictionary: dictionary) {
             dentist.setProfilePicture(photo: photo, fromAPI: true)
         }
     }
     
-    private func getProfilePicture(dictionary: [String: Any]) -> Image? {
-        guard let fileName = dictionary["image"] as? String else {
-            return nil
-        }
-        let image = Image(name: fileName, urlString: API.profilePictureFile)
-        return image
-    }
-    
+    //MARK: Profile Photo
     func processProfilePicture() -> Image? {
         if response?.statusCode != 200 {
             print("Error in getting profile picture")
@@ -102,7 +104,15 @@ class RestAPIResult {
         guard let data = data, let result = jsonSerializer.decodeData(data: data), let dictionary = result as? [String: Any] else {
             return nil
         }
-        return getProfilePicture(dictionary: dictionary)
+        return getProfilePictureFile(dictionary: dictionary)
+    }
+    
+    private func getProfilePictureFile(dictionary: [String: Any]) -> Image? {
+        guard let fileName = dictionary["image"] as? String else {
+            return nil
+        }
+        let image = Image(name: fileName, urlString: API.profilePictureFile)
+        return image
     }
     
     //MARK: Sync

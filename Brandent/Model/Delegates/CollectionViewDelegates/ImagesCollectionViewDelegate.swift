@@ -28,22 +28,6 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
         }
     }
     
-//    //MARK: Header
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//
-//        switch kind {
-//        case UICollectionView.elementKindSectionHeader:
-//            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ImagesHeaderCellID", for: indexPath) as? ImagesCollectionViewHeader else {
-//                    fatalError("Invalid view type")
-//            }
-//            headerView.setAttributes(viewController: viewController)
-//            headerCell = headerView
-//            return headerView
-//        default:
-//            assert(false, "Invalid element type")
-//        }
-//    }
-    
     //MARK: Delegate Functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
@@ -81,10 +65,6 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
                 imagesCollectionView.insertItems(at: [indexPath])
             }, completion: nil)
         }
-//        if !images.isEmpty {
-//            headerCell?.showButtons()
-//            viewController.hideButtons()
-//        }
     }
     
     func deleteImage(_ image: Image) {
@@ -96,10 +76,6 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
                 imagesCollectionView.deleteItems(at: [indexPath])
             }, completion: nil)
         }
-//        if images.isEmpty {
-//            headerCell?.hideButtons()
-//            viewController.showButtons()
-//        }
     }
     
     func findIndexOfImage(_ image: Image) -> IndexPath? {

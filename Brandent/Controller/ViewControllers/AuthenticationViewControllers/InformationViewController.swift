@@ -22,6 +22,7 @@ class InformationViewController: FormViewController {
     var imagePickerDelegate: ProfileImagePickerDelegate?
     var textFieldDelegates = [TextFieldDelegate]()
     
+    var profilePicture: Image?
     var phoneNumber = ""
     
     //MARK: Initialization
@@ -84,7 +85,7 @@ class InformationViewController: FormViewController {
             return
         }
         
-        let dentist = DummyDentist(first_name: data[0] as! String, last_name: data[1] as! String, phone: data[5] as! String, password: data[4] as! String, speciality: data[2] as! String, clinicTitle: data[3] as! String)
+        let dentist = DummyDentist(first_name: data[0] as! String, last_name: data[1] as! String, phone: data[5] as! String, password: data[4] as! String, speciality: data[2] as! String, clinicTitle: data[3] as! String, profilePicture: profilePicture)
         print("Dummy Dentist is: \(dentist)")
          RestAPIManagr.sharedInstance.signUp(dentist: dentist, {(statusCode) in
             self.checkResponse(statusCode: statusCode)

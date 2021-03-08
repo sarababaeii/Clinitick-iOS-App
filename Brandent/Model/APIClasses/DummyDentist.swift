@@ -15,14 +15,16 @@ class DummyDentist {
     var password: String
     var speciality: String
     var clinicTitle: String
+    var profilePicture: Image?
     
-    init(first_name: String, last_name: String, phone: String, password: String, speciality: String, clinicTitle: String) {
+    init(first_name: String, last_name: String, phone: String, password: String, speciality: String, clinicTitle: String, profilePicture: Image?) {
         self.first_name = first_name
         self.last_name = last_name
         self.phone = phone
         self.password = password
         self.speciality = speciality
         self.clinicTitle = clinicTitle
+        self.profilePicture = profilePicture
     }
     
     //MARK: API Functions

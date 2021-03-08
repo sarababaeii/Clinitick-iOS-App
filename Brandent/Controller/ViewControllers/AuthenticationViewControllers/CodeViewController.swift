@@ -134,9 +134,21 @@ class CodeViewController: UIViewController {
             if isValid {
                 self.nextPage()
             } else {
-                self.showToast(message: "کد وارد شده اشتباه است.")
+                self.invalidCode()
             }
         })
+    }
+    
+    func invalidCode() {
+        self.showToast(message: "کد وارد شده اشتباه است.")
+        for i in 0 ..< 4 {
+            codeDigits[i] = ""
+            textFields[i].text = ""
+            if i != 0 {
+                textFields[i].isEnabled = false
+            }
+        }
+        firstDigitTextField.becomeFirstResponder()
     }
     
     func nextPage() {

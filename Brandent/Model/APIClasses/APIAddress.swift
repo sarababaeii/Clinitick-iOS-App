@@ -11,13 +11,12 @@ import Foundation
 struct API {
     private static let server = "http://185.235.40.77:7000/"
     private static let base = API.server + "api/"
-    private static let add = "/add"
     
     private static let sync = API.base + "sync"
     
     private static let patient = API.base + "patients"
     public static let images = API.patient + "/images"
-    public static let imageFiles = API.server + "public/uploads/"
+    public static let imageFiles = API.server + "public/refined/"
     
     private static let authentication = API.base + "auth/"
     private static let login = API.authentication + "login"
@@ -39,5 +38,4 @@ struct API {
     static let profilePictureURL = URL(string: API.profilePicture)!
 }
 
-//TODO: delete add APIs
 //TODO: /uploads/... —> /refined/...

@@ -31,10 +31,12 @@ class ProfileImagePickerDelegate: ImagePickerDelegate {
     }
     
     func setForDentist() {
-        RestAPIManagr.sharedInstance.setProfilePicture(photo: images)
-        if let dentist = Info.sharedInstance.dentist {
-            dentist.setProfilePicture(photo: images[0], fromAPI: false)
-//            DataController.sharedInstance.setDentistPhoto(dentist: dentist, photo: images[0])
+        if let viewController = viewController as? InformationViewController {
+            viewController.profilePicture = images[0]
+        } else {
+            if let dentist = Info.sharedInstance.dentist {
+                dentist.setProfilePicture(photo: images[0], fromAPI: false)
+            }
         }
     }
     

@@ -113,7 +113,7 @@ class RestAPIManagr {
     //MARK: Authentication
     func login(phone: String, password: String,  _ completion: @escaping (Int) -> ()) {
         sendRequest(request: createLoginRequest(phone: phone, password: password), type: .login, {(result) in
-            let code = result.authenticate(type: .login, clinicTitle: nil)
+            let code = result.authenticate(type: .login, dummyDentist: nil)
             DispatchQueue.main.async {
                 completion(code)
             }
@@ -122,7 +122,7 @@ class RestAPIManagr {
     
     func signUp(dentist: DummyDentist,  _ completion: @escaping (Int) -> ()) {
         sendRequest(request: createSignUpRequest(dentist: dentist), type: .signUp, {(result) in
-            let code = result.authenticate(type: .signUp, clinicTitle: dentist.clinicTitle)
+            let code = result.authenticate(type: .signUp, dummyDentist: dentist)
             DispatchQueue.main.async {
                 completion(code)
             }

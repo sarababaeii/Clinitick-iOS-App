@@ -24,7 +24,7 @@ class Image: Equatable {
         self.name = name
         guard let url = URL(string: "\(urlString)\(name)"), let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {
             self.img = UIImage(named: "gallery")!
-            self.data = img.jpegData(compressionQuality: 1)!
+            self.data = img.jpegData(compressionQuality: 0)!
             return
         }
         self.data = data
@@ -33,7 +33,7 @@ class Image: Equatable {
     
     init(img: UIImage) {
         self.name = UUID().uuidString
-        self.data = img.jpegData(compressionQuality: 1)!
+        self.data = img.jpegData(compressionQuality: 0)!
         self.img = img
     }
     
