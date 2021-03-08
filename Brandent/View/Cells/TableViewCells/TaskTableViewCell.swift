@@ -45,17 +45,17 @@ class TaskTableViewCell: UITableViewCell {
     
     func setState(appointment: Appointment) {
         if appointment.state == TaskState.done.rawValue {
-            changeTaskState(doneButton as Any)
+            doneButton.visibleSelection()
         } else if appointment.state == TaskState.canceled.rawValue {
-            changeTaskState(canceledButton as Any)
+            canceledButton.visibleSelection()
         }
     }
     
     func setState(task: Task) {
         if task.state == TaskState.done.rawValue {
-            changeTaskState(doneButton as Any)
+            doneButton.visibleSelection()
         } else if task.state == TaskState.canceled.rawValue {
-            changeTaskState(canceledButton as Any)
+            canceledButton.visibleSelection()
         }
     }
     

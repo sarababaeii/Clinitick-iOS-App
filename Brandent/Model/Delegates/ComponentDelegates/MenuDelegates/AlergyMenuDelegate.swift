@@ -1,5 +1,5 @@
 //
-//  ClinicMenuDelegate.swift
+//  AlergyMenuDelegate.swift
 //  Brandent
 //
 //  Created by Sara Babaei on 3/7/21.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ClinicMenuDelegate: MenuDelegate {
+class AlergyMenuDelegate: MenuDelegate {
     
     override init(viewController: FormViewController, menuDataIndex: Int) {
         super.init(viewController: viewController, menuDataIndex: menuDataIndex)
@@ -16,19 +16,16 @@ class ClinicMenuDelegate: MenuDelegate {
     
     //MARK: Collecting Options
     override func prepareMenu(menu: SwiftyMenu) {
-        let options = getClinics()
+        let options = Info.sharedInstance.problems
         if options.count > 0 {
             setMenuDelegates(menu: menu, options: options)
         }
     }
-        
-    private func getClinics() -> [String]{
-        var options = [String]()
-        if let clinics = Info.sharedInstance.dataController?.fetchAllClinics() as? [Clinic] {
-            for clinic in clinics {
-                options.append(clinic.title)
-            }
+    
+    //MARK: Delegate Function
+    override func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
+        if let alergies = viewController.data[menuDataIndex] as? String {
+            viewController.data[menuDataIndex] = alergies + "، " + selectedOption.displayValue
         }
-        return options
     }
 }

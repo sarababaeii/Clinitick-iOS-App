@@ -255,6 +255,16 @@ public class SwiftyMenu: UIView {
         }
     }
     
+//    func seelctOptions() {
+//        
+//    }
+    func selectOption(option: String) {
+        let index = findIndexOfOption(option: option)
+        if index != -1 {
+            selectOption(index: index)
+        }
+    }
+    
     private func findIndexOfOption(option: String) -> Int {
         for i in 0 ..< self.options.count {
             if options[i].displayValue == option {
@@ -262,13 +272,6 @@ public class SwiftyMenu: UIView {
             }
         }
         return -1
-    }
-    
-    func selectOption(option: String) {
-        let index = findIndexOfOption(option: option)
-        if index != -1 {
-            selectOption(index: index)
-        }
     }
     
     func selectOption(index: Int) {

@@ -27,7 +27,7 @@ public class Entity: NSManagedObject {
     }
     
     func delete() {
-        DataController.sharedInstance.temporaryDelete(record: self)
+        Info.sharedInstance.dataController?.temporaryDelete(record: self)
     }
     
     func setDeleteAttributes() {
@@ -47,7 +47,7 @@ public class Entity: NSManagedObject {
         var i = 0
         while i < entities.count {
             if entities[i].is_deleted {
-                DataController.sharedInstance.permanentDelete(record: entities[i])
+                Info.sharedInstance.dataController?.permanentDelete(record: entities[i])
                 i -= 1
             }
             i += 1

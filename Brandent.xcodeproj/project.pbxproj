@@ -119,7 +119,6 @@
 		03F18B9D25E923B700FE8C50 /* SwiftyMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F18B9C25E923B700FE8C50 /* SwiftyMenuDelegate.swift */; };
 		03F27556258688A000526477 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F27555258688A000526477 /* AddTaskViewController.swift */; };
 		03F2755825868E0300526477 /* AddPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F2755725868E0300526477 /* AddPatientViewController.swift */; };
-		03F2755A2586918400526477 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F275592586918400526477 /* AddViewController.swift */; };
 		03F3FD8525D5988700C0A8CD /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3FD8325D5988700C0A8CD /* Entity+CoreDataClass.swift */; };
 		03F3FD8625D5988700C0A8CD /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3FD8425D5988700C0A8CD /* Entity+CoreDataProperties.swift */; };
 		03F4A5C52551951F00D7E1C6 /* AddFinanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */; };
@@ -273,7 +272,6 @@
 		03F18B9C25E923B700FE8C50 /* SwiftyMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMenuDelegate.swift; sourceTree = "<group>"; };
 		03F27555258688A000526477 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		03F2755725868E0300526477 /* AddPatientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPatientViewController.swift; sourceTree = "<group>"; };
-		03F275592586918400526477 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		03F3FD8325D5988700C0A8CD /* Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		03F3FD8425D5988700C0A8CD /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFinanceViewController.swift; sourceTree = "<group>"; };
@@ -656,7 +654,6 @@
 				03F27555258688A000526477 /* AddTaskViewController.swift */,
 				03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */,
 				03E7F93C254C88DC000EDDD0 /* AddClinicViewController.swift */,
-				03F275592586918400526477 /* AddViewController.swift */,
 				03101689258A88170034717F /* FormViewController.swift */,
 			);
 			path = AddViewControllers;
@@ -1065,7 +1062,6 @@
 				039E2E3325359EDC00F6D5EE /* StringExtension.swift in Sources */,
 				03FBE6882554786E00FEFF63 /* Appointment+CoreDataProperties.swift in Sources */,
 				030C67FE2549D2C800CECCC2 /* ImagesCollectionViewHeader.swift in Sources */,
-				03F2755A2586918400526477 /* AddViewController.swift in Sources */,
 				03EE13782554498A00363EA0 /* ShadowyUIView.swift in Sources */,
 				03F2755825868E0300526477 /* AddPatientViewController.swift in Sources */,
 				03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */,

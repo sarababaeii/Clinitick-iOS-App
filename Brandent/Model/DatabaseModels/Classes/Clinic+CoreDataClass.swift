@@ -29,18 +29,18 @@ public class Clinic: Entity {
             return clinic
         }
         
-        return DataController.sharedInstance.createClinic(id: id, title: title, address: address, color: clinicColor, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        return Info.sharedInstance.dataController!.createClinic(id: id, title: title, address: address, color: clinicColor, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
 
     static func getClinicByID(_ id: UUID, isForSync: Bool) -> Clinic? {
-        if let object = DataController.sharedInstance.fetchClinic(id: id, isForSync: isForSync), let clinic = object as? Clinic {
+        if let object = Info.sharedInstance.dataController?.fetchClinic(id: id, isForSync: isForSync), let clinic = object as? Clinic {
             return clinic
         }
         return nil
     }
 
     static func getClinicByTitle(_ title: String) -> Clinic? {
-        if let object = DataController.sharedInstance.fetchClinic(title: title), let clinic = object as? Clinic {
+        if let object = Info.sharedInstance.dataController?.fetchClinic(title: title), let clinic = object as? Clinic {
             return clinic
         }
         return nil
@@ -68,7 +68,7 @@ public class Clinic: Entity {
 
     func updateClinic(id: UUID?, title: String, address: String?, color: String, isDeleted: Bool?, modifiedTime: Date?) {
         setAttributes(id: id, title: title, address: address, color: color, isDeleted: isDeleted, modifiedTime: modifiedTime)
-        DataController.sharedInstance.saveContext()
+        Info.sharedInstance.dataController?.saveContext()
     }
     
     override func delete() {
@@ -134,6 +134,7 @@ public class Clinic: Entity {
             address = add
         }
         let _ = getClinic(id: id, title: title, address: address, color: color, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        print("#\(id)")
         return true
     }
 }

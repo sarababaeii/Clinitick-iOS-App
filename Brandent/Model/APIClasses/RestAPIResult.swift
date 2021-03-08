@@ -126,8 +126,9 @@ class RestAPIResult {
             return
         }
         print("LAST UPDATED: \(date)")
-        let keys: [APIKey] = [.clinic, .patient, .finance, .appointment, .task]
+        let keys: [APIKey] = [.patient, .clinic, .finance, .appointment, .task]
         for i in 0 ..< keys.count {
+            print("is saving \(keys[i])s")
             if let array = getArray(data: result, key: keys[i].sync!) {
                 if !saveArray(array: array, key: keys[i], at: date) {
                     print("could not save \(keys[i].rawValue)")
@@ -146,6 +147,7 @@ class RestAPIResult {
         for item in array {
             var wasSuccessfull = false
             if let dictionary = item as? NSDictionary {
+                print(key)
                 switch key {
                 case .clinic:
                     wasSuccessfull = Clinic.saveClinic(dictionary, modifiedTime: date)

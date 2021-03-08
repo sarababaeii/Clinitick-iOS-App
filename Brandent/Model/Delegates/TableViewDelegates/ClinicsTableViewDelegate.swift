@@ -13,8 +13,7 @@ class ClinicsTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate,
     
     //MARK: Initializer
     init(viewController: UIViewController, tableView: UITableView) {
-        let clinics = DataController.sharedInstance.fetchAllClinics() as? [Clinic]
-        print(clinics)
+        let clinics = Info.sharedInstance.dataController?.fetchAllClinics() as? [Clinic]
         super.init(viewController: viewController, tableView: tableView, items: clinics)
     }
     

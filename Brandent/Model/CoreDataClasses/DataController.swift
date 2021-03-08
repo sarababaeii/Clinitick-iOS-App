@@ -11,8 +11,8 @@ import UIKit
 import CoreData
 
 class DataController {
-    static let sharedInstance = DataController()
     
+    var appDelegate: AppDelegate
     var context: NSManagedObjectContext
     var appointmentEntity: NSEntityDescription
     var dentistEntity: NSEntityDescription
@@ -23,22 +23,20 @@ class DataController {
    
     //MARK: Initialization
     init() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
         context = appDelegate.persistentContainer.viewContext
-        appointmentEntity = NSEntityDescription.entity(forEntityName: EntityNames.appointment.rawValue, in: context)!
-        dentistEntity = NSEntityDescription.entity(forEntityName: EntityNames.dentist.rawValue, in: context)!
-        patientEntity = NSEntityDescription.entity(forEntityName: EntityNames.patient.rawValue, in: context)!
-        clinicEntity = NSEntityDescription.entity(forEntityName: EntityNames.clinic.rawValue, in: context)!
-        financeEntity = NSEntityDescription.entity(forEntityName: EntityNames.finance.rawValue, in: context)!
-        taskEntity = NSEntityDescription.entity(forEntityName: EntityNames.task.rawValue, in: context)!
+        appointmentEntity = NSEntityDescription.entity(forEntityName: EntityNames.appointment.rawValue, in: self.context)!
+        dentistEntity = NSEntityDescription.entity(forEntityName: EntityNames.dentist.rawValue, in: self.context)!
+        patientEntity = NSEntityDescription.entity(forEntityName: EntityNames.patient.rawValue, in: self.context)!
+        clinicEntity = NSEntityDescription.entity(forEntityName: EntityNames.clinic.rawValue, in: self.context)!
+        financeEntity = NSEntityDescription.entity(forEntityName: EntityNames.finance.rawValue, in: self.context)!
+        taskEntity = NSEntityDescription.entity(forEntityName: EntityNames.task.rawValue, in: self.context)!
     }
     
     //MARK: Save
     func saveContext(){
-        DispatchQueue.main.async {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.saveContext()
-        }
+        appDelegate.saveContext()
+        print("saved")
     }
     
     //MARK: Predicates

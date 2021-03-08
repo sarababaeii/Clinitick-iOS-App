@@ -21,19 +21,19 @@ public class Dentist: NSManagedObject {
             return dentist
         }
         
-        let dentist = DataController.sharedInstance.createDentist(id: id, firstName: firstName, lastName: lastName, phone: phone, speciality: speciality)
+        let dentist = Info.sharedInstance.dataController!.createDentist(id: id, firstName: firstName, lastName: lastName, phone: phone, speciality: speciality)
         return dentist
     }
     
     static func getDentistByID(_ id: NSDecimalNumber) -> Dentist? {
-        if let object = DataController.sharedInstance.fetchDentist(id: id), let dentist = object as? Dentist {
+        if let object = Info.sharedInstance.dataController?.fetchDentist(id: id), let dentist = object as? Dentist {
             return dentist
         }
         return nil
     }
     
     static func getDentistByPhone(_ phone: String) -> Dentist? {
-        if let object = DataController.sharedInstance.fetchDentist(phone: phone), let dentist = object as? Dentist {
+        if let object = Info.sharedInstance.dataController?.fetchDentist(phone: phone), let dentist = object as? Dentist {
             return dentist
         }
         return nil
@@ -52,11 +52,11 @@ public class Dentist: NSManagedObject {
     
     func setClinic(clinicTitle: String) {
         let clinic = Clinic.getClinic(id: nil, title: clinicTitle, address: nil, color: nil, isDeleted: nil, modifiedTime: Date()) //is date ok?
-        DataController.sharedInstance.setDentistClinic(dentist: self, clinic: clinic)
+        Info.sharedInstance.dataController?.setDentistClinic(dentist: self, clinic: clinic)
     }
     
     func setProfilePicture(photo: Image, fromAPI: Bool) {
-        DataController.sharedInstance.setDentistPhoto(dentist: self, photo: photo)
+        Info.sharedInstance.dataController?.setDentistPhoto(dentist: self, photo: photo)
         if !fromAPI {
             self.setModifiedTime()
         }

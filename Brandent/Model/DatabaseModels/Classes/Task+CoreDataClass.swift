@@ -22,7 +22,7 @@ public class Task: Entity {
             task.updateTask(id: id, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return task
         }
-        return DataController.sharedInstance.createTask(id: id, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        return Info.sharedInstance.dataController!.createTask(id: id, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
         
     static func getTask(id: UUID?, title: String, date: Date, clinicTitle: String?, isDeleted: Bool?, modifiedTime: Date?) -> Task { //for add
@@ -34,11 +34,11 @@ public class Task: Entity {
             task.updateTask(id: id, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return task
         }
-        return DataController.sharedInstance.createTask(id: nil, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        return Info.sharedInstance.dataController!.createTask(id: nil, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
     
     static func getTaskByID(_ id: UUID) -> Task? {
-        if let object = DataController.sharedInstance.fetchTask(id: id), let task = object as? Task {
+        if let object = Info.sharedInstance.dataController?.fetchTask(id: id), let task = object as? Task {
             return task
         }
         return nil
@@ -67,13 +67,13 @@ public class Task: Entity {
     
     func updateTask(id: UUID?, title: String, date: Date, clinic: Clinic?, isDeleted: Bool?, modifiedTime: Date?) {
         setAttributes(id: id, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
-        DataController.sharedInstance.saveContext()
+        Info.sharedInstance.dataController?.saveContext()
     }
     
     func updateState(state: TaskState) {
         self.state = state.rawValue
         self.setModifiedTime(at: Date())
-        DataController.sharedInstance.saveContext()
+        Info.sharedInstance.dataController?.saveContext()
     }
         
     //MARK: API Functions
@@ -113,6 +113,7 @@ public class Task: Entity {
             clinicID = id
         }
         let _ = getTask(id: id, title: title, date: date, clinicID: clinicID, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        print("#\(id)")
         return true
     }
 }

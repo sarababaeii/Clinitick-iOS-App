@@ -18,8 +18,8 @@ class AppointmentsTableViewDelegate: DeletableTableViewDelegate, UITableViewDele
         self.patient = patient
         var appointments = [Appointment]()
         if let history = patient.history?.allObjects as? [Appointment] {
-            appointments = Array(history)
-        } //TODO: sort by visit time
+            appointments = Array(history).sorted(by: {$0.visit_time > $1.visit_time})
+        } //TODO: items without date
         super.init(viewController: viewController, tableView: tableView, items: appointments)
         preprocessAppointments()
     }
@@ -27,7 +27,6 @@ class AppointmentsTableViewDelegate: DeletableTableViewDelegate, UITableViewDele
     func preprocessAppointments() {
         var i = 0
         while i < items.count {
-            print("\(i), \(items.count)")
             if items[i].is_deleted {
                 items.remove(at: i)
                 i -= 1

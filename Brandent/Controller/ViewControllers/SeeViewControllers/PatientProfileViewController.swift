@@ -33,11 +33,12 @@ class PatientProfileViewController: FormViewController {
         guard let patient = patient else {
             return
         }
-        initializeTextFields()
-        setMenuDelegate()
-        setInformation()
         setTitle(title: patient.name)
-        setTableViewDelegates()
+        initializeTextFields()
+//        setMenuDelegate()
+        setInformation()
+        setDelegates()
+//        setTableViewDelegates()
     }
     
     func initializeTextFields() {
@@ -81,9 +82,18 @@ class PatientProfileViewController: FormViewController {
         return str
     }
     
+    //MARK: Delegates
+    func setDelegates() {
+        setMenuDelegate()
+        setTableViewDelegates()
+    }
+    
     func setMenuDelegate() {
         alergyMenuDelegate = AlergyMenuDelegate(viewController: self, menuDataIndex: 2)
         alergyMenuDelegate!.prepareMenu(menu: alergyMenu)
+        print("$$$")
+        print(patient?.alergies)
+        print("$$$")
         //TODO: set selected alergies
     }
     

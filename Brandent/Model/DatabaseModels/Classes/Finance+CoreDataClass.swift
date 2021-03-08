@@ -14,12 +14,12 @@ import CoreData
 public class Finance: Entity {
     //MARK: Initialization
     static func getFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date, isDeleted: Bool?, modifiedTime: Date?) -> Finance {
-        if let id = id, let object = DataController.sharedInstance.fetchFinance(id: id),
+        if let id = id, let object = Info.sharedInstance.dataController?.fetchFinance(id: id),
             let finance = object as? Finance {
             finance.updateFinance(id: id, title: title, amount: amount, isCost: isCost, date: date, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return finance
         }
-        return DataController.sharedInstance.createFinance(id: id, title: title, amount: amount, isCost: isCost, date: date, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        return Info.sharedInstance.dataController!.createFinance(id: id, title: title, amount: amount, isCost: isCost, date: date, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
     
     //MARK: Setting Attributes
@@ -45,7 +45,7 @@ public class Finance: Entity {
     
     func updateFinance(id: UUID?, title: String, amount: Int, isCost: Bool, date: Date, isDeleted: Bool?, modifiedTime: Date?) {
         setAttributes(id: id, title: title, amount: amount, isCost: isCost, date: date, isDeleted: isDeleted, modifiedTime: modifiedTime)
-        DataController.sharedInstance.saveContext()
+        Info.sharedInstance.dataController?.saveContext()
     }
     
     func getAmount() -> Int {
@@ -59,17 +59,17 @@ public class Finance: Entity {
     static func getFinancesArray(tag: Int, date: Date) -> [Entity]? {
         switch tag {
         case 0:
-            let entities = DataController.sharedInstance.fetchFinancesAndAppointments(in: date) as? [Entity]
+            let entities = Info.sharedInstance.dataController?.fetchFinancesAndAppointments(in: date) as? [Entity]
             return Appointment.removeAppointmentsWithoutPrice(entities: entities)
         case 1:
-            let appointments = DataController.sharedInstance.fetchAppointmentsInMonth(in: date) as? [Entity]
+            let appointments = Info.sharedInstance.dataController?.fetchAppointmentsInMonth(in: date) as? [Entity]
             return Appointment.removeAppointmentsWithoutPrice(entities: appointments)
         case 2:
-            return DataController.sharedInstance.fetchFinanceExternalIncomes(in: date) as? [Entity]
+            return Info.sharedInstance.dataController?.fetchFinanceExternalIncomes(in: date) as? [Entity]
         case 3:
-            return DataController.sharedInstance.fetchFinanceCosts(in: date) as? [Entity]
+            return Info.sharedInstance.dataController?.fetchFinanceCosts(in: date) as? [Entity]
         default:
-            return DataController.sharedInstance.fetchFinancesAndAppointments(in: date) as? [Entity]
+            return Info.sharedInstance.dataController?.fetchFinancesAndAppointments(in: date) as? [Entity]
         }
     }
     
@@ -123,6 +123,7 @@ public class Finance: Entity {
             return false
         }
         let _ = getFinance(id: id, title: title, amount: price, isCost: isCost, date: date, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        print("#\(id)")
         return true
     }
 }

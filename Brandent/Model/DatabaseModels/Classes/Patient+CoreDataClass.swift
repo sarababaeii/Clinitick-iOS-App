@@ -22,18 +22,18 @@ public class Patient: Entity {
             patient.updatePatient(phone: phone, name: name, alergies: alergies, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return patient
         }
-        return DataController.sharedInstance.createPatient(id: id, name: name, phone: phone, alergies: alergies, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        return (Info.sharedInstance.dataController?.createPatient(id: id, name: name, phone: phone, alergies: alergies, isDeleted: isDeleted, modifiedTime: modifiedTime))!
     }
     
     static func getPatientByID(_ id: UUID, isForSync: Bool) -> Patient? {
-        if let object = DataController.sharedInstance.fetchPatient(id: id, isForSync: isForSync), let patient = object as? Patient {
+        if let object = Info.sharedInstance.dataController?.fetchPatient(id: id, isForSync: isForSync), let patient = object as? Patient {
             return patient
         }
         return nil
     }
     
     static func getPatientByPhone(_ phone: String) -> Patient? { //could be isUnique and generate error
-        if let object = DataController.sharedInstance.fetchPatient(phone: phone), let patient = object as? Patient {
+        if let object = Info.sharedInstance.dataController?.fetchPatient(phone: phone), let patient = object as? Patient {
             return patient
         }
         return nil
@@ -61,7 +61,7 @@ public class Patient: Entity {
     
     func updatePatient(phone: String?, name: String?, alergies: String?, isDeleted: Bool?, modifiedTime: Date?) {
         setAttributes(id: self.id, name: name ?? self.name, phone: phone ?? self.phone, alergies: alergies, isDeleted: isDeleted, modifiedTime: modifiedTime)
-        DataController.sharedInstance.saveContext()
+        Info.sharedInstance.dataController?.saveContext()
     }
     
     override func delete() {
@@ -125,6 +125,7 @@ public class Patient: Entity {
             return false
         }
         let _ = getPatient(id: id, phone: phone, name: name, alergies: nil, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        print("#\(id)")
         return true
     }
 }

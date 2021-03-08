@@ -32,11 +32,11 @@ public class Appointment: Entity {
             appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state, isDeleted: nil, modifiedTime: Date())
             return appointment
         }
-        return DataController.sharedInstance.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        return Info.sharedInstance.dataController!.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
     
     static func getAppointmentByID(_ id: UUID) -> Appointment? {
-        if let object = DataController.sharedInstance.fetchAppointment(id: id), let appointment = object as? Appointment {
+        if let object = Info.sharedInstance.dataController?.fetchAppointment(id: id), let appointment = object as? Appointment {
             return appointment
         }
         return nil
@@ -73,24 +73,24 @@ public class Appointment: Entity {
     
     func updateAppointment(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, state: String, isDeleted: Bool?, modifiedTime: Date?) {
         setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
-        DataController.sharedInstance.saveContext()
+        Info.sharedInstance.dataController?.saveContext()
     }
     
     func updateState(state: TaskState) {
         self.state = state.rawValue
         self.setModifiedTime(at: Date())
-        DataController.sharedInstance.saveContext()
+        Info.sharedInstance.dataController?.saveContext()
     }
     
     //MARK: Functions
-    static func sort(appointments: [Appointment]?, others: [NSManagedObject]?) -> [NSManagedObject]? {
+    static func sort(appointments: [Appointment]?, others: [Entity]?) -> [Entity]? {
         guard let appointments = appointments else {
             return others //could be nil
         }
         guard let others = others else {
             return appointments
         }
-        var mixture = [NSManagedObject]()
+        var mixture = [Entity]()
         var appoinmentPointer = 0
         var otherPointer = 0
         
@@ -174,6 +174,7 @@ public class Appointment: Entity {
             return false
         }
         if let _ = createAppointment(id: id, patientID: patientID, clinicID: clinicID, disease: disease, price: price, date: date, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime) {
+            print("#\(id)")
             return true
         }
         return false

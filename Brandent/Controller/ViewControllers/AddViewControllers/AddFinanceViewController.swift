@@ -120,7 +120,7 @@ class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
     }
     
     override func saveData() {
-        let finance = Finance.getFinance(id: self.finance?.id, title: data[0] as! String, amount: data[1] as! Int, isCost: isCost!, date: date!, isDeleted: nil, modifiedTime: Date())
+        _ = Finance.getFinance(id: self.finance?.id, title: data[0] as! String, amount: data[1] as! Int, isCost: isCost!, date: date!, isDeleted: nil, modifiedTime: Date())
         Info.sharedInstance.sync()
     }
 }

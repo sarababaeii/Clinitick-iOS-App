@@ -37,7 +37,7 @@ class HomeViewController: TabBarViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Info.sharedInstance.sync()
+//        Info.sharedInstance.sync()
         print("Dentist: \(String(describing: Info.sharedInstance.dentist))")
     }
     
@@ -81,7 +81,7 @@ class HomeViewController: TabBarViewController {
     }
     
     func setNextAppointmentView() {
-        if let appointment = DataController.sharedInstance.getNextAppointment() {
+        if let appointment = Info.sharedInstance.dataController?.getNextAppointment() {
             noNearTaskLabel.isHidden = true
             patientNameLabel.text = appointment.patient.name
             diseaseLabel.text = appointment.disease
