@@ -111,7 +111,13 @@ class PatientProfileViewController: FormViewController {
         }
         if title == "ویرایش" {
             selectedEditButton = button
-            textFields[button.tag].isEnabled = true
+            if button.tag == 3 {
+                alergyMenu.isUserInteractionEnabled = true
+                alergyMenu.expandMenu()
+            } else {
+                textFields[button.tag].isEnabled = true
+                textFields[button.tag].becomeFirstResponder()
+            }
             button.setTitle("ثبت", for: .normal)
         } else {
             submitForm()
@@ -130,7 +136,12 @@ class PatientProfileViewController: FormViewController {
     override func saveData() {
         patient?.updatePatient(phone: data[0] as? String, name: data[1] as? String, alergies: data[2] as? String, isDeleted: nil, modifiedTime: Date())
         if let button = selectedEditButton {
-            textFields[button.tag].isEnabled = false
+            if button.tag == 3 {
+                alergyMenu.isUserInteractionEnabled = false
+                alergyMenu.collapseMenu()
+            } else {
+                textFields[button.tag].isEnabled = false
+            }
             button.setTitle("ویرایش", for: .normal)
         }
     }

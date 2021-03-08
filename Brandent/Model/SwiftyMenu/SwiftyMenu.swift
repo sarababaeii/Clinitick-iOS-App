@@ -455,7 +455,7 @@ extension SwiftyMenu {
         }
     }
     
-    private func collapseMenu() {
+    func collapseMenu() {
         delegate?.swiftyMenuWillDisappear(self)
         self.willCollapse()
         self.state = .hidden
