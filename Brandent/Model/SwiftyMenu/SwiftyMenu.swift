@@ -284,7 +284,7 @@ public class SwiftyMenu: UIView {
         if selectedIndex != index {
             let indexPath = IndexPath(row: index, section: 0)
             tableView(optionsTableView, didSelectRowAt: indexPath)
-        }   
+        }
     }
     
     func unselectOptions() {

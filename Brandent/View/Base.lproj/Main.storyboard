@@ -184,7 +184,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="IaQ-Dm-oQV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UPi-xy-bXV" secondAttribute="trailing" constant="7" id="Dtz-fw-6iB"/>
+                                    <constraint firstItem="IaQ-Dm-oQV" firstAttribute="leading" relation="lessThanOrEqual" secondItem="UPi-xy-bXV" secondAttribute="trailing" constant="7" id="Dtz-fw-6iB"/>
                                     <constraint firstAttribute="bottom" secondItem="IaQ-Dm-oQV" secondAttribute="bottom" id="H1g-XZ-K2j"/>
                                     <constraint firstAttribute="height" constant="41" id="SDR-Ln-nk4"/>
                                     <constraint firstItem="IaQ-Dm-oQV" firstAttribute="top" secondItem="r7J-ka-Kca" secondAttribute="top" id="a2M-An-Clg"/>
@@ -1916,54 +1916,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCP-QY-uv9" customClass="SwiftyMenu" customModule="Brandent">
-                                <rect key="frame" x="24" y="156" width="327" height="54"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="ZEf-C8-oDB"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="listHeight">
-                                        <integer key="value" value="162"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="نوع"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="menuHeaderBackgroundColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isMultiSelect" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideOptionsWhenSelect" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="scrollingEnabled" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
-                                        <real key="value" value="54"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="rowBackgroundColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedRowColor">
-                                        <color key="value" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="optionColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.53368836639999995" green="0.54098916050000001" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="heightConstraint" destination="ZEf-C8-oDB" id="vYy-WS-rCu"/>
-                                </connections>
-                            </view>
                             <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YGS-T1-nBL" customClass="CustomTextField" customModule="Brandent" customModuleProvider="target">
-                                <rect key="frame" x="24" y="226" width="327" height="54"/>
+                                <rect key="frame" x="24" y="218" width="327" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="wkY-io-NI1"/>
@@ -1994,7 +1948,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSR-ua-oA0" customClass="CustomButton" customModule="Brandent" customModuleProvider="target">
-                                <rect key="frame" x="234" y="296" width="117" height="37"/>
+                                <rect key="frame" x="234" y="288" width="117" height="37"/>
                                 <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GSR-ua-oA0" secondAttribute="height" multiplier="133:42" id="Wvp-qZ-Pf1"/>
@@ -2012,25 +1966,68 @@
                                     <action selector="submit:" destination="TAQ-km-2To" eventType="touchUpInside" id="d0S-zA-l30"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xSL-q0-t8q" customClass="SwiftyMenu" customModule="Clinitick">
+                                <rect key="frame" x="24" y="152" width="327" height="54"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="75e-YH-FKb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeHolderText" value="نوع"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isMultiSelect" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hideOptionsWhenSelect" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="scrollingEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
+                                        <real key="value" value="54"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="menuHeaderBackgroundColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rowBackgroundColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="optionColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.53368836639999995" green="0.54098916050000001" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedRowColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="listHeight">
+                                        <integer key="value" value="162"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="heightConstraint" destination="75e-YH-FKb" id="BFT-8a-qBv"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Bdn-aH-eEn" firstAttribute="trailing" secondItem="TSN-ny-vNG" secondAttribute="trailing" id="4KM-A5-QkW"/>
                             <constraint firstItem="GSR-ua-oA0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wCe-Jp-hYG" secondAttribute="leading" symbolic="YES" id="Dks-GW-VmM"/>
-                            <constraint firstItem="LCP-QY-uv9" firstAttribute="centerX" secondItem="doJ-QA-whn" secondAttribute="centerX" id="Eln-L7-LOx"/>
+                            <constraint firstItem="wCe-Jp-hYG" firstAttribute="trailing" secondItem="xSL-q0-t8q" secondAttribute="trailing" constant="24" id="Hvc-S5-jJF"/>
                             <constraint firstItem="YGS-T1-nBL" firstAttribute="trailing" secondItem="TSN-ny-vNG" secondAttribute="trailing" id="JPU-Ks-J8N"/>
+                            <constraint firstItem="xSL-q0-t8q" firstAttribute="top" secondItem="Bdn-aH-eEn" secondAttribute="bottom" constant="12" id="Ne5-mz-Zq9"/>
                             <constraint firstItem="YGS-T1-nBL" firstAttribute="centerX" secondItem="doJ-QA-whn" secondAttribute="centerX" id="QV7-W1-RpC"/>
-                            <constraint firstItem="LCP-QY-uv9" firstAttribute="trailing" secondItem="TSN-ny-vNG" secondAttribute="trailing" id="ZSD-Ny-3JE"/>
                             <constraint firstItem="Bdn-aH-eEn" firstAttribute="centerX" secondItem="doJ-QA-whn" secondAttribute="centerX" id="a51-0w-PsG"/>
                             <constraint firstItem="Bdn-aH-eEn" firstAttribute="top" secondItem="TSN-ny-vNG" secondAttribute="bottom" constant="16" id="beN-or-kmK"/>
                             <constraint firstItem="GSR-ua-oA0" firstAttribute="top" secondItem="YGS-T1-nBL" secondAttribute="bottom" constant="16" id="f4Q-nM-mBw"/>
                             <constraint firstItem="TSN-ny-vNG" firstAttribute="top" secondItem="wCe-Jp-hYG" secondAttribute="top" constant="16" id="g0I-zP-HK4"/>
                             <constraint firstItem="GSR-ua-oA0" firstAttribute="trailing" secondItem="YGS-T1-nBL" secondAttribute="trailing" id="gHs-xE-ivX"/>
                             <constraint firstItem="TSN-ny-vNG" firstAttribute="centerX" secondItem="doJ-QA-whn" secondAttribute="centerX" id="k5I-9R-hwG"/>
-                            <constraint firstItem="LCP-QY-uv9" firstAttribute="top" secondItem="Bdn-aH-eEn" secondAttribute="bottom" constant="16" id="mOZ-12-8dW"/>
                             <constraint firstItem="wCe-Jp-hYG" firstAttribute="trailing" secondItem="TSN-ny-vNG" secondAttribute="trailing" constant="24" id="pT0-zG-UjF"/>
-                            <constraint firstItem="YGS-T1-nBL" firstAttribute="top" secondItem="LCP-QY-uv9" secondAttribute="bottom" constant="16" id="vnp-Cr-JNY"/>
+                            <constraint firstItem="YGS-T1-nBL" firstAttribute="top" secondItem="xSL-q0-t8q" secondAttribute="bottom" constant="12" id="xiY-ho-Znt"/>
+                            <constraint firstItem="xSL-q0-t8q" firstAttribute="centerX" secondItem="doJ-QA-whn" secondAttribute="centerX" id="y0S-45-kxn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wCe-Jp-hYG"/>
                         <connections>
@@ -2040,7 +2037,7 @@
                     <navigationItem key="navigationItem" id="hPA-Mr-Iq9"/>
                     <connections>
                         <outlet property="dateTextField" destination="YGS-T1-nBL" id="Hy9-5L-S7G"/>
-                        <outlet property="kindMenu" destination="LCP-QY-uv9" id="zML-ia-BSa"/>
+                        <outlet property="kindMenu" destination="xSL-q0-t8q" id="RXf-2I-QNu"/>
                         <outlet property="priceTextField" destination="Bdn-aH-eEn" id="qPs-vQ-hPV"/>
                         <outlet property="titleTextField" destination="TSN-ny-vNG" id="u23-bL-N5N"/>
                     </connections>
@@ -2062,7 +2059,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="Qfk-65-wZz" customClass="SwiftyMenu" customModule="Brandent">
+                            <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="Qfk-65-wZz" customClass="SwiftyMenu" customModule="Clinitick">
                                 <rect key="frame" x="231" y="20" width="120" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -2103,13 +2100,10 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.53368836639999995" green="0.54098916050000001" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hideOptionsWhenSelect" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="heightConstraint" destination="wz7-YH-FJC" id="2bA-gm-jzN"/>
+                                    <outlet property="heightConstraint" destination="wz7-YH-FJC" id="zQL-Vr-Jdl"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veA-jO-cuQ" customClass="CustomUIView" customModule="Brandent" customModuleProvider="target">
@@ -2764,7 +2758,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="JUZ-xt-Zt6" customClass="SwiftyMenu" customModule="Brandent">
+                            <view contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" translatesAutoresizingMaskIntoConstraints="NO" id="JUZ-xt-Zt6" customClass="SwiftyMenu" customModule="Clinitick">
                                 <rect key="frame" x="24" y="156" width="327" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -3078,7 +3072,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3I-6K-CbU" customClass="SwiftyMenu" customModule="Brandent">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3I-6K-CbU" customClass="SwiftyMenu" customModule="Clinitick">
                                 <rect key="frame" x="24" y="148" width="327" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -3124,7 +3118,7 @@
                                     <outlet property="heightConstraint" destination="T8M-aI-bM4" id="KxE-uh-w09"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fm-wJ-Vl8" customClass="SwiftyMenu" customModule="Brandent">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fm-wJ-Vl8" customClass="SwiftyMenu" customModule="Clinitick">
                                 <rect key="frame" x="24" y="214" width="327" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -4610,7 +4604,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <view userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Txq-iy-5sL" customClass="SwiftyMenu" customModule="Brandent">
+                            <view userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Txq-iy-5sL" customClass="SwiftyMenu" customModule="Clinitick">
                                 <rect key="frame" x="24" y="214" width="327" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -4960,7 +4954,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hfm-aH-h5N"/>
-        <segue reference="104-nN-C3Y"/>
+        <segue reference="iL6-hw-fDa"/>
         <segue reference="Xf5-vY-bSr"/>
         <segue reference="Kpg-0q-Dp0"/>
         <segue reference="qAk-vO-iOw"/>
