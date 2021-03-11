@@ -90,9 +90,6 @@ class PatientProfileViewController: FormViewController {
         alergyMenuDelegate = AllergyMenuDelegate(viewController: self, menuDataIndex: 2)
         alergyMenuDelegate!.prepareMenu(menu: alergyMenu)
         initializeAllergies()
-        print("$$$")
-        print(patient?.alergies)
-        print("$$$")
         if let alergies = patient?.alergies {
             alergyMenu.selectOptions(options: alergies)
         }
