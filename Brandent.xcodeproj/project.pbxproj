@@ -208,7 +208,7 @@
 		0368107825473FA80016C1D6 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		036A4E11254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		0373AA712585324900E79383 /* DefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKey.swift; sourceTree = "<group>"; };
-		03749EAD250E76D6003CBE49 /* Brandent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brandent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03749EAD250E76D6003CBE49 /* Clinitick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clinitick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03749EB0250E76D6003CBE49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03749EB2250E76D6003CBE49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		03749EB4250E76D6003CBE49 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -444,7 +444,7 @@
 		03749EAE250E76D6003CBE49 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03749EAD250E76D6003CBE49 /* Brandent.app */,
+				03749EAD250E76D6003CBE49 /* Clinitick.app */,
 				03749EC8250E76D7003CBE49 /* BrandentTests.xctest */,
 				03749ED3250E76D7003CBE49 /* BrandentUITests.xctest */,
 			);
@@ -783,7 +783,7 @@
 			);
 			name = Brandent;
 			productName = Brandent;
-			productReference = 03749EAD250E76D6003CBE49 /* Brandent.app */;
+			productReference = 03749EAD250E76D6003CBE49 /* Clinitick.app */;
 			productType = "com.apple.product-type.application";
 		};
 		03749EC7250E76D7003CBE49 /* BrandentTests */ = {
@@ -1305,7 +1305,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixium.Brandent;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Clinitick;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1326,7 +1326,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pixium.Brandent;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Clinitick;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
