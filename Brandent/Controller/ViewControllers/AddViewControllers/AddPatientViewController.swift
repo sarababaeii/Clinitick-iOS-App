@@ -45,6 +45,7 @@ class AddPatientViewController: FormViewController {
     
     func emptyTextFields() {
         if !Info.sharedInstance.isForReturn {
+            patient = nil
             data = ["", "", "", ""] //0: phone, 1: name, 2: clinic, 3: alergy
             for i in 0 ..< 2 {
                 textFields[i].text = ""
