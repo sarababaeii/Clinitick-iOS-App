@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-//import SwiftyMenu
 
 class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
     

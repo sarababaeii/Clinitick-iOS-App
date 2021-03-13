@@ -10,17 +10,20 @@ import Foundation
 import UIKit
 //import SwiftyMenu
 
-class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
+class SeeFinanceViewController: UIViewController {
     
-    @IBOutlet weak var dateMenu: SwiftyMenu!
+    @IBOutlet weak var monthMenu: SwiftyMenu!
+    @IBOutlet weak var yearMenu: SwiftyMenu!
     @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var tomanLabel: UILabel!
     @IBOutlet weak var financeTableView: UITableView!
     
-    var senderTag = 0
     var date = Date()
+    var monthMenuDelegate: MonthMenuDelegate?
+    var yearMenuDelegate: YearMenuDelegate?
     var financeTableViewDelegate: FinanceTableViewDelegate?
-    let dateOptions = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"]
+    
+    var senderTag = 0
     let titles = ["درآمد خالص", "ویزیت‌ها", "درآمدهای خارجی", "خرج‌ها"]
     
     //MARK: Showing NavigationBar
@@ -64,23 +67,24 @@ class SeeFinanceViewController: UIViewController, SwiftyMenuDelegate {
     
     //MARK: DateMenu Functions
     func setDateMenuDelegates() {
-        dateMenu.delegate = self
-        dateMenu.options = dateOptions
-        dateMenu.selectOption(option: date.toPersianMonthString())
-        dateMenu.collapsingAnimationStyle = .spring(level: .low)
+        setMonthMenuDelegate()
+        setYearMenuDelegate()
     }
     
-    func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
-        setDate(monthNumber: index)
-        financeTableViewDelegate?.date = date
+    func setMonthMenuDelegate() {
+        monthMenuDelegate = MonthMenuDelegate(viewController: self)
+        monthMenuDelegate?.prepareMenu(menu: monthMenu)
+        monthMenu.selectOption(option: date.toPersianMonthString())
     }
     
-    func didUnselectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
-//        <#code#>
+    func setYearMenuDelegate() {
+        yearMenuDelegate = YearMenuDelegate(viewController: self)
+        yearMenuDelegate?.prepareMenu(menu: yearMenu)
+        yearMenu.selectOption(option: "۱۳۹۹") //should be okay
     }
     
-    func setDate(monthNumber: Int) {
-        let dateString = "1399-\(monthNumber + 1)-01"
+    func setDate(yearNumber:Int?, monthNumber: Int?) {
+        let dateString = "\(yearNumber ?? date.componentsOfDate.year)-\((monthNumber ?? date.componentsOfDate.month))-01"
         date = Date.getPersianDate(from: dateString)!
     }
     
