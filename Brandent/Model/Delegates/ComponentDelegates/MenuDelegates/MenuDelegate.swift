@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 class MenuDelegate: NSObject, SwiftyMenuDelegate {
     
-    var viewController: FormViewController
+    var viewController: UIViewController
     var menuDataIndex: Int
     
-    init(viewController: FormViewController, menuDataIndex: Int) {
+    init(viewController: UIViewController, menuDataIndex: Int) {
         self.viewController = viewController
         self.menuDataIndex = menuDataIndex
     }
@@ -29,10 +30,8 @@ class MenuDelegate: NSObject, SwiftyMenuDelegate {
     
     //MARK: Delegate Function
     func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
-        viewController.data[menuDataIndex] = selectedOption.displayValue
     }
     
     func didUnselectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
-        viewController.data[menuDataIndex] = ""
     }
 }

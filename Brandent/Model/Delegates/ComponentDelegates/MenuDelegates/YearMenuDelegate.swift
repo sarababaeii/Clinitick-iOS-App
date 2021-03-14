@@ -8,10 +8,10 @@
 
 import Foundation
 
-class YearMenuDelegate: DateMenuDelegate {
+class YearMenuDelegate: MenuDelegate {
     
-    override init(viewController: SeeFinanceViewController) {
-        super.init(viewController: viewController)
+    init(viewController: SeeFinanceViewController) {
+        super.init(viewController: viewController, menuDataIndex: 0)
     }
     
     //MARK: Collecting Options
@@ -24,8 +24,10 @@ class YearMenuDelegate: DateMenuDelegate {
     }
       
     override func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
+        guard let viewController = viewController as? SeeFinanceViewController else {
+            return
+        }
         viewController.setDate(yearNumber: index + 1399, monthNumber: nil)
-        viewController.financeTableViewDelegate?.date = viewController.date //didSet
     }
     
     override func didUnselectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {

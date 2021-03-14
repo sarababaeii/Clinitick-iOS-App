@@ -10,7 +10,7 @@ import Foundation
 
 class ClinicMenuDelegate: MenuDelegate {
     
-    override init(viewController: FormViewController, menuDataIndex: Int) {
+    init(viewController: FormViewController, menuDataIndex: Int) {
         super.init(viewController: viewController, menuDataIndex: menuDataIndex)
     }
     
@@ -30,5 +30,20 @@ class ClinicMenuDelegate: MenuDelegate {
             }
         }
         return options
+    }
+    
+    //MARK: Delegate Function
+    override func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
+        guard let viewController = viewController as? FormViewController else {
+            return
+        }
+        viewController.data[menuDataIndex] = selectedOption.displayValue
+    }
+    
+    override func didUnselectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
+        guard let viewController = viewController as? FormViewController else {
+            return
+        }
+        viewController.data[menuDataIndex] = ""
     }
 }

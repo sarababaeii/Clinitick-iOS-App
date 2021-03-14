@@ -10,7 +10,7 @@ import Foundation
 
 class AllergyMenuDelegate: MenuDelegate {
     
-    override init(viewController: FormViewController, menuDataIndex: Int) {
+    init(viewController: FormViewController, menuDataIndex: Int) {
         super.init(viewController: viewController, menuDataIndex: menuDataIndex)
     }
     
@@ -24,16 +24,25 @@ class AllergyMenuDelegate: MenuDelegate {
     
     //MARK: Delegate Function
     override func didSelectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
+        guard let viewController = viewController as? FormViewController else {
+            return
+        }
         viewController.isSelectedAlergies[selectedOption.displayValue] = true
         updateSelectedAllergies()
     }
     
     override func didUnselectOption(_ swiftyMenu: SwiftyMenu, _ selectedOption: SwiftMenuDisplayable, _ index: Int) {
+        guard let viewController = viewController as? FormViewController else {
+            return
+        }
         viewController.isSelectedAlergies[selectedOption.displayValue] = false
         updateSelectedAllergies()
     }
     
     private func updateSelectedAllergies() {
+        guard let viewController = viewController as? FormViewController else {
+            return
+        }
         if let allergies = allSelectedAllergies() {
             viewController.data[menuDataIndex] = allergies
         }
@@ -41,6 +50,9 @@ class AllergyMenuDelegate: MenuDelegate {
     }
     
     private func allSelectedAllergies() -> String? {
+        guard let viewController = viewController as? FormViewController else {
+            return nil
+        }
         var allergies = ""
         for problem in Info.sharedInstance.problems {
             if let isSelected = viewController.isSelectedAlergies[problem], isSelected == true {

@@ -18,7 +18,11 @@ class SeeFinanceViewController: UIViewController {
     @IBOutlet weak var tomanLabel: UILabel!
     @IBOutlet weak var financeTableView: UITableView!
     
-    var date = Date()
+    var date = Date() {
+        didSet {
+            financeTableViewDelegate?.date = date
+        }
+    }
     var monthMenuDelegate: MonthMenuDelegate?
     var yearMenuDelegate: YearMenuDelegate?
     var financeTableViewDelegate: FinanceTableViewDelegate?
@@ -80,7 +84,7 @@ class SeeFinanceViewController: UIViewController {
     func setYearMenuDelegate() {
         yearMenuDelegate = YearMenuDelegate(viewController: self)
         yearMenuDelegate?.prepareMenu(menu: yearMenu)
-        yearMenu.selectOption(option: "۱۳۹۹") //should be okay
+        yearMenu.selectOption(option: date.toPersianYearString())
     }
     
     func setDate(yearNumber:Int?, monthNumber: Int?) {

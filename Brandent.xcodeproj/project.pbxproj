@@ -87,7 +87,6 @@
 		037EE34B25B5BC400039AB83 /* ProfileImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037EE34A25B5BC400039AB83 /* ProfileImagePickerDelegate.swift */; };
 		03803FA025A0EDA100387FF5 /* NavigationBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03803F9F25A0EDA100387FF5 /* NavigationBarViewController.swift */; };
 		0384E4F62550A74000197CD9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384E4F52550A74000197CD9 /* UIColorExtension.swift */; };
-		038CDF2725FD4AC500C8EF86 /* DateMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038CDF2625FD4AC500C8EF86 /* DateMenuDelegate.swift */; };
 		038CDF2925FD4EAC00C8EF86 /* MonthMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038CDF2825FD4EAC00C8EF86 /* MonthMenuDelegate.swift */; };
 		038CDF2B25FD4F6B00C8EF86 /* YearMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038CDF2A25FD4F6B00C8EF86 /* YearMenuDelegate.swift */; };
 		038D88B32587DE8600447506 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038D88B22587DE8600447506 /* GalleryViewController.swift */; };
@@ -243,7 +242,6 @@
 		037EE34A25B5BC400039AB83 /* ProfileImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePickerDelegate.swift; sourceTree = "<group>"; };
 		03803F9F25A0EDA100387FF5 /* NavigationBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewController.swift; sourceTree = "<group>"; };
 		0384E4F52550A74000197CD9 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		038CDF2625FD4AC500C8EF86 /* DateMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateMenuDelegate.swift; sourceTree = "<group>"; };
 		038CDF2825FD4EAC00C8EF86 /* MonthMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthMenuDelegate.swift; sourceTree = "<group>"; };
 		038CDF2A25FD4F6B00C8EF86 /* YearMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearMenuDelegate.swift; sourceTree = "<group>"; };
 		038D88B22587DE8600447506 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
@@ -422,7 +420,6 @@
 				037AECC2258D241B0097AF42 /* MenuDelegate.swift */,
 				036208D825F54C99003414E5 /* ClinicMenuDelegate.swift */,
 				036208DA25F54CAF003414E5 /* AllergyMenuDelegate.swift */,
-				038CDF2625FD4AC500C8EF86 /* DateMenuDelegate.swift */,
 				038CDF2825FD4EAC00C8EF86 /* MonthMenuDelegate.swift */,
 				038CDF2A25FD4F6B00C8EF86 /* YearMenuDelegate.swift */,
 			);
@@ -1072,7 +1069,6 @@
 				039E2E3325359EDC00F6D5EE /* StringExtension.swift in Sources */,
 				03FBE6882554786E00FEFF63 /* Appointment+CoreDataProperties.swift in Sources */,
 				030C67FE2549D2C800CECCC2 /* ImagesCollectionViewHeader.swift in Sources */,
-				038CDF2725FD4AC500C8EF86 /* DateMenuDelegate.swift in Sources */,
 				03EE13782554498A00363EA0 /* ShadowyUIView.swift in Sources */,
 				03F2755825868E0300526477 /* AddPatientViewController.swift in Sources */,
 				03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */,

@@ -153,6 +153,11 @@ extension Date {
         return formatter.monthSymbols[Int(monthNumber)! - 1]
     }
     
+    func toPersianYearString() -> String { // 1399
+        let formatter = Date.getPersianDateFormatterWithStyle(format: "yyyy", dateStyle: nil, timeStyle: nil)
+        return formatter.string(from: self)
+    }
+    
     func toPersianShortString() -> String { // 99/8/15
         let formatter = Date.getPersianDateFormatterWithStyle(format: "yy/MM/dd", dateStyle: nil, timeStyle: nil)
         return formatter.string(from: self)
