@@ -43,6 +43,7 @@
 		03425328258128A900DA6F29 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03425327258128A900DA6F29 /* InformationViewController.swift */; };
 		0342532A25815C2700DA6F29 /* TimerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0342532925815C2700DA6F29 /* TimerDelegate.swift */; };
 		0344D47E253756F00031122F /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344D47D253756F00031122F /* ImagePickerDelegate.swift */; };
+		034DC75525FFCA3E008E49FE /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DC75425FFCA3E008E49FE /* ImageViewController.swift */; };
 		034F5468255DB020005145C6 /* SwiftyMenuExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F5467255DB020005145C6 /* SwiftyMenuExtension.swift */; };
 		035540E4251624A8003B9638 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E3251624A8003B9638 /* CustomImageView.swift */; };
 		035540E625162725003B9638 /* CustmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035540E525162725003B9638 /* CustmButton.swift */; };
@@ -192,6 +193,7 @@
 		03425327258128A900DA6F29 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		0342532925815C2700DA6F29 /* TimerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDelegate.swift; sourceTree = "<group>"; };
 		0344D47D253756F00031122F /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
+		034DC75425FFCA3E008E49FE /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		034F5467255DB020005145C6 /* SwiftyMenuExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMenuExtension.swift; sourceTree = "<group>"; };
 		035540E3251624A8003B9638 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		035540E525162725003B9638 /* CustmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustmButton.swift; sourceTree = "<group>"; };
@@ -673,6 +675,7 @@
 				0360D85F255165AA00C36AE4 /* PatientProfileViewController.swift */,
 				03E7F93E254C8940000EDDD0 /* ClinicsViewController.swift */,
 				038D88B22587DE8600447506 /* GalleryViewController.swift */,
+				034DC75425FFCA3E008E49FE /* ImageViewController.swift */,
 			);
 			path = SeeViewControllers;
 			sourceTree = "<group>";
@@ -1033,6 +1036,7 @@
 				0321F8802568557D0048D77B /* String.swift in Sources */,
 				0310F450250FF577008B3E5B /* CustomUIView.swift in Sources */,
 				037AECC6258D39AA0097AF42 /* Task+CoreDataClass.swift in Sources */,
+				034DC75525FFCA3E008E49FE /* ImageViewController.swift in Sources */,
 				0342532A25815C2700DA6F29 /* TimerDelegate.swift in Sources */,
 				03D41BBC2553145A005BB942 /* PickerViewDelegate.swift in Sources */,
 				03B032E22530D78800CF1075 /* Info.swift in Sources */,

@@ -11,6 +11,7 @@ import UIKit
 
 class ProfileViewController: TabBarViewController {
     
+    @IBOutlet weak var dentistProfileView: CustomImageView!
     @IBOutlet weak var dentistImageView: CustomImageView!
     @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var dentistNameLabel: UILabel!
@@ -40,13 +41,22 @@ class ProfileViewController: TabBarViewController {
             return
         }
         if let image = dentist.photo {
-            dentistImageView.image = UIImage(data: image)
-            addImageButton.setImage(nil, for: .normal)
+            setDentistProfile(image: UIImage(data: image))
         } else {
             addImageButton.isHidden = false
         }
         dentistNameLabel.text = dentist.first_name + " " + dentist.last_name
         specialityLabel.text = dentist.speciality
+    }
+    
+    func setDentistProfile(image: UIImage?) {
+        guard let image = image else {
+            return
+        }
+        dentistProfileView.backgroundColor = UIColor(patternImage: image)
+        dentistProfileView.applyBlurEffect()
+        dentistImageView.image = image
+        addImageButton.setImage(nil, for: .normal)
     }
     
     @IBAction func changeProfileImage(_ sender: Any) {

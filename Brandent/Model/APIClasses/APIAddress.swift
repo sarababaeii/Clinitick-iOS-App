@@ -16,7 +16,8 @@ struct API {
     
     private static let patient = API.base + "patients"
     public static let images = API.patient + "/images"
-    public static let imageFiles = API.server + "public/refined/"
+    public static let compressedImageFiles = API.server + "public/refined/"
+    public static let realImageFiles = API.server + "public/uploads/"
     
     private static let authentication = API.base + "auth/"
     private static let login = API.authentication + "login"
@@ -27,7 +28,7 @@ struct API {
     private static let dentist = API.base + "dentists"
     private static let dentistProfile = API.dentist + "/profile"
     private static let profilePicture = API.dentistProfile + "/image"
-    public static let profilePictureFile = API.imageFiles + "profile/"
+    public static let profilePictureFile = API.compressedImageFiles + "profile/"
     
     static let addImageURL = URL(string: API.images)!
     static let syncURL = URL(string: API.sync)!

@@ -42,12 +42,11 @@ class ProfileImagePickerDelegate: ImagePickerDelegate {
     
     func showImage() {
         if let viewController = viewController as? ProfileViewController {
-            viewController.dentistImageView.image = images[0].img
-            viewController.addImageButton.setImage(nil, for: .normal)
+            viewController.setDentistProfile(image: images[0].compressedImg)
         }
         
         if let viewController = viewController as? InformationViewController {
-            viewController.dentistImageView.image = images[0].img
+            viewController.dentistImageView.image = images[0].compressedImg
             viewController.addImageButton.setImage(nil, for: .normal)
         }
     }

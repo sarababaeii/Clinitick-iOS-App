@@ -17,7 +17,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     
     func setAttributes(image: Image, delegate: ImagesCollectionViewDelegate) {
         self.image = image
-        imageView.image = image.img
+        imageView.image = image.compressedImg
         imagesCollectionViewDelegate = delegate
     }
     

@@ -60,4 +60,14 @@ class GalleryViewController: NavigationBarViewController {
     @IBAction func addImage(_ sender: Any) {
         imagePickerDelegate?.displayImagePickingOptions()
     }
+    
+    //MARK: Sending Sender to PatientProfile
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ImageViewSegue",
+            let cell = sender as? ImageCollectionViewCell,
+            let image = cell.image,
+            let viewController = segue.destination as? ImageViewController {
+                viewController.image = image
+        }
+    }
 }

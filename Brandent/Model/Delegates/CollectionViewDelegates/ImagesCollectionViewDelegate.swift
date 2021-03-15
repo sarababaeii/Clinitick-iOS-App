@@ -86,7 +86,7 @@ class ImagesCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollec
     }
     
     func showImage(fileName: String) {
-        let image = Image(name: fileName, urlString: API.imageFiles)
+        let image = Image(name: fileName, urlString: API.compressedImageFiles)
         let indexPath = IndexPath(item: images.count, section: 0)
         DispatchQueue.main.async {
             self.insertImage(image, at: indexPath)
