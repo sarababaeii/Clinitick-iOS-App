@@ -51,7 +51,7 @@ extension Date {
         return currentCalendar.date(from: comps)!
     }
     
-    public var daysIntWeek: Int{
+    public var daysInWeek: Int{
         return currentCalendar.range(of: .day, in: .weekOfMonth, for: self)!.count
     }
     

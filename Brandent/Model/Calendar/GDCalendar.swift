@@ -160,16 +160,11 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
     }
     
     // MARK: - Initiate Variables
-    public func generateDates(){
-        datesArray = generateDatesData()
-        collectionView.reloadSections([1])
-    }
-    
     fileprivate func initializeVars(){
         calendar = Date().currentCalendar
         currentDate = Date().today
         startDate = currentDate.startDayOfWeek
-        numberOfDaysInWeek = currentDate.daysIntWeek
+        numberOfDaysInWeek = currentDate.daysInWeek
         
         var langCode = "en"
         if let lcode = calendar.locale?.languageCode{
@@ -178,9 +173,18 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
         direction = NSLocale.characterDirection(forLanguage: langCode).rawValue == 2 ? .rightToLeft : .leftToRight
     }
     
+    fileprivate func generateDates(){
+        datesArray = generateDatesData()
+        reloadDays()
+    }
+    
+    public func reloadDays() {
+        collectionView.reloadSections([1])
+    }
+    
     fileprivate func setDates(){
         startDate = currentDate.startDayOfWeek
-        numberOfDaysInWeek = currentDate.daysIntWeek
+        numberOfDaysInWeek = currentDate.daysInWeek
     }
     
     //MARK: - Funcs

@@ -28,7 +28,7 @@ class TasksViewController: TabBarViewController {
    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-//        calendar.frame = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: view.wi, height: <#T##CGFloat#>)
+        calendar.reloadDays()
     }
     
     override func viewWillAppear(_ animated: Bool) {
