@@ -179,9 +179,9 @@ enum APIKey: String {
     }
     
     //MARK: Alergies
-    var alergies: String? {
+    var allergies: String? {
         switch self {
-        case .patient: //TODO: check
+        case .patient:
             return "allergies"
         default:
             return nil

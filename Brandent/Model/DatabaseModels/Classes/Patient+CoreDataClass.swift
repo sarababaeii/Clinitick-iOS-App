@@ -97,18 +97,38 @@ public class Patient: Entity {
         return clinics
     }
     
+    static func getAllergyString(allergies: [String]) -> String {
+        var allergyString = ""
+        for allergy in allergies {
+            allergyString += (allergy + ",")
+        }
+        return allergyString
+    }
+    
+    func getAllergyArray(allergies: String) -> [String] {
+        var allergyArray = [String]()
+        let allergiesSplitted = allergies.split(separator: ",")
+        for allergy in allergiesSplitted {
+            allergyArray.append(String(allergy))
+        }
+        return allergyArray
+    }
+    
     //MARK: API Functions
-    func toDictionary() -> [String: String] {
-        let params: [String: String] = [
+    func toDictionary() -> [String: Any] {
+        var params: [String: Any] = [
             APIKey.patient.id!: self.id.uuidString,
             APIKey.patient.name!: self.name,
             APIKey.patient.phone!: self.phone,
             APIKey.patient.isDeleted!: String(self.is_deleted)]
+        if let allergies = self.alergies {
+            params[APIKey.patient.allergies!] = getAllergyArray(allergies: allergies)
+        }
         return params
     }
     
-    static func toDictionaryArray(patients: [Patient]) -> [[String: String]] {
-        var params = [[String: String]]()
+    static func toDictionaryArray(patients: [Patient]) -> [[String: Any]] {
+        var params = [[String: Any]]()
         for patient in patients {
             params.append(patient.toDictionary())
         }
@@ -124,7 +144,11 @@ public class Patient: Entity {
          let isDeleted = Bool.intToBool(value: isDeletedInt) else {
             return false
         }
-        let _ = getPatient(id: id, phone: phone, name: name, alergies: nil, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        var allergies: String?
+        if let allergiesArray = patient[APIKey.patient.allergies!] as? [String] {
+            allergies = getAllergyString(allergies: allergiesArray)
+        }
+        let _ = getPatient(id: id, phone: phone, name: name, alergies: allergies, isDeleted: isDeleted, modifiedTime: modifiedTime)
         print("#\(id)")
         return true
     }
@@ -134,6 +158,12 @@ public class Patient: Entity {
 //  {
 //    "id": "890a32fe-12e6-11eb-adc1-0242ac120002",
 //    "full_name": "Mary J. Blige",
-//    "phone": "09203012037"
+//    "allergies": [
+//      "a",
+//      "b",
+//      "c"
+//    ],
+//    "phone": "09203012037",
+//    "is_deleted": false
 //  }
-//], TODO: alergies
+//]
