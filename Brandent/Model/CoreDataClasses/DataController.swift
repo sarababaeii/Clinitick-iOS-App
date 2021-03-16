@@ -208,9 +208,9 @@ class DataController {
     }
     
     //MARK: Task
-    func createTask(id: UUID?, title: String, date: Date, clinic: Clinic?, isDeleted: Bool?, modifiedTime: Date?) -> Task {
+    func createTask(id: UUID?, title: String, date: Date, state: String, clinic: Clinic?, isDeleted: Bool?, modifiedTime: Date?) -> Task {
         let task = Task(entity: taskEntity, insertInto: context)
-        task.setAttributes(id: id, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        task.setAttributes(id: id, title: title, date: date, state: state, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
         saveContext()
         return task
     }

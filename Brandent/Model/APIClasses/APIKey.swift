@@ -151,7 +151,7 @@ enum APIKey: String {
     //MARK: State
     var state: String? {
         switch self {
-        case .appointment:
+        case .appointment, .task:
             return "state"
         default:
             return nil

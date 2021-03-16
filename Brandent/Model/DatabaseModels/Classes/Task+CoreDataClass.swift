@@ -13,28 +13,28 @@ import CoreData
 @objc(Task)
 public class Task: Entity {
     //MARK: Initialization
-    static func getTask(id: UUID, title: String, date: Date, clinicID: String?, isDeleted: Bool, modifiedTime: Date) -> Task { //for sync
+    static func getTask(id: UUID, title: String, date: Date, state: String, clinicID: String?, isDeleted: Bool, modifiedTime: Date) -> Task { //for sync
         var clinic: Clinic?
         if let clinicID = clinicID, let id = UUID(uuidString: clinicID), let theClinic = Clinic.getClinicByID(id, isForSync: true) {
             clinic = theClinic
         }
         if let task = getTaskByID(id) {
-            task.updateTask(id: id, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
+            task.updateTask(id: id, title: title, date: date, state: state, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return task
         }
-        return Info.sharedInstance.dataController!.createTask(id: id, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        return Info.sharedInstance.dataController!.createTask(id: id, title: title, date: date, state: state, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
         
-    static func getTask(id: UUID?, title: String, date: Date, clinicTitle: String?, isDeleted: Bool?, modifiedTime: Date?) -> Task { //for add
+    static func getTask(id: UUID?, title: String, date: Date, state: String, clinicTitle: String?, isDeleted: Bool?, modifiedTime: Date?) -> Task { //for add
         var clinic: Clinic?
         if let clinicTitle = clinicTitle, let theClinic = Clinic.getClinicByTitle(clinicTitle) {
             clinic = theClinic
         }
         if let id = id, let task = getTaskByID(id) {
-            task.updateTask(id: id, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
+            task.updateTask(id: id, title: title, date: date, state: state, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return task
         }
-        return Info.sharedInstance.dataController!.createTask(id: nil, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        return Info.sharedInstance.dataController!.createTask(id: nil, title: title, date: date, state: state, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
     
     static func getTaskByID(_ id: UUID) -> Task? {
@@ -45,11 +45,11 @@ public class Task: Entity {
     }
     
     //MARK: Setting Attributes
-    func setAttributes(id: UUID?, title: String, date: Date, clinic: Clinic?, isDeleted: Bool?, modifiedTime: Date?) {
+    func setAttributes(id: UUID?, title: String, date: Date, state: String, clinic: Clinic?, isDeleted: Bool?, modifiedTime: Date?) {
         self.title = title
         self.date = date
         self.clinic = clinic
-        self.state = TaskState.todo.rawValue
+        self.state = state
         
         self.setID(id: id)
         self.setDentist()
@@ -65,8 +65,8 @@ public class Task: Entity {
         }
     }
     
-    func updateTask(id: UUID?, title: String, date: Date, clinic: Clinic?, isDeleted: Bool?, modifiedTime: Date?) {
-        setAttributes(id: id, title: title, date: date, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
+    func updateTask(id: UUID?, title: String, date: Date, state: String, clinic: Clinic?, isDeleted: Bool?, modifiedTime: Date?) {
+        setAttributes(id: id, title: title, date: date, state: state, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
         Info.sharedInstance.dataController?.saveContext()
     }
     
@@ -81,6 +81,7 @@ public class Task: Entity {
         var params: [String: String] = [
             APIKey.task.id!: self.id.uuidString,
             APIKey.task.title!: self.title,
+            APIKey.task.state!: self.state,
             APIKey.task.date!: self.date.toDBFormatDateAndTimeString(isForSync: false),
             APIKey.task.isDeleted!: String(self.is_deleted)]
         
@@ -102,6 +103,7 @@ public class Task: Entity {
         guard let idString = task[APIKey.task.id!] as? String,
          let id = UUID.init(uuidString: idString),
          let title = task[APIKey.task.title!] as? String,
+         let state = task[APIKey.task.state!] as? String,
          let dateString = task[APIKey.task.date!] as? String,
          let date = Date.getDBFormatDate(from: dateString, isForSync: false),
          let isDeletedInt = task[APIKey.task.isDeleted!] as? Int,
@@ -112,7 +114,7 @@ public class Task: Entity {
         if let id = task[APIKey.task.clinic!] as? String {
             clinicID = id
         }
-        let _ = getTask(id: id, title: title, date: date, clinicID: clinicID, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        let _ = getTask(id: id, title: title, date: date, state: state, clinicID: clinicID, isDeleted: isDeleted, modifiedTime: modifiedTime)
         print("#\(id)")
         return true
     }
@@ -120,10 +122,11 @@ public class Task: Entity {
 
 //"tasks": [
 //  {
-//    "id": "890a32fe-12e6-11eb-adc1-0242ac120002",
-//    "title": "sine saratan",
-//    "task_date": "2020-10-9 10:10:10",
-//    "clinic_id": "890a32fe-12e6-11eb-adc1-0242ac120002",
-//    "is_deleted": false
+//     "id": "890a32fe-12e6-11eb-adc1-0242ac120002",
+//     "title": "sine saratan",
+//     "state": "done",
+//     "task_date": "2020-10-9 10:10:10",
+//     "clinic_id": "890a32fe-12e6-11eb-adc1-0242ac120002",
+//     "is_deleted": false
 //  }
 //]

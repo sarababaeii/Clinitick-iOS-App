@@ -87,7 +87,7 @@ class AddTaskViewController: FormViewController {
     }
     
     override func saveData() {
-        let _ = Task.getTask(id: self.task?.id, title: data[0] as! String, date: date!, clinicTitle: data[1] as? String, isDeleted: nil, modifiedTime: Date())
+        let _ = Task.getTask(id: self.task?.id, title: data[0] as! String, date: date!, state: self.task?.state ?? TaskState.todo.rawValue, clinicTitle: data[1] as? String, isDeleted: nil, modifiedTime: Date())
         Info.sharedInstance.sync()
     }
 }
