@@ -180,6 +180,7 @@ public class SwiftyMenu: UIView {
         layer.cornerRadius = cornerRadius
         layer.borderWidth = borderWidth
         layer.borderColor = borderColor.cgColor
+        backgroundColor = UIColor.clear
     }
     
     private func getViewWidth() {
