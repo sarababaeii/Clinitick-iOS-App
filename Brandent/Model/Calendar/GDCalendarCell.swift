@@ -96,7 +96,8 @@ class GDCalendarItemCell: UICollectionViewCell{
     
     private func setGradient(lightGradientColor: UIColor, darkGradientColor: UIColor) {
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: self.bounds.width / 6, y: self.bounds.height / 6, width: self.bounds.width / 1.5, height: self.bounds.height / 1.5)
+        gradientLayer.frame = CGRect(x: self.bounds.width / 6, y: self.bounds.height / 8, width: self.bounds.width / 1.5, height: self.bounds.width / 1.5)
+//        gradientLayer.frame = CGRect(x: self.bounds.width / 6, y: self.bounds.height / 6, width: self.bounds.width / 1.5, height: 45 / 1.5)
         gradientLayer.cornerRadius = self.layer.cornerRadius
         gradientLayer.colors = [lightGradientColor.cgColor, darkGradientColor.cgColor]
         

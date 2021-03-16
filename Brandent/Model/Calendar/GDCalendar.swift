@@ -69,17 +69,15 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
     //MARK: - Views
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         createViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         createViews()
     }
     
-    fileprivate func createViews(){
+    public func createViews(){
         initializeVars()
         generateMainCalendarView()
         createMonthView()
@@ -154,7 +152,7 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
     }
     
     fileprivate func setCollectionViewConstraints(){
-        monthView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -8.0).isActive = true
+        monthView.bottomAnchor.constraint(equalTo: collectionView.topAnchor, constant: -6.0).isActive = true
         let padding = ((frame.width - 48) / 7) / 3.5
         collectionView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24 - padding).isActive = true
         collectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24 + padding).isActive = true
@@ -162,7 +160,7 @@ public final class GDCalendar: UIView, UIGestureRecognizerDelegate{
     }
     
     // MARK: - Initiate Variables
-    fileprivate func generateDates(){
+    public func generateDates(){
         datesArray = generateDatesData()
         collectionView.reloadSections([1])
     }
@@ -341,7 +339,8 @@ extension GDCalendar: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (frame.width - 48) / 7, height: (frame.width - 48) / 7)
+//        return CGSize(width: (frame.width - 48) / 7, height: (frame.width - 48) / 7)
+        return CGSize(width: (frame.width - 48) / 7, height: 45)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

@@ -11,6 +11,8 @@ import UIKit
 
 class TasksViewController: TabBarViewController {
 
+    static var count = 0
+    
     @IBOutlet weak var calendar: GDCalendar!
     @IBOutlet weak var line: LightningUIView!
     @IBOutlet weak var noTaskView: UIView!
@@ -24,6 +26,11 @@ class TasksViewController: TabBarViewController {
         loadConfigure()
     }
    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+//        calendar.frame = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: view.wi, height: <#T##CGFloat#>)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         appearConfigure()
