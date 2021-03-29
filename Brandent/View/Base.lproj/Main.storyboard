@@ -2427,116 +2427,83 @@
             <point key="canvasLocation" x="-977" y="1046"/>
         </scene>
         <!--Add Appointment View Controller-->
-        <scene sceneID="gag-KY-hmN">
+        <scene sceneID="Pzk-ix-UK9">
             <objects>
-                <tableViewController id="0zZ-7e-d64" customClass="AddAppointmentViewController" customModule="Clinitick" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4xx-MQ-sat">
+                <viewController storyboardIdentifier="AddAppointmentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m5I-0q-Xe7" customClass="AddAppointmentViewController" customModule="Clinitick" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JK1-46-hou">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <color key="sectionIndexBackgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5nY-EP-Db2">
-                            <rect key="frame" x="0.0" y="272" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <action selector="submit:" destination="0zZ-7e-d64" eventType="touchUpInside" id="XQY-U4-Giz"/>
-                            </connections>
-                        </button>
-                        <sections>
-                            <tableViewSection id="npe-mC-plB">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddAppointmentCellID" rowHeight="84" id="GvB-Qd-ggq">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="84"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="210" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LeS-s1-siN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddAppointmentCellID" rowHeight="210" id="g8a-Jg-sUN" customClass="AddAppointmentTableViewCell" customModule="Clinitick" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="AddAppointmentCellID" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GvB-Qd-ggq" id="AgK-kp-06R">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g8a-Jg-sUN" id="gcT-DO-Kob">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="دلیل ویزیت" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ob-0K-Nza" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
-                                                    <rect key="frame" x="24" y="24" width="366" height="54"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="دلیل ویزیت" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kaf-Qa-aLw" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
+                                                    <rect key="frame" x="24" y="12" width="366" height="54"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="54" id="ZDh-kM-fbv"/>
+                                                        <constraint firstAttribute="height" constant="54" id="IKN-8C-xng"/>
                                                     </constraints>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </textField>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstItem="4ob-0K-Nza" firstAttribute="centerX" secondItem="AgK-kp-06R" secondAttribute="centerX" id="jbr-eN-LcF"/>
-                                                <constraint firstAttribute="bottom" secondItem="4ob-0K-Nza" secondAttribute="bottom" constant="6" id="nYW-qQ-h8D"/>
-                                                <constraint firstAttribute="trailing" secondItem="4ob-0K-Nza" secondAttribute="trailing" constant="24" id="ux3-Io-VIz"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddAppointmentCellID" rowHeight="66" id="e4s-fP-89c">
-                                        <rect key="frame" x="0.0" y="112" width="414" height="66"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e4s-fP-89c" id="KMy-Ym-2d7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه‌ی درمان" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kcg-kR-4If" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
-                                                    <rect key="frame" x="24" y="6" width="366" height="54"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="52k-JE-HiK"/>
-                                                        <constraint firstAttribute="height" constant="54" id="CoC-os-lI3"/>
-                                                    </constraints>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                                                    <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                             <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                             <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="10"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                            <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="kcg-kR-4If" firstAttribute="centerY" secondItem="KMy-Ym-2d7" secondAttribute="centerY" id="Nis-sx-4dZ"/>
-                                                <constraint firstItem="kcg-kR-4If" firstAttribute="centerX" secondItem="KMy-Ym-2d7" secondAttribute="centerX" id="bJC-RC-SXr"/>
-                                                <constraint firstAttribute="trailing" secondItem="kcg-kR-4If" secondAttribute="trailing" constant="24" id="yQz-GP-YGC"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddAppointmentCellID" rowHeight="66" id="MpT-id-X55">
-                                        <rect key="frame" x="0.0" y="178" width="414" height="66"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MpT-id-X55" id="Ezu-r1-GXi">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5bN-TN-qN1" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
-                                                    <rect key="frame" x="24" y="6" width="366" height="54"/>
+                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="هزینه‌ی درمان (تومان)" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5M3-7i-tYU" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
+                                                    <rect key="frame" x="24" y="78" width="366" height="54"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="cTd-Yn-tLf"/>
+                                                    </constraints>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                            <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                                <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-VL-9oT" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
+                                                    <rect key="frame" x="24" y="144" width="366" height="54"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" red="0.39607843139999999" green="0.50980392159999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="54" id="28I-Vs-q5y"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="NPX-LI-0RV"/>
+                                                        <constraint firstAttribute="height" constant="54" id="PK6-3h-koc"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="hTm-vz-DkW"/>
                                                     </constraints>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                     <userDefinedRuntimeAttributes>
@@ -2562,29 +2529,67 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="5bN-TN-qN1" firstAttribute="centerX" secondItem="Ezu-r1-GXi" secondAttribute="centerX" id="6qb-a4-dOe"/>
-                                                <constraint firstItem="5bN-TN-qN1" firstAttribute="centerY" secondItem="Ezu-r1-GXi" secondAttribute="centerY" id="S1L-vE-3gj"/>
-                                                <constraint firstAttribute="trailing" secondItem="5bN-TN-qN1" secondAttribute="trailing" constant="24" id="yvz-TN-za5"/>
+                                                <constraint firstAttribute="trailing" secondItem="5M3-7i-tYU" secondAttribute="trailing" constant="24" id="33u-QR-P7y"/>
+                                                <constraint firstAttribute="trailing" secondItem="kaf-Qa-aLw" secondAttribute="trailing" constant="24" id="95a-aE-7Ys"/>
+                                                <constraint firstItem="4Vg-VL-9oT" firstAttribute="top" secondItem="5M3-7i-tYU" secondAttribute="bottom" constant="12" id="EWw-Eg-Sct"/>
+                                                <constraint firstItem="5M3-7i-tYU" firstAttribute="top" secondItem="kaf-Qa-aLw" secondAttribute="bottom" constant="12" id="H82-EU-a1P"/>
+                                                <constraint firstItem="5M3-7i-tYU" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="JDH-Yq-b33"/>
+                                                <constraint firstItem="kaf-Qa-aLw" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="PzQ-5Z-PHt"/>
+                                                <constraint firstItem="4Vg-VL-9oT" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="ZKP-pu-ZDH"/>
+                                                <constraint firstItem="kaf-Qa-aLw" firstAttribute="top" secondItem="gcT-DO-Kob" secondAttribute="top" constant="12" id="ZdO-rB-F7o"/>
+                                                <constraint firstAttribute="trailing" secondItem="4Vg-VL-9oT" secondAttribute="trailing" constant="24" id="yDy-n1-O7O"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dateTextField" destination="4Vg-VL-9oT" id="0cY-bh-7Cn"/>
+                                            <outlet property="diseaseTextField" destination="kaf-Qa-aLw" id="h3f-2c-ZCd"/>
+                                            <outlet property="priceTextField" destination="5M3-7i-tYU" id="grZ-3g-uec"/>
+                                        </connections>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="0zZ-7e-d64" id="6UG-X6-lL4"/>
-                            <outlet property="delegate" destination="0zZ-7e-d64" id="C7e-fV-bT1"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="vLu-4P-SI5">
-                        <barButtonItem key="backBarButtonItem" title="بازگشت" id="huN-my-iw0"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6aC-89-s8h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUK-0d-wjH" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                                <rect key="frame" x="24" y="671" width="366" height="41"/>
+                                <color key="backgroundColor" red="0.28023469449999999" green="0.1677436829" blue="0.70353585480000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="cYM-bo-uhj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="16"/>
+                                <state key="normal" title="اتمام و ثبت">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submit:" destination="m5I-0q-Xe7" eventType="touchUpInside" id="K90-7c-P1G"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LeS-s1-siN" firstAttribute="top" secondItem="qZi-Zl-NrR" secondAttribute="top" id="1qr-zc-22i"/>
+                            <constraint firstItem="LeS-s1-siN" firstAttribute="leading" secondItem="qZi-Zl-NrR" secondAttribute="leading" id="9Jl-Sd-OZx"/>
+                            <constraint firstItem="qZi-Zl-NrR" firstAttribute="trailing" secondItem="LeS-s1-siN" secondAttribute="trailing" id="AeN-qn-B3x"/>
+                            <constraint firstItem="nUK-0d-wjH" firstAttribute="centerX" secondItem="JK1-46-hou" secondAttribute="centerX" id="BHp-2L-GB7"/>
+                            <constraint firstItem="qZi-Zl-NrR" firstAttribute="bottom" secondItem="nUK-0d-wjH" secondAttribute="bottom" constant="24" id="SyC-zP-Fuf"/>
+                            <constraint firstItem="qZi-Zl-NrR" firstAttribute="bottom" secondItem="LeS-s1-siN" secondAttribute="bottom" id="aJi-Gd-ZE5"/>
+                            <constraint firstItem="qZi-Zl-NrR" firstAttribute="trailing" secondItem="nUK-0d-wjH" secondAttribute="trailing" constant="24" id="val-7i-QwI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qZi-Zl-NrR"/>
+                    </view>
+                    <connections>
+                        <outlet property="addAppointmentTableView" destination="LeS-s1-siN" id="BhP-px-fPg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HKz-G4-LBA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1417" y="2024"/>
+            <point key="canvasLocation" x="1417" y="1815"/>
         </scene>
         <!--Gallery View Controller-->
         <scene sceneID="gsD-Cj-liY">

@@ -25,9 +25,9 @@ public class Clinic: Entity {
             clinic.updateClinic(id: id, title: title, address: address, color: clinicColor, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return clinic
         }
-        if let clinic = getClinicByTitle(title) {
-            return clinic
-        }
+//        if let clinic = getClinicByTitle(title) {
+//            return clinic
+//        }
         
         return Info.sharedInstance.dataController!.createClinic(id: id, title: title, address: address, color: clinicColor, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }

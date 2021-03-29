@@ -14,9 +14,13 @@ import CoreData
 public class Appointment: Entity {
     //MARK: Initialization
     static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, disease: String, price: Int?, date: Date?, state: String, isDeleted: Bool, modifiedTime: Date) -> Appointment? { // for sync
-        guard let clinic = Clinic.getClinicByID(clinicID, isForSync: true),
-         let patient = Patient.getPatientByID(patientID, isForSync: true) else {
-            print(patientID)
+        guard let clinic = Clinic.getClinicByID(clinicID, isForSync: true) else {
+            print("clinic did not find")
+            print(clinicID)
+            return nil
+        }
+        guard let patient = Patient.getPatientByID(patientID, isForSync: true) else {
+            print("patient did not find")
             print(clinicID)
             return nil
         }
@@ -193,3 +197,7 @@ public class Appointment: Entity {
 //  "allergies": "peanut butter",
 //  "patient_id": "890a32fe-12e6-11eb-adc1-0242ac120002"
 //}
+
+
+//CE1B5362-F0DE-4D37-97DD-BDA9C8492BCD
+//70A65FE5-0C70-44FD-96EA-AAF9700C634E

@@ -165,7 +165,7 @@ class AddPatientViewController: FormViewController {
     }
     
     func nextPage(patient: Patient, clinic: Clinic) {
-        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TempAddAppointmrntViewController") as? TempAddAppointmrntViewController else {
+        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddAppointmentViewController") as? AddAppointmentViewController else {
             return
         }
         controller.patient = patient

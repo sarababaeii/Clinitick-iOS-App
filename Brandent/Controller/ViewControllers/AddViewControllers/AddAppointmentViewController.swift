@@ -1,62 +1,50 @@
 //
-//  AddViewController.swift
+//  AddAppointmentViewController.swift
 //  Brandent
 //
-//  Created by Sara Babaei on 9/14/20.
-//  Copyright © 2020 Sara Babaei. All rights reserved.
+//  Created by Sara Babaei on 3/22/21.
+//  Copyright © 2021 Sara Babaei. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class AddAppointmentViewController: UITableViewController {
+class AddAppointmentViewController: FormViewController {
     
-//    var patient: Patient?
+    @IBOutlet weak var addAppointmentTableView: UITableView!
     
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "AddAppointmentCellID", for: indexPath)
-////        print("\(indexPath): \(cell.subviews)")
-//        return cell
-//    }
+    var patient: Patient?
+    var clinic: Clinic?
     
-    //MARK: Showing NavigationBar
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: animated)
-//    }
+    var addAppointmentTableViewDelegate: AddAppointmentTableViewDelegate?
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        configure()
-//    }
-    
-//    func configure() {
-//        setTitle()
-//        print(tableView!.numberOfSections)
-//        var ip = IndexPath(row: 0, section: 0)
-//
-//    }
-    
-//    func getCellInformation(indexPath: IndexPath) -> Any? {
-//        let cell = tableView.cellForRow(at: indexPath)
-//        let textField = cell?.contentView.subviews[0] as? CustomTextField
-//        return textField?.fetchInput()
-//    }
-    
-//    func getAppointmentInformation() {
-//
-//    }
-    
-    @IBAction func submit(_ sender: Any) {
-//        for i in 0 ..< 2 {
-//            var ip = IndexPath(row: i, section: 0)
-//            print(getCellInformation(indexPath: ip))
-//        }
+    //MARK: Initialization
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configure()
     }
     
-    //MARK: UI Management
-//    func setTitle() {
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "فعالیت درمانی", style: UIBarButtonItem.Style.plain, target: self, action: .none)
-//        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
-//    }
+    func configure() {
+        Info.sharedInstance.isForReturn = true
+        setDelegates()
+        setTitle(title: "فعالیت درمانی")
+    }
+    
+    func setDelegates() {
+        addAppointmentTableViewDelegate = AddAppointmentTableViewDelegate(viewController: self)
+        addAppointmentTableView.delegate = addAppointmentTableViewDelegate
+        addAppointmentTableView.dataSource = addAppointmentTableViewDelegate
+    }
+    
+    @IBAction func submit(_ sender: Any) {
+        if let wasSuccessful = addAppointmentTableViewDelegate?.submit(), wasSuccessful {
+            back()
+        }
+    }
+    
+    override func back() {
+        navigateToPage(identifier: "TabBarViewController")
+    }
 }
+
+//TODO: Hide Keyboard

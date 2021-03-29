@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0300B3FF25B0B59B00D8CAD5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300B3FE25B0B59B00D8CAD5 /* TabBarViewController.swift */; };
 		03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D2E250FE8BB00C7824A /* ProfileViewController.swift */; };
-		03036D31250FE8F500C7824A /* AddAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D30250FE8F500C7824A /* AddAppointmentViewController.swift */; };
 		03036D33250FE92400C7824A /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D32250FE92400C7824A /* TasksViewController.swift */; };
 		03088771255EB11A00207D91 /* TodayTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03088770255EB11A00207D91 /* TodayTasks.swift */; };
 		03088773255EB31600207D91 /* TodayTasksTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03088772255EB31600207D91 /* TodayTasksTableViewDelegate.swift */; };
@@ -37,6 +36,8 @@
 		0323B3C72540A83F00EB34CD /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0323B3C62540A83F00EB34CD /* DateExtension.swift */; };
 		0328877E254F63B700AF1A9F /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0328877D254F63B700AF1A9F /* ColorCollectionViewCell.swift */; };
 		033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033C7661253D9EC900D25F4E /* CustomTabBar.swift */; };
+		033F025D2608D2FE0077FA2B /* AddAppointmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033F025C2608D2FE0077FA2B /* AddAppointmentTableViewCell.swift */; };
+		033F025F2608D4580077FA2B /* AddAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033F025E2608D4580077FA2B /* AddAppointmentViewController.swift */; };
 		03425322258127D700DA6F29 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03425321258127D700DA6F29 /* LoginViewController.swift */; };
 		034253242581284900DA6F29 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034253232581284900DA6F29 /* SignUpViewController.swift */; };
 		034253262581287F00DA6F29 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034253252581287F00DA6F29 /* CodeViewController.swift */; };
@@ -61,6 +62,7 @@
 		036626BD258A74C1002CCEE2 /* RestAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036626BC258A74C1002CCEE2 /* RestAPIResult.swift */; };
 		0368107925473FA80016C1D6 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0368107825473FA80016C1D6 /* ImageCollectionViewCell.swift */; };
 		036A4E12254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A4E11254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift */; };
+		036D74A7260B47030072A3C0 /* AddAppointmentTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036D74A6260B47030072A3C0 /* AddAppointmentTableViewDelegate.swift */; };
 		0373AA722585324900E79383 /* DefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0373AA712585324900E79383 /* DefaultKey.swift */; };
 		03749EB1250E76D6003CBE49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB0250E76D6003CBE49 /* AppDelegate.swift */; };
 		03749EB3250E76D6003CBE49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03749EB2250E76D6003CBE49 /* SceneDelegate.swift */; };
@@ -159,7 +161,6 @@
 /* Begin PBXFileReference section */
 		0300B3FE25B0B59B00D8CAD5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		03036D2E250FE8BB00C7824A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		03036D30250FE8F500C7824A /* AddAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentViewController.swift; sourceTree = "<group>"; };
 		03036D32250FE92400C7824A /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		03088770255EB11A00207D91 /* TodayTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTasks.swift; sourceTree = "<group>"; };
 		03088772255EB31600207D91 /* TodayTasksTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTasksTableViewDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +188,8 @@
 		0323B3C62540A83F00EB34CD /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0328877D254F63B700AF1A9F /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		033C7661253D9EC900D25F4E /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		033F025C2608D2FE0077FA2B /* AddAppointmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentTableViewCell.swift; sourceTree = "<group>"; };
+		033F025E2608D4580077FA2B /* AddAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentViewController.swift; sourceTree = "<group>"; };
 		03425321258127D700DA6F29 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		034253232581284900DA6F29 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		034253252581287F00DA6F29 /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +214,7 @@
 		036626BC258A74C1002CCEE2 /* RestAPIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIResult.swift; sourceTree = "<group>"; };
 		0368107825473FA80016C1D6 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		036A4E11254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		036D74A6260B47030072A3C0 /* AddAppointmentTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentTableViewDelegate.swift; sourceTree = "<group>"; };
 		0373AA712585324900E79383 /* DefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKey.swift; sourceTree = "<group>"; };
 		03749EAD250E76D6003CBE49 /* Clinitick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clinitick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03749EB0250E76D6003CBE49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -657,8 +661,8 @@
 			isa = PBXGroup;
 			children = (
 				030BBD9B259A560000A61249 /* TempAddAppointmentViewController.swift */,
+				033F025E2608D4580077FA2B /* AddAppointmentViewController.swift */,
 				03F2755725868E0300526477 /* AddPatientViewController.swift */,
-				03036D30250FE8F500C7824A /* AddAppointmentViewController.swift */,
 				03F27555258688A000526477 /* AddTaskViewController.swift */,
 				03F4A5C42551951F00D7E1C6 /* AddFinanceViewController.swift */,
 				03E7F93C254C88DC000EDDD0 /* AddClinicViewController.swift */,
@@ -690,6 +694,7 @@
 				03FBE69D255499CD00FEFF63 /* FinanceTableViewDelegate.swift */,
 				03088772255EB31600207D91 /* TodayTasksTableViewDelegate.swift */,
 				03E4497525DC177A0002548A /* DeletableTableViewDelegate.swift */,
+				036D74A6260B47030072A3C0 /* AddAppointmentTableViewDelegate.swift */,
 			);
 			path = TableViewDelegates;
 			sourceTree = "<group>";
@@ -726,6 +731,7 @@
 				03E7F93A254C84D5000EDDD0 /* ClinicTableViewCell.swift */,
 				03F4A5C82551D01A00D7E1C6 /* FinanceTableViewCell.swift */,
 				03F4A5CA2551D03300D7E1C6 /* TodayTasksTableViewCell.swift */,
+				033F025C2608D2FE0077FA2B /* AddAppointmentTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -1019,6 +1025,7 @@
 			files = (
 				030C68022549EB1400CECCC2 /* PatientTableViewCell.swift in Sources */,
 				03F18B9D25E923B700FE8C50 /* SwiftyMenuDelegate.swift in Sources */,
+				036D74A7260B47030072A3C0 /* AddAppointmentTableViewDelegate.swift in Sources */,
 				03E7F93F254C8940000EDDD0 /* ClinicsViewController.swift in Sources */,
 				030BE2FB25434A5000AA642C /* TasksTableViewDelegate.swift in Sources */,
 				038CDF2925FD4EAC00C8EF86 /* MonthMenuDelegate.swift in Sources */,
@@ -1026,6 +1033,7 @@
 				03F3FD8625D5988700C0A8CD /* Entity+CoreDataProperties.swift in Sources */,
 				03EE136E25542E4900363EA0 /* MenuCollectionViewCell.swift in Sources */,
 				035D4AD62544B566007D8395 /* CheckButton.swift in Sources */,
+				033F025D2608D2FE0077FA2B /* AddAppointmentTableViewCell.swift in Sources */,
 				0315221125D1C09600D1894B /* DummyDentist.swift in Sources */,
 				03F3FD8525D5988700C0A8CD /* Entity+CoreDataClass.swift in Sources */,
 				034253242581284900DA6F29 /* SignUpViewController.swift in Sources */,
@@ -1050,7 +1058,6 @@
 				030BBD9C259A560000A61249 /* TempAddAppointmentViewController.swift in Sources */,
 				03803FA025A0EDA100387FF5 /* NavigationBarViewController.swift in Sources */,
 				033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */,
-				03036D31250FE8F500C7824A /* AddAppointmentViewController.swift in Sources */,
 				034253262581287F00DA6F29 /* CodeViewController.swift in Sources */,
 				03D16F3B25729E1100E05E2C /* Bool.swift in Sources */,
 				03091FDA2565527B00E9FA6C /* TabBarItemIndex.swift in Sources */,
@@ -1063,6 +1070,7 @@
 				03EE13722554322400363EA0 /* MenuCollectionViewDelegate.swift in Sources */,
 				0310168A258A88170034717F /* FormViewController.swift in Sources */,
 				0368107925473FA80016C1D6 /* ImageCollectionViewCell.swift in Sources */,
+				033F025F2608D4580077FA2B /* AddAppointmentViewController.swift in Sources */,
 				038D88B32587DE8600447506 /* GalleryViewController.swift in Sources */,
 				03FCCEB92562CDB5008A27B1 /* Image.swift in Sources */,
 				03F18B9925E9236A00FE8C50 /* SwiftyMenu.swift in Sources */,
