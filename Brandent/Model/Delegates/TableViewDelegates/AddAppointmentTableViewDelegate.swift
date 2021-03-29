@@ -33,12 +33,17 @@ class AddAppointmentTableViewDelegate: NSObject, UITableViewDelegate, UITableVie
     }
     
     func submit() -> Bool {
+        var numberOfAppointments = 0
         for i in 0 ..< appointmentCells.count {
-            if i == 0 || appointmentCells[i].isFilled {
+            if appointmentCells[i].isFilled {
                 if !appointmentCells[i].submit() {
                     return false
                 }
+                numberOfAppointments += 1
             }
+        }
+        if numberOfAppointments == 0 {
+            return appointmentCells[0].submit()
         }
         return true
     }

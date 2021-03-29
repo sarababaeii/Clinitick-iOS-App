@@ -19,7 +19,11 @@ class AddAppointmentTableViewCell: UITableViewCell {
     
     var textFieldDelegates = [TextFieldDelegate]()
     var textFields = [CustomTextField]()
-    var currentTextField: UITextField?
+    var currentTextField: UITextField? {
+        didSet {
+            viewController?.currentCell = self
+        }
+    }
     
     var datePicker: UIDatePicker?
     var dateTextFieldIndex: Int?

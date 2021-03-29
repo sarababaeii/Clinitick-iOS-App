@@ -17,6 +17,7 @@ class AddAppointmentViewController: FormViewController {
     var clinic: Clinic?
     
     var addAppointmentTableViewDelegate: AddAppointmentTableViewDelegate?
+    var currentCell: AddAppointmentTableViewCell?
     
     //MARK: Initialization
     override func viewDidLoad() {
@@ -34,6 +35,13 @@ class AddAppointmentViewController: FormViewController {
         addAppointmentTableViewDelegate = AddAppointmentTableViewDelegate(viewController: self)
         addAppointmentTableView.delegate = addAppointmentTableViewDelegate
         addAppointmentTableView.dataSource = addAppointmentTableViewDelegate
+    }
+    
+    //MARK: Keyboard Management
+    @IBAction func hideKeyboard(_ sender: Any) {
+        if let cell = currentCell, let textField = cell.currentTextField {
+            textField.resignFirstResponder()
+        }
     }
     
     @IBAction func submit(_ sender: Any) {
