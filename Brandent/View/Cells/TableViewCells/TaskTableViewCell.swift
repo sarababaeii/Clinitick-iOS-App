@@ -48,6 +48,8 @@ class TaskTableViewCell: UITableViewCell {
             doneButton.visibleSelection()
         } else if appointment.state == TaskState.canceled.rawValue {
             canceledButton.visibleSelection()
+        } else {
+            showDefaultState()
         }
     }
     
@@ -56,7 +58,14 @@ class TaskTableViewCell: UITableViewCell {
             doneButton.visibleSelection()
         } else if task.state == TaskState.canceled.rawValue {
             canceledButton.visibleSelection()
+        } else {
+            showDefaultState()
         }
+    }
+    
+    func showDefaultState() {
+        doneButton.unselectCheckButton()
+        canceledButton.unselectCheckButton()
     }
     
     @IBAction func changeTaskState(_ sender: Any) {

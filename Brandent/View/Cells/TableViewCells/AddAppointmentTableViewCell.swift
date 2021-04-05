@@ -89,16 +89,17 @@ class AddAppointmentTableViewCell: UITableViewCell {
         guard let index = dateTextFieldIndex, let picker = datePicker else {
             return
         }
-        textFields[index].text = picker.date.toCompletePersianString()
+        if isFilled {
+            textFields[index].text = picker.date.toCompletePersianString()
+            date = picker.date
+        }
         textFields[index].endEditing(true)
-        date = picker.date
     }
     
     //MARK: Submission
     func submit() -> Bool {
         getLastData()
-        if let requiredItem = mustComplete() {
-            viewController?.submitionError(for: requiredItem)
+        if !isFilled {
             return false
         }
         saveData()

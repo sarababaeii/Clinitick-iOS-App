@@ -54,5 +54,3 @@ class AddAppointmentViewController: FormViewController {
         navigateToPage(identifier: "TabBarViewController")
     }
 }
-
-//TODO: Hide Keyboard

@@ -33,7 +33,14 @@ class AppointmentTableViewCell: UITableViewCell {
             doneButton.selectCheckButton()
         } else if (state == TaskState.canceled.rawValue) {
             canceledButton.selectCheckButton()
+        } else {
+            showDefaultState()
         }
+    }
+    
+    func showDefaultState() {
+        doneButton.unselectCheckButton()
+        canceledButton.unselectCheckButton()
     }
     
     @IBAction func changeAppointmentState(_ sender: Any) {

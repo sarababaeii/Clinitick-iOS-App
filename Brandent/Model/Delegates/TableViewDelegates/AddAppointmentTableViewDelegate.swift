@@ -36,14 +36,16 @@ class AddAppointmentTableViewDelegate: NSObject, UITableViewDelegate, UITableVie
         var numberOfAppointments = 0
         for i in 0 ..< appointmentCells.count {
             if appointmentCells[i].isFilled {
-                if !appointmentCells[i].submit() {
-                    return false
+                print("& \(i)")
+                if appointmentCells[i].submit() {
+                    numberOfAppointments += 1
                 }
-                numberOfAppointments += 1
+                
             }
         }
         if numberOfAppointments == 0 {
-            return appointmentCells[0].submit()
+            viewController.submitionError(for: appointmentCells[0].textFields[0])
+            return false
         }
         return true
     }
