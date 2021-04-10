@@ -71,30 +71,30 @@ public class Clinic: Entity {
         Info.sharedInstance.dataController?.saveContext()
     }
     
-    override func delete() {
-        self.deleteAppointments()
-        self.deleteTasks()
-        super.delete()
+    override func delete(to isDeleted: Bool) {
+        self.deleteAppointments(to: isDeleted)
+        self.deleteTasks(to: isDeleted)
+        super.delete(to: isDeleted)
     }
     
-    private func deleteAppointments() {
+    private func deleteAppointments(to isDeleted: Bool) {
         guard let appointments = self.appointments else {
             return
         }
         for appointment in appointments {
             if let appointment = appointment as? Appointment {
-                appointment.delete()
+                appointment.delete(to: isDeleted)
             }
         }
     }
     
-    private func deleteTasks() {
+    private func deleteTasks(to isDeleted: Bool) {
         guard let tasks = self.tasks else {
             return
         }
         for task in tasks {
             if let task = task as? Task {
-                task.delete()
+                task.delete(to: isDeleted)
             }
         }
     }

@@ -26,14 +26,20 @@ public class Entity: NSManagedObject {
         self.modified_at = date ?? Date()
     }
     
-    func delete() {
-        Info.sharedInstance.dataController?.temporaryDelete(record: self)
+    func delete(to isDeleted: Bool) {
+        setDeleteAttributes(to: isDeleted)
+//        Info.sharedInstance.dataController?.temporaryDelete(record: self)
     }
     
-    func setDeleteAttributes() {
-        self.is_deleted = true
+    func setDeleteAttributes(to isDeleted: Bool) {
+        self.is_deleted = isDeleted
         self.setModifiedTime(at: nil)
     }
+    
+//    func undoDeleting() {
+//        self.is_deleted = false
+//        self.setModifiedTime(at: nil)
+//    }
     
     func setDeleteAttributes(to isDeleted: Bool, at date: Date) {
         self.is_deleted = isDeleted

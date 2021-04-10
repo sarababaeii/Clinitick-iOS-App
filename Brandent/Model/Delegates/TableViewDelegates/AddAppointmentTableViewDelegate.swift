@@ -47,6 +47,7 @@ class AddAppointmentTableViewDelegate: NSObject, UITableViewDelegate, UITableVie
             viewController.submitionError(for: appointmentCells[0].textFields[0])
             return false
         }
+        Info.sharedInstance.sync()
         return true
     }
 }

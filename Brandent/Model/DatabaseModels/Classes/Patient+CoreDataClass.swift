@@ -64,18 +64,18 @@ public class Patient: Entity {
         Info.sharedInstance.dataController?.saveContext()
     }
     
-    override func delete() {
-        self.deleteAppointments()
-        super.delete()
+    override func delete(to isDeleted: Bool) {
+        self.deleteAppointments(to: isDeleted)
+        super.delete(to: isDeleted)
     }
     
-    private func deleteAppointments() {
+    private func deleteAppointments(to isDeleted: Bool) {
         guard let appointments = self.history else {
             return
         }
         for appointment in appointments {
             if let appointment = appointment as? Appointment {
-                appointment.delete()
+                appointment.delete(to: isDeleted)
             }
         }
     }

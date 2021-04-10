@@ -132,8 +132,8 @@ class DataController {
     }
     
     //MARK: Delete
-    func temporaryDelete(record: Entity) {
-        record.setDeleteAttributes()
+    func saveDeleting(record: Entity) {
+//        record.setDeleteAttributes()
         saveContext()
     }
     
