@@ -130,6 +130,6 @@ class AddAppointmentTableViewCell: UITableViewCell {
         }
         let appointment = Appointment.createAppointment(id: nil, patient: viewController.patient!, clinic: viewController.clinic!, disease: data[0] as! String, price: data[1] as? Int, date: date, state: TaskState.todo.rawValue, isDeleted: nil, modifiedTime: Date())
         print(appointment)
-        Info.sharedInstance.sync() //TODO: yes?
+//        Info.sharedInstance.sync() //TODO: yes?
     }
 }

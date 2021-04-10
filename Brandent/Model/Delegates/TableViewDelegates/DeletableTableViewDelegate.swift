@@ -34,10 +34,11 @@ class DeletableTableViewDelegate: NSObject {
     func deleteItem(at indexPath: IndexPath, item: Entity) {
         setDeleted(indexPath: indexPath, item: item)
         deleteItemInTableView()
+        item.delete(to: true)
         showUndoToast()
     }
     
-     func setDeleted(indexPath: IndexPath?, item: Entity?) {
+    func setDeleted(indexPath: IndexPath?, item: Entity?) {
         deletedIndexPath = indexPath
         deletedItem = item
     }
@@ -45,14 +46,19 @@ class DeletableTableViewDelegate: NSObject {
     @objc func undo() {
         shouldBeDeleted = false
         undoToast?.removeFromSuperview()
+        if let item = deletedItem {
+            item.delete(to: false)
+            Info.sharedInstance.dataController?.saveContext()
+        }
         insertItemInTableView()
         setDeleted(indexPath: nil, item: nil)
     }
     
-    private func delete() {
-        if let item = deletedItem {
-            item.delete()
-        }
+    private func permenantDlete() {
+//        if let item = deletedItem {
+//            item.delete()
+            Info.sharedInstance.dataController?.saveContext()
+//        }
         setDeleted(indexPath: nil, item: nil)
     }
     
@@ -86,7 +92,7 @@ class DeletableTableViewDelegate: NSObject {
             if self.shouldBeDeleted {
                 undoToast.alpha = 1
                 undoToast.removeFromSuperview()
-                self.delete()
+                self.permenantDlete()
             }
             self.shouldBeDeleted = true
         })
