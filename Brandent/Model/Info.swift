@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class Info {
     static let sharedInstance = Info()
@@ -62,5 +63,41 @@ class Info {
         let tasks = Info.sharedInstance.dataController?.fetchTasksForSync(lastUpdated: lastUpdate) as? [Task]
         let appointments = Info.sharedInstance.dataController?.fetchAppointmentsForSync(lastUpdated: lastUpdate) as? [Appointment]
         RestAPIManagr.sharedInstance.sync(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments)
+    }
+    
+    //MARK: Notifications
+    func getPermissionForSendingNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if (granted){
+                print("We'll be able to set Hot Reminders!")
+            }
+            else{
+                print("We need to prove the app amazing so the user will change their mind!")
+            }
+        }
+    }
+    
+    func scheduleNotification(appointment: Appointment) {
+        guard appointment.visit_time > Date() else {
+            return
+        }
+        
+        let content = UNMutableNotificationContent()
+        content.title = appointment.disease
+        content.body = "\(appointment.patient.name) در \(appointment.clinic.title)"
+        content.sound = UNNotificationSound.default
+
+        let dateComponents = appointment.visit_time.getComponents()
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+      
+        let request = UNNotificationRequest(identifier: appointment.id.uuidString, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    func removeNotofication(appointment: Appointment) {
+        guard appointment.visit_time > Date() else {
+            return
+        }
+        UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [appointment.id.uuidString])
     }
 }

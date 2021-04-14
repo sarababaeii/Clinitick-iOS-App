@@ -22,6 +22,11 @@ extension Date {
         return calendar.date(from: components)!
     }
     
+    func getComponents() -> DateComponents {
+        let calendar = Calendar.current
+        return calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self)
+    }
+    
     //MARK: Getting Specific Dates
     func startOfMonth() -> Date? {
         let calendar = Calendar(identifier: .persian)

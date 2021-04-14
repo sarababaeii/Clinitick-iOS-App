@@ -36,7 +36,9 @@ public class Appointment: Entity {
             appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state, isDeleted: nil, modifiedTime: Date())
             return appointment
         }
-        return Info.sharedInstance.dataController!.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        let appointment = Info.sharedInstance.dataController!.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        Info.sharedInstance.scheduleNotification(appointment: appointment)
+        return appointment
     }
     
     static func getAppointmentByID(_ id: UUID) -> Appointment? {
@@ -73,6 +75,11 @@ public class Appointment: Entity {
         if let dentist = Info.sharedInstance.dentist {
             self.dentist = dentist
         }
+    }
+    
+    override func delete(to isDeleted: Bool) {
+        super.delete(to: isDeleted)
+        Info.sharedInstance.removeNotofication(appointment: self)
     }
     
     func updateAppointment(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, state: String, isDeleted: Bool?, modifiedTime: Date?) {
@@ -197,7 +204,3 @@ public class Appointment: Entity {
 //  "allergies": "peanut butter",
 //  "patient_id": "890a32fe-12e6-11eb-adc1-0242ac120002"
 //}
-
-
-//CE1B5362-F0DE-4D37-97DD-BDA9C8492BCD
-//70A65FE5-0C70-44FD-96EA-AAF9700C634E

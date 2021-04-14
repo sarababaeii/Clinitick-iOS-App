@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.set("fa_IR", forKey: "current_locale") //for calendar
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Vazir", size: 14.0)!], for: .normal) //font style for back buttons of UIBarItems
         Info.sharedInstance.dataController = DataController()
+        Info.sharedInstance.getPermissionForSendingNotifications()
         return true
     }
 

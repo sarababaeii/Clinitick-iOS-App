@@ -36,11 +36,6 @@ public class Entity: NSManagedObject {
         self.setModifiedTime(at: nil)
     }
     
-//    func undoDeleting() {
-//        self.is_deleted = false
-//        self.setModifiedTime(at: nil)
-//    }
-    
     func setDeleteAttributes(to isDeleted: Bool, at date: Date) {
         self.is_deleted = isDeleted
         self.setModifiedTime(at: date)

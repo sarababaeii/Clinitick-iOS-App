@@ -55,10 +55,7 @@ class DeletableTableViewDelegate: NSObject {
     }
     
     private func permenantDlete() {
-//        if let item = deletedItem {
-//            item.delete()
-            Info.sharedInstance.dataController?.saveContext()
-//        }
+        Info.sharedInstance.dataController?.saveContext()
         setDeleted(indexPath: nil, item: nil)
     }
     
