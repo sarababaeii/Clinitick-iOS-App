@@ -32,7 +32,6 @@ class AddAppointmentTableViewCell: UITableViewCell {
     var date: Date?
     var isFilled = false
     
-    
     func setAttributes(viewController: AddAppointmentViewController) {
         self.viewController = viewController
         initializeTextFields()
@@ -130,6 +129,7 @@ class AddAppointmentTableViewCell: UITableViewCell {
         }
         let appointment = Appointment.createAppointment(id: nil, patient: viewController.patient!, clinic: viewController.clinic!, disease: data[0] as! String, price: data[1] as? Int, date: date, state: TaskState.todo.rawValue, isDeleted: nil, modifiedTime: Date())
         print(appointment)
+        print("ONE APPOINTMENT SAVED")
 //        Info.sharedInstance.sync() //TODO: yes?
     }
 }

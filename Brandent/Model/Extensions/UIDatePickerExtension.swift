@@ -14,7 +14,7 @@ extension UIDatePicker {
         self.calendar = Calendar(identifier: .persian)
         self.locale = Locale(identifier: "fa_IR")
         self.datePickerMode = mode
-//        self.preferredDatePickerStyle = .wheel
+//        self.preferredDatePickerStyle = .wheels
         
 //        datePicker.setValue(UIFont(name: "Vazir", size: 20), forKeyPath: "textFont")
     }

@@ -24,6 +24,8 @@ class AppointmentTableViewCell: UITableViewCell {
         if appointment.visit_time != Date.defaultDate() {
             visitTimeLabel.isHidden = false
             visitTimeLabel.text = appointment.visit_time.toPersianDMonthYString()
+        } else {
+            visitTimeLabel.isHidden = true
         }
         setState(state: appointment.state)
     }

@@ -26,9 +26,12 @@ class AddAppointmentTableViewDelegate: NSObject, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if appointmentCells.count > indexPath.row {
+            return appointmentCells[indexPath.row]
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddAppointmentCellID", for: indexPath) as! AddAppointmentTableViewCell
         cell.setAttributes(viewController: viewController)
-        appointmentCells.append(cell)
+        appointmentCells.insert(cell, at: indexPath.row)
         return cell
     }
     
