@@ -53,6 +53,7 @@
 		0360D860255165AA00C36AE4 /* PatientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0360D85F255165AA00C36AE4 /* PatientProfileViewController.swift */; };
 		0360D8622551665500C36AE4 /* AppointmentsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0360D8612551665500C36AE4 /* AppointmentsTableViewDelegate.swift */; };
 		0361A868253A1579001840EC /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361A867253A1579001840EC /* CustomTextView.swift */; };
+		0361C2472635A17D00B67AC6 /* SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361C2462635A17D00B67AC6 /* SearchBarDelegate.swift */; };
 		0361C4F2258F7D6B00BAF238 /* AppointmentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361C4F1258F7D6B00BAF238 /* AppointmentState.swift */; };
 		036208D925F54C99003414E5 /* ClinicMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036208D825F54C99003414E5 /* ClinicMenuDelegate.swift */; };
 		036208DB25F54CAF003414E5 /* AllergyMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036208DA25F54CAF003414E5 /* AllergyMenuDelegate.swift */; };
@@ -205,6 +206,7 @@
 		0360D85F255165AA00C36AE4 /* PatientProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientProfileViewController.swift; sourceTree = "<group>"; };
 		0360D8612551665500C36AE4 /* AppointmentsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsTableViewDelegate.swift; sourceTree = "<group>"; };
 		0361A867253A1579001840EC /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		0361C2462635A17D00B67AC6 /* SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarDelegate.swift; sourceTree = "<group>"; };
 		0361C4F1258F7D6B00BAF238 /* AppointmentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentState.swift; sourceTree = "<group>"; };
 		036208D825F54C99003414E5 /* ClinicMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicMenuDelegate.swift; sourceTree = "<group>"; };
 		036208DA25F54CAF003414E5 /* AllergyMenuDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyMenuDelegate.swift; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 				03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */,
 				0342532925815C2700DA6F29 /* TimerDelegate.swift */,
 				03101686258A847A0034717F /* TextFieldDelegate.swift */,
+				0361C2462635A17D00B67AC6 /* SearchBarDelegate.swift */,
 			);
 			path = ComponentDelegates;
 			sourceTree = "<group>";
@@ -1119,6 +1122,7 @@
 				0384E4F62550A74000197CD9 /* UIColorExtension.swift in Sources */,
 				03BDDF92255AF1160086DF25 /* APIKey.swift in Sources */,
 				0328877E254F63B700AF1A9F /* ColorCollectionViewCell.swift in Sources */,
+				0361C2472635A17D00B67AC6 /* SearchBarDelegate.swift in Sources */,
 				03BC1F8825251658009749C0 /* Appointment+CoreDataClass.swift in Sources */,
 				037AECD1258D3C640097AF42 /* Patient+CoreDataProperties.swift in Sources */,
 				03F4A5CB2551D03300D7E1C6 /* TodayTasksTableViewCell.swift in Sources */,

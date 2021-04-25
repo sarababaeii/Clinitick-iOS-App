@@ -10,11 +10,15 @@ import Foundation
 import UIKit
 
 class PatientsTableViewDelegate: DeletableTableViewDelegate, UITableViewDelegate, UITableViewDataSource {
-   
+    
     //MARK: Initializer
     init(viewController: UIViewController, tableView: UITableView) {
         let patients = Info.sharedInstance.dataController?.fetchAllPatients() as? [Patient]
         super.init(viewController: viewController, tableView: tableView, items: patients)
+    }
+    
+    func updateItems() {
+        items = Info.sharedInstance.dataController?.fetchAllPatients() as? [Patient] ?? [Patient]()
     }
     
     //MARK: Protocol Functions

@@ -59,7 +59,7 @@ class RestAPIResult {
             let id = user["id"] as? Int,
             let firstName = user["first_name"] as? String,
             let lastName = user["last_name"] as? String,
-            let phone = user["phone"] as? String ,
+            let phone = user["phone"] as? String,
             let speciality = user["speciality"] as? String else {
                 print("COULD NOT SAVE DENTIST")
                 return

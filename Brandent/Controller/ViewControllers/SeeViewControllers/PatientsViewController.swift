@@ -11,11 +11,11 @@ import UIKit
 
 class PatientsViewController: UIViewController {
     
+    @IBOutlet weak var patientSearchBar: UISearchBar!
     @IBOutlet weak var patientsTableView: UITableView!
     
     var patientsTableViewDelegate: PatientsTableViewDelegate?
-    
-    let testPatients = [Patient]()
+    var searchBarDelegate: SearchBarDelegate?
     
     //MARK: Showing NavigationBar
     override func viewWillAppear(_ animated: Bool) {
@@ -25,15 +25,26 @@ class PatientsViewController: UIViewController {
     }
     
     func configure() {
+        patientSearchBar.text = ""
         setDelegates()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "لیست بیماران", style: UIBarButtonItem.Style.plain, target: self, action: .none)
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
     }
     
     func setDelegates() {
+        setTableViewDelegates()
+        setSearchBarDelegate()
+    }
+    
+    func setTableViewDelegates() {
         patientsTableViewDelegate = PatientsTableViewDelegate(viewController: self, tableView: patientsTableView)
         patientsTableView.delegate = patientsTableViewDelegate
         patientsTableView.dataSource = patientsTableViewDelegate
+    }
+    
+    func setSearchBarDelegate() {
+        searchBarDelegate = SearchBarDelegate(tableView: patientsTableView, tableViewDelegate: patientsTableViewDelegate!)
+        patientSearchBar.delegate = searchBarDelegate
     }
     
     //MARK: Sending Sender to PatientProfile
