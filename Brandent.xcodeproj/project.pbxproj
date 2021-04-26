@@ -108,6 +108,7 @@
 		03D41BBC2553145A005BB942 /* PickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */; };
 		03D8573525558CA000304B00 /* CustomNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D8573425558CA000304B00 /* CustomNavigationItem.swift */; };
 		03E2FE252582994E00749377 /* Dentist+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E2FE232582994E00749377 /* Dentist+CoreDataClass.swift */; };
+		03E349A02636FA69009FADBA /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E3499F2636FA69009FADBA /* UserNotificationManager.swift */; };
 		03E4497625DC177A0002548A /* DeletableTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4497525DC177A0002548A /* DeletableTableViewDelegate.swift */; };
 		03E7F933254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F932254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift */; };
 		03E7F93B254C84D5000EDDD0 /* ClinicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F93A254C84D5000EDDD0 /* ClinicTableViewCell.swift */; };
@@ -267,6 +268,7 @@
 		03D41BBB2553145A005BB942 /* PickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDelegate.swift; sourceTree = "<group>"; };
 		03D8573425558CA000304B00 /* CustomNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationItem.swift; sourceTree = "<group>"; };
 		03E2FE232582994E00749377 /* Dentist+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dentist+CoreDataClass.swift"; sourceTree = "<group>"; };
+		03E3499F2636FA69009FADBA /* UserNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManager.swift; sourceTree = "<group>"; };
 		03E4497525DC177A0002548A /* DeletableTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletableTableViewDelegate.swift; sourceTree = "<group>"; };
 		03E7F932254C4D2F000EDDD0 /* PatientsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsTableViewDelegate.swift; sourceTree = "<group>"; };
 		03E7F93A254C84D5000EDDD0 /* ClinicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicTableViewCell.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				03FCCEB82562CDB5008A27B1 /* Image.swift */,
 				03EE136F25542F5500363EA0 /* MenuItem.swift */,
 				03088770255EB11A00207D91 /* TodayTasks.swift */,
+				03E3499F2636FA69009FADBA /* UserNotificationManager.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1100,6 +1103,7 @@
 				034F5468255DB020005145C6 /* SwiftyMenuExtension.swift in Sources */,
 				0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */,
 				03BC1F8C25251658009749C0 /* Patient+CoreDataClass.swift in Sources */,
+				03E349A02636FA69009FADBA /* UserNotificationManager.swift in Sources */,
 				036208DB25F54CAF003414E5 /* AllergyMenuDelegate.swift in Sources */,
 				0300B3FF25B0B59B00D8CAD5 /* TabBarViewController.swift in Sources */,
 				03EE13742554480E00363EA0 /* UIViewExtension.swift in Sources */,

@@ -12,6 +12,7 @@ import CoreData
 
 @objc(Task)
 public class Task: Entity {
+    
     //MARK: Initialization
     static func getTask(id: UUID, title: String, date: Date, state: String, clinicID: String?, isDeleted: Bool, modifiedTime: Date) -> Task { //for sync
         var clinic: Clinic?
@@ -22,7 +23,9 @@ public class Task: Entity {
             task.updateTask(id: id, title: title, date: date, state: state, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return task
         }
-        return Info.sharedInstance.dataController!.createTask(id: id, title: title, date: date, state: state, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        let task = Info.sharedInstance.dataController!.createTask(id: id, title: title, date: date, state: state, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        UserNotificationManager.sharedInstance.scheduleNotificationForTask(task: task)
+        return task
     }
         
     static func getTask(id: UUID?, title: String, date: Date, state: String, clinicTitle: String?, isDeleted: Bool?, modifiedTime: Date?) -> Task { //for add
@@ -34,7 +37,9 @@ public class Task: Entity {
             task.updateTask(id: id, title: title, date: date, state: state, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return task
         }
-        return Info.sharedInstance.dataController!.createTask(id: nil, title: title, date: date, state: state, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        let task = Info.sharedInstance.dataController!.createTask(id: nil, title: title, date: date, state: state, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        UserNotificationManager.sharedInstance.scheduleNotificationForTask(task: task)
+        return task
     }
     
     static func getTaskByID(_ id: UUID) -> Task? {
@@ -63,6 +68,11 @@ public class Task: Entity {
         if let dentist = Info.sharedInstance.dentist {
             self.dentist = dentist
         }
+    }
+    
+    override func delete(to isDeleted: Bool) {
+        super.delete(to: isDeleted)
+        UserNotificationManager.sharedInstance.removeNotificationForTask(task: self)
     }
     
     func updateTask(id: UUID?, title: String, date: Date, state: String, clinic: Clinic?, isDeleted: Bool?, modifiedTime: Date?) {

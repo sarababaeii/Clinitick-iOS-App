@@ -15,13 +15,11 @@ public class Appointment: Entity {
     //MARK: Initialization
     static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, disease: String, price: Int?, date: Date?, state: String, isDeleted: Bool, modifiedTime: Date) -> Appointment? { // for sync
         guard let clinic = Clinic.getClinicByID(clinicID, isForSync: true) else {
-            print("clinic did not find")
-            print(clinicID)
+            print("clinic $\(clinicID) did not find")
             return nil
         }
         guard let patient = Patient.getPatientByID(patientID, isForSync: true) else {
-            print("patient did not find")
-            print(clinicID)
+            print("patient $\(clinicID) did not find")
             return nil
         }
         if let appointment = getAppointmentByID(id) {
@@ -37,7 +35,7 @@ public class Appointment: Entity {
             return appointment
         }
         let appointment = Info.sharedInstance.dataController!.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
-        Info.sharedInstance.scheduleNotification(appointment: appointment)
+        UserNotificationManager.sharedInstance.scheduleNotificationForAppointment(appointment: appointment)
         return appointment
     }
     
@@ -79,7 +77,7 @@ public class Appointment: Entity {
     
     override func delete(to isDeleted: Bool) {
         super.delete(to: isDeleted)
-        Info.sharedInstance.removeNotofication(appointment: self)
+        UserNotificationManager.sharedInstance.removeNotoficationForAppointment(appointment: self)
     }
     
     func updateAppointment(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, state: String, isDeleted: Bool?, modifiedTime: Date?) {
