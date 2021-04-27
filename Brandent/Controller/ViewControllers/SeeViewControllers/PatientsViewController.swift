@@ -25,20 +25,22 @@ class PatientsViewController: UIViewController {
     }
     
     func configure() {
-        patientSearchBar.text = ""
         setDelegates()
-        
+        setSearchBarUI()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "لیست بیماران", style: UIBarButtonItem.Style.plain, target: self, action: .none)
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([ NSAttributedString.Key.font: UIFont(name: "Vazir-Bold", size: 22.0)!], for: .normal)
-        
-        patientSearchBar.searchTextField.font = UIFont(name: "Vazir-Bold", size: 14.0)
-//        patientSearchBar.searchTextField.textColor = UIColor.black
-        patientSearchBar.searchTextField.backgroundColor = UIColor(red: 234 / 255, green: 238 / 255, blue: 245 / 255, alpha: 1)
-        
-//        patientSearchBar.layer.cornerRadius = 10
-//        patientSearchBar.layer.borderColor = UIColor(red: 234 / 255, green: 238 / 255, blue: 245 / 255, alpha: 1).cgColor
     }
     
+    //MARK: UI Management
+    func setSearchBarUI() {
+        patientSearchBar.text = ""
+        patientSearchBar.searchTextField.font = UIFont(name: "Vazir-Bold", size: 14.0)
+        patientSearchBar.searchTextField.textColor = UIColor.black
+        patientSearchBar.searchBarStyle = .minimal
+        patientSearchBar.searchTextField.backgroundColor = UIColor.white
+    }
+    
+    //MARK: Delegates
     func setDelegates() {
         setTableViewDelegates()
         setSearchBarDelegate()

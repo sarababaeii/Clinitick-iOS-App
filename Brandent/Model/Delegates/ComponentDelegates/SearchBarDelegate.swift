@@ -14,19 +14,38 @@ class SearchBarDelegate: NSObject, UISearchBarDelegate {
     var tableView: UITableView
     var tableViewDelegate: PatientsTableViewDelegate
     
+    var preSearchText = ""
+    
     init(tableView: UITableView, tableViewDelegate: PatientsTableViewDelegate) {
         self.tableView = tableView
         self.tableViewDelegate = tableViewDelegate
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
+        if searchText.count < preSearchText.count {
             tableViewDelegate.updateItems()
-            tableView.reloadData()
-            return
+        }
+        if searchText != "" {
+            let patients = tableViewDelegate.items as! [Patient]
+            tableViewDelegate.items = patients.filter({$0.name.prefix(searchText.count) == searchText})
+        }
+        tableView.reloadData()
+        preSearchText = searchText
+    }
+    
+    func searchTextCleared(searchText: String) {
+        tableViewDelegate.updateItems()
+        tableView.reloadData()
+        preSearchText = ""
+    }
+    
+    func searchTextChanged(searchText: String) {
+        if searchText.count < preSearchText.count {
+            tableViewDelegate.updateItems()
         }
         let patients = tableViewDelegate.items as! [Patient]
         tableViewDelegate.items = patients.filter({$0.name.prefix(searchText.count) == searchText})
         tableView.reloadData()
+        preSearchText = searchText
     }
 }
