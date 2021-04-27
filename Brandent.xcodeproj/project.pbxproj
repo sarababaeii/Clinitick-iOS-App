@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030025382637F9A100A46469 /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030025372637F9A100A46469 /* UIApplicationExtension.swift */; };
 		0300B3FF25B0B59B00D8CAD5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300B3FE25B0B59B00D8CAD5 /* TabBarViewController.swift */; };
 		03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D2E250FE8BB00C7824A /* ProfileViewController.swift */; };
 		03036D33250FE92400C7824A /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D32250FE92400C7824A /* TasksViewController.swift */; };
@@ -161,6 +162,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		030025372637F9A100A46469 /* UIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		0300B3FE25B0B59B00D8CAD5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		03036D2E250FE8BB00C7824A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		03036D32250FE92400C7824A /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 		03749EFE250EA893003CBE49 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				030025372637F9A100A46469 /* UIApplicationExtension.swift */,
 				0363E6892532409D0095AF7C /* UIViewControllerExtension.swift */,
 				03EE13732554480E00363EA0 /* UIViewExtension.swift */,
 				0310F44F250FF577008B3E5B /* CustomUIView.swift */,
@@ -1067,6 +1070,7 @@
 				034253262581287F00DA6F29 /* CodeViewController.swift in Sources */,
 				03D16F3B25729E1100E05E2C /* Bool.swift in Sources */,
 				03091FDA2565527B00E9FA6C /* TabBarItemIndex.swift in Sources */,
+				030025382637F9A100A46469 /* UIApplicationExtension.swift in Sources */,
 				0321F8682567CC470048D77B /* APIRequestType.swift in Sources */,
 				03F27556258688A000526477 /* AddTaskViewController.swift in Sources */,
 				0360D860255165AA00C36AE4 /* PatientProfileViewController.swift in Sources */,

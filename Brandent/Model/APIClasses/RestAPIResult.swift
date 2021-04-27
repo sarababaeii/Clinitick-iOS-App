@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RestAPIResult {
     let jsonSerializer = JSONSerializer()
@@ -142,11 +143,17 @@ class RestAPIResult {
             if let array = getArray(data: result, key: keys[i].sync!) {
                 if !saveArray(array: array, key: keys[i], at: date) {
                     print("could not save \(keys[i].rawValue)")
+                    DispatchQueue.main.async {
+                        UIApplication.topViewController()?.showToast(message: "Could Not Save \(keys[i].rawValue)")
+                    }
                     return
                 }
             }
         }
         Info.sharedInstance.dentist?.last_update = timeString
+        DispatchQueue.main.async {
+            UIApplication.topViewController()?.showToast(message: "Sync Completed Successfully")
+        }
     }
     
     private func getArray(data: NSDictionary, key: String) -> NSArray? {
