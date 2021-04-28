@@ -63,6 +63,9 @@ class RestAPIResult {
             let phone = user["phone"] as? String,
             let speciality = user["speciality"] as? String else {
                 print("COULD NOT SAVE DENTIST")
+//                DispatchQueue.main.async {
+//                UIApplication.topViewController()?.showToast(message: "Could Not Save DENTIST")
+//            }
                 return
         }
         
@@ -143,17 +146,17 @@ class RestAPIResult {
             if let array = getArray(data: result, key: keys[i].sync!) {
                 if !saveArray(array: array, key: keys[i], at: date) {
                     print("could not save \(keys[i].rawValue)")
-                    DispatchQueue.main.async {
-                        UIApplication.topViewController()?.showToast(message: "Could Not Save \(keys[i].rawValue)")
-                    }
+//                    DispatchQueue.main.async {
+//                        UIApplication.topViewController()?.showToast(message: "Could Not Save \(keys[i].rawValue)")
+//                    }
                     return
                 }
             }
         }
         Info.sharedInstance.dentist?.last_update = timeString
-        DispatchQueue.main.async {
-            UIApplication.topViewController()?.showToast(message: "Sync Completed Successfully")
-        }
+//        DispatchQueue.main.async {
+//            UIApplication.topViewController()?.showToast(message: "Sync Completed Successfully")
+//        }
     }
     
     private func getArray(data: NSDictionary, key: String) -> NSArray? {
