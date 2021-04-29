@@ -48,7 +48,7 @@ class GalleryImagePickerDelegate: ImagePickerDelegate {
             let option = PHImageRequestOptions()
             var thumbnail = UIImage()
             option.isSynchronous = true
-            manager.requestImage(for: img, targetSize: CGSize(width: 84, height: 84), contentMode: .aspectFill, options: option, resultHandler: {(result,info) -> Void in
+            manager.requestImage(for: img, targetSize: CGSize(width: 400, height: 400), contentMode: .aspectFill, options: option, resultHandler: {(result,info) -> Void in
                 thumbnail = result!
             })
             let data = thumbnail.jpegData(compressionQuality: 1)
