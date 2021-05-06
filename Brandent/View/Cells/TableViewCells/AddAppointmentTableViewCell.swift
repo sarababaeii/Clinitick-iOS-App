@@ -14,6 +14,7 @@ class AddAppointmentTableViewCell: UITableViewCell {
     @IBOutlet weak var diseaseTextField: CustomTextField!
     @IBOutlet weak var priceTextField: CustomTextField!
     @IBOutlet weak var dateTextField: CustomTextField!
+    @IBOutlet weak var toothTextField: CustomTextField!
     
     var viewController: AddAppointmentViewController?
     
@@ -28,6 +29,10 @@ class AddAppointmentTableViewCell: UITableViewCell {
     var datePicker: UIDatePicker?
     var dateTextFieldIndex: Int?
     
+    var toothPicker: UIPickerView?
+    var toothPickerDelegate: ToothPickerViewDelegate?
+    var toothTextFieldIndex: Int?
+    
     var data = ["", -1] as [Any] //0: disease, 1: price
     var date: Date?
     var isFilled = false
@@ -36,10 +41,11 @@ class AddAppointmentTableViewCell: UITableViewCell {
         self.viewController = viewController
         initializeTextFields()
         setDatePicker(dateTextFieldIndex: 2, mode: .dateAndTime)
+        setToothPicker(toothTextFieldIndex: 3)
     }
     
     func initializeTextFields() {
-        textFields = [diseaseTextField, priceTextField, dateTextField]
+        textFields = [diseaseTextField, priceTextField, dateTextField, toothTextField]
         data = ["", -1] //0: disease, 1: price
         setTextFieldDelegates()
 //        setTextFieldsData()
@@ -95,6 +101,24 @@ class AddAppointmentTableViewCell: UITableViewCell {
         textFields[index].endEditing(true)
     }
     
+    //MARK: Tooth Picker Functions
+    func setToothPicker(toothTextFieldIndex: Int) {
+        initializeToothPicker()
+        initializeToothTextField(toothTextFieldIndex: toothTextFieldIndex)
+    }
+    
+    private func initializeToothPicker() {
+        toothPicker = UIPickerView()
+        toothPickerDelegate = ToothPickerViewDelegate(textField: toothTextField)
+        toothPicker?.delegate = toothPickerDelegate
+        toothPicker?.dataSource = toothPickerDelegate
+    }
+    
+    private func initializeToothTextField(toothTextFieldIndex: Int) {
+        self.toothTextFieldIndex = dateTextFieldIndex
+        textFields[toothTextFieldIndex].inputView = toothPicker
+    }
+    
     //MARK: Submission
     func submit() -> Bool {
         getLastData()
@@ -133,3 +157,5 @@ class AddAppointmentTableViewCell: UITableViewCell {
 //        Info.sharedInstance.sync() //TODO: yes?
     }
 }
+
+//TODO: Child Button, Saving Tooth in DB

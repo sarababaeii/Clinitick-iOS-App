@@ -44,7 +44,7 @@ class AddClinicViewController: FormViewController {
         if let clinic = clinic {
             titleTextField.text = clinic.title
             addressTextField.text = clinic.address
-            defaultColor = Color.getColor(hex: clinic.color)
+            defaultColor = Color.getColor(description: clinic.color)
             data = [clinic.title, clinic.address as Any]
         }
     }
@@ -84,7 +84,7 @@ class AddClinicViewController: FormViewController {
     
     override func saveData() {
         let color = colorsCollectionViewDelegate?.selectedColorCell?.color ?? Color.lightGreen
-        let _ = Clinic.getClinic(id: self.clinic?.id, title: (data[0] as? String)!, address: data[1] as? String, color: color.clinicColor.toHexString(), isDeleted: nil, modifiedTime: Date())
+        let _ = Clinic.getClinic(id: self.clinic?.id, title: (data[0] as? String)!, address: data[1] as? String, color: color.clinicColorDescription, isDeleted: nil, modifiedTime: Date())
         Info.sharedInstance.sync()
     }
 }

@@ -65,6 +65,29 @@ enum Color {
         }
     }
     
+    var clinicColorDescription: String {
+        switch self {
+            case .lightGreen:
+                return "color_1"
+            case .darkGreen:
+                return "color_2"
+            case .indigo:
+                return "color_3"
+            case .lightBlue:
+                return "color_4"
+            case .darkBlue:
+                return "color_5"
+            case .purple:
+                return "color_6"
+            case .pink:
+                return "color_7"
+            case .red:
+                return "color_8"
+            default:
+                return "color_1"
+        }
+    }
+    
     var menuItemColor: UIColor {
         switch self {
         case .green:
@@ -76,23 +99,24 @@ enum Color {
         }
     }
     
-    static func getColor(hex str: String) -> Color {
+    //TODO: set color names
+    static func getColor(description str: String) -> Color {
         switch str {
-        case "#7ec630":
+        case "#7ec630", "color_1":
             return .lightGreen
-        case "#17b243":
+        case "#17b243", "color_2":
             return .darkGreen
-        case "#009989":
+        case "#009989", "color_3":
             return .indigo
-        case "#00c0da":
+        case "#00c0da", "color_4":
             return .lightBlue
-        case "#0098fd":
+        case "#0098fd", "color_5":
             return .darkBlue
-        case "#7033bf":
+        case "#7033bf", "color_6":
             return .purple
-        case "#fc2479":
+        case "#fc2479", "color_7":
             return .pink
-        case "#ff2927":
+        case "#ff2927", "color_8":
             return .red
         default:
             return .lightGreen

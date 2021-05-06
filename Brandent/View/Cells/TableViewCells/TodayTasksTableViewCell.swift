@@ -23,7 +23,8 @@ class TodayTasksTableViewCell: UITableViewCell {
     func setClinic(clinic: Clinic?) {
         if let clinic = clinic {
             clinicLabel.text = "(\(clinic.title))"
-            colorView.backgroundColor = UIColor(hexString: clinic.color)
+            colorView.backgroundColor = Color.getColor(description: clinic.color).clinicColor
+//                UIColor(hexString: clinic.color)
             clinicLabel.isHidden = false
         } else {
             clinicLabel.isHidden = true

@@ -18,6 +18,7 @@ class ClinicTableViewCell: UITableViewCell {
     func setAttributes(clinic: Clinic) {
         self.clinic = clinic
         titleLabel.text = clinic.title
-        colorView.backgroundColor = UIColor(hexString: clinic.color)
+        colorView.backgroundColor = Color.getColor(description: clinic.color).clinicColor
+//            UIColor(hexString: clinic.color)
     }
 }

@@ -2434,17 +2434,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="210" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LeS-s1-siN">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="276" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LeS-s1-siN">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddAppointmentCellID" rowHeight="210" id="g8a-Jg-sUN" customClass="AddAppointmentTableViewCell" customModule="Clinitick" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="210"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddAppointmentCellID" rowHeight="276" id="g8a-Jg-sUN" customClass="AddAppointmentTableViewCell" customModule="Clinitick" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="276"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g8a-Jg-sUN" id="gcT-DO-Kob">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="دلیل ویزیت" textAlignment="right" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kaf-Qa-aLw" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
@@ -2501,7 +2501,6 @@
                                                     <color key="tintColor" red="0.39607843139999999" green="0.50980392159999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="54" id="PK6-3h-koc"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="hTm-vz-DkW"/>
                                                     </constraints>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
@@ -2528,17 +2527,51 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
+                                                <textField opaque="NO" tag="3" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="شماره دندان" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SjM-sG-zcc" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
+                                                    <rect key="frame" x="24" y="210" width="366" height="54"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="tintColor" red="0.39607843139999999" green="0.50980392159999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="oOv-RU-WQi"/>
+                                                    </constraints>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="iconPadding">
+                                                            <real key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="sidePadding">
+                                                            <real key="value" value="45"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                            <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="5M3-7i-tYU" secondAttribute="trailing" constant="24" id="33u-QR-P7y"/>
                                                 <constraint firstAttribute="trailing" secondItem="kaf-Qa-aLw" secondAttribute="trailing" constant="24" id="95a-aE-7Ys"/>
+                                                <constraint firstAttribute="trailing" secondItem="SjM-sG-zcc" secondAttribute="trailing" constant="24" id="By0-7c-0r5"/>
                                                 <constraint firstItem="4Vg-VL-9oT" firstAttribute="top" secondItem="5M3-7i-tYU" secondAttribute="bottom" constant="12" id="EWw-Eg-Sct"/>
                                                 <constraint firstItem="5M3-7i-tYU" firstAttribute="top" secondItem="kaf-Qa-aLw" secondAttribute="bottom" constant="12" id="H82-EU-a1P"/>
                                                 <constraint firstItem="5M3-7i-tYU" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="JDH-Yq-b33"/>
                                                 <constraint firstItem="kaf-Qa-aLw" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="PzQ-5Z-PHt"/>
+                                                <constraint firstItem="SjM-sG-zcc" firstAttribute="top" secondItem="4Vg-VL-9oT" secondAttribute="bottom" constant="12" id="YvL-9k-5JF"/>
                                                 <constraint firstItem="4Vg-VL-9oT" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="ZKP-pu-ZDH"/>
                                                 <constraint firstItem="kaf-Qa-aLw" firstAttribute="top" secondItem="gcT-DO-Kob" secondAttribute="top" constant="12" id="ZdO-rB-F7o"/>
+                                                <constraint firstItem="SjM-sG-zcc" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="sa9-AZ-yGk"/>
                                                 <constraint firstAttribute="trailing" secondItem="4Vg-VL-9oT" secondAttribute="trailing" constant="24" id="yDy-n1-O7O"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -2547,6 +2580,7 @@
                                             <outlet property="dateTextField" destination="4Vg-VL-9oT" id="0cY-bh-7Cn"/>
                                             <outlet property="diseaseTextField" destination="kaf-Qa-aLw" id="h3f-2c-ZCd"/>
                                             <outlet property="priceTextField" destination="5M3-7i-tYU" id="grZ-3g-uec"/>
+                                            <outlet property="toothTextField" destination="SjM-sG-zcc" id="q8T-RR-HmP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2912,7 +2946,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lx7-6W-AEC" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
-                                <rect key="frame" x="292" y="234" width="98" height="31"/>
+                                <rect key="frame" x="273" y="234" width="117" height="37"/>
                                 <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lx7-6W-AEC" secondAttribute="height" multiplier="133:42" id="i2k-7u-8Uu"/>

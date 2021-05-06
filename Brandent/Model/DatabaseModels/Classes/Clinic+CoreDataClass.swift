@@ -18,7 +18,7 @@ public class Clinic: Entity {
         if let color = color {
             clinicColor = color
         } else {
-            clinicColor = Color.lightGreen.clinicColor.toHexString()
+            clinicColor = Color.lightGreen.clinicColorDescription
         }
         
         if let id = id, let clinic = getClinicByID(id, isForSync: false) {

@@ -137,7 +137,7 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     private func enableOtherTextFields(state: Bool) {
         if let tableViewCell = viewController as? AddAppointmentTableViewCell {
             tableViewCell.isFilled = state
-            for i in 1 ..< 3 {
+            for i in 1 ..< 4 {
                 tableViewCell.textFields[i].isEnabled = state
                 if !state {
                     tableViewCell.textFields[i].text = ""
