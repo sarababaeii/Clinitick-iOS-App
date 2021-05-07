@@ -15,9 +15,9 @@ class ToothPickerViewDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataS
     var numberOfComponents = 2
     let options1 = ["UL", "UR", "LL", "LR"]
     let options2 = ["1", "2", "3", "4", "5", "6", "7", "8"]
-    let options3 = ["A", "B", "C", "D", "E", "F"]
+    let options3 = ["A", "B", "C", "D", "E"]
     
-    var isAdult = true
+    var isChild = false
     var selectedRow = [0, 0]
     
     //MARK: Initialization
@@ -34,7 +34,7 @@ class ToothPickerViewDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataS
         case 0:
             return options1.count
         case 1:
-            return isAdult ? options2.count : options3.count
+            return isChild ? options3.count : options2.count
         default:
             return options1.count
         }
@@ -57,7 +57,7 @@ class ToothPickerViewDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataS
         case 0:
             return options1[row]
         case 1:
-            return isAdult ? options2[row] : options3[row]
+            return isChild ? options3[row] : options2[row]
         default:
             return options1[row]
         }
@@ -69,34 +69,34 @@ class ToothPickerViewDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataS
         setTextFieldText()
     }
     
-    private func setTextFieldText() {
-        let txt = "\(getFirstOptionText(isForDB: false, index: selectedRow[0])) \(getSecondOptionText(index: selectedRow[1]))"
+    func setTextFieldText() {
+        let txt = "\(getFirstOptionText(index: selectedRow[0])) \(getSecondOptionText(index: selectedRow[1]))"
         textField.text = txt
     }
     
-    private func getFirstOptionText(isForDB: Bool, index: Int) -> String {
+    private func getFirstOptionText(index: Int) -> String {
         switch options1[index] {
         case "UL":
-            return isForDB ? "UpperLeft" : "Upper Left"
+            return "Upper Left"
         case "UR":
-            return isForDB ? "UpperRight" : "Upper Right"
+            return "Upper Right"
         case "LL":
-            return isForDB ? "LowerLeft" : "Lower Left"
+            return "Lower Left"
         case "LR":
-            return isForDB ? "LowerRight" : "Lower Right"
+            return "Lower Right"
         default:
-            return isForDB ? "UpperLeft" : "Upper Left"
+            return "Upper Left"
         }
     }
     
     private func getSecondOptionText(index: Int) -> String {
-        if isAdult {
-            return options2[index]
+        if isChild {
+            return options3[index]
         }
-        return options3[index]
+        return options2[index]
     }
     
     func getSelectedOptionTextForDB() -> String {
-        return "\(getFirstOptionText(isForDB: true, index: selectedRow[0])) \(getSecondOptionText(index: selectedRow[1]))"
+        return "\(options1[selectedRow[0]])\(getSecondOptionText(index: selectedRow[1]))"
     }
 }

@@ -2495,8 +2495,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-VL-9oT" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
-                                                    <rect key="frame" x="24" y="144" width="366" height="54"/>
+                                                <textField opaque="NO" tag="3" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-VL-9oT" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
+                                                    <rect key="frame" x="24" y="210" width="366" height="54"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" red="0.39607843139999999" green="0.50980392159999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -2527,8 +2527,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <textField opaque="NO" tag="3" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="شماره دندان" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SjM-sG-zcc" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
-                                                    <rect key="frame" x="24" y="210" width="366" height="54"/>
+                                                <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="شماره دندان" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SjM-sG-zcc" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
+                                                    <rect key="frame" x="24" y="144" width="366" height="54"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" red="0.39607843139999999" green="0.50980392159999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -2556,6 +2556,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
                                                             <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="tooth"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
@@ -2564,11 +2565,11 @@
                                                 <constraint firstAttribute="trailing" secondItem="5M3-7i-tYU" secondAttribute="trailing" constant="24" id="33u-QR-P7y"/>
                                                 <constraint firstAttribute="trailing" secondItem="kaf-Qa-aLw" secondAttribute="trailing" constant="24" id="95a-aE-7Ys"/>
                                                 <constraint firstAttribute="trailing" secondItem="SjM-sG-zcc" secondAttribute="trailing" constant="24" id="By0-7c-0r5"/>
-                                                <constraint firstItem="4Vg-VL-9oT" firstAttribute="top" secondItem="5M3-7i-tYU" secondAttribute="bottom" constant="12" id="EWw-Eg-Sct"/>
+                                                <constraint firstItem="4Vg-VL-9oT" firstAttribute="top" secondItem="SjM-sG-zcc" secondAttribute="bottom" constant="12" id="EWw-Eg-Sct"/>
                                                 <constraint firstItem="5M3-7i-tYU" firstAttribute="top" secondItem="kaf-Qa-aLw" secondAttribute="bottom" constant="12" id="H82-EU-a1P"/>
                                                 <constraint firstItem="5M3-7i-tYU" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="JDH-Yq-b33"/>
                                                 <constraint firstItem="kaf-Qa-aLw" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="PzQ-5Z-PHt"/>
-                                                <constraint firstItem="SjM-sG-zcc" firstAttribute="top" secondItem="4Vg-VL-9oT" secondAttribute="bottom" constant="12" id="YvL-9k-5JF"/>
+                                                <constraint firstItem="SjM-sG-zcc" firstAttribute="top" secondItem="5M3-7i-tYU" secondAttribute="bottom" constant="12" id="YvL-9k-5JF"/>
                                                 <constraint firstItem="4Vg-VL-9oT" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="ZKP-pu-ZDH"/>
                                                 <constraint firstItem="kaf-Qa-aLw" firstAttribute="top" secondItem="gcT-DO-Kob" secondAttribute="top" constant="12" id="ZdO-rB-F7o"/>
                                                 <constraint firstItem="SjM-sG-zcc" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="sa9-AZ-yGk"/>
@@ -5104,6 +5105,7 @@
         <image name="profile" width="19" height="24"/>
         <image name="settings" width="18" height="18"/>
         <image name="tasks" width="26" height="24"/>
+        <image name="tooth" width="17" height="17"/>
         <image name="up_next" width="23" height="23"/>
         <image name="weekly_calendar" width="23" height="23"/>
         <image name="welcome" width="351" height="396"/>

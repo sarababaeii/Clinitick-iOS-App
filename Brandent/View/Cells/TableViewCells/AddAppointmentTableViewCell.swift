@@ -13,8 +13,8 @@ class AddAppointmentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var diseaseTextField: CustomTextField!
     @IBOutlet weak var priceTextField: CustomTextField!
-    @IBOutlet weak var dateTextField: CustomTextField!
     @IBOutlet weak var toothTextField: CustomTextField!
+    @IBOutlet weak var dateTextField: CustomTextField!
     
     var viewController: AddAppointmentViewController?
     
@@ -33,30 +33,31 @@ class AddAppointmentTableViewCell: UITableViewCell {
     var toothPickerDelegate: ToothPickerViewDelegate?
     var toothTextFieldIndex: Int?
     
-    var data = ["", -1] as [Any] //0: disease, 1: price
+    var data = ["", -1, ""] as [Any] //0: disease, 1: price, 2: tooth
     var date: Date?
     var isFilled = false
     
     func setAttributes(viewController: AddAppointmentViewController) {
         self.viewController = viewController
         initializeTextFields()
-        setDatePicker(dateTextFieldIndex: 2, mode: .dateAndTime)
-        setToothPicker(toothTextFieldIndex: 3)
+        setToothPicker(toothTextFieldIndex: 2)
+        setDatePicker(dateTextFieldIndex: 3, mode: .dateAndTime)
     }
     
     func initializeTextFields() {
-        textFields = [diseaseTextField, priceTextField, dateTextField, toothTextField]
-        data = ["", -1] //0: disease, 1: price
+        textFields = [diseaseTextField, priceTextField, toothTextField, dateTextField]
+        data = ["", -1, ""] //0: disease, 1: price, 2: tooth
         setTextFieldDelegates()
 //        setTextFieldsData()
     }
     
     func setTextFieldDelegates() {
         textFieldDelegates = [
-            TextFieldDelegate(tableViewCell: self, isForPrice: false, isForDate: false, isForAppointmetTitle: true),
-            TextFieldDelegate(tableViewCell: self, isForPrice: true, isForDate: false, isForAppointmetTitle: false),
-            TextFieldDelegate(tableViewCell: self, isForPrice: false, isForDate: true, isForAppointmetTitle: false)]
-        for i in 0 ..< 3 {
+            TextFieldDelegate(tableViewCell: self, isForPrice: false, isForDate: false, isForTooth: false, isForAppointmetTitle: true),
+            TextFieldDelegate(tableViewCell: self, isForPrice: true, isForDate: false, isForTooth: false, isForAppointmetTitle: false),
+            TextFieldDelegate(tableViewCell: self, isForPrice: false, isForDate: false, isForTooth: true, isForAppointmetTitle: false),
+            TextFieldDelegate(tableViewCell: self, isForPrice: false, isForDate: true, isForTooth: false, isForAppointmetTitle: false)]
+        for i in 0 ..< 4 {
             textFields[i].delegate = textFieldDelegates[i]
         }
     }
@@ -105,6 +106,7 @@ class AddAppointmentTableViewCell: UITableViewCell {
     func setToothPicker(toothTextFieldIndex: Int) {
         initializeToothPicker()
         initializeToothTextField(toothTextFieldIndex: toothTextFieldIndex)
+        setToothPickerButtons()
     }
     
     private func initializeToothPicker() {
@@ -115,8 +117,41 @@ class AddAppointmentTableViewCell: UITableViewCell {
     }
     
     private func initializeToothTextField(toothTextFieldIndex: Int) {
-        self.toothTextFieldIndex = dateTextFieldIndex
+        self.toothTextFieldIndex = toothTextFieldIndex
         textFields[toothTextFieldIndex].inputView = toothPicker
+    }
+    
+    private func setToothPickerButtons() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector (doneForToothPressed))
+        let isChildButton = UIBarButtonItem(title: "Child", style: .plain, target: self, action: #selector (isChildPressed))
+        doneButton.target = self
+        toolbar.setItems([doneButton, isChildButton], animated: true )
+        
+        if let index = toothTextFieldIndex {
+            textFields[index].inputAccessoryView = toolbar
+        }
+    }
+    
+    @objc func doneForToothPressed() {
+        guard let index = toothTextFieldIndex, let pickerDelegate = toothPickerDelegate else {
+            return
+        }
+        if isFilled {
+            data[index] = pickerDelegate.getSelectedOptionTextForDB()
+            pickerDelegate.setTextFieldText()
+        }
+        textFields[index].endEditing(true)
+        print(data[index])
+    }
+    
+    @objc func isChildPressed() {
+        guard let pickerDelegate = toothPickerDelegate else {
+            return
+        }
+        pickerDelegate.isChild = !pickerDelegate.isChild
+        toothPicker?.reloadComponent(1)
     }
     
     //MARK: Submission
@@ -158,4 +193,4 @@ class AddAppointmentTableViewCell: UITableViewCell {
     }
 }
 
-//TODO: Child Button, Saving Tooth in DB
+//TODO: Child Button, Saving Tooth in DB, Erase

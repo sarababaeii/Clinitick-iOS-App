@@ -14,21 +14,23 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
     var viewController: UIResponder
     var isForPrice: Bool
     var isForDate: Bool
+    var isForTooth: Bool
     var isForAppointmetTitle: Bool
-    
     
     //MARK: Initialization
     init(viewController: FormViewController, isForPrice: Bool, isForDate: Bool) {
         self.viewController = viewController
         self.isForPrice = isForPrice
         self.isForDate = isForDate
+        self.isForTooth = false
         self.isForAppointmetTitle = false
     }
     
-     init(tableViewCell: AddAppointmentTableViewCell, isForPrice: Bool, isForDate: Bool, isForAppointmetTitle: Bool) {
+    init(tableViewCell: AddAppointmentTableViewCell, isForPrice: Bool, isForDate: Bool, isForTooth: Bool, isForAppointmetTitle: Bool) {
         self.viewController = tableViewCell
         self.isForPrice = isForPrice
         self.isForDate = isForDate
+        self.isForTooth = isForTooth
         self.isForAppointmetTitle = isForAppointmetTitle
     }
     
@@ -65,12 +67,21 @@ class TextFieldDelegate: NSObject, UITextFieldDelegate {
             }
             return true
         }
+        if isForTooth {
+            if let viewController = viewController as? FormViewController {
+                viewController.data[textField.tag] = ""
+            }
+            else if let tableViewCell = viewController as? AddAppointmentTableViewCell {
+                tableViewCell.data[textField.tag] = ""
+            }
+            return true
+        }
         return false
     }
     
     //MARK: End Editing
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if isForDate {
+        if isForDate || isForTooth {
             return
         }
         if isForPrice {
