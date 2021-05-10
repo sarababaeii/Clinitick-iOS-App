@@ -34,7 +34,7 @@ class SignUpViewController: FormViewController {
     }
     
     func setTextFieldDelegates() {
-        textFieldDelegate = TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false)
+        textFieldDelegate = TextFieldDelegate(viewController: self)
         textFields[0].delegate = textFieldDelegate
     }
     

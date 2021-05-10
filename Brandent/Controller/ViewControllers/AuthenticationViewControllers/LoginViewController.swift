@@ -47,8 +47,8 @@ class LoginViewController: FormViewController {
     
     func setTextFieldDelegates() {
         textFieldDelegates = [
-            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false),
-            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false)]
+            TextFieldDelegate(viewController: self),
+            TextFieldDelegate(viewController: self)]
         for i in 0 ..< 2 {
             textFields[i].delegate = textFieldDelegates[i]
             textFields[i].removeError()

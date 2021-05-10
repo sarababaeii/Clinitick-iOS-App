@@ -143,9 +143,9 @@ class DataController {
     }
     
     //MARK: Appointment
-    func createAppointment(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, state: String, isDeleted: Bool?, modifiedTime: Date?) -> Appointment {
+    func createAppointment(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, tooth: String, state: String, isDeleted: Bool?, modifiedTime: Date?) -> Appointment {
         let appointment = Appointment(entity: appointmentEntity, insertInto: context)
-        appointment.setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        appointment.setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, tooth: tooth, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
         saveContext()
         return appointment
     }

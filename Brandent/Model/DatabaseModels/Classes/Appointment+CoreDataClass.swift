@@ -13,7 +13,7 @@ import CoreData
 @objc(Appointment)
 public class Appointment: Entity {
     //MARK: Initialization
-    static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, disease: String, price: Int?, date: Date?, state: String, isDeleted: Bool, modifiedTime: Date) -> Appointment? { // for sync
+    static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, disease: String, price: Int?, date: Date?, state: String, isDeleted: Bool, modifiedTime: Date) -> Appointment? { // for sync TODO: Tooth
         guard let clinic = Clinic.getClinicByID(clinicID, isForSync: true) else {
             print("clinic $\(clinicID) did not find")
             return nil
@@ -23,18 +23,18 @@ public class Appointment: Entity {
             return nil
         }
         if let appointment = getAppointmentByID(id) {
-            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
+            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, tooth: "", state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return appointment
         }
-        return createAppointment(id: id, patient: patient, clinic: clinic, disease: disease, price: price, date: date, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        return createAppointment(id: id, patient: patient, clinic: clinic, disease: disease, price: price, date: date, tooth: "", state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
     
-    static func createAppointment(id: UUID?, patient: Patient, clinic: Clinic, disease: String, price: Int?, date: Date?, state: String, isDeleted: Bool?, modifiedTime: Date?) -> Appointment {
+    static func createAppointment(id: UUID?, patient: Patient, clinic: Clinic, disease: String, price: Int?, date: Date?, tooth: String, state: String, isDeleted: Bool?, modifiedTime: Date?) -> Appointment {
         if let id = id, let appointment = getAppointmentByID(id) { // for add
-            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state, isDeleted: nil, modifiedTime: Date())
+            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, tooth: tooth, state: state, isDeleted: nil, modifiedTime: Date())
             return appointment
         }
-        let appointment = Info.sharedInstance.dataController!.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        let appointment = Info.sharedInstance.dataController!.createAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, tooth: tooth, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
         UserNotificationManager.sharedInstance.scheduleNotificationForAppointment(appointment: appointment)
         return appointment
     }
@@ -47,7 +47,7 @@ public class Appointment: Entity {
     }
     
     //MARK: Setting Attributes
-    func setAttributes(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, state: String, isDeleted: Bool?, modifiedTime: Date?) {
+    func setAttributes(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, tooth: String, state: String, isDeleted: Bool?, modifiedTime: Date?) {
         if let price = price {
             self.price = NSDecimalNumber(value: price)
         }
@@ -57,6 +57,7 @@ public class Appointment: Entity {
             self.visit_time = Date.defaultDate()
         }
         self.disease = disease
+        self.tooth = tooth
         self.state = state
         self.clinic = clinic
         self.patient = patient
@@ -80,8 +81,8 @@ public class Appointment: Entity {
         UserNotificationManager.sharedInstance.removeNotoficationForAppointment(appointment: self)
     }
     
-    func updateAppointment(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, state: String, isDeleted: Bool?, modifiedTime: Date?) {
-        setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
+    func updateAppointment(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, tooth: String, state: String, isDeleted: Bool?, modifiedTime: Date?) {
+        setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, tooth: tooth, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
         Info.sharedInstance.dataController?.saveContext()
     }
     

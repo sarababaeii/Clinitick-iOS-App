@@ -64,9 +64,9 @@ class AddFinanceViewConrtoller: FormViewController, SwiftyMenuDelegate {
     }
     func setTextFieldDelegates() {
         textFieldDelegates = [
-            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: false),
-            TextFieldDelegate(viewController: self, isForPrice: true, isForDate: false),
-            TextFieldDelegate(viewController: self, isForPrice: false, isForDate: true)]
+            TextFieldDelegate(viewController: self),
+            PriceTextFieldDelegate(viewController: self),
+            DateTextFieldDelegate(viewController: self)]
         for i in 0 ..< 3 {
             textFields[i].delegate = textFieldDelegates[i]
         }

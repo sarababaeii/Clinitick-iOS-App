@@ -44,6 +44,10 @@
 		034253262581287F00DA6F29 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034253252581287F00DA6F29 /* CodeViewController.swift */; };
 		03425328258128A900DA6F29 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03425327258128A900DA6F29 /* InformationViewController.swift */; };
 		0342532A25815C2700DA6F29 /* TimerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0342532925815C2700DA6F29 /* TimerDelegate.swift */; };
+		0342D66A2649612600179F14 /* ToothTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0342D6692649612600179F14 /* ToothTextFieldDelegate.swift */; };
+		0342D66C264962BC00179F14 /* PriceTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0342D66B264962BC00179F14 /* PriceTextFieldDelegate.swift */; };
+		0342D66E2649638B00179F14 /* DateTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0342D66D2649638B00179F14 /* DateTextFieldDelegate.swift */; };
+		0342D670264963E600179F14 /* AppointmentTitleTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0342D66F264963E600179F14 /* AppointmentTitleTextFieldDelegate.swift */; };
 		0344D47E253756F00031122F /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0344D47D253756F00031122F /* ImagePickerDelegate.swift */; };
 		034DC75525FFCA3E008E49FE /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DC75425FFCA3E008E49FE /* ImageViewController.swift */; };
 		034F5468255DB020005145C6 /* SwiftyMenuExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034F5467255DB020005145C6 /* SwiftyMenuExtension.swift */; };
@@ -199,6 +203,10 @@
 		034253252581287F00DA6F29 /* CodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		03425327258128A900DA6F29 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		0342532925815C2700DA6F29 /* TimerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDelegate.swift; sourceTree = "<group>"; };
+		0342D6692649612600179F14 /* ToothTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToothTextFieldDelegate.swift; sourceTree = "<group>"; };
+		0342D66B264962BC00179F14 /* PriceTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTextFieldDelegate.swift; sourceTree = "<group>"; };
+		0342D66D2649638B00179F14 /* DateTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextFieldDelegate.swift; sourceTree = "<group>"; };
+		0342D66F264963E600179F14 /* AppointmentTitleTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentTitleTextFieldDelegate.swift; sourceTree = "<group>"; };
 		0344D47D253756F00031122F /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
 		034DC75425FFCA3E008E49FE /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		034F5467255DB020005145C6 /* SwiftyMenuExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyMenuExtension.swift; sourceTree = "<group>"; };
@@ -425,6 +433,18 @@
 				03425327258128A900DA6F29 /* InformationViewController.swift */,
 			);
 			path = AuthenticationViewControllers;
+			sourceTree = "<group>";
+		};
+		0342D668264960F500179F14 /* TextFieldDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				03101686258A847A0034717F /* TextFieldDelegate.swift */,
+				0342D66F264963E600179F14 /* AppointmentTitleTextFieldDelegate.swift */,
+				0342D66B264962BC00179F14 /* PriceTextFieldDelegate.swift */,
+				0342D6692649612600179F14 /* ToothTextFieldDelegate.swift */,
+				0342D66D2649638B00179F14 /* DateTextFieldDelegate.swift */,
+			);
+			path = TextFieldDelegates;
 			sourceTree = "<group>";
 		};
 		036208D725F54C13003414E5 /* MenuDelegates */ = {
@@ -722,10 +742,10 @@
 			children = (
 				036208D725F54C13003414E5 /* MenuDelegates */,
 				037EE34C25B5C30C0039AB83 /* ImagePickerDelegates */,
+				0342D668264960F500179F14 /* TextFieldDelegates */,
 				03ADFDF3253B4D8B00A6827B /* TextViewDelegate.swift */,
 				03D41BBB2553145A005BB942 /* ToothPickerViewDelegate.swift */,
 				0342532925815C2700DA6F29 /* TimerDelegate.swift */,
-				03101686258A847A0034717F /* TextFieldDelegate.swift */,
 				0361C2462635A17D00B67AC6 /* SearchBarDelegate.swift */,
 			);
 			path = ComponentDelegates;
@@ -1057,6 +1077,7 @@
 				0342532A25815C2700DA6F29 /* TimerDelegate.swift in Sources */,
 				03D41BBC2553145A005BB942 /* ToothPickerViewDelegate.swift in Sources */,
 				03B032E22530D78800CF1075 /* Info.swift in Sources */,
+				0342D66A2649612600179F14 /* ToothTextFieldDelegate.swift in Sources */,
 				0321F8642567CA0F0048D77B /* APIAddress.swift in Sources */,
 				03749EB5250E76D6003CBE49 /* HomeViewController.swift in Sources */,
 				036A4E12254F69FA00CA4843 /* ColorsCollectionViewDelegate.swift in Sources */,
@@ -1081,6 +1102,7 @@
 				0310168A258A88170034717F /* FormViewController.swift in Sources */,
 				0368107925473FA80016C1D6 /* ImageCollectionViewCell.swift in Sources */,
 				033F025F2608D4580077FA2B /* AddAppointmentViewController.swift in Sources */,
+				0342D66E2649638B00179F14 /* DateTextFieldDelegate.swift in Sources */,
 				038D88B32587DE8600447506 /* GalleryViewController.swift in Sources */,
 				03FCCEB92562CDB5008A27B1 /* Image.swift in Sources */,
 				03F18B9925E9236A00FE8C50 /* SwiftyMenu.swift in Sources */,
@@ -1089,6 +1111,7 @@
 				03E7F93B254C84D5000EDDD0 /* ClinicTableViewCell.swift in Sources */,
 				03749F00250EA8AE003CBE49 /* CustomTextField.swift in Sources */,
 				039E2E3325359EDC00F6D5EE /* StringExtension.swift in Sources */,
+				0342D66C264962BC00179F14 /* PriceTextFieldDelegate.swift in Sources */,
 				03FBE6882554786E00FEFF63 /* Appointment+CoreDataProperties.swift in Sources */,
 				030C67FE2549D2C800CECCC2 /* ImagesCollectionViewHeader.swift in Sources */,
 				03EE13782554498A00363EA0 /* ShadowyUIView.swift in Sources */,
@@ -1106,6 +1129,7 @@
 				03FBE6702554704800FEFF63 /* SeeFinanceViewController.swift in Sources */,
 				034F5468255DB020005145C6 /* SwiftyMenuExtension.swift in Sources */,
 				0363E68A2532409D0095AF7C /* UIViewControllerExtension.swift in Sources */,
+				0342D670264963E600179F14 /* AppointmentTitleTextFieldDelegate.swift in Sources */,
 				03BC1F8C25251658009749C0 /* Patient+CoreDataClass.swift in Sources */,
 				03E349A02636FA69009FADBA /* UserNotificationManager.swift in Sources */,
 				036208DB25F54CAF003414E5 /* AllergyMenuDelegate.swift in Sources */,

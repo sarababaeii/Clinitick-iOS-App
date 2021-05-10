@@ -11,9 +11,12 @@ import UIKit
 
 class ToothPickerViewDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    var pickerView: UIPickerView
     var textField: UITextField
+    var clearButton: UIButton
+    
     var numberOfComponents = 2
-    let options1 = ["UL", "UR", "LL", "LR"]
+    let options1 = ["Upper Left", "Upper Right", "Lower Left", "Lower Right"]
     let options2 = ["1", "2", "3", "4", "5", "6", "7", "8"]
     let options3 = ["A", "B", "C", "D", "E"]
     
@@ -21,8 +24,11 @@ class ToothPickerViewDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataS
     var selectedRow = [0, 0]
     
     //MARK: Initialization
-    init(textField: UITextField) {
+    init(pickerView: UIPickerView, textField: UITextField, clearButton: UIButton) {
+        self.pickerView = pickerView
         self.textField = textField
+        self.clearButton = clearButton
+        textField.inputView = pickerView
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -55,11 +61,11 @@ class ToothPickerViewDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataS
     private func getOption(component: Int, row: Int) -> String {
         switch component {
         case 0:
-            return options1[row]
+            return row < options1.count ? options1[row] : ""
         case 1:
-            return isChild ? options3[row] : options2[row]
+            return isChild ? (row < options3.count ? options3[row] : "") : (row < options2.count ? options2[row] : "")
         default:
-            return options1[row]
+            return row < options1.count ? options1[row] : ""
         }
     }
     
@@ -70,33 +76,43 @@ class ToothPickerViewDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataS
     }
     
     func setTextFieldText() {
-        let txt = "\(getFirstOptionText(index: selectedRow[0])) \(getSecondOptionText(index: selectedRow[1]))"
+        let txt = "\(options1[selectedRow[0]]) \(getSecondOptionText(index: selectedRow[1]))"
         textField.text = txt
-    }
-    
-    private func getFirstOptionText(index: Int) -> String {
-        switch options1[index] {
-        case "UL":
-            return "Upper Left"
-        case "UR":
-            return "Upper Right"
-        case "LL":
-            return "Lower Left"
-        case "LR":
-            return "Lower Right"
-        default:
-            return "Upper Left"
-        }
+        clearButton.isHidden = false
     }
     
     private func getSecondOptionText(index: Int) -> String {
         if isChild {
-            return options3[index]
+            return index < options3.count ? options3[index] : ""
         }
-        return options2[index]
+        return index < options2.count ? options2[index] : ""
     }
     
+    //MARK: Child or Adult
+    func isChildPressed(button: Any?) {
+        isChild = !isChild
+        changeIsChildTitle(button: button)
+        reloadComponent(1)
+    }
+    
+    private func changeIsChildTitle(button: Any?) {
+        guard let button = button as? UIBarButtonItem else {
+            return
+        }
+        if isChild {
+            button.title = "Adult"
+        } else {
+            button.title = "Child"
+        }
+    }
+    
+    private func reloadComponent(_ component: Int) {
+        pickerView.reloadComponent(component)
+        setTextFieldText()
+    }
+    
+    //MARK: Saving Option
     func getSelectedOptionTextForDB() -> String {
-        return "\(options1[selectedRow[0]])\(getSecondOptionText(index: selectedRow[1]))"
+        return "\(options1[selectedRow[0]]) \(getSecondOptionText(index: selectedRow[1]))"
     }
 }

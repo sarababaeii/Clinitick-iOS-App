@@ -4,6 +4,7 @@
         <attribute name="disease" attributeType="String" defaultValueString="بیماری"/>
         <attribute name="price" attributeType="Decimal" defaultValueString="-1"/>
         <attribute name="state" attributeType="String" defaultValueString="todo"/>
+        <attribute name="tooth" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="visit_time" attributeType="Date" defaultDateTimeInterval="-953918400" usesScalarValueType="NO"/>
         <relationship name="clinic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Clinic" inverseName="appointments" inverseEntity="Clinic"/>
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="appointments" inverseEntity="Dentist"/>
@@ -59,7 +60,7 @@
         <relationship name="dentist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Dentist" inverseName="tasks" inverseEntity="Dentist"/>
     </entity>
     <elements>
-        <element name="Appointment" positionX="-34.1796875" positionY="-261.04296875" width="128" height="148"/>
+        <element name="Appointment" positionX="-34.1796875" positionY="-261.04296875" width="128" height="163"/>
         <element name="Clinic" positionX="-203.81640625" positionY="-447.2578125" width="128" height="133"/>
         <element name="Dentist" positionX="-376.40625" positionY="-302.43359375" width="128" height="238"/>
         <element name="Entity" positionX="-405" positionY="-288" width="128" height="88"/>
