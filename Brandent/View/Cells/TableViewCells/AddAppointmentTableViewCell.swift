@@ -16,6 +16,7 @@ class AddAppointmentTableViewCell: UITableViewCell {
     @IBOutlet weak var toothTextField: CustomTextField!
     @IBOutlet weak var dateTextField: CustomTextField!
     @IBOutlet weak var clearToothButton: UIButton!
+    @IBOutlet weak var clearDateButton: UIButton!
     
     var viewController: AddAppointmentViewController?
     
@@ -146,9 +147,16 @@ class AddAppointmentTableViewCell: UITableViewCell {
     }
     
     @IBAction func clearTooth(_ sender: Any) {
-        data[2] = ""
-        toothTextField.text = ""
-        clearToothButton.isHidden = true
+        guard let button = sender as? UIButton else {
+            return
+        }
+        data[button.tag] = ""
+        textFields[button.tag].text = ""
+        if button.tag == 2 {
+            clearToothButton.isHidden = true
+        } else if button.tag == 3 {
+            clearDateButton.isHidden = true
+        }
     }
     
     //MARK: Submission

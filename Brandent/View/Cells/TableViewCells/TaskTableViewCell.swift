@@ -71,11 +71,18 @@ class TaskTableViewCell: UITableViewCell {
     @IBAction func changeTaskState(_ sender: Any) {
         if let button = sender as? CheckButton {
             if let appointment = entity as? Appointment {
-                appointment.updateState(state: button.discreption)
+                if appointment.updateState(state: button.discreption) {
+                    button.visibleSelection()
+                } else {
+                    button.unselectCheckButton()
+                }
             } else if let task = entity as? Task {
-                task.updateState(state: button.discreption)
+                if task.updateState(state: button.discreption) {
+                    button.visibleSelection()
+                }else {
+                    button.unselectCheckButton()
+                }
             }
-            button.visibleSelection()
         }
     }
     

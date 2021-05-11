@@ -86,10 +86,15 @@ public class Appointment: Entity {
         Info.sharedInstance.dataController?.saveContext()
     }
     
-    func updateState(state: TaskState) {
-        self.state = state.rawValue
+    func updateState(state: TaskState) -> Bool {
+        if self.state == state.rawValue {
+            self.state = TaskState.todo.rawValue
+        } else {
+            self.state = state.rawValue
+        }
         self.setModifiedTime(at: Date())
         Info.sharedInstance.dataController?.saveContext()
+        return self.state == state.rawValue
     }
     
     //MARK: Functions

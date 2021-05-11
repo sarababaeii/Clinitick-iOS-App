@@ -2538,9 +2538,7 @@
                                                                 <color key="titleColor" red="0.87740945820000005" green="0.12740981579999999" blue="0.12740981579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="clearTooth:" destination="PMS-Wx-B47" eventType="touchUpInside" id="53y-5Q-djf"/>
                                                                 <action selector="clearTooth:" destination="g8a-Jg-sUN" eventType="touchUpInside" id="ktz-4l-rOn"/>
-                                                                <action selector="editPatientData:" destination="08X-YO-DMk" eventType="touchUpInside" id="fn2-wc-zsR"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -2548,64 +2546,93 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="54" id="1dc-IL-vNy"/>
                                                         <constraint firstItem="SjM-sG-zcc" firstAttribute="leading" secondItem="QH1-io-Jsr" secondAttribute="leading" id="GsJ-nY-kqM"/>
-                                                        <constraint firstItem="OJM-yQ-7fI" firstAttribute="leading" secondItem="QH1-io-Jsr" secondAttribute="leading" constant="24" id="KoX-CL-ah6"/>
+                                                        <constraint firstItem="OJM-yQ-7fI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QH1-io-Jsr" secondAttribute="leading" constant="20" symbolic="YES" id="KoX-CL-ah6"/>
                                                         <constraint firstItem="OJM-yQ-7fI" firstAttribute="centerY" secondItem="QH1-io-Jsr" secondAttribute="centerY" id="SlB-cr-4B5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="OJM-yQ-7fI" secondAttribute="trailing" constant="309" id="YgT-ix-POO"/>
                                                         <constraint firstAttribute="trailing" secondItem="SjM-sG-zcc" secondAttribute="trailing" id="c9i-NN-JZs"/>
                                                         <constraint firstItem="SjM-sG-zcc" firstAttribute="top" secondItem="QH1-io-Jsr" secondAttribute="top" id="kFx-6T-5VJ"/>
                                                         <constraint firstAttribute="bottom" secondItem="SjM-sG-zcc" secondAttribute="bottom" id="tIa-JP-YZ6"/>
                                                     </constraints>
                                                 </view>
-                                                <textField opaque="NO" tag="3" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-VL-9oT" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZj-ML-cHp">
                                                     <rect key="frame" x="24" y="210" width="366" height="54"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="tintColor" red="0.39607843139999999" green="0.50980392159999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" tag="3" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-VL-9oT" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="366" height="54"/>
+                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="tintColor" red="0.39607843139999999" green="0.50980392159999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="54" id="PK6-3h-koc"/>
+                                                            </constraints>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                                            <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="calendar"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="iconPadding">
+                                                                    <real key="value" value="15"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="sidePadding">
+                                                                    <real key="value" value="45"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                                    <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </textField>
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6p-BM-Vki">
+                                                            <rect key="frame" x="24" y="8.6666666666666572" width="33" height="37"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                                            <state key="normal" title="حذف">
+                                                                <color key="titleColor" red="0.87740945820000005" green="0.12740981579999999" blue="0.12740981579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="clearTooth:" destination="g8a-Jg-sUN" eventType="touchUpInside" id="mOE-EZ-ZfL"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="54" id="PK6-3h-koc"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4Vg-VL-9oT" secondAttribute="bottom" id="1Sg-XD-LyQ"/>
+                                                        <constraint firstItem="4Vg-VL-9oT" firstAttribute="top" secondItem="RZj-ML-cHp" secondAttribute="top" id="AKe-Gm-ekg"/>
+                                                        <constraint firstAttribute="height" constant="54" id="MSf-MA-Cvx"/>
+                                                        <constraint firstAttribute="trailing" secondItem="4Vg-VL-9oT" secondAttribute="trailing" id="NAE-Ex-qCi"/>
+                                                        <constraint firstItem="d6p-BM-Vki" firstAttribute="centerY" secondItem="RZj-ML-cHp" secondAttribute="centerY" id="XJh-Ds-xry"/>
+                                                        <constraint firstItem="d6p-BM-Vki" firstAttribute="leading" secondItem="RZj-ML-cHp" secondAttribute="leading" constant="24" id="fLr-qg-AgT"/>
+                                                        <constraint firstItem="4Vg-VL-9oT" firstAttribute="leading" secondItem="RZj-ML-cHp" secondAttribute="leading" id="foh-vA-Ptk"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="d6p-BM-Vki" secondAttribute="trailing" constant="20" symbolic="YES" id="yNj-Co-ZrB"/>
                                                     </constraints>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="calendar"/>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="iconPadding">
-                                                            <real key="value" value="15"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="sidePadding">
-                                                            <real key="value" value="45"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                            <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </textField>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="RZj-ML-cHp" secondAttribute="trailing" constant="24" id="08a-vX-6F3"/>
                                                 <constraint firstAttribute="trailing" secondItem="5M3-7i-tYU" secondAttribute="trailing" constant="24" id="33u-QR-P7y"/>
                                                 <constraint firstAttribute="trailing" secondItem="kaf-Qa-aLw" secondAttribute="trailing" constant="24" id="95a-aE-7Ys"/>
-                                                <constraint firstItem="4Vg-VL-9oT" firstAttribute="top" secondItem="QH1-io-Jsr" secondAttribute="bottom" constant="12" id="EWw-Eg-Sct"/>
+                                                <constraint firstItem="RZj-ML-cHp" firstAttribute="top" secondItem="QH1-io-Jsr" secondAttribute="bottom" constant="12" id="EWw-Eg-Sct"/>
                                                 <constraint firstItem="5M3-7i-tYU" firstAttribute="top" secondItem="kaf-Qa-aLw" secondAttribute="bottom" constant="12" id="H82-EU-a1P"/>
                                                 <constraint firstItem="5M3-7i-tYU" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="JDH-Yq-b33"/>
                                                 <constraint firstItem="kaf-Qa-aLw" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="PzQ-5Z-PHt"/>
                                                 <constraint firstItem="QH1-io-Jsr" firstAttribute="top" secondItem="5M3-7i-tYU" secondAttribute="bottom" constant="12" id="YvL-9k-5JF"/>
-                                                <constraint firstItem="4Vg-VL-9oT" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="ZKP-pu-ZDH"/>
                                                 <constraint firstItem="kaf-Qa-aLw" firstAttribute="top" secondItem="gcT-DO-Kob" secondAttribute="top" constant="12" id="ZdO-rB-F7o"/>
                                                 <constraint firstAttribute="trailing" secondItem="QH1-io-Jsr" secondAttribute="trailing" constant="24" id="aJN-6o-Lvz"/>
                                                 <constraint firstItem="QH1-io-Jsr" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="dBx-hp-5qb"/>
-                                                <constraint firstAttribute="trailing" secondItem="4Vg-VL-9oT" secondAttribute="trailing" constant="24" id="yDy-n1-O7O"/>
+                                                <constraint firstItem="RZj-ML-cHp" firstAttribute="centerX" secondItem="gcT-DO-Kob" secondAttribute="centerX" id="qex-VA-1a4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="clearDateButton" destination="d6p-BM-Vki" id="YyH-Yj-2Ai"/>
                                             <outlet property="clearToothButton" destination="OJM-yQ-7fI" id="rCq-V8-B5O"/>
                                             <outlet property="dateTextField" destination="4Vg-VL-9oT" id="0cY-bh-7Cn"/>
                                             <outlet property="diseaseTextField" destination="kaf-Qa-aLw" id="h3f-2c-ZCd"/>
@@ -3092,7 +3119,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iC2-W1-RP2" userLabel="toothView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iC2-W1-RP2" userLabel="ToothView">
                                 <rect key="frame" x="24" y="156" width="366" height="54"/>
                                 <subviews>
                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="شماره دندان" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ncl-Yh-Pst" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
@@ -3136,7 +3163,6 @@
                                         </state>
                                         <connections>
                                             <action selector="clearTooth:" destination="PMS-Wx-B47" eventType="touchUpInside" id="85D-Ss-6hq"/>
-                                            <action selector="editPatientData:" destination="08X-YO-DMk" eventType="touchUpInside" id="17a-w9-UXX"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -3152,39 +3178,66 @@
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="exI-tL-a7c" secondAttribute="trailing" constant="20" symbolic="YES" id="p2z-E1-4Zn"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" tag="3" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VAC-cf-Whs" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vp2-WH-4Gh" userLabel="DateView">
                                 <rect key="frame" x="24" y="226" width="366" height="54"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="0.39607843139999999" green="0.50980392159999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="تاریخ و ساعت" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VAC-cf-Whs" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="54"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.39607843139999999" green="0.50980392159999999" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="9uJ-MC-5Rn"/>
+                                            <constraint firstAttribute="height" constant="54" id="iTN-My-vdW"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="calendar"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="iconPadding">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="sidePadding">
+                                                <real key="value" value="45"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4R-vq-I3h">
+                                        <rect key="frame" x="24" y="8.6666666666666572" width="33" height="37"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                        <state key="normal" title="حذف">
+                                            <color key="titleColor" red="0.87740945820000005" green="0.12740981579999999" blue="0.12740981579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clearTooth:" destination="PMS-Wx-B47" eventType="touchUpInside" id="omY-Qi-Qx4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="9uJ-MC-5Rn"/>
-                                    <constraint firstAttribute="height" constant="54" id="iTN-My-vdW"/>
+                                    <constraint firstAttribute="height" constant="54" id="00P-dX-sU6"/>
+                                    <constraint firstItem="VAC-cf-Whs" firstAttribute="top" secondItem="vp2-WH-4Gh" secondAttribute="top" id="1cu-ZF-ADV"/>
+                                    <constraint firstItem="C4R-vq-I3h" firstAttribute="leading" secondItem="vp2-WH-4Gh" secondAttribute="leading" constant="24" id="Eqk-6o-C80"/>
+                                    <constraint firstAttribute="trailing" secondItem="VAC-cf-Whs" secondAttribute="trailing" id="OeD-Mp-B43"/>
+                                    <constraint firstItem="VAC-cf-Whs" firstAttribute="leading" secondItem="vp2-WH-4Gh" secondAttribute="leading" id="Wmq-gS-GEl"/>
+                                    <constraint firstAttribute="bottom" secondItem="VAC-cf-Whs" secondAttribute="bottom" id="li7-kN-v4l"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="C4R-vq-I3h" secondAttribute="trailing" constant="20" symbolic="YES" id="nbu-GU-RJk"/>
+                                    <constraint firstItem="C4R-vq-I3h" firstAttribute="centerY" secondItem="vp2-WH-4Gh" secondAttribute="centerY" id="spt-as-oOY"/>
                                 </constraints>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="calendar"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="iconPadding">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="sidePadding">
-                                        <real key="value" value="45"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                        <color key="value" red="0.52941176469999995" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfl-JB-KTn" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                 <rect key="frame" x="24" y="296" width="366" height="41"/>
                                 <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3208,18 +3261,18 @@
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="iC2-W1-RP2" firstAttribute="trailing" secondItem="WeU-an-xCS" secondAttribute="trailing" id="06e-7m-jOm"/>
-                            <constraint firstItem="qfl-JB-KTn" firstAttribute="top" secondItem="VAC-cf-Whs" secondAttribute="bottom" constant="16" id="Aah-Oj-acs"/>
+                            <constraint firstItem="qfl-JB-KTn" firstAttribute="top" secondItem="vp2-WH-4Gh" secondAttribute="bottom" constant="16" id="Aah-Oj-acs"/>
                             <constraint firstItem="2xF-QI-KIJ" firstAttribute="top" secondItem="WeU-an-xCS" secondAttribute="bottom" constant="16" id="C41-X9-e4l"/>
                             <constraint firstItem="tI0-Fm-fVk" firstAttribute="trailing" secondItem="WeU-an-xCS" secondAttribute="trailing" constant="24" id="LWq-Q6-7zz"/>
                             <constraint firstItem="qfl-JB-KTn" firstAttribute="trailing" secondItem="WeU-an-xCS" secondAttribute="trailing" id="Mc5-Tz-xyw"/>
                             <constraint firstItem="WeU-an-xCS" firstAttribute="leading" secondItem="tI0-Fm-fVk" secondAttribute="leading" constant="24" id="OZ0-q9-6lS"/>
-                            <constraint firstItem="VAC-cf-Whs" firstAttribute="top" secondItem="iC2-W1-RP2" secondAttribute="bottom" constant="16" id="V6H-3G-Bp2"/>
+                            <constraint firstItem="vp2-WH-4Gh" firstAttribute="top" secondItem="iC2-W1-RP2" secondAttribute="bottom" constant="16" id="V6H-3G-Bp2"/>
+                            <constraint firstItem="vp2-WH-4Gh" firstAttribute="trailing" secondItem="WeU-an-xCS" secondAttribute="trailing" id="Wel-am-Gs8"/>
                             <constraint firstItem="qfl-JB-KTn" firstAttribute="leading" secondItem="WeU-an-xCS" secondAttribute="leading" id="WsP-iW-1bk"/>
                             <constraint firstItem="iC2-W1-RP2" firstAttribute="leading" secondItem="WeU-an-xCS" secondAttribute="leading" id="XL9-J7-ppH"/>
-                            <constraint firstItem="VAC-cf-Whs" firstAttribute="leading" secondItem="WeU-an-xCS" secondAttribute="leading" id="Z3l-NT-JOa"/>
                             <constraint firstItem="2xF-QI-KIJ" firstAttribute="trailing" secondItem="WeU-an-xCS" secondAttribute="trailing" id="cqf-KQ-KzR"/>
-                            <constraint firstItem="VAC-cf-Whs" firstAttribute="trailing" secondItem="WeU-an-xCS" secondAttribute="trailing" id="gg1-GA-170"/>
                             <constraint firstItem="2xF-QI-KIJ" firstAttribute="leading" secondItem="WeU-an-xCS" secondAttribute="leading" id="m2c-Nb-xZu"/>
+                            <constraint firstItem="vp2-WH-4Gh" firstAttribute="leading" secondItem="WeU-an-xCS" secondAttribute="leading" id="qeu-0y-8Gi"/>
                             <constraint firstItem="WeU-an-xCS" firstAttribute="top" secondItem="tI0-Fm-fVk" secondAttribute="top" constant="16" id="u1g-Ih-6Q8"/>
                             <constraint firstItem="iC2-W1-RP2" firstAttribute="top" secondItem="2xF-QI-KIJ" secondAttribute="bottom" constant="16" id="zfH-Wp-qu2"/>
                         </constraints>
@@ -3230,6 +3283,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="aqL-Jb-SSY"/>
                     <connections>
+                        <outlet property="clearDateButton" destination="C4R-vq-I3h" id="lnp-Zn-q9c"/>
                         <outlet property="clearToothButton" destination="exI-tL-a7c" id="9On-il-C2J"/>
                         <outlet property="dateTextField" destination="VAC-cf-Whs" id="VSS-zL-Ep6"/>
                         <outlet property="diseaseTextField" destination="WeU-an-xCS" id="YiQ-yv-ftv"/>

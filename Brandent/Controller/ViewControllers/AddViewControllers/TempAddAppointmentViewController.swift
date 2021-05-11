@@ -16,6 +16,7 @@ class TempAddAppointmrntViewController: FormViewController {
     @IBOutlet weak var toothTextField: CustomTextField!
     @IBOutlet weak var dateTextField: CustomTextField!
     @IBOutlet weak var clearToothButton: UIButton!
+    @IBOutlet weak var clearDateButton: UIButton!
     
     var patient: Patient?
     var clinic: Clinic?
@@ -59,6 +60,7 @@ class TempAddAppointmrntViewController: FormViewController {
         }
         if appointment.visit_time != Date.defaultDate() {
             dateTextField.text = appointment.visit_time.toCompletePersianString()
+            clearDateButton.isHidden = false
         }
         if appointment.tooth != "" {
             toothTextField.text = appointment.tooth
@@ -123,9 +125,16 @@ class TempAddAppointmrntViewController: FormViewController {
     }
     
     @IBAction func clearTooth(_ sender: Any) {
-        data[2] = ""
-        toothTextField.text = ""
-        clearToothButton.isHidden = true
+        guard let button = sender as? UIButton else {
+            return
+        }
+        data[button.tag] = ""
+        textFields[button.tag].text = ""
+        if button.tag == 2 {
+            clearToothButton.isHidden = true
+        } else if button.tag == 3 {
+            clearDateButton.isHidden = true
+        }
     }
     
     //MARK: Keyboard Management

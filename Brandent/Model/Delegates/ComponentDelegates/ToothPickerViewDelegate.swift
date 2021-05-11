@@ -116,3 +116,5 @@ class ToothPickerViewDelegate: NSObject, UIPickerViewDelegate, UIPickerViewDataS
         return "\(options1[selectedRow[0]]) \(getSecondOptionText(index: selectedRow[1]))"
     }
 }
+
+//TODO: if from adult changed to child

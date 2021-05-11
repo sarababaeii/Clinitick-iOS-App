@@ -47,8 +47,11 @@ class AppointmentTableViewCell: UITableViewCell {
     
     @IBAction func changeAppointmentState(_ sender: Any) {
         if let button = sender as? CheckButton, let appointment = appointment {
-            appointment.updateState(state: button.discreption)
-            button.visibleSelection()
+            if appointment.updateState(state: button.discreption) {
+                button.visibleSelection()
+            } else {
+                button.unselectCheckButton()
+            }
         }
     }
 }
