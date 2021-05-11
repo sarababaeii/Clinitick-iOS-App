@@ -197,8 +197,6 @@ class AddAppointmentTableViewCell: UITableViewCell {
         guard let viewController = viewController else {
             return
         }
-        let appointment = Appointment.createAppointment(id: nil, patient: viewController.patient!, clinic: viewController.clinic!, disease: data[0] as! String, price: data[1] as? Int, date: date, tooth: data[2] as! String, state: TaskState.todo.rawValue, isDeleted: nil, modifiedTime: Date())
-        print(appointment)
-        print("ONE APPOINTMENT SAVED")
+        let _ = Appointment.createAppointment(id: nil, patient: viewController.patient!, clinic: viewController.clinic!, disease: data[0] as! String, price: data[1] as? Int, date: date, tooth: data[2] as! String, state: TaskState.todo.rawValue, isDeleted: nil, modifiedTime: Date())
     }
 }

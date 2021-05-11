@@ -20,4 +20,15 @@ class DateTextFieldDelegate: TextFieldDelegate {
     override func textFieldDidEndEditing(_ textField: UITextField) {
         return
     }
+    
+//    //MARK: Clear
+//    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+//        if let viewController = viewController as? FormViewController {
+//            viewController.date = nil
+//        }
+//        else if let tableViewCell = viewController as? AddAppointmentTableViewCell {
+//            tableViewCell.date = nil
+//        }
+//        return true
+//    }
 }

@@ -20,4 +20,15 @@ class ToothTextFieldDelegate: TextFieldDelegate {
     override func textFieldDidEndEditing(_ textField: UITextField) {
         return
     }
+    
+//    //MARK: Clear
+//    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+//        if let viewController = viewController as? FormViewController {
+//            viewController.data[textField.tag] = ""
+//        }
+//        else if let tableViewCell = viewController as? AddAppointmentTableViewCell {
+//            tableViewCell.data[textField.tag] = ""
+//        }
+//        return true
+//    }
 }
