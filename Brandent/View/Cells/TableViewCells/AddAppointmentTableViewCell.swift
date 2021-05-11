@@ -101,6 +101,16 @@ class AddAppointmentTableViewCell: UITableViewCell {
             date = picker.date
         }
         textFields[index].endEditing(true)
+        clearDateButton.isHidden = false
+    }
+    
+    @IBAction func clearDate(_ sender: Any) {
+        guard let button = sender as? UIButton else {
+            return
+        }
+        date = nil
+        textFields[button.tag].text = ""
+        clearDateButton.isHidden = true
     }
     
     //MARK: Tooth Picker Functions
@@ -152,11 +162,7 @@ class AddAppointmentTableViewCell: UITableViewCell {
         }
         data[button.tag] = ""
         textFields[button.tag].text = ""
-        if button.tag == 2 {
-            clearToothButton.isHidden = true
-        } else if button.tag == 3 {
-            clearDateButton.isHidden = true
-        }
+        clearToothButton.isHidden = true
     }
     
     //MARK: Submission
@@ -194,6 +200,5 @@ class AddAppointmentTableViewCell: UITableViewCell {
         let appointment = Appointment.createAppointment(id: nil, patient: viewController.patient!, clinic: viewController.clinic!, disease: data[0] as! String, price: data[1] as? Int, date: date, tooth: data[2] as! String, state: TaskState.todo.rawValue, isDeleted: nil, modifiedTime: Date())
         print(appointment)
         print("ONE APPOINTMENT SAVED")
-//        Info.sharedInstance.sync() //TODO: yes?
     }
 }

@@ -83,6 +83,20 @@ class TempAddAppointmrntViewController: FormViewController {
         }
     }
     
+    override func donePressed() {
+        super.donePressed()
+        clearDateButton.isHidden = false
+    }
+    
+    @IBAction func clearDate(_ sender: Any) {
+        guard let button = sender as? UIButton else {
+            return
+        }
+        date = nil
+        textFields[button.tag].text = ""
+        clearDateButton.isHidden = true
+    }
+    
     //MARK: Tooth Picker Functions
     func setToothPicker(toothTextFieldIndex: Int) {
         self.toothTextFieldIndex = toothTextFieldIndex
@@ -130,11 +144,7 @@ class TempAddAppointmrntViewController: FormViewController {
         }
         data[button.tag] = ""
         textFields[button.tag].text = ""
-        if button.tag == 2 {
-            clearToothButton.isHidden = true
-        } else if button.tag == 3 {
-            clearDateButton.isHidden = true
-        }
+        clearToothButton.isHidden = true
     }
     
     //MARK: Keyboard Management
