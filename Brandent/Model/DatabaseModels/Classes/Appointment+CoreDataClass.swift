@@ -84,6 +84,7 @@ public class Appointment: Entity {
     func updateAppointment(id: UUID?, patient: Patient, disease: String, price: Int?, visit_time: Date?, clinic: Clinic, tooth: String, state: String, isDeleted: Bool?, modifiedTime: Date?) {
         setAttributes(id: id, patient: patient, disease: disease, price: price, visit_time: visit_time, clinic: clinic, tooth: tooth, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
         Info.sharedInstance.dataController?.saveContext()
+        UserNotificationManager.sharedInstance.updateNotificationForAppointment(appointment: self)
     }
     
     func updateState(state: TaskState) -> Bool {

@@ -78,6 +78,7 @@ public class Task: Entity {
     func updateTask(id: UUID?, title: String, date: Date, state: String, clinic: Clinic?, isDeleted: Bool?, modifiedTime: Date?) {
         setAttributes(id: id, title: title, date: date, state: state, clinic: clinic, isDeleted: isDeleted, modifiedTime: modifiedTime)
         Info.sharedInstance.dataController?.saveContext()
+        UserNotificationManager.sharedInstance.updateNotificationForTask(task: self)
     }
     
     func updateState(state: TaskState) -> Bool {

@@ -62,4 +62,15 @@ class UserNotificationManager {
     func removeNotificationForTask(task: Task) {
         removeNotification(identifier: task.id.uuidString)
     }
+    
+    //MARK: Update Notification
+    func updateNotificationForAppointment(appointment: Appointment) {
+        removeNotoficationForAppointment(appointment: appointment)
+        scheduleNotificationForAppointment(appointment: appointment)
+    }
+    
+    func updateNotificationForTask(task: Task) {
+        removeNotificationForTask(task: task)
+        scheduleNotificationForTask(task: task)
+    }
 }
