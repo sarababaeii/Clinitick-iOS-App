@@ -83,6 +83,7 @@ class TaskTableViewCell: UITableViewCell {
                     button.unselectCheckButton()
                 }
             }
+            Info.sharedInstance.sync()
         }
     }
     

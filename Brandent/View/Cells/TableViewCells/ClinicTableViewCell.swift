@@ -19,6 +19,5 @@ class ClinicTableViewCell: UITableViewCell {
         self.clinic = clinic
         titleLabel.text = clinic.title
         colorView.backgroundColor = Color.getColor(description: clinic.color).clinicColor
-//            UIColor(hexString: clinic.color)
     }
 }

@@ -52,6 +52,7 @@ class AppointmentTableViewCell: UITableViewCell {
             } else {
                 button.unselectCheckButton()
             }
+            Info.sharedInstance.sync()
         }
     }
 }

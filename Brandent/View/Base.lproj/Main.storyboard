@@ -1044,7 +1044,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="334" height="250"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZg-nt-VgS" customClass="ShadowyUIView" customModule="Clinitick" customModuleProvider="target">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZg-nt-VgS" customClass="CustomUIView" customModule="Clinitick" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="318" height="250"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vii-db-6no">

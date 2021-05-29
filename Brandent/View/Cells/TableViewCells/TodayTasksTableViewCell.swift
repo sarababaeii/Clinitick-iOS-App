@@ -24,7 +24,6 @@ class TodayTasksTableViewCell: UITableViewCell {
         if let clinic = clinic {
             clinicLabel.text = "(\(clinic.title))"
             colorView.backgroundColor = Color.getColor(description: clinic.color).clinicColor
-//                UIColor(hexString: clinic.color)
             clinicLabel.isHidden = false
         } else {
             clinicLabel.isHidden = true
