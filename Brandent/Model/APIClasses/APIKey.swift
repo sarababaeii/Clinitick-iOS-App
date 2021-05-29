@@ -158,6 +158,16 @@ enum APIKey: String {
         }
     }
     
+    //MARK: Tooth
+    var tooth: String? {
+        switch self {
+        case .appointment:
+            return "tooth"
+        default:
+            return nil
+        }
+    }
+    
     //MARK: Disease
     var disease: String? {
         switch self {

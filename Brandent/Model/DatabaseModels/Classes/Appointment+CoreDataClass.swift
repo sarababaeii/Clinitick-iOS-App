@@ -13,7 +13,7 @@ import CoreData
 @objc(Appointment)
 public class Appointment: Entity {
     //MARK: Initialization
-    static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, disease: String, price: Int?, date: Date?, state: String, isDeleted: Bool, modifiedTime: Date) -> Appointment? { // for sync TODO: Tooth
+    static func createAppointment(id: UUID, patientID: UUID, clinicID: UUID, disease: String, price: Int?, date: Date?, tooth: String, state: String, isDeleted: Bool, modifiedTime: Date) -> Appointment? { // for sync
         guard let clinic = Clinic.getClinicByID(clinicID, isForSync: true) else {
             print("clinic $\(clinicID) did not find")
             return nil
@@ -23,10 +23,10 @@ public class Appointment: Entity {
             return nil
         }
         if let appointment = getAppointmentByID(id) {
-            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, tooth: "", state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
+            appointment.updateAppointment(id: id, patient: patient, disease: disease, price: price, visit_time: date, clinic: clinic, tooth: tooth, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
             return appointment
         }
-        return createAppointment(id: id, patient: patient, clinic: clinic, disease: disease, price: price, date: date, tooth: "", state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
+        return createAppointment(id: id, patient: patient, clinic: clinic, disease: disease, price: price, date: date, tooth: tooth, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime)
     }
     
     static func createAppointment(id: UUID?, patient: Patient, clinic: Clinic, disease: String, price: Int?, date: Date?, tooth: String, state: String, isDeleted: Bool?, modifiedTime: Date?) -> Appointment {
@@ -132,7 +132,7 @@ public class Appointment: Entity {
             }
         }
         return mixture
-    } //should be tested
+    }
     
     static func removeAppointmentsWithoutPrice(entities: [Entity]?) -> [Entity]? {
         guard let entities = entities else {
@@ -158,6 +158,7 @@ public class Appointment: Entity {
             APIKey.appointment.state!: self.state,
             APIKey.appointment.date!: self.visit_time.toDBFormatDateAndTimeString(isForSync: false),
             APIKey.appointment.disease!: self.disease,
+            APIKey.appointment.tooth!: self.tooth,
             APIKey.appointment.isDeleted!: String(self.is_deleted),
             APIKey.appointment.patient!: self.patient.id.uuidString,
             APIKey.appointment.clinic!: self.clinic.id.uuidString]
@@ -174,22 +175,23 @@ public class Appointment: Entity {
     
     static func saveAppointment(_ appointment: NSDictionary, modifiedTime: Date) -> Bool {
         guard let idString = appointment[APIKey.appointment.id!] as? String,
-         let id = UUID.init(uuidString: idString),
+         let id = UUID.init(uuidString: idString), // id
          let patientIDString = appointment[APIKey.appointment.patient!] as? String,
-         let patientID = UUID.init(uuidString: patientIDString),
-         let disease = appointment[APIKey.appointment.disease!] as? String,
+         let patientID = UUID.init(uuidString: patientIDString), // patient
+         let disease = appointment[APIKey.appointment.disease!] as? String, // disease
          let priceString = appointment[APIKey.appointment.price!] as? String,
-         let price = Int(priceString),
+         let price = Int(priceString), // price could be 0
          let dateString = appointment[APIKey.appointment.date!] as? String,
-         let date = Date.getDBFormatDate(from: dateString, isForSync: false),
+         let date = Date.getDBFormatDate(from: dateString, isForSync: false), // visit time could be default date
          let clinicIDString = appointment[APIKey.appointment.clinic!] as? String,
-         let clinicID = UUID.init(uuidString: clinicIDString),
-         let state = appointment[APIKey.appointment.state!] as? String,
+         let clinicID = UUID.init(uuidString: clinicIDString), // clinic
+         let state = appointment[APIKey.appointment.state!] as? String, // state
+         let tooth = appointment[APIKey.appointment.tooth!] as? String, // tooth
          let isDeletedInt = appointment[APIKey.appointment.isDeleted!] as? Int,
          let isDeleted = Bool.intToBool(value: isDeletedInt) else {
             return false
         }
-        if let _ = createAppointment(id: id, patientID: patientID, clinicID: clinicID, disease: disease, price: price, date: date, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime) {
+        if let _ = createAppointment(id: id, patientID: patientID, clinicID: clinicID, disease: disease, price: price, date: date, tooth: tooth, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime) {
             print("#\(id)")
             return true
         }
@@ -197,15 +199,15 @@ public class Appointment: Entity {
     }
 }
 
-//"appointment": {
-//  "id": "890a32fe-12e6-11eb-adc1-0242ac120002",
-//  "notes": "had a surgery last month",
-//  "price": 5000000,
-//  "state": "done",
-//  "visit_time": "2020-10-20 17:05:30",
-//  "disease": "checkup",
-//  "is_deleted": false,
-//  "clinic_id": "890a32fe-12e6-11eb-adc1-0242ac120002",
-//  "allergies": "peanut butter",
-//  "patient_id": "890a32fe-12e6-11eb-adc1-0242ac120002"
-//}
+//"appointments": {
+//    "id": "890a32fe-12e6-11eb-adc1-0242ac120002",
+//    "price": 5000000,
+//    "state": "done",
+//    "visit_time": "2020-10-20 17:05:30",
+//    "disease": "checkup",
+//    "tooth": "UL8, Upper Left 8",
+//    "is_deleted": false,
+//    "clinic_id": "890a32fe-12e6-11eb-adc1-0242ac120002",
+//    "allergies": "peanut butter",
+//    "patient_id": "890a32fe-12e6-11eb-adc1-0242ac120002"
+//  }

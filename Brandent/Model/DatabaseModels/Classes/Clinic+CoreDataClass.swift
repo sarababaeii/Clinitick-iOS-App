@@ -143,5 +143,5 @@ public class Clinic: Entity {
 //  "id": "3b155280-1a49-11eb-bd07-7d22de018431",
 //  "title": "khooneye madarbozorg",
 //  "address": "Tehran iran shahre tehran",
-//  "color": "#abcdef"
+//  "color": "color_1"
 //}
