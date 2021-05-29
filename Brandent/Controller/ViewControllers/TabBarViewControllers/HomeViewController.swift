@@ -95,8 +95,8 @@ class HomeViewController: TabBarViewController {
     }
     
     //MARK: Item Navigations
-    func openPage(item: MenuItem) {
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: item.viewControllerIdentifier)
-        navigationController?.show(controller, sender: nil)
+    func openPage(item: BlogPost) {
+//        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: item.viewControllerIdentifier)
+//        navigationController?.show(controller, sender: nil)
     }
 }

@@ -11,17 +11,15 @@ import UIKit
 
 class MenuCollectionViewCell: UICollectionViewCell {
    
-    @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var colorView: CustomUIView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleTextView: UITextView!
     
-    var item: MenuItem?
+    var item: BlogPost?
     
-    func setAttributes(item: MenuItem) {
+    func setAttributes(item: BlogPost) {
         self.item = item
-        iconImageView.image = item.image
-        colorView.backgroundColor = item.color.menuItemColor
-        titleLabel.text = item.title
+        imageView.image = item.image
+        titleTextView.text = item.title
     }
     @IBAction func goToPage(_ sender: Any) {
         item?.openPage()

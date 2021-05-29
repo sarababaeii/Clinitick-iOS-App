@@ -12,13 +12,13 @@ import UIKit
 class MenuCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var viewController: HomeViewController
-    var items = [MenuItem]()
+    var items = [BlogPost]()
     
     //MARK: Initializer
     init(viewController: HomeViewController) {
         self.viewController = viewController
-        items.append(MenuItem(color: Color.pink, image: UIImage(named: "patients_in_home")!, title: "لیست بیماران", parentViewController: viewController, viewControllerIdentifier: "PatientsViewController", tabBarItemIndex: TabBarItemIndex.profile.rawValue))
-        items.append(MenuItem(color: Color.green, image: UIImage(named: "wallet")!, title: "درآمد این ماه", parentViewController: viewController, viewControllerIdentifier: "SeeFinanceViewController", tabBarItemIndex: TabBarItemIndex.finance.rawValue))
+        super.init()
+        createTestPosts()
     }
     
     //MARK: Protocol Functions
@@ -34,10 +34,15 @@ class MenuCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollecti
         return cell
     }
     
-    func menuDataSource(indexPath: IndexPath) -> MenuItem? {
+    func menuDataSource(indexPath: IndexPath) -> BlogPost? {
         if indexPath.row < items.count {
             return items[indexPath.row]
         }
         return nil
+    }
+    
+    private func createTestPosts() {
+        items.append(BlogPost(image: UIImage(named: "welcome")!, title: "دوره آموزشی رایگان جدید ترین روش های درمانی در اروپا و آمریکا"))
+        items.append(BlogPost(image: UIImage(named: "daily_tasks")!, title: "پزشکان ثروتمند"))
     }
 }

@@ -121,7 +121,7 @@
 		03E7F93F254C8940000EDDD0 /* ClinicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F93E254C8940000EDDD0 /* ClinicsViewController.swift */; };
 		03E7F944254C8A98000EDDD0 /* ClinicsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7F943254C8A98000EDDD0 /* ClinicsTableViewDelegate.swift */; };
 		03EE136E25542E4900363EA0 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE136D25542E4900363EA0 /* MenuCollectionViewCell.swift */; };
-		03EE137025542F5500363EA0 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE136F25542F5500363EA0 /* MenuItem.swift */; };
+		03EE137025542F5500363EA0 /* BlogPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE136F25542F5500363EA0 /* BlogPost.swift */; };
 		03EE13722554322400363EA0 /* MenuCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE13712554322400363EA0 /* MenuCollectionViewDelegate.swift */; };
 		03EE13742554480E00363EA0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE13732554480E00363EA0 /* UIViewExtension.swift */; };
 		03EE13762554492300363EA0 /* LightningUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EE13752554492300363EA0 /* LightningUIView.swift */; };
@@ -286,7 +286,7 @@
 		03E7F93E254C8940000EDDD0 /* ClinicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsViewController.swift; sourceTree = "<group>"; };
 		03E7F943254C8A98000EDDD0 /* ClinicsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsTableViewDelegate.swift; sourceTree = "<group>"; };
 		03EE136D25542E4900363EA0 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
-		03EE136F25542F5500363EA0 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		03EE136F25542F5500363EA0 /* BlogPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPost.swift; sourceTree = "<group>"; };
 		03EE13712554322400363EA0 /* MenuCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		03EE13732554480E00363EA0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		03EE13752554492300363EA0 /* LightningUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningUIView.swift; sourceTree = "<group>"; };
@@ -394,7 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				03FCCEB82562CDB5008A27B1 /* Image.swift */,
-				03EE136F25542F5500363EA0 /* MenuItem.swift */,
+				03EE136F25542F5500363EA0 /* BlogPost.swift */,
 				03088770255EB11A00207D91 /* TodayTasks.swift */,
 				03E3499F2636FA69009FADBA /* UserNotificationManager.swift */,
 			);
@@ -1176,7 +1176,7 @@
 				030BE2F92543454600AA642C /* TaskTableViewCell.swift in Sources */,
 				03E4497625DC177A0002548A /* DeletableTableViewDelegate.swift in Sources */,
 				03FBE69E255499CD00FEFF63 /* FinanceTableViewDelegate.swift in Sources */,
-				03EE137025542F5500363EA0 /* MenuItem.swift in Sources */,
+				03EE137025542F5500363EA0 /* BlogPost.swift in Sources */,
 				03036D33250FE92400C7824A /* TasksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

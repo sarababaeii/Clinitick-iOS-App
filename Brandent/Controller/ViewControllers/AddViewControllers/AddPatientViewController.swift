@@ -52,7 +52,9 @@ class AddPatientViewController: FormViewController {
                 textFields[i].removeError()
             }
             clinicMenu.selectedIndex = nil
-            clinicMenu.selectOption(index: 0)
+            if !(clinicMenuDelegate?.isEmpty ?? true) {
+                clinicMenu.selectOption(index: 0)
+            }
             initializeAllergies()
             allergyMenu.unselectOptions()
         }

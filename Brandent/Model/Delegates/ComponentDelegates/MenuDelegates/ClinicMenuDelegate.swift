@@ -10,6 +10,8 @@ import Foundation
 
 class ClinicMenuDelegate: MenuDelegate {
     
+    var isEmpty = false
+    
     init(viewController: FormViewController, menuDataIndex: Int) {
         super.init(viewController: viewController, menuDataIndex: menuDataIndex)
     }
@@ -20,6 +22,7 @@ class ClinicMenuDelegate: MenuDelegate {
         if options.count > 0 {
             setMenuDelegates(menu: menu, options: options)
         }
+        isEmpty = !(options.count > 0)
     }
         
     private func getClinics() -> [String]{

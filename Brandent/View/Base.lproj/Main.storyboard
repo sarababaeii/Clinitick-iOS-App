@@ -1025,78 +1025,76 @@
                                                 </constraints>
                                             </view>
                                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Jo-5c-L7G">
-                                                <rect key="frame" x="0.0" y="144" width="398" height="120"/>
+                                                <rect key="frame" x="0.0" y="144" width="398" height="250"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="120" id="Izf-HX-BGs"/>
+                                                    <constraint firstAttribute="height" constant="250" id="Izf-HX-BGs"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UVa-gi-HeL">
-                                                    <size key="itemSize" width="159" height="120"/>
+                                                    <size key="itemSize" width="334" height="250"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MenuCellID" id="FFe-iU-kRh" customClass="MenuCollectionViewCell" customModule="Clinitick" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="159" height="120"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="250"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0md-FI-kJ9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="159" height="120"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="250"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZg-nt-VgS" customClass="ShadowyUIView" customModule="Clinitick" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="143" height="120"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="318" height="250"/>
                                                                     <subviews>
-                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ocr-iJ-2NR" customClass="CustomUIView" customModule="Clinitick" customModuleProvider="target">
-                                                                            <rect key="frame" x="47.666666666666657" y="24" width="48" height="48"/>
-                                                                            <subviews>
-                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="patients_in_home" translatesAutoresizingMaskIntoConstraints="NO" id="m1L-c1-F8Q">
-                                                                                    <rect key="frame" x="10.333333333333336" y="11.666666666666664" width="27" height="25"/>
-                                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                    <constraints>
-                                                                                        <constraint firstAttribute="height" constant="25" id="BPH-3U-DgX"/>
-                                                                                        <constraint firstAttribute="width" constant="27" id="hzF-bb-mDA"/>
-                                                                                    </constraints>
-                                                                                </imageView>
-                                                                            </subviews>
-                                                                            <color key="backgroundColor" red="1" green="0.43529411759999997" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="48" id="O5P-OG-jNs"/>
-                                                                                <constraint firstAttribute="width" constant="48" id="day-HU-lC1"/>
-                                                                                <constraint firstItem="m1L-c1-F8Q" firstAttribute="centerX" secondItem="ocr-iJ-2NR" secondAttribute="centerX" id="j6d-S2-aGI"/>
-                                                                                <constraint firstItem="m1L-c1-F8Q" firstAttribute="centerY" secondItem="ocr-iJ-2NR" secondAttribute="centerY" id="z3D-bt-aGx"/>
-                                                                            </constraints>
-                                                                            <userDefinedRuntimeAttributes>
-                                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                    <real key="value" value="24"/>
-                                                                                </userDefinedRuntimeAttribute>
-                                                                            </userDefinedRuntimeAttributes>
-                                                                        </view>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لیست بیماران" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDS-vl-5Tw">
-                                                                            <rect key="frame" x="33.999999999999993" y="82" width="75.333333333333314" height="22"/>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vii-db-6no">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="318" height="175"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
-                                                                            <color key="textColor" red="0.17254901959999999" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="175" id="2q4-Bw-o9L"/>
+                                                                            </constraints>
+                                                                        </imageView>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbD-zC-sV7">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="143" height="120"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="318" height="250"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <connections>
                                                                                 <action selector="goToPage:" destination="FFe-iU-kRh" eventType="touchUpInside" id="rSH-w6-gFL"/>
                                                                             </connections>
                                                                         </button>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIH-kp-xJa">
+                                                                            <rect key="frame" x="0.0" y="175" width="318" height="75"/>
+                                                                            <subviews>
+                                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" text="دوره آموزشی رایگان جدید ترین روش های درمانی در اروپا و آمریکا" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="gE6-X6-Yg0">
+                                                                                    <rect key="frame" x="24" y="11" width="278" height="53"/>
+                                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <color key="tintColor" red="0.87740945820000005" green="0.12740981579999999" blue="0.12740981579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="14"/>
+                                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                                </textView>
+                                                                            </subviews>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <constraints>
+                                                                                <constraint firstItem="gE6-X6-Yg0" firstAttribute="top" secondItem="xIH-kp-xJa" secondAttribute="top" constant="11" id="944-yM-cr5"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="gE6-X6-Yg0" secondAttribute="trailing" constant="16" id="Gse-rK-nA2"/>
+                                                                                <constraint firstItem="gE6-X6-Yg0" firstAttribute="centerY" secondItem="xIH-kp-xJa" secondAttribute="centerY" id="TFP-6E-Pxm"/>
+                                                                                <constraint firstItem="gE6-X6-Yg0" firstAttribute="leading" secondItem="xIH-kp-xJa" secondAttribute="leading" constant="24" id="fw9-2r-yVN"/>
+                                                                            </constraints>
+                                                                        </view>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstItem="ocr-iJ-2NR" firstAttribute="top" secondItem="zZg-nt-VgS" secondAttribute="top" constant="24" id="2HH-fG-Um6"/>
                                                                         <constraint firstItem="dbD-zC-sV7" firstAttribute="bottom" secondItem="zZg-nt-VgS" secondAttribute="bottom" id="2iS-cr-WWc"/>
-                                                                        <constraint firstItem="ocr-iJ-2NR" firstAttribute="centerX" secondItem="zZg-nt-VgS" secondAttribute="centerX" id="GdZ-hI-HWs"/>
-                                                                        <constraint firstItem="IDS-vl-5Tw" firstAttribute="top" secondItem="ocr-iJ-2NR" secondAttribute="bottom" constant="10" id="PTP-Qz-XIp"/>
-                                                                        <constraint firstItem="IDS-vl-5Tw" firstAttribute="centerX" secondItem="zZg-nt-VgS" secondAttribute="centerX" id="Pfd-k0-z6S"/>
+                                                                        <constraint firstItem="xIH-kp-xJa" firstAttribute="leading" secondItem="zZg-nt-VgS" secondAttribute="leading" id="BcA-EU-MOU"/>
+                                                                        <constraint firstItem="xIH-kp-xJa" firstAttribute="top" secondItem="vii-db-6no" secondAttribute="bottom" id="HL8-ZJ-3fF"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="vii-db-6no" secondAttribute="trailing" id="Jtm-9e-dK3"/>
                                                                         <constraint firstItem="dbD-zC-sV7" firstAttribute="leading" secondItem="zZg-nt-VgS" secondAttribute="leading" id="aXT-eD-B17"/>
                                                                         <constraint firstItem="dbD-zC-sV7" firstAttribute="top" secondItem="zZg-nt-VgS" secondAttribute="top" id="ahJ-Hc-vDb"/>
+                                                                        <constraint firstItem="vii-db-6no" firstAttribute="leading" secondItem="zZg-nt-VgS" secondAttribute="leading" id="ccg-pd-6Gc"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="xIH-kp-xJa" secondAttribute="bottom" id="cqW-S6-I4G"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="xIH-kp-xJa" secondAttribute="trailing" id="eEk-2N-git"/>
                                                                         <constraint firstAttribute="trailing" secondItem="dbD-zC-sV7" secondAttribute="trailing" id="l8i-gp-oQt"/>
+                                                                        <constraint firstItem="vii-db-6no" firstAttribute="top" secondItem="zZg-nt-VgS" secondAttribute="top" id="w0t-gT-Eik"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1127,17 +1125,16 @@
                                                         </collectionViewCellContentView>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <gestureRecognizers/>
-                                                        <size key="customSize" width="159" height="120"/>
+                                                        <size key="customSize" width="334" height="250"/>
                                                         <connections>
-                                                            <outlet property="colorView" destination="ocr-iJ-2NR" id="ne6-e7-bdP"/>
-                                                            <outlet property="iconImageView" destination="m1L-c1-F8Q" id="7Jw-7s-Sh3"/>
-                                                            <outlet property="titleLabel" destination="IDS-vl-5Tw" id="RPJ-1V-z6g"/>
+                                                            <outlet property="imageView" destination="vii-db-6no" id="yPT-Kw-ncE"/>
+                                                            <outlet property="titleTextView" destination="gE6-X6-Yg0" id="yT4-Ij-L3G"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gf7-2J-tvR" userLabel="View2">
-                                                <rect key="frame" x="16" y="288" width="382" height="145"/>
+                                                <rect key="frame" x="16" y="418" width="382" height="145"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="inh-V1-FaW" userLabel="View2.0" customClass="ShadowyUIView" customModule="Clinitick" customModuleProvider="target">
                                                         <rect key="frame" x="332" y="95" width="50" height="50"/>
@@ -1312,13 +1309,13 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b1p-h1-bv9" userLabel="View3">
-                                                <rect key="frame" x="16" y="457" width="382" height="115"/>
+                                                <rect key="frame" x="16" y="587" width="382" height="115"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpE-zU-PYP" userLabel="View3.0" customClass="ShadowyUIView" customModule="Clinitick" customModuleProvider="target">
                                                         <rect key="frame" x="332" y="65" width="50" height="50"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="up_next" translatesAutoresizingMaskIntoConstraints="NO" id="TrL-Xr-3ZP">
-                                                                <rect key="frame" x="13.666666666666686" y="13.666666666666686" width="23" height="23"/>
+                                                                <rect key="frame" x="13.666666666666686" y="13.666666666666629" width="23" height="23"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="23" id="DTT-JO-ZGK"/>
@@ -1385,14 +1382,14 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqy-el-H2D">
-                                                                <rect key="frame" x="24" y="38.666666666666686" width="0.0" height="0.0"/>
+                                                                <rect key="frame" x="24" y="38.666666666666629" width="0.0" height="0.0"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
                                                                 <color key="textColor" red="0.17254901959999999" green="0.18039215689999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="موردی برای نمایش وجود ندارد." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK9-Qu-LfN">
-                                                                <rect key="frame" x="77" y="27.666666666666686" width="166" height="22"/>
+                                                                <rect key="frame" x="77" y="27.666666666666629" width="166" height="22"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="14"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4086,7 +4083,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ae4-vB-nMV">
-                                        <rect key="frame" x="24" y="46" width="25" height="25"/>
+                                        <rect key="frame" x="24" y="46" width="50" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="Spg-Nw-VX2"/>
@@ -5249,7 +5246,6 @@
         <image name="info" width="16" height="18"/>
         <image name="logOut" width="25" height="25"/>
         <image name="patients" width="16" height="16"/>
-        <image name="patients_in_home" width="27" height="25"/>
         <image name="profile" width="19" height="24"/>
         <image name="settings" width="18" height="18"/>
         <image name="tasks" width="26" height="24"/>
@@ -5261,7 +5257,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hfm-aH-h5N"/>
-        <segue reference="iL6-hw-fDa"/>
+        <segue reference="104-nN-C3Y"/>
         <segue reference="Xf5-vY-bSr"/>
         <segue reference="Kpg-0q-Dp0"/>
         <segue reference="qAk-vO-iOw"/>
