@@ -30,7 +30,7 @@ class RestAPIManagr {
     }
     
     //MARK: Creating A Request
-    private func createRequest(url: URL, params: [String: Any], contentType: ContentType) -> URLRequest {
+    private func createPostRequest(url: URL, params: [String: Any], contentType: ContentType) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
@@ -39,6 +39,12 @@ class RestAPIManagr {
         let bodyString = String(data: request.httpBody!, encoding: .utf8)
         print("Body: \(String(describing: bodyString))")
         request.addValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
+        return request
+    }
+    
+    private func createGetRequest(url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
         return request
     }
     
@@ -55,27 +61,31 @@ class RestAPIManagr {
     //MARK: Creating Specific Request
     private func createLoginRequest(phone: String, password: String) -> URLRequest {
         let params: [String: Any] = jsonSerializer.getLoginData(phone: phone, password: password)
-        return createRequest(url: API.loginURL, params: params as [String: Any], contentType: .json)
+        return createPostRequest(url: APIAddress.loginURL, params: params as [String: Any], contentType: .json)
     }
     
     private func createSignUpRequest(dentist: DummyDentist) -> URLRequest {
         let params: [String: Any] = jsonSerializer.getSignUpData(dentist: dentist)
-        return createRequest(url: API.signUpURL, params: params as [String: Any], contentType: .json)
+        return createPostRequest(url: APIAddress.signUpURL, params: params as [String: Any], contentType: .json)
     }
     
     private func createSendPhoneRequest(phone: String) -> URLRequest {
         let params: [String: Any] = jsonSerializer.getsendPhoneData(phone: phone)
-        return createRequest(url: API.sendPhoneURL, params: params as [String: Any], contentType: .json)
+        return createPostRequest(url: APIAddress.sendPhoneURL, params: params as [String: Any], contentType: .json)
     }
     
     private func createSendOneTimeCodeRequest(phone: String, code: String) -> URLRequest {
         let params: [String: Any] = jsonSerializer.getSendCodeData(phone: phone, code: code)
-        return createRequest(url: API.sendCodeURL, params: params as [String: Any], contentType: .json)
+        return createPostRequest(url: APIAddress.sendCodeURL, params: params as [String: Any], contentType: .json)
     }
     
     private func createSyncRequest(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, appointments: [Appointment]?) -> URLRequest {
         let params: [String: Any] = jsonSerializer.getSyncData(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments)
-        return createRequest(url: API.syncURL, params: params, contentType: .json)
+        return createPostRequest(url: APIAddress.syncURL, params: params, contentType: .json)
+    }
+    
+    private func createListPostsRequest() -> URLRequest {
+        return createGetRequest(url: APIAddress.listPostsURL)
     }
     
     //MARK: Images
@@ -90,7 +100,7 @@ class RestAPIManagr {
     }
     
     private func createDeleteImageRequest(image: Image) -> URLRequest? {
-        guard let url = URL(string: "\(API.images)/\(image.name)") else {
+        guard let url = URL(string: "\(APIAddress.images)/\(image.name)") else {
             print("Error in creating URL")
             return nil
         }
@@ -100,9 +110,10 @@ class RestAPIManagr {
     }
     
     private func createGetImagesRequest(url: URL) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        return request
+        return createGetRequest(url: url)
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "GET"
+//        return request
     }
     
     //MARK: Authentication
@@ -143,21 +154,21 @@ class RestAPIManagr {
     }
     
     func setProfilePicture(photo: [Image]) {
-        let url = API.profilePictureURL
+        let url = APIAddress.profilePictureURL
         sendRequest(request: createAddImagesRequest(url: url, key: .dentist, images: photo), type: .setProfile, {(result) in})
     }
     
     func getProfilePicture(_ completion: @escaping (Image?) -> ()) {
-        let url = API.profilePictureURL
+        let url = APIAddress.profilePictureURL
         sendRequest(request: createGetImagesRequest(url: url), type: .setProfile, {(result) in
             let image = result.processProfilePicture()
             completion(image)
         })
     }
     
-    //MARK: Functions
+    //MARK: Images Functions
     func addImage(patientID: UUID, images: [Image]) {
-        let url = URL(string: "\(API.images)/\(patientID)")!
+        let url = URL(string: "\(APIAddress.images)/\(patientID)")!
         sendRequest(request: createAddImagesRequest(url: url, key: .patient, images: images), type: .addImage, {(result) in})
     }
     
@@ -168,7 +179,7 @@ class RestAPIManagr {
     }
     
     func getImages(patientID: UUID, _ completion: @escaping (NSArray?) -> ()) {
-        let url = URL(string: "\(API.images)/\(patientID)")!
+        let url = URL(string: "\(APIAddress.images)/\(patientID)")!
         sendRequest(request: createGetImagesRequest(url: url), type: .addImage, {(result) in
             let images = result.getImages()
             completion(images)
@@ -180,6 +191,14 @@ class RestAPIManagr {
         sendRequest(request: createSyncRequest(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments), type: .sync, {(result) in
             result.saveNewData()
             result.processOldData(clinics: clinics, patients: patients, finances: finances, tasks: tasks, appointments: appointments)
+        })
+    }
+    
+    //MARK: Blog
+    func getBlogPosts(_ completion: @escaping (NSArray?) -> ()) {
+        sendRequest(request: createListPostsRequest(), type: .listBlogPosts, {(result) in
+            let postsResult = result.listPosts()
+            completion(postsResult)
         })
     }
 }

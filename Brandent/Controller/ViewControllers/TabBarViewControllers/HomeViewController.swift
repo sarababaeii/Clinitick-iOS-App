@@ -21,8 +21,9 @@ class HomeViewController: TabBarViewController {
     @IBOutlet weak var diseaseLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
-    var menuCollectionViewDelegate: MenuCollectionViewDelegate?
     var todayTasksTableViewDelegate: TodayTasksTableViewDelegate?
+    var menuCollectionViewDelegate: MenuCollectionViewDelegate?
+    var blogPosts = [BlogPost]()
     
     //MARK: Initialization
     override func viewWillLayoutSubviews() {
@@ -46,13 +47,14 @@ class HomeViewController: TabBarViewController {
     }
     
     func appearConfigure() {
+        setBlogPosts()
         setTodayTasksDelegates()
         setUIComponents()
     }
     
     //MARK: Delegates
     func setMenuDelegates() {
-        menuCollectionViewDelegate = MenuCollectionViewDelegate(viewController: self)
+        menuCollectionViewDelegate = MenuCollectionViewDelegate(viewController: self, items: blogPosts)
         menuCollectionView.delegate = menuCollectionViewDelegate
         menuCollectionView.dataSource = menuCollectionViewDelegate
     }
@@ -61,6 +63,18 @@ class HomeViewController: TabBarViewController {
         todayTasksTableViewDelegate = TodayTasksTableViewDelegate(noTaskLabel: noVisitLabel)
         todayTasksTableView.delegate = todayTasksTableViewDelegate
         todayTasksTableView.dataSource = todayTasksTableViewDelegate
+    }
+    
+    //MARK: Bllog
+    func setBlogPosts() {
+        RestAPIManagr.sharedInstance.getBlogPosts({(postsData) in
+            if let data = postsData {
+                self.blogPosts = BlogPost.getPostsArray(postsData: data)
+                DispatchQueue.main.async {
+                    self.setMenuDelegates()
+                }
+            }
+        })
     }
     
     //MARK: UI Management

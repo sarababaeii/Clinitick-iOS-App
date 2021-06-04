@@ -8,35 +8,44 @@
 
 import Foundation
 
-struct API {
+struct APIAddress {
+    //MARK: Clinitick Server
     private static let server = "http://185.235.40.77:7000/"
-    private static let base = API.server + "api/"
+    private static let base = APIAddress.server + "api/"
     
-    private static let sync = API.base + "sync"
+    private static let sync = APIAddress.base + "sync"
     
-    private static let patient = API.base + "patients"
-    public static let images = API.patient + "/images"
-    public static let compressedImageFiles = API.server + "public/refined/"
-    public static let realImageFiles = API.server + "public/uploads/"
+    private static let patient = APIAddress.base + "patients"
+    public static let images = APIAddress.patient + "/images"
+    public static let compressedImageFiles = APIAddress.server + "public/refined/"
+    public static let realImageFiles = APIAddress.server + "public/uploads/"
     
-    private static let authentication = API.base + "auth/"
-    private static let login = API.authentication + "login"
-    private static let signUp = API.authentication + "register"
-    private static let sendPhone = API.signUp + "/phone"
-    private static let sendCode = API.signUp + "/code"
+    private static let authentication = APIAddress.base + "auth/"
+    private static let login = APIAddress.authentication + "login"
+    private static let signUp = APIAddress.authentication + "register"
+    private static let sendPhone = APIAddress.signUp + "/phone"
+    private static let sendCode = APIAddress.signUp + "/code"
     
-    private static let dentist = API.base + "dentists"
-    private static let dentistProfile = API.dentist + "/profile"
-    private static let profilePicture = API.dentistProfile + "/image"
-    public static let profilePictureFile = API.compressedImageFiles + "profile/"
+    private static let dentist = APIAddress.base + "dentists"
+    private static let dentistProfile = APIAddress.dentist + "/profile"
+    private static let profilePicture = APIAddress.dentistProfile + "/image"
+    public static let profilePictureFile = APIAddress.compressedImageFiles + "profile/"
     
-    static let addImageURL = URL(string: API.images)!
-    static let syncURL = URL(string: API.sync)!
-    static let loginURL = URL(string: API.login)!
-    static let signUpURL = URL(string: API.signUp)!
-    static let sendPhoneURL = URL(string: API.sendPhone)!
-    static let sendCodeURL = URL(string: API.sendCode)!
-    static let profilePictureURL = URL(string: API.profilePicture)!
+    static let addImageURL = URL(string: APIAddress.images)!
+    static let syncURL = URL(string: APIAddress.sync)!
+    static let loginURL = URL(string: APIAddress.login)!
+    static let signUpURL = URL(string: APIAddress.signUp)!
+    static let sendPhoneURL = URL(string: APIAddress.sendPhone)!
+    static let sendCodeURL = URL(string: APIAddress.sendCode)!
+    static let profilePictureURL = URL(string: APIAddress.profilePicture)!
+    
+    //MARK: Clinitick Blog
+    private static let blogServer = "https://blog.clinitick.com/"
+    private static let blogBase = APIAddress.blogServer + "wp-json/wp/v2/"
+    
+    private static let posts = APIAddress.blogBase + "posts"
+    
+    static let listPostsURL = URL(string: APIAddress.posts)!
 }
 
 //TODO: /uploads/... —> /refined/...

@@ -19,6 +19,14 @@ class JSONSerializer {
         return nil
     }
     
+    func decodeDataToArray(data: Data) -> NSArray? {
+        if let result = try? JSONSerialization.jsonObject(with: data, options: []) as? NSArray {
+            return result
+        }
+        print("Could not save new data")
+        return nil
+    }
+    
     //MARK: Encoding
     
     

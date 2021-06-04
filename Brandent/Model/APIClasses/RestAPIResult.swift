@@ -115,7 +115,7 @@ class RestAPIResult {
         guard let fileName = dictionary["image"] as? String else {
             return nil
         }
-        let image = Image(name: fileName, urlString: API.profilePictureFile)
+        let image = Image(name: fileName, urlString: APIAddress.profilePictureFile)
         return image
     }
     
@@ -200,6 +200,17 @@ class RestAPIResult {
         }
         return array
     }
+    
+    //MARK: Blog
+    func listPosts() -> NSArray? {
+        if response?.statusCode != 200 {
+            return nil
+        }
+        guard let data = data, let result = jsonSerializer.decodeDataToArray(data: data) else {
+            return nil
+        }
+        return result
+    }
 }
 
-//TODO: Name constraint for sync, adding tooth to sync
+//TODO: Name constraint for sync

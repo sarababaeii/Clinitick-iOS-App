@@ -16,4 +16,5 @@ enum APIRequestType {
     case signUp
     case sendPhone
     case sendCode
+    case listBlogPosts
 }

@@ -15,10 +15,9 @@ class MenuCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollecti
     var items = [BlogPost]()
     
     //MARK: Initializer
-    init(viewController: HomeViewController) {
+    init(viewController: HomeViewController, items: [BlogPost]) {
         self.viewController = viewController
-        super.init()
-        createTestPosts()
+        self.items = items
     }
     
     //MARK: Protocol Functions
@@ -39,10 +38,5 @@ class MenuCollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollecti
             return items[indexPath.row]
         }
         return nil
-    }
-    
-    private func createTestPosts() {
-        items.append(BlogPost(image: UIImage(named: "welcome")!, title: "دوره آموزشی رایگان جدید ترین روش های درمانی در اروپا و آمریکا"))
-        items.append(BlogPost(image: UIImage(named: "daily_tasks")!, title: "پزشکان ثروتمند"))
     }
 }

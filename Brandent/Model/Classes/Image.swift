@@ -46,7 +46,7 @@ class Image: Equatable {
         if realImage != nil {
             return realImage!
         }
-        guard let url = URL(string: "\(API.realImageFiles)\(name)"), let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {
+        guard let url = URL(string: "\(APIAddress.realImageFiles)\(name)"), let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {
             return nil
         }
         realImage = image

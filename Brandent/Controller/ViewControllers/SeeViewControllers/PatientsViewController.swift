@@ -34,10 +34,12 @@ class PatientsViewController: UIViewController {
     //MARK: UI Management
     func setSearchBarUI() {
         patientSearchBar.text = ""
-        patientSearchBar.searchTextField.font = UIFont(name: "Vazir-Bold", size: 14.0)
-        patientSearchBar.searchTextField.textColor = UIColor.black
+        if #available(iOS 13, *) {
+           patientSearchBar.searchTextField.font = UIFont(name: "Vazir-Bold", size: 14.0)
+           patientSearchBar.searchTextField.textColor = UIColor.black
+            patientSearchBar.searchTextField.backgroundColor = UIColor.white
+        }
         patientSearchBar.searchBarStyle = .minimal
-        patientSearchBar.searchTextField.backgroundColor = UIColor.white
     }
     
     //MARK: Delegates
