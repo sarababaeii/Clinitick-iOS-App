@@ -108,9 +108,13 @@ class HomeViewController: TabBarViewController {
         }
     }
     
-    //MARK: Item Navigations
-    func openPage(item: BlogPost) {
-//        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: item.viewControllerIdentifier)
-//        navigationController?.show(controller, sender: nil)
+    //MARK: Sending Sender to PatientProfile
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SeeBlogPostSegue",
+            let cell = sender as? MenuCollectionViewCell,
+            let post = cell.item,
+            let viewController = segue.destination as? SeeBlogPostViewController {
+            viewController.urlString = post.link
+        }
     }
 }

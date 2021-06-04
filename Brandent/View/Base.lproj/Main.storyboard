@@ -1054,13 +1054,6 @@
                                                                                 <constraint firstAttribute="height" constant="175" id="2q4-Bw-o9L"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbD-zC-sV7">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="318" height="250"/>
-                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <connections>
-                                                                                <action selector="goToPage:" destination="FFe-iU-kRh" eventType="touchUpInside" id="rSH-w6-gFL"/>
-                                                                            </connections>
-                                                                        </button>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIH-kp-xJa">
                                                                             <rect key="frame" x="0.0" y="175" width="318" height="75"/>
                                                                             <subviews>
@@ -1084,16 +1077,12 @@
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstItem="dbD-zC-sV7" firstAttribute="bottom" secondItem="zZg-nt-VgS" secondAttribute="bottom" id="2iS-cr-WWc"/>
                                                                         <constraint firstItem="xIH-kp-xJa" firstAttribute="leading" secondItem="zZg-nt-VgS" secondAttribute="leading" id="BcA-EU-MOU"/>
                                                                         <constraint firstItem="xIH-kp-xJa" firstAttribute="top" secondItem="vii-db-6no" secondAttribute="bottom" id="HL8-ZJ-3fF"/>
                                                                         <constraint firstAttribute="trailing" secondItem="vii-db-6no" secondAttribute="trailing" id="Jtm-9e-dK3"/>
-                                                                        <constraint firstItem="dbD-zC-sV7" firstAttribute="leading" secondItem="zZg-nt-VgS" secondAttribute="leading" id="aXT-eD-B17"/>
-                                                                        <constraint firstItem="dbD-zC-sV7" firstAttribute="top" secondItem="zZg-nt-VgS" secondAttribute="top" id="ahJ-Hc-vDb"/>
                                                                         <constraint firstItem="vii-db-6no" firstAttribute="leading" secondItem="zZg-nt-VgS" secondAttribute="leading" id="ccg-pd-6Gc"/>
                                                                         <constraint firstAttribute="bottom" secondItem="xIH-kp-xJa" secondAttribute="bottom" id="cqW-S6-I4G"/>
                                                                         <constraint firstAttribute="trailing" secondItem="xIH-kp-xJa" secondAttribute="trailing" id="eEk-2N-git"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="dbD-zC-sV7" secondAttribute="trailing" id="l8i-gp-oQt"/>
                                                                         <constraint firstItem="vii-db-6no" firstAttribute="top" secondItem="zZg-nt-VgS" secondAttribute="top" id="w0t-gT-Eik"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
@@ -1129,6 +1118,7 @@
                                                         <connections>
                                                             <outlet property="imageView" destination="vii-db-6no" id="yPT-Kw-ncE"/>
                                                             <outlet property="titleTextView" destination="gE6-X6-Yg0" id="yT4-Ij-L3G"/>
+                                                            <segue destination="9f2-wj-iYP" kind="show" identifier="SeeBlogPostSegue" id="y6O-LC-6kW"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -2049,6 +2039,41 @@
                 </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="172" y="1046"/>
+        </scene>
+        <!--See Blog Post View Controller-->
+        <scene sceneID="0S4-TW-KnM">
+            <objects>
+                <viewController id="9f2-wj-iYP" customClass="SeeBlogPostViewController" customModule="Clinitick" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OIu-1h-Hv2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" allowsBackForwardNavigationGestures="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TUy-tg-Cvy">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="TUy-tg-Cvy" firstAttribute="top" secondItem="4N3-8B-d8Y" secondAttribute="top" id="DMJ-qW-cTT"/>
+                            <constraint firstItem="4N3-8B-d8Y" firstAttribute="bottom" secondItem="TUy-tg-Cvy" secondAttribute="bottom" id="VOh-wI-KgN"/>
+                            <constraint firstItem="4N3-8B-d8Y" firstAttribute="trailing" secondItem="TUy-tg-Cvy" secondAttribute="trailing" id="WUU-qw-Ijf"/>
+                            <constraint firstItem="TUy-tg-Cvy" firstAttribute="leading" secondItem="4N3-8B-d8Y" secondAttribute="leading" id="gc4-fl-nH5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4N3-8B-d8Y"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DKi-dz-yq7"/>
+                    <connections>
+                        <outlet property="postWebView" destination="TUy-tg-Cvy" id="hFT-4f-58v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gky-ve-CYy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2067" y="1046"/>
         </scene>
         <!--See Finance View Controller-->
         <scene sceneID="eZK-vd-6kl">
@@ -4083,7 +4108,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ae4-vB-nMV">
-                                        <rect key="frame" x="24" y="46" width="50" height="25"/>
+                                        <rect key="frame" x="24" y="46" width="25" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="Spg-Nw-VX2"/>
