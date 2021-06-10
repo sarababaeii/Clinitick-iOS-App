@@ -2040,10 +2040,10 @@
             </objects>
             <point key="canvasLocation" x="172" y="1046"/>
         </scene>
-        <!--See Blog Post View Controller-->
+        <!--Web View Controller-->
         <scene sceneID="0S4-TW-KnM">
             <objects>
-                <viewController id="9f2-wj-iYP" customClass="SeeBlogPostViewController" customModule="Clinitick" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9f2-wj-iYP" customClass="WebViewController" customModule="Clinitick" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OIu-1h-Hv2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2068,7 +2068,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="DKi-dz-yq7"/>
                     <connections>
-                        <outlet property="postWebView" destination="TUy-tg-Cvy" id="hFT-4f-58v"/>
+                        <outlet property="webView" destination="TUy-tg-Cvy" id="hFT-4f-58v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gky-ve-CYy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2879,7 +2879,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2878" y="1870"/>
+            <point key="canvasLocation" x="2877" y="1815"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="Tsf-et-Ajx">
@@ -4098,7 +4098,7 @@
                                             <constraint firstAttribute="width" secondItem="W4i-eQ-6bm" secondAttribute="height" multiplier="350:41" id="DZc-AU-8xE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Vazir-Medium" family="Vazir" pointSize="16"/>
-                                        <state key="normal" title="۱۶ روز اشتراک باقی‌مانده">
+                                        <state key="normal" title="خرید اشتراک">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -4106,6 +4106,9 @@
                                                 <real key="value" value="18.5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="7Qt-J8-y6e" kind="show" identifier="SubscribeSegue" id="F76-Vx-4sk"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ae4-vB-nMV">
                                         <rect key="frame" x="24" y="46" width="25" height="25"/>
@@ -4315,6 +4318,9 @@
                                         <real key="value" value="22"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="7Qt-J8-y6e" kind="show" identifier="AboutUsSegue" id="jbb-9B-H1E"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97208470106124878" blue="0.98953872919082642" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4469,7 +4475,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fyf-2J-cjv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4182" y="1046"/>
+            <point key="canvasLocation" x="3906" y="1046"/>
         </scene>
         <!--Clinics View Controller-->
         <scene sceneID="0uw-wI-zag">
@@ -4595,7 +4601,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14g-8P-RLM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5430" y="1046"/>
+            <point key="canvasLocation" x="4801" y="1046"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="Xez-HA-NhR">
+            <objects>
+                <viewController id="7Qt-J8-y6e" customClass="WebViewController" customModule="Clinitick" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ryS-pq-vAX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" allowsBackForwardNavigationGestures="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvw-UY-5eZ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="t5y-pV-EDm" firstAttribute="trailing" secondItem="fvw-UY-5eZ" secondAttribute="trailing" id="8SP-xM-unQ"/>
+                            <constraint firstItem="t5y-pV-EDm" firstAttribute="bottom" secondItem="fvw-UY-5eZ" secondAttribute="bottom" id="NBs-az-gA5"/>
+                            <constraint firstItem="fvw-UY-5eZ" firstAttribute="top" secondItem="t5y-pV-EDm" secondAttribute="top" id="Wjm-bG-xkj"/>
+                            <constraint firstItem="fvw-UY-5eZ" firstAttribute="leading" secondItem="t5y-pV-EDm" secondAttribute="leading" id="c1p-Ix-UGQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="t5y-pV-EDm"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JbH-XF-igw"/>
+                    <connections>
+                        <outlet property="webView" destination="fvw-UY-5eZ" id="e3x-Ox-cfY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="taC-hd-hWg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5693" y="1046"/>
         </scene>
         <!--Add Clinic View Controller-->
         <scene sceneID="uWJ-t0-B84">
@@ -4790,7 +4831,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5430" y="1815"/>
+            <point key="canvasLocation" x="4801" y="1815"/>
         </scene>
         <!--Patient Profile View Controller-->
         <scene sceneID="DCT-Tg-SsN">
@@ -5189,7 +5230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BdZ-if-r1k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4182" y="1815"/>
+            <point key="canvasLocation" x="3906" y="1815"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZRq-Pu-GZu">
@@ -5282,7 +5323,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hfm-aH-h5N"/>
-        <segue reference="104-nN-C3Y"/>
+        <segue reference="F76-Vx-4sk"/>
+        <segue reference="iL6-hw-fDa"/>
         <segue reference="Xf5-vY-bSr"/>
         <segue reference="Kpg-0q-Dp0"/>
         <segue reference="qAk-vO-iOw"/>

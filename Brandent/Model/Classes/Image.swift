@@ -52,4 +52,18 @@ class Image: Equatable {
         realImage = image
         return realImage
     }
+    
+    
+    
+    
+    init(urlString: String) {
+        self.name = urlString
+        guard let url = URL(string: urlString), let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {
+            self.compressedImg = UIImage(named: "gallery")!
+            self.data = compressedImg.jpegData(compressionQuality: 1)!
+            return
+        }
+        self.data = data
+        self.compressedImg = image
+    }
 }

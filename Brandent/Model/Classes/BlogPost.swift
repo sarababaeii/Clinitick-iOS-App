@@ -10,24 +10,9 @@ import Foundation
 import UIKit
 
 class BlogPost {
-//    var color: Color
     var image: UIImage
     var title: String
     var link: String
-    
-    
-//    var parentViewController: HomeViewController
-//    var viewControllerIdentifier: String
-//    var tabBarItemIndex: Int
-    
-//    init(color: Color, image: UIImage, title: String, parentViewController: HomeViewController, viewControllerIdentifier: String, tabBarItemIndex: Int) {
-//        self.color = color
-//        self.image = image
-//        self.title = title
-//        self.parentViewController = parentViewController
-//        self.viewControllerIdentifier = viewControllerIdentifier
-//        self.tabBarItemIndex = tabBarItemIndex
-//    }
     
     init(image: UIImage, title: String, link: String) {
         self.image = image
@@ -59,10 +44,26 @@ class BlogPost {
             print("Could not save LINK")
             return nil
         }
-        
-        let post = BlogPost(image: UIImage(named: "welcome")!, title: title, link: link)
+        guard let id = postData["featured_media"] as? Int else {
+            print("Could not save IMAGE ID")
+            return nil
+        }
+        let imageID = String(id)
+        getPostImage(imageID: imageID)
+        let image = Image(urlString: "https://blog.clinitick.com/wp-json/wp/v2/media?parent=1")
+//        print(image.name)
+        let post = BlogPost(image: image.compressedImg/*UIImage(named: "welcome")!*/, title: title, link: link)
         print("IM A POST")
         print(post)
         return post
+    }
+    
+    private static func getPostImage(imageID: String) {
+        RestAPIManagr.sharedInstance.getPostImage(imageID: imageID, {(result) in
+            if let urlString = result {
+                let image = Image(urlString: urlString)
+                print(image.name)
+            }
+        })
     }
 }

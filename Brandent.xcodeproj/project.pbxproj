@@ -11,7 +11,7 @@
 		0300B3FF25B0B59B00D8CAD5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0300B3FE25B0B59B00D8CAD5 /* TabBarViewController.swift */; };
 		03036D2F250FE8BB00C7824A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D2E250FE8BB00C7824A /* ProfileViewController.swift */; };
 		03036D33250FE92400C7824A /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03036D32250FE92400C7824A /* TasksViewController.swift */; };
-		0303D900266A97E000A607BD /* SeeBlogPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0303D8FF266A97E000A607BD /* SeeBlogPostViewController.swift */; };
+		0303D900266A97E000A607BD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0303D8FF266A97E000A607BD /* WebViewController.swift */; };
 		03088771255EB11A00207D91 /* TodayTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03088770255EB11A00207D91 /* TodayTasks.swift */; };
 		03088773255EB31600207D91 /* TodayTasksTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03088772255EB31600207D91 /* TodayTasksTableViewDelegate.swift */; };
 		03091FDA2565527B00E9FA6C /* TabBarItemIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03091FD92565527B00E9FA6C /* TabBarItemIndex.swift */; };
@@ -171,7 +171,7 @@
 		0300B3FE25B0B59B00D8CAD5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		03036D2E250FE8BB00C7824A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		03036D32250FE92400C7824A /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
-		0303D8FF266A97E000A607BD /* SeeBlogPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeBlogPostViewController.swift; sourceTree = "<group>"; };
+		0303D8FF266A97E000A607BD /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		03088770255EB11A00207D91 /* TodayTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTasks.swift; sourceTree = "<group>"; };
 		03088772255EB31600207D91 /* TodayTasksTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTasksTableViewDelegate.swift; sourceTree = "<group>"; };
 		03091FD92565527B00E9FA6C /* TabBarItemIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemIndex.swift; sourceTree = "<group>"; };
@@ -710,7 +710,7 @@
 				03E7F93E254C8940000EDDD0 /* ClinicsViewController.swift */,
 				038D88B22587DE8600447506 /* GalleryViewController.swift */,
 				034DC75425FFCA3E008E49FE /* ImageViewController.swift */,
-				0303D8FF266A97E000A607BD /* SeeBlogPostViewController.swift */,
+				0303D8FF266A97E000A607BD /* WebViewController.swift */,
 			);
 			path = SeeViewControllers;
 			sourceTree = "<group>";
@@ -1090,7 +1090,7 @@
 				0321F87E256855510048D77B /* Date.swift in Sources */,
 				030BBD9C259A560000A61249 /* TempAddAppointmentViewController.swift in Sources */,
 				03803FA025A0EDA100387FF5 /* NavigationBarViewController.swift in Sources */,
-				0303D900266A97E000A607BD /* SeeBlogPostViewController.swift in Sources */,
+				0303D900266A97E000A607BD /* WebViewController.swift in Sources */,
 				033C7662253D9EC900D25F4E /* CustomTabBar.swift in Sources */,
 				034253262581287F00DA6F29 /* CodeViewController.swift in Sources */,
 				03D16F3B25729E1100E05E2C /* Bool.swift in Sources */,

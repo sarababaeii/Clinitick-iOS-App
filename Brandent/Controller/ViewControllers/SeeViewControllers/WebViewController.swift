@@ -10,11 +10,12 @@ import Foundation
 import UIKit
 import WebKit
 
-class SeeBlogPostViewController: UIViewController {
+class WebViewController: UIViewController {
     
-    @IBOutlet weak var postWebView: WKWebView!
+    @IBOutlet weak var webView: WKWebView!
     
     var urlString: String?
+    var url: URL?
     
     //MARK: Showing NavigationBar
     override func viewWillAppear(_ animated: Bool) {
@@ -25,13 +26,20 @@ class SeeBlogPostViewController: UIViewController {
     
     func configure() {
         setURL()
+        loadPage()
     }
     
     func setURL() {
-        if let link = urlString, let url = URL(string: link) {
+        if let link = urlString {
+            url = URL(string: link)
+        }
+    }
+    
+    func loadPage() {
+        if let url = url {
             let request = URLRequest(url: url)
-            postWebView.load(request)
-            
+            webView.load(request)
+            print(url)
         }
     }
 }

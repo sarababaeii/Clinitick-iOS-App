@@ -211,6 +211,16 @@ class RestAPIResult {
         }
         return result
     }
+    
+    func getImageLink() -> String? {
+        if response?.statusCode != 200 {
+            return nil
+        }
+        guard let data = data, let result = jsonSerializer.decodeData(data: data), let linkContainer = result["guid"] as? NSDictionary, let link = linkContainer["rendered"] as? String else {
+            return nil
+        }
+        return link
+    }
 }
 
 //TODO: Name constraint for sync

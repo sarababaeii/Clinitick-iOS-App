@@ -10,7 +10,8 @@ import Foundation
 
 struct APIAddress {
     //MARK: Clinitick Server
-    private static let server = "http://185.235.40.77:7000/"
+//    185.235.40.77:7000
+    private static let server = "http://app.clinitick.com/"
     private static let base = APIAddress.server + "api/"
     
     private static let sync = APIAddress.base + "sync"
@@ -45,7 +46,16 @@ struct APIAddress {
     
     private static let posts = APIAddress.blogBase + "posts"
     
+    public static let media = APIAddress.blogServer + "media/"
+    
     static let listPostsURL = URL(string: APIAddress.posts)!
+    
+    //MARK: Clinitick Navigation
+    private static let aboutUs = "https://www.clinitick.com"
+    private static let subscribe = "https://auth.clinitick.com"
+    
+    static let aboutUsURL = URL(string: APIAddress.aboutUs)!
+    static let subscribeURL = URL(string: APIAddress.subscribe)!
 }
 
 //TODO: /uploads/... —> /refined/...

@@ -88,6 +88,13 @@ class RestAPIManagr {
         return createGetRequest(url: APIAddress.listPostsURL)
     }
     
+    private func createGetPostImageRequest(imageID: String) -> URLRequest? {
+        guard let url = URL(string: "\(APIAddress.media)\(imageID)") else {
+            return nil
+        }
+        return createGetRequest(url: url)
+    }
+    
     //MARK: Images
     private func createAddImagesRequest(url: URL, key: APIKey, images: [Image]) -> URLRequest {
         let boundary = "Boundary-\(UUID().uuidString)"
@@ -200,5 +207,14 @@ class RestAPIManagr {
             let postsResult = result.listPosts()
             completion(postsResult)
         })
+    }
+    
+    func getPostImage(imageID: String, _ completion: @escaping (String?) -> ()) {
+        if let request = createGetPostImageRequest(imageID: imageID) {
+            sendRequest(request: request, type: .getPostImage, {(result) in
+                let imageLink = result.getImageLink()
+                completion(imageLink)
+            })
+        }
     }
 }

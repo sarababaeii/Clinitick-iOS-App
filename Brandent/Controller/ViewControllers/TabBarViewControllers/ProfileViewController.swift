@@ -75,4 +75,16 @@ class ProfileViewController: TabBarViewController {
         }
         navigationController?.show(controller, sender: nil)
     }
+    
+    //MARK: Sending URL to WebViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AboutUsSegue",
+            let viewController = segue.destination as? WebViewController {
+            viewController.url = APIAddress.aboutUsURL
+        }
+        if segue.identifier == "SubscribeSegue",
+            let viewController = segue.destination as? WebViewController {
+            viewController.url = APIAddress.subscribeURL
+        }
+    }
 }

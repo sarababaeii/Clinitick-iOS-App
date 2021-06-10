@@ -108,12 +108,12 @@ class HomeViewController: TabBarViewController {
         }
     }
     
-    //MARK: Sending Sender to PatientProfile
+    //MARK: Sending Post URL to WebViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SeeBlogPostSegue",
             let cell = sender as? MenuCollectionViewCell,
             let post = cell.item,
-            let viewController = segue.destination as? SeeBlogPostViewController {
+            let viewController = segue.destination as? WebViewController {
             viewController.urlString = post.link
         }
     }

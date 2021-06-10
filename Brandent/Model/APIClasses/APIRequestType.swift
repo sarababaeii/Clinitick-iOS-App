@@ -17,4 +17,5 @@ enum APIRequestType {
     case sendPhone
     case sendCode
     case listBlogPosts
+    case getPostImage
 }
