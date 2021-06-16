@@ -47,7 +47,7 @@ class HomeViewController: TabBarViewController {
     }
     
     func appearConfigure() {
-        setBlogPosts()
+//        setBlogPosts()
         setTodayTasksDelegates()
         setUIComponents()
     }
@@ -65,7 +65,7 @@ class HomeViewController: TabBarViewController {
         todayTasksTableView.dataSource = todayTasksTableViewDelegate
     }
     
-    //MARK: Bllog
+    //MARK: Blog
     func setBlogPosts() {
         RestAPIManagr.sharedInstance.getBlogPosts({(postsData) in
             if let data = postsData {

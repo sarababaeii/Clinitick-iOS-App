@@ -11,7 +11,7 @@ import Foundation
 struct APIAddress {
     //MARK: Clinitick Server
 //    185.235.40.77:7000
-    private static let server = "http://app.clinitick.com/"
+    private static let server = "https://app.clinitick.com/"
     private static let base = APIAddress.server + "api/"
     
     private static let sync = APIAddress.base + "sync"
