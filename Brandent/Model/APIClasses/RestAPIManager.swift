@@ -92,6 +92,9 @@ class RestAPIManagr {
         guard let url = URL(string: "\(APIAddress.media)\(imageID)") else {
             return nil
         }
+        print("IMAGE URL")
+        print(url)
+        print("@@@")
         return createGetRequest(url: url)
     }
     
@@ -209,10 +212,13 @@ class RestAPIManagr {
         })
     }
     
-    func getPostImage(imageID: String, _ completion: @escaping (String?) -> ()) {
+    func getPostImageLink(imageID: String, _ completion: @escaping (String?) -> ()) {
         if let request = createGetPostImageRequest(imageID: imageID) {
             sendRequest(request: request, type: .getPostImage, {(result) in
                 let imageLink = result.getImageLink()
+                print("IMAGE LINK:")
+                print(imageLink)
+                print("$$$")
                 completion(imageLink)
             })
         }

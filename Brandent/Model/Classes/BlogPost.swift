@@ -10,29 +10,31 @@ import Foundation
 import UIKit
 
 class BlogPost {
-    var image: UIImage
     var title: String
     var link: String
+    var imageID: String
+    var image: UIImage?
     
-    init(image: UIImage, title: String, link: String) {
-        self.image = image
+    init(title: String, link: String, imageID: String) {
         self.title = title
         self.link = link
+        self.imageID = imageID
     }
     
     func openPage() {
 //        parentViewController.openPage(item: self)
     }
     
-    static func getPostsArray(postsData: NSArray) -> [BlogPost] {
+    static func getPostsArray(postsData: NSArray, _ completion: @escaping ([BlogPost]?) -> ()) {
         var posts = [BlogPost]()
         for item in postsData {
-            if let postData = item as? NSDictionary, let post = BlogPost.createPost(postData: postData) {
-                posts.append(post)
-                print("HIIIII")
+            if let postData = item as? NSDictionary {
+                if let post = BlogPost.createPost(postData: postData) {
+                    posts.append(post)
+                }
             }
         }
-        return posts
+        completion(posts)
     }
     
     static func createPost(postData: NSDictionary) -> BlogPost? {
@@ -48,21 +50,36 @@ class BlogPost {
             print("Could not save IMAGE ID")
             return nil
         }
+        print("POST DATA:\n\(title)\n\(link)\n\(id)")
         let imageID = String(id)
-        getPostImage(imageID: imageID)
-        let image = Image(urlString: "https://blog.clinitick.com/wp-json/wp/v2/media?parent=1")
-//        print(image.name)
-        let post = BlogPost(image: image.compressedImg/*UIImage(named: "welcome")!*/, title: title, link: link)
-        print("IM A POST")
-        print(post)
+        let post = BlogPost(title: title, link: link, imageID: imageID)
         return post
     }
     
-    private static func getPostImage(imageID: String) {
-        RestAPIManagr.sharedInstance.getPostImage(imageID: imageID, {(result) in
+    private func getPostImageLink(_ completion: @escaping (String?) -> ()) {
+        RestAPIManagr.sharedInstance.getPostImageLink(imageID: imageID, {(result) in
             if let urlString = result {
+                completion(urlString)
+            }
+        })
+    }
+    
+    func getImage(_ completion: @escaping (UIImage?) -> ()) {
+        if let image = self.image {
+            completion(image)
+        } else {
+            self.setImage({(image) in
+                completion(image)
+            })
+        }
+    }
+    
+    private func setImage(_ completion: @escaping (UIImage) -> ()) {
+        self.getPostImageLink({(url) in
+            if let urlString = url {
                 let image = Image(urlString: urlString)
-                print(image.name)
+                self.image = image.compressedImg
+                completion(image.compressedImg)
             }
         })
     }

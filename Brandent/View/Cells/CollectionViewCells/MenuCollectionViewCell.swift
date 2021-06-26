@@ -18,9 +18,18 @@ class MenuCollectionViewCell: UICollectionViewCell {
     
     func setAttributes(item: BlogPost) {
         self.item = item
-        imageView.image = item.image
+        
         titleTextView.text = item.title
+        
+        item.getImage({(image) in
+            if let image = image {
+                DispatchQueue.main.async {
+                    self.imageView.image = image
+                }
+            }
+        })
     }
+    
     @IBAction func goToPage(_ sender: Any) {
         item?.openPage()
     }

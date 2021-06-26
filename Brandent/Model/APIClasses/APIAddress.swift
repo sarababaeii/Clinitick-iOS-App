@@ -46,7 +46,7 @@ struct APIAddress {
     
     private static let posts = APIAddress.blogBase + "posts"
     
-    public static let media = APIAddress.blogServer + "media/"
+    public static let media = APIAddress.blogBase + "media/"
     
     static let listPostsURL = URL(string: APIAddress.posts)!
     

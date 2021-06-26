@@ -44,19 +44,21 @@ class HomeViewController: TabBarViewController {
     
     func loadConfigure() {
         setMenuDelegates()
+        setBlogPosts()
     }
     
     func appearConfigure() {
-//        setBlogPosts()
         setTodayTasksDelegates()
         setUIComponents()
     }
     
     //MARK: Delegates
     func setMenuDelegates() {
-        menuCollectionViewDelegate = MenuCollectionViewDelegate(viewController: self, items: blogPosts)
-        menuCollectionView.delegate = menuCollectionViewDelegate
-        menuCollectionView.dataSource = menuCollectionViewDelegate
+        DispatchQueue.main.async {
+            self.menuCollectionViewDelegate = MenuCollectionViewDelegate(viewController: self, items: self.blogPosts)
+            self.menuCollectionView.delegate = self.menuCollectionViewDelegate
+            self.menuCollectionView.dataSource = self.menuCollectionViewDelegate
+        }
     }
     
     func setTodayTasksDelegates() {
@@ -69,14 +71,16 @@ class HomeViewController: TabBarViewController {
     func setBlogPosts() {
         RestAPIManagr.sharedInstance.getBlogPosts({(postsData) in
             if let data = postsData {
-                self.blogPosts = BlogPost.getPostsArray(postsData: data)
-                DispatchQueue.main.async {
-                    self.setMenuDelegates()
-                }
+                BlogPost.getPostsArray(postsData: data, {(results) in
+                    if let result = results {
+                        self.blogPosts = result
+                        self.setMenuDelegates()
+                    }
+                })
             }
         })
     }
-    
+ 
     //MARK: UI Management
     func setUIComponents() {
         setHeaderView()
