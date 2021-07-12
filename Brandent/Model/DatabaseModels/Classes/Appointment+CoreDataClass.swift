@@ -191,8 +191,10 @@ public class Appointment: Entity {
          let isDeleted = Bool.intToBool(value: isDeletedInt) else {
             return false
         }
+        
         if let _ = createAppointment(id: id, patientID: patientID, clinicID: clinicID, disease: disease, price: price, date: date, tooth: tooth, state: state, isDeleted: isDeleted, modifiedTime: modifiedTime) {
-            print("#\(id)")
+            print("#\(id)\n\(disease)\n\(dateString)\n\(date)")
+//            print("###")
             return true
         }
         return false

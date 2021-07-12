@@ -79,6 +79,7 @@ class BlogPost {
             if let urlString = url {
                 let image = Image(urlString: urlString)
                 self.image = image.compressedImg
+                print("Image got")
                 completion(image.compressedImg)
             }
         })

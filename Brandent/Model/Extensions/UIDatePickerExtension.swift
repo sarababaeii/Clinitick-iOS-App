@@ -13,6 +13,8 @@ extension UIDatePicker {
     func createPersianDatePicker(mode: UIDatePicker.Mode) {
         self.calendar = Calendar(identifier: .persian)
         self.locale = Locale(identifier: "fa_IR")
+        self.timeZone = .current
+//            TimeZone(identifier: "Asia/Tehran")
         self.datePickerMode = mode
         
         if #available(iOS 13.4, *) {

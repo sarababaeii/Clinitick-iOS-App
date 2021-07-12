@@ -70,9 +70,9 @@ class RestAPIResult {
         }
         
         let dentist = Dentist.getDentist(id: NSDecimalNumber(value: id), firstName: firstName, lastName: lastName, phone: phone, speciality: speciality)
+        Info.sharedInstance.dentistID = id
         print("DENTIST SAVED SUCCESSFULLY \(dentist)")
         
-        Info.sharedInstance.dentistID = id
         setClinic(clinicTitle: dummyDentist?.clinicTitle)
         setProfilePicture(image: dummyDentist?.profilePicture)
         saveProfilePicture(dictionary: user)
@@ -224,5 +224,3 @@ class RestAPIResult {
         return link
     }
 }
-
-//TODO: Name constraint for sync

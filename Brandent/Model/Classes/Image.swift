@@ -53,9 +53,6 @@ class Image: Equatable {
         return realImage
     }
     
-    
-    
-    
     init(urlString: String) {
         self.name = urlString
         guard let url = URL(string: urlString), let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {

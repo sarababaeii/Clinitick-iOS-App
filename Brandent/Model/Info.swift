@@ -48,6 +48,9 @@ class Info {
         } else {
             dentist = nil
         }
+        
+//        print(dentist)
+//        print("!!!")
     }
     
     //MARK: Sync
