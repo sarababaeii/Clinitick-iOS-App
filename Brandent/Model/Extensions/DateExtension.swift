@@ -27,6 +27,11 @@ extension Date {
         return calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self)
     }
     
+    func convertToTimeZone(initTimeZone: TimeZone, timeZone: TimeZone) -> Date {
+         let delta = TimeInterval(timeZone.secondsFromGMT(for: self) - initTimeZone.secondsFromGMT(for: self))
+         return addingTimeInterval(delta)
+    }
+    
     //MARK: Getting Specific Dates
     func startOfMonth() -> Date? {
         let calendar = Calendar(identifier: .persian)
@@ -52,7 +57,10 @@ extension Date {
     
     func nextDay() -> Date? {
         let calendar = Calendar.current
-        return calendar.date(byAdding: .day, value: 1, to: self)
+        if let tommorow = calendar.date(byAdding: .day, value: 1, to: self) {
+            return calendar.startOfDay(for: tommorow)
+        }
+        return nil
     }
     
     //MARK: Setting Date Formatter
