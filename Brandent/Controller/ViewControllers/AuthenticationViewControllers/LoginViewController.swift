@@ -109,7 +109,7 @@ class LoginViewController: FormViewController {
     func checkResponse(statusCode: Int) {
         switch statusCode {
         case 200:
-            if let _ = Info.sharedInstance.token {
+            if let _ = Info.sharedInstance.token, let _ = Info.sharedInstance.dentist {
                 nextPage2()
             }
         case 403:

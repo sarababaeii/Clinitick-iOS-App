@@ -21,7 +21,7 @@ class RestAPIManagr {
         let task = session.dataTask(with: req) { (data, response, error) in
             if let data = data {
                 let responseString = String(data: data, encoding: .utf8)
-                print("My response --> \(String(describing: responseString))")
+                print("\(type)\nMy response --> \(String(describing: responseString))")
             }
             let result = RestAPIResult(data: data, response: response as? HTTPURLResponse)
             completion(result)
@@ -179,7 +179,13 @@ class RestAPIManagr {
     //MARK: Images Functions
     func addImage(patientID: UUID, images: [Image]) {
         let url = URL(string: "\(APIAddress.images)/\(patientID)")!
-        sendRequest(request: createAddImagesRequest(url: url, key: .patient, images: images), type: .addImage, {(result) in})
+        sendRequest(request: createAddImagesRequest(url: url, key: .patient, images: images), type: .addImage, {(result) in
+            if let data = result.data, let response = String(data: data, encoding: .utf8) {
+                DispatchQueue.main.async {
+                    UIApplication.topViewController()?.showToast(message: response)
+                }
+            }
+        })
     }
     
     func deleteImage(image: Image) {
@@ -192,6 +198,11 @@ class RestAPIManagr {
         let url = URL(string: "\(APIAddress.images)/\(patientID)")!
         sendRequest(request: createGetImagesRequest(url: url), type: .addImage, {(result) in
             let images = result.getImages()
+            if let imgs = images {
+                DispatchQueue.main.async {
+                    UIApplication.topViewController()?.showToast(message: "\(imgs.count) images received")
+                }
+            }
             completion(images)
         })
     }

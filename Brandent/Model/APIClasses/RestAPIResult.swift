@@ -63,9 +63,9 @@ class RestAPIResult {
             let phone = user["phone"] as? String,
             let speciality = user["speciality"] as? String else {
                 print("COULD NOT SAVE DENTIST")
-//                DispatchQueue.main.async {
-//                UIApplication.topViewController()?.showToast(message: "Could Not Save DENTIST")
-//            }
+                DispatchQueue.main.async {
+                    UIApplication.topViewController()?.showToast(message: "Could Not Save DENTIST")
+                }
                 return
         }
         

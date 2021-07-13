@@ -50,6 +50,11 @@ public class Dentist: NSManagedObject {
         self.setModifiedTime()
     }
     
+    func updateDentist(id: NSDecimalNumber, firstName: String, lastName: String, phone: String, speciality: String) {
+        setAttributes(id: id, firstName: firstName, lastName: lastName, phone: phone, speciality: speciality)
+        Info.sharedInstance.dataController?.saveContext()
+    }
+    
     func setClinic(clinicTitle: String) {
         let clinic = Clinic.getClinic(id: nil, title: clinicTitle, address: nil, color: nil, isDeleted: nil, modifiedTime: Date())
         Info.sharedInstance.dataController?.setDentistClinic(dentist: self, clinic: clinic)
