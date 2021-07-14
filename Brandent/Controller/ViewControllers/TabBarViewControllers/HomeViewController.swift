@@ -58,6 +58,7 @@ class HomeViewController: TabBarViewController {
             self.menuCollectionViewDelegate = MenuCollectionViewDelegate(viewController: self, items: self.blogPosts)
             self.menuCollectionView.delegate = self.menuCollectionViewDelegate
             self.menuCollectionView.dataSource = self.menuCollectionViewDelegate
+            self.menuCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .right, animated: true)
         }
     }
     
