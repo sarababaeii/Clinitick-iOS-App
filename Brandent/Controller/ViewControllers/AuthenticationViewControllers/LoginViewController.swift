@@ -119,17 +119,25 @@ class LoginViewController: FormViewController {
         }
     }
     
-    @IBAction func signUp(_ sender: Any) {
+    @IBAction func signUpOrForgotPass(_ sender: Any) {
+        guard let button = sender as? UIButton else {
+            return
+        }
         getLastData()
-        nextPage()
+        nextPage(sender: button.tag)
     }
     
-    func nextPage() {
+    func nextPage(sender tag: Int) {
         guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else {
             return
         }
         if data[0] as? String != "" {
             controller.phoneNumber = self.data[0] as! String
+        }
+        if tag == 1 {
+            controller.requestType = .forgetSendPhone
+        } else {
+            controller.requestType = .sendPhone
         }
         navigationController?.show(controller, sender: nil)
     }

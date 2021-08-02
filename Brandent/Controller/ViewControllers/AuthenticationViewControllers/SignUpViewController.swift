@@ -12,9 +12,12 @@ import UIKit
 class SignUpViewController: FormViewController {
     
     @IBOutlet weak var phoneNumberTextField: CustomTextField!
+    @IBOutlet weak var titleTextField: UILabel!
     
     var textFieldDelegate: TextFieldDelegate?
     var phoneNumber = ""
+    
+    var requestType: APIRequestType = .sendPhone
     
     //MARK: Initialization
     override func viewDidLoad() {
@@ -25,6 +28,15 @@ class SignUpViewController: FormViewController {
     func configure() {
         initializeTextFields()
         setPhoneNumber()
+        setPageTitle()
+    }
+    
+    func setPageTitle() {
+        if requestType == .sendPhone {
+            titleTextField.text = "ثبت نام"
+        } else {
+            titleTextField.text = "فراموشی رمز"
+        }
     }
     
     func initializeTextFields() {
@@ -62,7 +74,7 @@ class SignUpViewController: FormViewController {
             return
         }
         
-        RestAPIManagr.sharedInstance.getOneTimeCode(phone: data[0] as! String, {(statusCode) in
+        RestAPIManagr.sharedInstance.getOneTimeCode(phone: data[0] as! String, for: requestType, {(statusCode) in
             self.checkResponse(statusCode: statusCode)
         })
     }
@@ -76,11 +88,13 @@ class SignUpViewController: FormViewController {
     
     func checkResponse(statusCode: Int) {
         switch statusCode {
-        case 200:
+        case 200, 204:
 //            self.showToast(message: "ارسال شد.")
             nextPage()
         case 401:
             self.showToast(message: "شماره موبایل تکراری است.")
+        case 404:
+            self.showToast(message: "شماره موبایل ثبت نشده است.")
         default:
             self.showToast(message: "خطایی رخ داده است.")
         }

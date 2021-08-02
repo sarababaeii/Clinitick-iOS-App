@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -121,11 +122,25 @@
                                             <action selector="hideKeyboard:" destination="HFg-KA-wt3" eventType="primaryActionTriggered" id="Sfn-aA-Io3"/>
                                         </connections>
                                     </textField>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OLx-Rs-TZi">
+                                        <rect key="frame" x="16" y="81.5" width="79" height="31"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                        <state key="normal" title="فراموشی رمز؟">
+                                            <color key="titleColor" red="0.28023469449999999" green="0.1677436829" blue="0.70353585480000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="editPatientData:" destination="08X-YO-DMk" eventType="touchUpInside" id="hHD-vB-xOT"/>
+                                            <action selector="signUpOrForgotPass:" destination="HFg-KA-wt3" eventType="touchUpInside" id="8m0-Tf-1Ml"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Xop-N4-CPJ" secondAttribute="trailing" id="D4Q-05-jSQ"/>
+                                    <constraint firstItem="OLx-Rs-TZi" firstAttribute="leading" secondItem="Xop-N4-CPJ" secondAttribute="leading" constant="16" id="HMT-xW-ott"/>
                                     <constraint firstItem="Xop-N4-CPJ" firstAttribute="leading" secondItem="Rmv-YF-HBa" secondAttribute="leading" id="I0X-RG-SbK"/>
+                                    <constraint firstItem="OLx-Rs-TZi" firstAttribute="centerY" secondItem="Xop-N4-CPJ" secondAttribute="centerY" id="MUg-33-DPA"/>
                                     <constraint firstItem="0wj-yH-oWF" firstAttribute="top" secondItem="Rmv-YF-HBa" secondAttribute="top" id="baI-Rv-7BT"/>
                                     <constraint firstAttribute="trailing" secondItem="0wj-yH-oWF" secondAttribute="trailing" id="cJV-Bv-rj0"/>
                                     <constraint firstItem="0wj-yH-oWF" firstAttribute="leading" secondItem="Rmv-YF-HBa" secondAttribute="leading" id="okS-IC-G5V"/>
@@ -136,7 +151,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7J-ka-Kca" userLabel="View2">
                                 <rect key="frame" x="24" y="602" width="327" height="41"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaQ-Dm-oQV" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IaQ-Dm-oQV" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                         <rect key="frame" x="197" y="0.0" width="130" height="41"/>
                                         <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -156,7 +171,7 @@
                                             <action selector="login:" destination="HFg-KA-wt3" eventType="touchUpInside" id="5bW-h4-9hF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPi-xy-bXV" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPi-xy-bXV" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="190" height="41"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -178,7 +193,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="signUp:" destination="HFg-KA-wt3" eventType="touchUpInside" id="7b2-Ka-1zR"/>
+                                            <action selector="signUpOrForgotPass:" destination="HFg-KA-wt3" eventType="touchUpInside" id="7b2-Ka-1zR"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -195,6 +210,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="1B1-J6-DWP"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -212,7 +228,6 @@
                             <constraint firstItem="SLT-cE-eUM" firstAttribute="top" secondItem="hki-5W-Rb5" secondAttribute="top" constant="24" id="raC-tv-HTv"/>
                             <constraint firstItem="SLT-cE-eUM" firstAttribute="centerX" secondItem="hki-5W-Rb5" secondAttribute="centerX" id="wPp-vX-95T"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="1B1-J6-DWP"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="wgt-NC-JfX" appends="YES" id="nBj-0r-hPu"/>
                         </connections>
@@ -246,14 +261,14 @@
                                 <rect key="frame" x="24" y="80" width="327" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ثبت نام" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yys-nC-WyC">
-                                        <rect key="frame" x="128.5" y="0.0" width="70.5" height="33"/>
+                                        <rect key="frame" x="121.5" y="0.0" width="84.5" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="28"/>
                                         <color key="textColor" red="0.13180619478225708" green="0.14018970727920532" blue="0.24955505132675171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="لطفا شماره تلفن همراه خود را وارد کنید." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQH-Mq-P1M">
-                                        <rect key="frame" x="52" y="51" width="223" height="19"/>
+                                        <rect key="frame" x="39.5" y="45" width="248.5" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -296,7 +311,7 @@
                                     <action selector="getCode:" destination="TAP-Gc-QWI" eventType="primaryActionTriggered" id="yzv-AI-Z7L"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhp-7w-QCC" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhp-7w-QCC" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                 <rect key="frame" x="24" y="264" width="327" height="41"/>
                                 <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -317,6 +332,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="tUd-zw-Ujh"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -330,7 +346,6 @@
                             <constraint firstItem="Hhp-7w-QCC" firstAttribute="top" secondItem="2ka-nj-ofI" secondAttribute="bottom" constant="30" id="tZV-De-0yh"/>
                             <constraint firstItem="Hhp-7w-QCC" firstAttribute="leading" secondItem="ou3-Tv-5Dh" secondAttribute="leading" id="zKH-ee-QzO"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="tUd-zw-Ujh"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="ObI-de-xs5" appends="YES" id="Ehy-wf-f0v"/>
                         </connections>
@@ -340,6 +355,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="phoneNumberTextField" destination="2ka-nj-ofI" id="shw-7v-dvI"/>
+                        <outlet property="titleTextField" destination="Yys-nC-WyC" id="S7U-BP-gk0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8FV-jB-pm4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -363,14 +379,14 @@
                                 <rect key="frame" x="24" y="80" width="327" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ورود کد" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caN-pF-lSG">
-                                        <rect key="frame" x="127" y="0.0" width="73.5" height="33"/>
+                                        <rect key="frame" x="122" y="0.0" width="83" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="28"/>
                                         <color key="textColor" red="0.13180619478225708" green="0.14018970727920532" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="کد پیامک شده را وارد کنید." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvU-NP-1V1">
-                                        <rect key="frame" x="78.5" y="49" width="170" height="21"/>
+                                        <rect key="frame" x="69.5" y="41.5" width="188.5" height="28.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -543,14 +559,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="186" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ارسال مجدد کد:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dzq-2q-9jN">
-                                                <rect key="frame" x="69" y="11" width="91" height="19"/>
+                                                <rect key="frame" x="60.5" y="8" width="99.5" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                                 <color key="textColor" red="0.81176470588235294" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۱:۰۰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOx-8S-Kbe">
-                                                <rect key="frame" x="42" y="11" width="27" height="19"/>
+                                                <rect key="frame" x="36" y="8" width="24.5" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                                 <color key="textColor" red="0.81181066180000006" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -572,7 +588,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Uc-PK-Ij3" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Uc-PK-Ij3" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="186" height="41"/>
                                         <color key="backgroundColor" red="0.9137254901960784" green="0.89411764705882346" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -605,6 +621,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Pcd-ET-vXs"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -616,7 +633,6 @@
                             <constraint firstItem="PIm-Wa-BDD" firstAttribute="centerX" secondItem="tca-57-pnl" secondAttribute="centerX" id="uIu-HB-yBQ"/>
                             <constraint firstItem="OE4-kF-rys" firstAttribute="top" secondItem="7hl-vn-10T" secondAttribute="bottom" constant="30" id="wAw-N6-5s9"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Pcd-ET-vXs"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="3Yd-T5-X8o" appends="YES" id="otF-VZ-mBW"/>
                         </connections>
@@ -852,7 +868,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="Y5G-4I-Z4u" secondAttribute="bottom" id="uT9-Dp-Daf"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wio-Ds-4s1" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wio-Ds-4s1" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                                 <rect key="frame" x="24" y="490" width="327" height="41"/>
                                                 <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -899,6 +915,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="m4W-dc-pJL"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -907,7 +924,6 @@
                             <constraint firstItem="aWH-U5-0bG" firstAttribute="trailing" secondItem="m4W-dc-pJL" secondAttribute="trailing" id="d0g-bM-YyB"/>
                             <constraint firstItem="aWH-U5-0bG" firstAttribute="leading" secondItem="m4W-dc-pJL" secondAttribute="leading" id="ppA-Nk-0Ds"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="m4W-dc-pJL"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="H3K-fc-VBJ" appends="YES" id="uhZ-Rx-fzV"/>
                         </connections>
@@ -930,7 +946,112 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-3567" y="2613"/>
+            <point key="canvasLocation" x="-4042" y="2613"/>
+        </scene>
+        <!--New Pass View Controller-->
+        <scene sceneID="76p-8Y-zQv">
+            <objects>
+                <viewController id="awi-ig-NM5" customClass="NewPassViewController" customModule="Clinitick" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ntb-DV-Xcj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TUe-cP-gDW" userLabel="View0">
+                                <rect key="frame" x="24" y="80" width="327" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تغییر رمز" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dC3-pb-Hyn">
+                                        <rect key="frame" x="115" y="0.0" width="97" height="44"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="28"/>
+                                        <color key="textColor" red="0.1318061948" green="0.14018970729999999" blue="0.2495550513" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رمز جدید برای حساب خود وارد کنید." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQ2-Ge-FS9">
+                                        <rect key="frame" x="52" y="45" width="223.5" height="25"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="dC3-pb-Hyn" firstAttribute="top" secondItem="TUe-cP-gDW" secondAttribute="top" id="9P3-dm-17r"/>
+                                    <constraint firstItem="dC3-pb-Hyn" firstAttribute="centerX" secondItem="TUe-cP-gDW" secondAttribute="centerX" id="G9b-Ks-lL5"/>
+                                    <constraint firstItem="rQ2-Ge-FS9" firstAttribute="centerX" secondItem="TUe-cP-gDW" secondAttribute="centerX" id="blN-0e-mcq"/>
+                                    <constraint firstAttribute="bottom" secondItem="rQ2-Ge-FS9" secondAttribute="bottom" id="jAa-0t-FuX"/>
+                                    <constraint firstAttribute="height" constant="70" id="jUW-zt-OKC"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="رمز جدید" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tSy-pk-I6h" customClass="CustomTextField" customModule="Clinitick" customModuleProvider="target">
+                                <rect key="frame" x="24" y="180" width="327" height="54"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="nl3-1O-QcU"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" textContentType="new-password"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                        <color key="value" red="0.53368836639999995" green="0.54098916050000001" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="save:" destination="awi-ig-NM5" eventType="editingDidEnd" id="3dv-n7-tz3"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1H-sc-YqQ" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                                <rect key="frame" x="24" y="264" width="327" height="41"/>
+                                <color key="backgroundColor" red="0.28023469449999999" green="0.1677436829" blue="0.70353585480000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="neS-CA-aYQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="16"/>
+                                <state key="normal" title="ثبت و ورود">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.2784313725" green="0.16862745100000001" blue="0.70196078429999997" alpha="0.40274507710000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="save:" destination="awi-ig-NM5" eventType="touchUpInside" id="Lvw-Rw-axD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KlT-9Z-eql"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="J1H-sc-YqQ" firstAttribute="leading" secondItem="TUe-cP-gDW" secondAttribute="leading" id="FuC-db-Cef"/>
+                            <constraint firstItem="tSy-pk-I6h" firstAttribute="top" secondItem="TUe-cP-gDW" secondAttribute="bottom" constant="30" id="KRy-ES-T5L"/>
+                            <constraint firstItem="tSy-pk-I6h" firstAttribute="trailing" secondItem="TUe-cP-gDW" secondAttribute="trailing" id="Ksm-3H-gFR"/>
+                            <constraint firstItem="TUe-cP-gDW" firstAttribute="top" secondItem="KlT-9Z-eql" secondAttribute="top" constant="80" id="OVL-Dx-MhA"/>
+                            <constraint firstItem="TUe-cP-gDW" firstAttribute="centerX" secondItem="ntb-DV-Xcj" secondAttribute="centerX" id="PPj-S7-iyu"/>
+                            <constraint firstItem="J1H-sc-YqQ" firstAttribute="trailing" secondItem="TUe-cP-gDW" secondAttribute="trailing" id="aF7-rx-oAn"/>
+                            <constraint firstItem="KlT-9Z-eql" firstAttribute="trailing" secondItem="TUe-cP-gDW" secondAttribute="trailing" constant="24" id="cNp-zA-urn"/>
+                            <constraint firstItem="J1H-sc-YqQ" firstAttribute="top" secondItem="tSy-pk-I6h" secondAttribute="bottom" constant="30" id="r3k-MV-9Q0"/>
+                            <constraint firstItem="tSy-pk-I6h" firstAttribute="centerX" secondItem="ntb-DV-Xcj" secondAttribute="centerX" id="rkw-fL-Y8L"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="newPasswordTextField" destination="tSy-pk-I6h" id="Iaf-pa-spz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V2x-v2-jbf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3106" y="2613"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4KU-cN-r3E">
@@ -986,14 +1107,14 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="سلام دکتر" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stf-6O-i2g">
-                                                        <rect key="frame" x="169.5" y="5" width="71.5" height="23.5"/>
+                                                        <rect key="frame" x="161" y="5" width="80" height="31.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="20"/>
                                                         <color key="textColor" red="0.1333333333" green="0.14117647059999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0o-jm-MP8">
-                                                        <rect key="frame" x="165.5" y="5" width="0.0" height="23.5"/>
+                                                        <rect key="frame" x="157" y="5" width="0.0" height="31.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="20"/>
                                                         <color key="textColor" red="0.1333333333" green="0.14117647059999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1170,7 +1291,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="برنامه‌ی امروز" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjG-2I-9Nf">
-                                                        <rect key="frame" x="195" y="0.0" width="86" height="21"/>
+                                                        <rect key="frame" x="188.5" y="0.0" width="92.5" height="28.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.27058823529999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1180,7 +1301,7 @@
                                                         <rect key="frame" x="0.0" y="38" width="281" height="107"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="موردی برای نمایش وجود ندارد." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJe-gq-VOi">
-                                                                <rect key="frame" x="65.5" y="45.5" width="150.5" height="16.5"/>
+                                                                <rect key="frame" x="57.5" y="42.5" width="166" height="22"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="14"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1212,21 +1333,21 @@
                                                                                     </userDefinedRuntimeAttributes>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۰" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3U9-UQ-ABI">
-                                                                                    <rect key="frame" x="201.5" y="9" width="7.5" height="19"/>
+                                                                                    <rect key="frame" x="201.5" y="6" width="7.5" height="25"/>
                                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="16"/>
                                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ویزیت" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGG-q8-4fZ">
-                                                                                    <rect key="frame" x="165.5" y="9" width="33" height="19"/>
+                                                                                    <rect key="frame" x="159.5" y="6" width="39" height="25"/>
                                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="16"/>
                                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoj-Ja-iFo">
-                                                                                    <rect key="frame" x="155.5" y="18.5" width="0.0" height="0.0"/>
+                                                                                    <rect key="frame" x="149.5" y="18.5" width="0.0" height="0.0"/>
                                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <fontDescription key="fontDescription" name="Vazir-Medium" family="Vazir" pointSize="14"/>
                                                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1345,7 +1466,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="به زودی" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ae1-4a-Mwd">
-                                                        <rect key="frame" x="232.5" y="0.0" width="48.5" height="21"/>
+                                                        <rect key="frame" x="225.5" y="0.0" width="55.5" height="28.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="18"/>
                                                         <color key="textColor" red="0.26274509800000001" green="0.27058823529999998" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1379,7 +1500,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="موردی برای نمایش وجود ندارد." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wK9-Qu-LfN">
-                                                                <rect key="frame" x="65.5" y="30.5" width="150.5" height="16.5"/>
+                                                                <rect key="frame" x="57.5" y="27.5" width="166" height="22"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="14"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1463,6 +1584,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                         <color key="backgroundColor" red="0.96509641408920288" green="0.97208470106124878" blue="0.98953872919082642" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="2Vz-ar-sQk" secondAttribute="bottom" id="IGs-ho-kwS"/>
@@ -1470,7 +1592,6 @@
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="2Vz-ar-sQk" secondAttribute="trailing" id="pVi-p3-cn2"/>
                             <constraint firstItem="2Vz-ar-sQk" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="yhx-9M-iFa"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="home" id="acW-dT-cKf"/>
                     <connections>
@@ -1502,7 +1623,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مدیریت مالی" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfI-68-tRT">
-                                        <rect key="frame" x="254" y="55" width="97" height="26"/>
+                                        <rect key="frame" x="239" y="51" width="112" height="34.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="22"/>
                                         <color key="textColor" red="0.13180619478225708" green="0.14018970727920532" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1553,21 +1674,21 @@
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="105"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="درآمد این ماه" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gN4-sT-kdZ">
-                                                <rect key="frame" x="233.5" y="10" width="83.5" height="21"/>
+                                                <rect key="frame" x="225" y="10" width="92" height="28.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9J-Dr-N9N">
-                                                <rect key="frame" x="10" y="71.5" width="38" height="23.5"/>
+                                                <rect key="frame" x="10" y="63.5" width="45" height="31.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="20"/>
                                                 <color key="textColor" red="0.41960784313725491" green="0.81176470588235294" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWp-Xg-tfe">
-                                                <rect key="frame" x="53" y="71.5" width="9" height="23.5"/>
+                                                <rect key="frame" x="60" y="63.5" width="9" height="31.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="20"/>
                                                 <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1601,21 +1722,21 @@
                                         <rect key="frame" x="0.0" y="113.5" width="327" height="54"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ویزیت‌ها" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDd-Ch-TJ8">
-                                                <rect key="frame" x="278.5" y="18.5" width="38.5" height="16.5"/>
+                                                <rect key="frame" x="269.5" y="16" width="47.5" height="22"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
                                                 <color key="textColor" red="0.062745098040000002" green="0.078431372550000003" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjq-s9-Gh2">
-                                                <rect key="frame" x="10" y="17.5" width="30.5" height="19"/>
+                                                <rect key="frame" x="10" y="14.5" width="36" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="16"/>
                                                 <color key="textColor" red="0.41960784313725491" green="0.81176470588235294" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyE-2r-Fer">
-                                                <rect key="frame" x="43.5" y="17.5" width="7.5" height="19"/>
+                                                <rect key="frame" x="49" y="14.5" width="7.5" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="16"/>
                                                 <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1648,21 +1769,21 @@
                                         <rect key="frame" x="0.0" y="175.5" width="327" height="54"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="درآمدهای خارجی" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYV-Fn-ODA">
-                                                <rect key="frame" x="231.5" y="19" width="85.5" height="16.5"/>
+                                                <rect key="frame" x="225.5" y="16" width="91.5" height="22"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKd-dk-beP">
-                                                <rect key="frame" x="10" y="17.5" width="30.5" height="19"/>
+                                                <rect key="frame" x="10" y="14.5" width="36" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="16"/>
                                                 <color key="textColor" red="0.41960784313725491" green="0.81176470588235294" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDQ-3L-yBb">
-                                                <rect key="frame" x="43.5" y="17.5" width="7.5" height="19"/>
+                                                <rect key="frame" x="49" y="14.5" width="7.5" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="16"/>
                                                 <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1695,21 +1816,21 @@
                                         <rect key="frame" x="0.0" y="242" width="327" height="53.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="خرج‌ها" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPB-y9-uIm">
-                                                <rect key="frame" x="284.5" y="18.5" width="32.5" height="16.5"/>
+                                                <rect key="frame" x="279.5" y="16" width="37.5" height="22"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
                                                 <color key="textColor" red="0.062745098040000002" green="0.078431372550000003" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fh-sb-z30">
-                                                <rect key="frame" x="10" y="17.5" width="30.5" height="19"/>
+                                                <rect key="frame" x="10" y="14.5" width="36" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="16"/>
                                                 <color key="textColor" red="0.8784313725490196" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKu-rQ-KJr">
-                                                <rect key="frame" x="43.5" y="17.5" width="7.5" height="19"/>
+                                                <rect key="frame" x="49" y="14.5" width="7.5" height="25"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Vazir-Light" family="Vazir" pointSize="16"/>
                                                 <color key="textColor" red="0.87843137250000003" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1760,7 +1881,7 @@
                                 <rect key="frame" x="24" y="412" width="327" height="176.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="نمودار آذر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ZC-3t-YH5">
-                                        <rect key="frame" x="267" y="10" width="50" height="16.5"/>
+                                        <rect key="frame" x="266" y="10" width="51" height="22"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1785,6 +1906,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                         <color key="backgroundColor" red="0.96509641408920288" green="0.97208470106124878" blue="0.98953872919082642" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kLc-Xa-qJv" firstAttribute="top" secondItem="ZoV-ix-G0t" secondAttribute="bottom" constant="21" id="IXt-1W-ODb"/>
@@ -1798,7 +1920,6 @@
                             <constraint firstItem="3Il-8U-foV" firstAttribute="trailing" secondItem="kLc-Xa-qJv" secondAttribute="trailing" id="qet-X0-nFM"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="ZoV-ix-G0t" secondAttribute="trailing" id="rBX-3t-NYN"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="finance" id="szJ-Y5-HtR"/>
                     <navigationItem key="navigationItem" id="cmW-Id-5PZ">
@@ -1933,7 +2054,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSR-ua-oA0" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSR-ua-oA0" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                 <rect key="frame" x="253" y="288" width="98" height="31"/>
                                 <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1999,6 +2120,7 @@
                                 </connections>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="wCe-Jp-hYG"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -2018,7 +2140,6 @@
                             <constraint firstItem="YGS-T1-nBL" firstAttribute="top" secondItem="xSL-q0-t8q" secondAttribute="bottom" constant="12" id="xiY-ho-Znt"/>
                             <constraint firstItem="xSL-q0-t8q" firstAttribute="centerX" secondItem="doJ-QA-whn" secondAttribute="centerX" id="y0S-45-kxn"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="wCe-Jp-hYG"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="FBi-7R-EIm" appends="YES" id="uoA-bd-er0"/>
                         </connections>
@@ -2057,14 +2178,14 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="4N3-8B-d8Y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="TUy-tg-Cvy" firstAttribute="top" secondItem="4N3-8B-d8Y" secondAttribute="top" id="DMJ-qW-cTT"/>
                             <constraint firstItem="4N3-8B-d8Y" firstAttribute="bottom" secondItem="TUy-tg-Cvy" secondAttribute="bottom" id="VOh-wI-KgN"/>
                             <constraint firstItem="4N3-8B-d8Y" firstAttribute="trailing" secondItem="TUy-tg-Cvy" secondAttribute="trailing" id="WUU-qw-Ijf"/>
                             <constraint firstItem="TUy-tg-Cvy" firstAttribute="leading" secondItem="4N3-8B-d8Y" secondAttribute="leading" id="gc4-fl-nH5"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="4N3-8B-d8Y"/>
                     </view>
                     <navigationItem key="navigationItem" id="DKi-dz-yq7"/>
                     <connections>
@@ -2136,21 +2257,21 @@
                                 <rect key="frame" x="24" y="90" width="327" height="54"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="جمع" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEm-cP-bgn">
-                                        <rect key="frame" x="286.5" y="17.5" width="24.5" height="19"/>
+                                        <rect key="frame" x="282.5" y="14.5" width="28.5" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7b-OE-BNb">
-                                        <rect key="frame" x="16" y="17.5" width="30.5" height="19"/>
+                                        <rect key="frame" x="16" y="14.5" width="36" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="16"/>
                                         <color key="textColor" red="0.41960784313725491" green="0.81176470588235294" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۰" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59y-HX-qgq">
-                                        <rect key="frame" x="48.5" y="17.5" width="7.5" height="19"/>
+                                        <rect key="frame" x="54" y="14.5" width="7.5" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="16"/>
                                         <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2210,14 +2331,14 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4Y-w4-fbi">
-                                                            <rect key="frame" x="16" y="2.5" width="30.5" height="19"/>
+                                                            <rect key="frame" x="16" y="-0.5" width="36" height="25"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Medium" family="Vazir" pointSize="16"/>
                                                             <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۰" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUc-Cd-WrG">
-                                                            <rect key="frame" x="48.5" y="2.5" width="7.5" height="19"/>
+                                                            <rect key="frame" x="54" y="-0.5" width="7.5" height="25"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Medium" family="Vazir" pointSize="16"/>
                                                             <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2296,14 +2417,14 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تومان" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLw-JP-ebc">
-                                                            <rect key="frame" x="16" y="2.5" width="30.5" height="19"/>
+                                                            <rect key="frame" x="16" y="-0.5" width="36" height="25"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Medium" family="Vazir" pointSize="16"/>
                                                             <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۰" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6x6-ct-t3y">
-                                                            <rect key="frame" x="48.5" y="2.5" width="7.5" height="19"/>
+                                                            <rect key="frame" x="54" y="-0.5" width="7.5" height="25"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="Vazir-Medium" family="Vazir" pointSize="16"/>
                                                             <color key="textColor" red="0.41960784309999999" green="0.81176470590000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2410,6 +2531,7 @@
                                 </connections>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="LgD-Ap-OlH"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6MN-1G-kVj" firstAttribute="leading" secondItem="LgD-Ap-OlH" secondAttribute="leading" constant="24" id="0ug-TR-ebM"/>
@@ -2425,7 +2547,6 @@
                             <constraint firstItem="3on-oU-FMS" firstAttribute="leading" secondItem="LgD-Ap-OlH" secondAttribute="leading" constant="24" id="oHE-Eg-jGN"/>
                             <constraint firstItem="veA-jO-cuQ" firstAttribute="leading" secondItem="LgD-Ap-OlH" secondAttribute="leading" constant="24" id="v6k-RL-Eh4"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="LgD-Ap-OlH"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ybe-D2-U74">
                         <barButtonItem key="backBarButtonItem" title="بازگشت" id="2yj-Ty-Rqi"/>
@@ -2552,7 +2673,7 @@
                                                                 <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="tooth"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
-                                                        <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJM-yQ-7fI">
+                                                        <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJM-yQ-7fI">
                                                             <rect key="frame" x="20" y="11.5" width="0.0" height="31"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
@@ -2611,7 +2732,7 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
-                                                        <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6p-BM-Vki">
+                                                        <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6p-BM-Vki">
                                                             <rect key="frame" x="24" y="11.5" width="30" height="31"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
@@ -2664,7 +2785,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUK-0d-wjH" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUK-0d-wjH" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                 <rect key="frame" x="24" y="602" width="327" height="41"/>
                                 <color key="backgroundColor" red="0.28023469449999999" green="0.1677436829" blue="0.70353585480000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -2684,6 +2805,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="qZi-Zl-NrR"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -2695,7 +2817,6 @@
                             <constraint firstItem="qZi-Zl-NrR" firstAttribute="bottom" secondItem="LeS-s1-siN" secondAttribute="bottom" id="aJi-Gd-ZE5"/>
                             <constraint firstItem="qZi-Zl-NrR" firstAttribute="trailing" secondItem="nUK-0d-wjH" secondAttribute="trailing" constant="24" id="val-7i-QwI"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="qZi-Zl-NrR"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="9Y3-cv-8hC" appends="YES" id="SGc-s4-beF"/>
                         </connections>
@@ -2821,7 +2942,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="افزودن تصویر" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f60-Hu-bdx">
-                                        <rect key="frame" x="117" y="65.5" width="69" height="16.5"/>
+                                        <rect key="frame" x="114.5" y="60" width="74.5" height="22"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="14"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2853,6 +2974,7 @@
                                 </connections>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="S7c-ka-q7y"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bOt-BP-5mi" firstAttribute="top" secondItem="S7c-ka-q7y" secondAttribute="top" constant="20" id="6Jc-36-bLZ"/>
@@ -2862,7 +2984,6 @@
                             <constraint firstItem="bOt-BP-5mi" firstAttribute="centerX" secondItem="mVi-OP-6qA" secondAttribute="centerX" id="lR0-L7-KJ3"/>
                             <constraint firstAttribute="trailing" secondItem="gxk-ls-pOb" secondAttribute="trailing" constant="36" id="vFU-t1-zpK"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="S7c-ka-q7y"/>
                     </view>
                     <navigationItem key="navigationItem" id="AI2-A7-1Na"/>
                     <connections>
@@ -2895,6 +3016,7 @@
                                 <gestureRecognizers/>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="A9Z-a1-Mam"/>
                         <color key="backgroundColor" red="0.1318061948" green="0.14018970729999999" blue="0.2495550513" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KXl-ME-Krj" firstAttribute="leading" secondItem="A9Z-a1-Mam" secondAttribute="leading" id="76k-dI-iHm"/>
@@ -2904,7 +3026,6 @@
                             <constraint firstItem="KXl-ME-Krj" firstAttribute="top" secondItem="yKu-uV-HCY" secondAttribute="topMargin" id="i9f-As-Ikx"/>
                             <constraint firstItem="A9Z-a1-Mam" firstAttribute="trailing" secondItem="KXl-ME-Krj" secondAttribute="trailing" id="p0b-ge-sdV"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="A9Z-a1-Mam"/>
                     </view>
                     <navigationItem key="navigationItem" id="xJr-QE-Qvv"/>
                     <connections>
@@ -3024,7 +3145,7 @@
                                     <outlet property="heightConstraint" destination="iQJ-Sv-XsY" id="hV9-2u-D3J"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lx7-6W-AEC" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lx7-6W-AEC" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                 <rect key="frame" x="253" y="234" width="98" height="31"/>
                                 <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -3045,6 +3166,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="W6f-Ph-qg4"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -3062,7 +3184,6 @@
                             <constraint firstItem="b7E-Xv-daU" firstAttribute="centerX" secondItem="BZG-28-pUY" secondAttribute="centerX" id="iNQ-ND-h9D"/>
                             <constraint firstItem="lx7-6W-AEC" firstAttribute="width" secondItem="lx7-6W-AEC" secondAttribute="height" multiplier="133:42" id="oNz-is-ub6"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="W6f-Ph-qg4"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="cnO-Kw-aaL" appends="YES" id="Vlc-d6-Gij"/>
                         </connections>
@@ -3176,7 +3297,7 @@
                                             <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="tooth"/>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exI-tL-a7c">
+                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exI-tL-a7c">
                                         <rect key="frame" x="24" y="11.5" width="30" height="31"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
@@ -3236,7 +3357,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4R-vq-I3h">
+                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4R-vq-I3h">
                                         <rect key="frame" x="24" y="11.5" width="30" height="31"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
@@ -3260,7 +3381,7 @@
                                     <constraint firstItem="C4R-vq-I3h" firstAttribute="centerY" secondItem="vp2-WH-4Gh" secondAttribute="centerY" id="spt-as-oOY"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfl-JB-KTn" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfl-JB-KTn" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                 <rect key="frame" x="24" y="296" width="327" height="41"/>
                                 <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -3280,6 +3401,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="tI0-Fm-fVk"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="iC2-W1-RP2" firstAttribute="trailing" secondItem="WeU-an-xCS" secondAttribute="trailing" id="06e-7m-jOm"/>
@@ -3298,7 +3420,6 @@
                             <constraint firstItem="WeU-an-xCS" firstAttribute="top" secondItem="tI0-Fm-fVk" secondAttribute="top" constant="16" id="u1g-Ih-6Q8"/>
                             <constraint firstItem="iC2-W1-RP2" firstAttribute="top" secondItem="2xF-QI-KIJ" secondAttribute="bottom" constant="16" id="zfH-Wp-qu2"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="tI0-Fm-fVk"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Xm9-sK-aty" appends="YES" id="gOP-qV-gcf"/>
                         </connections>
@@ -3476,7 +3597,7 @@
                                     <outlet property="heightConstraint" destination="xMp-kq-xYy" id="KDY-3C-u86"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNP-gp-3j9" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNP-gp-3j9" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                 <rect key="frame" x="24" y="362" width="327" height="41"/>
                                 <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -3527,6 +3648,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Tch-U1-Eoo"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -3549,7 +3671,6 @@
                             <constraint firstItem="Tch-U1-Eoo" firstAttribute="trailing" secondItem="MAu-xJ-UJE" secondAttribute="trailing" constant="24" id="xgr-my-nzB"/>
                             <constraint firstItem="5fm-wJ-Vl8" firstAttribute="top" secondItem="B3I-6K-CbU" secondAttribute="bottom" constant="12" id="ziu-sx-OD9"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Tch-U1-Eoo"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="d0r-Si-Cys" appends="YES" id="rFK-J4-ya6"/>
                         </connections>
@@ -3587,14 +3708,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="215"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="برنامه‌ی روزانه" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehu-qv-7If">
-                                        <rect key="frame" x="243" y="55" width="108" height="26"/>
+                                        <rect key="frame" x="234" y="51" width="117" height="34.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir-Bold" family="Vazir" pointSize="22"/>
                                         <color key="textColor" red="0.13180619478225708" green="0.14018970727920532" blue="0.24955505132675171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0a9-zM-mF2" customClass="GDCalendar" customModule="Clinitick" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="91" width="375" height="114"/>
+                                        <rect key="frame" x="0.0" y="95.5" width="375" height="109.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="headerBackgroundColor">
@@ -3614,8 +3735,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVD-X8-VrU">
-                                        <rect key="frame" x="92" y="51.5" width="35" height="33"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVD-X8-VrU">
+                                        <rect key="frame" x="92" y="47.5" width="36" height="41"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="18"/>
                                         <state key="normal" title="امروز">
@@ -3692,11 +3813,11 @@
                                 <rect key="frame" x="24" y="230" width="327" height="388"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="daily_tasks" translatesAutoresizingMaskIntoConstraints="NO" id="nvp-IZ-PQ4">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="692"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="346"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="برای این روز قراری ندارید." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4B-AA-dqz">
-                                        <rect key="frame" x="88.5" y="698" width="150" height="19"/>
+                                        <rect key="frame" x="85" y="352" width="157" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3992,6 +4113,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="sLh-Q6-cxy"/>
                         <color key="backgroundColor" red="0.96509641408920288" green="0.97208470106124878" blue="0.98953872919082642" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="sLh-Q6-cxy" firstAttribute="trailing" secondItem="H09-qG-X6P" secondAttribute="trailing" id="0JD-RL-EWI"/>
@@ -4011,7 +4133,6 @@
                             <constraint firstItem="nue-8N-9mY" firstAttribute="top" secondItem="H09-qG-X6P" secondAttribute="bottom" constant="12" id="ufR-Xa-obG"/>
                             <constraint firstItem="H09-qG-X6P" firstAttribute="top" secondItem="uio-We-SF2" secondAttribute="top" id="w2R-AJ-MN5"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="sLh-Q6-cxy"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="tasks" id="7EW-Uu-rOo"/>
                     <navigationItem key="navigationItem" id="PJD-Yv-fX0">
@@ -4091,7 +4212,7 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4i-eQ-6bm" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4i-eQ-6bm" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                         <rect key="frame" x="28" y="208" width="319" height="37"/>
                                         <color key="backgroundColor" red="0.16470588235294117" green="0.16862745098039217" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -4323,6 +4444,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="wZw-LP-Vlc"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97208470106124878" blue="0.98953872919082642" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -4336,7 +4458,6 @@
                             <constraint firstItem="wZw-LP-Vlc" firstAttribute="trailing" secondItem="pjw-ZH-fcH" secondAttribute="trailing" id="kyj-MP-VWo"/>
                             <constraint firstItem="Jtk-g2-q6i" firstAttribute="top" secondItem="pjw-ZH-fcH" secondAttribute="bottom" constant="45" id="rIq-hN-GuF"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="wZw-LP-Vlc"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="profile" id="k6G-TA-v3b"/>
                     <navigationItem key="navigationItem" id="TcT-GW-XUu">
@@ -4447,6 +4568,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="4F0-o3-pEk"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4F0-o3-pEk" firstAttribute="trailing" secondItem="8YL-nZ-b5G" secondAttribute="trailing" constant="24" id="0xA-4J-iKP"/>
@@ -4457,7 +4579,6 @@
                             <constraint firstItem="eoj-BZ-2JK" firstAttribute="top" secondItem="4F0-o3-pEk" secondAttribute="top" constant="20" id="lXe-6B-J8f"/>
                             <constraint firstItem="4F0-o3-pEk" firstAttribute="right" secondItem="eoj-BZ-2JK" secondAttribute="right" constant="16" id="p9l-w6-vPY"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="4F0-o3-pEk"/>
                     </view>
                     <navigationItem key="navigationItem" id="JCV-fL-rQZ">
                         <barButtonItem key="backBarButtonItem" title="بازگشت" id="C4i-xO-bmK"/>
@@ -4554,7 +4675,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkf-yX-Wk4" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkf-yX-Wk4" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                 <rect key="frame" x="95.5" y="561" width="184" height="45"/>
                                 <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -4575,6 +4696,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="lJo-mk-Z1B"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dtP-o8-PKy" firstAttribute="leading" secondItem="lJo-mk-Z1B" secondAttribute="leading" constant="32" id="4Sg-kO-tLJ"/>
@@ -4584,7 +4706,6 @@
                             <constraint firstItem="Vkf-yX-Wk4" firstAttribute="top" secondItem="dtP-o8-PKy" secondAttribute="bottom" constant="12" id="lj2-bP-LAW"/>
                             <constraint firstItem="lJo-mk-Z1B" firstAttribute="trailing" secondItem="dtP-o8-PKy" secondAttribute="trailing" constant="24" id="tHK-E7-6KL"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="lJo-mk-Z1B"/>
                     </view>
                     <navigationItem key="navigationItem" id="S7S-rS-vIs">
                         <barButtonItem key="backBarButtonItem" title="بازگشت" id="dpl-SP-G3Z"/>
@@ -4620,14 +4741,14 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="t5y-pV-EDm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="t5y-pV-EDm" firstAttribute="trailing" secondItem="fvw-UY-5eZ" secondAttribute="trailing" id="8SP-xM-unQ"/>
                             <constraint firstItem="t5y-pV-EDm" firstAttribute="bottom" secondItem="fvw-UY-5eZ" secondAttribute="bottom" id="NBs-az-gA5"/>
                             <constraint firstItem="fvw-UY-5eZ" firstAttribute="top" secondItem="t5y-pV-EDm" secondAttribute="top" id="Wjm-bG-xkj"/>
                             <constraint firstItem="fvw-UY-5eZ" firstAttribute="leading" secondItem="t5y-pV-EDm" secondAttribute="leading" id="c1p-Ix-UGQ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="t5y-pV-EDm"/>
                     </view>
                     <navigationItem key="navigationItem" id="JbH-XF-igw"/>
                     <connections>
@@ -4717,7 +4838,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dBI-1T-41g">
                                                     <rect key="frame" x="9" y="0.0" width="35" height="35"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tD7-3J-bwb" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tD7-3J-bwb" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                             <color key="backgroundColor" red="0.49411764705882355" green="0.77647058823529413" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                             <userDefinedRuntimeAttributes>
@@ -4769,8 +4890,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpd-6a-Zfi" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
-                                <rect key="frame" x="253" y="224" width="98" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpd-6a-Zfi" customClass="CustomButton" customModule="Clinitick" customModuleProvider="target">
+                                <rect key="frame" x="234" y="224" width="117" height="37"/>
                                 <color key="backgroundColor" red="0.280234694480896" green="0.16774368286132812" blue="0.70353585481643677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fpd-6a-Zfi" secondAttribute="height" multiplier="133:42" id="xjg-Bw-nff"/>
@@ -4789,6 +4910,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="A45-WT-fz4"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.97254901959999995" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -4805,7 +4927,6 @@
                             <constraint firstItem="vuz-GL-Jmh" firstAttribute="top" secondItem="A45-WT-fz4" secondAttribute="top" constant="16" id="aV0-Yl-azI"/>
                             <constraint firstItem="fpd-6a-Zfi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="A45-WT-fz4" secondAttribute="leading" symbolic="YES" id="uDF-ff-28h"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="A45-WT-fz4"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="gEp-8m-Zz9" appends="YES" id="P1S-WE-Jua"/>
                         </connections>
@@ -4868,7 +4989,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NtC-F3-o8A">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NtC-F3-o8A">
                                         <rect key="frame" x="24" y="11.5" width="40" height="31"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
@@ -4922,7 +5043,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZQ-v1-hMU">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZQ-v1-hMU">
                                         <rect key="frame" x="24" y="11.5" width="40" height="31"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
@@ -5019,7 +5140,7 @@
                                     <outlet property="heightConstraint" destination="wDs-WC-39f" id="tod-4t-VNo"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvt-wV-ZNn">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvt-wV-ZNn">
                                 <rect key="frame" x="48" y="222.5" width="40" height="31"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Vazir" family="Vazir" pointSize="16"/>
@@ -5184,6 +5305,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="beW-mH-EiT"/>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="beW-mH-EiT" firstAttribute="trailing" secondItem="Txq-iy-5sL" secondAttribute="trailing" constant="24" id="0tZ-Kb-RvW"/>
@@ -5209,7 +5331,6 @@
                             <constraint firstItem="beW-mH-EiT" firstAttribute="bottom" secondItem="VOt-KR-3iv" secondAttribute="bottom" constant="24" id="snT-uX-ptd"/>
                             <constraint firstItem="SRD-aE-myK" firstAttribute="top" secondItem="swa-SL-UyZ" secondAttribute="bottom" constant="12" id="vW4-Ma-28P"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="beW-mH-EiT"/>
                     </view>
                     <navigationItem key="navigationItem" id="kij-uR-88O">
                         <barButtonItem key="backBarButtonItem" title="بازگشت" id="V87-ix-54r"/>
@@ -5294,6 +5415,202 @@
             <point key="canvasLocation" x="1417" y="-833"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="0wj-yH-oWF">
+            <size key="intrinsicContentSize" width="104" height="20.5"/>
+        </designable>
+        <designable name="2ka-nj-ofI">
+            <size key="intrinsicContentSize" width="82" height="26.5"/>
+        </designable>
+        <designable name="2mA-xe-74O">
+            <size key="intrinsicContentSize" width="14" height="22"/>
+        </designable>
+        <designable name="2xF-QI-KIJ">
+            <size key="intrinsicContentSize" width="149" height="20.5"/>
+        </designable>
+        <designable name="4By-Ye-1Zi">
+            <size key="intrinsicContentSize" width="14" height="22"/>
+        </designable>
+        <designable name="4Vg-VL-9oT">
+            <size key="intrinsicContentSize" width="168.5" height="20.5"/>
+        </designable>
+        <designable name="4op-nJ-NYL">
+            <size key="intrinsicContentSize" width="38" height="45.5"/>
+        </designable>
+        <designable name="5M3-7i-tYU">
+            <size key="intrinsicContentSize" width="149" height="20.5"/>
+        </designable>
+        <designable name="84J-6V-FHr">
+            <size key="intrinsicContentSize" width="104" height="20.5"/>
+        </designable>
+        <designable name="9Uc-PK-Ij3">
+            <size key="intrinsicContentSize" width="95" height="37"/>
+        </designable>
+        <designable name="Bdn-aH-eEn">
+            <size key="intrinsicContentSize" width="103.5" height="20.5"/>
+        </designable>
+        <designable name="Cyl-3O-1N4">
+            <size key="intrinsicContentSize" width="38" height="45.5"/>
+        </designable>
+        <designable name="DRh-HK-9N0">
+            <size key="intrinsicContentSize" width="38" height="45.5"/>
+        </designable>
+        <designable name="GSR-ua-oA0">
+            <size key="intrinsicContentSize" width="30" height="31"/>
+        </designable>
+        <designable name="HFH-iv-rEg">
+            <size key="intrinsicContentSize" width="73" height="24"/>
+        </designable>
+        <designable name="Hhp-7w-QCC">
+            <size key="intrinsicContentSize" width="66" height="37"/>
+        </designable>
+        <designable name="Hxe-9j-fNC">
+            <size key="intrinsicContentSize" width="104" height="20.5"/>
+        </designable>
+        <designable name="IaQ-Dm-oQV">
+            <size key="intrinsicContentSize" width="30" height="31"/>
+        </designable>
+        <designable name="Irs-Dw-ee9">
+            <size key="intrinsicContentSize" width="128.5" height="26.5"/>
+        </designable>
+        <designable name="Iy9-QP-koy">
+            <size key="intrinsicContentSize" width="73" height="24"/>
+        </designable>
+        <designable name="J1H-sc-YqQ">
+            <size key="intrinsicContentSize" width="69" height="37"/>
+        </designable>
+        <designable name="MAu-xJ-UJE">
+            <size key="intrinsicContentSize" width="104" height="20.5"/>
+        </designable>
+        <designable name="Ncl-Yh-Pst">
+            <size key="intrinsicContentSize" width="160" height="20.5"/>
+        </designable>
+        <designable name="OIM-yr-fCq">
+            <size key="intrinsicContentSize" width="77" height="35.5"/>
+        </designable>
+        <designable name="PVS-e5-8UA">
+            <size key="intrinsicContentSize" width="77.5" height="20.5"/>
+        </designable>
+        <designable name="SjM-sG-zcc">
+            <size key="intrinsicContentSize" width="160" height="20.5"/>
+        </designable>
+        <designable name="T0h-D6-Htj">
+            <size key="intrinsicContentSize" width="168.5" height="20.5"/>
+        </designable>
+        <designable name="TSL-Tq-HPO">
+            <size key="intrinsicContentSize" width="10" height="22"/>
+        </designable>
+        <designable name="TSN-ny-vNG">
+            <size key="intrinsicContentSize" width="61" height="20.5"/>
+        </designable>
+        <designable name="Tb6-bx-vqh">
+            <size key="intrinsicContentSize" width="115" height="18"/>
+        </designable>
+        <designable name="U3o-oO-8Ws">
+            <size key="intrinsicContentSize" width="57" height="20.5"/>
+        </designable>
+        <designable name="UPi-xy-bXV">
+            <size key="intrinsicContentSize" width="41" height="31"/>
+        </designable>
+        <designable name="VAC-cf-Whs">
+            <size key="intrinsicContentSize" width="168.5" height="20.5"/>
+        </designable>
+        <designable name="VKl-vo-QP2">
+            <size key="intrinsicContentSize" width="174" height="17"/>
+        </designable>
+        <designable name="Vkf-yX-Wk4">
+            <size key="intrinsicContentSize" width="71" height="34"/>
+        </designable>
+        <designable name="W4i-eQ-6bm">
+            <size key="intrinsicContentSize" width="75" height="31"/>
+        </designable>
+        <designable name="WeU-an-xCS">
+            <size key="intrinsicContentSize" width="90" height="20.5"/>
+        </designable>
+        <designable name="Wio-Ds-4s1">
+            <size key="intrinsicContentSize" width="72" height="31"/>
+        </designable>
+        <designable name="Xop-N4-CPJ">
+            <size key="intrinsicContentSize" width="78" height="19"/>
+        </designable>
+        <designable name="Y5G-4I-Z4u">
+            <size key="intrinsicContentSize" width="78" height="19"/>
+        </designable>
+        <designable name="YGS-T1-nBL">
+            <size key="intrinsicContentSize" width="119.5" height="20.5"/>
+        </designable>
+        <designable name="aKL-LR-Yak">
+            <size key="intrinsicContentSize" width="103" height="18"/>
+        </designable>
+        <designable name="b7E-Xv-daU">
+            <size key="intrinsicContentSize" width="61" height="20.5"/>
+        </designable>
+        <designable name="fNP-gp-3j9">
+            <size key="intrinsicContentSize" width="30" height="31"/>
+        </designable>
+        <designable name="fcw-2H-63U">
+            <size key="intrinsicContentSize" width="38" height="45.5"/>
+        </designable>
+        <designable name="fpd-6a-Zfi">
+            <size key="intrinsicContentSize" width="30" height="37"/>
+        </designable>
+        <designable name="frL-he-aCg">
+            <size key="intrinsicContentSize" width="46" height="20.5"/>
+        </designable>
+        <designable name="gbN-Jm-ZW3">
+            <size key="intrinsicContentSize" width="10" height="22"/>
+        </designable>
+        <designable name="kaf-Qa-aLw">
+            <size key="intrinsicContentSize" width="90" height="20.5"/>
+        </designable>
+        <designable name="lx7-6W-AEC">
+            <size key="intrinsicContentSize" width="30" height="31"/>
+        </designable>
+        <designable name="nUK-0d-wjH">
+            <size key="intrinsicContentSize" width="63" height="31"/>
+        </designable>
+        <designable name="pM9-ug-wlN">
+            <size key="intrinsicContentSize" width="20" height="22"/>
+        </designable>
+        <designable name="qfl-JB-KTn">
+            <size key="intrinsicContentSize" width="63" height="31"/>
+        </designable>
+        <designable name="s1t-qg-Uto">
+            <size key="intrinsicContentSize" width="138" height="17"/>
+        </designable>
+        <designable name="sA4-G6-9SE">
+            <size key="intrinsicContentSize" width="134" height="18"/>
+        </designable>
+        <designable name="tD7-3J-bwb">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+        <designable name="tSy-pk-I6h">
+            <size key="intrinsicContentSize" width="55.5" height="26.5"/>
+        </designable>
+        <designable name="tcC-Rw-0Lc">
+            <size key="intrinsicContentSize" width="10" height="22"/>
+        </designable>
+        <designable name="u8n-Zs-cfr">
+            <size key="intrinsicContentSize" width="57" height="35.5"/>
+        </designable>
+        <designable name="uWU-t1-ebp">
+            <size key="intrinsicContentSize" width="77" height="35.5"/>
+        </designable>
+        <designable name="vuz-GL-Jmh">
+            <size key="intrinsicContentSize" width="86" height="26.5"/>
+        </designable>
+        <designable name="yfU-hf-HCv">
+            <size key="intrinsicContentSize" width="14" height="22"/>
+        </designable>
+    </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="hfm-aH-h5N"/>
+        <segue reference="F76-Vx-4sk"/>
+        <segue reference="iL6-hw-fDa"/>
+        <segue reference="Xf5-vY-bSr"/>
+        <segue reference="Kpg-0q-Dp0"/>
+        <segue reference="qAk-vO-iOw"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="add" width="45" height="44"/>
         <image name="add_photo" width="36" height="33"/>
@@ -5319,14 +5636,9 @@
         <image name="up_next" width="23" height="23"/>
         <image name="weekly_calendar" width="23" height="23"/>
         <image name="welcome" width="351" height="396"/>
-        <image name="xmark.circle" catalog="system" width="64" height="60"/>
+        <image name="xmark.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="hfm-aH-h5N"/>
-        <segue reference="F76-Vx-4sk"/>
-        <segue reference="iL6-hw-fDa"/>
-        <segue reference="Xf5-vY-bSr"/>
-        <segue reference="Kpg-0q-Dp0"/>
-        <segue reference="qAk-vO-iOw"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -144,6 +144,7 @@
 		03FBE69E255499CD00FEFF63 /* FinanceTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FBE69D255499CD00FEFF63 /* FinanceTableViewDelegate.swift */; };
 		03FCCEB72562C7F6008A27B1 /* NSMutableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCCEB62562C7F6008A27B1 /* NSMutableData.swift */; };
 		03FCCEB92562CDB5008A27B1 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCCEB82562CDB5008A27B1 /* Image.swift */; };
+		04DD46D926B83410002FF045 /* NewPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD46D826B83410002FF045 /* NewPassViewController.swift */; };
 		0AE5F5DDA31BCCEF689E2306 /* Pods_Brandent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7A306D35B5F9E344BE7917 /* Pods_Brandent.framework */; };
 		49C5355A3016E9BA61654897 /* Pods_Brandent_BrandentUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC81B90185B9803B7CAB3B67 /* Pods_Brandent_BrandentUITests.framework */; };
 		BF6BD9784EA5850EAB2C9157 /* Pods_BrandentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58894CE2B119176D9EA9E22E /* Pods_BrandentTests.framework */; };
@@ -310,6 +311,7 @@
 		03FBE69D255499CD00FEFF63 /* FinanceTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceTableViewDelegate.swift; sourceTree = "<group>"; };
 		03FCCEB62562C7F6008A27B1 /* NSMutableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableData.swift; sourceTree = "<group>"; };
 		03FCCEB82562CDB5008A27B1 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		04DD46D826B83410002FF045 /* NewPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPassViewController.swift; sourceTree = "<group>"; };
 		08BE65CC6763EEEAE9428E14 /* Pods-Brandent-BrandentUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brandent-BrandentUITests.release.xcconfig"; path = "Target Support Files/Pods-Brandent-BrandentUITests/Pods-Brandent-BrandentUITests.release.xcconfig"; sourceTree = "<group>"; };
 		58894CE2B119176D9EA9E22E /* Pods_BrandentTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrandentTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DE1DF62B12D263C57AE79D5 /* Pods-BrandentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrandentTests.release.xcconfig"; path = "Target Support Files/Pods-BrandentTests/Pods-BrandentTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 				034253232581284900DA6F29 /* SignUpViewController.swift */,
 				034253252581287F00DA6F29 /* CodeViewController.swift */,
 				03425327258128A900DA6F29 /* InformationViewController.swift */,
+				04DD46D826B83410002FF045 /* NewPassViewController.swift */,
 			);
 			path = AuthenticationViewControllers;
 			sourceTree = "<group>";
@@ -1173,6 +1176,7 @@
 				03F4A5C92551D01A00D7E1C6 /* FinanceTableViewCell.swift in Sources */,
 				037EE34925B5A91F0039AB83 /* GalleryImagePickerDelegate.swift in Sources */,
 				0360D8622551665500C36AE4 /* AppointmentsTableViewDelegate.swift in Sources */,
+				04DD46D926B83410002FF045 /* NewPassViewController.swift in Sources */,
 				03F4A5C52551951F00D7E1C6 /* AddFinanceViewController.swift in Sources */,
 				03BC1F8E25251658009749C0 /* Clinic+CoreDataClass.swift in Sources */,
 				0373AA722585324900E79383 /* DefaultKey.swift in Sources */,
@@ -1361,7 +1365,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.1;
-				DEVELOPMENT_TEAM = 4Y2PXQL7JU;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Brandent/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1385,7 +1389,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.1;
-				DEVELOPMENT_TEAM = 4Y2PXQL7JU;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Brandent/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

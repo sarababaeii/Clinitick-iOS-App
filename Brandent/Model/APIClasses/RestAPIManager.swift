@@ -69,14 +69,20 @@ class RestAPIManagr {
         return createPostRequest(url: APIAddress.signUpURL, params: params as [String: Any], contentType: .json)
     }
     
-    private func createSendPhoneRequest(phone: String) -> URLRequest {
+    private func createSendPhoneRequest(phone: String, for type: APIRequestType) -> URLRequest {
         let params: [String: Any] = jsonSerializer.getsendPhoneData(phone: phone)
-        return createPostRequest(url: APIAddress.sendPhoneURL, params: params as [String: Any], contentType: .json)
+        if type == .sendPhone {
+            return createPostRequest(url: APIAddress.sendPhoneURL, params: params as [String: Any], contentType: .json)
+        }
+        return createPostRequest(url: APIAddress.forgetPassSendPhoneURL, params: params as [String: Any], contentType: .json)
     }
     
-    private func createSendOneTimeCodeRequest(phone: String, code: String) -> URLRequest {
+    private func createSendOneTimeCodeRequest(phone: String, code: String, for type: APIRequestType) -> URLRequest {
         let params: [String: Any] = jsonSerializer.getSendCodeData(phone: phone, code: code)
-        return createPostRequest(url: APIAddress.sendCodeURL, params: params as [String: Any], contentType: .json)
+        if type == .sendCode {
+            return createPostRequest(url: APIAddress.sendCodeURL, params: params as [String: Any], contentType: .json)
+        }
+        return createPostRequest(url: APIAddress.forgetPassSendCodeURL, params: params as [String: Any], contentType: .json)
     }
     
     private func createSyncRequest(clinics: [Clinic]?, patients: [Patient]?, finances: [Finance]?, tasks: [Task]?, appointments: [Appointment]?) -> URLRequest {
@@ -145,8 +151,8 @@ class RestAPIManagr {
         })
     }
     
-    func getOneTimeCode(phone: String,  _ completion: @escaping (Int) -> ()) {
-        sendRequest(request: createSendPhoneRequest(phone: phone), type: .sendPhone, {(result) in
+    func getOneTimeCode(phone: String, for type: APIRequestType, _ completion: @escaping (Int) -> ()) {
+        sendRequest(request: createSendPhoneRequest(phone: phone, for: type), type: type, {(result) in
             let code = result.response?.statusCode ?? 500
             DispatchQueue.main.async {
                 completion(code)
@@ -154,8 +160,8 @@ class RestAPIManagr {
         })
     }
     
-    func sendOneTimeCode(phone: String, code: String,  _ completion: @escaping (Bool) -> ()) {
-        sendRequest(request: createSendOneTimeCodeRequest(phone: phone, code: code), type: .sendCode, {(result) in
+    func sendOneTimeCode(phone: String, code: String, for type: APIRequestType, _ completion: @escaping (Bool) -> ()) {
+        sendRequest(request: createSendOneTimeCodeRequest(phone: phone, code: code, for: type), type: .sendCode, {(result) in
             let isCodeValid = result.isCodeValid()
             DispatchQueue.main.async {
                 completion(isCodeValid)

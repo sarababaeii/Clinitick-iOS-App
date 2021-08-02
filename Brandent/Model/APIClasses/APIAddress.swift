@@ -26,6 +26,10 @@ struct APIAddress {
     private static let signUp = APIAddress.authentication + "register"
     private static let sendPhone = APIAddress.signUp + "/phone"
     private static let sendCode = APIAddress.signUp + "/code"
+    private static let forget = APIAddress.authentication + "forgot/"
+    private static let forgetSendPhone = APIAddress.forget + "phone"
+    private static let forgetSendCode = APIAddress.forget + "code"
+    private static let forgetSendPass = APIAddress.forget + "password"
     
     private static let dentist = APIAddress.base + "dentists"
     private static let dentistProfile = APIAddress.dentist + "/profile"
@@ -38,6 +42,9 @@ struct APIAddress {
     static let signUpURL = URL(string: APIAddress.signUp)!
     static let sendPhoneURL = URL(string: APIAddress.sendPhone)!
     static let sendCodeURL = URL(string: APIAddress.sendCode)!
+    static let forgetPassSendPhoneURL = URL(string: APIAddress.forgetSendPhone)!
+    static let forgetPassSendCodeURL = URL(string: APIAddress.forgetSendCode)!
+    static let forgetPassSendPassURL = URL(string: APIAddress.forgetSendPass)!
     static let profilePictureURL = URL(string: APIAddress.profilePicture)!
     
     //MARK: Clinitick Blog

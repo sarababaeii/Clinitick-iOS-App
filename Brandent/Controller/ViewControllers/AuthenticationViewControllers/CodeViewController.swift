@@ -27,6 +27,8 @@ class CodeViewController: UIViewController {
     var codeDigits = ["", "", "", ""] //0: first digit, 1: socond digit, 2: third digit, 4: fourth digit
     var phoneNumber = ""
     
+    var requestType: APIRequestType = .sendPhone
+    
     //MARK: Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +94,7 @@ class CodeViewController: UIViewController {
     
     //MARK: Resending Code
     @IBAction func resendCode(_ sender: Any) {
-        RestAPIManagr.sharedInstance.getOneTimeCode(phone: phoneNumber, {(statusCode) in
+        RestAPIManagr.sharedInstance.getOneTimeCode(phone: phoneNumber, for: requestType, {(statusCode) in
             self.checkResponse(statusCode: statusCode)
         })
         setTimer()
@@ -106,10 +108,12 @@ class CodeViewController: UIViewController {
     
     func checkResponse(statusCode: Int) {
         switch statusCode {
-        case 200:
+        case 200, 204:
             self.showToast(message: "ارسال شد.")
         case 401:
             self.showToast(message: "شماره موبایل تکراری است.")
+        case 404:
+            self.showToast(message: "شماره موبایل ثبت نشده است.")
         default:
             self.showToast(message: "خطایی رخ داده است.")
         }
@@ -130,9 +134,10 @@ class CodeViewController: UIViewController {
             return
         }
         currentTextField?.resignFirstResponder()
-        RestAPIManagr.sharedInstance.sendOneTimeCode(phone: phoneNumber, code: code, {(isValid) in
+        let type: APIRequestType = requestType == .sendCode ? .sendCode : .forgetSendCode
+        RestAPIManagr.sharedInstance.sendOneTimeCode(phone: phoneNumber, code: code, for: type, {(isValid) in
             if isValid {
-                self.nextPage()
+                self.nextPage(type: type)
             } else {
                 self.invalidCode()
             }
@@ -151,11 +156,13 @@ class CodeViewController: UIViewController {
         firstDigitTextField.becomeFirstResponder()
     }
     
-    func nextPage() {
-        guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InformationViewController") as? InformationViewController else {
-            return
+    func nextPage(type: APIRequestType) {
+        if type == .sendCode {
+            guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InformationViewController") as? InformationViewController else {
+                return
+            }
+            controller.phoneNumber = phoneNumber
+            navigationController?.show(controller, sender: nil)
         }
-        controller.phoneNumber = phoneNumber
-        navigationController?.show(controller, sender: nil)
     }
 }
