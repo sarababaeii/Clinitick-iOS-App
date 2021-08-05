@@ -18,10 +18,8 @@ extension UIDatePicker {
         self.datePickerMode = mode
         
         if #available(iOS 13.4, *) {
-           self.preferredDatePickerStyle = .wheels
-        } else {
-
-        }
+            self.preferredDatePickerStyle = .wheels
+        } else {}
         
 //        datePicker.setValue(UIFont(name: "Vazir", size: 20), forKeyPath: "textFont")
     }

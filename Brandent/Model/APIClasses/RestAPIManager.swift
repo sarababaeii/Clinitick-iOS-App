@@ -197,17 +197,19 @@ class RestAPIManagr {
     func addImage(patientID: UUID, images: [Image]) {
         let url = URL(string: "\(APIAddress.images)/\(patientID)")!
         sendRequest(request: createAddImagesRequest(url: url, key: .patient, images: images), type: .addImage, {(result) in
-            if let data = result.data, let response = String(data: data, encoding: .utf8) {
                 DispatchQueue.main.async {
-                    UIApplication.topViewController()?.showToast(message: response)
+                    result.showToastResponse()
                 }
-            }
         })
     }
     
     func deleteImage(image: Image) {
         if let request = createDeleteImageRequest(image: image) {
-            sendRequest(request:request, type: .addImage, {(result) in})
+            sendRequest(request:request, type: .addImage, {(result) in
+                DispatchQueue.main.async {
+                    result.showToastResponse()
+                }
+            })
         }
     }
     
@@ -217,7 +219,11 @@ class RestAPIManagr {
             let images = result.getImages()
             if let imgs = images {
                 DispatchQueue.main.async {
-                    UIApplication.topViewController()?.showToast(message: "\(imgs.count) images received")
+                    UIApplication.topViewController()?.showToast(message: "\(String(imgs.count).convertEnglishNumToPersianNum()) تصویر دریافت شد.")
+                }
+            } else {
+                DispatchQueue.main.async {
+                    result.showToastResponse()
                 }
             }
             completion(images)

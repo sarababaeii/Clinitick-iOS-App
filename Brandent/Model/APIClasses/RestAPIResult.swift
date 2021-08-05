@@ -212,6 +212,17 @@ class RestAPIResult {
         return array
     }
     
+    func showToastResponse() {
+        switch response?.statusCode {
+        case 200:
+            UIApplication.topViewController()?.showToast(message: "انجام شد.")
+        case 400:
+            UIApplication.topViewController()?.showToast(message: "تصویر دریافت نشد.")
+        default:
+            UIApplication.topViewController()?.showToast(message: "خطایی رخ داده است.")
+        }
+    }
+    
     //MARK: Blog
     func listPosts() -> NSArray? {
         if response?.statusCode != 200 {
