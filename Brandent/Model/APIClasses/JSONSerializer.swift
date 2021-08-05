@@ -41,6 +41,12 @@ class JSONSerializer {
             "password": password]
     }
     
+    func getResetPassData(phone: String, password: String, token: String) -> [String: Any] {
+        return ["phone": phone,
+            "password": password,
+            "token": token]
+    }
+    
     func getsendPhoneData(phone: String) -> [String: Any] {
         return ["phone": phone]
     }

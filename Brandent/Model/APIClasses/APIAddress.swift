@@ -23,9 +23,11 @@ struct APIAddress {
     
     private static let authentication = APIAddress.base + "auth/"
     private static let login = APIAddress.authentication + "login"
+    
     private static let signUp = APIAddress.authentication + "register"
     private static let sendPhone = APIAddress.signUp + "/phone"
     private static let sendCode = APIAddress.signUp + "/code"
+    
     private static let forget = APIAddress.authentication + "forgot/"
     private static let forgetSendPhone = APIAddress.forget + "phone"
     private static let forgetSendCode = APIAddress.forget + "code"

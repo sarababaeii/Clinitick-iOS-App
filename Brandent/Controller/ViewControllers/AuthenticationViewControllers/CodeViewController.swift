@@ -135,9 +135,9 @@ class CodeViewController: UIViewController {
         }
         currentTextField?.resignFirstResponder()
         let type: APIRequestType = requestType == .sendCode ? .sendCode : .forgetSendCode
-        RestAPIManagr.sharedInstance.sendOneTimeCode(phone: phoneNumber, code: code, for: type, {(isValid) in
+        RestAPIManagr.sharedInstance.sendOneTimeCode(phone: phoneNumber, code: code, for: type, {(isValid, token) in
             if isValid {
-                self.nextPage(type: type)
+                self.nextPage(type: type, token: token)
             } else {
                 self.invalidCode()
             }
@@ -156,12 +156,19 @@ class CodeViewController: UIViewController {
         firstDigitTextField.becomeFirstResponder()
     }
     
-    func nextPage(type: APIRequestType) {
+    func nextPage(type: APIRequestType, token: String?) {
         if type == .sendCode {
             guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InformationViewController") as? InformationViewController else {
                 return
             }
             controller.phoneNumber = phoneNumber
+            navigationController?.show(controller, sender: nil)
+        } else {
+            guard let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewPassViewController") as? NewPassViewController else {
+                return
+            }
+            controller.phoneNumber = phoneNumber
+            controller.token = token ?? ""
             navigationController?.show(controller, sender: nil)
         }
     }

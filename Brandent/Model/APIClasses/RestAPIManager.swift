@@ -69,6 +69,11 @@ class RestAPIManagr {
         return createPostRequest(url: APIAddress.signUpURL, params: params as [String: Any], contentType: .json)
     }
     
+    private func createResetPassRequest(phone: String, password: String, token: String) -> URLRequest {
+        let params: [String: Any] = jsonSerializer.getResetPassData(phone: phone, password: password, token: token)
+        return createPostRequest(url: APIAddress.forgetPassSendPassURL, params: params as [String: Any], contentType: .json)
+    }
+    
     private func createSendPhoneRequest(phone: String, for type: APIRequestType) -> URLRequest {
         let params: [String: Any] = jsonSerializer.getsendPhoneData(phone: phone)
         if type == .sendPhone {
@@ -127,13 +132,10 @@ class RestAPIManagr {
     
     private func createGetImagesRequest(url: URL) -> URLRequest {
         return createGetRequest(url: url)
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "GET"
-//        return request
     }
     
     //MARK: Authentication
-    func login(phone: String, password: String,  _ completion: @escaping (Int) -> ()) {
+    func login(phone: String, password: String, _ completion: @escaping (Int) -> ()) {
         sendRequest(request: createLoginRequest(phone: phone, password: password), type: .login, {(result) in
             let code = result.authenticate(type: .login, dummyDentist: nil)
             DispatchQueue.main.async {
@@ -151,6 +153,15 @@ class RestAPIManagr {
         })
     }
     
+    func resetPassword(phone: String, password: String, token: String, _ completion: @escaping (Int) -> ()) {
+        sendRequest(request: createResetPassRequest(phone: phone, password: password, token: token), type: .forgetSendPass, {(result) in
+            let code = result.authenticate(type: .login, dummyDentist: nil)
+            DispatchQueue.main.async {
+                completion(code)
+            }
+        })
+    }
+    
     func getOneTimeCode(phone: String, for type: APIRequestType, _ completion: @escaping (Int) -> ()) {
         sendRequest(request: createSendPhoneRequest(phone: phone, for: type), type: type, {(result) in
             let code = result.response?.statusCode ?? 500
@@ -160,11 +171,11 @@ class RestAPIManagr {
         })
     }
     
-    func sendOneTimeCode(phone: String, code: String, for type: APIRequestType, _ completion: @escaping (Bool) -> ()) {
+    func sendOneTimeCode(phone: String, code: String, for type: APIRequestType, _ completion: @escaping (Bool, String?) -> ()) {
         sendRequest(request: createSendOneTimeCodeRequest(phone: phone, code: code, for: type), type: .sendCode, {(result) in
             let isCodeValid = result.isCodeValid()
             DispatchQueue.main.async {
-                completion(isCodeValid)
+                completion(isCodeValid, result.getResetPassToken())
             }
         })
     }
@@ -234,7 +245,7 @@ class RestAPIManagr {
             sendRequest(request: request, type: .getPostImage, {(result) in
                 let imageLink = result.getImageLink()
                 print("IMAGE LINK:")
-                print(imageLink)
+                print(imageLink as Any)
                 print("$$$")
                 completion(imageLink)
             })

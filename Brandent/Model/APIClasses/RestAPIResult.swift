@@ -28,6 +28,17 @@ class RestAPIResult {
         return false
     }
     
+    func getResetPassToken() -> String? {
+        if let data = data, let dictionary = jsonSerializer.decodeData(data: data) {
+            return getToken(dictionary: dictionary)
+        }
+        return nil
+    }
+    
+    private func getToken(dictionary: NSDictionary) -> String? {
+        return dictionary["token"] as? String
+    }
+    
     func authenticate(type: APIRequestType, dummyDentist: DummyDentist?) -> Int {
         guard let response = response, let data = data else {
             return 500
@@ -48,7 +59,7 @@ class RestAPIResult {
     }
     
     private func saveToken(dictionary: NSDictionary) {
-        guard let token = dictionary["token"] as? String else {
+        guard let token = getToken(dictionary: dictionary) else {
             return
         }
         Info.sharedInstance.token = token
