@@ -27,7 +27,7 @@ class CodeViewController: UIViewController {
     var codeDigits = ["", "", "", ""] //0: first digit, 1: socond digit, 2: third digit, 4: fourth digit
     var phoneNumber = ""
     
-    var requestType: APIRequestType = .sendPhone
+    var requestType: APIRequestType = .sendCode
     
     //MARK: Initialization
     override func viewDidLoad() {
@@ -128,7 +128,7 @@ class CodeViewController: UIViewController {
         return code
     }
     
-     func sendCode() {
+    func sendCode() {
         let code = getEnteredCode()
         guard code.count == 4 else {
             return
